@@ -1,0 +1,359 @@
+select[readonly] {
+  background: #eee;
+  pointer-events: none;
+  touch-action: none;
+}
+
+._separator_line {
+	width: 100%;
+	/*margin-left: 5%;*/
+	height: 3px;
+	border: 0;
+	height: 3px;
+	margin-top: 8px;
+	background-image: linear-gradient(to right, transparent, #007070, transparent);  
+}
+
+a[readonly] {
+	background: #eee;
+	pointer-events: none;
+	touch-action: none;
+}
+
+.login{
+	background-image: url('../img/texturaBackgroundAgil.png');
+	/*background-repeat: no-repeat;*/
+	background-size: 900px;
+	background-color: #30615f;
+	max-height: 100vh!important;/*
+	max-width: 100vw;*/
+	color: #bdd246;
+}
+
+._btn_login{
+	margin-top: 30px;
+	width: 150px;
+	border-radius: 5px;
+	background-image: linear-gradient(to right, #82ba50, #bdd246);	
+	font-weight: bold;
+	color: #30615f;
+}
+
+._btn_login:hover{	
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.50);
+	background-image: linear-gradient(to right,  #a1e564,  #def657);
+	color: #30615f;
+}
+
+._btn_login:active{
+	background-image: linear-gradient(to right,  white,  white);
+}
+
+.has-error .form-control{
+   border-width: 1px;
+   border-color: #DC3545!important;
+}
+
+.has-success .form-control{
+   border-width: 1px;
+   border-color: #3C763D!important;
+}
+
+._end{
+	float: right;
+}
+
+._link{
+	cursor: pointer;
+}
+
+._link:active{
+	opacity: 0.7;
+}
+
+._link-box_shadow:hover{
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
+}
+
+._link-font-destac:hover{
+	color: #088A85;
+	text-shadow: 0 0 0.2em #CEF6EC;
+}
+
+._detac{
+	color: #333;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+._font-bold{
+	font-weight: bold;
+}
+
+._fildset-form{
+	padding: 30px;
+	border-radius: 5px;
+  	box-shadow: 0 0 5px #888;
+}
+
+._input-file-sturcture{
+	padding: 10px;
+	border-radius: 5px;
+  	box-shadow: 0 0 5px #888;		
+}
+
+.barra{
+	width: 100%;
+	height: 35px;
+	margin-top: 40px;
+	/*margin-bottom: 15px;*/
+	background-color: #007070;
+	color: white;
+	display: flex;
+	align-items: center;
+	font-variant: small-caps;
+	font-size: 18px;
+	padding-left: 10px;
+	/*font-weight: bold;*/
+}
+
+.barra_2 {
+	width: 100%;
+	height: 35px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	background-color: #007070;
+	color: white!important;
+	display: flex;
+	align-items: center;
+	font-variant: small-caps;
+	font-size: 18px;
+	padding-left: 10px;
+	/*font-weight: bold;*/
+}
+
+.default_tbody tr td{
+	text-align: center!important;
+	padding-left: 20px!important;
+}
+
+._span{
+	color: white;
+}
+
+._resultado_simulacao {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+#resultado_simulacao {
+	padding: 0px 20px;
+}
+
+.div_loading{
+	z-index: 10;
+	position: absolute;
+	left: -100%;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.div_socios_analise input{
+	font-size: 15px;
+}
+
+.opacity_6{
+	opacity: 0.6;
+}
+
+.form_proposta {
+	padding: 0% 5%;
+}
+
+.form_proposta fieldset{
+	padding: 0% 0%!important;
+}
+
+.btn_status{
+	font-weight: bold;
+	/*color: white;*/
+	/*color: white;*/
+}
+
+.btn_proximo_status{
+	width: 100%;
+}
+
+.w_100{
+	width: 100%!important;
+}
+
+._mg-l_10{
+	margin-left: 10px;
+}
+
+._mg-t_0{
+	margin-top: 0px!important;
+}
+
+._mg-t_10{
+	margin-top: 10px!important;
+}
+
+.js-example-basic-multiple{
+	width: 100%!important;
+}
+
+._around{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+._between{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+._scroll{
+	overflow: scroll!important;
+	max-height: 80vh; 
+}
+
+._scroll-y{
+	overflow-y: scroll!important;
+	max-height: 80vh!important; 
+}
+
+._min-h-250{
+	min-height: 250px;
+}
+/* BOTÃO CHECKBOX PERSONALIZADO ----------------------------------------------*/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+input:checked + .slider {
+  background-color: #20B2AA;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #20B2AA;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/*-------------------------------------------------------*/
+
+.div_toggle_permissao{
+	display: flex;
+	align-items: center;
+	min-height: 60px;
+	width: 100%;
+}
+
+.div_toggle_permissao label{
+	min-width: 60px;
+}
+
+.div_toggle_permissao label + label{
+	padding-left: 20px;
+}
+
+._form-rel-finac{	
+	width: 100%;
+	/*height: 200px;*/
+	padding: 0 50px;
+	font-size: 15px!important;
+	margin-bottom: 30px;
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*justify-content: space-between;*/
+}
+
+._form-rel-finac div label{
+	font-size: 15px!important;
+}
+
+._div-filtros-form-financ{
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn_eliezer {
+	border-radius: 1px!important;
+    -ms-transform: skewX(-30deg); /* IE 9 */
+    -webkit-transform: skewX(-30deg); /* Safari */
+    transform: skewX(-30deg); /* Standard syntax */
+}
+
+.btn_eliezer i{
+	border-radius: 1px!important;
+    -ms-transform: skewX(30deg); /* IE 9 */
+    -webkit-transform: skewX(30deg); /* Safari */
+    transform: skewX(30deg); /* Standard syntax */
+}
+
+td .badge{
+	min-width: 100px;
+	/*padding: 8px 18px;*/
+	padding: 8px 18px;
+	font-weight: bold;
+	font-size: 12px;
+	color: white!important;
+}
