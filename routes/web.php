@@ -15,10 +15,8 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    echo "hello world";
+Route::namespace('ClientePj')->group(function(){
+
+	Route::get('/login', [LoginController::class, 'index']);
+
 });
-
-Route::get('/login', [LoginController::class, 'index']);
-
-Route::match(['post'], '/login/auth', [LoginController::class, 'auth'])->name('login.auth');
