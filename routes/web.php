@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SolicitacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,9 @@ use App\Http\Controllers\LoginController;
 Route::namespace('ClientePj')->group(function(){
 
 	Route::get('/login', [LoginController::class, 'index']);
+
+	Route::get('/', [HomeController::class, 'index']);
+
+	Route::get('/solicitar', [SolicitacaoController::class, 'index']);
 
 });

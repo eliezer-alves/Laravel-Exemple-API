@@ -2,8 +2,13 @@
 
 @section('title', 'Login')
 
-<!-- @section('sidebar')
+<!--
+@section('sidebar')
+@endsection
+ -->
 
+<!--
+@section('topbar')
 @endsection
  -->
 @section('content')
