@@ -56,6 +56,10 @@
       </div>
       <br>
       <!-- Form progress -->
+      @include('solicitacao.steps.step_1')
+      @include('solicitacao.steps.step_2')
+      @include('solicitacao.steps.step_3')
+      @include('solicitacao.steps.step_4')
       <!-- Form progress -->
     </form>
     <!-- Form Wizard -->

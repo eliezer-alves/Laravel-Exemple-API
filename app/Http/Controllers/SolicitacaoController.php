@@ -13,7 +13,10 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
-        return view('solicitacao/index');
+        $dados['css'][] = 'form_wizard';
+        $dados['js'][] = 'form_wizard';
+
+        return view('solicitacao/index', $dados);
     }
 
     /**
