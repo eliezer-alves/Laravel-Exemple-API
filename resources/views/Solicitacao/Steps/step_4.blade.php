@@ -1,6 +1,6 @@
 <!-- Form Step 2 -->
 <fieldset id="fieldset_step_2"> 
-  <h4>Atendimento<span>Fase 4 - 4</span></h4>
+  <h4>Solicitação<span>Fase 4 - 4</span></h4>
   
   <!-- DADOS BANCÁRIOS -->
   <div class="form-row">

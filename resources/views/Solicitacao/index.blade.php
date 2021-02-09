@@ -12,11 +12,11 @@
 @endsection
  -->
 @section('content')
-<div class="row" style="width: 100%!important">
+<div class="row body" style="width: 100%!important; height: 100%!important;">
   <div class="col-sm-12 col-sm-offset-12 col-md-12 col-md-offset-12 col-lg-12 col-lg-offset-12 form-wizard">
 
     <!-- Form Wizard -->
-    <form role="form" id="form_proposta_cnpj" class="form_proposta" action="" method="POST" enctype="multipart/form-data">
+    <form role="form" id="form_proposta" class="form_proposta" action="" method="POST" enctype="multipart/form-data">
       <!-- 
       <h3>Sign Up Office Employee Account</h3>
       <p>Fill all form field to go next step</p>

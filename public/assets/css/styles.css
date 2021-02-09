@@ -1,3 +1,11 @@
+body, .main_container, .body{
+	min-height: 100vh!important;
+}
+
+.form-wizard{
+	min-height: 80vh!important;
+}
+
 select[readonly] {
   background: #eee;
   pointer-events: none;
@@ -182,6 +190,7 @@ a[readonly] {
 
 .form_proposta {
 	padding: 0% 5%;
+	height: 100%!important;
 }
 
 .form_proposta fieldset{

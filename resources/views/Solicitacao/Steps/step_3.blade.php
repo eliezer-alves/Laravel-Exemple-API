@@ -1,6 +1,6 @@
 <!-- Form Step 2 -->
 <fieldset id="fieldset_step_2"> 
-  <h4>Atendimento<span>Fase 3 - 4</span></h4>  
+  <h4>Solicitação<span>Fase 3 - 4</span></h4>  
 
   <!-- DADOS RPRESENTANTE LEGAL -->
   <div class="form-row">
@@ -12,11 +12,11 @@
   <div class="form-row">
     <div class="form-group col-md-8">
       <label>Nome: <span>*</span></label>
-      <input class="form-control" type="text" name="nomeRepresentante" id="nome_s3" placeholder="" value="" readonly="">
+      <input class="form-control" type="text" name="nome_representante" id="nome_s3" placeholder="" value="" readonly="">
     </div> 
     <div class="form-group col-md-4">
       <label>CPF: <span>*</span></label>
-      <input class="form-control cpf" type="text" name="cpf" id="cpf_s3" placeholder="" value="" readonly="">
+      <input class="form-control cpf" type="text" name="cpf_representante" id="cpf_s3" placeholder="" value="" readonly="">
     </div>
   </div>
 
@@ -24,14 +24,14 @@
   <div class="form-row">
     <div class="form-group col-md-2">
       <label>Sexo: <span>*</span></label>
-      <select class="form-control"  name="sexo" id="sexo_s3" readonly="">
+      <select class="form-control"  name="sexo_representante" id="sexo_s3" readonly="">
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
       </select>
     </div>
     <div class="form-group col-md-6">
       <label>Profissão: <span>*</span></label>
-      <input class="form-control" type="text" name="profissaoAtividade" id="profissao_s3" placeholder="" value="">
+      <input class="form-control" type="text" name="profissao_representante" id="profissao_s3" placeholder="" value="">
     </div> 
     <div class="form-group col-md-4">
       <label>RG: <span>*</span></label>
