@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class StatusDocumentoProposta extends Model
 {
     use HasFactory;
+
+    protected $table = 'cad_status_documento_proposta';
+    protected $primaryKey =  'id_status_documento_proposta';
+
+    $fillable = [
+    	'descricao'
+    ];
+
+    public function documentos()
+    {
+    	return $this->hasMany(DocumentoProposta::class);
+    }
 }

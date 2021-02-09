@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class ClientePjSeeder extends Seeder
+class ClienteSeeder extends Seeder
 {
     /**
      * Run the database seeds.

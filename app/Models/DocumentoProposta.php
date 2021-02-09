@@ -19,4 +19,14 @@ class DocumentoProposta extends Model
     	'observacao',
     	'id_status_documento'
     ];
+
+    public function proposta()
+    {
+        return $this->belongsTo(Proposta::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(StatusDocumentoProposta::class);
+    }
 }

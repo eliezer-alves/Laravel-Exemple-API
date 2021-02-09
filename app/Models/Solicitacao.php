@@ -10,15 +10,31 @@ class Solicitacao extends Model
     use HasFactory;
 
     protected $table = 'log_solicitacao_proposta';
+    protected $primaryKey =  'id_solicitacao_proposta';
 
     protected $fillable = [
-    	'cnpj',
+        'id_cliente'
     	'valor_solicitado',
-    	'proposta',
+    	'id_proposta',
     	'id_status_solicitacao',
     	'id_motivo_finalizacao',
     	'observacao',
     	'celular_envio_link',
     	'email_envio_link'
     ];
+
+    public function cliente()
+    {
+        return $this->belongsTo(ClientePj::class);
+    }
+
+    public function proposta()
+    {
+        return $this->hasOne(Proposta::class); 
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(StatusSolicitacao::class);
+    }
 }

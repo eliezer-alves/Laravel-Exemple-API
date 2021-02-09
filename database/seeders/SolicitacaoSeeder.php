@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Solicitacao;
+
 use Illuminate\Database\Seeder;
 
 class SolicitacaoSeeder extends Seeder
@@ -13,6 +15,8 @@ class SolicitacaoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Solicitacao::create([
+        	
+        ]);
     }
 }

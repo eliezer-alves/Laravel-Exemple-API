@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MotivoFinalizacao extends Model
 {
     use HasFactory;
+
+    protected $table = 'cad_motivo_finalizacao_proposta';
+    protected $primaryKey =  'id_motivo_finalizacao_proposta';
+
+    $fillable = [
+    	'descricao'
+    ];
 }

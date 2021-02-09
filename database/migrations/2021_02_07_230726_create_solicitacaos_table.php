@@ -15,7 +15,6 @@ class CreateSolicitacaosTable extends Migration
     {
         Schema::create('log_solicitacao_proposta', function (Blueprint $table) {
             $table->id('id_solicitacao_proposta');
-            $table->string('cnpj');
             $table->float('valor_solicitado');
             $table->integer('proposta');
             $table->integer('id_status_solicitacao')->constrained('cad_status_solicitacao');
