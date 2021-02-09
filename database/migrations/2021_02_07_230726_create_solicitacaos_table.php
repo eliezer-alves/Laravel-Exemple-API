@@ -18,8 +18,8 @@ class CreateSolicitacaosTable extends Migration
             $table->string('cnpj');
             $table->float('valor_solicitado');
             $table->integer('proposta');
-            $table->integer('id_status_solicitacao');
-            $table->integer('id_motivo_finalizacao');
+            $table->integer('id_status_solicitacao')->constrained('cad_status_solicitacao');
+            $table->integer('id_motivo_finalizacao')->constrained('cad_motivo_finalizacao_solicitacao');
             $table->string('observacao');
             $table->string('celular_envio_link');
             $table->string('email_envio_link')->unique();
@@ -34,6 +34,6 @@ class CreateSolicitacaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitacao_proposta');
+        Schema::dropIfExists('log_solicitacao_proposta');
     }
 }
