@@ -12,7 +12,7 @@ class PessoaAssinatura extends Model
     protected $table = 'cad_pessoa_assinatura';
     protected $primaryKey =  'id_pessoa_assinatura';
 
-    $fillable = [
+    protected $fillable = [
 		'nome',
 		'cpf',
 		'cnpj',

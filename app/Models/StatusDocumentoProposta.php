@@ -12,12 +12,12 @@ class StatusDocumentoProposta extends Model
     protected $table = 'cad_status_documento_proposta';
     protected $primaryKey =  'id_status_documento_proposta';
 
-    $fillable = [
+    protected $fillable = [
     	'descricao'
     ];
 
-    public function documentos()
+    public function documento()
     {
-    	return $this->hasMany(DocumentoProposta::class);
+    	return $this->hasMany(DocumentoProposta::class, 'id_status_documento_proposta');
     }
 }

@@ -14,10 +14,10 @@ class DocumentoProposta extends Model
 
     protected $fillable = [
     	'id_proposta',
-    	'id_usuario',
-    	'link',
-    	'observacao',
-    	'id_status_documento'
+        'id_usuario',
+        'id_status_documento_proposta',
+        'link',
+        'observacao',
     ];
 
     public function proposta()
@@ -27,6 +27,6 @@ class DocumentoProposta extends Model
 
     public function status()
     {
-        return $this->belongsTo(StatusDocumentoProposta::class);
+        return $this->belongsTo(StatusDocumentoProposta::class, 'id_status_documento_proposta');
     }
 }

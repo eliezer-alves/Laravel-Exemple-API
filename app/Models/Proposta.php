@@ -9,6 +9,8 @@ class Proposta extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'cad_proposta';
     protected $primaryKey =  'id_proposta';
 
@@ -67,11 +69,6 @@ class Proposta extends Model
 		'valor_limite_liberado_bcard'
     ];
 
-    public function solicitacao()
-    {
-    	return $this->hasOne(DocumentoProposta::class);	
-    }
-
     public function documentos()
     {
         return $this->hasMany(DocumentoProposta::class);
@@ -80,6 +77,11 @@ class Proposta extends Model
     public function cliente()
     {
     	return $this->belongsTo(ClientePj::class);	
+    }
+
+    public function solicitacao()
+    {
+    	return $this->belongsTo(Solicitacao::class, 'id_proposta');
     }
 }
 

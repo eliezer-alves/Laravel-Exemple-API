@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\StatusSolicitacao;
+
 use Illuminate\Database\Seeder;
 
 class StatusSolicitacaoSeeder extends Seeder
@@ -13,6 +15,8 @@ class StatusSolicitacaoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $status_solicitacao = StatusSolicitacao::create([
+        	'descricao' => 'PENDENTE ANALISE'
+        ]);
     }
 }

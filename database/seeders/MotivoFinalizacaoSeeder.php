@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\MotivoFinalizacao;
+
 use Illuminate\Database\Seeder;
 
 class MotivoFinalizacaoSeeder extends Seeder
@@ -13,6 +15,8 @@ class MotivoFinalizacaoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $motivo = MotivoFinalizacao::create([
+        	'descricao' => 'NAO TENHO INTERESSE NO MOMENTO'
+        ]);
     }
 }

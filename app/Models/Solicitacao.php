@@ -13,7 +13,7 @@ class Solicitacao extends Model
     protected $primaryKey =  'id_solicitacao_proposta';
 
     protected $fillable = [
-        'id_cliente'
+        'id_cliente',
     	'valor_solicitado',
     	'id_proposta',
     	'id_status_solicitacao',
@@ -30,7 +30,7 @@ class Solicitacao extends Model
 
     public function proposta()
     {
-        return $this->hasOne(Proposta::class); 
+        return $this->hasOne(Proposta::class, 'id_proposta'); 
     }
 
     public function status()

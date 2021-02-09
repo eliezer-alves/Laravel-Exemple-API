@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use \App\Models\StatusDocumentoProposta;
+
 use Illuminate\Database\Seeder;
 
 class StatusDocumentoPropostaSeeder extends Seeder
@@ -13,6 +15,8 @@ class StatusDocumentoPropostaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $status_documento = StatusDocumentoProposta::create([
+        	'descricao' => 'EM ANALISE'
+        ]);
     }
 }
