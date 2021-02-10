@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Solicitacao;
+use App\Models\Proposta;
+use App\Models\DocumentoProposta;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -26,11 +28,14 @@ class SolicitacaoSeeder extends Seeder
 	        	'id_cliente' => $this->id_cliente,
 		    	'valor_solicitado' => 100.00,
 		    	'id_status_solicitacao' => 1,
-		    	'id_motivo_finalizacao' => 1,
+		    	'id_motivo_finalizacao_solicitacao' => 1,
 		    	'observacao' => ''
 	        ]);
 
-	        $solicitacao->proposta->create([
+	        // dd($solicitacao);
+
+	        // $solicitacao->proposta->create([
+	       	$proposta = Proposta::create([
 	        	'contrato' => 1100377486,
 				'estado_civil' => 'A',
 				'renda' => 2000.00,
@@ -84,13 +89,16 @@ class SolicitacaoSeeder extends Seeder
 				'valor_total_a_pagar' => 2280.6,
 				'valor_limite_liberado_bcard' => 1325.12
 	        ]);
-	        
-	      //   $solicitacao->proposta->documentos->create([
-		    	// 'id_usuario' => $this->id_cliente,
-		    	// 'link' => '',
-		    	// 'observacao' => 'OBSERVACAO TESTE',
-		    	// 'id_status_documento' => 1
-	      //   ]);
+
+	        // dd($solicitacao);
+	        // $solicitacao->proposta->documentos->create([
+	       	$documento = DocumentoProposta::create([
+		    	'id_usuario' => $this->id_cliente,
+		    	'link' => '',
+		    	'id_proposta' => $proposta->id_proposta,
+		    	'observacao' => 'OBSERVACAO TESTE',
+		    	'id_status_documento_proposta' => 1
+	        ]);
 
 	        $solicitacao->id_proposta = $solicitacao->proposta->id_proposta;
 	        $solicitacao->save();

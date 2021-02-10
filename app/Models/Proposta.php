@@ -69,14 +69,14 @@ class Proposta extends Model
 		'valor_limite_liberado_bcard'
     ];
 
-    public function documentos()
+    public function documento()
     {
-        return $this->hasOne(DocumentoProposta::class, 'id_proposta');
+        return $this->hasOne(DocumentoProposta::class, 'id_proposta', 'id_proposta');
     }
 
     public function cliente()
     {
-    	return $this->belongsTo(ClientePj::class);	
+    	return $this->belongsTo(ClientePj::class);
     }
 
     public function solicitacao()

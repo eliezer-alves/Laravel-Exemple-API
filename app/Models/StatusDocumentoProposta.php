@@ -16,7 +16,7 @@ class StatusDocumentoProposta extends Model
     	'descricao'
     ];
 
-    public function documento()
+    public function documentos()
     {
     	return $this->hasMany(DocumentoProposta::class, 'id_status_documento_proposta');
     }

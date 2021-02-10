@@ -15,4 +15,9 @@ class MotivoFinalizacao extends Model
     protected $fillable = [
     	'descricao'
     ];
+
+    public function solicitacao()
+    {
+    	return $this->hasMany(Proposta::class, 'id_motivo_finalizacao_solicitacao'); 
+    }
 }

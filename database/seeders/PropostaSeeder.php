@@ -77,12 +77,15 @@ class PropostaSeeder extends Seeder
 				'valor_limite_liberado_bcard' => 1325.12
 	        ]);
 
-	        $proposta->documentos->create([
+
+	        $proposta->documento->create([
 		    	'id_usuario' => $this->id_cliente,
 		    	'link' => '',
 		    	'observacao' => 'OBSERVACAO TESTE',
-		    	'id_status_documento' => 1
+		    	'id_status_documento_proposta' => 1
 	        ]);
+
+	        dd($proposta);
 
 	        DB::commit();
 	    } catch (Exception $e){

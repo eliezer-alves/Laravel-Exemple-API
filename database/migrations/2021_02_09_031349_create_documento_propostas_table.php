@@ -15,9 +15,16 @@ class CreateDocumentoPropostasTable extends Migration
     {
         Schema::create('cad_documento_proposta', function (Blueprint $table) {
             $table->id('id_documento_proposta');
-            $table->foreignId('id_proposta')->constrained('cad_proposta', 'id_proposta')->nullable(false)->unsigned();
             $table->integer('id_usuario');
-            $table->foreignId('id_status_documento_proposta')->constrained('cad_status_documento_proposta', 'id_status_documento_proposta')->nullable(false)->unsigned();
+
+            $table->foreignId('id_proposta')
+                ->unsigned()
+                ->constrained('cad_proposta', 'id_proposta');
+
+            $table->foreignId('id_status_documento_proposta')
+                ->unsigned()
+                ->constrained('cad_status_documento_proposta', 'id_status_documento_proposta');
+
             $table->string('link');
             $table->text('observacao');
             $table->timestamps();

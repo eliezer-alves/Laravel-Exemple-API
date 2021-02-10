@@ -23,7 +23,7 @@ class Solicitacao extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(ClientePj::class);
+        return $this->belongsTo(Cliente::class, 'id_cliente');
     }
 
     public function proposta()
@@ -33,6 +33,11 @@ class Solicitacao extends Model
 
     public function status()
     {
-        return $this->belongsTo(StatusSolicitacao::class);
+        return $this->hasOne(StatusSolicitacao::class, 'id_status_solicitacao');
+    }
+
+    public function motivoFinalizacao()
+    {
+        return $this->belongsTo(MotivoFinalizacao::class, 'id_motivo_finalizacao_solicitacao');
     }
 }

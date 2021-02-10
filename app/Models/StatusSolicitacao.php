@@ -15,4 +15,9 @@ class StatusSolicitacao extends Model
     protected $fillable = [
     	'descricao'
     ];
+
+    public function solicitacoes()
+    {
+    	return $this->hasMany(Solicitacao::class, 'id_status_solicitacao');
+    }
 }
