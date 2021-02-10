@@ -16,9 +16,9 @@ class CreateSolicitacaosTable extends Migration
         Schema::create('log_solicitacao_proposta', function (Blueprint $table) {
             $table->id('id_solicitacao_proposta');
             $table->float('valor_solicitado');
-            $table->integer('proposta');
-            $table->integer('id_status_solicitacao')->constrained('cad_status_solicitacao');
-            $table->integer('id_motivo_finalizacao')->constrained('cad_motivo_finalizacao_solicitacao');
+            $table->foreignId('id_proposta')->constrained('cad_proposta', 'id_proposta')->nullable(true)->unsigned();
+            $table->foreignId('id_status_solicitacao')->constrained('cad_status_solicitacao', 'id_status_solicitacao')->nullable(false)->unsigned();
+            $table->foreignId('id_motivo_finalizacao_solicitacao')->constrained('cad_motivo_finalizacao_solicitacao', 'id_motivo_finalizacao_solicitacao')->nullable(false)->unsigned();
             $table->string('observacao');
             $table->timestamps();
         });
@@ -32,5 +32,5 @@ class CreateSolicitacaosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('log_solicitacao_proposta');
-    }
+    }   
 }
