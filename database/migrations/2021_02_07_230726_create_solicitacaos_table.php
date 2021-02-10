@@ -20,8 +20,6 @@ class CreateSolicitacaosTable extends Migration
             $table->integer('id_status_solicitacao')->constrained('cad_status_solicitacao');
             $table->integer('id_motivo_finalizacao')->constrained('cad_motivo_finalizacao_solicitacao');
             $table->string('observacao');
-            $table->string('celular_envio_link');
-            $table->string('email_envio_link')->unique();
             $table->timestamps();
         });
     }

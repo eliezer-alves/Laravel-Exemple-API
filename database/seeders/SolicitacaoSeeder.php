@@ -27,9 +27,7 @@ class SolicitacaoSeeder extends Seeder
 		    	'valor_solicitado' => 100.00,
 		    	'id_status_solicitacao' => 1,
 		    	'id_motivo_finalizacao' => 1,
-		    	'observacao' => '',
-		    	'celular_envio_link' => '35997594920',
-		    	'email_envio_link' => 'testecapital29@teste.com'
+		    	'observacao' => ''
 	        ]);
 
 	        $solicitacao->proposta->create([
@@ -86,13 +84,16 @@ class SolicitacaoSeeder extends Seeder
 				'valor_total_a_pagar' => 2280.6,
 				'valor_limite_liberado_bcard' => 1325.12
 	        ]);
-
+	        
 	      //   $solicitacao->proposta->documentos->create([
 		    	// 'id_usuario' => $this->id_cliente,
 		    	// 'link' => '',
 		    	// 'observacao' => 'OBSERVACAO TESTE',
 		    	// 'id_status_documento' => 1
 	      //   ]);
+
+	        $solicitacao->id_proposta = $solicitacao->proposta->id_proposta;
+	        $solicitacao->save();
 
 	        DB::commit();
 	    } catch (Exception $e){

@@ -18,9 +18,7 @@ class Solicitacao extends Model
     	'id_proposta',
     	'id_status_solicitacao',
     	'id_motivo_finalizacao',
-    	'observacao',
-    	'celular_envio_link',
-    	'email_envio_link'
+    	'observacao'
     ];
 
     public function cliente()
