@@ -20,15 +20,9 @@ class StatusDocumentoPropostaSeeder extends Seeder
     {
         try{
             DB::beginTransaction();
+            
             $status_documento = StatusDocumentoProposta::create([
-            	'descricao' => 'APAGAR'
-            ]);
-
-            $status_documento->documentos->create([
-                'id_usuario' => $this->id_cliente,
-                'link' => '',
-                'observacao' => 'OBSERVACAO TESTE',
-                'id_status_documento' => 1
+            	'descricao' => 'PENDENTE'
             ]);
 
             DB::commit();

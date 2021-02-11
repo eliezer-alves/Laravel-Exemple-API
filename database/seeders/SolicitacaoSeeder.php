@@ -24,83 +24,17 @@ class SolicitacaoSeeder extends Seeder
     	try{
     		DB::beginTransaction();
 
-	        $solicitacao = Solicitacao::create([
-	        	'id_cliente' => $this->id_cliente,
-		    	'valor_solicitado' => 100.00,
-		    	'id_status_solicitacao' => 1,
-		    	'id_motivo_finalizacao_solicitacao' => 1,
-		    	'observacao' => ''
-	        ]);
+	        $obj_solicitacao = Solicitacao::factory()->make();
+	        $obj_proposta = Proposta::factory()->make();
+	        $obj_documento = DocumentoProposta::factory()->make();
 
-	        // dd($solicitacao);
+	        $solicitacao = Solicitacao::create($obj_solicitacao->toArray());
+	        $proposta = Proposta::create($obj_proposta->toArray());
 
-	        // $solicitacao->proposta->create([
-	       	$proposta = Proposta::create([
-	        	'contrato' => 1100377486,
-				'estado_civil' => 'A',
-				'renda' => 2000.00,
-				'situacao_empregaticia' => '001',
-				'descricao_empresa' => 'BRASILCARD',
-				'valor_solicitado' => 2000.00,
-				'nome_beneficiario' => 'DOUGLAS FERREIRA DA SILVA',
-				'cpf_beneficiario' => '39950423848',
-				'forma_liberacao' => '5',
-				'valor_liberacao' => 1325.13,
-				'banco_liberacao' => '001',
-				'agencia_liberacao' => 1234,
-				'digito_agencia_liberacao' => 1,
-				'conta_liberacao' => 12345678,
-				'digito_conta_liberacao' => 1,
-				'tipo_conta' => '1',
-				'tipo_documento_identidade' => '01',
-				'uf_documento_identidade' => 'MG',
-				'numero_documento_identidade' => '202173',
-				'politicamente_exposto' => false,
-				'cargo_politico' => '',
-				'parente_politicamente_exposto' => false,
-				'cargo_parente_politico' => '',
-				'plano' => '0041',
-				'data_solicitacao_proposta' => '2021-01-29 00:00:00',
-				'id_cliente' => $this->id_cliente,
-				'id_acesso_bio' => null,
-				'id_status_administrativo' => 0,
-				'cidade_geo' => null,
-				'estado_geo' => null,
-				'dados_completos_geo' => null,
-				'valor_iof' => 26.78,
-				'tac' => 50,
-				'valor_financiado_total' => 1401.91,
-				'valor_liquido_credito' => null,
-				'valor_parcela' => 228.06,
-				'quantidade_parcela' => 10,
-				'taxa_juros_ano' => 213.5,
-				'cet_mes' => 11.1366,
-				'cet_ano' => 261.3500,
-				'valor_seguro' => null,
-				'data_geracao_proposta' => '2021-02-08 13:27:30',
-				'data_geracao_contrato' => null,
-				'data_remessa_contrato' => null,
-				'data_aceite_1' => null,
-				'data_aceite_2' => null,
-				'hash_assinatura_ccb' => null,
-				'data_visualizacao_proposta' => null,
-				'taxa_juros_mes' => 9.9900,
-				'id_forma_inclusao' => $this->id_forma_inclusao_capital_de_giro,
-				'valor_total_a_pagar' => 2280.6,
-				'valor_limite_liberado_bcard' => 1325.12
-	        ]);
+	        $obj_documento->id_proposta = $proposta->id_proposta;
+	        $documento = DocumentoProposta::create($obj_documento->toArray());
 
-	        // dd($solicitacao);
-	        // $solicitacao->proposta->documentos->create([
-	       	$documento = DocumentoProposta::create([
-		    	'id_usuario' => $this->id_cliente,
-		    	'link' => '',
-		    	'id_proposta' => $proposta->id_proposta,
-		    	'observacao' => 'OBSERVACAO TESTE',
-		    	'id_status_documento_proposta' => 1
-	        ]);
-
-	        $solicitacao->id_proposta = $solicitacao->proposta->id_proposta;
+	        $solicitacao->id_proposta = $proposta->id_proposta;
 	        $solicitacao->save();
 
 	        DB::commit();

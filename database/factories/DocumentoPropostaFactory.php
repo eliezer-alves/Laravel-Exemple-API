@@ -21,8 +21,11 @@ class DocumentoPropostaFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
+        return [            
+            'id_usuario' => 45,
+            'link' => $this->faker->url,
+            'observacao' => $this->faker->realText($maxNbChars = 60),
+            'id_status_documento_proposta' => 1
         ];
     }
 }

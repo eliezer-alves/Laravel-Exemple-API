@@ -22,7 +22,11 @@ class SolicitacaoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_cliente' => 45,
+            'valor_solicitado' => 100.00,
+            'id_status_solicitacao' => 1,
+            'id_motivo_finalizacao_solicitacao' => 1,
+            'observacao' => $this->faker->realText($maxNbChars = 60)
         ];
     }
 }

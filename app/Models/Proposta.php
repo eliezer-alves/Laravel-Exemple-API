@@ -71,7 +71,7 @@ class Proposta extends Model
 
     public function documento()
     {
-        return $this->hasOne(DocumentoProposta::class, 'id_proposta', 'id_proposta');
+        return $this->belongsTo(DocumentoProposta::class, 'id_proposta', 'id_proposta');
     }
 
     public function cliente()
