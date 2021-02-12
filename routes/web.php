@@ -16,7 +16,7 @@ use App\Http\Controllers\SolicitacaoController;
 |
 */
 
-Route::namespace('ClientePj')->group(function(){
+/* Route::namespace('ClientePj')->group(function(){
 
 	Route::get('/login', [LoginController::class, 'index']);
 
@@ -24,4 +24,8 @@ Route::namespace('ClientePj')->group(function(){
 
 	Route::get('/solicitar', [SolicitacaoController::class, 'index']);
 
+}); */
+
+Route::get('/{any?}', function (){
+    return view('app');
 });
