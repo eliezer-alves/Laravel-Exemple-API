@@ -76,7 +76,7 @@ class Proposta extends Model
 
     public function cliente()
     {
-    	return $this->belongsTo(ClientePj::class);
+    	return $this->belongsTo(Cliente::class);
     }
 
     public function solicitacao()

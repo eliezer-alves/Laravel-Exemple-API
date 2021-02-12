@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cliente;
 use App\Models\Solicitacao;
 use App\Models\Proposta;
 use App\Models\DocumentoProposta;
@@ -19,10 +20,14 @@ class SolicitacaoSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
     	try{
     		DB::beginTransaction();
+    		$obj_cliente = Cliente::Factory()->make();
+
+    		dd($obj_cliente);
 
 	        $obj_solicitacao = Solicitacao::factory()->make();
 	        $obj_proposta = Proposta::factory()->make();
