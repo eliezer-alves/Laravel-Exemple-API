@@ -20,29 +20,12 @@ class SolicitacaoSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
     	try{
     		DB::beginTransaction();
-    		factory(Solicitacao::class)->create->each(function($slc)
-    		{
-    			factory(Proposta::class->create->()->each(function($prop) use ($slc)
-    			{
-
-    			}));
-    		});
-
-	        DB::commit();
-	    } catch (Exception $e){
-	    	DB::rolback();
-	    }
-    }
-
-    public function _run()
-    {
-    	try{
-    		DB::beginTransaction();
-    		$obj_cliente = Cliente::newFactory('ClientePjFactory')->make();
+    		$obj_cliente = Cliente::Factory()->make();
 
     		dd($obj_cliente);
 

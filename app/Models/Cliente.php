@@ -11,6 +11,11 @@ class Cliente extends Model
 
     protected $table = 'cad_cliente';
     protected $primaryKey =  'id_cliente';
+    public $timestamps = false;
+
+    protected $hidden = [
+    	'senha'
+    ];
 
     protected $fillable = [
 		'nome',
@@ -18,7 +23,6 @@ class Cliente extends Model
 		'rg',
 		'celular',
 		'email',
-		'senha',
 		'data_nascimento',
 		'sexo',
 		'nome_mae',
