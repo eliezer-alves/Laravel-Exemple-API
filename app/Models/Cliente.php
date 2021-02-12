@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $table = 'cad_cliente';
     protected $primaryKey =  'id_cliente';
 
-    $fillable = [
+    protected $fillable = [
 		'nome',
 		'cpf',
 		'rg',
@@ -22,6 +22,11 @@ class Cliente extends Model
 		'data_nascimento',
 		'sexo',
 		'nome_mae',
+		'cnpj',
+		'inscricao_estadual',
+		'nome_fantasia',
+		'razao_social',
+		'ramo_atividade',
 		'cep',
 		'cidade',
 		'uf',
@@ -29,11 +34,11 @@ class Cliente extends Model
 		'numero',
 		'complemento',
 		'bairro',
+		'id_tipo_logradouro',
+		'id_forma_inclusao',
 		'createdAt',
 		'updatedAt',
-		'deletedAt',
-		'id_tipo_logradouro',
-		'id_forma_inclusao'
+		'deletedAt'
     ];
 
     public function solicitacaoes()

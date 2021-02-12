@@ -16,7 +16,7 @@ use App\Http\Controllers\SolicitacaoController;
 |
 */
 
-Route::namespace('ClientePj')->group(function(){
+Route::namespace('Cliente')->group(function(){
 
 	Route::get('/login', [LoginController::class, 'index']);
 
