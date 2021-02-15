@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Cliente;
+use App\Http\Requests\StoreClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -35,11 +36,14 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClienteRequest $request)
     {
+        // dd($request->all())
+        return $request->all();
+
         $cliente = new Cliente($request->all());
         $cliente->senha = $request->input('senha');
-        $cliente->save();
+        // $cliente->save();
 
         return $cliente;
     }

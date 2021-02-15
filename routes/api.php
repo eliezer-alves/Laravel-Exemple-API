@@ -22,6 +22,7 @@ use App\Http\Controllers\ClienteController;
 // });
 
 
- Route::get('/home', function() {
-     return json_encode(['api' => '123']);
- });
+Route::namespace('cliente')->group(function(){
+ 	Route::get('/cliente', [ClienteController::class, 'index']);
+ 	Route::post('/cliente', [ClienteController::class, 'store']);
+});
