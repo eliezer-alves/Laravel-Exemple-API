@@ -11,6 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _SideBar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SideBar.vue */ "./resources/js/components/SideBar.vue");
 //
 //
 //
@@ -145,9 +146,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    SideBar: _SideBar_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   beforeCreate: function beforeCreate() {
-    document.body.className = 'home';
+    document.body.className = "home";
   }
 });
 
@@ -312,24 +338,33 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "lg:w-4/5 md:w-6/12 w-10/12 m-auto my-10" },
+    { staticClass: "flex flex-col sm:flex-row sm:justify-around" },
     [
-      _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
-        _vm._v("Meus contratos")
-      ]),
+      _c("side-bar"),
       _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "login" } } }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "mt-3 block w-full text-center text-white text-lg font-bold bg-gray-500 p-4 rounded-md"
-          },
-          [_vm._v("\n      Index\n    ")]
-        )
-      ])
+      _c(
+        "div",
+        { staticClass: "lg:w-4/5 md:w-6/12 w-10/12 m-auto my-10" },
+        [
+          _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
+            _vm._v("Meus contratos")
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "mt-3 block w-full text-center text-white text-lg font-bold bg-gray-500 p-4 rounded-md"
+              },
+              [_vm._v("\n        Solicitação\n      ")]
+            )
+          ])
+        ],
+        1
+      )
     ],
     1
   )
@@ -388,31 +423,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  Data Solicitação\n                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                            attrs: { scope: "col" }
-                          },
-                          [_vm._v("\n                  Hora\n                ")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                            attrs: { scope: "col" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                  N° Proposta\n                "
+                              "\n                    Data Solicitação\n                  "
                             )
                           ]
                         ),
@@ -426,7 +437,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  N° Contrato\n                "
+                              "\n                    Hora\n                  "
                             )
                           ]
                         ),
@@ -440,7 +451,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  N° Parc.\n                "
+                              "\n                    N° Proposta\n                  "
                             )
                           ]
                         ),
@@ -454,7 +465,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  Valor\n                "
+                              "\n                    N° Contrato\n                  "
                             )
                           ]
                         ),
@@ -468,7 +479,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  1° Vencimento\n                "
+                              "\n                    N° Parc.\n                  "
                             )
                           ]
                         ),
@@ -482,7 +493,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  Contrato\n                "
+                              "\n                    Valor\n                  "
                             )
                           ]
                         ),
@@ -496,7 +507,35 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                  Status\n                "
+                              "\n                    1° Vencimento\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "th",
+                          {
+                            staticClass:
+                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                            attrs: { scope: "col" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    Contrato\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "th",
+                          {
+                            staticClass:
+                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                            attrs: { scope: "col" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    Status\n                  "
                             )
                           ]
                         )
@@ -567,29 +606,7 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                  547841528\n                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                            },
-                            [_vm._v("\n                  5\n                ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                            },
-                            [
-                              _vm._v(
-                                "\n                  R$12.000\n                "
+                                "\n                    547841528\n                  "
                               )
                             ]
                           ),
@@ -602,7 +619,7 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                  12/12/2021\n                "
+                                "\n                    5\n                  "
                               )
                             ]
                           ),
@@ -615,7 +632,33 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                  Contrato\n                "
+                                "\n                    R$12.000\n                  "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                            },
+                            [
+                              _vm._v(
+                                "\n                    12/12/2021\n                  "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                            },
+                            [
+                              _vm._v(
+                                "\n                    Contrato\n                  "
                               )
                             ]
                           ),
@@ -632,7 +675,7 @@ var staticRenderFns = [
                                 },
                                 [
                                   _vm._v(
-                                    "\n                    Aguardando Análise\n                  "
+                                    "\n                      Aguardando Análise\n                    "
                                   )
                                 ]
                               )
@@ -653,119 +696,6 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ normalizeComponent)
-/* harmony export */ });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ })

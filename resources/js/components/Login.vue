@@ -43,7 +43,7 @@
         >
           <a
             class="block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
-            >Index</a
+            >Log In</a
           >
         </router-link>
       </form>

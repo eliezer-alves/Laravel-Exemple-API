@@ -1,5 +1,9 @@
 module.exports = [
     {
+        path: '*',
+        component: () => import('./components/NotFound.vue')
+    },
+    {
         path: '/',
         name: 'home',
         component: () => import('./components/Home.vue')
@@ -10,8 +14,13 @@ module.exports = [
         component: () => import('./components/Login.vue')
     },
     {
-        path: '*',
-        name: 'login',
-        component: () => import('./components/NotFound.vue')
+        path: '/solicitacao',
+        name: 'solicitacao',
+        component: () => import('./components/Solicitacao.vue')
     },
+    {
+        path: '/ramo-atividade',
+        name: 'ramo-atividade',
+        component: () => import('./components/RamoAtividade.vue')
+    }
 ]

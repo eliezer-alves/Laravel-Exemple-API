@@ -20,7 +20,7 @@ Route::namespace('ClientePj')->group(function(){
 
 	Route::get('/web/login', [LoginController::class, 'index']);
 
-	Route::get('/', [HomeController::class, 'index']);
+	// Route::get('/', [HomeController::class, 'index']);
 
 	Route::get('/web/solicitar', [SolicitacaoController::class, 'index']);
 

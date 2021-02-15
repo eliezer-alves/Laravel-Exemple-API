@@ -16,16 +16,20 @@ const router = new VueRouter({
 
 const store = new Vuex.Store({});
 
+import SideBar from './components/SideBar.vue';
 const app = new Vue({
     router,
     store,
     el: "#app",
+    components: {
+        SideBar
+    },
     created() {
         console.log("Startin Vue");
     },
     data: {
-		bgc: {
-			backgroundColor: ''
-		}
-	}
+        bgc: {
+            backgroundColor: ''
+        }
+    }
 });
