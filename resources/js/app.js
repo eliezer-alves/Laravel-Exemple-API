@@ -10,7 +10,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: require("./routes.js"),
 });
 
@@ -23,4 +23,9 @@ const app = new Vue({
     created() {
         console.log("Startin Vue");
     },
+    data: {
+		bgc: {
+			backgroundColor: ''
+		}
+	}
 });

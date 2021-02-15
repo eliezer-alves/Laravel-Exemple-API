@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AppController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,6 +14,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        echo "minhas proposta";
+        return view('app');
     }
 }

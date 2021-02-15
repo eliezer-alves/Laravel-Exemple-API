@@ -1855,7 +1855,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vuex__WEBPACK_IMPORTED_MODULE_2__.d
 
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
-  // mode: 'history',
+  mode: 'history',
   routes: __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js")
 });
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__.default.Store({});
@@ -1865,6 +1865,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   el: "#app",
   created: function created() {
     console.log("Startin Vue");
+  },
+  data: {
+    bgc: {
+      backgroundColor: ''
+    }
   }
 });
 
@@ -1909,15 +1914,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 module.exports = [{
   path: '/',
-  name: 'index',
+  name: 'home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_routes_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./routes/Index.vue */ "./resources/js/routes/Index.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home.vue */ "./resources/js/components/Home.vue"));
   }
 }, {
   path: '/login',
   name: 'login',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_routes_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./routes/Login.vue */ "./resources/js/routes/Login.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Login.vue */ "./resources/js/components/Login.vue"));
+  }
+}, {
+  path: '*',
+  name: 'login',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_NotFound_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue"));
   }
 }];
 
@@ -36194,7 +36205,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_routes_Index_vue":1,"resources_js_routes_Login_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

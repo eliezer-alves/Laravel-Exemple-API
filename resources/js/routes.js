@@ -1,12 +1,17 @@
 module.exports = [
     {
         path: '/',
-        name: 'index',
-        component: () => import('./routes/Index.vue')
+        name: 'home',
+        component: () => import('./components/Home.vue')
     },
     {
         path: '/login',
         name: 'login',
-        component: () => import('./routes/Login.vue')
-    }
+        component: () => import('./components/Login.vue')
+    },
+    {
+        path: '*',
+        name: 'login',
+        component: () => import('./components/NotFound.vue')
+    },
 ]

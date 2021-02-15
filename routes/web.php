@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\SolicitacaoController;
 
 /*
@@ -16,16 +16,14 @@ use App\Http\Controllers\SolicitacaoController;
 |
 */
 
-/* Route::namespace('ClientePj')->group(function(){
+Route::namespace('ClientePj')->group(function(){
 
-	Route::get('/login', [LoginController::class, 'index']);
+	Route::get('/web/login', [LoginController::class, 'index']);
 
 	Route::get('/', [HomeController::class, 'index']);
 
-	Route::get('/solicitar', [SolicitacaoController::class, 'index']);
+	Route::get('/web/solicitar', [SolicitacaoController::class, 'index']);
 
-}); */
-
-Route::get('/{any?}', function (){
-    return view('app');
 });
+
+Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
