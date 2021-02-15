@@ -27,8 +27,13 @@ class AlterTableCadClienteForPj extends Migration
             $table->string('razao_social')
                 ->nullable();
 
-            $table->string('ramo_atividade')
-                ->nullable();
+            $table->foreignId('id_ramo_atividade')
+                ->nullable()
+                ->unsigned()
+                ->constrained('cad_ramo_atividade', 'id_ramo_atividade');
+
+            $table->timestamp('data_fundacao', $precision = 0)->nullable();
+
         });
     }
 
@@ -40,13 +45,13 @@ class AlterTableCadClienteForPj extends Migration
     public function down()
     {
         Schema::table('cad_cliente', function (Blueprint $table) {
-            $table->dropColumn('cnpj')
-                ->unique();
-
+            
+            $table->dropColumn('cnpj');
             $table->dropColumn('inscricao_estadual');
             $table->dropColumn('nome_fantasia');
             $table->dropColumn('razao_social');
-            $table->dropColumn('ramo_atividade');
+            $table->dropColumn('id_ramo_atividade');
+            $table->dropColumn('data_fundacao');
         });
     }
 }

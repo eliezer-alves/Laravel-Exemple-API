@@ -26,4 +26,9 @@ Route::namespace('ClientePj')->group(function(){
 
 });
 
+Route::get('/cliente', function (){
+	return 0;
+    return view('app');
+});
+
 Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
