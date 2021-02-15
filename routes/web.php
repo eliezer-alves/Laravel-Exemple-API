@@ -26,6 +26,7 @@ use App\Http\Controllers\SolicitacaoController;
 
 }); */
 
-Route::get('/{any?}', function (){
+Route::get('/cliente', function (){
+	return 0;
     return view('app');
 });

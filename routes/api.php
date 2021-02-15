@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\RamoAtividadeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::namespace('cliente')->group(function(){
  	Route::get('/cliente', [ClienteController::class, 'index']);
  	Route::post('/cliente', [ClienteController::class, 'store']);
 });
+
+
+Route::get('/ramo_atividade', [RamoAtividadeController::class, 'index']);
+

@@ -54,4 +54,9 @@ class Cliente extends Model
     {
         return $this->hasMany(Proposta::class);
     }
+
+    public function ramo_atividade()
+    {
+    	return $this->beloongsTo(RamoAtividade::class);
+    }
 }

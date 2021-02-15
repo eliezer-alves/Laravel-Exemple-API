@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Uf;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreClienteRequest extends FormRequest
@@ -33,7 +34,7 @@ class StoreClienteRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
             'cep' => ['required', 'string', 'formato_cep'],
-            'uf' => ['required', 'string', 'size:2'],
+            'uf' => ['required', 'string', 'size:2', new Uf],
             'cidade' => ['required', 'string'],
             'bairro' => ['required', 'string'],
             'logradouro' => ['required', 'string'],
