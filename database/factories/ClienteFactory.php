@@ -28,7 +28,6 @@ class ClienteFactory extends Factory
             'inscricao_estadual' => $this->faker->rg(false),
             'nome_fantasia' => $this->faker->company,
             'razao_social' => $this->faker->company,
-            'ramo_atividade' => $this->faker->jobTitle,
             'celular' => preg_replace('/[^0-9]+/', '', $this->faker->cellphone),
             'email' => $this->faker->email,
             'senha' => $this->faker->password(4, 4),
@@ -39,6 +38,7 @@ class ClienteFactory extends Factory
             'logradouro' => $this->faker->streetName,
             'numero' => $this->faker->buildingNumber,
             'id_tipo_logradouro' => 1,
+            'id_atividade_comercial' => 1,
             'id_forma_inclusao' => $this->id_forma_inclusao_capital_de_giro,
             'createdAt' => date('Y-m-d H:i:s'),
             'updatedAt' => date('Y-m-d H:i:s')

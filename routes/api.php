@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\RamoAtividadeController;
+use App\Http\Controllers\AtividadeComercialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,10 @@ Route::namespace('cliente')->group(function(){
  	Route::post('/cliente', [ClienteController::class, 'store']);
 });
 
-
-Route::get('/ramo_atividade', [RamoAtividadeController::class, 'index']);
-
+Route::namespace('atividade_comercial')->group(function(){
+	Route::get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
+	Route::get('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
+	Route::post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
+	Route::put('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);
+	Route::delete('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
+});

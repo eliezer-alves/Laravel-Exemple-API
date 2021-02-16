@@ -24,6 +24,7 @@ class Cliente extends Model
 		'celular',
 		'email',
 		'data_nascimento',
+		'data_fundacao',
 		'sexo',
 		'nome_mae',
 		'cnpj',
@@ -39,6 +40,7 @@ class Cliente extends Model
 		'complemento',
 		'bairro',
 		'id_tipo_logradouro',
+		'id_atividade_comercial',
 		'id_forma_inclusao',
 		'createdAt',
 		'updatedAt',
@@ -57,6 +59,6 @@ class Cliente extends Model
 
     public function ramo_atividade()
     {
-    	return $this->beloongsTo(RamoAtividade::class);
+    	return $this->beloongsTo(RamoAtividade::class, 'id_atividade_comercial');
     }
 }

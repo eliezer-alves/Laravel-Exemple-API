@@ -29,7 +29,7 @@ class StoreClienteRequest extends FormRequest
             'inscricao_estadual' => 'required',
             'nome_fantasia' => ['required', 'string'],
             'razao_social' => ['required', 'string'],
-            'ramo_atividade' => ['required', 'string'],
+            'ramo_atividade' => ['required', 'numeric'],
             'celular' => ['required', 'string', 'celular_com_ddd'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
@@ -47,55 +47,55 @@ class StoreClienteRequest extends FormRequest
     {
         return [
             'cnpj.required' => 'O campo cnpj é obrigatório.',
-            'cnpj.string' => 'O campo cnpj é do tipo string.',
+            'cnpj.string' => 'O campo cnpj é do tipo texto.',
 
             'inscricao_estadual.required' => 'O campo inscricao_estadual é obrigatório.',
-            'inscricao_estadual.string' => 'O campo inscricao_estadual é do tipo string.',
+            'inscricao_estadual.string' => 'O campo inscricao_estadual é do tipo texto.',
 
             'nome_fantasia.required' => 'O campo nome_fantasia é obrigatório.',
-            'nome_fantasia.string' => 'O campo nome_fantasia é do tipo string.',
+            'nome_fantasia.string' => 'O campo nome_fantasia é do tipo texto.',
 
             'razao_social.required' => 'O campo razao_social é obrigatório.',
-            'razao_social.string' => 'O campo razao_social é do tipo string.',
+            'razao_social.string' => 'O campo razao_social é do tipo texto.',
 
             'ramo_atividade.required' => 'O campo ramo_atividade é obrigatório.',
-            'ramo_atividade.string' => 'O campo ramo_atividade é do tipo string.',
+            'ramo_atividade.numeric' => 'O campo ramo_atividade é do tipo numerico.',
 
             'celular.required' => 'O campo celular é obrigatório.',
-            'celular.string' => 'O campo celular é do tipo string.',
+            'celular.string' => 'O campo celular é do tipo texto.',
 
             'email.required' => 'O campo email é obrigatório.',
-            'email.string' => 'O campo email é do tipo string.',
+            'email.string' => 'O campo email é do tipo texto.',
             'email.email' => 'O campo email deve conter um endereço de email válido.',
             'email.confirmed' => 'Confirmação de email inválida.',
 
             'senha.required' => 'O campo senha é obrigatório.',
             'senha.required' => 'O campo senha é obrigatório.',
-            'senha.string' => 'O campo senha é do tipo string.',
+            'senha.string' => 'O campo senha é do tipo texto.',
             'senha.between' => 'O campo senha deve conter de 8 à 12 caracteres.',
             'senha.confirmed' => 'Confirmação de senha inválida.',
 
             'cep.required' => 'O campo cep é obrigatório.',
-            'cep.string' => 'O campo cep é do tipo string.',
+            'cep.string' => 'O campo cep é do tipo texto.',
 
             'uf.required' => 'O campo uf é obrigatório.',
-            'uf.string' => 'O campo uf é do tipo string.',
+            'uf.string' => 'O campo uf é do tipo texto.',
             'uf.size' => 'O campo uf deve possuir 2 caracteres.',
 
             'cidade.required' => 'O campo cidade é obrigatório.',
-            'cidade.string' => 'O campo cidade é do tipo string.',
+            'cidade.string' => 'O campo cidade é do tipo texto.',
 
             'bairro.required' => 'O campo bairro é obrigatório.',
-            'bairro.string' => 'O campo bairro é do tipo string.',
+            'bairro.string' => 'O campo bairro é do tipo texto.',
 
             'logradouro.required' => 'O campo logradouro é obrigatório.',
-            'logradouro.string' => 'O campo logradouro é do tipo string.',
+            'logradouro.string' => 'O campo logradouro é do tipo texto.',
 
             'numero.required' => 'O campo numero é obrigatório.',
-            'numero.numeric' => 'O campo numero é do tipo numeric.',
+            'numero.numeric' => 'O campo numero é do tipo numerico.',
 
             'id_tipo_logradouro.required' => 'O campo id_tipo_logradouro é obrigatório.',
-            'id_tipo_logradouro.numeric' => 'O campo id_tipo_logradouro é do tipo numeric.'
+            'id_tipo_logradouro.numeric' => 'O campo id_tipo_logradouro é do tipo numerico.'
         ];
     }
 }

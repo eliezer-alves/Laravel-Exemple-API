@@ -13,9 +13,9 @@ class CreateCadRamoAtividade extends Migration
      */
     public function up()
     {
-        Schema::create('cad_ramo_atividade', function (Blueprint $table) {
-            $table->id('id_ramo_atividade');
-            $table->string('atividade');
+        Schema::create('cad_atividade_comercial', function (Blueprint $table) {
+            $table->id('id_atividade_comercial');
+            $table->string('descricao');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
@@ -28,6 +28,6 @@ class CreateCadRamoAtividade extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cad_ramo_atividade');
+        Schema::dropIfExists('cad_atividade_comercial');
     }
 }
