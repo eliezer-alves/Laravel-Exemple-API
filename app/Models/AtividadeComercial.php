@@ -16,7 +16,7 @@ class AtividadeComercial extends Model
     public $timestamps = true;
 
     protected $fillable = [
-    	'atividade'
+    	'descricao'
     ];
 
     public function cliente()

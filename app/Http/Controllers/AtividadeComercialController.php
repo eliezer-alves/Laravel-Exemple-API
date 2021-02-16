@@ -26,7 +26,7 @@ class AtividadeComercialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'atividade' => ['required', 'string', 'between:1,120']
+            'descricao' => ['required', 'string', 'between:1,120']
         ]);
 
         $atividadeComercial = new AtividadeComercial($request->all());
@@ -56,7 +56,7 @@ class AtividadeComercialController extends Controller
     public function update(Request $request, $id_atividade_comercial)
     {        
         $request->validate([
-            'atividade' => ['required', 'string', 'between:1,120']
+            'descricao' => ['required', 'string', 'between:1,120']
         ]);
 
         $atividadeComercial = $this->show($id_atividade_comercial);
