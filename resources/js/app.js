@@ -14,15 +14,26 @@ const router = new VueRouter({
     routes: require("./routes.js"),
 });
 
-const store = new Vuex.Store({});
 
-import SideBar from './components/SideBar.vue';
+import actions from './vuex/actions'
+import mutations from './vuex/mutations'
+import getters from './vuex/getters'
+import state from "./vuex/state";
+
+const store = new Vuex.Store({
+    state,
+    getters,
+    mutations,
+    actions
+});
+
+import Menu from './components/Menu.vue';
 const app = new Vue({
     router,
     store,
     el: "#app",
     components: {
-        SideBar
+        Menu
     },
     created() {
         console.log("Startin Vue");

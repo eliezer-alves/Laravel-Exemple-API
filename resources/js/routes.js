@@ -19,8 +19,8 @@ module.exports = [
         component: () => import('./components/Solicitacao.vue')
     },
     {
-        path: '/ramo-atividade',
-        name: 'ramo-atividade',
-        component: () => import('./components/RamoAtividade.vue')
+        path: '/atividade-comercial',
+        name: 'atividade-comercial',
+        component: () => import('./components/AtividadeComercial.vue')
     }
 ]

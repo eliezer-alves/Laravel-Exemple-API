@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-gray-300">
     <div class="container mx-auto">
         <div id="app">
             <router-view></router-view>

@@ -59,6 +59,7 @@ export default {
 </script>
 <style>
 .login {
+  -webkit-font-smoothing: antialiased;
   background-image: url("/images/texturaBackgroundAgil.png");
   background-color: #30615f;
   background-size: 900px;

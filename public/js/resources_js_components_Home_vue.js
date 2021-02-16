@@ -11,7 +11,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SideBar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SideBar.vue */ "./resources/js/components/SideBar.vue");
 //
 //
 //
@@ -146,32 +145,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    SideBar: _SideBar_vue__WEBPACK_IMPORTED_MODULE_0__.default
-  },
   beforeCreate: function beforeCreate() {
     document.body.className = "home";
   }
@@ -196,7 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.home {\r\n  background-image: none;\r\n  background-color: #fff;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.home {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: none;\r\n  background-color: #cecece;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -338,33 +312,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex flex-col sm:flex-row sm:justify-around" },
+    { staticClass: "lg:w-4/5 md:w-6/12 w-10/12 m-auto my-10" },
     [
-      _c("side-bar"),
+      _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
+        _vm._v("Meus contratos")
+      ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "lg:w-4/5 md:w-6/12 w-10/12 m-auto my-10" },
-        [
-          _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
-            _vm._v("Meus contratos")
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "mt-3 block w-full text-center text-white text-lg font-bold bg-gray-500 p-4 rounded-md"
-              },
-              [_vm._v("\n        Solicitação\n      ")]
-            )
-          ])
-        ],
-        1
-      )
+      _vm._m(0),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "mt-3 block w-full text-center text-white text-lg font-bold bg-gray-500 p-4 rounded-md"
+          },
+          [_vm._v("\n      Solicitação\n    ")]
+        )
+      ])
     ],
     1
   )
@@ -423,7 +388,31 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    Data Solicitação\n                  "
+                              "\n                  Data Solicitação\n                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "th",
+                          {
+                            staticClass:
+                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                            attrs: { scope: "col" }
+                          },
+                          [_vm._v("\n                  Hora\n                ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "th",
+                          {
+                            staticClass:
+                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                            attrs: { scope: "col" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  N° Proposta\n                "
                             )
                           ]
                         ),
@@ -437,7 +426,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    Hora\n                  "
+                              "\n                  N° Contrato\n                "
                             )
                           ]
                         ),
@@ -451,7 +440,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    N° Proposta\n                  "
+                              "\n                  N° Parc.\n                "
                             )
                           ]
                         ),
@@ -465,7 +454,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    N° Contrato\n                  "
+                              "\n                  Valor\n                "
                             )
                           ]
                         ),
@@ -479,7 +468,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    N° Parc.\n                  "
+                              "\n                  1° Vencimento\n                "
                             )
                           ]
                         ),
@@ -493,7 +482,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    Valor\n                  "
+                              "\n                  Contrato\n                "
                             )
                           ]
                         ),
@@ -507,35 +496,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                    1° Vencimento\n                  "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                            attrs: { scope: "col" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Contrato\n                  "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                            attrs: { scope: "col" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Status\n                  "
+                              "\n                  Status\n                "
                             )
                           ]
                         )
@@ -606,7 +567,29 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                    547841528\n                  "
+                                "\n                  547841528\n                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                            },
+                            [_vm._v("\n                  5\n                ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                            },
+                            [
+                              _vm._v(
+                                "\n                  R$12.000\n                "
                               )
                             ]
                           ),
@@ -619,7 +602,7 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                    5\n                  "
+                                "\n                  12/12/2021\n                "
                               )
                             ]
                           ),
@@ -632,33 +615,7 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                    R$12.000\n                  "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                            },
-                            [
-                              _vm._v(
-                                "\n                    12/12/2021\n                  "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                            },
-                            [
-                              _vm._v(
-                                "\n                    Contrato\n                  "
+                                "\n                  Contrato\n                "
                               )
                             ]
                           ),
@@ -675,7 +632,7 @@ var staticRenderFns = [
                                 },
                                 [
                                   _vm._v(
-                                    "\n                      Aguardando Análise\n                    "
+                                    "\n                    Aguardando Análise\n                  "
                                   )
                                 ]
                               )
