@@ -1,6 +1,6 @@
 let actions = {
     createAtividade({ commit }, atividade) {
-        axios.post('http://192.168.254.15:8085/api/', atividade)
+        return axios.post('http://192.168.254.15:8085/api/atividade_comercial', atividade)
             .then(res => {
                 commit('CREATE_ATIVIDADE', res.data)
             }).catch(err => {
@@ -8,7 +8,8 @@ let actions = {
             })
     },
     fetchAtividades({ commit }) {
-        axios.get('http://192.168.254.15:8085/api/')
+        console.log('aqui');
+        return axios.get('http://192.168.254.15:8085/api/atividade_comercial')
             .then(res => {
                 commit('FETCH_ATIVIDADES', res.data)
             }).catch(err => {
@@ -16,7 +17,8 @@ let actions = {
             })
     },
     deleteAtividade({ commit }, atividade) {
-        axios.delete(`http://192.168.254.15:8085/api//${atividade.id_atividade_comercial}`)
+        console.log(atividade);
+        return axios.delete(`http://192.168.254.15:8085/api/atividade_comercial/${atividade.id_atividade_comercial}`)
             .then(res => {
                 if (res.data === 'ok')
                     commit('DELETE_ATIVIDADE', atividade)

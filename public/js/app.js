@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
 var actions = {
   createAtividade: function createAtividade(_ref, atividade) {
     var commit = _ref.commit;
-    axios.post('http://192.168.254.15:8085/api/', atividade).then(function (res) {
+    return axios.post('http://192.168.254.15:8085/api/atividade_comercial', atividade).then(function (res) {
       commit('CREATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
       console.log(err);
@@ -2035,7 +2035,8 @@ var actions = {
   },
   fetchAtividades: function fetchAtividades(_ref2) {
     var commit = _ref2.commit;
-    axios.get('http://192.168.254.15:8085/api/').then(function (res) {
+    console.log('aqui');
+    return axios.get('http://192.168.254.15:8085/api/atividade_comercial').then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
       console.log(err);
@@ -2043,7 +2044,8 @@ var actions = {
   },
   deleteAtividade: function deleteAtividade(_ref3, atividade) {
     var commit = _ref3.commit;
-    axios["delete"]("http://192.168.254.15:8085/api//".concat(atividade.id_atividade_comercial)).then(function (res) {
+    console.log(atividade);
+    return axios["delete"]("http://192.168.254.15:8085/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
       if (res.data === 'ok') commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
       console.log(err);
@@ -2087,14 +2089,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var mutations = {
   CREATE_ATIVIDADE: function CREATE_ATIVIDADE(state, atividade) {
-    state.atividades.unshift(atividade);
+    state.atividades.push(atividade);
   },
   FETCH_ATIVIDADES: function FETCH_ATIVIDADES(state, atividades) {
     return state.atividades = atividades;
   },
   DELETE_ATIVIDADE: function DELETE_ATIVIDADE(state, atividade) {
+    console.log(atividade);
     var index = state.atividades.findIndex(function (item) {
-      return item.id === atividade.id;
+      return item.id_atividade_comercial === atividade.id_atividade_comercial;
     });
     state.atividades.splice(index, 1);
   }

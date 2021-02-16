@@ -28,12 +28,13 @@ const store = new Vuex.Store({
 });
 
 import Menu from './components/Menu.vue';
+
 const app = new Vue({
     router,
     store,
     el: "#app",
     components: {
-        Menu
+        Menu,
     },
     created() {
         console.log("Startin Vue");
