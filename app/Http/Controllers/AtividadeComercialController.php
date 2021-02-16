@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RamoAtividade;
+use App\Models\AtividadeComercial;
 use Illuminate\Http\Request;
 
-class RamoAtividadeController extends Controller
+class AtividadeComercialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RamoAtividadeController extends Controller
      */
     public function index()
     {
-        return RamoAtividade::all();
+        return AtividadeComercial::all();
     }
 
     /**
@@ -35,16 +35,23 @@ class RamoAtividadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'atividade' => ['required', 'string', 'between:1,120']
+        ]);
+
+        $atividade_comercial = new AtividadeComercial($request->all());
+        $atividade_comercial->save();
+
+        return $atividade_comercial;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RamoAtividade  $ramoAtividade
+     * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function show(RamoAtividade $ramoAtividade)
+    public function show(AtividadeComercial $atividadeComercial)
     {
         //
     }
@@ -52,10 +59,10 @@ class RamoAtividadeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RamoAtividade  $ramoAtividade
+     * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function edit(RamoAtividade $ramoAtividade)
+    public function edit(AtividadeComercial $atividadeComercial)
     {
         //
     }
@@ -64,10 +71,10 @@ class RamoAtividadeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RamoAtividade  $ramoAtividade
+     * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RamoAtividade $ramoAtividade)
+    public function update(Request $request, AtividadeComercial $atividadeComercial)
     {
         //
     }
@@ -75,10 +82,10 @@ class RamoAtividadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RamoAtividade  $ramoAtividade
+     * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RamoAtividade $ramoAtividade)
+    public function destroy(AtividadeComercial $atividadeComercial)
     {
         //
     }

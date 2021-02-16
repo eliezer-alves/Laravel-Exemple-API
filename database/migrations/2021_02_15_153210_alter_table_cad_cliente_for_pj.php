@@ -27,10 +27,10 @@ class AlterTableCadClienteForPj extends Migration
             $table->string('razao_social')
                 ->nullable();
 
-            $table->foreignId('id_ramo_atividade')
+            $table->foreignId('id_atividade_comercial')
                 ->nullable()
                 ->unsigned()
-                ->constrained('cad_ramo_atividade', 'id_ramo_atividade');
+                ->constrained('cad_atividade_comercial', 'id_atividade_comercial');
 
             $table->timestamp('data_fundacao', $precision = 0)->nullable();
 
@@ -50,7 +50,7 @@ class AlterTableCadClienteForPj extends Migration
             $table->dropColumn('inscricao_estadual');
             $table->dropColumn('nome_fantasia');
             $table->dropColumn('razao_social');
-            $table->dropColumn('id_ramo_atividade');
+            $table->dropColumn('id_atividade_comercial');
             $table->dropColumn('data_fundacao');
         });
     }

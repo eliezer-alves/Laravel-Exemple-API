@@ -11,7 +11,7 @@ use Tests\TestCase;
 class ClienteTest extends TestCase
 {
     /** @test */
-    public function check_if_cliente_columns_is_currect()
+    public function check_if_cliente_columns_is_correct()
     {
         $expected =[ 
             'nome',
@@ -36,7 +36,7 @@ class ClienteTest extends TestCase
             'complemento',
             'bairro',
             'id_tipo_logradouro',
-            'id_ramo_atividade',
+            'id_atividade_comercial',
             'id_forma_inclusao',
             'createdAt',
             'updatedAt',
