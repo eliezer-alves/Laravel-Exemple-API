@@ -18,16 +18,6 @@ class AtividadeComercialController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,10 +29,10 @@ class AtividadeComercialController extends Controller
             'atividade' => ['required', 'string', 'between:1,120']
         ]);
 
-        $atividade_comercial = new AtividadeComercial($request->all());
-        $atividade_comercial->save();
+        $atividadeComercial = new AtividadeComercial($request->all());
+        $atividadeComercial->save();
 
-        return $atividade_comercial;
+        return $atividadeComercial;
     }
 
     /**
@@ -51,20 +41,9 @@ class AtividadeComercialController extends Controller
      * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function show(AtividadeComercial $atividadeComercial)
+    public function show($id_atividade_comercial)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AtividadeComercial  $atividadeComercial
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AtividadeComercial $atividadeComercial)
-    {
-        //
+        return AtividadeComercial::findOrFail($id_atividade_comercial);
     }
 
     /**
@@ -74,9 +53,16 @@ class AtividadeComercialController extends Controller
      * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AtividadeComercial $atividadeComercial)
-    {
-        //
+    public function update(Request $request, $id_atividade_comercial)
+    {        
+        $request->validate([
+            'atividade' => ['required', 'string', 'between:1,120']
+        ]);
+
+        $atividadeComercial = $this->show($id_atividade_comercial);
+        $atividadeComercial->update($request->all());
+
+        return $atividadeComercial;
     }
 
     /**
@@ -85,8 +71,11 @@ class AtividadeComercialController extends Controller
      * @param  \App\Models\AtividadeComercial  $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AtividadeComercial $atividadeComercial)
+    public function destroy($id_atividade_comercial)
     {
-        //
+        $atividadeComercial = $this->show($id_atividade_comercial);
+        $atividadeComercial->delete();
+
+        return;
     }
 }

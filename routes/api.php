@@ -30,5 +30,8 @@ Route::namespace('cliente')->group(function(){
 
 Route::namespace('atividade_comercial')->group(function(){
 	Route::get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
+	Route::get('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
 	Route::post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
+	Route::put('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);
+	Route::delete('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
 });
