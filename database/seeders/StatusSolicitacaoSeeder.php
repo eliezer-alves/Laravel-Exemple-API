@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 
 class StatusSolicitacaoSeeder extends Seeder
 {
+    private $listaStatusSolicitacao = ['APROVADA', 'NEGADA', 'EM ANÁLISE', 'PENDENTE ANÁLISE'];
     /**
      * Run the database seeds.
      *
@@ -15,8 +16,10 @@ class StatusSolicitacaoSeeder extends Seeder
      */
     public function run()
     {
-        $status_solicitacao = StatusSolicitacao::create([
-        	'descricao' => 'PENDENTE ANALISE'
-        ]);
+        foreach ($this->listaStatusSolicitacao as $status) {
+            $r = StatusSolicitacao::create([
+                'descricao' => $status
+            ]);
+        }
     }
 }

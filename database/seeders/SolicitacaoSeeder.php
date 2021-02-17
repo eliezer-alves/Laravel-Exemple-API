@@ -27,8 +27,6 @@ class SolicitacaoSeeder extends Seeder
     		DB::beginTransaction();
     		$obj_cliente = Cliente::Factory()->make();
 
-    		dd($obj_cliente);
-
 	        $obj_solicitacao = Solicitacao::factory()->make();
 	        $obj_proposta = Proposta::factory()->make();
 	        $obj_documento = DocumentoProposta::factory()->make();
