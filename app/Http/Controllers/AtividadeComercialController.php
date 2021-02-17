@@ -14,7 +14,7 @@ class AtividadeComercialController extends Controller
      */
     public function index()
     {
-        return AtividadeComercial::all();
+        return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
     }
 
     /**
@@ -54,7 +54,7 @@ class AtividadeComercialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id_atividade_comercial)
-    {        
+    {
         $request->validate([
             'descricao' => ['required', 'string', 'between:1,120']
         ]);
