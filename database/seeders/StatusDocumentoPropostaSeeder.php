@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class StatusDocumentoPropostaSeeder extends Seeder
 {
-    private $id_cliente = 195;
+    private $listaStatusDocumento = ['APROVADO', 'NEGADO', 'EM ANÁLISE', 'PENDENTE ANÁLISE'];
 
     /**
      * Run the database seeds.
@@ -18,16 +18,10 @@ class StatusDocumentoPropostaSeeder extends Seeder
      */
     public function run()
     {
-        try{
-            DB::beginTransaction();
-            
-            $status_documento = StatusDocumentoProposta::create([
-            	'descricao' => 'PENDENTE'
+        foreach ($this->listaStatusDocumento as $status) {
+            $r = StatusDocumentoProposta::create([
+                'descricao' => $status
             ]);
-
-            DB::commit();
-        } catch (Exception $e){
-            DB::rolback();
         }
     }
 }

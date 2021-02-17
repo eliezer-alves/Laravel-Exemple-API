@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 
 class MotivoFinalizacaoSeeder extends Seeder
 {
+    private $listaMotivoFinalizacao = ['NAO CONCORDO COM AS TAXAS DE JUROS', 'NAO PRECISO DE EMPRESTIMO NO MOMENTO', 'NAO TENHO INTERESSE', 'VOU PENSAR NA PROPOSTA', 'OUTROS'];
     /**
      * Run the database seeds.
      *
@@ -15,8 +16,10 @@ class MotivoFinalizacaoSeeder extends Seeder
      */
     public function run()
     {
-        $motivo = MotivoFinalizacao::create([
-        	'descricao' => 'NAO TENHO INTERESSE NO MOMENTO'
-        ]);
+        foreach ($this->listaMotivoFinalizacao as $motivo) {
+            $r = MotivoFinalizacao::create([
+                'descricao' => $motivo
+            ]);
+        }
     }
 }
