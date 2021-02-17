@@ -15,10 +15,10 @@
       ></path>
     </svg>
     <div class="bg-white shadow p-6 mt-5 rounded-t-lg">
-      <form action="" @submit="createAtividade(atividade)">
+      <form @submit="createAtividade(newAtividade)">
         <div class="grid">
           <div
-            class="border focus-within:border-green-500 focus-within:text-green-500 transition-all duration-500 relative rounded p-1"
+            class="border focus-within:border-green-700 focus-within:text-green-700 transition-all duration-500 relative rounded p-1"
           >
             <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
               <p>
@@ -34,14 +34,14 @@
                 tabindex="0"
                 type="text"
                 class="py-1 px-1 text-gray-900 outline-none block h-full w-full"
-                v-model="atividade.descricao"
+                v-model="newAtividade.descricao"
               />
             </p>
           </div>
           <div class="border-t mt-6 pt-3">
             <button
-              class="block w-full rounded text-gray-100 px-3 py-1 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300"
-              @click.prevent="createAtividade(atividade)"
+              class="block w-full rounded text-gray-100 px-3 py-1 bg-green-700 hover:shadow-inner hover:bg-green-900 transition-all duration-300"
+              @click.prevent="createAtividade(newAtividade)"
             >
               Save
             </button>
@@ -66,7 +66,7 @@
           <table class="w-full text-md bg-white shadow-md rounded mb-4">
             <tbody>
               <tr class="border-b">
-                <th class="text-left p-3 px-5">Id</th>
+                <th class="text-left p-3 px-5">Código</th>
                 <th class="text-left p-3 px-5">Descrição</th>
                 <th></th>
               </tr>
@@ -76,26 +76,20 @@
                 :key="atividade.id_atividade_comercial"
               >
                 <td class="p-3 px-5">
-                  <input
-                    type="text"
-                    :value="atividade.id_atividade_comercial"
-                    class="bg-transparent"
-                  />
+                  <p class="bg-transparent">
+                    {{ atividade.id_atividade_comercial }}
+                  </p>
                 </td>
                 <td class="p-3 px-5">
                   <input
                     type="text"
-                    :value="atividade.descricao"
-                    class="bg-transparent"
+                    v-model="atividade.descricao"
+                    class="bg-transparent w-full"
+                    @blur="updateAtividade(atividade)"
                   />
                 </td>
                 <td class="p-3 px-5 flex justify-end">
                   <button
-                    type="button"
-                    class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                  >
-                    Editar</button
-                  ><button
                     type="button"
                     class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                     @click="deleteAtividade(atividade)"
@@ -121,13 +115,12 @@ export default {
   },
   data() {
     return {
-      atividade: {
+      newAtividade: {
         descricao: "",
       },
       loading: false,
     };
   },
-
   async mounted() {
     this.loading = true;
     await this.$store.dispatch("fetchAtividades");
@@ -139,6 +132,11 @@ export default {
       await this.$store.dispatch("createAtividade", atividade);
       this.loading = false;
     },
+    async updateAtividade(atividade) {
+      this.loading = true;
+      await this.$store.dispatch("updateAtividade", atividade);
+      this.loading = false;
+    },
     async deleteAtividade(atividade) {
       this.loading = true;
       await this.$store.dispatch("deleteAtividade", atividade);
@@ -147,6 +145,14 @@ export default {
   },
   computed: {
     ...mapGetters(["atividades"]),
+    /* atividade: {
+      get() {
+        return this.$store.state.atividade[this.id_atividade_comercial];
+      },
+      set(atividade) {
+        this.updateAtividade(atividade);
+      },
+    }, */
   },
 };
 </script>

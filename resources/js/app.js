@@ -21,6 +21,7 @@ import getters from './vuex/getters'
 import state from "./vuex/state";
 
 const store = new Vuex.Store({
+    // strict: false,
     state,
     getters,
     mutations,
@@ -40,8 +41,5 @@ const app = new Vue({
         console.log("Startin Vue");
     },
     data: {
-        bgc: {
-            backgroundColor: ''
-        }
     }
 });

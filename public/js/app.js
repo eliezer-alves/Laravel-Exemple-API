@@ -1918,6 +1918,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
 
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__.default.Store({
+  // strict: false,
   state: _vuex_state__WEBPACK_IMPORTED_MODULE_7__.default,
   getters: _vuex_getters__WEBPACK_IMPORTED_MODULE_6__.default,
   mutations: _vuex_mutations__WEBPACK_IMPORTED_MODULE_5__.default,
@@ -1934,11 +1935,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   created: function created() {
     console.log("Startin Vue");
   },
-  data: {
-    bgc: {
-      backgroundColor: ''
-    }
-  }
+  data: {}
 });
 
 /***/ }),
@@ -2024,6 +2021,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var actions = {
   createAtividade: function createAtividade(_ref, atividade) {
     var commit = _ref.commit;
@@ -2035,18 +2038,25 @@ var actions = {
   },
   fetchAtividades: function fetchAtividades(_ref2) {
     var commit = _ref2.commit;
-    console.log('aqui');
     return axios.get('http://192.168.254.15:8085/api/atividade_comercial').then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
       console.log(err);
     });
   },
-  deleteAtividade: function deleteAtividade(_ref3, atividade) {
+  updateAtividade: function updateAtividade(_ref3, atividade) {
     var commit = _ref3.commit;
-    console.log(atividade);
+    return axios.put("http://192.168.254.15:8085/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
+      console.log(res);
+      commit('UPDATE_ATIVIDADE', res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  deleteAtividade: function deleteAtividade(_ref4, atividade) {
+    var commit = _ref4.commit;
     return axios["delete"]("http://192.168.254.15:8085/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
-      if (res.data === 'ok') commit('DELETE_ATIVIDADE', atividade);
+      if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -2067,7 +2077,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+
 var getters = {
+  getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.getField,
   atividades: function atividades(state) {
     return state.atividades;
   }
@@ -2087,15 +2100,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+
 var mutations = {
-  CREATE_ATIVIDADE: function CREATE_ATIVIDADE(state, atividade) {
-    state.atividades.push(atividade);
+  updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
+  CREATE_ATIVIDADE: function CREATE_ATIVIDADE(state, payload) {
+    state.atividades.push(payload);
   },
-  FETCH_ATIVIDADES: function FETCH_ATIVIDADES(state, atividades) {
-    return state.atividades = atividades;
+  FETCH_ATIVIDADES: function FETCH_ATIVIDADES(state, payload) {
+    return state.atividades = payload;
+  },
+  UPDATE_ATIVIDADE: function UPDATE_ATIVIDADE(state, payload) {
+    var id_atividade_comercial = payload.id_atividade_comercial,
+        descricao = payload.descricao;
+    var index = state.atividades.findIndex(function (item) {
+      return item.id_atividade_comercial === id_atividade_comercial;
+    });
+    console.log(payload);
+    state.atividades[index].descricao = descricao;
   },
   DELETE_ATIVIDADE: function DELETE_ATIVIDADE(state, atividade) {
-    console.log(atividade);
     var index = state.atividades.findIndex(function (item) {
       return item.id_atividade_comercial === atividade.id_atividade_comercial;
     });
@@ -35346,6 +35370,223 @@ function getOuterHTML (el) {
 Vue.compile = compileToFunctions;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Vue);
+
+
+/***/ }),
+
+/***/ "./node_modules/vuex-map-fields/dist/index.esm.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuex-map-fields/dist/index.esm.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createHelpers": () => (/* binding */ createHelpers),
+/* harmony export */   "getField": () => (/* binding */ getField),
+/* harmony export */   "mapFields": () => (/* binding */ mapFields),
+/* harmony export */   "mapMultiRowFields": () => (/* binding */ mapMultiRowFields),
+/* harmony export */   "updateField": () => (/* binding */ updateField)
+/* harmony export */ });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function arrayToObject() {
+  var fields = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  return fields.reduce(function (prev, path) {
+    var key = path.split(".").slice(-1)[0];
+
+    if (prev[key]) {
+      throw new Error("The key `".concat(key, "` is already in use."));
+    } // eslint-disable-next-line no-param-reassign
+
+
+    prev[key] = path;
+    return prev;
+  }, {});
+}
+
+function objectEntries(obj) {
+  return Object.keys(obj).map(function (key) {
+    return [key, obj[key]];
+  });
+}
+
+function normalizeNamespace(fn) {
+  return function () {
+    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+      params[_key] = arguments[_key];
+    }
+
+    // eslint-disable-next-line prefer-const
+    var _ref = typeof params[0] === "string" ? [].concat(params) : [""].concat(params),
+        _ref2 = _slicedToArray(_ref, 4),
+        namespace = _ref2[0],
+        map = _ref2[1],
+        getterType = _ref2[2],
+        mutationType = _ref2[3];
+
+    if (namespace.length && namespace.charAt(namespace.length - 1) !== "/") {
+      namespace += "/";
+    }
+
+    getterType = "".concat(namespace).concat(getterType || "getField");
+    mutationType = "".concat(namespace).concat(mutationType || "updateField");
+    return fn(namespace, map, getterType, mutationType);
+  };
+}
+
+function getField(state) {
+  return function (path) {
+    return path.split(/[.[\]]+/).reduce(function (prev, key) {
+      return prev[key];
+    }, state);
+  };
+}
+function updateField(state, _ref3) {
+  var path = _ref3.path,
+      value = _ref3.value;
+  path.split(/[.[\]]+/).reduce(function (prev, key, index, array) {
+    if (array.length === index + 1) {
+      // eslint-disable-next-line no-param-reassign
+      prev[key] = value;
+    }
+
+    return prev[key];
+  }, state);
+}
+var mapFields = normalizeNamespace(function (namespace, fields, getterType, mutationType) {
+  var fieldsObject = Array.isArray(fields) ? arrayToObject(fields) : fields;
+  return Object.keys(fieldsObject).reduce(function (prev, key) {
+    var path = fieldsObject[key];
+    var field = {
+      get: function get() {
+        return this.$store.getters[getterType](path);
+      },
+      set: function set(value) {
+        this.$store.commit(mutationType, {
+          path: path,
+          value: value
+        });
+      }
+    }; // eslint-disable-next-line no-param-reassign
+
+    prev[key] = field;
+    return prev;
+  }, {});
+});
+var mapMultiRowFields = normalizeNamespace(function (namespace, paths, getterType, mutationType) {
+  var pathsObject = Array.isArray(paths) ? arrayToObject(paths) : paths;
+  return Object.keys(pathsObject).reduce(function (entries, key) {
+    var path = pathsObject[key]; // eslint-disable-next-line no-param-reassign
+
+    entries[key] = {
+      get: function get() {
+        var store = this.$store;
+        var rows = objectEntries(store.getters[getterType](path));
+        return rows.map(function (fieldsObject) {
+          return Object.keys(fieldsObject[1]).reduce(function (prev, fieldKey) {
+            var fieldPath = "".concat(path, "[").concat(fieldsObject[0], "].").concat(fieldKey);
+            return Object.defineProperty(prev, fieldKey, {
+              get: function get() {
+                return store.getters[getterType](fieldPath);
+              },
+              set: function set(value) {
+                store.commit(mutationType, {
+                  path: fieldPath,
+                  value: value
+                });
+              }
+            });
+          }, {});
+        });
+      }
+    };
+    return entries;
+  }, {});
+});
+var createHelpers = function createHelpers(_ref4) {
+  var _ref5;
+
+  var getterType = _ref4.getterType,
+      mutationType = _ref4.mutationType;
+  return _ref5 = {}, _defineProperty(_ref5, getterType, getField), _defineProperty(_ref5, mutationType, updateField), _defineProperty(_ref5, "mapFields", normalizeNamespace(function (namespace, fields) {
+    return mapFields(namespace, fields, getterType, mutationType);
+  })), _defineProperty(_ref5, "mapMultiRowFields", normalizeNamespace(function (namespace, paths) {
+    return mapMultiRowFields(namespace, paths, getterType, mutationType);
+  })), _ref5;
+};
+
+
 
 
 /***/ }),

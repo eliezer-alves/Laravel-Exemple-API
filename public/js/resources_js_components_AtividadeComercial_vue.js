@@ -145,12 +145,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -159,7 +153,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      atividade: {
+      newAtividade: {
         descricao: ""
       },
       loading: false
@@ -212,7 +206,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    deleteAtividade: function deleteAtividade(atividade) {
+    updateAtividade: function updateAtividade(atividade) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
@@ -222,7 +216,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this3.loading = true;
                 _context3.next = 3;
-                return _this3.$store.dispatch("deleteAtividade", atividade);
+                return _this3.$store.dispatch("updateAtividade", atividade);
 
               case 3:
                 _this3.loading = false;
@@ -233,6 +227,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3);
+      }))();
+    },
+    deleteAtividade: function deleteAtividade(atividade) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _this4.loading = true;
+                _context4.next = 3;
+                return _this4.$store.dispatch("deleteAtividade", atividade);
+
+              case 3:
+                _this4.loading = false;
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   },
@@ -1358,10 +1375,9 @@ var render = function() {
         _c(
           "form",
           {
-            attrs: { action: "" },
             on: {
               submit: function($event) {
-                return _vm.createAtividade(_vm.atividade)
+                return _vm.createAtividade(_vm.newAtividade)
               }
             }
           },
@@ -1371,7 +1387,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "border focus-within:border-green-500 focus-within:text-green-500 transition-all duration-500 relative rounded p-1"
+                    "border focus-within:border-green-700 focus-within:text-green-700 transition-all duration-500 relative rounded p-1"
                 },
                 [
                   _vm._m(0),
@@ -1382,8 +1398,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.atividade.descricao,
-                          expression: "atividade.descricao"
+                          value: _vm.newAtividade.descricao,
+                          expression: "newAtividade.descricao"
                         }
                       ],
                       staticClass:
@@ -1394,14 +1410,14 @@ var render = function() {
                         tabindex: "0",
                         type: "text"
                       },
-                      domProps: { value: _vm.atividade.descricao },
+                      domProps: { value: _vm.newAtividade.descricao },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.atividade,
+                            _vm.newAtividade,
                             "descricao",
                             $event.target.value
                           )
@@ -1417,11 +1433,11 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "block w-full rounded text-gray-100 px-3 py-1 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300",
+                      "block w-full rounded text-gray-100 px-3 py-1 bg-green-700 hover:shadow-inner hover:bg-green-900 transition-all duration-300",
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.createAtividade(_vm.atividade)
+                        return _vm.createAtividade(_vm.newAtividade)
                       }
                     }
                   },
@@ -1465,7 +1481,7 @@ var render = function() {
                           [
                             _c("tr", { staticClass: "border-b" }, [
                               _c("th", { staticClass: "text-left p-3 px-5" }, [
-                                _vm._v("Id")
+                                _vm._v("Código")
                               ]),
                               _vm._v(" "),
                               _c("th", { staticClass: "text-left p-3 px-5" }, [
@@ -1484,20 +1500,45 @@ var render = function() {
                                 },
                                 [
                                   _c("td", { staticClass: "p-3 px-5" }, [
-                                    _c("input", {
-                                      staticClass: "bg-transparent",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value: atividade.id_atividade_comercial
-                                      }
-                                    })
+                                    _c("p", { staticClass: "bg-transparent" }, [
+                                      _vm._v(
+                                        "\n                  " +
+                                          _vm._s(
+                                            atividade.id_atividade_comercial
+                                          ) +
+                                          "\n                "
+                                      )
+                                    ])
                                   ]),
                                   _vm._v(" "),
                                   _c("td", { staticClass: "p-3 px-5" }, [
                                     _c("input", {
-                                      staticClass: "bg-transparent",
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: atividade.descricao,
+                                          expression: "atividade.descricao"
+                                        }
+                                      ],
+                                      staticClass: "bg-transparent w-full",
                                       attrs: { type: "text" },
-                                      domProps: { value: atividade.descricao }
+                                      domProps: { value: atividade.descricao },
+                                      on: {
+                                        blur: function($event) {
+                                          return _vm.updateAtividade(atividade)
+                                        },
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            atividade,
+                                            "descricao",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
                                     })
                                   ]),
                                   _vm._v(" "),
@@ -1507,15 +1548,6 @@ var render = function() {
                                       staticClass: "p-3 px-5 flex justify-end"
                                     },
                                     [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline",
-                                          attrs: { type: "button" }
-                                        },
-                                        [_vm._v("\n                  Editar")]
-                                      ),
                                       _c(
                                         "button",
                                         {
