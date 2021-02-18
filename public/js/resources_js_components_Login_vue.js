@@ -57,6 +57,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
@@ -237,23 +243,29 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              staticClass: "block relative h-48 rounded overflow-hidden",
-              attrs: { to: { name: "home" } }
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
-                },
-                [_vm._v("Log In")]
-              )
-            ]
-          )
+          _c("router-link", { attrs: { to: { name: "home" } } }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
+              },
+              [_vm._v("Log In")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "cadastro-cliente" } }, [
+            _c(
+              "p",
+              { staticClass: "text-center text-md font-light text-white" },
+              [
+                _vm._v("\n        Não tem uma conta?\n        "),
+                _c("a", { staticClass: "font-light text-md text-green-400" }, [
+                  _vm._v("Criar")
+                ])
+              ]
+            )
+          ])
         ],
         1
       )

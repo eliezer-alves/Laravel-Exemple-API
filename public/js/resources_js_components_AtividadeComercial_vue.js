@@ -1350,7 +1350,7 @@ var render = function() {
       _c(
         "svg",
         {
-          staticClass: "w-16 h-16 mx-auto mt- py-1",
+          staticClass: "w-16 h-16 mx-auto py-1",
           attrs: {
             fill: "none",
             stroke: "currentColor",

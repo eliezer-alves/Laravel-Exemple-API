@@ -1946,6 +1946,24 @@ module.exports = [{
     return __webpack_require__.e(/*! import() */ "resources_js_components_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Login.vue */ "./resources/js/components/Login.vue"));
   }
 }, {
+  path: '/login-admin',
+  name: 'login-admin',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_LoginAdmin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/LoginAdmin.vue */ "./resources/js/components/LoginAdmin.vue"));
+  }
+}, {
+  path: '/cadastro-cliente',
+  name: 'cadastro-cliente',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_CadastroCliente_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/CadastroCliente.vue */ "./resources/js/components/CadastroCliente.vue"));
+  }
+}, {
+  path: '/solicitacao',
+  name: 'solicitacao',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Solicitacao_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Solicitacao.vue */ "./resources/js/components/Solicitacao.vue"));
+  }
+}, {
   path: '/atividade-comercial',
   name: 'atividade-comercial',
   component: function component() {
@@ -36581,7 +36599,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_NotFound_vue":1,"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_AtividadeComercial_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_NotFound_vue":1,"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_CadastroCliente_vue":1,"resources_js_components_Solicitacao_vue":1,"resources_js_components_AtividadeComercial_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

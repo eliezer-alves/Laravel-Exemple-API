@@ -35,7 +35,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -128,25 +127,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "h-screen w-screen bg-gray-100 flex items-center" },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700"
-          },
-          [
-            _c("div", { staticClass: "max-w-md" }, [
+  return _c(
+    "div",
+    { staticClass: "h-screen w-screen bg-gray-100 flex items-center" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "max-w-md" },
+            [
               _c("div", { staticClass: "text-5xl font-dark font-bold" }, [
                 _vm._v("404")
               ]),
@@ -158,30 +153,34 @@ var staticRenderFns = [
                 },
                 [
                   _vm._v(
-                    "\n        Desculpe, não encontramos esta página.    \n      "
+                    "\n        Desculpe, não encontramos esta página.\n      "
                   )
                 ]
               ),
               _vm._v(" "),
               _c("p", { staticClass: "mb-8" }, [
-                _vm._v("\n        Retorne para nossa página principal.\n      ")
+                _vm._v("Retorne para nossa página principal.")
               ]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
-                },
-                [_vm._v("\n        Retornar para Home\n      ")]
-              )
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+              _c("router-link", { attrs: { to: { name: "home" } } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
+                  },
+                  [_vm._v("\n          Retornar para Home\n        ")]
+                )
+              ])
+            ],
+            1
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

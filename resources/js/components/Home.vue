@@ -1,7 +1,9 @@
 <template>
   <div class="flex h-auto">
     <side-bar class="flex-col mt-0"></side-bar>
-    <div class="flex-col lg:w-4/5 md:w-9/12 w-8/12 m-auto my-10 justify-items-center">
+    <div
+      class="flex-col lg:w-4/5 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
+    >
       <h1 class="text-xl text-gray-600 font-bold">Meus contratos</h1>
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="flex flex-col mt-3">

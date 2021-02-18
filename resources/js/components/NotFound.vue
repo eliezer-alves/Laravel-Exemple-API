@@ -8,17 +8,16 @@
       <div class="max-w-md">
         <div class="text-5xl font-dark font-bold">404</div>
         <p class="text-2xl md:text-3xl font-light leading-normal">
-          Desculpe, não encontramos esta página.    
+          Desculpe, não encontramos esta página.
         </p>
-        <p class="mb-8">
-          Retorne para nossa página principal.
-        </p>
-
-        <button
-          class="px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
-        >
-          Retornar para Home
-        </button>
+        <p class="mb-8">Retorne para nossa página principal.</p>
+        <router-link :to="{ name: 'home' }">
+          <button
+            class="px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
+          >
+            Retornar para Home
+          </button>
+        </router-link>
       </div>
     </div>
   </div>

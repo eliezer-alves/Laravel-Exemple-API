@@ -167,6 +167,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -190,6 +192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -934,40 +937,50 @@ var render = function() {
         "nav",
         { staticClass: "bg-gray-900 w-20 mr-0 justify-between h-screen pt-5" },
         [
-          _c("div", { staticClass: "mb-32" }, [
+          _c("div", { staticClass: "mb-auto" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "mt-10 " }, [
+            _c("div", { staticClass: "mt-10" }, [
               _c("ul", [
-                _c("li", { staticClass: "mb-6" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("span", [
-                      _c(
-                        "svg",
-                        {
-                          staticClass:
-                            "fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500",
-                          attrs: {
-                            viewBox: "0 0 24 24",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M14 3V3.28988C16.8915 4.15043 19 6.82898 19 10V17H20V19H4V17H5V10C5 6.82898 7.10851 4.15043 10 3.28988V3C10 1.89543 10.8954 1 12 1C13.1046 1 14 1.89543 14 3ZM7 17H17V10C17 7.23858 14.7614 5 12 5C9.23858 5 7 7.23858 7 10V17ZM14 21V20H10V21C10 22.1046 10.8954 23 12 23C13.1046 23 14 22.1046 14 21Z",
-                              fill: "currentColor"
-                            }
-                          })
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
+                _c(
+                  "li",
+                  { staticClass: "mb-6" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "atividade-comercial" } } },
+                      [
+                        _c("span", [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "h-6 w-6 text-gray-300 mx-auto hover:text-green-500",
+                              attrs: {
+                                fill: "none",
+                                stroke: "currentColor",
+                                viewBox: "0 0 24 24",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "2",
+                                  d:
+                                    "M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                                }
+                              })
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("li", { staticClass: "mb-6" }, [
                   _c("a", { attrs: { href: "#" } }, [
@@ -1058,7 +1071,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "mt-48" }, [
+          _c("div", { staticClass: "mt-60" }, [
             _c("a", { attrs: { href: "#" } }, [
               _c("span", [
                 _c(

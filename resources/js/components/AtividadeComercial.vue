@@ -1,7 +1,7 @@
 <template>
   <div class="lg:w-4/5 md:w-6/12 w-10/12 m-auto my-10 rounded-lg">
     <svg
-      class="w-16 h-16 mx-auto mt- py-1"
+      class="w-16 h-16 mx-auto py-1"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
