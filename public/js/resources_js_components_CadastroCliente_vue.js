@@ -307,6 +307,30 @@ var staticRenderFns = [
                           "label",
                           { staticClass: "block text-gray-500 font-bold my-4" },
                           [
+                            _c("input", {
+                              staticClass: "leading-loose text-pink-600",
+                              attrs: { type: "checkbox" }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "py-2 text-sm text-gray-600 leading-snug"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Remember Me\n                      "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          { staticClass: "block text-gray-500 font-bold my-4" },
+                          [
                             _c(
                               "a",
                               {

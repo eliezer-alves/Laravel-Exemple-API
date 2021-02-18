@@ -33,7 +33,7 @@
                       </div>
                     </div>
                     <div class="flex justify-between">
-                      <!-- <label class="block text-gray-500 font-bold my-4"
+                      <label class="block text-gray-500 font-bold my-4"
                         ><input
                           type="checkbox"
                           class="leading-loose text-pink-600"
@@ -41,7 +41,7 @@
                         <span class="py-2 text-sm text-gray-600 leading-snug">
                           Remember Me
                         </span>
-                      </label> -->
+                      </label>
                       <label class="block text-gray-500 font-bold my-4">
                         <a
                           href="#"
