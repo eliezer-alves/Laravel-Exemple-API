@@ -5,6 +5,10 @@ module.exports = [
     },
     {
         path: '/',
+        component: () => import('./components/Home.vue')
+    },
+    {
+        path: '/home',
         name: 'home',
         component: () => import('./components/Home.vue')
     },
@@ -12,11 +16,6 @@ module.exports = [
         path: '/login',
         name: 'login',
         component: () => import('./components/Login.vue')
-    },
-    {
-        path: '/solicitacao',
-        name: 'solicitacao',
-        component: () => import('./components/Solicitacao.vue')
     },
     {
         path: '/atividade-comercial',

@@ -14,7 +14,6 @@ const router = new VueRouter({
     routes: require("./routes.js"),
 });
 
-
 import actions from './vuex/actions'
 import mutations from './vuex/mutations'
 import getters from './vuex/getters'
@@ -28,14 +27,11 @@ const store = new Vuex.Store({
     actions
 });
 
-import Menu from './components/Menu.vue';
-
 const app = new Vue({
     router,
     store,
     el: "#app",
     components: {
-        Menu,
     },
     created() {
         console.log("Startin Vue");
