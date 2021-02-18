@@ -25,7 +25,10 @@ use App\Http\Controllers\AtividadeComercialController;
 
 Route::namespace('cliente')->group(function(){
  	Route::get('/cliente', [ClienteController::class, 'index']);
+ 	Route::get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
  	Route::post('/cliente', [ClienteController::class, 'store']);
+ 	Route::put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
+ 	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
 
 Route::namespace('atividade_comercial')->group(function(){

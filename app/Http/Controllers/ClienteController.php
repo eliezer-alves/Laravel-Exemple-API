@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Cliente;
 use App\Http\Requests\StoreClienteRequest;
+use App\Http\Requests\UpdateClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -39,11 +40,10 @@ class ClienteController extends Controller
     public function store(StoreClienteRequest $request)
     {
         // dd($request->all())
-        return $request->all();
-
-        $cliente = new Cliente($request->all());
-        $cliente->senha = $request->input('senha');
-        // $cliente->save();
+        $request = _normalizeRequest($request->all());
+        $cliente = new Cliente($request);
+        $cliente->senha = $request['senha'];
+        $cliente->save();
 
         return $cliente;
     }
@@ -54,9 +54,9 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_cliente)
     {
-        //
+        return Cliente::findOrFail($id_cliente);
     }
 
     /**
@@ -77,9 +77,13 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateClienteRequest $request, $id_cliente)
     {
-        //
+        $request = _normalizeRequest($request->all());
+        $usuario = $this->show($id_cliente);
+        $usuario->update($request);
+
+        return $usuario;
     }
 
     /**
@@ -88,8 +92,11 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_cliente)
     {
-        //
+        $cliente = $this->show($id_cliente);
+        $cliente->delete();
+
+        return;
     }
 }

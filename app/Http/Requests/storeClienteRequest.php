@@ -29,7 +29,6 @@ class StoreClienteRequest extends FormRequest
             'inscricao_estadual' => 'required',
             'nome_fantasia' => ['required', 'string'],
             'razao_social' => ['required', 'string'],
-            'ramo_atividade' => ['required', 'numeric'],
             'celular' => ['required', 'string', 'celular_com_ddd'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
@@ -39,6 +38,7 @@ class StoreClienteRequest extends FormRequest
             'bairro' => ['required', 'string'],
             'logradouro' => ['required', 'string'],
             'numero' => ['required', 'numeric'],
+            'id_atividade_comercial' => ['required', 'numeric'],
             'id_tipo_logradouro' => ['required', 'numeric']
         ];
     }
@@ -58,9 +58,6 @@ class StoreClienteRequest extends FormRequest
             'razao_social.required' => 'O campo razao_social é obrigatório.',
             'razao_social.string' => 'O campo razao_social é do tipo texto.',
 
-            'ramo_atividade.required' => 'O campo ramo_atividade é obrigatório.',
-            'ramo_atividade.numeric' => 'O campo ramo_atividade é do tipo numerico.',
-
             'celular.required' => 'O campo celular é obrigatório.',
             'celular.string' => 'O campo celular é do tipo texto.',
 
@@ -69,7 +66,6 @@ class StoreClienteRequest extends FormRequest
             'email.email' => 'O campo email deve conter um endereço de email válido.',
             'email.confirmed' => 'Confirmação de email inválida.',
 
-            'senha.required' => 'O campo senha é obrigatório.',
             'senha.required' => 'O campo senha é obrigatório.',
             'senha.string' => 'O campo senha é do tipo texto.',
             'senha.between' => 'O campo senha deve conter de 8 à 12 caracteres.',
@@ -92,10 +88,13 @@ class StoreClienteRequest extends FormRequest
             'logradouro.string' => 'O campo logradouro é do tipo texto.',
 
             'numero.required' => 'O campo numero é obrigatório.',
-            'numero.numeric' => 'O campo numero é do tipo numerico.',
+            'numero.numeric' => 'O campo numero é do tipo numérico.',
+
+            'id_atividade_comercial.required' => 'O campo id_atividade_comercial é obrigatório.',
+            'id_atividade_comercial.numeric' => 'O campo id_atividade_comercial é do tipo numérico.',
 
             'id_tipo_logradouro.required' => 'O campo id_tipo_logradouro é obrigatório.',
-            'id_tipo_logradouro.numeric' => 'O campo id_tipo_logradouro é do tipo numerico.'
+            'id_tipo_logradouro.numeric' => 'O campo id_tipo_logradouro é do tipo numérico.'
         ];
     }
 }
