@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Repositories\Contracts\ClienteRepositoryInterface;
+
 use App\Models\Cliente;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 
 class ClienteController extends Controller
 {
+    protected $model;
+
+    public function __construct(ClienteRepositoryInterface $model){
+        $this->model = $model;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,17 +27,8 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return Cliente::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->model->all();
+        // return Cliente::all();
     }
 
     /**
@@ -39,7 +39,6 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        // dd($request->all())
         $request = _normalizeRequest($request->all());
         $cliente = new Cliente($request);
         $cliente->senha = $request['senha'];
@@ -57,17 +56,6 @@ class ClienteController extends Controller
     public function show($id_cliente)
     {
         return Cliente::findOrFail($id_cliente);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
