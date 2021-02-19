@@ -26,6 +26,14 @@ abstract class AbstractRepository
 		return $entity;
 	}
 
+	public function update($data, $id)
+	{
+		$entity = $this->findOrFail($id);
+		$entity->update($data);
+
+		return $entity;
+	}
+
 	public function delete($id)
 	{
 		$entity = $this->findOrFail($id);

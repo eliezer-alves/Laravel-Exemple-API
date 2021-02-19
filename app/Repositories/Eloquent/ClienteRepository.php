@@ -16,8 +16,18 @@ class ClienteRepository extends AbstractRepository implements ClienteRepositoryI
 	{
 		$cliente = $this->model->create($data);
 		$cliente->senha = $data['senha'];
+		$cliente->id_forma_inclusao = 7;
 		$cliente->save();
 
 		return $cliente;
+	}
+
+	public function update($data, $id)
+	{
+		$entity = $this->findOrFail($id);
+		$entity->senha = $data['senha'];
+		$entity->update($data);
+
+		return $entity;
 	}
 }

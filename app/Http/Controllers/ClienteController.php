@@ -42,13 +42,6 @@ class ClienteController extends Controller
         $request = _normalizeRequest($request->all());
 
         return $this->model->create($request);
-
-
-        $cliente = new Cliente($request);
-        $cliente->senha = $request['senha'];
-        $cliente->save();
-
-        return $cliente;
     }
 
     /**
@@ -73,6 +66,8 @@ class ClienteController extends Controller
     public function update(UpdateClienteRequest $request, $id_cliente)
     {
         $request = _normalizeRequest($request->all());
+        return $this->model->update($request, $id_cliente);
+
         $usuario = $this->show($id_cliente);
         $usuario->update($request);
 

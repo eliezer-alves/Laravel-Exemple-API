@@ -41,7 +41,6 @@ class Cliente extends Model
 		'bairro',
 		'id_tipo_logradouro',
 		'id_atividade_comercial',
-		'id_forma_inclusao',
 		'createdAt',
 		'updatedAt',
 		'deletedAt'

@@ -1,7 +1,7 @@
-<?php
+<?php 
 namespace App\Repositories\Contracts;
 
-interface ClienteRepositoryInterface
+interface AtividadeComercial
 {
 	public function all();
 
@@ -13,4 +13,3 @@ interface ClienteRepositoryInterface
 
 	public function delete(int $id);
 }
-

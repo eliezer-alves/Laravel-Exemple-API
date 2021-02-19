@@ -25,7 +25,7 @@ class UpdateClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'cnpj' => ['string', 'cnpj', 'formato_cnpj'],
+            'cnpj' => ['regex:/^[0-9]+$/u', 'string', 'cnpj'],
             'nome_fantasia' => ['string'],
             'razao_social' => ['string'],
             'ramo_atividade' => ['numeric'],
@@ -46,6 +46,8 @@ class UpdateClienteRequest extends FormRequest
     {
         return [
             'cnpj.string' => 'O campo cnpj é do tipo texto.',
+            'cnpj.string' => 'O campo cnpj é do tipo texto.',
+            'cnpj.regex' => 'O campo cnpj no formato inválido.',
 
             'nome_fantasia.string' => 'O campo nome_fantasia é do tipo texto.',
 
