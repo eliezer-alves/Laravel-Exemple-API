@@ -40,6 +40,10 @@ class ClienteController extends Controller
     public function store(StoreClienteRequest $request)
     {
         $request = _normalizeRequest($request->all());
+
+        return $this->model->create($request);
+
+
         $cliente = new Cliente($request);
         $cliente->senha = $request['senha'];
         $cliente->save();

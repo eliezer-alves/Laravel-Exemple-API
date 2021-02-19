@@ -25,7 +25,7 @@ class StoreClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'cnpj' => ['required', 'string', 'cnpj', 'formato_cnpj'],
+            'cnpj' => ['required', 'regex:/^[0-9]+$/u', 'unique:cad_cliente,cnpj', 'string', 'cnpj'],
             'inscricao_estadual' => 'required',
             'nome_fantasia' => ['required', 'string'],
             'razao_social' => ['required', 'string'],
@@ -47,7 +47,9 @@ class StoreClienteRequest extends FormRequest
     {
         return [
             'cnpj.required' => 'O campo cnpj é obrigatório.',
+            'cnpj.unique' => 'cnpj já cadastrado.',
             'cnpj.string' => 'O campo cnpj é do tipo texto.',
+            'cnpj.regex' => 'O campo cnpj no formato inválido.',
 
             'inscricao_estadual.required' => 'O campo inscricao_estadual é obrigatório.',
             'inscricao_estadual.string' => 'O campo inscricao_estadual é do tipo texto.',

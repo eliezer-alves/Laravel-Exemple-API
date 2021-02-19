@@ -6,7 +6,7 @@ if (! function_exists('_normalizeRequest')) {
 
         foreach ($request as $key => $value) {
         	if(gettype($value)=="string" && !in_array($key, $exceptions)){
-        		$request[$key] = strtoupper(preg_replace('/[^A-Za-z0-9 \ ]/', '', transliterator_transliterate('Any-Latin; Latin-ASCII; [\u0080-\u7fff] remove', $value)));
+        		$request[$key] = strtoupper(preg_replace('/[^A-Za-z0-9 \ ]/', '', Str::ascii($value)));
         	}
         }
         return $request;

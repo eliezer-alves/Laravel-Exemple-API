@@ -11,4 +11,13 @@ class ClienteRepository extends AbstractRepository implements ClienteRepositoryI
 	{
 		parent::__construct($model);
 	}
+
+	public function create($data)
+	{
+		$cliente = $this->model->create($data);
+		$cliente->senha = $data['senha'];
+		$cliente->save();
+
+		return $cliente;
+	}
 }

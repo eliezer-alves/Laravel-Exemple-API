@@ -1,8 +1,6 @@
 <?php
 namespace App\Repositories\Eloquent;
 
-use App\Models\Cliente;
-
 abstract class AbstractRepository
 {
 	protected $model;
@@ -20,6 +18,12 @@ abstract class AbstractRepository
 	public function findOrFail($id)
 	{
 		return $this->model->findOrFail($id);
+	}
+
+	public function create($data)
+	{
+		$entity = $this->model->create($data);
+		return $entity;
 	}
 
 	public function delete($id)
