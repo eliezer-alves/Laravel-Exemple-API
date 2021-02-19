@@ -55,7 +55,8 @@ class ClienteController extends Controller
      */
     public function show($id_cliente)
     {
-        return Cliente::findOrFail($id_cliente);
+        return $this->model->findOrFail($id_cliente);
+        // return Cliente::findOrFail($id_cliente);
     }
 
     /**
@@ -82,9 +83,6 @@ class ClienteController extends Controller
      */
     public function destroy($id_cliente)
     {
-        $cliente = $this->show($id_cliente);
-        $cliente->delete();
-
-        return;
+        return $this->model->delete($id_cliente);
     }
 }
