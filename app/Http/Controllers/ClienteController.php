@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Repositories\Contracts\ClienteRepositoryInterface;
-
-use App\Models\Cliente;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
+
+use App\Repositories\Contracts\ClienteRepositoryInterface;
 
 class ClienteController extends Controller
 {
@@ -28,13 +25,12 @@ class ClienteController extends Controller
     public function index()
     {
         return $this->repository->all();
-        // return Cliente::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreClienteRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreClienteRequest $request)
@@ -47,28 +43,27 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idCliente
      * @return \Illuminate\Http\Response
      */
-    public function show($id_cliente)
+    public function show($idCliente)
     {
-        return $this->repository->findOrFail($id_cliente);
-        // return Cliente::findOrFail($id_cliente);
+        return $this->repository->findOrFail($idCliente);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\UpdateClienteRequest $request
+     * @param  int  $idCliente
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClienteRequest $request, $id_cliente)
+    public function update(UpdateClienteRequest $request, $idCliente)
     {
         $request = _normalizeRequest($request->all());
-        return $this->repository->update($request, $id_cliente);
+        return $this->repository->update($request, $idCliente);
 
-        $usuario = $this->show($id_cliente);
+        $usuario = $this->show($idCliente);
         $usuario->update($request);
 
         return $usuario;
@@ -77,11 +72,11 @@ class ClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idCliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_cliente)
+    public function destroy($idCliente)
     {
-        return $this->repository->delete($id_cliente);
+        return $this->repository->delete($idCliente);
     }
 }

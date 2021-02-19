@@ -45,38 +45,38 @@ class AtividadeComercialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AtividadeComercial  $atividadeComercial
+     * @param  int $atividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function show($id_atividade_comercial)
+    public function show($idAtividadeComercial)
     {
-        return $this->repository->findOrFail($id_atividade_comercial);
+        return $this->repository->findOrFail($idAtividadeComercial);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AtividadeComercial  $atividadeComercial
+     * @param  int $idAtividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_atividade_comercial)
+    public function update(Request $request, $idAtividadeComercial)
     {
         $request->validate([
             'descricao' => ['string', 'between:1,120']
         ]);
 
-        return $this->repository->update($request, $id_atividade_comercial);
+        return $this->repository->update($request, $idAtividadeComercial);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AtividadeComercial  $atividadeComercial
+     * @param  int $idAtividadeComercial
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_atividade_comercial)
+    public function destroy($idAtividadeComercial)
     {
-        return $this->repository->delete($id_atividade_comercial);
+        return $this->repository->delete($idAtividadeComercial);
     }
 }
