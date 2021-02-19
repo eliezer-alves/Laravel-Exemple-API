@@ -8,6 +8,6 @@ class AtividadeComercialRepository extends AbstractRepository implements Ativida
 {
 	public function __construct(AtividadeComercial $model)
 	{
-			parent::__construct($model);
+		parent::__construct($model);
 	}
 }

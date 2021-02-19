@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AtividadeComercial;
 use Illuminate\Http\Request;
+
+use App\Repositories\Contracts\AtividadeComercialRepositoryInterface;
 
 class AtividadeComercialController extends Controller
 {
+    protected $repository;
+
+    public function __construct(AtividadeComercialRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +37,9 @@ class AtividadeComercialController extends Controller
             'descricao' => ['required', 'string', 'between:1,120']
         ]);
 
-        $atividadeComercial = new AtividadeComercial($request->all());
-        $atividadeComercial->save();
+        $request = _normalizeRequest($request->all());
 
-        return $atividadeComercial;
+        return $this->repository->create($request);
     }
 
     /**
@@ -43,7 +50,7 @@ class AtividadeComercialController extends Controller
      */
     public function show($id_atividade_comercial)
     {
-        return AtividadeComercial::findOrFail($id_atividade_comercial);
+        return $this->repository->findOrFail($id_atividade_comercial);
     }
 
     /**
@@ -56,13 +63,10 @@ class AtividadeComercialController extends Controller
     public function update(Request $request, $id_atividade_comercial)
     {
         $request->validate([
-            'descricao' => ['required', 'string', 'between:1,120']
+            'descricao' => ['string', 'between:1,120']
         ]);
 
-        $atividadeComercial = $this->show($id_atividade_comercial);
-        $atividadeComercial->update($request->all());
-
-        return $atividadeComercial;
+        return $this->repository->update($request, $id_atividade_comercial);
     }
 
     /**
@@ -73,9 +77,6 @@ class AtividadeComercialController extends Controller
      */
     public function destroy($id_atividade_comercial)
     {
-        $atividadeComercial = $this->show($id_atividade_comercial);
-        $atividadeComercial->delete();
-
-        return;
+        return $this->repository->delete($id_atividade_comercial);
     }
 }

@@ -12,10 +12,10 @@ use App\Http\Requests\UpdateClienteRequest;
 
 class ClienteController extends Controller
 {
-    protected $model;
+    protected $repository;
 
-    public function __construct(ClienteRepositoryInterface $model){
-        $this->model = $model;
+    public function __construct(ClienteRepositoryInterface $repository){
+        $this->repository = $repository;
     }
 
 
@@ -27,7 +27,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return $this->model->all();
+        return $this->repository->all();
         // return Cliente::all();
     }
 
@@ -41,7 +41,7 @@ class ClienteController extends Controller
     {
         $request = _normalizeRequest($request->all());
 
-        return $this->model->create($request);
+        return $this->repository->create($request);
     }
 
     /**
@@ -52,7 +52,7 @@ class ClienteController extends Controller
      */
     public function show($id_cliente)
     {
-        return $this->model->findOrFail($id_cliente);
+        return $this->repository->findOrFail($id_cliente);
         // return Cliente::findOrFail($id_cliente);
     }
 
@@ -66,7 +66,7 @@ class ClienteController extends Controller
     public function update(UpdateClienteRequest $request, $id_cliente)
     {
         $request = _normalizeRequest($request->all());
-        return $this->model->update($request, $id_cliente);
+        return $this->repository->update($request, $id_cliente);
 
         $usuario = $this->show($id_cliente);
         $usuario->update($request);
@@ -82,6 +82,6 @@ class ClienteController extends Controller
      */
     public function destroy($id_cliente)
     {
-        return $this->model->delete($id_cliente);
+        return $this->repository->delete($id_cliente);
     }
 }
