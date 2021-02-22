@@ -2024,6 +2024,16 @@ var actions = {
       console.log(err);
     });
   }
+  /* deleteAtividade({ commit }, atividade) {
+      return axios.delete(`http://localhost:8000/api/atividade_comercial/${atividade.id_atividade_comercial}`)
+          .then(res => {
+              if (res.status === 200)
+                  commit('DELETE_ATIVIDADE', atividade)
+          }).catch(err => {
+              console.log(err)
+          })
+  } */
+
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
 

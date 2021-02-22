@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Repositories\Eloquent;
 
 use App\Models\AtividadeComercial;
@@ -9,5 +10,10 @@ class AtividadeComercialRepository extends AbstractRepository implements Ativida
 	public function __construct(AtividadeComercial $model)
 	{
 		parent::__construct($model);
+	}
+
+	public function all()
+	{
+		return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
 	}
 }

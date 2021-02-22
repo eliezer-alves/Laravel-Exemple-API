@@ -16,7 +16,7 @@
         Formulário de Cadastro
       </h1>
       <form action="/solicitar" class="w-full">
-        <div class="grid lg:grid-cols-4 gap-2">
+        <div class="grid">
           <div class="py-1 col-span-1">
             <span class="px-1 text-sm text-gray-300">CNPJ</span>
             <input

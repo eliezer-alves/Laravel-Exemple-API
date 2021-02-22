@@ -145,14 +145,6 @@ export default {
   },
   computed: {
     ...mapGetters(["atividades"]),
-    /* atividade: {
-      get() {
-        return this.$store.state.atividade[this.id_atividade_comercial];
-      },
-      set(atividade) {
-        this.updateAtividade(atividade);
-      },
-    }, */
   },
 };
 </script>

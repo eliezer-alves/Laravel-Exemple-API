@@ -60,9 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
@@ -259,7 +256,7 @@ var render = function() {
               "p",
               { staticClass: "text-center text-md font-light text-white" },
               [
-                _vm._v("\n        Não tem uma conta?\n        "),
+                _vm._v("\n          Não tem uma conta?\n          "),
                 _c("a", { staticClass: "font-light text-md text-green-400" }, [
                   _vm._v("Criar")
                 ])

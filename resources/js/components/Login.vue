@@ -31,20 +31,17 @@
             >
           </div>
         </div>
-        <router-link
-          class=""
-          :to="{ name: 'home' }"
-        >
+        <router-link class="" :to="{ name: 'home' }">
           <a
             class="block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
             >Log In</a
           >
         </router-link>
         <router-link to="cadastro-cliente">
-        <p class="text-center text-md font-light text-white">
-          Não tem uma conta?
-          <a class="font-light text-md text-green-400">Criar</a>
-        </p>
+          <p class="text-center text-md font-light text-white">
+            Não tem uma conta?
+            <a class="font-light text-md text-green-400">Criar</a>
+          </p>
         </router-link>
       </form>
     </div>
