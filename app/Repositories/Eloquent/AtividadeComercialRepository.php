@@ -14,6 +14,6 @@ class AtividadeComercialRepository extends AbstractRepository implements Ativida
 
 	public function all()
 	{
-		return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
+		return $this->model->orderBy('id_atividade_comercial', 'asc')->get();
 	}
 }
