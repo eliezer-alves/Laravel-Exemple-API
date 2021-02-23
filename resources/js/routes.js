@@ -25,7 +25,17 @@ module.exports = [
     {
         path: '/cadastro-cliente',
         name: 'cadastro-cliente',
-        component: () => import('./components/CadastroCliente.vue')
+        component: () => import('./components/cad.cliente/FirstStep.vue')
+    },
+    {
+        path: '/cadastro-cliente-2',
+        name: 'cadastro-cliente-2',
+        component: () => import('./components/cad.cliente/SecondStep.vue')
+    },
+    {
+        path: '/cadastro-cliente-3',
+        name: 'cadastro-cliente-3',
+        component: () => import('./components/cad.cliente/ThirdStep.vue')
     },
     {
         path: '/solicitacao',

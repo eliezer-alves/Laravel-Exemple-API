@@ -9,10 +9,18 @@ module.exports = {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
+            backgroundImage: theme => ({
+                "background-agil": "url('/images/texturaBackgroundAgil.png')"
+            }),
         },
+        backgroundColor: theme => ({
+            ...theme('colors'),
+            'primary': '#3490dc',
+            'secondary': '#ffed4a',
+            'danger': '#e3342f',
+            'teal': '#008080'
+        })
+
     },
 
     variants: {

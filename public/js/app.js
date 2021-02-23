@@ -2887,9 +2887,88 @@ var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
 
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+// import Echo from 'laravel-echo';
+// window.Pusher = require('pusher-js');
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: true
+// });
+
+/***/ }),
+
+/***/ "./resources/js/routes.js":
+/*!********************************!*\
+  !*** ./resources/js/routes.js ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = [{
+  path: '*',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_NotFound_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue"));
+  }
+}, {
+  path: '/',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home.vue */ "./resources/js/components/Home.vue"));
+  }
+}, {
+  path: '/home',
+  name: 'home',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home.vue */ "./resources/js/components/Home.vue"));
+  }
+}, {
+  path: '/login',
+  name: 'login',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Login.vue */ "./resources/js/components/Login.vue"));
+  }
+}, {
+  path: '/login-admin',
+  name: 'login-admin',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_LoginAdmin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/LoginAdmin.vue */ "./resources/js/components/LoginAdmin.vue"));
+  }
+}, {
+  path: '/cadastro-cliente',
+  name: 'cadastro-cliente',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_FirstStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/FirstStep.vue */ "./resources/js/components/cad.cliente/FirstStep.vue"));
+  }
+}, {
+  path: '/cadastro-cliente-2',
+  name: 'cadastro-cliente-2',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_SecondStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/SecondStep.vue */ "./resources/js/components/cad.cliente/SecondStep.vue"));
+  }
+}, {
+  path: '/cadastro-cliente-3',
+  name: 'cadastro-cliente-3',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_ThirdStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/ThirdStep.vue */ "./resources/js/components/cad.cliente/ThirdStep.vue"));
+  }
+}, {
+  path: '/solicitacao',
+  name: 'solicitacao',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Solicitacao_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Solicitacao.vue */ "./resources/js/components/Solicitacao.vue"));
   }
 }
 
@@ -2934,21 +3013,63 @@ var defaults = {
     return data;
   }],
 
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-  /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
-  timeout: 0,
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var actions = {
+  createAtividade: function createAtividade(_ref, atividade) {
+    var commit = _ref.commit;
+    return axios.post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
+      commit('CREATE_ATIVIDADE', res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  fetchAtividades: function fetchAtividades(_ref2) {
+    var commit = _ref2.commit;
+    return axios.get('http://localhost:8000/api/atividade_comercial').then(function (res) {
+      commit('FETCH_ATIVIDADES', res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  updateAtividade: function updateAtividade(_ref3, atividade) {
+    var commit = _ref3.commit;
+    return axios.put("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
+      console.log(res);
+      commit('UPDATE_ATIVIDADE', res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  deleteAtividade: function deleteAtividade(_ref4, atividade) {
+    var commit = _ref4.commit;
+    return axios["delete"]("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
+      if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  createCliente: function createCliente(_ref5, cliente) {
+    var commit = _ref5.commit;
+    return axios.post("http://localhost:8000/api/cliente").then(function (res) {
+      if (res.status === 200) commit('CREATE_CLIENTE', cliente);
+    })["catch"](function (err) {
+      commit('GET_ERRORS', err.response.data.errors);
+      console.log('error', Object.assign({}, err.response.data.errors));
+      console.log(err);
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
 
   xsrfCookieName: 'XSRF-TOKEN',
   xsrfHeaderName: 'X-XSRF-TOKEN',
@@ -2956,14 +3077,64 @@ var defaults = {
   maxContentLength: -1,
   maxBodyLength: -1,
 
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+
+var getters = {
+  getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.getField,
+  errors: function errors(state) {
+    return state.errors;
+  },
+  atividades: function atividades(state) {
+    return state.atividades;
+  },
+  cliente: function cliente(state) {
+    return state.cliente;
   }
 };
 
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
+/***/ "./resources/js/vuex/mutations.js":
+/*!****************************************!*\
+  !*** ./resources/js/vuex/mutations.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+
+var mutations = {
+  updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
+  CREATE_ATIVIDADE: function CREATE_ATIVIDADE(state, payload) {
+    state.atividades.push(payload);
+  },
+  FETCH_ATIVIDADES: function FETCH_ATIVIDADES(state, payload) {
+    return state.atividades = payload;
+  },
+  UPDATE_ATIVIDADE: function UPDATE_ATIVIDADE(state, payload) {
+    var id_atividade_comercial = payload.id_atividade_comercial,
+        descricao = payload.descricao;
+    var index = state.atividades.findIndex(function (item) {
+      return item.id_atividade_comercial === id_atividade_comercial;
+    });
+    console.log(payload);
+    state.atividades[index].descricao = descricao;
+  },
+  DELETE_ATIVIDADE: function DELETE_ATIVIDADE(state, atividade) {
+    var index = state.atividades.findIndex(function (item) {
+      return item.id_atividade_comercial === atividade.id_atividade_comercial;
+    });
+    state.atividades.splice(index, 1);
+  },
+  GET_ERRORS: function GET_ERRORS(state, payload) {
+    state.errors = payload;
   }
 };
 
@@ -2977,6 +3148,17 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var state = {
+  errors: [],
+  atividades: [],
+  cliente: {}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (state);
 
 /***/ }),
 
@@ -21234,6 +21416,63 @@ process.umask = function() { return 0; };
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {};
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames not based on template
+/******/ 			if ({"resources_js_components_NotFound_vue":1,"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_cad_cliente_FirstStep_vue":1,"resources_js_components_cad_cliente_SecondStep_vue":1,"resources_js_components_cad_cliente_ThirdStep_vue":1,"resources_js_components_Solicitacao_vue":1,"resources_js_components_AtividadeComercial_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference all chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".css";
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
