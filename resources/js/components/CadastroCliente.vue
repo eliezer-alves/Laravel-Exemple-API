@@ -1,219 +1,93 @@
 <template>
   <!-- component -->
-  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-5">
-    <div class="mx-auto lg:mt-32 md:mt-32 sm:mt-10 mt-10 col-span-1">
-      <img src="/images/logoAgilVertical.png" class="w-60" alt="" />
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12">
+    <div
+      class="lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
+    >
+      <img src="/images/logoAgilVertical.png" class="w-72" alt="" />
       <h1
-        class="mt-4 ml-5 text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+        class="mt-4 lg:ml-10 md:ml-5 lg:text-3xl  text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
       >
         Capital de Giro
       </h1>
     </div>
-    <div class="lg:mr-32 md:mr-32 sm:mr-10 mx-1 mt-4 col-span-2 rounded-md p-2">
+    <div
+      class="lg:w-7/12 mx-auto lg:mt-6 md:mt-6 sm:mt-6 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-20 shadow-md rounded-md py-1"
+    >
       <h1
-        class="mt-4 text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+        class="mt-4 text-center text-3xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
       >
         Formulário de Cadastro
       </h1>
-      <form action="/solicitar" class="w-full">
-        <div class="grid lg:grid-cols-4 gap-2">
-          <div class="py-1 col-span-1">
-            <span class="px-1 text-sm text-gray-300">CNPJ</span>
-            <input
-              id="cnpj"
-              name="cnpj"
-              placeholder="00.000.000/0000-00"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1 col-span-1">
-            <span class="px-1 text-sm text-gray-300">Insc. Estadual</span>
-            <input
-              id="inscricao_estadual"
-              name="inscricao_estadual"
-              placeholder="00.000.0000-0"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1 col-span-2">
-            <span class="px-1 text-sm text-gray-300">Atividade Comercial</span>
-            <select
-              id="id_atividade_comercial"
-              name="id_atividade_comercial"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            >
-              <option>--</option>
-              <option
-                v-for="atividade in atividades"
-                :key="atividade.id_atividade_comercial"
-                value="atividade.id_atividade_comercial"
-              >
-                {{ atividade.descricao }}
-              </option>
-            </select>
-          </div>
-          <div class="py-1 col-span-2">
-            <span class="px-1 text-sm text-gray-300">Nome Fantasia</span>
-            <input
-              id="nome_fantasia"
-              name="nome_fantasia"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1 col-span-2">
-            <span class="px-1 text-sm text-gray-300">Razão Social</span>
-            <input
-              id="razao_social"
-              name="razao_social"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">E-mail</span>
-            <input
-              id="email"
-              name="email"
-              placeholder="mail@mail.com"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Confirmar E-mail</span>
-            <input
-              id="email_confirmation"
-              name="email_confirmation"
-              placeholder="mail@mail.com"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Senha</span>
-            <input
-              id="senha"
-              name="senha"
-              type="password"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Confirmar Senha</span>
-            <input
-              id="senha_confirmation"
-              name="senha_confirmation"
-              type="password"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Celular</span>
-            <input
-              id="celular"
-              name="celular"
-              placeholder="(00) 00000-0000"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">CEP</span>
-            <input
-              id="cep"
-              name="cep"
-              placeholder="37750-000"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">UF</span>
-            <select
-              id="uf"
-              name="uf"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            >
-              <option value="MG">Minas Gerais</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="SP">São Paulo</option>
-            </select>
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Cidade</span>
-            <input
-              id="cidade"
-              name="cidade"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Bairro</span>
-            <input
-              id="bairro"
-              name="bairro"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Tipo de Logradouro</span>
-            <select
-              id="id_tipo_logradouro"
-              name="id_tipo_logradouro"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            >
-              <option value="avenida">Avenida</option>
-              <option value="praca">Praça</option>
-              <option value="rua">Rua</option>
-            </select>
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Logradouro</span>
-            <input
-              id="logradouro"
-              name="logradouro"
-              type="text"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-          <div class="py-1">
-            <span class="px-1 text-sm text-gray-300">Número</span>
-            <input
-              id="numero"
-              name="numero"
-              type="number"
-              class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap justify-end">
-          <button
-            class="mt-2 text-center w-40 text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
-          >
-            Cadastrar
-          </button>
+      <form @submit="cadastrarCliente()" class="w-full">
+        <div class="grid">
+          <slot></slot>
         </div>
       </form>
+      <div class="flex justify-between">
+        <router-link :to="goBack()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="text-gray-200 hover:text-green-600 w-12"
+            v-show="!(currentRoute === 'cadastro-cliente')"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M7 16l-4-4m0 0l4-4m-4 4h18"
+            />
+          </svg>
+        </router-link>
+        <router-link :to="goFoward()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="text-gray-200 hover:text-green-600 w-12"
+            v-show="!(currentRoute === 'cadastro-cliente-3')"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-
 export default {
+  data: function () {
+    return {};
+  },
   beforeCreate: function () {
     document.body.className = "login";
   },
-  async mounted() {
-    await this.$store.dispatch("fetchAtividades");
-  },
+  async mounted() {},
   computed: {
-    ...mapGetters(["atividades"]),
+    currentRoute: function () {
+      return this.$router.currentRoute.name;
+    },
+  },
+  methods: {
+    goBack: function () {
+      return this.currentRoute === "cadastro-cliente-3"
+        ? { name: "cadastro-cliente-2" }
+        : { name: "cadastro-cliente" };
+    },
+    goFoward: function () {
+      return this.currentRoute === "cadastro-cliente"
+        ? { name: "cadastro-cliente-2" }
+        : { name: "cadastro-cliente-3" };
+    },
   },
 };
 </script>

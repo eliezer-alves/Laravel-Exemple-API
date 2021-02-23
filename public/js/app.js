@@ -1955,7 +1955,19 @@ module.exports = [{
   path: '/cadastro-cliente',
   name: 'cadastro-cliente',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_components_CadastroCliente_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/CadastroCliente.vue */ "./resources/js/components/CadastroCliente.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_FirstStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/FirstStep.vue */ "./resources/js/components/cad.cliente/FirstStep.vue"));
+  }
+}, {
+  path: '/cadastro-cliente-2',
+  name: 'cadastro-cliente-2',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_SecondStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/SecondStep.vue */ "./resources/js/components/cad.cliente/SecondStep.vue"));
+  }
+}, {
+  path: '/cadastro-cliente-3',
+  name: 'cadastro-cliente-3',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_cliente_ThirdStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.cliente/ThirdStep.vue */ "./resources/js/components/cad.cliente/ThirdStep.vue"));
   }
 }, {
   path: '/solicitacao',
@@ -2023,17 +2035,17 @@ var actions = {
     })["catch"](function (err) {
       console.log(err);
     });
+  },
+  createCliente: function createCliente(_ref5, cliente) {
+    var commit = _ref5.commit;
+    return axios.post("http://localhost:8000/api/cliente").then(function (res) {
+      if (res.status === 200) commit('CREATE_CLIENTE', cliente);
+    })["catch"](function (err) {
+      commit('GET_ERRORS', err.response.data.errors);
+      console.log('error', Object.assign({}, err.response.data.errors));
+      console.log(err);
+    });
   }
-  /* deleteAtividade({ commit }, atividade) {
-      return axios.delete(`http://localhost:8000/api/atividade_comercial/${atividade.id_atividade_comercial}`)
-          .then(res => {
-              if (res.status === 200)
-                  commit('DELETE_ATIVIDADE', atividade)
-          }).catch(err => {
-              console.log(err)
-          })
-  } */
-
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
 
@@ -2054,8 +2066,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var getters = {
   getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.getField,
+  errors: function errors(state) {
+    return state.errors;
+  },
   atividades: function atividades(state) {
     return state.atividades;
+  },
+  cliente: function cliente(state) {
+    return state.cliente;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getters);
@@ -2097,6 +2115,9 @@ var mutations = {
       return item.id_atividade_comercial === atividade.id_atividade_comercial;
     });
     state.atividades.splice(index, 1);
+  },
+  GET_ERRORS: function GET_ERRORS(state, payload) {
+    state.errors = payload;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mutations);
@@ -2115,7 +2136,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var state = {
-  atividades: []
+  errors: [],
+  atividades: [],
+  cliente: {}
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (state);
 
@@ -36609,7 +36632,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_NotFound_vue":1,"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_CadastroCliente_vue":1,"resources_js_components_Solicitacao_vue":1,"resources_js_components_AtividadeComercial_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_NotFound_vue":1,"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_cad_cliente_FirstStep_vue":1,"resources_js_components_cad_cliente_SecondStep_vue":1,"resources_js_components_cad_cliente_ThirdStep_vue":1,"resources_js_components_Solicitacao_vue":1,"resources_js_components_AtividadeComercial_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

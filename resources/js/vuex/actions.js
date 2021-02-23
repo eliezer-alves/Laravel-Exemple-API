@@ -33,15 +33,17 @@ let actions = {
                 console.log(err)
             })
     },
-    /* deleteAtividade({ commit }, atividade) {
-        return axios.delete(`http://localhost:8000/api/atividade_comercial/${atividade.id_atividade_comercial}`)
+    createCliente({ commit }, cliente) {
+        return axios.post(`http://localhost:8000/api/cliente`)
             .then(res => {
                 if (res.status === 200)
-                    commit('DELETE_ATIVIDADE', atividade)
+                    commit('CREATE_CLIENTE', cliente)
             }).catch(err => {
+                commit('GET_ERRORS', err.response.data.errors)
+                console.log('error', Object.assign({}, err.response.data.errors));
                 console.log(err)
             })
-    } */
+    }
 }
 
 export default actions
