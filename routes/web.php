@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AppController;
-use App\Http\Controllers\SolicitacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +13,25 @@ use App\Http\Controllers\SolicitacaoController;
 |
 */
 
-Route::namespace('ClientePj')->group(function(){
-
-	Route::get('/web/login', [LoginController::class, 'index']);
-
-	// Route::get('/', [HomeController::class, 'index']);
-
-	Route::get('/web/solicitar', [SolicitacaoController::class, 'index']);
-
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// Route::get('/cliente', function (){
-// 	return 0;
-//     return view('app');
-// });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
+require __DIR__.'/auth.php';
+
+Route::get('grant-password', function () {
+    $response = Http::post(env('API_URL').'oauth/token', [
+        'grant_type' => 'password',
+        'client_id' => env('CLIENT_ID_GRANT_PASSWORD'),
+        'client_secret' => env('CLIENT_SECRET_GRANT_PASSWORD'),
+        'username' => 'eliezer.c.alves2015@gmail.com',
+        'password' => 'teste123',
+        'scope' => '',
+    ]);
+
+    dd($response->json());
+});
