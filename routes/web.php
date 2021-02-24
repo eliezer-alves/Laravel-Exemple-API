@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
 
@@ -37,6 +38,7 @@ Route::get('grant-password', function () {
         'scope' => '',
     ]);
 
-    dd($response->json());
+    // dd($response->json());
+    return $response->json();
 });
 

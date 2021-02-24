@@ -1,3 +1,5 @@
+import { params, config } from '../config'
+
 let actions = {
     createAtividade({ commit }, atividade) {
         return axios.post('http://localhost:8000/api/atividade_comercial', atividade)
@@ -33,15 +35,23 @@ let actions = {
                 commit('GET_ERRORS', err.response.data.errors)
             })
     },
-    createCliente({ commit }, cliente) {
+    async createCliente({ commit }, cliente) {
+
+
+        console.log(params);
+        console.log(config);
+        console.log(cliente.cnpj);
+        cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
+        console.log(cliente.cnpj);
         console.log(cliente);
-        return axios.post(`http://localhost:8000/api/cliente`, cliente)
+
+        /* return axios.post(`http://localhost:8000/api/cliente`, cliente)
             .then(res => {
                 if (res.status === 200)
                     commit('CREATE_CLIENTE', cliente)
             }).catch(err => {
                 commit('GET_ERRORS', err.response.data.errors)
-            })
+            }) */
     }
 }
 
