@@ -14,21 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
+// Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('grant-password', function () {
-    $response = Http::post(env('API_URL').'oauth/token', [
+    $response = Http::post(env('API_URL') . 'oauth/token', [
         'grant_type' => 'password',
         'client_id' => env('CLIENT_ID_GRANT_PASSWORD'),
         'client_secret' => env('CLIENT_SECRET_GRANT_PASSWORD'),
@@ -39,4 +39,3 @@ Route::get('grant-password', function () {
 
     dd($response->json());
 });
-

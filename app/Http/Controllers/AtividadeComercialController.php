@@ -67,7 +67,7 @@ class AtividadeComercialController extends Controller
             'descricao' => ['string', 'between:1,120']
         ]);
 
-        return $this->repository->update($request, $idAtividadeComercial);
+        return $this->repository->update($request->all(), $idAtividadeComercial);
     }
 
     /**
