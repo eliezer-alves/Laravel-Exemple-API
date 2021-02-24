@@ -1,4 +1,6 @@
 {
     "/js/app_vue.js": "/js/app_vue.js",
+    "/js/app_blade.js": "/js/app_blade.js",
+    "/css/app_blade.css": "/css/app_blade.css",
     "/css/app_vue.css": "/css/app_vue.css"
 }

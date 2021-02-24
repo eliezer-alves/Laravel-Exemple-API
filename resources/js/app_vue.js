@@ -27,6 +27,9 @@ const store = new Vuex.Store({
     actions
 });
 
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+
 const app = new Vue({
     router,
     store,

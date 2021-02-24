@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 // Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
+=======
+Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
+>>>>>>> db41a7d868d52b36dbe06883b4c6ee5c2cd0af80
 
 
 Route::get('/dashboard', function () {
@@ -37,5 +42,6 @@ Route::get('grant-password', function () {
         'scope' => '',
     ]);
 
-    dd($response->json());
+    // dd($response->json());
+    return $response->json();
 });
