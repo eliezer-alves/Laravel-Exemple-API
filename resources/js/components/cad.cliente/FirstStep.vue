@@ -1,5 +1,5 @@
 <template>
-  <cadastro-cliente>
+  <cadastro-cliente :validation="validation">
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">CNPJ</span>
       <input
@@ -11,7 +11,7 @@
         v-model="cliente.cnpj"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="cnpj in errors.cnpj"
         :key="cnpj"
         >{{ cnpj }}</span
@@ -28,7 +28,7 @@
         v-model="cliente.inscricao_estadual"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="inscricao_estadual in errors.inscricao_estadual"
         :key="inscricao_estadual"
         >{{ inscricao_estadual }}</span
@@ -40,7 +40,7 @@
         id="id_atividade_comercial"
         name="id_atividade_comercial"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.id_atividade_comercial"
+        v-model.number="cliente.id_atividade_comercial"
       >
         <option>--</option>
         <option
@@ -52,7 +52,7 @@
         </option>
       </select>
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="id_atividade_comercial in errors.id_atividade_comercial"
         :key="id_atividade_comercial"
         >{{ id_atividade_comercial }}</span
@@ -68,7 +68,7 @@
         v-model="cliente.nome_fantasia"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="nome_fantasia in errors.nome_fantasia"
         :key="nome_fantasia"
         >{{ nome_fantasia }}</span
@@ -84,7 +84,7 @@
         v-model="cliente.razao_social"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="razao_social in errors.razao_social"
         :key="razao_social"
         >{{ razao_social }}</span
@@ -108,6 +108,14 @@ export default {
   },
   computed: {
     ...mapGetters(["atividades", "cliente", "errors"]),
+    validation: function () {
+      if (!this.cliente.cnpj) return false;
+      if (!this.cliente.inscricao_estadual) return false;
+      if (!this.cliente.id_atividade_comercial) return false;
+      if (!this.cliente.nome_fantasia) return false;
+      if (!this.cliente.razao_social) return false;
+      return true;
+    },
   },
 };
 </script>

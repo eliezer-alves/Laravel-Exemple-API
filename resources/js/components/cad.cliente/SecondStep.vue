@@ -1,5 +1,5 @@
 <template>
-  <cadastro-cliente>
+  <cadastro-cliente :validation="validation">
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">Celular</span>
       <input
@@ -11,7 +11,7 @@
         v-model="cliente.celular"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="celular in errors.celular"
         :key="celular"
         >{{ celular }}</span
@@ -28,7 +28,7 @@
         v-model="cliente.email"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="email in errors.email"
         :key="email"
         >{{ email }}</span
@@ -45,7 +45,7 @@
         v-model="cliente.email_confirmation"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="email_confirmation in errors.email_confirmation"
         :key="email_confirmation"
         >{{ email_confirmation }}</span
@@ -61,7 +61,7 @@
         v-model="cliente.senha"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="senha in errors.senha"
         :key="senha"
         >{{ senha }}</span
@@ -77,7 +77,7 @@
         v-model="cliente.senha_confirmation"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="senha_confirmation in errors.senha_confirmation"
         :key="senha_confirmation"
         >{{ senha_confirmation }}</span
@@ -94,8 +94,17 @@ export default {
     CadastroCliente,
   },
   computed: {
-    ...mapGetters(["cliente","errors"]),
+    ...mapGetters(["cliente", "errors"]),
+    validation: function () {
+      if (!this.cliente.celular) return false;
+      if (!this.cliente.email) return false;
+      if (!this.cliente.email_confirmation) return false;
+      if (!this.cliente.senha) return false;
+      if (!this.cliente.senha_confirmation) return false;
+      return true;
+    },
   },
+  filters: {},
 };
 </script>
 <style>

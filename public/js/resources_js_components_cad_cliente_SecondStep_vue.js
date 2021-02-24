@@ -99,6 +99,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {};
   },
+  props: ["validation"],
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
@@ -252,7 +253,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     CadastroCliente: _CadastroCliente_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["cliente", "errors"]))
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["cliente", "errors"])), {}, {
+    validation: function validation() {
+      if (!this.cliente.celular) return false;
+      if (!this.cliente.email) return false;
+      if (!this.cliente.email_confirmation) return false;
+      if (!this.cliente.senha) return false;
+      if (!this.cliente.senha_confirmation) return false;
+      return true;
+    }
+  }),
+  filters: {}
 });
 
 /***/ }),
@@ -1316,7 +1327,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12"
+      staticClass:
+        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1"
     },
     [
       _vm._m(0),
@@ -1325,14 +1337,14 @@ var render = function() {
         "div",
         {
           staticClass:
-            "lg:w-7/12 mx-auto lg:mt-6 md:mt-6 sm:mt-6 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-20 shadow-md rounded-md py-1"
+            "w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
         },
         [
           _c(
             "h1",
             {
               staticClass:
-                "mt-4 text-center text-3xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -1395,8 +1407,11 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: !(_vm.currentRoute === "cadastro-cliente-3"),
-                        expression: "!(currentRoute === 'cadastro-cliente-3')"
+                        value:
+                          !(_vm.currentRoute === "cadastro-cliente-3") &&
+                          _vm.validation,
+                        expression:
+                          "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
                     staticClass: "text-gray-200 hover:text-green-600 w-12",
@@ -1448,7 +1463,7 @@ var staticRenderFns = [
           "h1",
           {
             staticClass:
-              "mt-4 lg:ml-10 md:ml-5 lg:text-3xl  text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
           },
           [_vm._v("\n      Capital de Giro\n    ")]
         )
@@ -1478,7 +1493,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", [
+  return _c("cadastro-cliente", { attrs: { validation: _vm.validation } }, [
     _c(
       "div",
       { staticClass: "py-1" },
@@ -1518,7 +1533,10 @@ var render = function() {
         _vm._l(_vm.errors.celular, function(celular) {
           return _c(
             "span",
-            { key: celular, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: celular,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(celular))]
           )
         })
@@ -1565,7 +1583,10 @@ var render = function() {
         _vm._l(_vm.errors.email, function(email) {
           return _c(
             "span",
-            { key: email, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: email,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(email))]
           )
         })
@@ -1614,7 +1635,7 @@ var render = function() {
             "span",
             {
               key: email_confirmation,
-              staticClass: "px-1 text-xs text-red-600"
+              staticClass: "px-1 text-sm font-semibold text-red-600"
             },
             [_vm._v(_vm._s(email_confirmation))]
           )
@@ -1657,7 +1678,10 @@ var render = function() {
         _vm._l(_vm.errors.senha, function(senha) {
           return _c(
             "span",
-            { key: senha, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: senha,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(senha))]
           )
         })
@@ -1705,7 +1729,7 @@ var render = function() {
             "span",
             {
               key: senha_confirmation,
-              staticClass: "px-1 text-xs text-red-600"
+              staticClass: "px-1 text-sm font-semibold text-red-600"
             },
             [_vm._v(_vm._s(senha_confirmation))]
           )

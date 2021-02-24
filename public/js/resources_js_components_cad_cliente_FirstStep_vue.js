@@ -99,6 +99,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {};
   },
+  props: ["validation"],
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
@@ -289,7 +290,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["atividades", "cliente", "errors"]))
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["atividades", "cliente", "errors"])), {}, {
+    validation: function validation() {
+      if (!this.cliente.cnpj) return false;
+      if (!this.cliente.inscricao_estadual) return false;
+      if (!this.cliente.id_atividade_comercial) return false;
+      if (!this.cliente.nome_fantasia) return false;
+      if (!this.cliente.razao_social) return false;
+      return true;
+    }
+  })
 });
 
 /***/ }),
@@ -1353,7 +1363,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12"
+      staticClass:
+        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1"
     },
     [
       _vm._m(0),
@@ -1362,14 +1373,14 @@ var render = function() {
         "div",
         {
           staticClass:
-            "lg:w-7/12 mx-auto lg:mt-6 md:mt-6 sm:mt-6 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-20 shadow-md rounded-md py-1"
+            "w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
         },
         [
           _c(
             "h1",
             {
               staticClass:
-                "mt-4 text-center text-3xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -1432,8 +1443,11 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: !(_vm.currentRoute === "cadastro-cliente-3"),
-                        expression: "!(currentRoute === 'cadastro-cliente-3')"
+                        value:
+                          !(_vm.currentRoute === "cadastro-cliente-3") &&
+                          _vm.validation,
+                        expression:
+                          "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
                     staticClass: "text-gray-200 hover:text-green-600 w-12",
@@ -1485,7 +1499,7 @@ var staticRenderFns = [
           "h1",
           {
             staticClass:
-              "mt-4 lg:ml-10 md:ml-5 lg:text-3xl  text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
           },
           [_vm._v("\n      Capital de Giro\n    ")]
         )
@@ -1515,7 +1529,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", [
+  return _c("cadastro-cliente", { attrs: { validation: _vm.validation } }, [
     _c(
       "div",
       { staticClass: "py-1" },
@@ -1555,7 +1569,10 @@ var render = function() {
         _vm._l(_vm.errors.cnpj, function(cnpj) {
           return _c(
             "span",
-            { key: cnpj, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: cnpj,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(cnpj))]
           )
         })
@@ -1604,7 +1621,7 @@ var render = function() {
             "span",
             {
               key: inscricao_estadual,
-              staticClass: "px-1 text-xs text-red-600"
+              staticClass: "px-1 text-sm font-semibold text-red-600"
             },
             [_vm._v(_vm._s(inscricao_estadual))]
           )
@@ -1627,9 +1644,10 @@ var render = function() {
             directives: [
               {
                 name: "model",
-                rawName: "v-model",
+                rawName: "v-model.number",
                 value: _vm.cliente.id_atividade_comercial,
-                expression: "cliente.id_atividade_comercial"
+                expression: "cliente.id_atividade_comercial",
+                modifiers: { number: true }
               }
             ],
             staticClass:
@@ -1646,7 +1664,7 @@ var render = function() {
                   })
                   .map(function(o) {
                     var val = "_value" in o ? o._value : o.value
-                    return val
+                    return _vm._n(val)
                   })
                 _vm.$set(
                   _vm.cliente,
@@ -1684,7 +1702,7 @@ var render = function() {
             "span",
             {
               key: id_atividade_comercial,
-              staticClass: "px-1 text-xs text-red-600"
+              staticClass: "px-1 text-sm font-semibold text-red-600"
             },
             [_vm._v(_vm._s(id_atividade_comercial))]
           )
@@ -1727,7 +1745,10 @@ var render = function() {
         _vm._l(_vm.errors.nome_fantasia, function(nome_fantasia) {
           return _c(
             "span",
-            { key: nome_fantasia, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: nome_fantasia,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(nome_fantasia))]
           )
         })
@@ -1769,7 +1790,10 @@ var render = function() {
         _vm._l(_vm.errors.razao_social, function(razao_social) {
           return _c(
             "span",
-            { key: razao_social, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: razao_social,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(razao_social))]
           )
         })

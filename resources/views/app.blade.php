@@ -18,6 +18,8 @@
         <router-view></router-view>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    
 </body>
 
 </html>

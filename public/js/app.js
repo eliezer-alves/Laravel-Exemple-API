@@ -2008,7 +2008,7 @@ var actions = {
     return axios.post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
       commit('CREATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
-      console.log(err);
+      commit('GET_ERRORS', err.response.data.errors);
     });
   },
   fetchAtividades: function fetchAtividades(_ref2) {
@@ -2016,7 +2016,7 @@ var actions = {
     return axios.get('http://localhost:8000/api/atividade_comercial').then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
-      console.log(err);
+      commit('GET_ERRORS', err.response.data.errors);
     });
   },
   updateAtividade: function updateAtividade(_ref3, atividade) {
@@ -2025,7 +2025,7 @@ var actions = {
       console.log(res);
       commit('UPDATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
-      console.log(err);
+      commit('GET_ERRORS', err.response.data.errors);
     });
   },
   deleteAtividade: function deleteAtividade(_ref4, atividade) {
@@ -2033,17 +2033,16 @@ var actions = {
     return axios["delete"]("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
       if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
-      console.log(err);
+      commit('GET_ERRORS', err.response.data.errors);
     });
   },
   createCliente: function createCliente(_ref5, cliente) {
     var commit = _ref5.commit;
-    return axios.post("http://localhost:8000/api/cliente").then(function (res) {
+    console.log(cliente);
+    return axios.post("http://localhost:8000/api/cliente", cliente).then(function (res) {
       if (res.status === 200) commit('CREATE_CLIENTE', cliente);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
-      console.log('error', Object.assign({}, err.response.data.errors));
-      console.log(err);
     });
   }
 };
@@ -2136,7 +2135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var state = {
-  errors: [],
+  errors: {},
   atividades: [],
   cliente: {}
 };

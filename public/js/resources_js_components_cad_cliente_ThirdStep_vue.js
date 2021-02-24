@@ -99,6 +99,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {};
   },
+  props: ["validation"],
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
@@ -307,12 +308,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["cliente", "errors"])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["cliente", "errors"])), {}, {
+    validation: function validation() {
+      if (!this.cliente.cep) return false;
+      if (!this.cliente.uf) return false;
+      if (!this.cliente.cidade) return false;
+      if (!this.cliente.bairro) return false;
+      if (!this.cliente.id_tipo_logradouro) return false;
+      if (!this.cliente.logradouro) return false;
+      if (!this.cliente.numero) return false;
+      return true;
+    }
+  }),
   methods: {
     cadastrarCliente: function cadastrarCliente() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -321,6 +334,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _this.$store.dispatch("createCliente", _this.cliente);
 
               case 2:
+                response = _context.sent;
+                if (!response) _this.$router.push('cadastro-cliente');
+
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -328,6 +345,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee);
       }))();
     }
+    /* validEmail: function () {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(cliente.email);
+    }, */
+
   }
 });
 
@@ -1392,7 +1414,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12"
+      staticClass:
+        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1"
     },
     [
       _vm._m(0),
@@ -1401,14 +1424,14 @@ var render = function() {
         "div",
         {
           staticClass:
-            "lg:w-7/12 mx-auto lg:mt-6 md:mt-6 sm:mt-6 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-20 shadow-md rounded-md py-1"
+            "w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
         },
         [
           _c(
             "h1",
             {
               staticClass:
-                "mt-4 text-center text-3xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -1471,8 +1494,11 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: !(_vm.currentRoute === "cadastro-cliente-3"),
-                        expression: "!(currentRoute === 'cadastro-cliente-3')"
+                        value:
+                          !(_vm.currentRoute === "cadastro-cliente-3") &&
+                          _vm.validation,
+                        expression:
+                          "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
                     staticClass: "text-gray-200 hover:text-green-600 w-12",
@@ -1524,7 +1550,7 @@ var staticRenderFns = [
           "h1",
           {
             staticClass:
-              "mt-4 lg:ml-10 md:ml-5 lg:text-3xl  text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
           },
           [_vm._v("\n      Capital de Giro\n    ")]
         )
@@ -1554,7 +1580,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", [
+  return _c("cadastro-cliente", { attrs: { validation: _vm.validation } }, [
     _c(
       "div",
       { staticClass: "py-1" },
@@ -1594,7 +1620,10 @@ var render = function() {
         _vm._l(_vm.errors.cep, function(cep) {
           return _c(
             "span",
-            { key: cep, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: cep,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(cep))]
           )
         })
@@ -1658,7 +1687,7 @@ var render = function() {
         _vm._l(_vm.errors.uf, function(uf) {
           return _c(
             "span",
-            { key: uf, staticClass: "px-1 text-xs text-red-600" },
+            { key: uf, staticClass: "px-1 text-sm font-semibold text-red-600" },
             [_vm._v(_vm._s(uf))]
           )
         })
@@ -1700,7 +1729,10 @@ var render = function() {
         _vm._l(_vm.errors.cidade, function(cidade) {
           return _c(
             "span",
-            { key: cidade, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: cidade,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(cidade))]
           )
         })
@@ -1742,7 +1774,10 @@ var render = function() {
         _vm._l(_vm.errors.bairro, function(bairro) {
           return _c(
             "span",
-            { key: bairro, staticClass: "px-1 text-xs text-red-600" },
+            {
+              key: bairro,
+              staticClass: "px-1 text-sm font-semibold text-red-600"
+            },
             [_vm._v(_vm._s(bairro))]
           )
         })
@@ -1764,9 +1799,10 @@ var render = function() {
             directives: [
               {
                 name: "model",
-                rawName: "v-model",
+                rawName: "v-model.number",
                 value: _vm.cliente.id_tipo_logradouro,
-                expression: "cliente.id_tipo_logradouro"
+                expression: "cliente.id_tipo_logradouro",
+                modifiers: { number: true }
               }
             ],
             staticClass:
@@ -1780,7 +1816,7 @@ var render = function() {
                   })
                   .map(function(o) {
                     var val = "_value" in o ? o._value : o.value
-                    return val
+                    return _vm._n(val)
                   })
                 _vm.$set(
                   _vm.cliente,
@@ -1791,11 +1827,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "avenida" } }, [_vm._v("Avenida")]),
+            _c("option", { attrs: { value: "0" } }, [_vm._v("Avenida")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "praca" } }, [_vm._v("Praça")]),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Praça")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "rua" } }, [_vm._v("Rua")])
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Rua")])
           ]
         ),
         _vm._v(" "),
@@ -1804,7 +1840,7 @@ var render = function() {
             "span",
             {
               key: id_tipo_logradouro,
-              staticClass: "px-1 text-xs text-red-600"
+              staticClass: "px-1 text-sm font-semibold text-red-600"
             },
             [_vm._v(_vm._s(id_tipo_logradouro))]
           )
@@ -1848,7 +1884,10 @@ var render = function() {
           _vm._l(_vm.errors.logradouro, function(logradouro) {
             return _c(
               "span",
-              { key: logradouro, staticClass: "px-1 text-xs text-red-600" },
+              {
+                key: logradouro,
+                staticClass: "px-1 text-sm font-semibold text-red-600"
+              },
               [_vm._v(_vm._s(logradouro))]
             )
           })
@@ -1890,7 +1929,10 @@ var render = function() {
           _vm._l(_vm.errors.numero, function(numero) {
             return _c(
               "span",
-              { key: numero, staticClass: "px-1 text-xs text-red-600" },
+              {
+                key: numero,
+                staticClass: "px-1 text-sm font-semibold text-red-600"
+              },
               [_vm._v(_vm._s(numero))]
             )
           })
