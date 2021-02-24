@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
+Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
 
 
 Route::get('/dashboard', function () {
