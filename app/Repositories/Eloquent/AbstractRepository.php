@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\AbstractRepositoryInterface;
@@ -42,5 +43,3 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 		return $entity->delete($id);
 	}
 }
-
-?>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
+// Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
+=======
+Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
+>>>>>>> db41a7d868d52b36dbe06883b4c6ee5c2cd0af80
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('grant-password', function () {
-    $response = Http::post(env('API_URL').'oauth/token', [
+    $response = Http::post(env('API_URL') . 'oauth/token', [
         'grant_type' => 'password',
         'client_id' => env('CLIENT_ID_GRANT_PASSWORD'),
         'client_secret' => env('CLIENT_SECRET_GRANT_PASSWORD'),
@@ -33,5 +42,6 @@ Route::get('grant-password', function () {
         'scope' => '',
     ]);
 
-    dd($response->json());
+    // dd($response->json());
+    return $response->json();
 });

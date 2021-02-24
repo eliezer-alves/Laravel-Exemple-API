@@ -11,7 +11,8 @@ class ClienteController extends Controller
 {
     protected $repository;
 
-    public function __construct(ClienteRepositoryInterface $repository){
+    public function __construct(ClienteRepositoryInterface $repository)
+    {
         $this->repository = $repository;
     }
 
@@ -61,6 +62,7 @@ class ClienteController extends Controller
     public function update(UpdateClienteRequest $request, $idCliente)
     {
         $request = _normalizeRequest($request->all());
+        return $request;
         return $this->repository->update($request, $idCliente);
 
         $usuario = $this->show($idCliente);

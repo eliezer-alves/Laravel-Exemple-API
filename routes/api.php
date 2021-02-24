@@ -23,16 +23,16 @@ use App\Http\Controllers\AtividadeComercialController;
 // });
 
 
-Route::namespace('cliente')->group(function(){
- 	Route::get('/cliente', [ClienteController::class, 'index']);
- 	Route::get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
- 	Route::post('/cliente', [ClienteController::class, 'store']);
- 	Route::put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
- 	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
+Route::namespace('cliente')->group(function () {
+	Route::middleware('auth:api')->get('/cliente', [ClienteController::class, 'index']);
+	Route::middleware('auth:api')->get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
+	Route::post('/cliente', [ClienteController::class, 'store']);
+	Route::middleware('auth:api')->put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
+	Route::middleware('auth:api')->delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
 
-Route::namespace('atividade_comercial')->group(function(){
-	Route::middleware('client')->get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
+Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {
+	Route::get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
 	Route::get('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
 	Route::post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
 	Route::put('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);

@@ -1,5 +1,5 @@
 let state = {
-    errors: [],
+    errors: {},
     atividades: [],
     cliente: {}
 }

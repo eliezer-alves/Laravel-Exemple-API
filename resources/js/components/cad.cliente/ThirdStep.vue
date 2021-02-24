@@ -1,5 +1,5 @@
 <template>
-  <cadastro-cliente>
+  <cadastro-cliente :validation="validation">
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">CEP</span>
       <input
@@ -9,9 +9,10 @@
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
         v-model="cliente.cep"
+        v-mask="'#####-###'"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="cep in errors.cep"
         :key="cep"
         >{{ cep }}</span
@@ -30,7 +31,7 @@
         <option :value="'SP'">São Paulo</option>
       </select>
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="uf in errors.uf"
         :key="uf"
         >{{ uf }}</span
@@ -46,7 +47,7 @@
         v-model="cliente.cidade"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="cidade in errors.cidade"
         :key="cidade"
         >{{ cidade }}</span
@@ -62,7 +63,7 @@
         v-model="cliente.bairro"
       />
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="bairro in errors.bairro"
         :key="bairro"
         >{{ bairro }}</span
@@ -74,14 +75,14 @@
         id="id_tipo_logradouro"
         name="id_tipo_logradouro"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.id_tipo_logradouro"
+        v-model.number="cliente.id_tipo_logradouro"
       >
-        <option value="avenida">Avenida</option>
-        <option value="praca">Praça</option>
-        <option value="rua">Rua</option>
+        <option value="0">Avenida</option>
+        <option value="1">Praça</option>
+        <option value="2">Rua</option>
       </select>
       <span
-        class="px-1 text-xs text-red-600"
+        class="px-1 text-sm font-semibold text-red-600"
         v-for="id_tipo_logradouro in errors.id_tipo_logradouro"
         :key="id_tipo_logradouro"
         >{{ id_tipo_logradouro }}</span
@@ -98,7 +99,7 @@
           v-model="cliente.logradouro"
         />
         <span
-          class="px-1 text-xs text-red-600"
+          class="px-1 text-sm font-semibold text-red-600"
           v-for="logradouro in errors.logradouro"
           :key="logradouro"
           >{{ logradouro }}</span
@@ -114,7 +115,7 @@
           v-model="cliente.numero"
         />
         <span
-          class="px-1 text-xs text-red-600"
+          class="px-1 text-sm font-semibold text-red-600"
           v-for="numero in errors.numero"
           :key="numero"
           >{{ numero }}</span
@@ -142,10 +143,25 @@ export default {
   },
   computed: {
     ...mapGetters(["cliente", "errors"]),
+    validation: function () {
+      if (!this.cliente.cep) return false;
+      if (!this.cliente.uf) return false;
+      if (!this.cliente.cidade) return false;
+      if (!this.cliente.bairro) return false;
+      if (!this.cliente.id_tipo_logradouro) return false;
+      if (!this.cliente.logradouro) return false;
+      if (!this.cliente.numero) return false;
+      return true;
+    },
   },
   methods: {
     async cadastrarCliente() {
-      await this.$store.dispatch("createCliente", this.cliente);
+      const response = await this.$store.dispatch(
+        "createCliente",
+        {...this.cliente}
+      );
+      /* if(!response)
+        this.$router.push('cadastro-cliente'); */
     },
   },
 };
