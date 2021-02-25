@@ -1944,10 +1944,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "params": () => (/* binding */ params),
 /* harmony export */   "config": () => (/* binding */ config)
 /* harmony export */ });
-/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 var params = new URLSearchParams();
-params.append('client_id', process.env.MIX_CLIENT_ID_GRANT_PWS);
-params.append('client_secret', process.env.MIX_CLIENT_SECRET_GRANT_PWS);
+params.append('client_id', "4");
+params.append('client_secret', "2YWhehAbEOVj6jWhyiBMc5xyZFoLGF677oY0eeaS");
 var config = {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -2053,24 +2052,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var actions = {
-  createAtividade: function createAtividade(_ref, atividade) {
+  login: function login(_ref, cliente) {
+    /* console.log(params);
+    console.log(config);
+    console.log(cliente.cnpj);
+    cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
+    console.log(cliente.cnpj);
+    console.log(cliente); */
+
     var commit = _ref.commit;
+  },
+  createAtividade: function createAtividade(_ref2, atividade) {
+    var commit = _ref2.commit;
     return axios.post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
       commit('CREATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
     });
   },
-  fetchAtividades: function fetchAtividades(_ref2) {
-    var commit = _ref2.commit;
+  fetchAtividades: function fetchAtividades(_ref3) {
+    var commit = _ref3.commit;
     return axios.get('http://localhost:8000/api/atividade_comercial').then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
     });
   },
-  updateAtividade: function updateAtividade(_ref3, atividade) {
-    var commit = _ref3.commit;
+  updateAtividade: function updateAtividade(_ref4, atividade) {
+    var commit = _ref4.commit;
     return axios.put("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
       console.log(res);
       commit('UPDATE_ATIVIDADE', res.data);
@@ -2078,37 +2087,33 @@ var actions = {
       commit('GET_ERRORS', err.response.data.errors);
     });
   },
-  deleteAtividade: function deleteAtividade(_ref4, atividade) {
-    var commit = _ref4.commit;
+  deleteAtividade: function deleteAtividade(_ref5, atividade) {
+    var commit = _ref5.commit;
     return axios["delete"]("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
       if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
     });
   },
-  createCliente: function createCliente(_ref5, cliente) {
+  createCliente: function createCliente(_ref6, cliente) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var commit;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              commit = _ref5.commit;
-              console.log(_config__WEBPACK_IMPORTED_MODULE_1__.params);
-              console.log(_config__WEBPACK_IMPORTED_MODULE_1__.config);
-              console.log(cliente.cnpj);
-              cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
-              console.log(cliente.cnpj);
+              commit = _ref6.commit;
               console.log(cliente);
-              /* return axios.post(`http://localhost:8000/api/cliente`, cliente)
-                  .then(res => {
-                      if (res.status === 200)
-                          commit('CREATE_CLIENTE', cliente)
-                  }).catch(err => {
-                      commit('GET_ERRORS', err.response.data.errors)
-                  }) */
+              cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
+              console.log(cliente);
+              return _context.abrupt("return", axios.post("http://localhost:8000/api/cliente", cliente).then(function (res) {
+                if (res.status === 200) commit('CREATE_CLIENTE', cliente);
+                return res;
+              })["catch"](function (err) {
+                commit('GET_ERRORS', err.response.data.errors);
+              }));
 
-            case 7:
+            case 5:
             case "end":
               return _context.stop();
           }

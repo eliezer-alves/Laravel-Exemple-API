@@ -106,7 +106,7 @@ export default {
     document.body.className = "login";
   },
   async mounted() {
-    // await this.$store.dispatch("fetchAtividades");
+    await this.$store.dispatch("fetchAtividades");
   },
   computed: {
     ...mapGetters(["atividades", "cliente", "errors"]),
