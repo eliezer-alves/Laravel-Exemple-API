@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\AtividadeComercialRepositoryInterface',
             'App\Repositories\Eloquent\AtividadeComercialRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\UserRepositoryInterface',
+            'App\Repositories\Eloquent\UserRepository'
+        );
     }
 
     /**
