@@ -41,6 +41,7 @@ class ClienteController extends Controller
     public function store(StoreClienteRequest $request)
     {
         $request = _normalizeRequest($request->all());
+        $request['senha'] = Hash::make($request['senha']);
 
         $cliente = $this->repository->create($request);
 
@@ -51,7 +52,7 @@ class ClienteController extends Controller
             'name' => $request['nome_fantasia'],
             'email' => $request['email'],
             'username' => $request['cnpj'],
-            'password' => Hash::make($request['senha'])
+            'password' => $request['senha']
         ]);
 
         $cliente->user = $user;
