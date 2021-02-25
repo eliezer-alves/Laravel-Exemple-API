@@ -24,11 +24,11 @@ use App\Http\Controllers\AtividadeComercialController;
 
 
 Route::namespace('cliente')->group(function () {
-	Route::middleware('auth:api')->get('/cliente', [ClienteController::class, 'index']);
+	Route::get('/cliente', [ClienteController::class, 'index']);
 	Route::middleware('auth:api')->get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
 	Route::post('/cliente', [ClienteController::class, 'store']);
 	Route::middleware('auth:api')->put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
-	Route::middleware('auth:api')->delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
+	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
 
 Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {

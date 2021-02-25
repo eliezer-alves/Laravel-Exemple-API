@@ -6,14 +6,18 @@ use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 
 use App\Repositories\Contracts\ClienteRepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
     protected $repository;
+    protected $userRepository;
 
-    public function __construct(ClienteRepositoryInterface $repository)
+    public function __construct(ClienteRepositoryInterface $repository, UserRepositoryInterface $userRepository)
     {
         $this->repository = $repository;
+        $this->userRepository = $userRepository;
     }
 
 
@@ -38,7 +42,21 @@ class ClienteController extends Controller
     {
         $request = _normalizeRequest($request->all());
 
-        return $this->repository->create($request);
+        $cliente = $this->repository->create($request);
+
+        if (!$cliente->id_cliente)
+            return $cliente;
+
+        $user = $this->userRepository->create((array) [
+            'name' => $request['nome_fantasia'],
+            'email' => $request['email'],
+            'username' => $request['cnpj'],
+            'password' => Hash::make($request['senha'])
+        ]);
+
+        $cliente->user = $user;
+
+        return $cliente;
     }
 
     /**
