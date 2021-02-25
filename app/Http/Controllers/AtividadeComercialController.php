@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Repositories\Contracts\AtividadeComercialRepositoryInterface;
+use App\Services\AtividadeComercialService;
 
 class AtividadeComercialController extends Controller
 {
-    protected $repository;
+    protected $service;
 
-    public function __construct(AtividadeComercialRepositoryInterface $repository)
+    public function __construct(AtividadeComercialService $service)
     {
-        $this->repository = $repository;
+        $this->service = $service;
     }
 
     /**
@@ -22,7 +22,7 @@ class AtividadeComercialController extends Controller
      */
     public function index()
     {
-        return $this->repository->all();
+        return $this->service->all();
         // return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
     }
 
@@ -40,7 +40,7 @@ class AtividadeComercialController extends Controller
 
         $request = _normalizeRequest($request->all());
 
-        return $this->repository->create($request);
+        return $this->service->create($request);
     }
 
     /**
@@ -51,7 +51,7 @@ class AtividadeComercialController extends Controller
      */
     public function show($idAtividadeComercial)
     {
-        return $this->repository->findOrFail($idAtividadeComercial);
+        return $this->service->findOrFail($idAtividadeComercial);
     }
 
     /**
@@ -67,7 +67,7 @@ class AtividadeComercialController extends Controller
             'descricao' => ['string', 'between:1,120']
         ]);
 
-        return $this->repository->update($request->all(), $idAtividadeComercial);
+        return $this->service->update($request->all(), $idAtividadeComercial);
     }
 
     /**
@@ -78,6 +78,6 @@ class AtividadeComercialController extends Controller
      */
     public function destroy($idAtividadeComercial)
     {
-        return $this->repository->delete($idAtividadeComercial);
+        return $this->service->delete($idAtividadeComercial);
     }
 }

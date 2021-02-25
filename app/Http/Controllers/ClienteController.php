@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ClienteService;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 
-use App\Repositories\Contracts\ClienteRepositoryInterface;
-use App\Repositories\Contracts\UserRepositoryInterface;
-use Illuminate\Support\Facades\Hash;
-
 class ClienteController extends Controller
 {
-    protected $repository;
-    protected $userRepository;
+    protected $service;
 
-    public function __construct(ClienteRepositoryInterface $repository, UserRepositoryInterface $userRepository)
+    public function __construct(ClienteService $service)
     {
-        $this->repository = $repository;
-        $this->userRepository = $userRepository;
+        $this->service = $service;
     }
 
 
@@ -29,7 +24,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return $this->repository->all();
+        return $this->service->all();
     }
 
     /**
@@ -40,24 +35,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        $request = _normalizeRequest($request->all());
-        $request['senha'] = Hash::make($request['senha']);
-
-        $cliente = $this->repository->create($request);
-
-        if (!$cliente->id_cliente)
-            return $cliente;
-
-        $user = $this->userRepository->create((array) [
-            'name' => $request['nome_fantasia'],
-            'email' => $request['email'],
-            'username' => $request['cnpj'],
-            'password' => $request['senha']
-        ]);
-
-        $cliente->user = $user;
-
-        return $cliente;
+        return $this->service->create($request);
     }
 
     /**
@@ -68,7 +46,7 @@ class ClienteController extends Controller
      */
     public function show($idCliente)
     {
-        return $this->repository->findOrFail($idCliente);
+        return $this->service->findOrFail($idCliente);
     }
 
     /**
@@ -80,14 +58,7 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, $idCliente)
     {
-        $request = _normalizeRequest($request->all());
-        return $request;
-        return $this->repository->update($request, $idCliente);
-
-        $usuario = $this->show($idCliente);
-        $usuario->update($request);
-
-        return $usuario;
+        return $this->service->update($request, $idCliente);
     }
 
     /**
@@ -98,6 +69,6 @@ class ClienteController extends Controller
      */
     public function destroy($idCliente)
     {
-        return $this->repository->delete($idCliente);
+        return $this->service->delete($idCliente);
     }
 }
