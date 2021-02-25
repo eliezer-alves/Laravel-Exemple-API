@@ -19,11 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-// Route::get('/{any?}', [AppController::class, 'index'])->where('any', '.*');
-=======
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
->>>>>>> db41a7d868d52b36dbe06883b4c6ee5c2cd0af80
 
 
 Route::get('/dashboard', function () {
