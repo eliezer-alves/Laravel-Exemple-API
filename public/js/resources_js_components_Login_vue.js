@@ -11,6 +11,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -60,10 +75,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      cliente: {
+        username: "",
+        password: ""
+      }
+    };
+  },
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
-  }
+  },
+  methods: {
+    validateFields: function validateFields(cliente) {
+      if (!cliente.username) return false;
+      if (!cliente.password) return false;
+      return true;
+    },
+    login: function login(cliente) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (_this.validateFields(cliente)) {
+                  _context.next = 2;
+                  break;
+                }
+
+                return _context.abrupt("return", _this.$store.commit("GET_ERRORS", {
+                  error: "Usuário/Senha vazio"
+                }));
+
+              case 2:
+                _context.next = 4;
+                return _this.$store.dispatch("login", _objectSpread({}, cliente));
+
+              case 4:
+                response = _context.sent;
+
+                if (!response) {
+                  _context.next = 7;
+                  break;
+                }
+
+                return _context.abrupt("return", _this.$router.push("home"));
+
+              case 7:
+                console.log(_this.errors);
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["errors"]))
 });
 
 /***/ }),
@@ -225,97 +313,157 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 m-auto my-10" }, [
-    _c("div", { staticClass: "py-8 px-8 rounded-xl" }, [
+  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6 " }, [
+    _c("div", { staticClass: "py-2 rounded-xl" }, [
       _c("img", {
-        staticClass: "mx-auto w-72",
+        staticClass: "mx-auto lg:w-72 w-44",
         attrs: { src: "/images/logoAgilVertical.png", alt: "Workflow" }
       }),
       _vm._v(" "),
       _c(
         "form",
-        { staticClass: "mt-2 mx-auto w-72", attrs: { action: "/solicitar" } },
+        {
+          staticClass: "mt-2 mx-auto w-72",
+          on: {
+            submit: function($event) {
+              return _vm.login(_vm.cliente)
+            }
+          }
+        },
         [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: { name: "home" } } }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md hover:bg-black"
-              },
-              [_vm._v("Log In")]
-            )
+          _c("div", { staticClass: "flex justify-center" }, [
+            _vm.errors.error
+              ? _c(
+                  "span",
+                  {
+                    staticClass:
+                      "px-1 text-sm font-semibold text-yellow-200  w-full text-center"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.error))]
+                )
+              : _vm._e()
           ]),
           _vm._v(" "),
-          _c("router-link", { attrs: { to: "cadastro-cliente" } }, [
-            _c(
-              "p",
-              { staticClass: "text-center text-md font-light text-white" },
-              [
-                _vm._v("\n          Não tem uma conta?\n          "),
-                _c("a", { staticClass: "font-light text-md text-green-400" }, [
-                  _vm._v("Criar")
-                ])
-              ]
-            )
-          ])
-        ],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-1 text-sm" }, [
-      _c("input", {
-        staticClass:
-          "rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full",
-        attrs: {
-          type: "text",
-          autofocus: "",
-          id: "username",
-          placeholder: "Usuário"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-1 text-sm" }, [
-      _c("input", {
-        staticClass:
-          "rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full",
-        attrs: { type: "password", id: "password", placeholder: "Senha" }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex justify-end mt-2 text-xs text-gray-600" },
-        [
-          _c(
-            "a",
-            {
+          _c("div", { staticClass: "mt-1 text-sm" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.username,
+                  expression: "cliente.username"
+                },
+                {
+                  name: "mask",
+                  rawName: "v-mask",
+                  value: "##.###.###/####-##",
+                  expression: "'##.###.###/####-##'"
+                }
+              ],
+              staticClass:
+                "rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none",
               attrs: {
-                href: "../../pages/auth/forget_password.html hover:text-black"
+                type: "text",
+                autofocus: "",
+                id: "cnpj",
+                placeholder: "CNPJ"
+              },
+              domProps: { value: _vm.cliente.username },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "username", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-1 text-sm" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.cliente.password,
+                    expression: "cliente.password"
+                  }
+                ],
+                staticClass:
+                  "rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none",
+                attrs: {
+                  type: "password",
+                  id: "password",
+                  placeholder: "Senha"
+                },
+                domProps: { value: _vm.cliente.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.cliente, "password", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "redefinir-senha" } }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex justify-end text-xs my-3 text-blue-200 hover:underline"
+                  },
+                  [_c("p", [_vm._v("Esqueceu a senha?")])]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.login(_vm.cliente)
+                }
               }
             },
-            [_vm._v("Esqueceu a senha?")]
+            [_vm._v("\n        Entrar\n      ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "mt-2 text-center text-md font-light text-white" },
+            [
+              _vm._v("\n        Não tem uma conta?\n        "),
+              _c("router-link", { attrs: { to: "cadastro-cliente" } }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "font-light text-md text-green-400 hover:text-green-600"
+                  },
+                  [_vm._v("\n            Criar\n          ")]
+                )
+              ])
+            ],
+            1
           )
         ]
       )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

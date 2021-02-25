@@ -2,6 +2,12 @@ import { updateField } from 'vuex-map-fields';
 
 let mutations = {
     updateField,
+    LOGIN(state, payload) {
+
+    },
+    GET_ERRORS(state, payload) {
+        state.errors = payload;
+    },
     CREATE_ATIVIDADE(state, payload) {
         state.atividades.push(payload)
     },
@@ -17,10 +23,7 @@ let mutations = {
     DELETE_ATIVIDADE(state, atividade) {
         let index = state.atividades.findIndex(item => item.id_atividade_comercial === atividade.id_atividade_comercial);
         state.atividades.splice(index, 1)
-    },
-    GET_ERRORS(state, payload) {
-        state.errors = payload;
-    },
-    
+    }
+
 }
 export default mutations

@@ -1932,26 +1932,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/config.js":
-/*!********************************!*\
-  !*** ./resources/js/config.js ***!
-  \********************************/
+/***/ "./resources/js/config/api.js":
+/*!************************************!*\
+  !*** ./resources/js/config/api.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "params": () => (/* binding */ params),
-/* harmony export */   "config": () => (/* binding */ config)
+/* harmony export */   "header": () => (/* binding */ header),
+/* harmony export */   "API_URL": () => (/* binding */ API_URL)
 /* harmony export */ });
 var params = new URLSearchParams();
-params.append('client_id', "4");
-params.append('client_secret', "2YWhehAbEOVj6jWhyiBMc5xyZFoLGF677oY0eeaS");
-var config = {
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-  }
+params.append('grant_type', "password");
+params.append('client_id', "1");
+params.append('client_secret', "mxtm3w6OTGMAbrWvRSZTaWKKWpCqv175XsyafW8B");
+var header = {
+  'Content-Type': 'application/x-www-form-urlencoded'
 };
+var API_URL = "http://127.0.0.1:8000";
 
 
 /***/ }),
@@ -2037,12 +2038,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./resources/js/config.js");
+/* harmony import */ var _config_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config/api */ "./resources/js/config/api.js");
 
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2050,17 +2047,47 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 var actions = {
   login: function login(_ref, cliente) {
-    /* console.log(params);
-    console.log(config);
-    console.log(cliente.cnpj);
-    cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
-    console.log(cliente.cnpj);
-    console.log(cliente); */
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var commit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.next = 3;
+              return cliente.username.replace(/[^\d]+/g, '');
 
-    var commit = _ref.commit;
+            case 3:
+              cliente.username = _context.sent;
+              console.log(cliente.username);
+              _config_api__WEBPACK_IMPORTED_MODULE_1__.params.append('username', cliente.username);
+              _config_api__WEBPACK_IMPORTED_MODULE_1__.params.append('password', cliente.password);
+              _context.next = 9;
+              return axios.post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_1__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_1__.params, _config_api__WEBPACK_IMPORTED_MODULE_1__.header).then(function (res) {
+                if (res.status === 200) // commit('CREATE_CLIENTE', cliente)
+                  return res;
+              })["catch"](function (err) {
+                commit('GET_ERRORS', err.response.data); // console.log(err.response.data.error);
+                // console.log('error', Object.assign({}, err));
+              });
+
+            case 9:
+              return _context.abrupt("return", _context.sent);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   },
   createAtividade: function createAtividade(_ref2, atividade) {
     var commit = _ref2.commit;
@@ -2096,17 +2123,17 @@ var actions = {
     });
   },
   createCliente: function createCliente(_ref6, cliente) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var commit;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               commit = _ref6.commit;
               console.log(cliente);
               cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
               console.log(cliente);
-              return _context.abrupt("return", axios.post("http://localhost:8000/api/cliente", cliente).then(function (res) {
+              return _context2.abrupt("return", axios.post("http://localhost:8000/api/cliente", cliente).then(function (res) {
                 if (res.status === 200) commit('CREATE_CLIENTE', cliente);
                 return res;
               })["catch"](function (err) {
@@ -2115,10 +2142,10 @@ var actions = {
 
             case 5:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }))();
   }
 };
@@ -2170,6 +2197,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var mutations = {
   updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
+  LOGIN: function LOGIN(state, payload) {},
+  GET_ERRORS: function GET_ERRORS(state, payload) {
+    state.errors = payload;
+  },
   CREATE_ATIVIDADE: function CREATE_ATIVIDADE(state, payload) {
     state.atividades.push(payload);
   },
@@ -2190,9 +2221,6 @@ var mutations = {
       return item.id_atividade_comercial === atividade.id_atividade_comercial;
     });
     state.atividades.splice(index, 1);
-  },
-  GET_ERRORS: function GET_ERRORS(state, payload) {
-    state.errors = payload;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mutations);
