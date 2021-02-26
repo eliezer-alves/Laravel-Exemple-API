@@ -5,10 +5,9 @@ namespace Database\Seeders;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\UrlSicred;
 
-use App\Models\Cliente;
-
-class ClienteSeeder extends Seeder
+class UrlSicredSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +18,7 @@ class ClienteSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            $objCliente = Cliente::Factory()->create();
+            $objUrlSicred = UrlSicred::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

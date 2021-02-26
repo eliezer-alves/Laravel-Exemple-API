@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\AtividadeComercial;
+
 class Cliente extends Model
 {
 	use HasFactory;
@@ -56,8 +58,8 @@ class Cliente extends Model
 		return $this->hasMany(Proposta::class);
 	}
 
-	public function ramo_atividade()
+	public function atividadeComercial()
 	{
-		return $this->beloongsTo(RamoAtividade::class, 'id_atividade_comercial');
+		return $this->beloongsTo(AtividadeComercial::class, 'id_atividade_comercial');
 	}
 }

@@ -13,17 +13,21 @@ class CreateCadConfiguracaoSicredTable extends Migration
      */
     public function up()
     {
-        Schema::table('cad_configuracao_sicred', function (Blueprint $table) {
+        Schema::create('cad_configuracao_sicred', function (Blueprint $table) {
             $table->id('id_configuracao_sicred');
+            $table->string('batch');
             $table->string('grant_type');
             $table->string('username');
             $table->string('password');
             $table->string('client_id');
             $table->string('client_secret');
             $table->string('scope');
-            $table->string('base_url');
-            $table->id('batch');
+            $table->foreignId('id_url_sicred')
+                ->nullable()
+                ->unsigned()
+                ->constrained('cad_url_sicred', 'id_url_sicred');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,7 +39,7 @@ class CreateCadConfiguracaoSicredTable extends Migration
     public function down()
     {
         Schema::table('cad_configuracao_sicred', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('cad_configuracao_sicred');
         });
     }
 }

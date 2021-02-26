@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
 
-/*    public function run()
+    /*    public function run()
     {
         // \App\Models\User::factory(10)->create();
         $this->call(StatusSolicitacaoSeeder::class);
@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MotivoFinalizacaoSeeder::class);
         $this->call(StatusDocumentoPropostaSeeder::class);
         $this->call(AtividadeComercialSeeder::class);
+        $this->call(ConfiguracaoSicredSeeder::class);
     }
 }
