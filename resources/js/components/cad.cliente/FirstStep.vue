@@ -5,7 +5,7 @@
       <input
         id="cnpj"
         name="cnpj"
-        placeholder="00.000.000/0000-00"
+        placeholder="##.###.###/####-##"
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
         v-model="cliente.cnpj"
@@ -23,7 +23,7 @@
       <input
         id="inscricao_estadual"
         name="inscricao_estadual"
-        placeholder="00.000.0000-0"
+        placeholder="##.###.####-#"
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
         v-model="cliente.inscricao_estadual"
@@ -106,7 +106,7 @@ export default {
     document.body.className = "login";
   },
   async mounted() {
-    // await this.$store.dispatch("fetchAtividades");
+    await this.$store.dispatch("fetchAtividades");
   },
   computed: {
     ...mapGetters(["atividades", "cliente", "errors"]),

@@ -37,7 +37,12 @@ module.exports = [
     {
         path: '/app/solicitacao',
         name: 'solicitacao',
-        component: () => import('./components/Solicitacao.vue')
+        component: () => import('./components/cad.solicitacao/FirstStep.vue')
+    },
+    {
+        path: '/app/solicitacao-2',
+        name: 'solicitacao-2',
+        component: () => import('./components/cad.solicitacao/SecondStep.vue')
     },
     {
         path: '/app/atividade-comercial',

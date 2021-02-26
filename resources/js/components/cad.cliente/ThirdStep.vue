@@ -133,6 +133,7 @@
 <script>
 import CadastroCliente from "../CadastroCliente.vue";
 import { mapGetters } from "vuex";
+import { mapFields } from "vuex-map-fields";
 
 export default {
   components: {
@@ -143,6 +144,7 @@ export default {
   },
   computed: {
     ...mapGetters(["cliente", "errors"]),
+    ...mapFields(["cliente", "errors"]),
     validation: function () {
       if (!this.cliente.cep) return false;
       if (!this.cliente.uf) return false;
@@ -156,12 +158,16 @@ export default {
   },
   methods: {
     async cadastrarCliente() {
-      const response = await this.$store.dispatch(
-        "createCliente",
-        {...this.cliente}
-      );
-      /* if(!response)
-        this.$router.push('cadastro-cliente'); */
+      const response = await this.$store.dispatch("createCliente", {
+        ...this.cliente,
+      });
+      console.log(response);
+      if (!response) this.$router.push("cadastro-cliente");
+      else {
+        this.cliente = {};
+        this.errors = [];
+        this.$router.push("login");
+      }
     },
   },
 };

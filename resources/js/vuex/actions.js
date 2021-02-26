@@ -1,6 +1,26 @@
-import { params, config } from '../config'
+import { API_URL, header, params } from '../config/api'
 
 let actions = {
+    async login({ commit }, cliente) {
+
+        cliente.username = await cliente.username.replace(/[^\d]+/g, '');
+        console.log(cliente.username);
+
+        params.append('username', cliente.username);
+        params.append('password', cliente.password);
+
+        return await axios.post(`${API_URL}/oauth/token`, params, header)
+            .then(res => {
+                if (res.status === 200)
+                // commit('CREATE_CLIENTE', cliente)
+                return res;
+            }).catch(err => {
+                commit('GET_ERRORS', err.response.data)
+                // console.log(err.response.data.error);
+                // console.log('error', Object.assign({}, err));
+
+            })
+    },
     createAtividade({ commit }, atividade) {
         return axios.post('http://localhost:8000/api/atividade_comercial', atividade)
             .then(res => {
@@ -36,22 +56,18 @@ let actions = {
             })
     },
     async createCliente({ commit }, cliente) {
-
-
-        console.log(params);
-        console.log(config);
-        console.log(cliente.cnpj);
-        cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
-        console.log(cliente.cnpj);
         console.log(cliente);
+        cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
 
-        /* return axios.post(`http://localhost:8000/api/cliente`, cliente)
+        console.log(cliente);
+        return axios.post(`http://localhost:8000/api/cliente`, cliente)
             .then(res => {
                 if (res.status === 200)
                     commit('CREATE_CLIENTE', cliente)
+                return res;
             }).catch(err => {
                 commit('GET_ERRORS', err.response.data.errors)
-            }) */
+            })
     }
 }
 

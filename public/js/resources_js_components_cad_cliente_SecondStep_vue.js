@@ -611,7 +611,7 @@ var render = function() {
                         expression: "!(currentRoute === 'cadastro-cliente')"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",
@@ -647,7 +647,7 @@ var render = function() {
                           "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",

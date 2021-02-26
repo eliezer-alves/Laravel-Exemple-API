@@ -1,11 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
+    darkMode: 'media',//'media' |'class',
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
     ],
 
     theme: {
@@ -13,14 +17,12 @@ module.exports = {
             backgroundImage: theme => ({
                 "background-agil": "url('/images/texturaBackgroundAgil.png')"
             }),
+            colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                teal: colors.teal,
+            }
         },
-        backgroundColor: theme => ({
-            ...theme('colors'),
-            'primary': '#3490dc',
-            'secondary': '#ffed4a',
-            'danger': '#e3342f',
-            'teal': '#008080'
-        })
 
     },
 

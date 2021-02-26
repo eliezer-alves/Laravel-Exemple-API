@@ -263,13 +263,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
-  mounted: function mounted() {// await this.$store.dispatch("fetchAtividades");
+  mounted: function mounted() {
+    var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              _context.next = 2;
+              return _this.$store.dispatch("fetchAtividades");
+
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -643,7 +648,7 @@ var render = function() {
                         expression: "!(currentRoute === 'cadastro-cliente')"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",
@@ -679,7 +684,7 @@ var render = function() {
                           "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",
@@ -787,7 +792,7 @@ var render = function() {
           attrs: {
             id: "cnpj",
             name: "cnpj",
-            placeholder: "00.000.000/0000-00",
+            placeholder: "##.###.###/####-##",
             type: "text"
           },
           domProps: { value: _vm.cliente.cnpj },
@@ -843,7 +848,7 @@ var render = function() {
           attrs: {
             id: "inscricao_estadual",
             name: "inscricao_estadual",
-            placeholder: "00.000.0000-0",
+            placeholder: "##.###.####-#",
             type: "text"
           },
           domProps: { value: _vm.cliente.inscricao_estadual },

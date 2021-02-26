@@ -1,4 +1,5 @@
 require("./bootstrap");
+
 import "tailwindcss/tailwind.css";
 
 import Vue from "vue";
@@ -29,6 +30,12 @@ const store = new Vuex.Store({
 
 import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
+
+import money from 'v-money'
+
+// register directive v-money and component <money>
+Vue.use(money, { precision: 4 })
+
 
 const app = new Vue({
     router,

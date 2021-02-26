@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/solicitacao', function () {
+    return view('solicitacao.index');
+});
+
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
 
 

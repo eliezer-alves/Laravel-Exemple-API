@@ -145,7 +145,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CadastroCliente_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CadastroCliente.vue */ "./resources/js/components/CadastroCliente.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -292,6 +293,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CadastroCliente: _CadastroCliente_vue__WEBPACK_IMPORTED_MODULE_1__.default
@@ -299,7 +301,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["cliente", "errors"])), {}, {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["cliente", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__.mapFields)(["cliente", "errors"])), {}, {
     validation: function validation() {
       if (!this.cliente.cep) return false;
       if (!this.cliente.uf) return false;
@@ -326,8 +328,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
                 response = _context.sent;
+                console.log(response);
+                if (!response) _this.$router.push("cadastro-cliente");else {
+                  _this.cliente = {};
+                  _this.errors = [];
 
-              case 3:
+                  _this.$router.push("login");
+                }
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -692,7 +701,7 @@ var render = function() {
                         expression: "!(currentRoute === 'cadastro-cliente')"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",
@@ -728,7 +737,7 @@ var render = function() {
                           "!(currentRoute === 'cadastro-cliente-3') && validation"
                       }
                     ],
-                    staticClass: "text-gray-200 hover:text-green-600 w-12",
+                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       fill: "none",
