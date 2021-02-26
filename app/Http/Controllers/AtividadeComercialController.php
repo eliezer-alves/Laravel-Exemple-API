@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Services\AtividadeComercialService;
 
 class AtividadeComercialController extends Controller
 {
-    protected $service;
+    protected $atividadeComercialService;
 
-    public function __construct(AtividadeComercialService $service)
+    public function __construct(AtividadeComercialService $atividadeComercialService)
     {
-        $this->service = $service;
+        $this->atividadeComercialService = $atividadeComercialService;
     }
 
     /**
@@ -22,7 +21,7 @@ class AtividadeComercialController extends Controller
      */
     public function index()
     {
-        return $this->service->all();
+        return $this->atividadeComercialService->all();
         // return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
     }
 
@@ -40,7 +39,7 @@ class AtividadeComercialController extends Controller
 
         $request = _normalizeRequest($request->all());
 
-        return $this->service->create($request);
+        return $this->atividadeComercialService->create($request);
     }
 
     /**
@@ -51,7 +50,7 @@ class AtividadeComercialController extends Controller
      */
     public function show($idAtividadeComercial)
     {
-        return $this->service->findOrFail($idAtividadeComercial);
+        return $this->atividadeComercialService->findOrFail($idAtividadeComercial);
     }
 
     /**
@@ -67,7 +66,7 @@ class AtividadeComercialController extends Controller
             'descricao' => ['string', 'between:1,120']
         ]);
 
-        return $this->service->update($request->all(), $idAtividadeComercial);
+        return $this->atividadeComercialService->update($request->all(), $idAtividadeComercial);
     }
 
     /**
@@ -78,6 +77,6 @@ class AtividadeComercialController extends Controller
      */
     public function destroy($idAtividadeComercial)
     {
-        return $this->service->delete($idAtividadeComercial);
+        return $this->atividadeComercialService->delete($idAtividadeComercial);
     }
 }

@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $table = 'cad_cliente';
-    protected $primaryKey =  'id_cliente';
-    public $timestamps = false;
+	protected $table = 'cad_cliente';
+	protected $primaryKey =  'id_cliente';
+	public $timestamps = false;
 
-    protected $hidden = [
-    	'senha'
-    ];
+	protected $hidden = [
+		'senha'
+	];
 
-    protected $fillable = [
+	protected $fillable = [
 		'nome',
 		'cpf',
 		'rg',
@@ -44,20 +44,20 @@ class Cliente extends Model
 		'createdAt',
 		'updatedAt',
 		'deletedAt'
-    ];
+	];
 
-    public function solicitacaoes()
-    {
-        return $this->hasMany(Solicitacao::class);
-    }
+	public function solicitacaoes()
+	{
+		return $this->hasMany(Solicitacao::class);
+	}
 
-    public function propostas()
-    {
-        return $this->hasMany(Proposta::class);
-    }
+	public function propostas()
+	{
+		return $this->hasMany(Proposta::class);
+	}
 
-    public function ramo_atividade()
-    {
-    	return $this->beloongsTo(RamoAtividade::class, 'id_atividade_comercial');
-    }
+	public function ramo_atividade()
+	{
+		return $this->beloongsTo(RamoAtividade::class, 'id_atividade_comercial');
+	}
 }

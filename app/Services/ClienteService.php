@@ -26,7 +26,7 @@ class ClienteService
         return $this->repository->all();
     }
 
-    public function create(StoreClienteRequest $request)
+    public function create($request)
     {
         $request = _normalizeRequest($request->all());
         $request['senha'] = Hash::make($request['senha']);
