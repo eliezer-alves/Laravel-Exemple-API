@@ -1,44 +1,6 @@
 <template>
   <solicitacao>
-    <div class="p-4">
-      <div>
-        <p class="text-3xl my-5 font-bold">Fase - 1</p>
-      </div>
-      <div class="my-1">
-        <div class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm">
-          Dados do Cliente
-        </div>
-        <div class="flex flex-col md:flex-row">
-          <div class="w-full flex-1 mx-2">
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              Nome da Empresa
-            </div>
-            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
-              <input
-                placeholder="Nome da Empresa"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-              />
-            </div>
-          </div>
-          <div class="w-full flex-1 mx-2">
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              CNPJ
-            </div>
-            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
-              <input
-                placeholder="##.###.###/####-##"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                v-mask="'##.###.###/####-##'"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="p-4 h-6">
       <div class="my-1">
         <div class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm">
           Dados da Simulação

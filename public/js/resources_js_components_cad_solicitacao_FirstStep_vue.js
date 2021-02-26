@@ -447,44 +447,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -810,7 +772,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row" }, [
+  return _c("div", { staticClass: "flex flex-row h-full" }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },
@@ -1320,86 +1282,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4" }, [
-      _c("div", [
-        _c("p", { staticClass: "text-3xl my-5 font-bold" }, [
-          _vm._v("Fase - 1")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "my-1" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Dados do Cliente\n      ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-col md:flex-row" }, [
-          _c("div", { staticClass: "w-full flex-1 mx-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              },
-              [_vm._v("\n            Nome da Empresa\n          ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "bg-white my-2 p-1 flex border border-gray-200 rounded"
-              },
-              [
-                _c("input", {
-                  staticClass:
-                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                  attrs: { placeholder: "Nome da Empresa" }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-full flex-1 mx-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              },
-              [_vm._v("\n            CNPJ\n          ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "bg-white my-2 p-1 flex border border-gray-200 rounded"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "mask",
-                      rawName: "v-mask",
-                      value: "##.###.###/####-##",
-                      expression: "'##.###.###/####-##'"
-                    }
-                  ],
-                  staticClass:
-                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                  attrs: { placeholder: "##.###.###/####-##" }
-                })
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
+    _c("div", { staticClass: "p-4 h-6" }, [
       _c("div", { staticClass: "my-1" }, [
         _c(
           "div",

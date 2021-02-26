@@ -932,7 +932,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row" }, [
+  return _c("div", { staticClass: "flex flex-row h-full" }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },

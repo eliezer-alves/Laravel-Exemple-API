@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row">
+  <div class="flex flex-row h-full">
     <!-- Sidebar -->
     <nav class="bg-gray-900 w-20 justify-between flex flex-col">
       <div class="mt-10 mb-10">

@@ -848,7 +848,7 @@ var render = function() {
           attrs: {
             id: "inscricao_estadual",
             name: "inscricao_estadual",
-            placeholder: "00.000.0000-0",
+            placeholder: "##.###.####-#",
             type: "text"
           },
           domProps: { value: _vm.cliente.inscricao_estadual },
