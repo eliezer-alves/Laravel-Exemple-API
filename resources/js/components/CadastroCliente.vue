@@ -11,7 +11,7 @@
         Capital de Giro
       </h1>
     </div>
-    
+
     <div
       class="w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
     >
@@ -32,7 +32,7 @@
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            class="text-gray-200 hover:text-green-600 w-12"
+            class="text-gray-200 hover:text-teal-600 w-12"
             v-show="!(currentRoute === 'cadastro-cliente')"
           >
             <path
@@ -49,7 +49,7 @@
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            class="text-gray-200 hover:text-green-600 w-12"
+            class="text-gray-200 hover:text-teal-600 w-12"
             v-show="!(currentRoute === 'cadastro-cliente-3') && validation"
           >
             <path
