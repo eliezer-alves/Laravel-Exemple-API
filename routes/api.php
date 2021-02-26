@@ -22,16 +22,16 @@ use App\Http\Controllers\AtividadeComercialController;
 //     return $request->user();
 // });
 
-
-Route::namespace('cliente')->group(function () {
+Route::post('/cliente', [ClienteController::class, 'store']);
+Route::middleware('auth:api')->namespace('cliente')->group(function () {
 	Route::get('/cliente', [ClienteController::class, 'index']);
-	Route::middleware('auth:api')->get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
-	Route::post('/cliente', [ClienteController::class, 'store']);
-	Route::middleware('auth:api')->put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
+	Route::get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
+	Route::put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
 	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
 
-Route::namespace('atividade_comercial')->group(function () {
+// Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {
+Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {
 	Route::get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
 	Route::get('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
 	Route::middleware('auth:api')->post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
