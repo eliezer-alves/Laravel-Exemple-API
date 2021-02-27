@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\S;
+use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Services\ClienteService;
 
@@ -33,7 +33,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\StoreClienteRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(S $request)
+    public function store(StoreClienteRequest $request)
     {
         return $this->clienteService->create($request);
     }

@@ -29,6 +29,10 @@ class CreateCadUrlSicredTable extends Migration
                 ->nullable();
             $table->string('contrato_v2_url')
                 ->nullable();
+            $table->foreignId('id_client_sicred')
+                ->nullable()
+                ->unsigned()
+                ->constrained('cad_client_sicred', 'id_client_sicred');
             $table->timestamps();
             $table->softDeletes();
         });

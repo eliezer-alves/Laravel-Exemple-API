@@ -6,10 +6,10 @@ use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\ConfiguracaoSicred;
+use App\Models\ClientSicred;
 use App\Models\UrlSicred;
 
-class ConfiguracaoSicredSeeder extends Seeder
+class ClientSicredSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,13 +20,13 @@ class ConfiguracaoSicredSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            $objConfiguracaoSicred = ConfiguracaoSicred::Factory()->make();
+            $objClientSicred = ClientSicred::Factory()->make();
             $objUrlSicred = UrlSicred::Factory()->make();
 
+            $clientSicred = ClientSicred::create($objClientSicred->toArray());
+            $objUrlSicred->id_client_sicred = $clientSicred->id_client_sicred;
             $urlSicred = UrlSicred::create($objUrlSicred->toArray());
-            $objConfiguracaoSicred->id_url_sicred = $urlSicred->id_url_sicred;
 
-            ConfiguracaoSicred::create($objConfiguracaoSicred->toArray());
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

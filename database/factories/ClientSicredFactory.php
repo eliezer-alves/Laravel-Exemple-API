@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ConfiguracaoSicred;
+use App\Models\ClientSicred;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ConfiguracaoSicredFactory extends Factory
+class ClientSicredFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ConfiguracaoSicred::class;
+    protected $model = ClientSicred::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class ConfiguracaoSicredFactory extends Factory
     public function definition()
     {
         return [
-            'batch' => 'hml',
+            'environment' => 'hml',
             'grant_type' => 'password',
             'username' => 'master',
             'password' => 'MASTER123',

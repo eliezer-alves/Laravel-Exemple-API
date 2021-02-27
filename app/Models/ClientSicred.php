@@ -6,26 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\UrlSicred;
 
-class ConfiguracaoSicred extends Model
+class ClientSicred extends Model
 {
     use HasFactory;
 
-    protected $table = 'cad_configuracao_sicred';
-    protected $primaryKey = 'id_configuracao_sicred';
+    protected $table = 'cad_client_sicred';
+    protected $primaryKey = 'id_client_sicred';
 
     protected $fillable = [
+        'environment',
         'grant_type',
         'username',
         'password',
         'client_id',
         'client_secret',
         'scope',
-        'id_url_sicred',
         'batch'
     ];
 
-    // public function urlSicred()
-    // {
-    //     return $this->hasOne(UrlSicred::class, 'id_url_sicred');
-    // }
+    public function urls()
+    {
+        return $this->hasOne(UrlSicred::class, 'id_client_sicred');
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ConfiguracaoSicred;
+use App\Models\ClientSicred;
 
 class UrlSicred extends Model
 {
@@ -19,11 +19,12 @@ class UrlSicred extends Model
         'simulacao_url',
         'proposta_url',
         'proposta_v2_url',
-        'contrato_url'
+        'contrato_url',
+        'id_client_sicred'
     ];
 
-    // public function configuracaoSicred()
-    // {
-    //     return $this->belongsTo(ConfiguracaoSicred::class, 'id_url_sicred');
-    // }
+    public function clientSicred()
+    {
+        return $this->belongsTo(ClientSicred::class, 'id_client_sicred');
+    }
 }

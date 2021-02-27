@@ -2,17 +2,15 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
-use App\Services\RequestSicredService;
+use App\Services\Contracts\ApiSicredServiceInterface;
 
 class SimulacaoService
 {
-	protected $requestSicred;
-	private $baseUrl = 'https://sicred-api-hml.agil.com.br';
+	protected $apiSicred;
 
-	public function __construct(RequestSicredService $requestSicred)
+	public function __construct(ApiSicredServiceInterface $apiSicred)
 	{
-		$this->requestSicred = $requestSicred;
+		$this->apiSicred = $apiSicred;
 	}
 
 	public function simular()
@@ -35,8 +33,8 @@ class SimulacaoService
 			'prazoMin' => 0,
 			'prazoMax' => 0
 		];
-
-		$response = $this->requestSicred->simular($parms);
+		// $response = $this->apiSicred->exibeSimulacao();
+		$response = $this->apiSicred->novaSimulacao($parms);
 
 		return $response;
 	}
