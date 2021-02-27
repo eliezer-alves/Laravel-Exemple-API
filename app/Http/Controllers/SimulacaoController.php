@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use App\Http\Requests\SimulacaoRequest;
 use App\Services\SimulacaoService;
 
 class SimulacaoController extends Controller
@@ -13,14 +14,26 @@ class SimulacaoController extends Controller
     {
         $this->simulacaoService = $simulacaoService;
     }
+
     /**
-     * Handle the incoming request.
+     * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\SimulacaoRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function store(SimulacaoRequest $request)
     {
-        return $this->simulacaoService->simular($request);
+        return $this->simulacaoService->store($request->all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $idSimulacao
+     * @return \Illuminate\Http\Response
+     */
+    public function show($idCliente)
+    {
+        return $this->simulacaoService->show($idCliente);
     }
 }

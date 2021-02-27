@@ -22,31 +22,45 @@ class ApiSicredService implements ApiSicredServiceInterface
 
 	public function novaSessao()
 	{
-		$form = [
-			'grant_type' => $this->clientSicredRepository->grant_type,
-			'username' => $this->clientSicredRepository->username,
-			'password' => $this->clientSicredRepository->password,
-			'client_id' => $this->clientSicredRepository->client_id,
-			'client_secret' => $this->clientSicredRepository->client_secret,
-			'scope' => $this->clientSicredRepository->scope,
-		];
 		$url = $this->urls->base_url . $this->urls->athentication_url;
-		$response = Http::asForm()->post($url, $form);
+		$response = Http::asForm()->post($url, $this->clientSicredRepository->toArray());
 
 		$this->accessToken = $response['access_token'];
 	}
 
-	public function novaSimulacao($parms)
+	public function novaSimulacao($request)
 	{
 		$this->novaSessao();
 		$url = $this->urls->base_url . $this->urls->simulacao_url . 'simular';
+		$parms = [
+			'empresa' => '01',
+			'agencia' => '0001',
+			'cpf' => $request['cpf'],
+			'lojista' => '000002',
+			'loja' => '0001',
+			'dataInicio' => '2021-02-26',
+			'dataPrimeiroVencimento' => $request['dataPrimeiroVencimento'],
+			'produto' => '000080',
+			'plano' => '0054',
+			'prazo' => $request['prazo'],
+			'valorSolicitado' => $request['valorSolicitado'],
+			'valorParcela' => 0,
+			'valorSeguro' => 0,
+			'taxa' => 9.99,
+			'prazoMin' => 0,
+			'prazoMax' => 0
+		];
 		$response = Http::withToken($this->accessToken)->post($url, $parms);
 
-		return $response;
+		return response($response->body(), $response->status());
 	}
 
-	public function exibeSimulacao()
+	public function exibeSimulacao($idSimulacao)
 	{
-		return $this->clientSicredRepository;
+		$this->novaSessao();
+		$url = $this->urls->base_url . $this->urls->simulacao_url . '01/' . $idSimulacao . '/detalhe';
+
+		$response = Http::withToken($this->accessToken)->get($url);
+		return response($response->body(), $response->status());
 	}
 }

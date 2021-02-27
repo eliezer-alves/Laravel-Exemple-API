@@ -8,5 +8,5 @@ interface ApiSicredServiceInterface
 
 	public function novaSimulacao(array $parms);
 
-	public function exibeSimulacao();
+	public function exibeSimulacao(int $idSimulacao);
 }

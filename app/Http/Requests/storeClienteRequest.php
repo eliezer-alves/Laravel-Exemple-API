@@ -43,6 +43,11 @@ class StoreClienteRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the error messages validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
