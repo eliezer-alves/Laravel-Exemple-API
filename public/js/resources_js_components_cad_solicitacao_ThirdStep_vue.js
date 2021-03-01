@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_cad_solicitacao_SecondStep_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_cad_solicitacao_ThirdStep_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SideBar.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************!*\
@@ -332,10 +332,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -344,6 +344,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1208,10 +1213,10 @@ component.options.__file = "resources/js/components/Solicitacao.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/SecondStep.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/SecondStep.vue ***!
-  \****************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/ThirdStep.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/ThirdStep.vue ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1219,11 +1224,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=template&id=17dc1fdd& */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd&");
-/* harmony import */ var _SecondStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ThirdStep.vue?vue&type=template&id=26ad8534& */ "./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534&");
+/* harmony import */ var _ThirdStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThirdStep.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2 */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2");
-/* harmony import */ var _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -1232,9 +1235,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _SecondStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__.render,
-  _SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _ThirdStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -1242,13 +1245,9 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   
 )
 
-/* custom blocks */
-;
-if (typeof (_SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default()) === 'function') _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default()(component)
-
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/cad.solicitacao/SecondStep.vue"
+component.options.__file = "resources/js/components/cad.solicitacao/ThirdStep.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -1285,10 +1284,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1296,8 +1295,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SecondStep.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ThirdStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ThirdStep.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ThirdStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -1348,29 +1347,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2":
-/*!*****************************************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2 ***!
-  \*****************************************************************************************************************/
-/***/ (() => {
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534& ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SecondStep.vue?vue&type=template&id=17dc1fdd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ThirdStep_vue_vue_type_template_id_26ad8534___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ThirdStep.vue?vue&type=template&id=26ad8534& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534&");
 
 
 /***/ }),
@@ -1902,10 +1891,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd&":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd& ***!
-  \**************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=template&id=26ad8534& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1919,263 +1908,868 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4" }, [
-      _c("div", { staticClass: "my-2" }, [
+    _c("div", { staticClass: "p-4 h-6" }, [
+      _c("div", { staticClass: "my-1" }, [
         _c(
           "div",
           {
             staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
+              "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
           },
-          [_vm._v("\n        Dados da Empresa\n      ")]
+          [_vm._v("\n        Dados Representante Legal\n      ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "razao_social" } }, [
-                    _vm._v("Razão Social")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "razao_social",
-                      type: "text",
-                      placeholder: "Razão Social"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "cnpj" } }, [_vm._v("CNPJ")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "##.###.###/####-##",
-                        expression: "'##.###.###/####-##'"
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "nome_representante" } }, [
+                      _vm._v("Nome")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "nome_representante",
+                        placeholder: "Nome do Representante"
                       }
-                    ],
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "cnpj", placeholder: "##.###.###/####-##" }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "nome_fantasia" } }, [
-                    _vm._v("Nome Fantasia")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cpf_representante" } }, [
+                      _vm._v("CPF")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "nome_fantasia",
-                      type: "text",
-                      placeholder: "Nome Fantasia"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "inscricao_estadual" } }, [
-                    _vm._v("Inscrição Estadual")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "###.###.###-##",
+                          expression: "'###.###.###-##'"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cpf_representante", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "rg_representante" } }, [
+                      _vm._v("RG")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "rg_representante", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [_c("label", { attrs: { for: "sexo" } }, [_vm._v("Sexo")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
                       {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "##.###.####-#",
-                        expression: "'##.###.####-#'"
-                      }
-                    ],
+                        staticClass:
+                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                        attrs: { id: "sexo", name: "sexo" }
+                      },
+                      [
+                        _c("option", { domProps: { value: "M" } }, [
+                          _vm._v("MASCULINO")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "F" } }, [
+                          _vm._v("FEMININO")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cpf_representante" } }, [
+                      _vm._v("Profissão")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cpf_representante", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "estado_civil" } }, [
+                      _vm._v("Estado Civil")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "estado_civil", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "nome_mae" } }, [
+                      _vm._v("Nome da Mãe")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "nome_mae", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
+          },
+          [_vm._v("\n        Endereço/Contato\n      ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "id_tipo_logradouro" } }, [
+                      _vm._v("Tipo Logradouro")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                        attrs: {
+                          id: "id_tipo_logradouro",
+                          name: "id_tipo_logradouro"
+                        }
+                      },
+                      [
+                        _c("option", { domProps: { value: 1 } }, [
+                          _vm._v("RUA")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 2 } }, [
+                          _vm._v("AVENIDA")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 3 } }, [
+                          _vm._v("PRACA")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "logradouro" } }, [
+                      _vm._v("Logradouro")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "logradouro", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "numero" } }, [
+                      _vm._v("Número")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "numero", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "complemento" } }, [
+                      _vm._v("Complemento")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "complemento", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [_c("label", { attrs: { for: "cep" } }, [_vm._v("CEP")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "#####-###",
+                          expression: "'#####-###'"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cep" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "bairro" } }, [
+                      _vm._v("Bairro")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "bairro", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cidade" } }, [
+                      _vm._v("Cidade")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cidade", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "uf_representante" } }, [
+                      _vm._v("UF")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                        attrs: {
+                          id: "uf_representante",
+                          name: "uf_representante"
+                        }
+                      },
+                      [
+                        _c("option", { domProps: { value: "MG" } }, [
+                          _vm._v("Minas Gerais")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "SP" } }, [
+                          _vm._v("São Paulo")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "ES" } }, [
+                          _vm._v("Espirito Santo")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "celular_representante" } }, [
+                      _vm._v("Telefone")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "(##)#####-####",
+                          expression: "'(##)#####-####'"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "celular_representante" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "email_representante" } }, [
+                      _vm._v("E-Mail")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "email_representante", type: "email" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c("div", { staticClass: "flex flex-col" }, [
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mt-3" },
+                    [
+                      _c("input", {
+                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                        attrs: {
+                          type: "checkbox",
+                          name: "politicamente_exposto"
+                        }
+                      }),
+                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                        _vm._v("Pessoa Politicamente Exposta")
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { attrs: { for: "cargo_politicamente_exposto" } },
+                      [_vm._v("Cargo")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cargo_politicamente_exposto", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c("div", { staticClass: "flex flex-col" }, [
+                _c("label", { staticClass: "inline-flex items-center mt-3" }, [
+                  _c("input", {
+                    staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
                     attrs: {
-                      id: "inscricao_estadual",
-                      placeholder: "##.###.####-#"
+                      type: "checkbox",
+                      name: "parente_politicamente_exposto"
                     }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "rendimento_mensal" } }, [
-                    _vm._v("Rendimento Mensal")
+                  }),
+                  _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                    _vm._v("Parente Politicamente Exposta")
                   ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "rendimento_mensal", type: "text" }
-                  })
-                ]
-              )
+                ])
+              ])
             ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "ramo_atividade" } }, [
-                    _vm._v("Ramo de Atividade")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "ramo_atividade", type: "text" }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+        [
           _c(
             "div",
             {
@@ -2190,150 +2784,12 @@ var render = function() {
                     "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                 },
                 [
-                  _c("label", { attrs: { for: "tipo_empresa" } }, [
-                    _vm._v("Tipo de Empresa")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "tipo_empresa", type: "text" }
-                  })
-                ]
-              )
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Endereço / Contato\n      ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "cep" } }, [_vm._v("CEP")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "#####-###",
-                        expression: "'#####-###'"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "cep",
-                      name: "cep",
-                      type: "text",
-                      placeholder: "#####-###"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "cnpj" } }, [_vm._v("UF")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                },
-                [
                   _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "cnpj", name: "cnpj" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "MG" } }, [
-                        _vm._v("Minas Gerais")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "RJ" } }, [
-                        _vm._v("Rio de Janeiro")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "SP" } }, [
-                        _vm._v("São Paulo")
-                      ])
-                    ]
+                    "label",
+                    { attrs: { for: "cargo_parente_politicamente_exposto" } },
+                    [_vm._v("Cargo")]
                   )
                 ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "cidade" } }, [_vm._v("Cidade")])]
               ),
               _vm._v(" "),
               _c(
@@ -2347,389 +2803,16 @@ var render = function() {
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: {
-                      id: "cidade",
-                      name: "cidade",
-                      type: "text",
-                      placeholder: "Cidade"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "bairro" } }, [_vm._v("Bairro")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "bairro",
-                      name: "bairro",
-                      type: "text",
-                      placeholder: "Bairro"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "tipo_logradouro" } }, [
-                    _vm._v("Tipo de Logradouro")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "tipo_logradouro", name: "tipo_logradouro" }
-                    },
-                    [
-                      _c("option", { domProps: { value: 1 } }, [_vm._v("Rua")]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: 2 } }, [
-                        _vm._v("Avenida")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: 3 } }, [
-                        _vm._v("Praça")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "logradouro" } }, [
-                    _vm._v("Logradouro")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "logradouro",
-                      name: "logradouro",
+                      id: "cargo_parente_politicamente_exposto",
                       type: "text"
                     }
                   })
                 ]
               )
             ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-1 md:col-span-1 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "numero" } }, [_vm._v("Número")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "numero", name: "numero", type: "text" }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "complemento" } }, [
-                    _vm._v("Complemento")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "complemento",
-                      name: "complemento",
-                      type: "text"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "celular" } }, [
-                    _vm._v("Telefone")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: ["(##) ####-####", "(##) #####-####"],
-                        expression: "['(##) ####-####', '(##) #####-####']"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "celular", name: "celular", type: "text" }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "email", name: "email", type: "email" }
-                  })
-                ]
-              )
-            ]
           )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Arquivos do Contrato Social\n      ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex lg:flex-row md:flex-row flex-col font-bold text-gray-600 text-xs leading-8 uppercase mx-2 mt-3"
-          },
-          [
-            _c("div", { staticClass: "self-center" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "w-56 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-teal-800 cursor-pointer hover:bg-teal-800 hover:text-white"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-8 h-8",
-                      attrs: {
-                        fill: "currentColor",
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "mt-2 text-base leading-normal" }, [
-                    _vm._v("Selecione o arquivo")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "hidden",
-                    attrs: {
-                      id: "contrato_social",
-                      name: "contrato_social",
-                      type: "file"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "lg:ml-5 md:ml-5 self-center" }, [
-              _c("span", { staticClass: "text-base leading-normal" }, [
-                _vm._v("\n            Nome do Arquivo Selecionado\n          ")
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-row-reverse" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
-            },
-            [_vm._v("\n          Remover\n        ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-            },
-            [_vm._v("\n          Novo Documento\n        ")]
-          )
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "my-2" }, [
         _c(
@@ -3512,44 +3595,39 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex p-2 mt-5" }, [
+      _c("div", { staticClass: "flex p-2 mt-4" }, [
         _c(
           "button",
           {
             staticClass:
-              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
           },
           [_vm._v("\n        Finalizar\n      ")]
         ),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass:
-              "flex-auto flex lg:flex-row-reverse md:flex-row-reverse"
-          },
+          { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
+            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
               _c(
                 "button",
                 {
                   staticClass:
-                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )
             ]),
             _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-                },
-                [_vm._v("\n            Retornar\n          ")]
-              )
-            ])
+            _c(
+              "button",
+              {
+                staticClass:
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+              },
+              [_vm._v("\n          Simular\n        ")]
+            )
           ],
           1
         )

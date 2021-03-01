@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_cad_solicitacao_FirstStep_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_cad_solicitacao_FouthStep_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SideBar.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************!*\
@@ -332,9 +332,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -344,6 +344,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -611,9 +681,9 @@ component.options.__file = "resources/js/components/Solicitacao.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/FirstStep.vue":
+/***/ "./resources/js/components/cad.solicitacao/FouthStep.vue":
 /*!***************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/FirstStep.vue ***!
+  !*** ./resources/js/components/cad.solicitacao/FouthStep.vue ***!
   \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -622,8 +692,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FirstStep.vue?vue&type=template&id=5dcb31af& */ "./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af&");
-/* harmony import */ var _FirstStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FirstStep.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FouthStep.vue?vue&type=template&id=4bb7673f& */ "./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f&");
+/* harmony import */ var _FouthStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FouthStep.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -633,9 +703,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _FirstStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__.render,
-  _FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _FouthStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -645,7 +715,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/cad.solicitacao/FirstStep.vue"
+component.options.__file = "resources/js/components/cad.solicitacao/FouthStep.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -682,9 +752,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -693,8 +763,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FirstStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FirstStep.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FirstStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FouthStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FouthStep.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FouthStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -745,19 +815,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af&":
+/***/ "./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f&":
 /*!**********************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af& ***!
+  !*** ./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f& ***!
   \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FirstStep_vue_vue_type_template_id_5dcb31af___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FirstStep.vue?vue&type=template&id=5dcb31af& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FouthStep_vue_vue_type_template_id_4bb7673f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FouthStep.vue?vue&type=template&id=4bb7673f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f&");
 
 
 /***/ }),
@@ -1289,9 +1359,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f&":
 /*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FirstStep.vue?vue&type=template&id=5dcb31af& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/FouthStep.vue?vue&type=template&id=4bb7673f& ***!
   \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1306,7 +1376,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4" }, [
+    _c("div", { staticClass: "p-4 h-6" }, [
       _c("div", { staticClass: "my-1" }, [
         _c(
           "div",
@@ -1314,24 +1384,18 @@ var render = function() {
             staticClass:
               "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
           },
-          [_vm._v("\n        Dados da Simulação\n      ")]
+          [_vm._v("\n        Dados Representante Legal\n      ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "flex lg:flex-row md:flex-row flex-col" }, [
-          _c("img", {
-            staticClass: "mx-auto lg:w-72 w-44 my-5",
-            attrs: {
-              src: "/images/undraw_Success_factors_re_ce93.svg",
-              alt: "Workflow"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
             _c(
               "div",
               {
                 staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -1342,7 +1406,7 @@ var render = function() {
                   },
                   [
                     _c("label", { attrs: { for: "valor_solicitado" } }, [
-                      _vm._v("Valor Solicitado")
+                      _vm._v("Valor Solicitado*")
                     ])
                   ]
                 ),
@@ -1355,33 +1419,9 @@ var render = function() {
                   },
                   [
                     _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.lazy",
-                          value: _vm.price,
-                          expression: "price",
-                          modifiers: { lazy: true }
-                        },
-                        {
-                          name: "money",
-                          rawName: "v-money",
-                          value: _vm.money,
-                          expression: "money"
-                        }
-                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "valor_solicitado",
-                        placeholder: "Nome da Empresa"
-                      },
-                      domProps: { value: _vm.price },
-                      on: {
-                        change: function($event) {
-                          _vm.price = $event.target.value
-                        }
-                      }
+                      attrs: { id: "valor_solicitado" }
                     })
                   ]
                 )
@@ -1392,7 +1432,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -1403,7 +1443,7 @@ var render = function() {
                   },
                   [
                     _c("label", { attrs: { for: "parcelas" } }, [
-                      _vm._v("Parcelas")
+                      _vm._v("Parcelas*")
                     ])
                   ]
                 ),
@@ -1418,88 +1458,285 @@ var render = function() {
                     _c("input", {
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "parcelas", type: "number", value: "10" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "data_geracao_proposta" } }, [
-                      _vm._v("Data da Geração")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "data_geracao_proposta", type: "date" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "primeiro_vencimento" } }, [
-                      _vm._v("1º Vencimento")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "primeiro_vencimento", type: "date" }
+                      attrs: { id: "parcelas", type: "text" }
                     })
                   ]
                 )
               ]
             )
-          ])
-        ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "bancos" } }, [
+                      _vm._v("Bancos")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                        attrs: { id: "banco", name: "banco" }
+                      },
+                      [
+                        _c("option", { domProps: { value: "0001" } }, [
+                          _vm._v("Banco do Brasil")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "0002" } }, [
+                          _vm._v("Bradesco")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "0003" } }, [
+                          _vm._v("Itau")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "forma_liberacao" } }, [
+                      _vm._v("Forma de Liberação")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                        attrs: {
+                          id: "forma_liberacao",
+                          name: "forma_liberacao"
+                        }
+                      },
+                      [
+                        _c("option", { domProps: { value: "1" } }, [
+                          _vm._v("TED")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "2" } }, [
+                          _vm._v("DOC")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: "3" } }, [
+                          _vm._v("PIX")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "agencia" } }, [
+                      _vm._v("Agência*")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "agencia" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "digito_agencia" } }, [
+                      _vm._v("Dígito Agência*")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "digito_agencia", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [_c("label", { attrs: { for: "conta" } }, [_vm._v("Conta*")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "conta" }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "digito_conta" } }, [
+                      _vm._v("Dígito Conta*")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "digito_conta", type: "text" }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [
@@ -1507,7 +1744,7 @@ var render = function() {
           "button",
           {
             staticClass:
-              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
           },
           [_vm._v("\n        Finalizar\n      ")]
         ),

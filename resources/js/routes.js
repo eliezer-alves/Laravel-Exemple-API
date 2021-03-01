@@ -1,5 +1,5 @@
 module.exports = [
-   
+
     {
         path: '/app/',
         component: () => import('./components/Home.vue')
@@ -43,6 +43,16 @@ module.exports = [
         path: '/app/solicitacao-2',
         name: 'solicitacao-2',
         component: () => import('./components/cad.solicitacao/SecondStep.vue')
+    },
+    {
+        path: '/app/solicitacao-3',
+        name: 'solicitacao-3',
+        component: () => import('./components/cad.solicitacao/ThirdStep.vue')
+    },
+    {
+        path: '/app/solicitacao-4',
+        name: 'solicitacao-4',
+        component: () => import('./components/cad.solicitacao/FouthStep.vue')
     },
     {
         path: '/app/atividade-comercial',
