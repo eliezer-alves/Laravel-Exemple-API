@@ -1955,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "mxtm3w6OTGMAbrWvRSZTaWKKWpCqv175XsyafW8B");
+params.append('client_secret', "Xz1zSrqlfIkvniiVT8wot2Pv2KRgWbXdFwScGWoB");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
@@ -2022,6 +2022,12 @@ module.exports = [{
   name: 'solicitacao-2',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_components_cad_solicitacao_SecondStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.solicitacao/SecondStep.vue */ "./resources/js/components/cad.solicitacao/SecondStep.vue"));
+  }
+}, {
+  path: '/app/solicitacao-3',
+  name: 'solicitacao-3',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_cad_solicitacao_ThirdStep_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/cad.solicitacao/ThirdStep.vue */ "./resources/js/components/cad.solicitacao/ThirdStep.vue"));
   }
 }, {
   path: '/app/atividade-comercial',
@@ -37539,7 +37545,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_cad_cliente_FirstStep_vue":1,"resources_js_components_cad_cliente_SecondStep_vue":1,"resources_js_components_cad_cliente_ThirdStep_vue":1,"resources_js_components_cad_solicitacao_FirstStep_vue":1,"resources_js_components_cad_solicitacao_SecondStep_vue":1,"resources_js_components_AtividadeComercial_vue":1,"resources_js_components_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_LoginAdmin_vue":1,"resources_js_components_cad_cliente_FirstStep_vue":1,"resources_js_components_cad_cliente_SecondStep_vue":1,"resources_js_components_cad_cliente_ThirdStep_vue":1,"resources_js_components_cad_solicitacao_FirstStep_vue":1,"resources_js_components_cad_solicitacao_SecondStep_vue":1,"resources_js_components_cad_solicitacao_ThirdStep_vue":1,"resources_js_components_AtividadeComercial_vue":1,"resources_js_components_NotFound_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

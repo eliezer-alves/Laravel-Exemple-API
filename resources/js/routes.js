@@ -45,6 +45,11 @@ module.exports = [
         component: () => import('./components/cad.solicitacao/SecondStep.vue')
     },
     {
+        path: '/app/solicitacao-3',
+        name: 'solicitacao-3',
+        component: () => import('./components/cad.solicitacao/ThirdStep.vue')
+    },
+    {
         path: '/app/atividade-comercial',
         name: 'atividade-comercial',
         component: () => import('./components/AtividadeComercial.vue')
