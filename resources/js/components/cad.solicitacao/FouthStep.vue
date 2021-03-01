@@ -6,7 +6,7 @@
           Dados Representante Legal
         </div>
 
-        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
+        <div class="grid lg:grid-cols-12 md:grid-cols-12">
           <div
             class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -38,8 +38,6 @@
               />
             </div>
           </div>
-        </div>
-        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
           <div
             class="lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -52,7 +50,7 @@
               <select
                 id="banco"
                 name="banco"
-                class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+                class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option :value="'0001'">Banco do Brasil</option>
                 <option :value="'0002'">Bradesco</option>
@@ -60,7 +58,6 @@
               </select>
             </div>
           </div>
-
           <div
             class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -73,7 +70,7 @@
               <select
                 id="forma_liberacao"
                 name="forma_liberacao"
-                class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+                class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option :value="'1'">TED</option>
                 <option :value="'2'">DOC</option>
@@ -81,8 +78,6 @@
               </select>
             </div>
           </div>
-        </div>
-        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
           <div
             class="lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -98,7 +93,6 @@
               />
             </div>
           </div>
-
           <div
             class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -115,8 +109,6 @@
               />
             </div>
           </div>
-        </div>
-        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
           <div
             class="lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
@@ -132,7 +124,6 @@
               />
             </div>
           </div>
-
           <div
             class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >

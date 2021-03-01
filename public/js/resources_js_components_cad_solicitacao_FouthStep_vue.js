@@ -514,15 +514,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1387,356 +1378,325 @@ var render = function() {
           [_vm._v("\n        Dados Representante Legal\n      ")]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "valor_solicitado" } }, [
+                    _vm._v("Valor Solicitado*")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "valor_solicitado" } }, [
-                      _vm._v("Valor Solicitado*")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "valor_solicitado" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "parcelas" } }, [
+                    _vm._v("Parcelas*")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "valor_solicitado" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "parcelas", type: "text" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [_c("label", { attrs: { for: "bancos" } }, [_vm._v("Bancos")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: { id: "banco", name: "banco" }
+                    },
+                    [
+                      _c("option", { domProps: { value: "0001" } }, [
+                        _vm._v("Banco do Brasil")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "0002" } }, [
+                        _vm._v("Bradesco")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "0003" } }, [
+                        _vm._v("Itau")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "forma_liberacao" } }, [
+                    _vm._v("Forma de Liberação")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: { id: "forma_liberacao", name: "forma_liberacao" }
+                    },
+                    [
+                      _c("option", { domProps: { value: "1" } }, [
+                        _vm._v("TED")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "2" } }, [
+                        _vm._v("DOC")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "3" } }, [
+                        _vm._v("PIX")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "agencia" } }, [
+                    _vm._v("Agência*")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "parcelas" } }, [
-                      _vm._v("Parcelas*")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "agencia" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "digito_agencia" } }, [
+                    _vm._v("Dígito Agência*")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "parcelas", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "digito_agencia", type: "text" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [_c("label", { attrs: { for: "conta" } }, [_vm._v("Conta*")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "bancos" } }, [
-                      _vm._v("Bancos")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "conta" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "digito_conta" } }, [
+                    _vm._v("Dígito Conta*")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                        attrs: { id: "banco", name: "banco" }
-                      },
-                      [
-                        _c("option", { domProps: { value: "0001" } }, [
-                          _vm._v("Banco do Brasil")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: "0002" } }, [
-                          _vm._v("Bradesco")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: "0003" } }, [
-                          _vm._v("Itau")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "forma_liberacao" } }, [
-                      _vm._v("Forma de Liberação")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                        attrs: {
-                          id: "forma_liberacao",
-                          name: "forma_liberacao"
-                        }
-                      },
-                      [
-                        _c("option", { domProps: { value: "1" } }, [
-                          _vm._v("TED")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: "2" } }, [
-                          _vm._v("DOC")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: "3" } }, [
-                          _vm._v("PIX")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "agencia" } }, [
-                      _vm._v("Agência*")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "agencia" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "digito_agencia" } }, [
-                      _vm._v("Dígito Agência*")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "digito_agencia", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [_c("label", { attrs: { for: "conta" } }, [_vm._v("Conta*")])]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "conta" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "digito_conta" } }, [
-                      _vm._v("Dígito Conta*")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "digito_conta", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "digito_conta", type: "text" }
+                  })
+                ]
+              )
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [

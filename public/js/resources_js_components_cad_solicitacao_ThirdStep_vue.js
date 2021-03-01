@@ -1051,10 +1051,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1919,309 +1915,307 @@ var render = function() {
           [_vm._v("\n        Dados Representante Legal\n      ")]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "nome_representante" } }, [
+                    _vm._v("Nome")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "nome_representante" } }, [
-                      _vm._v("Nome")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "nome_representante",
-                        placeholder: "Nome do Representante"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cpf_representante" } }, [
-                      _vm._v("CPF")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "mask",
-                          rawName: "v-mask",
-                          value: "###.###.###-##",
-                          expression: "'###.###.###-##'"
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "cpf_representante", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "rg_representante" } }, [
-                      _vm._v("RG")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "rg_representante", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [_c("label", { attrs: { for: "sexo" } }, [_vm._v("Sexo")])]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "nome_representante",
+                      placeholder: "Nome do Representante"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "cpf_representante" } }, [
+                    _vm._v("CPF")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    directives: [
                       {
-                        staticClass:
-                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                        attrs: { id: "sexo", name: "sexo" }
-                      },
-                      [
-                        _c("option", { domProps: { value: "M" } }, [
-                          _vm._v("MASCULINO")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: "F" } }, [
-                          _vm._v("FEMININO")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "###.###.###-##",
+                        expression: "'###.###.###-##'"
+                      }
+                    ],
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cpf_representante" } }, [
-                      _vm._v("Profissão")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "cpf_representante", type: "text" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "rg_representante" } }, [
+                    _vm._v("RG")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "cpf_representante", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "rg_representante", type: "text" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [_c("label", { attrs: { for: "sexo" } }, [_vm._v("Sexo")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: { id: "sexo", name: "sexo" }
+                    },
+                    [
+                      _c("option", { domProps: { value: "M" } }, [
+                        _vm._v("MASCULINO")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "F" } }, [
+                        _vm._v("FEMININO")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "cpf_representante" } }, [
+                    _vm._v("Profissão")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "estado_civil" } }, [
-                      _vm._v("Estado Civil")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "cpf_representante", type: "text" }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "estado_civil" } }, [
+                    _vm._v("Estado Civil")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: { id: "estado_civil", name: "estado_civil" }
+                    },
+                    [
+                      _c("option", { domProps: { value: "S" } }, [
+                        _vm._v("SOLTEIRO")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "C" } }, [
+                        _vm._v("CASADO")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "nome_mae" } }, [
+                    _vm._v("Nome da Mãe")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
                     staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "estado_civil", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "nome_mae" } }, [
-                      _vm._v("Nome da Mãe")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "nome_mae", type: "text" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "nome_mae", type: "text" }
+                  })
+                ]
+              )
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Endereço/Contato\n      ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
+        _c("div", { staticClass: "my-2" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
+            },
+            [_vm._v("\n          Endereço/Contato\n        ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
             _c(
               "div",
               {
@@ -2253,7 +2247,7 @@ var render = function() {
                       "select",
                       {
                         staticClass:
-                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                          "p-1 px-2 outline-none w-full text-gray-800",
                         attrs: {
                           id: "id_tipo_logradouro",
                           name: "id_tipo_logradouro"
@@ -2387,14 +2381,8 @@ var render = function() {
                   ]
                 )
               ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
@@ -2541,7 +2529,7 @@ var render = function() {
                       "select",
                       {
                         staticClass:
-                          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+                          "p-1 px-2 outline-none w-full text-gray-800",
                         attrs: {
                           id: "uf_representante",
                           name: "uf_representante"
@@ -2564,14 +2552,8 @@ var render = function() {
                   ]
                 )
               ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
@@ -2652,19 +2634,13 @@ var render = function() {
                   ]
                 )
               ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
                 staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c("div", { staticClass: "flex flex-col" }, [
@@ -2684,16 +2660,89 @@ var render = function() {
                       ])
                     ]
                   )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                          },
+                          [
+                            _c(
+                              "label",
+                              { attrs: { for: "cargo_politicamente_exposto" } },
+                              [_vm._v("Cargo")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white my-2 p-1 border border-gray-200 rounded"
+                          },
+                          [
+                            _c("input", {
+                              staticClass:
+                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              attrs: {
+                                id: "cargo_politicamente_exposto",
+                                type: "text"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c("div", { staticClass: "flex flex-col" }, [
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mt-3" },
+                    [
+                      _c("input", {
+                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                        attrs: {
+                          type: "checkbox",
+                          name: "parente_politicamente_exposto"
+                        }
+                      }),
+                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                        _vm._v("Parente Politicamente Exposta")
+                      ])
+                    ]
+                  )
                 ])
               ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-          [
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
@@ -2710,7 +2759,7 @@ var render = function() {
                   [
                     _c(
                       "label",
-                      { attrs: { for: "cargo_politicamente_exposto" } },
+                      { attrs: { for: "cargo_parente_politicamente_exposto" } },
                       [_vm._v("Cargo")]
                     )
                   ]
@@ -2726,93 +2775,18 @@ var render = function() {
                     _c("input", {
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "cargo_politicamente_exposto", type: "text" }
+                      attrs: {
+                        id: "cargo_parente_politicamente_exposto",
+                        type: "text"
+                      }
                     })
                   ]
                 )
               ]
             )
-          ]
-        )
+          ])
+        ])
       ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c("div", { staticClass: "flex flex-col" }, [
-                _c("label", { staticClass: "inline-flex items-center mt-3" }, [
-                  _c("input", {
-                    staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
-                    attrs: {
-                      type: "checkbox",
-                      name: "parente_politicamente_exposto"
-                    }
-                  }),
-                  _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                    _vm._v("Parente Politicamente Exposta")
-                  ])
-                ])
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col" },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c(
-                    "label",
-                    { attrs: { for: "cargo_parente_politicamente_exposto" } },
-                    [_vm._v("Cargo")]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "cargo_parente_politicamente_exposto",
-                      type: "text"
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        ]
-      ),
       _vm._v(" "),
       _c("div", { staticClass: "my-2" }, [
         _c(
@@ -3609,7 +3583,7 @@ var render = function() {
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
+            _c("router-link", { attrs: { to: { name: "solicitacao-4" } } }, [
               _c(
                 "button",
                 {
