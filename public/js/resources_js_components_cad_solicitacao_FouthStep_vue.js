@@ -1058,283 +1058,301 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("side-bar", [
-    _c(
-      "div",
-      [
-        _c("div", { staticClass: "flex" }, [
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c("span", { staticClass: "text-center text-white w-full" }, [
+  return _c(
+    "div",
+    { staticClass: "container lg:w-8/12 mx-auto mt-16" },
+    [
+      _c("div", { staticClass: "flex" }, [
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c("span", { staticClass: "text-center text-white w-full" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-full",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        width: "24",
+                        height: "24"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d:
+                            "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Simulação")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c("span", { staticClass: "text-center text-white w-full" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-full",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d:
+                            "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Empresa")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-center text-gray-600 w-full" },
+                  [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full",
+                        staticClass: "w-full fill-current",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
                           viewBox: "0 0 24 24",
-                          stroke: "currentColor",
                           width: "24",
                           height: "24"
                         }
                       },
                       [
                         _c("path", {
+                          staticClass: "heroicon-ui",
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
                             d:
-                              "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                              "M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"
                           }
                         })
                       ]
                     )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Simulação")
-            ])
+                  ]
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "100%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c("span", { staticClass: "text-center text-white w-full" }, [
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("\n          Representante Legal\n        ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-center text-gray-600 w-full" },
+                  [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full",
+                        staticClass: "w-full fill-current",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
                           viewBox: "0 0 24 24",
                           width: "24",
-                          height: "24",
-                          stroke: "currentColor"
+                          height: "24"
                         }
                       },
                       [
                         _c("path", {
+                          staticClass: "heroicon-ui",
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
                             d:
-                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                              "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
                           }
                         })
                       ]
                     )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Empresa")
-            ])
+                  ]
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "33%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "text-center text-gray-600 w-full" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-full fill-current",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 24 24",
-                            width: "24",
-                            height: "24"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            staticClass: "heroicon-ui",
-                            attrs: {
-                              d:
-                                "M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("\n          Representante Legal\n        ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "0%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "text-center text-gray-600 w-full" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-full fill-current",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 24 24",
-                            width: "24",
-                            height: "24"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            staticClass: "heroicon-ui",
-                            attrs: {
-                              d:
-                                "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Concluir")
-            ])
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Concluir")
           ])
-        ]),
-        _vm._v(" "),
-        _vm._t("default")
-      ],
-      2
-    )
-  ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "100%" }
+            })
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "33%" }
+            })
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "0%" }
+            })
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

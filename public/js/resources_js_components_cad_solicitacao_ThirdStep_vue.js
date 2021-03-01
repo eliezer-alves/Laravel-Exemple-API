@@ -745,6 +745,316 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1280,283 +1590,301 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("side-bar", [
-    _c(
-      "div",
-      [
-        _c("div", { staticClass: "flex" }, [
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c("span", { staticClass: "text-center text-white w-full" }, [
+  return _c(
+    "div",
+    { staticClass: "container lg:w-8/12 mx-auto mt-16" },
+    [
+      _c("div", { staticClass: "flex" }, [
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c("span", { staticClass: "text-center text-white w-full" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-full",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        width: "24",
+                        height: "24"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d:
+                            "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Simulação")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c("span", { staticClass: "text-center text-white w-full" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-full",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        width: "24",
+                        height: "24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d:
+                            "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Empresa")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-center text-gray-600 w-full" },
+                  [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full",
+                        staticClass: "w-full fill-current",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
                           viewBox: "0 0 24 24",
-                          stroke: "currentColor",
                           width: "24",
                           height: "24"
                         }
                       },
                       [
                         _c("path", {
+                          staticClass: "heroicon-ui",
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
                             d:
-                              "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                              "M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"
                           }
                         })
                       ]
                     )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Simulação")
-            ])
+                  ]
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "100%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c("span", { staticClass: "text-center text-white w-full" }, [
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("\n          Representante Legal\n        ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/4" }, [
+          _c("div", { staticClass: "relative mb-2" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "text-center text-gray-600 w-full" },
+                  [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full",
+                        staticClass: "w-full fill-current",
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
                           viewBox: "0 0 24 24",
                           width: "24",
-                          height: "24",
-                          stroke: "currentColor"
+                          height: "24"
                         }
                       },
                       [
                         _c("path", {
+                          staticClass: "heroicon-ui",
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
                             d:
-                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                              "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
                           }
                         })
                       ]
                     )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Empresa")
-            ])
+                  ]
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "33%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "text-center text-gray-600 w-full" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-full fill-current",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 24 24",
-                            width: "24",
-                            height: "24"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            staticClass: "heroicon-ui",
-                            attrs: {
-                              d:
-                                "M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("\n          Representante Legal\n        ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/4" }, [
-            _c("div", { staticClass: "relative mb-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "absolute flex align-center items-center align-middle content-center",
-                  staticStyle: {
-                    width: "calc(100% - 2.5rem - 1rem)",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "w-0 bg-teal-500 py-1 rounded",
-                        staticStyle: { width: "0%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    { staticClass: "text-center text-gray-600 w-full" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-full fill-current",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 24 24",
-                            width: "24",
-                            height: "24"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            staticClass: "heroicon-ui",
-                            attrs: {
-                              d:
-                                "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-              _vm._v("Concluir")
-            ])
+          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+            _vm._v("Concluir")
           ])
-        ]),
-        _vm._v(" "),
-        _vm._t("default")
-      ],
-      2
-    )
-  ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "100%" }
+            })
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "33%" }
+            })
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "absolute flex align-center items-center align-middle content-center",
+        staticStyle: {
+          width: "calc(100% - 2.5rem - 1rem)",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+          },
+          [
+            _c("div", {
+              staticClass: "w-0 bg-teal-500 py-1 rounded",
+              staticStyle: { width: "0%" }
+            })
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -2485,6 +2813,787 @@ var render = function() {
           )
         ]
       ),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-2" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
+          },
+          [_vm._v("\n        Sócios (incluir o representante legal)\n      ")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "nome_representante" } }, [
+                    _vm._v("Nome (Representante)")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "nome_representante",
+                      name: "nome_representante",
+                      type: "text",
+                      placeholder: "Nome completo"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "cpf_representante" } }, [
+                    _vm._v("CPF Representante")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "###.###.###-##",
+                        expression: "'###.###.###-##'"
+                      }
+                    ],
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "cpf_representante",
+                      name: "cpf_representante",
+                      type: "text",
+                      placeholder: "###.###.###-##"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "uf_rg_representante" } }, [
+                    _vm._v("UF do RG")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "uf_rg_representante",
+                        name: "uf_rg_representante"
+                      }
+                    },
+                    [
+                      _c("option", { domProps: { value: "MG" } }, [
+                        _vm._v("Minas Gerais")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "RJ" } }, [
+                        _vm._v("Rio de Janeiro")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { domProps: { value: "SP" } }, [
+                        _vm._v("São Paulo")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "numero_rg_representante" } }, [
+                    _vm._v("Nº do RG")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "numero_rg_representante",
+                      name: "numero_rg_representante",
+                      type: "text"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "sexo_representante" } }, [
+                    _vm._v("Sexo")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "sexo_representante",
+                        name: "sexo_representante"
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "M" } }, [
+                        _vm._v("Masculino")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "F" } }, [
+                        _vm._v("Feminino")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c(
+                    "label",
+                    { attrs: { for: "estado_civil_representante" } },
+                    [_vm._v("Estado Cívil")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "estado_civil_representante",
+                        name: "estado_civil_representante"
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Casado")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Solteiro")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "email_representante" } }, [
+                    _vm._v("E-mail")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "email_representante",
+                      name: "email_representante",
+                      type: "text",
+                      placeholder: "mail@brasilcard.net"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "telefone_representante" } }, [
+                    _vm._v("Telefone")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: ["(##) ####-####", "(##) #####-####"],
+                        expression: "['(##) ####-####', '(##) #####-####']"
+                      }
+                    ],
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "telefone_representante",
+                      name: "telefone_representante",
+                      type: "text",
+                      placeholder: "###.###.###-##"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cep_representante" } }, [
+                      _vm._v("CEP")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "#####-###",
+                          expression: "'#####-###'"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "cep_representante",
+                        name: "cep_representante",
+                        type: "text",
+                        placeholder: "#####-###"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "uf_representante" } }, [
+                      _vm._v("UF")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "p-1 px-2 outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "uf_representante",
+                          name: "uf_representante"
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "MG" } }, [
+                          _vm._v("Minas Gerais")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "RJ" } }, [
+                          _vm._v("Rio de Janeiro")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "SP" } }, [
+                          _vm._v("São Paulo")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cidade_representante" } }, [
+                      _vm._v("Cidade")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "cidade_representante",
+                        name: "cidade_representante",
+                        type: "text",
+                        placeholder: "Cidade"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "bairro_representante" } }, [
+                      _vm._v("Bairro")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "bairro_representante",
+                        name: "bairro_representante",
+                        type: "text",
+                        placeholder: "Bairro"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { attrs: { for: "tipo_logradouro_representante" } },
+                      [_vm._v("Tipo de Logradouro")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        staticClass:
+                          "p-1 px-2 outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "tipo_logradouro_representante",
+                          name: "tipo_logradouro_representante"
+                        }
+                      },
+                      [
+                        _c("option", { domProps: { value: 1 } }, [
+                          _vm._v("Rua")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 2 } }, [
+                          _vm._v("Avenida")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 3 } }, [
+                          _vm._v("Praça")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { attrs: { for: "logradouro_representante" } },
+                      [_vm._v("Logradouro")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "logradouro_representante",
+                        name: "logradouro_representante",
+                        type: "text"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "numero_representante" } }, [
+                      _vm._v("Número")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "numero_representante",
+                        name: "numero_representante",
+                        type: "text"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { attrs: { for: "complemento_representante" } },
+                      [_vm._v("Complemento")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "complemento_representante",
+                        name: "complemento_representante",
+                        type: "text"
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [
         _c(

@@ -31,7 +31,8 @@ Route::middleware('auth:api')->namespace('cliente')->group(function () {
 	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
 
-Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {
+// Route::middleware('auth:api')->namespace('atividade_comercial')->group(function () {
+Route::namespace('atividade_comercial')->group(function () {
 	Route::get('/atividade_comercial', [AtividadeComercialController::class, 'index']);
 	Route::get('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
 	Route::middleware('auth:api')->post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
