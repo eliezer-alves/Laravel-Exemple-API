@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use App\Services\Contracts\{
+    ApiSicredServiceInterface
+};
+use App\Services\{
+    ApiSicredService
+};
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,23 +21,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Repositories\Contracts\AbstractRepositoryInterface',
-            'App\Repositories\Eloquent\AbstractRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\Contracts\ClienteRepositoryInterface',
-            'App\Repositories\Eloquent\ClienteRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\Contracts\AtividadeComercialRepositoryInterface',
-            'App\Repositories\Eloquent\AtividadeComercialRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\Contracts\UserRepositoryInterface',
-            'App\Repositories\Eloquent\UserRepository'
+            ApiSicredServiceInterface::class,
+            ApiSicredService::class
         );
     }
 

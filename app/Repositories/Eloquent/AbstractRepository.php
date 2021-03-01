@@ -23,6 +23,11 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 		return $this->model->findOrFail($id);
 	}
 
+	public function firstWhere(string $column, $value)
+	{
+		return $this->model->firstWhere($column, $value);
+	}
+
 	public function create($data)
 	{
 		$entity = $this->model->create($data);

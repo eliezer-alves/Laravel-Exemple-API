@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ClienteService;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
+use App\Services\ClienteService;
 
 class ClienteController extends Controller
 {
-    protected $service;
+    protected $clienteService;
 
-    public function __construct(ClienteService $service)
+    public function __construct(ClienteService $clienteService)
     {
-        $this->service = $service;
+        $this->clienteService = $clienteService;
     }
 
 
@@ -24,7 +24,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return $this->service->all();
+        return $this->clienteService->all();
     }
 
     /**
@@ -35,7 +35,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        return $this->service->create($request);
+        return $this->clienteService->create($request);
     }
 
     /**
@@ -46,7 +46,7 @@ class ClienteController extends Controller
      */
     public function show($idCliente)
     {
-        return $this->service->findOrFail($idCliente);
+        return $this->clienteService->findOrFail($idCliente);
     }
 
     /**
@@ -58,7 +58,7 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, $idCliente)
     {
-        return $this->service->update($request, $idCliente);
+        return $this->clienteService->update($request, $idCliente);
     }
 
     /**
@@ -69,6 +69,6 @@ class ClienteController extends Controller
      */
     public function destroy($idCliente)
     {
-        return $this->service->delete($idCliente);
+        return $this->clienteService->delete($idCliente);
     }
 }

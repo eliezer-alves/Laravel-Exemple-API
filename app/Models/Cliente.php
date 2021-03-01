@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\AtividadeComercial;
+
 class Cliente extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $table = 'cad_cliente';
-    protected $primaryKey =  'id_cliente';
-    public $timestamps = false;
+	protected $table = 'cad_cliente';
+	protected $primaryKey =  'id_cliente';
+	public $timestamps = false;
 
-    protected $hidden = [
-    	'senha'
-    ];
+	protected $hidden = [
+		'senha'
+	];
 
-    protected $fillable = [
+	protected $fillable = [
 		'nome',
 		'cpf',
 		'rg',
@@ -44,20 +46,20 @@ class Cliente extends Model
 		'createdAt',
 		'updatedAt',
 		'deletedAt'
-    ];
+	];
 
-    public function solicitacaoes()
-    {
-        return $this->hasMany(Solicitacao::class);
-    }
+	public function solicitacaoes()
+	{
+		return $this->hasMany(Solicitacao::class);
+	}
 
-    public function propostas()
-    {
-        return $this->hasMany(Proposta::class);
-    }
+	public function propostas()
+	{
+		return $this->hasMany(Proposta::class);
+	}
 
-    public function ramo_atividade()
-    {
-    	return $this->beloongsTo(RamoAtividade::class, 'id_atividade_comercial');
-    }
+	public function atividadeComercial()
+	{
+		return $this->beloongsTo(AtividadeComercial::class, 'id_atividade_comercial');
+	}
 }

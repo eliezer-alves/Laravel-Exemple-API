@@ -4,34 +4,32 @@ namespace App\Services;
 
 use App\Repositories\Contracts\ClienteRepositoryInterface;
 use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Http\Requests\StoreClienteRequest;
-use App\Http\Requests\UpdateClienteRequest;
 use Illuminate\Support\Facades\Hash;
 
 
 class ClienteService
 {
 
-    protected $repository;
+    protected $clienteRepository;
     protected $userRepository;
 
-    public function __construct(ClienteRepositoryInterface $repository, UserRepositoryInterface $userRepository)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, UserRepositoryInterface $userRepository)
     {
-        $this->repository = $repository;
+        $this->clienteRepository = $clienteRepository;
         $this->userRepository = $userRepository;
     }
 
     public function all()
     {
-        return $this->repository->all();
+        return $this->clienteRepository->all();
     }
 
-    public function create(StoreClienteRequest $request)
+    public function create($request)
     {
         $request = _normalizeRequest($request->all());
         $request['senha'] = Hash::make($request['senha']);
 
-        $cliente = $this->repository->create($request);
+        $cliente = $this->clienteRepository->create($request);
 
         if (!$cliente->id_cliente)
             return $cliente;
@@ -50,18 +48,18 @@ class ClienteService
 
     public function findOrFail($idCliente)
     {
-        return $this->repository->findOrFail($idCliente);
+        return $this->clienteRepository->findOrFail($idCliente);
     }
 
-    public function update(UpdateClienteRequest $request, $idCliente)
+    public function update($request, $idCliente)
     {
         $request = _normalizeRequest($request->all());
 
-        return $this->repository->update($request, $idCliente);
+        return $this->clienteRepository->update($request, $idCliente);
     }
 
     public function delete($idCliente)
     {
-        return $this->repository->delete($idCliente);
+        return $this->clienteRepository->delete($idCliente);
     }
 }

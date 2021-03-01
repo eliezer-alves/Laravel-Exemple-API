@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AtividadeComercialController;
+use App\Http\Controllers\SimulacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,9 @@ Route::namespace('atividade_comercial')->group(function () {
 	Route::middleware('auth:api')->post('/atividade_comercial', [AtividadeComercialController::class, 'store']);
 	Route::middleware('auth:api')->put('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);
 	Route::middleware('auth:api')->delete('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
+});
+
+Route::middleware('auth:api')->namespace('simulacao')->group(function () {
+	Route::post('/simulacao', [SimulacaoController::class, 'store']);
+	Route::get('/simulacao/{id_simulacao}', [SimulacaoController::class, 'show']);
 });
