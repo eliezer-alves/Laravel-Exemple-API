@@ -28,7 +28,7 @@ class ClientSicredFactory extends Factory
             'password' => 'MASTER123',
             'client_id' => 'sicred-client',
             'client_secret' => '49e8a585-3785-42ca-b4da-a10b6300776f',
-            'scope' => 'sicred.usuario',
+            'scope' => 'sicred.usuario offline_access',
         ];
     }
 }

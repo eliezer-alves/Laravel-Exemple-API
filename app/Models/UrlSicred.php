@@ -20,6 +20,7 @@ class UrlSicred extends Model
         'proposta_url',
         'proposta_v2_url',
         'contrato_url',
+        'dominios_url',
         'id_client_sicred'
     ];
 

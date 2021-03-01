@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AtividadeComercialController;
 use App\Http\Controllers\SimulacaoController;
+use App\Http\Controllers\PropostaController;
+use App\Http\Controllers\DominiosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +45,11 @@ Route::middleware('auth:api')->namespace('simulacao')->group(function () {
 	Route::post('/simulacao', [SimulacaoController::class, 'store']);
 	Route::get('/simulacao/{id_simulacao}', [SimulacaoController::class, 'show']);
 });
+
+Route::middleware('auth:api')->namespace('proposta')->group(function () {
+	Route::post('/proposta', [PropostaController::class, 'novaProposta']);
+	Route::get('/proposta/{numero_proposta}', [PropostaController::class, 'exibeProposta']);
+	Route::get('/simulacao/cliente', [PropostaController::class, 'novaProposta']);
+});
+
+Route::middleware('auth:api')->get('/dominios', [DominiosController::class, '__invoke']);

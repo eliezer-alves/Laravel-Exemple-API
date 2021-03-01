@@ -32,8 +32,8 @@ class SimulacaoController extends Controller
      * @param  int  $idSimulacao
      * @return \Illuminate\Http\Response
      */
-    public function show($idCliente)
+    public function show($idSimulacao)
     {
-        return $this->simulacaoService->show($idCliente);
+        return $this->simulacaoService->show($idSimulacao);
     }
 }

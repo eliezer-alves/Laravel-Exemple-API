@@ -40,7 +40,7 @@ class SimulacaoRequest extends FormRequest
     {
         return [
             'cpf.required' => 'O campo CPF é obrigatório.',
-            'cpf.regex' => 'O campo CPF acita somente caracteres do tipo numérico.',
+            'cpf.regex' => 'O campo CPF aceita somente caracteres do tipo numérico.',
 
             'dataPrimeiroVencimento.required' => 'O campo Data Primeiro Vencimento é obrigatório',
             'dataPrimeiroVencimento.date' => 'O campo Data Primeiro Vencimento tem que ser do tipo data.',

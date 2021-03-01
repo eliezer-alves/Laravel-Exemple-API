@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NovaPropostaRequest;
+use App\Services\PropostaService;
+
 use Illuminate\Http\Request;
 
 class PropostaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $propostaService;
+
+    public function __construct(PropostaService $propostaService)
     {
-        //
+        $this->propostaService = $propostaService;
     }
 
     /**
@@ -22,20 +22,20 @@ class PropostaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function novaProposta(NovaPropostaRequest $request)
     {
-        //
+        return $this->propostaService->novaProposta($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $numeroProposta
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function exibeProposta($numeroProposta)
     {
-        //
+        return $this->propostaService->exibeProposta($numeroProposta);
     }
 
     /**
