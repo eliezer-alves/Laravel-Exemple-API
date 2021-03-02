@@ -9,7 +9,7 @@
           <img
             class="mx-auto lg:w-72 w-44 my-5"
             src="/images/undraw_Success_factors_re_ce93.svg"
-            alt="Workflow"
+            alt="Simulacao"
           />
           <div class="grid lg:grid-cols-12 md:grid-cols-12">
             <div
@@ -23,11 +23,19 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="valor_solicitado"
+                  name="valor_solicitado"
                   placeholder="Nome da Empresa"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  v-model.lazy="price"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input" 
+                  :value="$v.valor_solicitado.$model"
                   v-money="money"
+                  @blur="setValorSolicitado($event.target.value)"
                 />
+              </div>
+              <div class="text-red-500" v-if="!$v.valor_solicitado.required">
+                Field is required
+              </div>
+              <div class="text-red-500" v-if="!$v.valor_solicitado.minValue">
+                Valor minimo de {{$v.valor_solicitado.$params.minValue.min}}
               </div>
             </div>
             <div
@@ -41,10 +49,19 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="parcelas"
+                  name="parcelas"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="number"
-                  value="10"
+                  :value="parcelas"
+                  @blur="setParcelas($event.target.value)"
                 />
+              </div>
+              <div class="text-red-600" v-if="!$v.parcelas.between">
+                Parcelas entre {{ $v.parcelas.$params.between.min }} e
+                {{ $v.parcelas.$params.between.max }}
+              </div>
+              <div class="text-red-600" v-if="!$v.parcelas.required">
+                Parcela obrigatória
               </div>
             </div>
             <div
@@ -58,8 +75,10 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="data_geracao_proposta"
+                  name="data_geracao_proposta"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
+                  v-model="solicitacao.data_geracao_proposta"
                 />
               </div>
             </div>
@@ -74,8 +93,10 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="primeiro_vencimento"
+                  name="primeiro_vencimento"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
+                  v-model="solicitacao.primeiro_vencimento"
                 />
               </div>
             </div>
@@ -108,21 +129,48 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import { required, minValue, between } from "vuelidate/lib/validators";
+
 import Solicitacao from "../Solicitacao.vue";
+
 export default {
   components: { Solicitacao },
   data() {
     return {
-      price: 123.45,
       money: {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        suffix: "",
         precision: 2,
-        masked: false /* doesn't work with directive */,
       },
+      valor_solicitado: 0,
+      parcelas: 0,
     };
+  },
+  computed: {
+    ...mapGetters(["solicitacao", "errors"]),
+  },
+  validations: {
+    valor_solicitado: {
+      required,
+      minValue: minValue(1000000),
+    },
+    parcelas: {
+      required,
+      between: between(1, 36),
+    },
+  },
+  methods: {
+    setValorSolicitado(value) {
+      value = value.replace(/[^\d]+/g, '');
+      this.valor_solicitado = value;
+      this.$v.valor_solicitado.$touch();
+    },
+    setParcelas(value) {
+      this.parcelas = value;
+      this.$v.parcelas.$touch();
+    },
   },
 };
 </script>

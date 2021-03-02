@@ -150,18 +150,20 @@
           Finalizar
         </button>
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'solicitacao-2' }">
+          <router-link :to="{ name: 'finalizar' }">
             <button
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
             >
               Avançar
             </button>
           </router-link>
-          <button
-            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-          >
-            Simular
-          </button>
+          <router-link :to="{ name: 'solicitacao-3' }">
+            <button
+              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+            >
+              Retornar
+            </button>
+          </router-link>
         </div>
       </div>
     </div>

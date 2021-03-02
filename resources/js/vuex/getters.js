@@ -10,6 +10,9 @@ let getters = {
     },
     cliente: state => {
         return state.cliente
+    },
+    solicitacao: state => {
+        return state.solicitacao
     }
 }
 

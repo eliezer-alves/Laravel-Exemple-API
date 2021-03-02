@@ -1051,6 +1051,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3594,14 +3596,16 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-              },
-              [_vm._v("\n          Simular\n        ")]
-            )
+            _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                },
+                [_vm._v("\n            Retornar\n          ")]
+              )
+            ])
           ],
           1
         )

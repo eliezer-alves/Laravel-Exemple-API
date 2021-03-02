@@ -1,7 +1,8 @@
 let state = {
     errors: {},
     atividades: [],
-    cliente: {}
+    cliente: {},
+    solicitacao: {}
 }
 
 export default state
