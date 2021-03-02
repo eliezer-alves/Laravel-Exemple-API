@@ -482,6 +482,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -495,32 +500,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 2
+        precision: 0
       },
-      valor_solicitado: 0,
-      parcelas: 0
+      valor_solicitado: 10000.0,
+      parcelas: 1,
+      data_geracao_proposta: "",
+      primeiro_vencimento: ""
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["solicitacao", "errors"])),
   validations: {
     valor_solicitado: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(1000000)
+      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(10000.0)
     },
     parcelas: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
       between: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.between)(1, 36)
+    },
+    data_geracao_proposta: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     }
   },
   methods: {
     setValorSolicitado: function setValorSolicitado(value) {
-      value = value.replace(/[^\d]+/g, '');
+      value = value.replace(/[^\d]+/g, "");
       this.valor_solicitado = value;
       this.$v.valor_solicitado.$touch();
     },
     setParcelas: function setParcelas(value) {
       this.parcelas = value;
       this.$v.parcelas.$touch();
+    },
+    setDataGeracaoProposta: function setDataGeracaoProposta(value) {
+      this.data_geracao_proposta = value;
+      this.$v.data_geracao_proposta.$touch();
     }
   }
 });
@@ -1422,7 +1436,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.$v.valor_solicitado.$model },
                       on: {
-                        blur: function($event) {
+                        input: function($event) {
                           return _vm.setValorSolicitado($event.target.value)
                         }
                       }
@@ -1431,15 +1445,15 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 !_vm.$v.valor_solicitado.required
-                  ? _c("div", { staticClass: "text-red-500" }, [
-                      _vm._v("\n              Field is required\n            ")
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v("\n              Valor obrigatório\n            ")
                     ])
                   : _vm._e(),
                 _vm._v(" "),
                 !_vm.$v.valor_solicitado.minValue
-                  ? _c("div", { staticClass: "text-red-500" }, [
+                  ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
-                        "\n              Valor minimo de " +
+                        "\n              Valor minimo de R$" +
                           _vm._s(_vm.$v.valor_solicitado.$params.minValue.min) +
                           "\n            "
                       )
@@ -1485,7 +1499,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.parcelas },
                       on: {
-                        blur: function($event) {
+                        input: function($event) {
                           return _vm.setParcelas($event.target.value)
                         }
                       }
@@ -1543,14 +1557,6 @@ var render = function() {
                   },
                   [
                     _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.solicitacao.data_geracao_proposta,
-                          expression: "solicitacao.data_geracao_proposta"
-                        }
-                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: {
@@ -1558,24 +1564,27 @@ var render = function() {
                         name: "data_geracao_proposta",
                         type: "date"
                       },
-                      domProps: {
-                        value: _vm.solicitacao.data_geracao_proposta
-                      },
+                      domProps: { value: _vm.data_geracao_proposta },
                       on: {
                         input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.solicitacao,
-                            "data_geracao_proposta",
-                            $event.target.value
-                          )
+                          return _vm.setDataGeracaoProposta($event.target.value)
                         }
                       }
                     })
                   ]
-                )
+                ),
+                _vm._v(" "),
+                !_vm.$v.parcelas.between
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v(
+                        "\n              Parcelas entre " +
+                          _vm._s(_vm.$v.parcelas.$params.between.min) +
+                          " e\n              " +
+                          _vm._s(_vm.$v.parcelas.$params.between.max) +
+                          "\n            "
+                      )
+                    ])
+                  : _vm._e()
               ]
             ),
             _vm._v(" "),
@@ -1607,14 +1616,6 @@ var render = function() {
                   },
                   [
                     _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.solicitacao.primeiro_vencimento,
-                          expression: "solicitacao.primeiro_vencimento"
-                        }
-                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: {
@@ -1622,19 +1623,7 @@ var render = function() {
                         name: "primeiro_vencimento",
                         type: "date"
                       },
-                      domProps: { value: _vm.solicitacao.primeiro_vencimento },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.solicitacao,
-                            "primeiro_vencimento",
-                            $event.target.value
-                          )
-                        }
-                      }
+                      domProps: { value: _vm.primeiro_vencimento }
                     })
                   ]
                 )

@@ -1957,7 +1957,7 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "fNImd8lK4kGvyzzOsewlJnxnPpwdpEJ3e5LgMYJg");
+params.append('client_secret', "Xz1zSrqlfIkvniiVT8wot2Pv2KRgWbXdFwScGWoB");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };

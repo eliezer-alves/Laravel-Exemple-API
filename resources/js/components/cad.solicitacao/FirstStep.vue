@@ -25,17 +25,17 @@
                   id="valor_solicitado"
                   name="valor_solicitado"
                   placeholder="Nome da Empresa"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input" 
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input"
                   :value="$v.valor_solicitado.$model"
                   v-money="money"
-                  @blur="setValorSolicitado($event.target.value)"
+                  @input="setValorSolicitado($event.target.value)"
                 />
               </div>
-              <div class="text-red-500" v-if="!$v.valor_solicitado.required">
-                Field is required
+              <div class="text-red-600" v-if="!$v.valor_solicitado.required">
+                Valor obrigatório
               </div>
-              <div class="text-red-500" v-if="!$v.valor_solicitado.minValue">
-                Valor minimo de {{$v.valor_solicitado.$params.minValue.min}}
+              <div class="text-red-600" v-if="!$v.valor_solicitado.minValue">
+                Valor minimo de R${{ $v.valor_solicitado.$params.minValue.min }}
               </div>
             </div>
             <div
@@ -53,7 +53,7 @@
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="number"
                   :value="parcelas"
-                  @blur="setParcelas($event.target.value)"
+                  @input="setParcelas($event.target.value)"
                 />
               </div>
               <div class="text-red-600" v-if="!$v.parcelas.between">
@@ -78,8 +78,13 @@
                   name="data_geracao_proposta"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  v-model="solicitacao.data_geracao_proposta"
+                  :value="data_geracao_proposta"
+                  @input="setDataGeracaoProposta($event.target.value)"
                 />
+              </div>
+              <div class="text-red-600" v-if="!$v.parcelas.between">
+                Parcelas entre {{ $v.parcelas.$params.between.min }} e
+                {{ $v.parcelas.$params.between.max }}
               </div>
             </div>
             <div
@@ -96,7 +101,7 @@
                   name="primeiro_vencimento"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  v-model="solicitacao.primeiro_vencimento"
+                  :value="primeiro_vencimento"
                 />
               </div>
             </div>
@@ -142,10 +147,12 @@ export default {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 2,
+        precision: 0,
       },
-      valor_solicitado: 0,
-      parcelas: 0,
+      valor_solicitado: 10000.0,
+      parcelas: 1,
+      data_geracao_proposta: "",
+      primeiro_vencimento: "",
     };
   },
   computed: {
@@ -154,22 +161,29 @@ export default {
   validations: {
     valor_solicitado: {
       required,
-      minValue: minValue(1000000),
+      minValue: minValue(10000.0),
     },
     parcelas: {
       required,
       between: between(1, 36),
     },
+    data_geracao_proposta: {
+      required
+    }
   },
   methods: {
     setValorSolicitado(value) {
-      value = value.replace(/[^\d]+/g, '');
+      value = value.replace(/[^\d]+/g, "");
       this.valor_solicitado = value;
       this.$v.valor_solicitado.$touch();
     },
     setParcelas(value) {
       this.parcelas = value;
       this.$v.parcelas.$touch();
+    },
+    setDataGeracaoProposta(value) {
+      this.data_geracao_proposta = value;
+      this.$v.data_geracao_proposta.$touch();
     },
   },
 };
