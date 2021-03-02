@@ -1,4 +1,5 @@
-import { API_URL, header, params } from '../config/api'
+import axios from 'axios';
+import { API_URL, header, params, VIA_CEP } from '../config/api'
 
 let actions = {
     async login({ commit }, cliente) {
@@ -12,8 +13,8 @@ let actions = {
         return await axios.post(`${API_URL}/oauth/token`, params, header)
             .then(res => {
                 if (res.status === 200)
-                // commit('CREATE_CLIENTE', cliente)
-                return res;
+                    // commit('CREATE_CLIENTE', cliente)
+                    return res;
             }).catch(err => {
                 commit('GET_ERRORS', err.response.data)
                 // console.log(err.response.data.error);
@@ -68,6 +69,38 @@ let actions = {
             }).catch(err => {
                 commit('GET_ERRORS', err.response.data.errors)
             })
+    },
+
+    async getViaCep({ }, cep) {
+        const dadosEndereco = await axios.get(`https://${VIA_CEP}/${cep}/json`);
+
+        return dadosEndereco.data;
+    },
+
+
+    validaCPF({ }, value) {
+        let Soma = 0;
+        let Resto = 0;
+        let isInvalid = false;
+
+        for (let i = 1; i <= 9; i++)
+            Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+        Resto = (Soma * 10) % 11;
+
+        if (Resto == 10 || Resto == 11) Resto = 0;
+        if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;
+        else isInvalid = false;
+
+        Soma = 0;
+        for (let i = 1; i <= 10; i++)
+            Soma = Soma + parseInt(value.substring(i - 1, i)) * (12 - i);
+        Resto = (Soma * 10) % 11;
+
+        if (Resto == 10 || Resto == 11) Resto = 0;
+        if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;
+        else isInvalid = false;
+
+        return isInvalid;
     }
 }
 

@@ -1952,7 +1952,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "params": () => (/* binding */ params),
 /* harmony export */   "header": () => (/* binding */ header),
-/* harmony export */   "API_URL": () => (/* binding */ API_URL)
+/* harmony export */   "API_URL": () => (/* binding */ API_URL),
+/* harmony export */   "VIA_CEP": () => (/* binding */ VIA_CEP)
 /* harmony export */ });
 var params = new URLSearchParams();
 params.append('grant_type', "password");
@@ -1962,6 +1963,7 @@ var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
 var API_URL = "http://127.0.0.1:8000/";
+var VIA_CEP = "viacep.com.br/ws";
 
 
 /***/ }),
@@ -2065,8 +2067,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config/api */ "./resources/js/config/api.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config/api */ "./resources/js/config/api.js");
 
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2077,6 +2083,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 var actions = {
@@ -2094,10 +2101,10 @@ var actions = {
             case 3:
               cliente.username = _context.sent;
               console.log(cliente.username);
-              _config_api__WEBPACK_IMPORTED_MODULE_1__.params.append('username', cliente.username);
-              _config_api__WEBPACK_IMPORTED_MODULE_1__.params.append('password', cliente.password);
+              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('username', cliente.username);
+              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('password', cliente.password);
               _context.next = 9;
-              return axios.post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_1__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_1__.params, _config_api__WEBPACK_IMPORTED_MODULE_1__.header).then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_2__.params, _config_api__WEBPACK_IMPORTED_MODULE_2__.header).then(function (res) {
                 if (res.status === 200) // commit('CREATE_CLIENTE', cliente)
                   return res;
               })["catch"](function (err) {
@@ -2118,7 +2125,7 @@ var actions = {
   },
   createAtividade: function createAtividade(_ref2, atividade) {
     var commit = _ref2.commit;
-    return axios.post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
       commit('CREATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2126,7 +2133,7 @@ var actions = {
   },
   fetchAtividades: function fetchAtividades(_ref3) {
     var commit = _ref3.commit;
-    return axios.get('http://localhost:8000/api/atividade_comercial').then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://localhost:8000/api/atividade_comercial').then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2134,7 +2141,7 @@ var actions = {
   },
   updateAtividade: function updateAtividade(_ref4, atividade) {
     var commit = _ref4.commit;
-    return axios.put("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().put("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
       console.log(res);
       commit('UPDATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
@@ -2143,7 +2150,7 @@ var actions = {
   },
   deleteAtividade: function deleteAtividade(_ref5, atividade) {
     var commit = _ref5.commit;
-    return axios["delete"]("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().delete("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
       if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2160,7 +2167,7 @@ var actions = {
               console.log(cliente);
               cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
               console.log(cliente);
-              return _context2.abrupt("return", axios.post("http://localhost:8000/api/cliente", cliente).then(function (res) {
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost:8000/api/cliente", cliente).then(function (res) {
                 if (res.status === 200) commit('CREATE_CLIENTE', cliente);
                 return res;
               })["catch"](function (err) {
@@ -2174,6 +2181,55 @@ var actions = {
         }
       }, _callee2);
     }))();
+  },
+  getViaCep: function getViaCep(_ref7, cep) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var dadosEndereco;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _objectDestructuringEmpty(_ref7);
+
+              _context3.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.VIA_CEP, "/").concat(cep, "/json"));
+
+            case 3:
+              dadosEndereco = _context3.sent;
+              return _context3.abrupt("return", dadosEndereco.data);
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  validaCPF: function validaCPF(_ref8, value) {
+    _objectDestructuringEmpty(_ref8);
+
+    var Soma = 0;
+    var Resto = 0;
+    var isInvalid = false;
+
+    for (var i = 1; i <= 9; i++) {
+      Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+    }
+
+    Resto = Soma * 10 % 11;
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+    Soma = 0;
+
+    for (var _i = 1; _i <= 10; _i++) {
+      Soma = Soma + parseInt(value.substring(_i - 1, _i)) * (12 - _i);
+    }
+
+    Resto = Soma * 10 % 11;
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+    return isInvalid;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);

@@ -31,10 +31,20 @@
                   @input="setValorSolicitado($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.required
+                "
+              >
                 Valor obrigatório
               </div>
-              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue
+                "
+              >
                 Valor minimo de R${{ $v.valor_solicitado.$params.minValue.min }}
               </div>
             </div>
@@ -56,11 +66,17 @@
                   @input="setParcelas($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.between">
+              <div
+                class="text-red-600"
+                v-if="$v.parcelas.$dirty && !$v.parcelas.between"
+              >
                 Parcelas entre {{ $v.parcelas.$params.between.min }} e
                 {{ $v.parcelas.$params.between.max }}
               </div>
-              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.required">
+              <div
+                class="text-red-600"
+                v-if="$v.parcelas.$dirty && !$v.parcelas.required"
+              >
                 Parcela(s) obrigatória
               </div>
             </div>
@@ -82,7 +98,13 @@
                   @input="setDataGeracaoProposta($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.data_geracao_proposta.$dirty && !$v.data_geracao_proposta.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.data_geracao_proposta.$dirty &&
+                  !$v.data_geracao_proposta.required
+                "
+              >
                 Data obrigatória
               </div>
             </div>
@@ -104,7 +126,13 @@
                   @input="setPrimeiroVencimento($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.primeiro_vencimento.$dirty && !$v.primeiro_vencimento.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.primeiro_vencimento.$dirty &&
+                  !$v.primeiro_vencimento.required
+                "
+              >
                 Data obrigatória
               </div>
             </div>
@@ -138,7 +166,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required, minValue, between } from "vuelidate/lib/validators";
+import { required, minValue, between, numeric } from "vuelidate/lib/validators";
 
 import Solicitacao from "../Solicitacao.vue";
 
@@ -171,11 +199,11 @@ export default {
       between: between(1, 36),
     },
     data_geracao_proposta: {
-      required
+      required,
     },
     primeiro_vencimento: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setValorSolicitado(value) {

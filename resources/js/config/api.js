@@ -8,5 +8,6 @@ const header = {
 }
 
 const API_URL = process.env.MIX_API_URL;
+const VIA_CEP = process.env.MIX_VIA_CEP;
 
-export { params, header, API_URL };
+export { params, header, API_URL, VIA_CEP };
