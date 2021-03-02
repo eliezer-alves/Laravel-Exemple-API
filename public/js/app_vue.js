@@ -1957,11 +1957,11 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "Xz1zSrqlfIkvniiVT8wot2Pv2KRgWbXdFwScGWoB");
+params.append('client_secret', "INk4aB5uefHf2d6BzU1XRmrtEwymF3dZjOlNiPh6");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var API_URL = "http://127.0.0.1:8000";
+var API_URL = "http://127.0.0.1:8000/";
 
 
 /***/ }),
