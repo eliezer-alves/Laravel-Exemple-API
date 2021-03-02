@@ -106,10 +106,9 @@ class ApiSicredService implements ApiSicredServiceInterface
 
 	public function ufDominio()
 	{
-		$url = $this->urls->base_url . $this->urls->dominios_url . '/uf/' . $this->empresa;
-
+		$url = $this->urls->base_url . $this->urls->dominios_url . '/uf';
 		$response = Http::withToken(Session::get('accessToken'))->get($url);
-		return response($response->body(), $response->status());
+		return $response->json();
 	}
 
 	public function estadoCivilDominio()
@@ -117,6 +116,22 @@ class ApiSicredService implements ApiSicredServiceInterface
 		$url = $this->urls->base_url . $this->urls->dominios_url . '/EstadoCivil/' . $this->empresa;
 
 		$response = Http::withToken(Session::get('accessToken'))->get($url);
-		return response($response->body(), $response->status());
+		return $response->json();
+	}
+
+	public function profissaoDominio()
+	{
+		$url = $this->urls->base_url . $this->urls->dominios_url . '/profissao/' . $this->empresa;
+
+		$response = Http::withToken(Session::get('accessToken'))->get($url);
+		return $response->json();
+	}
+
+	public function bancoDominio()
+	{
+		$url = $this->urls->base_url . '/registroboletoapi/api/Banco';
+
+		$response = Http::withToken(Session::get('accessToken'))->get($url);
+		return $response->json();
 	}
 }

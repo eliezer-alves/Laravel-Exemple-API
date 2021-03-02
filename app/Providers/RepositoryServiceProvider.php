@@ -4,16 +4,18 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\{
 	AbstractRepositoryInterface,
-	ClienteRepositoryInterface,
 	AtividadeComercialRepositoryInterface,
+	ClienteRepositoryInterface,
 	ClientSicredRepositoryInterface,
+	TipoLogradouroRepositoryInterface,
 	UserRepositoryInterface
 };
 use App\Repositories\Eloquent\{
 	AbstractRepository,
-	ClienteRepository,
 	AtividadeComercialRepository,
+	ClienteRepository,
 	ClientSicredRepository,
+	TipoLogradouroRepository,
 	UserRepository
 };
 
@@ -46,6 +48,11 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(
 			ClientSicredRepositoryInterface::class,
 			ClientSicredRepository::class
+		);
+
+		$this->app->bind(
+			TipoLogradouroRepositoryInterface::class,
+			TipoLogradouroRepository::class
 		);
 
 		$this->app->bind(

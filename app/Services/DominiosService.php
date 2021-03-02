@@ -3,18 +3,28 @@
 namespace App\Services;
 
 use App\Services\Contracts\ApiSicredServiceInterface;
+use App\Repositories\Contracts\TipoLogradouroRepositoryInterface;
 
 class DominiosService
 {
     protected $apiSicred;
+    protected $tipoLogradouroRepository;
 
-    public function __construct(ApiSicredServiceInterface $apiSicred)
+    public function __construct(ApiSicredServiceInterface $apiSicred, TipoLogradouroRepositoryInterface $tipoLogradouroRepository)
     {
         $this->apiSicred = $apiSicred;
+        $this->tipoLogradouroRepository = $tipoLogradouroRepository;
     }
 
     public function dominios()
     {
-        return $this->apiSicred->estadoCivilDominio();
+        $dominios = [];
+        $dominios['uf'] = $this->apiSicred->ufDominio();
+        $dominios['estadoCivil'] = $this->apiSicred->estadoCivilDominio();
+        $dominios['profissao'] = $this->apiSicred->profissaoDominio();
+        $dominios['banco'] = $this->apiSicred->bancoDominio();
+        $dominios['tipoLogradouro'] = $this->tipoLogradouroRepository->all();
+
+        return $dominios;
     }
 }
