@@ -31,10 +31,20 @@
                   @input="setValorSolicitado($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.required
+                "
+              >
                 Valor obrigatório
               </div>
-              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue
+                "
+              >
                 Valor minimo de R${{ $v.valor_solicitado.$params.minValue.min }}
               </div>
             </div>
@@ -52,15 +62,21 @@
                   name="parcelas"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="number"
-                  :value="parcelas"
+                  :value="$v.parcelas.$model"
                   @input="setParcelas($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.between">
+              <div
+                class="text-red-600"
+                v-if="$v.parcelas.$dirty && !$v.parcelas.between"
+              >
                 Parcelas entre {{ $v.parcelas.$params.between.min }} e
                 {{ $v.parcelas.$params.between.max }}
               </div>
-              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.required">
+              <div
+                class="text-red-600"
+                v-if="$v.parcelas.$dirty && !$v.parcelas.required"
+              >
                 Parcela(s) obrigatória
               </div>
             </div>
@@ -78,11 +94,17 @@
                   name="data_geracao_proposta"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  :value="data_geracao_proposta"
+                  :value="$v.data_geracao_proposta.$model"
                   @input="setDataGeracaoProposta($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.data_geracao_proposta.$dirty && !$v.data_geracao_proposta.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.data_geracao_proposta.$dirty &&
+                  !$v.data_geracao_proposta.required
+                "
+              >
                 Data obrigatória
               </div>
             </div>
@@ -100,11 +122,17 @@
                   name="primeiro_vencimento"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  :value="primeiro_vencimento"
+                  :value="$v.primeiro_vencimento.$model"
                   @input="setPrimeiroVencimento($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="$v.primeiro_vencimento.$dirty && !$v.primeiro_vencimento.required">
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.primeiro_vencimento.$dirty &&
+                  !$v.primeiro_vencimento.required
+                "
+              >
                 Data obrigatória
               </div>
             </div>
@@ -120,7 +148,8 @@
         <div class="flex-auto flex flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-2' }">
             <button
-              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+              v-show="!$v.$invalid"
+              class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
             >
               Avançar
             </button>
@@ -152,10 +181,11 @@ export default {
         prefix: "R$ ",
         precision: 0,
       },
-      valor_solicitado: null,
-      parcelas: null,
-      data_geracao_proposta: "",
-      primeiro_vencimento: "",
+      submitStatus: null,
+      valor_solicitado: 10000,
+      parcelas: 1,
+      data_geracao_proposta: null,
+      primeiro_vencimento: null,
     };
   },
   computed: {
@@ -164,20 +194,26 @@ export default {
   validations: {
     valor_solicitado: {
       required,
-      minValue: minValue(10000.0),
+      minValue: minValue(10000),
     },
     parcelas: {
       required,
       between: between(1, 36),
     },
     data_geracao_proposta: {
-      required
+      required,
     },
     primeiro_vencimento: {
-      required
-    }
+      required,
+    },
   },
   methods: {
+    submit(){
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        console.log('invalid');
+      }
+    },
     setValorSolicitado(value) {
       value = value.replace(/[^\d]+/g, "");
       this.valor_solicitado = value;

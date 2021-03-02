@@ -21,7 +21,8 @@ module.exports = {
                 transparent: 'transparent',
                 current: 'currentColor',
                 teal: colors.teal,
-            }
+            },
+            opacity: ['disabled'],
         },
 
     },

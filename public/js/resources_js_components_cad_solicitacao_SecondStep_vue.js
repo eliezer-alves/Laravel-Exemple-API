@@ -343,137 +343,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -1051,26 +938,246 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.$store.dispatch("fetchAtividades");
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["atividades"])),
   data: function data() {
     return {
-      price: 123.45,
       money: {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        suffix: "",
-        precision: 2,
-        masked: false
-        /* doesn't work with directive */
-
-      }
+        precision: 0
+      },
+      razao_social: null,
+      cnpj: "",
+      nome_fantasia: null,
+      inscricao_estadual: null,
+      rendimento_mensal: null,
+      id_atividade_comercial: null,
+      tipo_empresa: null,
+      cep: null,
+      uf: null,
+      cidade: null,
+      bairro: null,
+      tipo_logradouro: null,
+      logradouro: null,
+      numero: null,
+      complemento: null,
+      telefone: null,
+      email: null
     };
+  },
+  validations: {
+    razao_social: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    cnpj: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    nome_fantasia: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    inscricao_estadual: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    rendimento_mensal: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minValue)(1)
+    },
+    id_atividade_comercial: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    tipo_empresa: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    cep: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    uf: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    cidade: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    bairro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    tipo_logradouro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    logradouro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    numero: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    complemento: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+    },
+    telefone: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(10)
+    },
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.email
+    }
+  },
+  methods: {
+    setRazaoSocial: function setRazaoSocial(value) {
+      this.razao_social = value;
+      this.$v.razao_social.$touch();
+    },
+    setCnpj: function setCnpj(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.cnpj.validarCNPJ = true;
+
+      if (!(0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validarCNPJ)(value)) {
+        this.$v.cnpj.validarCNPJ = false;
+      }
+
+      this.cnpj = value;
+      this.$v.cnpj.$touch();
+    },
+    setNomeFantasia: function setNomeFantasia(value) {
+      this.nome_fantasia = value;
+      this.$v.nome_fantasia.$touch();
+    },
+    setInscricaoEstadual: function setInscricaoEstadual(value) {
+      this.inscricao_estadual = value;
+      this.$v.inscricao_estadual.$touch();
+    },
+    setRendimentoMensal: function setRendimentoMensal(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.rendimento_mensal = value;
+      this.$v.rendimento_mensal.$touch();
+    },
+    setIdAtividadeComercial: function setIdAtividadeComercial(value) {
+      this.id_atividade_comercial = value;
+      this.$v.id_atividade_comercial.$touch();
+    },
+    setTipoEmpresa: function setTipoEmpresa(value) {
+      this.tipo_empresa = value;
+      this.$v.tipo_empresa.$touch();
+    },
+    setCep: function setCep(value) {
+      this.cep = value;
+      this.$v.cep.$touch();
+    },
+    setUf: function setUf(value) {
+      this.uf = value;
+      this.$v.uf.$touch();
+    },
+    setCidade: function setCidade(value) {
+      this.cidade = value;
+      this.$v.cidade.$touch();
+    },
+    setBairro: function setBairro(value) {
+      this.bairro = value;
+      this.$v.bairro.$touch();
+    },
+    setTipoLogradouro: function setTipoLogradouro(value) {
+      this.tipo_logradouro = value;
+      this.$v.tipo_logradouro.$touch();
+    },
+    setLogradouro: function setLogradouro(value) {
+      this.logradouro = value;
+      this.$v.logradouro.$touch();
+    },
+    setNumero: function setNumero(value) {
+      this.numero = value;
+      this.$v.numero.$touch();
+    },
+    setComplemento: function setComplemento(value) {
+      this.complemento = value;
+      this.$v.complemento.$touch();
+    },
+    setTelefone: function setTelefone(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.telefone = value;
+      this.$v.telefone.$touch();
+    },
+    setEmail: function setEmail(value) {
+      this.email = value;
+      this.$v.email.$touch();
+    }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ)
+/* harmony export */ });
+var validarCNPJ = function validarCNPJ(cnpj) {
+  cnpj = cnpj.replace(/[^\d]+/g, '');
+  if (cnpj == '') return false;
+  if (cnpj.length != 14) return false; // Elimina CNPJs invalidos conhecidos
+
+  if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") return false; // Valida DVs
+
+  var tamanho = cnpj.length - 2;
+  var numeros = cnpj.substring(0, tamanho);
+  var digitos = cnpj.substring(tamanho);
+  var soma = 0;
+  var pos = tamanho - 7;
+
+  for (var i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(0)) return false;
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+
+  for (var _i = tamanho; _i >= 1; _i--) {
+    soma += numeros.charAt(tamanho - _i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(1)) return false;
+  return true;
+};
+
+
 
 /***/ }),
 
@@ -1222,8 +1329,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SecondStep_vue_vue_type_template_id_17dc1fdd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=template&id=17dc1fdd& */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=template&id=17dc1fdd&");
 /* harmony import */ var _SecondStep_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2 */ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2");
-/* harmony import */ var _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -1241,10 +1346,6 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   null
   
 )
-
-/* custom blocks */
-;
-if (typeof (_SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default()) === 'function') _SecondStep_vue_vue_type_custom_index_0_blockType_div_class_my_2__WEBPACK_IMPORTED_MODULE_3___default()(component)
 
 /* hot reload */
 if (false) { var api; }
@@ -1344,16 +1445,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_template_id_7131b70a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_template_id_7131b70a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Solicitacao.vue?vue&type=template&id=7131b70a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Solicitacao.vue?vue&type=template&id=7131b70a&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2":
-/*!*****************************************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/SecondStep.vue?vue&type=custom&index=0&blockType=div&class=my-2 ***!
-  \*****************************************************************************************************************/
-/***/ (() => {
-
 
 
 /***/ }),
@@ -1965,10 +2056,24 @@ var render = function() {
                       id: "razao_social",
                       type: "text",
                       placeholder: "Razão Social"
+                    },
+                    domProps: { value: _vm.$v.razao_social.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setRazaoSocial($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.razao_social.$dirty && !_vm.$v.razao_social.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Razão social é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2006,10 +2111,32 @@ var render = function() {
                     ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "cnpj", placeholder: "##.###.###/####-##" }
+                    attrs: {
+                      id: "cnpj",
+                      name: "cnpj",
+                      placeholder: "##.###.###/####-##"
+                    },
+                    domProps: { value: _vm.cnpj },
+                    on: {
+                      input: function($event) {
+                        return _vm.setCnpj($event.target.value)
+                      }
+                    }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.cnpj.$dirty && !_vm.$v.cnpj.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            CNPJ é obrigatório.\n          ")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.$v.cnpj.$dirty && !_vm.$v.cnpj.validarCNPJ
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            CNPJ inválido.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2045,12 +2172,27 @@ var render = function() {
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: {
                       id: "nome_fantasia",
+                      name: "nome_fantasia",
                       type: "text",
                       placeholder: "Nome Fantasia"
+                    },
+                    domProps: { value: _vm.$v.nome_fantasia.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setNomeFantasia($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.nome_fantasia.$dirty && !_vm.$v.nome_fantasia.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Nome Fantasia é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2094,11 +2236,27 @@ var render = function() {
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: {
                       id: "inscricao_estadual",
+                      name: "inscricao_estadual",
                       placeholder: "##.###.####-#"
+                    },
+                    domProps: { value: _vm.$v.inscricao_estadual.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setInscricaoEstadual($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.inscricao_estadual.$dirty &&
+              !_vm.$v.inscricao_estadual.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Inscrição Estadual é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2106,7 +2264,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             },
             [
               _c(
@@ -2130,12 +2288,46 @@ var render = function() {
                 },
                 [
                   _c("input", {
+                    directives: [
+                      {
+                        name: "money",
+                        rawName: "v-money",
+                        value: _vm.money,
+                        expression: "money"
+                      }
+                    ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "rendimento_mensal", type: "text" }
+                    attrs: { id: "rendimento_mensal", type: "text" },
+                    domProps: { value: _vm.$v.rendimento_mensal.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setRendimentoMensal($event.target.value)
+                      }
+                    }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.rendimento_mensal.$dirty &&
+              !_vm.$v.rendimento_mensal.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Rendimento Mensal é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.$v.rendimento_mensal.$dirty &&
+              !_vm.$v.rendimento_mensal.minValue
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Valor mínimo de R$\n            " +
+                        _vm._s(_vm.$v.rendimento_mensal.$params.minValue.min) +
+                        ",00.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2143,7 +2335,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             },
             [
               _c(
@@ -2152,11 +2344,7 @@ var render = function() {
                   staticClass:
                     "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                 },
-                [
-                  _c("label", { attrs: { for: "ramo_atividade" } }, [
-                    _vm._v("Ramo de Atividade")
-                  ])
-                ]
+                [_c("label", [_vm._v("Atividade Comercial")])]
               ),
               _vm._v(" "),
               _c(
@@ -2166,13 +2354,60 @@ var render = function() {
                     "bg-white my-2 p-1 flex border border-gray-200 rounded"
                 },
                 [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "ramo_atividade", type: "text" }
-                  })
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "id_atividade_comercial",
+                        name: "id_atividade_comercial"
+                      },
+                      domProps: { value: _vm.$v.id_atividade_comercial.$model },
+                      on: {
+                        change: function($event) {
+                          return _vm.setIdAtividadeComercial(
+                            $event.target.value
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("--")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.atividades, function(atividade) {
+                        return _c(
+                          "option",
+                          {
+                            key: atividade.id_atividade_comercial,
+                            domProps: {
+                              value: atividade.id_atividade_comercial
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(atividade.descricao) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.id_atividade_comercial.$dirty &&
+              !_vm.$v.id_atividade_comercial.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Atividade Comercial é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2180,7 +2415,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             },
             [
               _c(
@@ -2203,13 +2438,46 @@ var render = function() {
                     "bg-white my-2 p-1 flex border border-gray-200 rounded"
                 },
                 [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "tipo_empresa", type: "text" }
-                  })
+                  _c(
+                    "select",
+                    {
+                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      attrs: { id: "tipo_empresa", name: "tipo_empresa" },
+                      domProps: { value: _vm.$v.tipo_empresa.$model },
+                      on: {
+                        change: function($event) {
+                          return _vm.setTipoEmpresa($event.target.value)
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("--")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("PJ Sociedade")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("PJ Individual")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Pessoa Física")
+                      ])
+                    ]
+                  )
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.tipo_empresa.$dirty && !_vm.$v.tipo_empresa.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Tipo de Empresa é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           )
         ])
@@ -2265,10 +2533,22 @@ var render = function() {
                       name: "cep",
                       type: "text",
                       placeholder: "#####-###"
+                    },
+                    domProps: { value: _vm.$v.cep.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setCep($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.cep.$dirty && !_vm.$v.cep.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            CEP é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2285,7 +2565,7 @@ var render = function() {
                   staticClass:
                     "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                 },
-                [_c("label", { attrs: { for: "cnpj" } }, [_vm._v("UF")])]
+                [_c("label", { attrs: { for: "uf" } }, [_vm._v("UF")])]
               ),
               _vm._v(" "),
               _c(
@@ -2299,9 +2579,17 @@ var render = function() {
                     "select",
                     {
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "cnpj", name: "cnpj" }
+                      attrs: { id: "uf", name: "uf" },
+                      domProps: { value: _vm.$v.uf.$model },
+                      on: {
+                        change: function($event) {
+                          return _vm.setUf($event.target.value)
+                        }
+                      }
                     },
                     [
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                      _vm._v(" "),
                       _c("option", { attrs: { value: "MG" } }, [
                         _vm._v("Minas Gerais")
                       ]),
@@ -2316,7 +2604,13 @@ var render = function() {
                     ]
                   )
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.uf.$dirty && !_vm.$v.uf.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            UF é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2351,10 +2645,22 @@ var render = function() {
                       name: "cidade",
                       type: "text",
                       placeholder: "Cidade"
+                    },
+                    domProps: { value: _vm.$v.cidade.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setCidade($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.cidade.$dirty && !_vm.$v.cidade.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            Cidade é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2362,7 +2668,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             },
             [
               _c(
@@ -2389,10 +2695,22 @@ var render = function() {
                       name: "bairro",
                       type: "text",
                       placeholder: "Bairro"
+                    },
+                    domProps: { value: _vm.$v.bairro.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setBairro($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.bairro.$dirty && !_vm.$v.bairro.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            Bairro é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2427,22 +2745,36 @@ var render = function() {
                     "select",
                     {
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "tipo_logradouro", name: "tipo_logradouro" }
+                      attrs: { id: "tipo_logradouro", name: "tipo_logradouro" },
+                      domProps: { value: _vm.$v.tipo_logradouro.$model },
+                      on: {
+                        change: function($event) {
+                          return _vm.setTipoLogradouro($event.target.value)
+                        }
+                      }
                     },
                     [
-                      _c("option", { domProps: { value: 1 } }, [_vm._v("Rua")]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
-                      _c("option", { domProps: { value: 2 } }, [
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("Rua")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
                         _vm._v("Avenida")
                       ]),
                       _vm._v(" "),
-                      _c("option", { domProps: { value: 3 } }, [
-                        _vm._v("Praça")
-                      ])
+                      _c("option", { attrs: { value: "3" } }, [_vm._v("Praça")])
                     ]
                   )
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.tipo_logradouro.$dirty && !_vm.$v.tipo_logradouro.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Tipo de Logradouro é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2480,10 +2812,24 @@ var render = function() {
                       id: "logradouro",
                       name: "logradouro",
                       type: "text"
+                    },
+                    domProps: { value: _vm.$v.logradouro.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setLogradouro($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.logradouro.$dirty && !_vm.$v.logradouro.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Logradouro é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2513,10 +2859,22 @@ var render = function() {
                   _c("input", {
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "numero", name: "numero", type: "text" }
+                    attrs: { id: "numero", name: "numero", type: "number" },
+                    domProps: { value: _vm.$v.numero.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setNumero($event.target.value)
+                      }
+                    }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.numero.$dirty && !_vm.$v.numero.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            Número é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2554,10 +2912,24 @@ var render = function() {
                       id: "complemento",
                       name: "complemento",
                       type: "text"
+                    },
+                    domProps: { value: _vm.$v.complemento.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setComplemento($event.target.value)
+                      }
                     }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.complemento.$dirty && !_vm.$v.complemento.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Complemento é obrigatório.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2565,7 +2937,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             },
             [
               _c(
@@ -2575,7 +2947,7 @@ var render = function() {
                     "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                 },
                 [
-                  _c("label", { attrs: { for: "celular" } }, [
+                  _c("label", { attrs: { for: "telefone" } }, [
                     _vm._v("Telefone")
                   ])
                 ]
@@ -2599,10 +2971,30 @@ var render = function() {
                     ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "celular", name: "celular", type: "text" }
+                    attrs: { id: "telefone", name: "telefone", type: "text" },
+                    domProps: { value: _vm.$v.telefone.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setTelefone($event.target.value)
+                      }
+                    }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.telefone.$dirty && !_vm.$v.telefone.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            Telefone é obrigatório.\n          ")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.$v.telefone.$dirty && !_vm.$v.telefone.minLength
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v(
+                      "\n            Digite um telefone válido length.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -2632,10 +3024,22 @@ var render = function() {
                   _c("input", {
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "email", name: "email", type: "email" }
+                    attrs: { id: "email", name: "email", type: "email" },
+                    domProps: { value: _vm.$v.email.$model },
+                    on: {
+                      input: function($event) {
+                        return _vm.setEmail($event.target.value)
+                      }
+                    }
                   })
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.$v.email.$dirty && !_vm.$v.email.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            E-mail é obrigatório.\n          ")
+                  ])
+                : _vm._e()
             ]
           )
         ])
@@ -2731,787 +3135,6 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Sócios (incluir o representante legal)\n      ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "nome_representante" } }, [
-                    _vm._v("Nome (Representante)")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "nome_representante",
-                      name: "nome_representante",
-                      type: "text",
-                      placeholder: "Nome completo"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "cpf_representante" } }, [
-                    _vm._v("CPF Representante")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "###.###.###-##",
-                        expression: "'###.###.###-##'"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "cpf_representante",
-                      name: "cpf_representante",
-                      type: "text",
-                      placeholder: "###.###.###-##"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "uf_rg_representante" } }, [
-                    _vm._v("UF do RG")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "uf_rg_representante",
-                        name: "uf_rg_representante"
-                      }
-                    },
-                    [
-                      _c("option", { domProps: { value: "MG" } }, [
-                        _vm._v("Minas Gerais")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: "RJ" } }, [
-                        _vm._v("Rio de Janeiro")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: "SP" } }, [
-                        _vm._v("São Paulo")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "numero_rg_representante" } }, [
-                    _vm._v("Nº do RG")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "numero_rg_representante",
-                      name: "numero_rg_representante",
-                      type: "text"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "sexo_representante" } }, [
-                    _vm._v("Sexo")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "sexo_representante",
-                        name: "sexo_representante"
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "M" } }, [
-                        _vm._v("Masculino")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "F" } }, [
-                        _vm._v("Feminino")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c(
-                    "label",
-                    { attrs: { for: "estado_civil_representante" } },
-                    [_vm._v("Estado Cívil")]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "estado_civil_representante",
-                        name: "estado_civil_representante"
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Casado")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Solteiro")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "email_representante" } }, [
-                    _vm._v("E-mail")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "email_representante",
-                      name: "email_representante",
-                      type: "text",
-                      placeholder: "mail@brasilcard.net"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "telefone_representante" } }, [
-                    _vm._v("Telefone")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: ["(##) ####-####", "(##) #####-####"],
-                        expression: "['(##) ####-####', '(##) #####-####']"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "telefone_representante",
-                      name: "telefone_representante",
-                      type: "text",
-                      placeholder: "###.###.###-##"
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cep_representante" } }, [
-                      _vm._v("CEP")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "mask",
-                          rawName: "v-mask",
-                          value: "#####-###",
-                          expression: "'#####-###'"
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "cep_representante",
-                        name: "cep_representante",
-                        type: "text",
-                        placeholder: "#####-###"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "uf_representante" } }, [
-                      _vm._v("UF")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "p-1 px-2 outline-none w-full text-gray-800",
-                        attrs: {
-                          id: "uf_representante",
-                          name: "uf_representante"
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "MG" } }, [
-                          _vm._v("Minas Gerais")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "RJ" } }, [
-                          _vm._v("Rio de Janeiro")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "SP" } }, [
-                          _vm._v("São Paulo")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cidade_representante" } }, [
-                      _vm._v("Cidade")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "cidade_representante",
-                        name: "cidade_representante",
-                        type: "text",
-                        placeholder: "Cidade"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "bairro_representante" } }, [
-                      _vm._v("Bairro")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "bairro_representante",
-                        name: "bairro_representante",
-                        type: "text",
-                        placeholder: "Bairro"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c(
-                      "label",
-                      { attrs: { for: "tipo_logradouro_representante" } },
-                      [_vm._v("Tipo de Logradouro")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "p-1 px-2 outline-none w-full text-gray-800",
-                        attrs: {
-                          id: "tipo_logradouro_representante",
-                          name: "tipo_logradouro_representante"
-                        }
-                      },
-                      [
-                        _c("option", { domProps: { value: 1 } }, [
-                          _vm._v("Rua")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 2 } }, [
-                          _vm._v("Avenida")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 3 } }, [
-                          _vm._v("Praça")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c(
-                      "label",
-                      { attrs: { for: "logradouro_representante" } },
-                      [_vm._v("Logradouro")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "logradouro_representante",
-                        name: "logradouro_representante",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "numero_representante" } }, [
-                      _vm._v("Número")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "numero_representante",
-                        name: "numero_representante",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c(
-                      "label",
-                      { attrs: { for: "complemento_representante" } },
-                      [_vm._v("Complemento")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "complemento_representante",
-                        name: "complemento_representante",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-5" }, [
         _c(
           "button",
@@ -3533,6 +3156,14 @@ var render = function() {
               _c(
                 "button",
                 {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.$v.$invalid,
+                      expression: "!$v.$invalid"
+                    }
+                  ],
                   staticClass:
                     "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
                 },
@@ -3674,6 +3305,956 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/alpha.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/alpha.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('alpha', /^[a-zA-Z]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/alphaNum.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/alphaNum.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('alphaNum', /^[a-zA-Z0-9]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/and.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/and.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  for (var _len = arguments.length, validators = new Array(_len), _key = 0; _key < _len; _key++) {
+    validators[_key] = arguments[_key];
+  }
+
+  return (0, _common.withParams)({
+    type: 'and'
+  }, function () {
+    var _this = this;
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return validators.length > 0 && validators.reduce(function (valid, fn) {
+      return valid && fn.apply(_this, args);
+    }, true);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/between.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/between.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(min, max) {
+  return (0, _common.withParams)({
+    type: 'between',
+    min: min,
+    max: max
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +min <= +value && +max >= +value;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/common.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/common.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+Object.defineProperty(exports, "withParams", ({
+  enumerable: true,
+  get: function get() {
+    return _withParams.default;
+  }
+}));
+exports.regex = exports.ref = exports.len = exports.req = void 0;
+
+var _withParams = _interopRequireDefault(__webpack_require__(/*! ../withParams */ "./node_modules/vuelidate/lib/withParams.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var req = function req(value) {
+  if (Array.isArray(value)) return !!value.length;
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (value === false) {
+    return true;
+  }
+
+  if (value instanceof Date) {
+    return !isNaN(value.getTime());
+  }
+
+  if (_typeof(value) === 'object') {
+    for (var _ in value) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return !!String(value).length;
+};
+
+exports.req = req;
+
+var len = function len(value) {
+  if (Array.isArray(value)) return value.length;
+
+  if (_typeof(value) === 'object') {
+    return Object.keys(value).length;
+  }
+
+  return String(value).length;
+};
+
+exports.len = len;
+
+var ref = function ref(reference, vm, parentVm) {
+  return typeof reference === 'function' ? reference.call(vm, parentVm) : parentVm[reference];
+};
+
+exports.ref = ref;
+
+var regex = function regex(type, expr) {
+  return (0, _withParams.default)({
+    type: type
+  }, function (value) {
+    return !req(value) || expr.test(value);
+  });
+};
+
+exports.regex = regex;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/decimal.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/decimal.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('decimal', /^[-]?\d*(\.\d+)?$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/email.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/email.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var emailRegex = /^(?:[A-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]{2,}(?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
+var _default = (0, _common.regex)('email', emailRegex);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/index.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+Object.defineProperty(exports, "alpha", ({
+  enumerable: true,
+  get: function get() {
+    return _alpha.default;
+  }
+}));
+Object.defineProperty(exports, "alphaNum", ({
+  enumerable: true,
+  get: function get() {
+    return _alphaNum.default;
+  }
+}));
+Object.defineProperty(exports, "numeric", ({
+  enumerable: true,
+  get: function get() {
+    return _numeric.default;
+  }
+}));
+Object.defineProperty(exports, "between", ({
+  enumerable: true,
+  get: function get() {
+    return _between.default;
+  }
+}));
+Object.defineProperty(exports, "email", ({
+  enumerable: true,
+  get: function get() {
+    return _email.default;
+  }
+}));
+Object.defineProperty(exports, "ipAddress", ({
+  enumerable: true,
+  get: function get() {
+    return _ipAddress.default;
+  }
+}));
+Object.defineProperty(exports, "macAddress", ({
+  enumerable: true,
+  get: function get() {
+    return _macAddress.default;
+  }
+}));
+Object.defineProperty(exports, "maxLength", ({
+  enumerable: true,
+  get: function get() {
+    return _maxLength.default;
+  }
+}));
+Object.defineProperty(exports, "minLength", ({
+  enumerable: true,
+  get: function get() {
+    return _minLength.default;
+  }
+}));
+Object.defineProperty(exports, "required", ({
+  enumerable: true,
+  get: function get() {
+    return _required.default;
+  }
+}));
+Object.defineProperty(exports, "requiredIf", ({
+  enumerable: true,
+  get: function get() {
+    return _requiredIf.default;
+  }
+}));
+Object.defineProperty(exports, "requiredUnless", ({
+  enumerable: true,
+  get: function get() {
+    return _requiredUnless.default;
+  }
+}));
+Object.defineProperty(exports, "sameAs", ({
+  enumerable: true,
+  get: function get() {
+    return _sameAs.default;
+  }
+}));
+Object.defineProperty(exports, "url", ({
+  enumerable: true,
+  get: function get() {
+    return _url.default;
+  }
+}));
+Object.defineProperty(exports, "or", ({
+  enumerable: true,
+  get: function get() {
+    return _or.default;
+  }
+}));
+Object.defineProperty(exports, "and", ({
+  enumerable: true,
+  get: function get() {
+    return _and.default;
+  }
+}));
+Object.defineProperty(exports, "not", ({
+  enumerable: true,
+  get: function get() {
+    return _not.default;
+  }
+}));
+Object.defineProperty(exports, "minValue", ({
+  enumerable: true,
+  get: function get() {
+    return _minValue.default;
+  }
+}));
+Object.defineProperty(exports, "maxValue", ({
+  enumerable: true,
+  get: function get() {
+    return _maxValue.default;
+  }
+}));
+Object.defineProperty(exports, "integer", ({
+  enumerable: true,
+  get: function get() {
+    return _integer.default;
+  }
+}));
+Object.defineProperty(exports, "decimal", ({
+  enumerable: true,
+  get: function get() {
+    return _decimal.default;
+  }
+}));
+exports.helpers = void 0;
+
+var _alpha = _interopRequireDefault(__webpack_require__(/*! ./alpha */ "./node_modules/vuelidate/lib/validators/alpha.js"));
+
+var _alphaNum = _interopRequireDefault(__webpack_require__(/*! ./alphaNum */ "./node_modules/vuelidate/lib/validators/alphaNum.js"));
+
+var _numeric = _interopRequireDefault(__webpack_require__(/*! ./numeric */ "./node_modules/vuelidate/lib/validators/numeric.js"));
+
+var _between = _interopRequireDefault(__webpack_require__(/*! ./between */ "./node_modules/vuelidate/lib/validators/between.js"));
+
+var _email = _interopRequireDefault(__webpack_require__(/*! ./email */ "./node_modules/vuelidate/lib/validators/email.js"));
+
+var _ipAddress = _interopRequireDefault(__webpack_require__(/*! ./ipAddress */ "./node_modules/vuelidate/lib/validators/ipAddress.js"));
+
+var _macAddress = _interopRequireDefault(__webpack_require__(/*! ./macAddress */ "./node_modules/vuelidate/lib/validators/macAddress.js"));
+
+var _maxLength = _interopRequireDefault(__webpack_require__(/*! ./maxLength */ "./node_modules/vuelidate/lib/validators/maxLength.js"));
+
+var _minLength = _interopRequireDefault(__webpack_require__(/*! ./minLength */ "./node_modules/vuelidate/lib/validators/minLength.js"));
+
+var _required = _interopRequireDefault(__webpack_require__(/*! ./required */ "./node_modules/vuelidate/lib/validators/required.js"));
+
+var _requiredIf = _interopRequireDefault(__webpack_require__(/*! ./requiredIf */ "./node_modules/vuelidate/lib/validators/requiredIf.js"));
+
+var _requiredUnless = _interopRequireDefault(__webpack_require__(/*! ./requiredUnless */ "./node_modules/vuelidate/lib/validators/requiredUnless.js"));
+
+var _sameAs = _interopRequireDefault(__webpack_require__(/*! ./sameAs */ "./node_modules/vuelidate/lib/validators/sameAs.js"));
+
+var _url = _interopRequireDefault(__webpack_require__(/*! ./url */ "./node_modules/vuelidate/lib/validators/url.js"));
+
+var _or = _interopRequireDefault(__webpack_require__(/*! ./or */ "./node_modules/vuelidate/lib/validators/or.js"));
+
+var _and = _interopRequireDefault(__webpack_require__(/*! ./and */ "./node_modules/vuelidate/lib/validators/and.js"));
+
+var _not = _interopRequireDefault(__webpack_require__(/*! ./not */ "./node_modules/vuelidate/lib/validators/not.js"));
+
+var _minValue = _interopRequireDefault(__webpack_require__(/*! ./minValue */ "./node_modules/vuelidate/lib/validators/minValue.js"));
+
+var _maxValue = _interopRequireDefault(__webpack_require__(/*! ./maxValue */ "./node_modules/vuelidate/lib/validators/maxValue.js"));
+
+var _integer = _interopRequireDefault(__webpack_require__(/*! ./integer */ "./node_modules/vuelidate/lib/validators/integer.js"));
+
+var _decimal = _interopRequireDefault(__webpack_require__(/*! ./decimal */ "./node_modules/vuelidate/lib/validators/decimal.js"));
+
+var helpers = _interopRequireWildcard(__webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js"));
+
+exports.helpers = helpers;
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/integer.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/integer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('integer', /(^[0-9]*$)|(^-[0-9]+$)/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/ipAddress.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/ipAddress.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.withParams)({
+  type: 'ipAddress'
+}, function (value) {
+  if (!(0, _common.req)(value)) {
+    return true;
+  }
+
+  if (typeof value !== 'string') {
+    return false;
+  }
+
+  var nibbles = value.split('.');
+  return nibbles.length === 4 && nibbles.every(nibbleValid);
+});
+
+exports.default = _default;
+
+var nibbleValid = function nibbleValid(nibble) {
+  if (nibble.length > 3 || nibble.length === 0) {
+    return false;
+  }
+
+  if (nibble[0] === '0' && nibble !== '0') {
+    return false;
+  }
+
+  if (!nibble.match(/^\d+$/)) {
+    return false;
+  }
+
+  var numeric = +nibble | 0;
+  return numeric >= 0 && numeric <= 255;
+};
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/macAddress.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/macAddress.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  var separator = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ':';
+  return (0, _common.withParams)({
+    type: 'macAddress'
+  }, function (value) {
+    if (!(0, _common.req)(value)) {
+      return true;
+    }
+
+    if (typeof value !== 'string') {
+      return false;
+    }
+
+    var parts = typeof separator === 'string' && separator !== '' ? value.split(separator) : value.length === 12 || value.length === 16 ? value.match(/.{2}/g) : null;
+    return parts !== null && (parts.length === 6 || parts.length === 8) && parts.every(hexValid);
+  });
+};
+
+exports.default = _default;
+
+var hexValid = function hexValid(hex) {
+  return hex.toLowerCase().match(/^[0-9a-f]{2}$/);
+};
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/maxLength.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/maxLength.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(length) {
+  return (0, _common.withParams)({
+    type: 'maxLength',
+    max: length
+  }, function (value) {
+    return !(0, _common.req)(value) || (0, _common.len)(value) <= length;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/maxValue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/maxValue.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(max) {
+  return (0, _common.withParams)({
+    type: 'maxValue',
+    max: max
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +value <= +max;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/minLength.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/minLength.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(length) {
+  return (0, _common.withParams)({
+    type: 'minLength',
+    min: length
+  }, function (value) {
+    return !(0, _common.req)(value) || (0, _common.len)(value) >= length;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/minValue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/minValue.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(min) {
+  return (0, _common.withParams)({
+    type: 'minValue',
+    min: min
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +value >= +min;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/not.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/not.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(validator) {
+  return (0, _common.withParams)({
+    type: 'not'
+  }, function (value, vm) {
+    return !(0, _common.req)(value) || !validator.call(this, value, vm);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/numeric.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/numeric.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('numeric', /^[0-9]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/or.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/or.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  for (var _len = arguments.length, validators = new Array(_len), _key = 0; _key < _len; _key++) {
+    validators[_key] = arguments[_key];
+  }
+
+  return (0, _common.withParams)({
+    type: 'or'
+  }, function () {
+    var _this = this;
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return validators.length > 0 && validators.reduce(function (valid, fn) {
+      return valid || fn.apply(_this, args);
+    }, false);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/required.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/required.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.withParams)({
+  type: 'required'
+}, function (value) {
+  if (typeof value === 'string') {
+    return (0, _common.req)(value.trim());
+  }
+
+  return (0, _common.req)(value);
+});
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/requiredIf.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/requiredIf.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(prop) {
+  return (0, _common.withParams)({
+    type: 'requiredIf',
+    prop: prop
+  }, function (value, parentVm) {
+    return (0, _common.ref)(prop, this, parentVm) ? (0, _common.req)(value) : true;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/requiredUnless.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/requiredUnless.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(prop) {
+  return (0, _common.withParams)({
+    type: 'requiredUnless',
+    prop: prop
+  }, function (value, parentVm) {
+    return !(0, _common.ref)(prop, this, parentVm) ? (0, _common.req)(value) : true;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/sameAs.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/sameAs.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(equalTo) {
+  return (0, _common.withParams)({
+    type: 'sameAs',
+    eq: equalTo
+  }, function (value, parentVm) {
+    return value === (0, _common.ref)(equalTo, this, parentVm);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/url.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/url.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var urlRegex = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i;
+
+var _default = (0, _common.regex)('url', urlRegex);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/withParams.js":
+/*!**************************************************!*\
+  !*** ./node_modules/vuelidate/lib/withParams.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+var withParams = process.env.BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var _default = withParams;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/withParamsBrowser.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/withParamsBrowser.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.withParams = void 0;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var root = typeof window !== 'undefined' ? window : typeof __webpack_require__.g !== 'undefined' ? __webpack_require__.g : {};
+
+var fakeWithParams = function fakeWithParams(paramsOrClosure, maybeValidator) {
+  if (_typeof(paramsOrClosure) === 'object' && maybeValidator !== undefined) {
+    return maybeValidator;
+  }
+
+  return paramsOrClosure(function () {});
+};
+
+var withParams = root.vuelidate ? root.vuelidate.withParams : fakeWithParams;
+exports.withParams = withParams;
 
 /***/ })
 

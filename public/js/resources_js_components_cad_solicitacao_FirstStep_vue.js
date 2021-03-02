@@ -490,6 +490,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -505,17 +534,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         prefix: "R$ ",
         precision: 0
       },
-      valor_solicitado: null,
-      parcelas: null,
-      data_geracao_proposta: "",
-      primeiro_vencimento: ""
+      submitStatus: null,
+      valor_solicitado: 10000,
+      parcelas: 1,
+      data_geracao_proposta: null,
+      primeiro_vencimento: null
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["solicitacao", "errors"])),
   validations: {
     valor_solicitado: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(10000.0)
+      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(10000)
     },
     parcelas: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
@@ -529,6 +559,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
+    submit: function submit() {
+      this.$v.$touch();
+
+      if (this.$v.$invalid) {
+        console.log('invalid');
+      }
+    },
     setValorSolicitado: function setValorSolicitado(value) {
       value = value.replace(/[^\d]+/g, "");
       this.valor_solicitado = value;
@@ -1509,7 +1546,7 @@ var render = function() {
                         name: "parcelas",
                         type: "number"
                       },
-                      domProps: { value: _vm.parcelas },
+                      domProps: { value: _vm.$v.parcelas.$model },
                       on: {
                         input: function($event) {
                           return _vm.setParcelas($event.target.value)
@@ -1576,7 +1613,7 @@ var render = function() {
                         name: "data_geracao_proposta",
                         type: "date"
                       },
-                      domProps: { value: _vm.data_geracao_proposta },
+                      domProps: { value: _vm.$v.data_geracao_proposta.$model },
                       on: {
                         input: function($event) {
                           return _vm.setDataGeracaoProposta($event.target.value)
@@ -1630,7 +1667,7 @@ var render = function() {
                         name: "primeiro_vencimento",
                         type: "date"
                       },
-                      domProps: { value: _vm.primeiro_vencimento },
+                      domProps: { value: _vm.$v.primeiro_vencimento.$model },
                       on: {
                         input: function($event) {
                           return _vm.setPrimeiroVencimento($event.target.value)
@@ -1670,8 +1707,16 @@ var render = function() {
               _c(
                 "button",
                 {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.$v.$invalid,
+                      expression: "!$v.$invalid"
+                    }
+                  ],
                   staticClass:
-                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )
