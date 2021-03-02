@@ -659,9 +659,7 @@ export default {
     numero: {
       required,
     },
-    complemento: {
-      required,
-    },
+    complemento: {},
     telefone: {
       required,
       minLength: minLength(10),
@@ -752,4 +750,9 @@ export default {
 </script>
 
 <style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>

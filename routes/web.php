@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\ModeloSicredController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::namespace('admin')->group(function () {
+    Route::get('/admin/modelo-sicred', [ModeloSicredController::class, 'index']);
+});
+
 Route::get('/solicitacao', function () {
     return view('solicitacao.index');
 });
@@ -31,17 +36,3 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-
-Route::get('grant-password', function () {
-    $response = Http::post(env('API_URL') . 'oauth/token', [
-        'grant_type' => 'password',
-        'client_id' => env('CLIENT_ID_GRANT_PASSWORD'),
-        'client_secret' => env('CLIENT_SECRET_GRANT_PASSWORD'),
-        'username' => 'eliezer.c.alves2015@gmail.com',
-        'password' => 'teste123',
-        'scope' => '',
-    ]);
-
-    // dd($response->json());
-    return $response->json();
-});

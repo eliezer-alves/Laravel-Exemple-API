@@ -19,6 +19,7 @@
               <input
                 id="valor_solicitado"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                disabled
               />
             </div>
           </div>
@@ -35,6 +36,7 @@
                 id="parcelas"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
+                disabled
               />
             </div>
           </div>
@@ -44,18 +46,27 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="bancos">Bancos</label>
+              <label for="banco">Bancos</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
                 id="banco"
                 name="banco"
                 class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.banco.$model"
+                @change="setBanco($event.target.value)"
               >
+                <option value="">SELECIONAR</option>
                 <option :value="'0001'">Banco do Brasil</option>
                 <option :value="'0002'">Bradesco</option>
                 <option :value="'0003'">Itau</option>
               </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.banco.$dirty && !$v.banco.required"
+            >
+              Banco é obrigatório
             </div>
           </div>
           <div
@@ -71,11 +82,20 @@
                 id="forma_liberacao"
                 name="forma_liberacao"
                 class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.forma_liberacao.$model"
+                @change="setFormaLiberacao($event.target.value)"
               >
+                <option value="">SELECIONAR</option>
                 <option :value="'1'">TED</option>
                 <option :value="'2'">DOC</option>
                 <option :value="'3'">PIX</option>
               </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.forma_liberacao.$dirty && !$v.forma_liberacao.required"
+            >
+              Forma de Liberação é obrigatório
             </div>
           </div>
           <div
@@ -90,7 +110,22 @@
               <input
                 id="agencia"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                :value="$v.agencia.$model"
+                @input="setAgencia($event.target.value)"
+                v-mask="'####'"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.agencia.$dirty && !$v.agencia.required"
+            >
+              Agência é obrigatório
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.agencia.$dirty && !$v.agencia.numeric"
+            >
+              Agência Inválida
             </div>
           </div>
           <div
@@ -105,8 +140,16 @@
               <input
                 id="digito_agencia"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
+                v-mask="'##'"
+                :value="$v.digito_agencia.$model"
+                @input="setDigitoAgencia($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.digito_agencia.$dirty && !$v.digito_agencia.required"
+            >
+              Digito da Agência é obrigatório
             </div>
           </div>
           <div
@@ -121,7 +164,16 @@
               <input
                 id="conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                v-mask="'####'"
+                :value="$v.conta.$model"
+                @input="setConta($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.conta.$dirty && !$v.conta.required"
+            >
+              Conta é obrigatório
             </div>
           </div>
           <div
@@ -136,8 +188,16 @@
               <input
                 id="digito_conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
+                v-mask="'##'"
+                :value="$v.digito_conta.$model"
+                @input="setDigitoConta($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.digito_conta.$dirty && !$v.digito_conta.required"
+            >
+              Digito da Conta é obrigatório
             </div>
           </div>
         </div>
@@ -172,11 +232,12 @@
 
 <script>
 import Solicitacao from "../Solicitacao.vue";
+import { required } from "vuelidate/lib/validators";
+
 export default {
   components: { Solicitacao },
   data() {
     return {
-      price: 123.45,
       money: {
         decimal: ",",
         thousands: ".",
@@ -185,10 +246,67 @@ export default {
         precision: 2,
         masked: false /* doesn't work with directive */,
       },
+      banco: "",
+      forma_liberacao: "",
+      agencia: "",
+      digito_agencia: "",
+      conta: "",
+      digito_conta: "",
     };
+  },
+  validations: {
+    banco: {
+      required,
+    },
+    forma_liberacao: {
+      required,
+    },
+    agencia: {
+      required,
+    },
+    digito_agencia: {
+      required,
+    },
+    conta: {
+      required,
+    },
+    digito_conta: {
+      required,
+    },
+  },
+  methods: {
+    setBanco(value) {
+      this.banco = value;
+      this.$v.banco.$touch();
+    },
+    setFormaLiberacao(value) {
+      this.forma_liberacao = value;
+      this.$v.forma_liberacao.$touch();
+    },
+    setAgencia(value) {
+      this.agencia = value;
+      this.$v.agencia.$touch();
+    },
+    setDigitoAgencia(value) {
+      this.digito_agencia = value;
+      this.$v.digito_agencia.$touch();
+    },
+    setConta(value) {
+      this.conta = value;
+      this.$v.conta.$touch();
+    },
+    setDigitoConta(value) {
+      this.digito_conta = value;
+      this.$v.digito_conta.$touch();
+    },
   },
 };
 </script>
 
 <style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>

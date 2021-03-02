@@ -20,7 +20,17 @@
                 id="nome_representante"
                 placeholder="Nome do Representante"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                :value="$v.nome_representante.$model"
+                @input="setNomeRepresentante($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.nome_representante.$dirty && !$v.nome_representante.required
+              "
+            >
+              Nome Representante é obrigatório
             </div>
           </div>
           <div
@@ -34,14 +44,25 @@
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
                 id="cpf_representante"
+                placeholder="###.###.###-##"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 v-mask="'###.###.###-##'"
+                :value="$v.cpf_representante.$model"
+                @input="setCpfRepresentante($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.cpf_representante.$dirty && !$v.cpf_representante.required
+              "
+            >
+              CPF válido é obrigatório
             </div>
           </div>
           <div
-            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -53,7 +74,15 @@
                 id="rg_representante"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
+                :value="$v.rg_representante.$model"
+                @input="setRgRepresentante($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.rg_representante.$dirty && !$v.rg_representante.required"
+            >
+              RG é obrigatório
             </div>
           </div>
           <div
@@ -62,18 +91,60 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="sexo">Sexo</label>
+              <label for="uf_rg_representante">UF do RG</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="sexo"
-                name="sexo"
+                id="uf_rg_representante"
+                name="uf_rg_representante"
                 class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.uf_rg_representante.$model"
+                @change="setUfRgRepresentante($event.target.value)"
               >
+                <option value="">SELECIONAR</option>
+                <option :value="'SP'">MINAS GERAIS</option>
+                <option :value="'MG'">SÃO PAULOA</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.uf_rg_representante.$dirty &&
+                !$v.uf_rg_representante.required
+              "
+            >
+              UF do RG é obrigatório
+            </div>
+          </div>
+          <div
+            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="sexo_representante">Sexo</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <select
+                id="sexo_representante"
+                name="sexo_representante"
+                class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.sexo_representante.$model"
+                @change="setSexoRepresentante($event.target.value)"
+              >
+                <option value="">SELECIONAR</option>
                 <option :value="'M'">MASCULINO</option>
                 <option :value="'F'">FEMININO</option>
               </select>
             </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.sexo_representante.$dirty && !$v.sexo_representante.required
+              "
+            >
+              Sexo é obrigatório
+            </div>
           </div>
           <div
             class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -81,14 +152,29 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="cpf_representante">Profissão</label>
+              <label for="profissao_representante">Profissão</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="cpf_representante"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-              />
+              <select
+                id="profissao_representante"
+                name="profissao_representante"
+                class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.profissao_representante.$model"
+                @change="setProfissaoRepresentante($event.target.value)"
+              >
+                <option value="">SELECIONAR</option>
+                <option :value="'0007'">APOSENTADO</option>
+                <option :value="'0001'">ASSALARIADO</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.profissao_representante.$dirty &&
+                !$v.profissao_representante.required
+              "
+            >
+              Profissão é obrigatória
             </div>
           </div>
           <div
@@ -97,17 +183,29 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="estado_civil">Estado Civil</label>
+              <label for="estado_civil_representante">Estado Civil</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="estado_civil"
-                name="estado_civil"
+                id="estado_civil_representante"
+                name="estado_civil_representante"
                 class="p-1 px-2 outline-none w-full text-gray-800"
+                :value="$v.estado_civil_representante.$model"
+                @change="setEstadoCivilRepresentante($event.target.value)"
               >
+                <option value="">SELECIONAR</option>
                 <option :value="'S'">SOLTEIRO</option>
                 <option :value="'C'">CASADO</option>
               </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.estado_civil_representante.$dirty &&
+                !$v.estado_civil_representante.required
+              "
+            >
+              Estado Civil é obrigatório
             </div>
           </div>
           <div
@@ -116,14 +214,25 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="nome_mae">Nome da Mãe</label>
+              <label for="nome_mae_representante">Nome da Mãe</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="nome_mae"
+                id="nome_mae_representante"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
+                :value="$v.nome_mae_representante.$model"
+                @input="setNomeMaeRepresentante($event.target.value)"
               />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.nome_mae_representante.$dirty &&
+                !$v.nome_mae_representante.required
+              "
+            >
+              Nome da Mãe é obrigatório
             </div>
           </div>
         </div>
@@ -141,19 +250,35 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="id_tipo_logradouro">Tipo Logradouro</label>
+                <label for="id_tipo_logradouro_representante"
+                  >Tipo Logradouro</label
+                >
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <select
-                  id="id_tipo_logradouro"
-                  name="id_tipo_logradouro"
+                  id="id_tipo_logradouro_representante"
+                  name="id_tipo_logradouro_representante"
                   class="p-1 px-2 outline-none w-full text-gray-800"
+                  :value="$v.id_tipo_logradouro_representante.$model"
+                  @change="
+                    setIdTipoLogradouroRepresentante($event.target.value)
+                  "
                 >
+                  <option value="">SELECIONAR</option>
                   <option :value="1">RUA</option>
                   <option :value="2">AVENIDA</option>
                   <option :value="3">PRACA</option>
                 </select>
               </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.id_tipo_logradouro_representante.$dirty &&
+                  !$v.id_tipo_logradouro_representante.required
+                "
+              >
+                Tipo do Logradouro é obrigatório
+              </div>
             </div>
             <div
               class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -161,13 +286,68 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="logradouro">Logradouro</label>
+                <label for="logradouro_representante">Logradouro</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
-                  id="logradouro"
+                  id="logradouro_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="text"
+                  :value="$v.logradouro_representante.$model"
+                  @input="setLogradouroRepresentante($event.target.value)"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.logradouro_representante.$dirty &&
+                  !$v.logradouro_representante.required
+                "
+              >
+                Logradouro é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="numero_representante">Número</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="numero_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  :value="$v.numero_representante.$model"
+                  @input="setNumeroRepresentante($event.target.value)"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.numero_representante.$dirty &&
+                  !$v.numero_representante.required
+                "
+              >
+                Número é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="complemento_representante">Complemento</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="complemento_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  :value="$v.complemento_representante.$model"
+                  @blur="setComplementoRepresentante($event.target.value)"
                 />
               </div>
             </div>
@@ -177,46 +357,32 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="numero">Número</label>
+                <label for="cep_representante">CEP</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
-                  id="numero"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="complemento">Complemento</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="complemento"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cep">CEP</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="cep"
+                  id="cep_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   v-mask="'#####-###'"
+                  :value="$v.cep_representante.$model"
+                  @blur="setCepRepresentante($event.target.value)"
                 />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.cep_representante.$dirty && !$v.cep_representante.required
+                "
+              >
+                Digite um CEP válido
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.cep_representante.$dirty && !$v.cep_representante.minLength
+                "
+              >
+                CEP inválido
               </div>
             </div>
             <div
@@ -225,14 +391,25 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="bairro">Bairro</label>
+                <label for="bairro_representante">Bairro</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
-                  id="bairro"
+                  id="bairro_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="text"
+                  :value="$v.bairro_representante.$model"
+                  @input="setBairroRepresentante($event.target.value)"
                 />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.bairro_representante.$dirty &&
+                  !$v.bairro_representante.required
+                "
+              >
+                Bairro é obrigatório
               </div>
             </div>
             <div
@@ -241,14 +418,25 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="cidade">Cidade</label>
+                <label for="cidade_representante">Cidade</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
-                  id="cidade"
+                  id="cidade_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="text"
+                  :value="$v.cidade_representante.$model"
+                  @input="setCidadeRepresentante($event.target.value)"
                 />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.cidade_representante.$dirty &&
+                  !$v.cidade_representante.required
+                "
+              >
+                Cidade é obrigatória
               </div>
             </div>
             <div
@@ -264,11 +452,22 @@
                   id="uf_representante"
                   name="uf_representante"
                   class="p-1 px-2 outline-none w-full text-gray-800"
+                  :value="$v.uf_representante.$model"
+                  @change="setUfRepresentante($event.target.value)"
                 >
+                  <option value="">SELECIONAR</option>
                   <option :value="'MG'">Minas Gerais</option>
                   <option :value="'SP'">São Paulo</option>
                   <option :value="'ES'">Espirito Santo</option>
                 </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.uf_representante.$dirty && !$v.uf_representante.required
+                "
+              >
+                UF é obrigatório
               </div>
             </div>
             <div
@@ -284,7 +483,27 @@
                   id="celular_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   v-mask="'(##)#####-####'"
+                  :value="$v.celular_representante.$model"
+                  @input="setCelularRepresentante($event.target.value)"
                 />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.celular_representante.$dirty &&
+                  !$v.celular_representante.required
+                "
+              >
+                Celular/Telefone é obrigatório
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.celular_representante.$dirty &&
+                  !$v.celular_representante.minLength
+                "
+              >
+                Celular/Telefone Inválido
               </div>
             </div>
             <div
@@ -300,7 +519,18 @@
                   id="email_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="email"
+                  :value="$v.email_representante.$model"
+                  @input="setEmailRepresentante($event.target.value)"
                 />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.email_representante.$dirty &&
+                  !$v.email_representante.required
+                "
+              >
+                E-mail válido é obrigatório
               </div>
             </div>
             <div
@@ -382,12 +612,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="nome_representante">Nome (Representante)</label>
+              <label for="nome_socio">Nome (Representante)</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="nome_representante"
-                name="nome_representante"
+                id="nome_socio"
+                name="nome_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Nome completo"
@@ -400,12 +630,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="cpf_representante">CPF Representante</label>
+              <label for="cpf_socio">CPF Representante</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="cpf_representante"
-                name="cpf_representante"
+                id="cpf_socio"
+                name="cpf_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="###.###.###-##"
@@ -419,12 +649,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="uf_rg_representante">UF do RG</label>
+              <label for="uf_rg_socio">UF do RG</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="uf_rg_representante"
-                name="uf_rg_representante"
+                id="uf_rg_socio"
+                name="uf_rg_socio"
                 class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option :value="'MG'">Minas Gerais</option>
@@ -439,12 +669,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="numero_rg_representante">Nº do RG</label>
+              <label for="numero_rg_socio">Nº do RG</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="numero_rg_representante"
-                name="numero_rg_representante"
+                id="numero_rg_socio"
+                name="numero_rg_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
               />
@@ -456,12 +686,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="sexo_representante">Sexo</label>
+              <label for="sexo_socio">Sexo</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="sexo_representante"
-                name="sexo_representante"
+                id="sexo_socio"
+                name="sexo_socio"
                 class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option value="M">Masculino</option>
@@ -475,12 +705,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="estado_civil_representante">Estado Cívil</label>
+              <label for="estado_civil_socio">Estado Cívil</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="estado_civil_representante"
-                name="estado_civil_representante"
+                id="estado_civil_socio"
+                name="estado_civil_socio"
                 class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option value="1">Casado</option>
@@ -494,12 +724,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="email_representante">E-mail</label>
+              <label for="email_socio">E-mail</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="email_representante"
-                name="email_representante"
+                id="email_socio"
+                name="email_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="mail@brasilcard.net"
@@ -512,12 +742,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="telefone_representante">Telefone</label>
+              <label for="telefone_socio">Telefone</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="telefone_representante"
-                name="telefone_representante"
+                id="telefone_socio"
+                name="telefone_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="###.###.###-##"
@@ -535,12 +765,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="cep_representante">CEP</label>
+              <label for="cep_socio">CEP</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="cep_representante"
-                name="cep_representante"
+                id="cep_socio"
+                name="cep_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="#####-###"
@@ -554,12 +784,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="uf_representante">UF</label>
+              <label for="uf_socio">UF</label>
             </div>
             <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
               <select
-                id="uf_representante"
-                name="uf_representante"
+                id="uf_socio"
+                name="uf_socio"
                 class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option value="MG">Minas Gerais</option>
@@ -574,12 +804,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="cidade_representante">Cidade</label>
+              <label for="cidade_socio">Cidade</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="cidade_representante"
-                name="cidade_representante"
+                id="cidade_socio"
+                name="cidade_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Cidade"
@@ -592,12 +822,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="bairro_representante">Bairro</label>
+              <label for="bairro_socio">Bairro</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="bairro_representante"
-                name="bairro_representante"
+                id="bairro_socio"
+                name="bairro_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Bairro"
@@ -610,14 +840,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="tipo_logradouro_representante"
-                >Tipo de Logradouro</label
-              >
+              <label for="tipo_logradouro_socio">Tipo de Logradouro</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <select
-                id="tipo_logradouro_representante"
-                name="tipo_logradouro_representante"
+                id="tipo_logradouro_socio"
+                name="tipo_logradouro_socio"
                 class="p-1 px-2 outline-none w-full text-gray-800"
               >
                 <option :value="1">Rua</option>
@@ -632,12 +860,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="logradouro_representante">Logradouro</label>
+              <label for="logradouro_socio">Logradouro</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="logradouro_representante"
-                name="logradouro_representante"
+                id="logradouro_socio"
+                name="logradouro_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
               />
@@ -649,12 +877,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="numero_representante">Número</label>
+              <label for="numero_socio">Número</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="numero_representante"
-                name="numero_representante"
+                id="numero_socio"
+                name="numero_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
               />
@@ -666,12 +894,12 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="complemento_representante">Complemento</label>
+              <label for="complemento_socio">Complemento</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
-                id="complemento_representante"
-                name="complemento_representante"
+                id="complemento_socio"
+                name="complemento_socio"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
               />
@@ -689,6 +917,7 @@
         <div class="flex-auto flex flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-4' }">
             <button
+              v-show="!$v.$invalid"
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
             >
               Avançar
@@ -709,20 +938,206 @@
 
 <script>
 import Solicitacao from "../Solicitacao.vue";
+import { required, minLength } from "vuelidate/lib/validators";
+
 export default {
   components: { Solicitacao },
   data() {
     return {
-      price: 123.45,
-      money: {
-        decimal: ",",
-        thousands: ".",
-        prefix: "R$ ",
-        suffix: "",
-        precision: 2,
-        masked: false /* doesn't work with directive */,
-      },
+      nome_representante: "",
+      cpf_representante: "",
+      rg_representante: "",
+      uf_rg_representante: "",
+      nome_mae_representante: "",
+      id_tipo_logradouro_representante: "",
+      logradouro_representante: "",
+      numero_representante: null,
+      cep_representante: "",
+      complemento_representante: "",
+      bairro_representante: "",
+      cidade_representante: "",
+      uf_representante: "",
+      celular_representante: "",
+      email_representante: "",
+      estado_civil_representante: "",
+      profissao_representante: "",
+      sexo_representante: "",
     };
+  },
+  validations: {
+    nome_representante: {
+      required,
+    },
+    cpf_representante: {
+      required,
+    },
+    rg_representante: {
+      required,
+    },
+    uf_rg_representante: {
+      required,
+    },
+    nome_mae_representante: {
+      required,
+    },
+    id_tipo_logradouro_representante: {
+      required,
+    },
+    logradouro_representante: {
+      required,
+    },
+    numero_representante: {
+      required,
+    },
+    cep_representante: {
+      required,
+      minLength: minLength(8),
+    },
+    complemento_representante: {},
+    bairro_representante: {
+      required,
+    },
+    cidade_representante: {
+      required,
+    },
+    uf_representante: {
+      required,
+    },
+    celular_representante: {
+      required,
+      minLength: minLength(11),
+    },
+    email_representante: {
+      required,
+    },
+    estado_civil_representante: {
+      required,
+    },
+    profissao_representante: {
+      required,
+    },
+    sexo_representante: {
+      required,
+    },
+  },
+  methods: {
+    setNomeRepresentante(value) {
+      this.nome_representante = value;
+      this.$v.nome_representante.$touch();
+    },
+    setRgRepresentante(value) {
+      this.rg_representante = value;
+      this.$v.rg_representante.$touch();
+    },
+    setUfRgRepresentante(value) {
+      this.uf_rg_representante = value;
+      this.$v.uf_rg_representante.$touch();
+    },
+    async setCpfRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      let isInvalid = await this.$store.dispatch("validaCPF", value);
+      if (isInvalid) {
+        this.cpf_representante = null;
+      } else this.cpf_representante = value;
+      this.$v.cpf_representante.$touch();
+    },
+    setEstadoCivilRepresentante(value) {
+      this.estado_civil_representante = value;
+      this.$v.estado_civil_representante.$touch();
+    },
+    setSexoRepresentante(value) {
+      this.sexo_representante = value;
+      this.$v.sexo_representante.$touch();
+    },
+
+    setNomeMaeRepresentante(value) {
+      this.nome_mae_representante = value;
+      this.$v.nome_mae_representante.$touch();
+    },
+    setProfissaoRepresentante(value) {
+      this.profissao_representante = value;
+      this.$v.profissao_representante.$touch();
+    },
+    setIdTipoLogradouroRepresentante(value) {
+      this.id_tipo_logradouro_representante = value;
+      this.$v.id_tipo_logradouro_representante.$touch();
+    },
+    setLogradouroRepresentante(value) {
+      this.logradouro_representante = value;
+      this.$v.logradouro_representante.$touch();
+    },
+    setNumeroRepresentante(value) {
+      this.numero_representante = value;
+      this.$v.numero_representante.$touch();
+    },
+    async setCepRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      if (dadosEndereco.erro) {
+        this.setBairroRepresentante("");
+        document.querySelector("#bairro_representante").disabled = false;
+
+        this.setCidadeRepresentante("");
+        document.querySelector("#cidade_representante").disabled = false;
+
+        this.setLogradouroRepresentante("");
+        document.querySelector("#logradouro_representante").disabled = false;
+
+        this.setUfRepresentante("");
+        document.querySelector("#uf_representante").disabled = false;
+
+        this.cep_representante = null;
+        this.$v.cep_representante.$touch();
+      } else {
+        this.setBairroRepresentante(dadosEndereco.bairro);
+        if (dadosEndereco.bairro != "")
+          document.querySelector("#bairro_representante").disabled = true;
+
+        this.setCidadeRepresentante(dadosEndereco.localidade);
+        if (dadosEndereco.localidade != "")
+          document.querySelector("#cidade_representante").disabled = true;
+
+        this.setLogradouroRepresentante(dadosEndereco.logradouro);
+        if (dadosEndereco.logradouro != "")
+          document.querySelector("#logradouro_representante").disabled = true;
+
+        this.setUfRepresentante(dadosEndereco.uf);
+        if (dadosEndereco.uf != "")
+          document.querySelector("#uf_representante").disabled = true;
+
+        this.setComplementoRepresentante(dadosEndereco.complemento);
+
+        this.cep_representante = value;
+        this.$v.cep_representante.$touch();
+      }
+    },
+    setComplementoRepresentante(value) {
+      this.complemento_representante = value;
+      this.$v.complemento_representante.$touch();
+    },
+    setBairroRepresentante(value) {
+      this.bairro_representante = value;
+      this.$v.bairro_representante.$touch();
+    },
+    setCidadeRepresentante(value) {
+      this.cidade_representante = value;
+      this.$v.cidade_representante.$touch();
+    },
+    setUfRepresentante(value) {
+      this.uf_representante = value;
+      this.$v.uf_representante.$touch();
+    },
+    setCelularRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.celular_representante = value;
+      this.$v.celular_representante.$touch();
+    },
+    setEmailRepresentante(value) {
+      if (value.indexOf("@") != -1) this.email_representante = value;
+      else this.email_representante = null;
+
+      this.$v.email_representante.$touch();
+    },
   },
 };
 </script>

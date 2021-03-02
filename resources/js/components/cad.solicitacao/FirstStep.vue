@@ -167,7 +167,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required, minValue, between } from "vuelidate/lib/validators";
+import { required, minValue, between, numeric } from "vuelidate/lib/validators";
 
 import Solicitacao from "../Solicitacao.vue";
 

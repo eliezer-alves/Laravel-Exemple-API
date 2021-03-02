@@ -14,5 +14,11 @@ interface ApiSicredServiceInterface
 
 	public function exibeProposta(int $numeroProposta);
 
+	public function ufDominio();
+
 	public function estadoCivilDominio();
+
+	public function profissaoDominio();
+
+	public function bancoDominio();
 }
