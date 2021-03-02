@@ -487,6 +487,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -502,8 +505,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         prefix: "R$ ",
         precision: 0
       },
-      valor_solicitado: 10000.0,
-      parcelas: 1,
+      valor_solicitado: null,
+      parcelas: null,
       data_geracao_proposta: "",
       primeiro_vencimento: ""
     };
@@ -520,6 +523,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     data_geracao_proposta: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+    },
+    primeiro_vencimento: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     }
   },
   methods: {
@@ -535,6 +541,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setDataGeracaoProposta: function setDataGeracaoProposta(value) {
       this.data_geracao_proposta = value;
       this.$v.data_geracao_proposta.$touch();
+    },
+    setPrimeiroVencimento: function setPrimeiroVencimento(value) {
+      this.primeiro_vencimento = value;
+      this.$v.primeiro_vencimento.$touch();
     }
   }
 });
@@ -1444,12 +1454,14 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
+                _vm.$v.valor_solicitado.$dirty &&
                 !_vm.$v.valor_solicitado.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v("\n              Valor obrigatório\n            ")
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _vm.$v.valor_solicitado.$dirty &&
                 !_vm.$v.valor_solicitado.minValue
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
@@ -1507,7 +1519,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                !_vm.$v.parcelas.between
+                _vm.$v.parcelas.$dirty && !_vm.$v.parcelas.between
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Parcelas entre " +
@@ -1519,10 +1531,10 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                !_vm.$v.parcelas.required
+                _vm.$v.parcelas.$dirty && !_vm.$v.parcelas.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
-                        "\n              Parcela obrigatória\n            "
+                        "\n              Parcela(s) obrigatória\n            "
                       )
                     ])
                   : _vm._e()
@@ -1574,15 +1586,10 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                !_vm.$v.parcelas.between
+                _vm.$v.data_geracao_proposta.$dirty &&
+                !_vm.$v.data_geracao_proposta.required
                   ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v(
-                        "\n              Parcelas entre " +
-                          _vm._s(_vm.$v.parcelas.$params.between.min) +
-                          " e\n              " +
-                          _vm._s(_vm.$v.parcelas.$params.between.max) +
-                          "\n            "
-                      )
+                      _vm._v("\n              Data obrigatória\n            ")
                     ])
                   : _vm._e()
               ]
@@ -1623,10 +1630,22 @@ var render = function() {
                         name: "primeiro_vencimento",
                         type: "date"
                       },
-                      domProps: { value: _vm.primeiro_vencimento }
+                      domProps: { value: _vm.primeiro_vencimento },
+                      on: {
+                        input: function($event) {
+                          return _vm.setPrimeiroVencimento($event.target.value)
+                        }
+                      }
                     })
                   ]
-                )
+                ),
+                _vm._v(" "),
+                _vm.$v.primeiro_vencimento.$dirty &&
+                !_vm.$v.primeiro_vencimento.required
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v("\n              Data obrigatória\n            ")
+                    ])
+                  : _vm._e()
               ]
             )
           ])

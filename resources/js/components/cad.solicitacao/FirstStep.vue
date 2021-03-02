@@ -31,10 +31,10 @@
                   @input="setValorSolicitado($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="!$v.valor_solicitado.required">
+              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.required">
                 Valor obrigatório
               </div>
-              <div class="text-red-600" v-if="!$v.valor_solicitado.minValue">
+              <div class="text-red-600" v-if="$v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue">
                 Valor minimo de R${{ $v.valor_solicitado.$params.minValue.min }}
               </div>
             </div>
@@ -56,12 +56,12 @@
                   @input="setParcelas($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="!$v.parcelas.between">
+              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.between">
                 Parcelas entre {{ $v.parcelas.$params.between.min }} e
                 {{ $v.parcelas.$params.between.max }}
               </div>
-              <div class="text-red-600" v-if="!$v.parcelas.required">
-                Parcela obrigatória
+              <div class="text-red-600" v-if="$v.parcelas.$dirty && !$v.parcelas.required">
+                Parcela(s) obrigatória
               </div>
             </div>
             <div
@@ -82,9 +82,8 @@
                   @input="setDataGeracaoProposta($event.target.value)"
                 />
               </div>
-              <div class="text-red-600" v-if="!$v.parcelas.between">
-                Parcelas entre {{ $v.parcelas.$params.between.min }} e
-                {{ $v.parcelas.$params.between.max }}
+              <div class="text-red-600" v-if="$v.data_geracao_proposta.$dirty && !$v.data_geracao_proposta.required">
+                Data obrigatória
               </div>
             </div>
             <div
@@ -102,7 +101,11 @@
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
                   :value="primeiro_vencimento"
+                  @input="setPrimeiroVencimento($event.target.value)"
                 />
+              </div>
+              <div class="text-red-600" v-if="$v.primeiro_vencimento.$dirty && !$v.primeiro_vencimento.required">
+                Data obrigatória
               </div>
             </div>
           </div>
@@ -149,8 +152,8 @@ export default {
         prefix: "R$ ",
         precision: 0,
       },
-      valor_solicitado: 10000.0,
-      parcelas: 1,
+      valor_solicitado: null,
+      parcelas: null,
       data_geracao_proposta: "",
       primeiro_vencimento: "",
     };
@@ -169,6 +172,9 @@ export default {
     },
     data_geracao_proposta: {
       required
+    },
+    primeiro_vencimento: {
+      required
     }
   },
   methods: {
@@ -184,6 +190,10 @@ export default {
     setDataGeracaoProposta(value) {
       this.data_geracao_proposta = value;
       this.$v.data_geracao_proposta.$touch();
+    },
+    setPrimeiroVencimento(value) {
+      this.primeiro_vencimento = value;
+      this.$v.primeiro_vencimento.$touch();
     },
   },
 };
