@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\UrlSicred;
+use App\Models\ModeloSicred;
 
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UrlSicredSeeder extends Seeder
+class ModeloSicredSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,7 @@ class UrlSicredSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            $objUrlSicred = UrlSicred::Factory()->create();
+            $objModeloSicred = ModeloSicred::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

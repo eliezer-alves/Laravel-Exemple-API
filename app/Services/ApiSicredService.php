@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\ClientSicredRepositoryInterface;
+use App\Repositories\Contracts\ModeloSicredRepositoryInterface;
 use App\Services\Contracts\ApiSicredServiceInterface;
 
 use Session;
@@ -11,14 +12,17 @@ use Illuminate\Support\Facades\Http;
 class ApiSicredService implements ApiSicredServiceInterface
 {
 	protected $clientSicredRepository;
+	protected $modeloSicredRepository;
 	protected $environment = 'hml';
+	protected $modelo = 'capital-de-giro';
 	protected $urls;
 
 	protected $empresa = '01';
 
-	public function __construct(ClientSicredRepositoryInterface $clientSicredRepository)
+	public function __construct(ClientSicredRepositoryInterface $clientSicredRepository, ModeloSicredRepositoryInterface $modeloSicredRepository)
 	{
 		$this->clientSicredRepository = $clientSicredRepository->findEnvironment($this->environment);
+		$this->modeloSicredRepository = $modeloSicredRepository->findModelo($this->modelo);
 		$this->urls = $this->clientSicredRepository->urls;
 		$this->renovaSessao();
 	}
@@ -52,24 +56,7 @@ class ApiSicredService implements ApiSicredServiceInterface
 	public function novaSimulacao($request)
 	{
 		$url = $this->urls->base_url . $this->urls->simulacao_url . '/simular';
-		$form = [
-			'empresa' => '01',
-			'agencia' => '0001',
-			'cpf' => $request['cpf'],
-			'lojista' => '000002',
-			'loja' => '0001',
-			'dataInicio' => '2021-02-26',
-			'dataPrimeiroVencimento' => $request['dataPrimeiroVencimento'],
-			'produto' => '000080',
-			'plano' => '0054',
-			'prazo' => $request['prazo'],
-			'valorSolicitado' => $request['valorSolicitado'],
-			'valorParcela' => 0,
-			'valorSeguro' => 0,
-			'taxa' => 9.99,
-			'prazoMin' => 0,
-			'prazoMax' => 0
-		];
+		$form = array_merge($this->modeloSicredRepository->toArray(), $request);
 		$response = Http::withToken(Session::get('accessToken'))->post($url, $form);
 
 		return response($response->body(), $response->status());

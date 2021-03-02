@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\UrlSicred;
+use App\Models\ModeloSicred;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\UrlSicred;
 
 class ClientSicred extends Model
 {
@@ -27,5 +29,10 @@ class ClientSicred extends Model
     public function urls()
     {
         return $this->hasOne(UrlSicred::class, 'id_client_sicred');
+    }
+
+    public function modeloSicred()
+    {
+        return $this->hasMany(ModeloSicred::class, 'id_client_sicred');
     }
 }
