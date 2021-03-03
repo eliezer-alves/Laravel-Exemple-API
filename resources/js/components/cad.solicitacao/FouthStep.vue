@@ -57,9 +57,13 @@
                 @change="setBanco($event.target.value)"
               >
                 <option value="">SELECIONAR</option>
-                <option :value="'0001'">Banco do Brasil</option>
-                <option :value="'0002'">Bradesco</option>
-                <option :value="'0003'">Itau</option>
+                <option
+                  v-for="banco in dominios.banco"
+                  :key="banco.codigo"
+                  :value="banco.codigo"
+                >
+                  {{ banco.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -225,11 +229,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Solicitacao from "../Solicitacao.vue";
 import { required } from "vuelidate/lib/validators";
 
 export default {
   components: { Solicitacao },
+  computed: {
+    ...mapGetters(["dominios"])
+  },
   data() {
     return {
       money: {
@@ -247,6 +255,9 @@ export default {
       conta: "",
       digito_conta: ""
     };
+  },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
   },
   validations: {
     banco: {

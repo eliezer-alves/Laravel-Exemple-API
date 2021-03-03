@@ -102,15 +102,20 @@
                 @change="setUfRgRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'SP'">MINAS GERAIS</option>
-                <option :value="'MG'">SÃO PAULO</option>
+                <option
+                  v-for="uf_rg in dominios.uf"
+                  :key="uf_rg.codigo"
+                  :value="uf_rg.codigo"
+                >
+                  {{ uf_rg.descricao }}
+                </option>
               </select>
             </div>
             <div
               class="text-red-600"
               v-if="
                 $v.uf_rg_representante.$dirty &&
-                  !$v.uf_rg_representante.required
+                !$v.uf_rg_representante.required
               "
             >
               UF do RG é obrigatório
@@ -163,15 +168,20 @@
                 @change="setProfissaoRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'0007'">Aposentado</option>
-                <option :value="'0001'">Assalariado</option>
+                <option
+                  v-for="profissoes in dominios.profissao"
+                  :key="profissoes.codigo"
+                  :value="profissoes.codigo"
+                >
+                  {{ profissoes.descricao }}
+                </option>
               </select>
             </div>
             <div
               class="text-red-600"
               v-if="
                 $v.profissao_representante.$dirty &&
-                  !$v.profissao_representante.required
+                !$v.profissao_representante.required
               "
             >
               Profissão é obrigatória
@@ -194,15 +204,20 @@
                 @change="setEstadoCivilRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'S'">SOLTEIRO</option>
-                <option :value="'C'">CASADO</option>
+                <option
+                  v-for="estado_civil in dominios.estadoCivil"
+                  :key="estado_civil.codigo"
+                  :value="estado_civil.codigo"
+                >
+                  {{ estado_civil.descricao }}
+                </option>
               </select>
             </div>
             <div
               class="text-red-600"
               v-if="
                 $v.estado_civil_representante.$dirty &&
-                  !$v.estado_civil_representante.required
+                !$v.estado_civil_representante.required
               "
             >
               Estado Civil é obrigatório
@@ -229,7 +244,7 @@
               class="text-red-600"
               v-if="
                 $v.nome_mae_representante.$dirty &&
-                  !$v.nome_mae_representante.required
+                !$v.nome_mae_representante.required
               "
             >
               Nome da Mãe é obrigatório
@@ -265,16 +280,20 @@
                   "
                 >
                   <option value="">--</option>
-                  <option :value="1">RUA</option>
-                  <option :value="2">AVENIDA</option>
-                  <option :value="3">PRACA</option>
+                  <option
+                    v-for="tipo_logradouro in dominios.tipoLogradouro"
+                    :key="tipo_logradouro.id_tipo_logradouro"
+                    :value="tipo_logradouro.id_tipo_logradouro"
+                  >
+                    {{ tipo_logradouro.descricao }}
+                  </option>
                 </select>
               </div>
               <div
                 class="text-red-600"
                 v-if="
                   $v.id_tipo_logradouro_representante.$dirty &&
-                    !$v.id_tipo_logradouro_representante.required
+                  !$v.id_tipo_logradouro_representante.required
                 "
               >
                 Tipo do Logradouro é obrigatório
@@ -301,7 +320,7 @@
                 class="text-red-600"
                 v-if="
                   $v.logradouro_representante.$dirty &&
-                    !$v.logradouro_representante.required
+                  !$v.logradouro_representante.required
                 "
               >
                 Logradouro é obrigatório
@@ -327,7 +346,7 @@
                 class="text-red-600"
                 v-if="
                   $v.numero_representante.$dirty &&
-                    !$v.numero_representante.required
+                  !$v.numero_representante.required
                 "
               >
                 Número é obrigatório
@@ -406,7 +425,7 @@
                 class="text-red-600"
                 v-if="
                   $v.bairro_representante.$dirty &&
-                    !$v.bairro_representante.required
+                  !$v.bairro_representante.required
                 "
               >
                 Bairro é obrigatório
@@ -433,7 +452,7 @@
                 class="text-red-600"
                 v-if="
                   $v.cidade_representante.$dirty &&
-                    !$v.cidade_representante.required
+                  !$v.cidade_representante.required
                 "
               >
                 Cidade é obrigatória
@@ -456,9 +475,13 @@
                   @change="setUfRepresentante($event.target.value)"
                 >
                   <option value="">--</option>
-                  <option :value="'MG'">Minas Gerais</option>
-                  <option :value="'SP'">São Paulo</option>
-                  <option :value="'ES'">Espirito Santo</option>
+                  <option
+                    v-for="uf in dominios.uf"
+                    :key="uf.codigo"
+                    :value="uf.codigo"
+                  >
+                    {{ uf.descricao }}
+                  </option>
                 </select>
               </div>
               <div
@@ -491,7 +514,7 @@
                 class="text-red-600"
                 v-if="
                   $v.celular_representante.$dirty &&
-                    !$v.celular_representante.required
+                  !$v.celular_representante.required
                 "
               >
                 Celular/Telefone é obrigatório
@@ -500,7 +523,7 @@
                 class="text-red-600"
                 v-if="
                   $v.celular_representante.$dirty &&
-                    !$v.celular_representante.minLength
+                  !$v.celular_representante.minLength
                 "
               >
                 Celular/Telefone Inválido
@@ -527,8 +550,8 @@
                 class="text-red-600"
                 v-if="
                   $v.email_representante.$dirty &&
-                    (!$v.email_representante.required ||
-                      !$v.email_representante.email)
+                  (!$v.email_representante.required ||
+                    !$v.email_representante.email)
                 "
               >
                 E-mail válido é obrigatório
@@ -656,6 +679,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Solicitacao from "../Solicitacao.vue";
 import Socios from "./Socios.vue";
 
@@ -665,6 +689,9 @@ import { validaCPF } from "../../helper.js";
 
 export default {
   components: { Solicitacao, Socios },
+  computed: {
+    ...mapGetters(["dominios"]),
+  },
   data() {
     return {
       nome_representante: "",
@@ -685,68 +712,71 @@ export default {
       estado_civil_representante: "",
       profissao_representante: "",
       sexo_representante: "",
-      socios: 0
+      socios: 0,
     };
   },
   computed: {
     ...mapGetters(["errors"]),
   },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
+  },
   validations: {
     nome_representante: {
-      required
+      required,
     },
     cpf_representante: {
-      required
+      required,
     },
     rg_representante: {
-      required
+      required,
     },
     uf_rg_representante: {
-      required
+      required,
     },
     nome_mae_representante: {
-      required
+      required,
     },
     id_tipo_logradouro_representante: {
-      required
+      required,
     },
     logradouro_representante: {
-      required
+      required,
     },
     numero_representante: {
-      required
+      required,
     },
     cep_representante: {
       required,
-      minLength: minLength(8)
+      minLength: minLength(8),
     },
     complemento_representante: {},
     bairro_representante: {
-      required
+      required,
     },
     cidade_representante: {
-      required
+      required,
     },
     uf_representante: {
-      required
+      required,
     },
     celular_representante: {
       required,
-      minLength: minLength(11)
+      minLength: minLength(11),
     },
     email_representante: {
       required,
-      email
+      email,
     },
     estado_civil_representante: {
-      required
+      required,
     },
     profissao_representante: {
-      required
+      required,
     },
     sexo_representante: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setNomeRepresentante(value) {
@@ -873,8 +903,8 @@ export default {
         this.errors.invalid = false;
         --this.socios;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

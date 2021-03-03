@@ -73,9 +73,13 @@
             @change="setUfRgSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option :value="'MG'">Minas Gerais</option>
-            <option :value="'RJ'">Rio de Janeiro</option>
-            <option :value="'SP'">São Paulo</option>
+            <option
+              v-for="uf_rg in dominios.uf"
+              :key="uf_rg.codigo"
+              :value="uf_rg.codigo"
+            >
+              {{ uf_rg.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -156,8 +160,13 @@
             @change="setEstadoCivilSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option value="1">Casado</option>
-            <option value="2">Solteiro</option>
+            <option
+              v-for="estado_civil in dominios.estadoCivil"
+              :key="estado_civil.codigo"
+              :value="estado_civil.codigo"
+            >
+              {{ estado_civil.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -271,9 +280,13 @@
             @change="setUfSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="SP">São Paulo</option>
+            <option
+              v-for="uf in dominios.uf"
+              :key="uf.codigo"
+              :value="uf.codigo"
+            >
+              {{ uf.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -355,16 +368,20 @@
             @change="setTipoLogradouroSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option :value="1">Rua</option>
-            <option :value="2">Avenida</option>
-            <option :value="3">Praça</option>
+            <option
+              v-for="tipo_logradouro in dominios.tipoLogradouro"
+              :key="tipo_logradouro.id_tipo_logradouro"
+              :value="tipo_logradouro.id_tipo_logradouro"
+            >
+              {{ tipo_logradouro.descricao }}
+            </option>
           </select>
         </div>
         <div
           class="text-red-600"
           v-if="
             $v.tipo_logradouro_socio.$dirty &&
-              !$v.tipo_logradouro_socio.required
+            !$v.tipo_logradouro_socio.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -444,12 +461,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 import { validaCPF } from "../../helper.js";
 
 export default {
   props: ["kSocio"],
+  computed: {
+    ...mapGetters(["dominios"]),
+  },
   data() {
     return {
       nome_socio: null,
@@ -467,65 +488,66 @@ export default {
       tipo_logradouro_socio: null,
       logradouro_socio: null,
       numero_socio: null,
-      complemento_socio: null
+      complemento_socio: null,
     };
   },
-  mounted() {
+  async mounted() {
     this.$store.commit("GET_ERRORS", {
       // id: this.kSocio,
       invalid: this.$v.$invalid,
     });
+    await this.$store.dispatch("fetchDominios");
   },
   computed: {
     ...mapGetters(["errors"]),
   },
   validations: {
     nome_socio: {
-      required
+      required,
     },
     cpf_socio: {
-      required
+      required,
     },
     uf_rg_socio: {
-      required
+      required,
     },
     numero_rg_socio: {
-      required
+      required,
     },
     sexo_socio: {
-      required
+      required,
     },
     estado_civil_socio: {
-      required
+      required,
     },
     email_socio: {
-      required
+      required,
     },
     telefone_socio: {
-      required
+      required,
     },
     cep_socio: {
-      required
+      required,
     },
     uf_socio: {
-      required
+      required,
     },
     cidade_socio: {
-      required
+      required,
     },
     bairro_socio: {
-      required
+      required,
     },
     tipo_logradouro_socio: {
-      required
+      required,
     },
     logradouro_socio: {
-      required
+      required,
     },
     complemento_socio: {},
     numero_socio: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setNomeSocio(value) {
@@ -636,8 +658,8 @@ export default {
     setNumeroSocio(value) {
       this.numero_socio = value;
       this.$v.numero_socio.$touch();
-    }
-  }
+    },
+  },
 };
 </script>
 
