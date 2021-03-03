@@ -53,4 +53,4 @@ Route::middleware('auth:api')->namespace('proposta')->group(function () {
 	Route::get('/simulacao/cliente', [PropostaController::class, 'novaProposta']);
 });
 
-Route::middleware('auth:api')->get('/dominios', [DominiosController::class, '__invoke']);
+Route::get('/dominios', [DominiosController::class, '__invoke']);

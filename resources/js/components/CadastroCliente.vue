@@ -10,6 +10,17 @@
       >
         Capital de Giro
       </h1>
+      <lottie-animation
+        path="/images/lottie.json"
+        name="lottie"
+        :loop="true"
+        :autoPlay="true"
+        :loopDelayMin="2.5"
+        :loopDelayMax="5"
+        :speed="1"
+        :width="256"
+        :height="256"
+      />
     </div>
 
     <div
@@ -66,31 +77,31 @@
 </template>
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {};
   },
   props: ["validation"],
-  beforeCreate: function () {
+  beforeCreate: function() {
     document.body.className = "login";
   },
   async mounted() {},
   computed: {
-    currentRoute: function () {
+    currentRoute: function() {
       return this.$router.currentRoute.name;
-    },
+    }
   },
   methods: {
-    goBack: function () {
+    goBack: function() {
       return this.currentRoute === "cadastro-cliente-3"
         ? { name: "cadastro-cliente-2" }
         : { name: "cadastro-cliente" };
     },
-    goFoward: function () {
+    goFoward: function() {
       return this.currentRoute === "cadastro-cliente"
         ? { name: "cadastro-cliente-2" }
         : { name: "cadastro-cliente-3" };
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

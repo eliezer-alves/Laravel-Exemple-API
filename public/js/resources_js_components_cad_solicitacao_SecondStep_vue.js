@@ -422,6 +422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ContratoUpload_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContratoUpload.vue */ "./resources/js/components/cad.solicitacao/ContratoUpload.vue");
 
 
+var _components$mounted$c;
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -973,12 +975,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components$mounted$c = {
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     ContratoUpload: _ContratoUpload_vue__WEBPACK_IMPORTED_MODULE_3__.default
@@ -1002,7 +1013,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["atividades", "solicitacao"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["atividades", "solicitacao", "dominios"])),
   data: function data() {
     return {
       money: {
@@ -1030,153 +1041,234 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       email: null,
       docs: 0
     };
-  },
-  validations: {
-    razao_social: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cnpj: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    nome_fantasia: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    inscricao_estadual: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    rendimento_mensal: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minValue)(1)
-    },
-    id_atividade_comercial: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    tipo_empresa: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cep: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    uf: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cidade: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    bairro: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    tipo_logradouro: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    logradouro: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    numero: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    complemento: {},
-    telefone: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(10)
-    },
-    email: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
-    }
-  },
-  methods: {
-    setRazaoSocial: function setRazaoSocial(value) {
-      this.razao_social = value;
-      this.$v.razao_social.$touch();
-    },
-    setCnpj: function setCnpj(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.$v.cnpj.validarCNPJ = true;
-
-      if (!(0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validarCNPJ)(value)) {
-        this.$v.cnpj.validarCNPJ = false;
-      }
-
-      this.cnpj = value;
-      this.$v.cnpj.$touch();
-    },
-    setNomeFantasia: function setNomeFantasia(value) {
-      this.nome_fantasia = value;
-      this.$v.nome_fantasia.$touch();
-    },
-    setInscricaoEstadual: function setInscricaoEstadual(value) {
-      this.inscricao_estadual = value;
-      this.$v.inscricao_estadual.$touch();
-    },
-    setRendimentoMensal: function setRendimentoMensal(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.rendimento_mensal = value;
-      this.$v.rendimento_mensal.$touch();
-    },
-    setIdAtividadeComercial: function setIdAtividadeComercial(value) {
-      this.id_atividade_comercial = value;
-      this.$v.id_atividade_comercial.$touch();
-    },
-    setTipoEmpresa: function setTipoEmpresa(value) {
-      this.tipo_empresa = value;
-      this.$v.tipo_empresa.$touch();
-    },
-    setCep: function setCep(value) {
-      this.cep = value;
-      this.$v.cep.$touch();
-    },
-    setUf: function setUf(value) {
-      this.uf = value;
-      this.$v.uf.$touch();
-    },
-    setCidade: function setCidade(value) {
-      this.cidade = value;
-      this.$v.cidade.$touch();
-    },
-    setBairro: function setBairro(value) {
-      this.bairro = value;
-      this.$v.bairro.$touch();
-    },
-    setTipoLogradouro: function setTipoLogradouro(value) {
-      this.tipo_logradouro = value;
-      this.$v.tipo_logradouro.$touch();
-    },
-    setLogradouro: function setLogradouro(value) {
-      this.logradouro = value;
-      this.$v.logradouro.$touch();
-    },
-    setNumero: function setNumero(value) {
-      this.numero = value;
-      this.$v.numero.$touch();
-    },
-    setComplemento: function setComplemento(value) {
-      this.complemento = value;
-      this.$v.complemento.$touch();
-    },
-    setTelefone: function setTelefone(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.telefone = value;
-      this.$v.telefone.$touch();
-    },
-    setEmail: function setEmail(value) {
-      this.email = value;
-      this.$v.email.$touch();
-    },
-    addDocElement: function addDocElement() {
-      this.docs++;
-    },
-    removeDocElement: function removeDocElement() {
-      if (this.docs > 0) {
-        if (this.docs === this.solicitacao.docs.length) this.$store.commit("UNSET_DOC_FILES");
-        --this.docs;
-      }
-    },
-    getDocs: function getDocs() {
-      console.log(this.solicitacao.docs);
-    }
   }
-});
+}, _defineProperty(_components$mounted$c, "mounted", function mounted() {
+  var _this2 = this;
+
+  return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return _this2.$store.dispatch("fetchDominios");
+
+          case 2:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }))();
+}), _defineProperty(_components$mounted$c, "validations", {
+  razao_social: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  cnpj: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  nome_fantasia: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  inscricao_estadual: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  rendimento_mensal: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+    minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minValue)(1)
+  },
+  id_atividade_comercial: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  tipo_empresa: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  cep: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  uf: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  cidade: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  bairro: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  tipo_logradouro: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  logradouro: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  numero: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+  },
+  complemento: {},
+  telefone: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+    minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(10)
+  },
+  email: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+    email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
+  }
+}), _defineProperty(_components$mounted$c, "methods", {
+  setRazaoSocial: function setRazaoSocial(value) {
+    this.razao_social = value;
+    this.$v.razao_social.$touch();
+  },
+  setCnpj: function setCnpj(value) {
+    value = value.replace(/[^\d]+/g, "");
+    this.$v.cnpj.validarCNPJ = true;
+
+    if (!(0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validarCNPJ)(value)) {
+      this.$v.cnpj.validarCNPJ = false;
+    }
+
+    this.cnpj = value;
+    this.$v.cnpj.$touch();
+  },
+  setNomeFantasia: function setNomeFantasia(value) {
+    this.nome_fantasia = value;
+    this.$v.nome_fantasia.$touch();
+  },
+  setInscricaoEstadual: function setInscricaoEstadual(value) {
+    this.inscricao_estadual = value;
+    this.$v.inscricao_estadual.$touch();
+  },
+  setRendimentoMensal: function setRendimentoMensal(value) {
+    value = value.replace(/[^\d]+/g, "");
+    this.rendimento_mensal = value;
+    this.$v.rendimento_mensal.$touch();
+  },
+  setIdAtividadeComercial: function setIdAtividadeComercial(value) {
+    this.id_atividade_comercial = value;
+    this.$v.id_atividade_comercial.$touch();
+  },
+  setTipoEmpresa: function setTipoEmpresa(value) {
+    this.tipo_empresa = value;
+    this.$v.tipo_empresa.$touch();
+  },
+  setCep: function setCep(value) {
+    var _this3 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var dadosEndereco;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _this3.$store.dispatch("getViaCep", value);
+
+            case 2:
+              dadosEndereco = _context3.sent;
+
+              if (dadosEndereco.erro) {
+                _this3.setBairro("");
+
+                document.querySelector("#bairro").disabled = false;
+
+                _this3.setCidade("");
+
+                document.querySelector("#cidade").disabled = false;
+
+                _this3.setLogradouro("");
+
+                document.querySelector("#logradouro").disabled = false;
+
+                _this3.setUf("");
+
+                document.querySelector("#uf").disabled = false;
+
+                _this3.setComplemento("");
+
+                _this3.cep = null;
+
+                _this3.$v.cep.$touch();
+              } else {
+                _this3.setBairro(dadosEndereco.bairro);
+
+                if (dadosEndereco.bairro != "") document.querySelector("#bairro").disabled = true;
+
+                _this3.setCidade(dadosEndereco.localidade);
+
+                if (dadosEndereco.localidade != "") document.querySelector("#cidade").disabled = true;
+
+                _this3.setLogradouro(dadosEndereco.logradouro);
+
+                if (dadosEndereco.logradouro != "") document.querySelector("#logradouro").disabled = true;
+
+                _this3.setUf(dadosEndereco.uf);
+
+                if (dadosEndereco.uf != "") document.querySelector("#uf").disabled = true;
+
+                _this3.setComplemento(dadosEndereco.complemento);
+
+                _this3.cep = value;
+
+                _this3.$v.cep.$touch();
+              }
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }))();
+  },
+  setUf: function setUf(value) {
+    this.uf = value;
+    this.$v.uf.$touch();
+  },
+  setCidade: function setCidade(value) {
+    this.cidade = value;
+    this.$v.cidade.$touch();
+  },
+  setBairro: function setBairro(value) {
+    this.bairro = value;
+    this.$v.bairro.$touch();
+  },
+  setTipoLogradouro: function setTipoLogradouro(value) {
+    this.tipo_logradouro = value;
+    this.$v.tipo_logradouro.$touch();
+  },
+  setLogradouro: function setLogradouro(value) {
+    this.logradouro = value;
+    this.$v.logradouro.$touch();
+  },
+  setNumero: function setNumero(value) {
+    this.numero = value;
+    this.$v.numero.$touch();
+  },
+  setComplemento: function setComplemento(value) {
+    this.complemento = value;
+    this.$v.complemento.$touch();
+  },
+  setTelefone: function setTelefone(value) {
+    value = value.replace(/[^\d]+/g, "");
+    this.telefone = value;
+    this.$v.telefone.$touch();
+  },
+  setEmail: function setEmail(value) {
+    this.email = value;
+    this.$v.email.$touch();
+  },
+  addDocElement: function addDocElement() {
+    this.docs++;
+  },
+  removeDocElement: function removeDocElement() {
+    if (this.docs > 0) {
+      if (this.docs === this.solicitacao.docs.length) this.$store.commit("UNSET_DOC_FILES");
+      --this.docs;
+    }
+  },
+  getDocs: function getDocs() {
+    console.log(this.solicitacao.docs);
+  }
+}), _components$mounted$c);
 
 /***/ }),
 
@@ -1189,7 +1281,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ)
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
+/* harmony export */   "validaCPF": () => (/* binding */ validaCPF)
 /* harmony export */ });
 var validarCNPJ = function validarCNPJ(cnpj) {
   cnpj = cnpj.replace(/[^\d]+/g, '');
@@ -1224,6 +1317,30 @@ var validarCNPJ = function validarCNPJ(cnpj) {
   resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
   if (resultado != digitos.charAt(1)) return false;
   return true;
+};
+
+var validaCPF = function validaCPF(value) {
+  var Soma = 0;
+  var Resto = 0;
+  var isInvalid = false;
+
+  for (var i = 1; i <= 9; i++) {
+    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+  Soma = 0;
+
+  for (var _i2 = 1; _i2 <= 10; _i2++) {
+    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+  return isInvalid;
 };
 
 
@@ -2800,18 +2917,21 @@ var render = function() {
                     [
                       _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "MG" } }, [
-                        _vm._v("Minas Gerais")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "RJ" } }, [
-                        _vm._v("Rio de Janeiro")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "SP" } }, [
-                        _vm._v("São Paulo")
-                      ])
-                    ]
+                      _vm._l(_vm.dominios.uf, function(uf) {
+                        return _c(
+                          "option",
+                          { key: uf.codigo, domProps: { value: uf.codigo } },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(uf.descricao) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
                 ]
               ),
@@ -2854,6 +2974,7 @@ var render = function() {
                       id: "cidade",
                       name: "cidade",
                       type: "text",
+                      disabled: "",
                       placeholder: "Cidade"
                     },
                     domProps: { value: _vm.$v.cidade.$model },
@@ -2966,14 +3087,28 @@ var render = function() {
                     [
                       _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [_vm._v("Rua")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Avenida")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [_vm._v("Praça")])
-                    ]
+                      _vm._l(_vm.dominios.tipoLogradouro, function(
+                        tipo_logradouro
+                      ) {
+                        return _c(
+                          "option",
+                          {
+                            key: tipo_logradouro.id_tipo_logradouro,
+                            domProps: {
+                              value: tipo_logradouro.id_tipo_logradouro
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(tipo_logradouro.descricao) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
                 ]
               ),
@@ -3348,119 +3483,6 @@ var render = function() {
 var staticRenderFns = []
 render._withStripped = true
 
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ normalizeComponent)
-/* harmony export */ });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ }),

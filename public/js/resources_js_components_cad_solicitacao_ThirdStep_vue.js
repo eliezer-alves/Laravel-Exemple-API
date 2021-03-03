@@ -343,7 +343,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
 //
 //
 //
@@ -779,6 +790,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["kSocio"],
   data: function data() {
@@ -797,54 +809,56 @@ __webpack_require__.r(__webpack_exports__);
       bairro_socio: null,
       tipo_logradouro_socio: null,
       logradouro_socio: null,
-      numero_socio: null
+      numero_socio: null,
+      complemento_socio: null
     };
   },
   validations: {
     nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
     logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     },
+    complemento_socio: {},
     numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
     }
   },
   methods: {
@@ -853,7 +867,13 @@ __webpack_require__.r(__webpack_exports__);
       this.$v.nome_socio.$touch();
     },
     setCpfSocio: function setCpfSocio(value) {
-      this.cpf_socio = value;
+      value = value.replace(/[^\d]+/g, "");
+      var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
+
+      if (isInvalid) {
+        this.cpf_socio = null;
+      } else this.cpf_socio = value;
+
       this.$v.cpf_socio.$touch();
     },
     setUfRgSocio: function setUfRgSocio(value) {
@@ -881,10 +901,75 @@ __webpack_require__.r(__webpack_exports__);
       this.telefone_socio = value;
       this.$v.telefone_socio.$touch();
     },
-    setCepSocio: function setCepSocio(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.cep_socio = value;
-      this.$v.cep_socio.$touch();
+    setCepSocio: function setCepSocio(value, kSocio) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var dadosEndereco;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                value = value.replace(/[^\d]+/g, "");
+                _context.next = 3;
+                return _this.$store.dispatch("getViaCep", value);
+
+              case 3:
+                dadosEndereco = _context.sent;
+
+                if (dadosEndereco.erro) {
+                  _this.setBairroSocio("");
+
+                  document.querySelector("#bairro_socio".concat(kSocio)).disabled = false;
+
+                  _this.setCidadeSocio("");
+
+                  document.querySelector("#cidade_socio".concat(kSocio)).disabled = false;
+
+                  _this.setLogradouroSocio("");
+
+                  document.querySelector("#logradouro_socio".concat(kSocio)).disabled = false;
+
+                  _this.setUfSocio("");
+
+                  document.querySelector("#uf_socio".concat(kSocio)).disabled = false;
+
+                  _this.setComplementoSocio("");
+
+                  _this.cep_socio = null;
+
+                  _this.$v.cep_socio.$touch();
+                } else {
+                  _this.setBairroSocio(dadosEndereco.bairro);
+
+                  if (dadosEndereco.bairro != "") document.querySelector("#bairro_socio".concat(kSocio)).disabled = true;
+
+                  _this.setCidadeSocio(dadosEndereco.localidade);
+
+                  if (dadosEndereco.localidade != "") document.querySelector("#cidade_socio".concat(kSocio)).disabled = true;
+
+                  _this.setLogradouroSocio(dadosEndereco.logradouro);
+
+                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro_socio".concat(kSocio)).disabled = true;
+
+                  _this.setUfSocio(dadosEndereco.uf);
+
+                  if (dadosEndereco.uf != "") document.querySelector("#uf_socio".concat(kSocio)).disabled = true;
+
+                  _this.setComplementoSocio(dadosEndereco.complemento);
+
+                  _this.cep_socio = value;
+
+                  _this.$v.cep_socio.$touch();
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     setUfSocio: function setUfSocio(value) {
       this.uf_socio = value;
@@ -897,6 +982,10 @@ __webpack_require__.r(__webpack_exports__);
     setBairroSocio: function setBairroSocio(value) {
       this.bairro_socio = value;
       this.$v.bairro_socio.$touch();
+    },
+    setComplementoSocio: function setComplementoSocio(value) {
+      this.complemento_socio = value;
+      this.$v.complemento_socio.$touch();
     },
     setTipoLogradouroSocio: function setTipoLogradouroSocio(value) {
       this.tipo_logradouro_socio = value;
@@ -929,8 +1018,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1590,13 +1680,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -1623,58 +1715,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   validations: {
     nome_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cpf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     nome_mae_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     id_tipo_logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     numero_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cep_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(8)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(8)
     },
     complemento_representante: {},
     bairro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cidade_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     celular_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(11)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(11)
     },
     email_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.email
     },
     estado_civil_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     profissao_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     sexo_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     }
   },
   methods: {
@@ -1700,11 +1793,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 value = value.replace(/[^\d]+/g, "");
-                _context.next = 3;
-                return _this.$store.dispatch("validaCPF", value);
-
-              case 3:
-                isInvalid = _context.sent;
+                isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_2__.validaCPF)(value);
 
                 if (isInvalid) {
                   _this.cpf_representante = null;
@@ -1712,7 +1801,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.$v.cpf_representante.$touch();
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -1780,6 +1869,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.setUfRepresentante("");
 
                   document.querySelector("#uf_representante").disabled = false;
+
+                  _this2.setComplementoRepresentante("");
+
                   _this2.cep_representante = null;
 
                   _this2.$v.cep_representante.$touch();
@@ -1837,7 +1929,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$v.celular_representante.$touch();
     },
     setEmailRepresentante: function setEmailRepresentante(value) {
-      if (value.indexOf("@") != -1) this.email_representante = value;else this.email_representante = null;
+      this.email_representante = value;
       this.$v.email_representante.$touch();
     },
     addSocioElement: function addSocioElement() {
@@ -1852,6 +1944,81 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
+/* harmony export */   "validaCPF": () => (/* binding */ validaCPF)
+/* harmony export */ });
+var validarCNPJ = function validarCNPJ(cnpj) {
+  cnpj = cnpj.replace(/[^\d]+/g, '');
+  if (cnpj == '') return false;
+  if (cnpj.length != 14) return false; // Elimina CNPJs invalidos conhecidos
+
+  if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") return false; // Valida DVs
+
+  var tamanho = cnpj.length - 2;
+  var numeros = cnpj.substring(0, tamanho);
+  var digitos = cnpj.substring(tamanho);
+  var soma = 0;
+  var pos = tamanho - 7;
+
+  for (var i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(0)) return false;
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+
+  for (var _i = tamanho; _i >= 1; _i--) {
+    soma += numeros.charAt(tamanho - _i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(1)) return false;
+  return true;
+};
+
+var validaCPF = function validaCPF(value) {
+  var Soma = 0;
+  var Resto = 0;
+  var isInvalid = false;
+
+  for (var i = 1; i <= 9; i++) {
+    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+  Soma = 0;
+
+  for (var _i2 = 1; _i2 <= 10; _i2++) {
+    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+  return isInvalid;
+};
+
+
 
 /***/ }),
 
@@ -2839,7 +3006,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.cpf_socio.$dirty && !_vm.$v.cpf_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        CPF obrigatório.\n      ")
+                _vm._v("\n        CPF válido é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -3166,8 +3333,8 @@ var render = function() {
                   },
                   domProps: { value: _vm.$v.cep_socio.$model },
                   on: {
-                    input: function($event) {
-                      return _vm.setCepSocio($event.target.value)
+                    blur: function($event) {
+                      return _vm.setCepSocio($event.target.value, _vm.kSocio)
                     }
                   }
                 })
@@ -3204,7 +3371,8 @@ var render = function() {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
                       id: "uf_socio" + _vm.kSocio,
-                      name: "uf_socio" + _vm.kSocio
+                      name: "uf_socio" + _vm.kSocio,
+                      disabled: ""
                     },
                     domProps: { value: _vm.$v.uf_socio.$model },
                     on: {
@@ -3262,7 +3430,8 @@ var render = function() {
                     id: "cidade_socio" + _vm.kSocio,
                     name: "cidade_socio" + _vm.kSocio,
                     type: "text",
-                    placeholder: "Cidade"
+                    placeholder: "Cidade",
+                    disabled: ""
                   },
                   domProps: { value: _vm.$v.cidade_socio.$model },
                   on: {
@@ -4853,7 +5022,8 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _vm.$v.email_representante.$dirty &&
-                !_vm.$v.email_representante.required
+                (!_vm.$v.email_representante.required ||
+                  !_vm.$v.email_representante.email)
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              E-mail válido é obrigatório\n            "
@@ -5110,119 +5280,6 @@ var render = function() {
 var staticRenderFns = []
 render._withStripped = true
 
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ normalizeComponent)
-/* harmony export */ });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ }),

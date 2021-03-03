@@ -51,7 +51,7 @@
           class="text-red-600"
           v-if="$v.cpf_socio.$dirty && !$v.cpf_socio.required"
         >
-          CPF obrigatório.
+          CPF válido é obrigatório.
         </div>
       </div>
       <div
@@ -238,7 +238,7 @@
             placeholder="#####-###"
             v-mask="'#####-###'"
             :value="$v.cep_socio.$model"
-            @input="setCepSocio($event.target.value)"
+            @blur="setCepSocio($event.target.value, kSocio)"
           />
         </div>
         <div
@@ -261,6 +261,7 @@
             :id="'uf_socio' + kSocio"
             :name="'uf_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
+            disabled
             :value="$v.uf_socio.$model"
             @change="setUfSocio($event.target.value)"
           >
@@ -292,6 +293,7 @@
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Cidade"
+            disabled
             :value="$v.cidade_socio.$model"
             @input="setCidadeSocio($event.target.value)"
           />
@@ -434,6 +436,7 @@
 
 <script>
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
+import { validaCPF } from "../../helper.js";
 
 export default {
   props: ["kSocio"],
@@ -453,7 +456,8 @@ export default {
       bairro_socio: null,
       tipo_logradouro_socio: null,
       logradouro_socio: null,
-      numero_socio: null
+      numero_socio: null,
+      complemento_socio: null
     };
   },
   validations: {
@@ -499,6 +503,7 @@ export default {
     logradouro_socio: {
       required
     },
+    complemento_socio: {},
     numero_socio: {
       required
     }
@@ -509,7 +514,12 @@ export default {
       this.$v.nome_socio.$touch();
     },
     setCpfSocio(value) {
-      this.cpf_socio = value;
+      value = value.replace(/[^\d]+/g, "");
+      let isInvalid = validaCPF(value);
+      if (isInvalid) {
+        this.cpf_socio = null;
+      } else this.cpf_socio = value;
+
       this.$v.cpf_socio.$touch();
     },
     setUfRgSocio(value) {
@@ -537,10 +547,48 @@ export default {
       this.telefone_socio = value;
       this.$v.telefone_socio.$touch();
     },
-    setCepSocio(value) {
+    async setCepSocio(value, kSocio) {
       value = value.replace(/[^\d]+/g, "");
-      this.cep_socio = value;
-      this.$v.cep_socio.$touch();
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      if (dadosEndereco.erro) {
+        this.setBairroSocio("");
+        document.querySelector(`#bairro_socio${kSocio}`).disabled = false;
+
+        this.setCidadeSocio("");
+        document.querySelector(`#cidade_socio${kSocio}`).disabled = false;
+
+        this.setLogradouroSocio("");
+        document.querySelector(`#logradouro_socio${kSocio}`).disabled = false;
+
+        this.setUfSocio("");
+        document.querySelector(`#uf_socio${kSocio}`).disabled = false;
+
+        this.setComplementoSocio("");
+
+        this.cep_socio = null;
+        this.$v.cep_socio.$touch();
+      } else {
+        this.setBairroSocio(dadosEndereco.bairro);
+        if (dadosEndereco.bairro != "")
+          document.querySelector(`#bairro_socio${kSocio}`).disabled = true;
+
+        this.setCidadeSocio(dadosEndereco.localidade);
+        if (dadosEndereco.localidade != "")
+          document.querySelector(`#cidade_socio${kSocio}`).disabled = true;
+
+        this.setLogradouroSocio(dadosEndereco.logradouro);
+        if (dadosEndereco.logradouro != "")
+          document.querySelector(`#logradouro_socio${kSocio}`).disabled = true;
+
+        this.setUfSocio(dadosEndereco.uf);
+        if (dadosEndereco.uf != "")
+          document.querySelector(`#uf_socio${kSocio}`).disabled = true;
+
+        this.setComplementoSocio(dadosEndereco.complemento);
+
+        this.cep_socio = value;
+        this.$v.cep_socio.$touch();
+      }
     },
     setUfSocio(value) {
       this.uf_socio = value;
@@ -553,6 +601,10 @@ export default {
     setBairroSocio(value) {
       this.bairro_socio = value;
       this.$v.bairro_socio.$touch();
+    },
+    setComplementoSocio(value) {
+      this.complemento_socio = value;
+      this.$v.complemento_socio.$touch();
     },
     setTipoLogradouroSocio(value) {
       this.tipo_logradouro_socio = value;
