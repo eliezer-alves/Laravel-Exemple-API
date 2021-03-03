@@ -929,8 +929,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1590,13 +1591,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -1623,58 +1626,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   validations: {
     nome_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cpf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     nome_mae_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     id_tipo_logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     numero_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cep_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(8)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(8)
     },
     complemento_representante: {},
     bairro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cidade_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     celular_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(11)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(11)
     },
     email_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     estado_civil_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     profissao_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     sexo_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     }
   },
   methods: {
@@ -1701,7 +1704,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 value = value.replace(/[^\d]+/g, "");
                 _context.next = 3;
-                return _this.$store.dispatch("validaCPF", value);
+                return _this.$store.dispatch('validaCPF', value);
 
               case 3:
                 isInvalid = _context.sent;
@@ -1763,6 +1766,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 dadosEndereco = _context2.sent;
+                console.log(dadosEndereco);
 
                 if (dadosEndereco.erro) {
                   _this2.setBairroRepresentante("");
@@ -1807,7 +1811,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.$v.cep_representante.$touch();
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -1852,6 +1856,81 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
+/* harmony export */   "validarCPF": () => (/* binding */ validarCPF)
+/* harmony export */ });
+var validarCNPJ = function validarCNPJ(cnpj) {
+  cnpj = cnpj.replace(/[^\d]+/g, '');
+  if (cnpj == '') return false;
+  if (cnpj.length != 14) return false; // Elimina CNPJs invalidos conhecidos
+
+  if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") return false; // Valida DVs
+
+  var tamanho = cnpj.length - 2;
+  var numeros = cnpj.substring(0, tamanho);
+  var digitos = cnpj.substring(tamanho);
+  var soma = 0;
+  var pos = tamanho - 7;
+
+  for (var i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(0)) return false;
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+
+  for (var _i = tamanho; _i >= 1; _i--) {
+    soma += numeros.charAt(tamanho - _i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(1)) return false;
+  return true;
+};
+
+var validarCPF = function validarCPF(cpf) {
+  var Soma = 0;
+  var Resto = 0;
+  var isInvalid = false;
+
+  for (var i = 1; i <= 9; i++) {
+    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+  Soma = 0;
+
+  for (var _i2 = 1; _i2 <= 10; _i2++) {
+    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+  return isInvalid;
+};
+
+
 
 /***/ }),
 
@@ -5064,16 +5143,10 @@ var render = function() {
               _c(
                 "button",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.$v.$invalid,
-                      expression: "!$v.$invalid"
-                    }
-                  ],
                   staticClass:
-                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                  class: { "opacity-40": _vm.$v.$invalid },
+                  attrs: { disabled: _vm.$v.$invalid }
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )

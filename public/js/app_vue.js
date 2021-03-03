@@ -1958,13 +1958,13 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "fNImd8lK4kGvyzzOsewlJnxnPpwdpEJ3e5LgMYJg");
+params.append('client_secret', "Xz1zSrqlfIkvniiVT8wot2Pv2KRgWbXdFwScGWoB");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
 var API_URL = "http://127.0.0.1:8000"; //MIX_VIA_CEP=viacep.com.br/ws
 
-var VIA_CEP = "viacep.com.br/ws";
+var VIA_CEP = "https://viacep.com.br/ws";
 
 
 /***/ }),
@@ -2126,7 +2126,7 @@ var actions = {
   },
   createAtividade: function createAtividade(_ref2, atividade) {
     var commit = _ref2.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://localhost:8000/api/atividade_comercial', atividade).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/atividade_comercial"), atividade).then(function (res) {
       commit('CREATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2134,7 +2134,8 @@ var actions = {
   },
   fetchAtividades: function fetchAtividades(_ref3) {
     var commit = _ref3.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://localhost:8000/api/atividade_comercial').then(function (res) {
+    console.log(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL);
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/atividade_comercial")).then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2142,7 +2143,7 @@ var actions = {
   },
   updateAtividade: function updateAtividade(_ref4, atividade) {
     var commit = _ref4.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().put("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().put("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/atividade_comercial/").concat(atividade.id_atividade_comercial), _objectSpread({}, atividade)).then(function (res) {
       console.log(res);
       commit('UPDATE_ATIVIDADE', res.data);
     })["catch"](function (err) {
@@ -2151,7 +2152,7 @@ var actions = {
   },
   deleteAtividade: function deleteAtividade(_ref5, atividade) {
     var commit = _ref5.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().delete("http://localhost:8000/api/atividade_comercial/".concat(atividade.id_atividade_comercial)).then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().delete("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/atividade_comercial/").concat(atividade.id_atividade_comercial)).then(function (res) {
       if (res.status === 200) commit('DELETE_ATIVIDADE', atividade);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);
@@ -2168,7 +2169,7 @@ var actions = {
               console.log(cliente);
               cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
               console.log(cliente);
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post("http://localhost:8000/api/cliente", cliente).then(function (res) {
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/cliente"), cliente).then(function (res) {
                 if (res.status === 200) commit('CREATE_CLIENTE', cliente);
                 return res;
               })["catch"](function (err) {

@@ -519,6 +519,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -1707,16 +1708,10 @@ var render = function() {
               _c(
                 "button",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.$v.$invalid,
-                      expression: "!$v.$invalid"
-                    }
-                  ],
                   staticClass:
-                    "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                  class: { "opacity-40": _vm.$v.$invalid },
+                  attrs: { disabled: _vm.$v.$invalid }
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )

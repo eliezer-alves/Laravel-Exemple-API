@@ -973,6 +973,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -1189,7 +1190,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ)
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
+/* harmony export */   "validarCPF": () => (/* binding */ validarCPF)
 /* harmony export */ });
 var validarCNPJ = function validarCNPJ(cnpj) {
   cnpj = cnpj.replace(/[^\d]+/g, '');
@@ -1224,6 +1226,30 @@ var validarCNPJ = function validarCNPJ(cnpj) {
   resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
   if (resultado != digitos.charAt(1)) return false;
   return true;
+};
+
+var validarCPF = function validarCPF(cpf) {
+  var Soma = 0;
+  var Resto = 0;
+  var isInvalid = false;
+
+  for (var i = 1; i <= 9; i++) {
+    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+  Soma = 0;
+
+  for (var _i2 = 1; _i2 <= 10; _i2++) {
+    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+  return isInvalid;
 };
 
 
@@ -3313,16 +3339,10 @@ var render = function() {
               _c(
                 "button",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.$v.$invalid,
-                      expression: "!$v.$invalid"
-                    }
-                  ],
                   staticClass:
-                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                  class: { "opacity-40": _vm.$v.$invalid },
+                  attrs: { disabled: _vm.$v.$invalid }
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )

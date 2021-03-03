@@ -605,7 +605,7 @@
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Sócios
         </div>
-        <socios v-for="socio in socios" :key="socio" :kSocio='socio'/>
+        <socios v-for="socio in socios" :key="socio" :kSocio="socio" />
         <div class="flex flex-row-reverse my-2">
           <button
             @click="removeSocioElement"
@@ -632,7 +632,8 @@
         <div class="flex-auto flex flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-4' }">
             <button
-              v-show="!$v.$invalid"
+              :disabled="$v.$invalid"
+              :class="{ 'opacity-40': $v.$invalid }"
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
             >
               Avançar
@@ -654,6 +655,8 @@
 <script>
 import Solicitacao from "../Solicitacao.vue";
 import { required, minLength } from "vuelidate/lib/validators";
+import { validarCPF } from "../../helper.js";
+
 import Socios from "./Socios.vue";
 
 export default {
@@ -752,7 +755,7 @@ export default {
     },
     async setCpfRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
-      let isInvalid = await this.$store.dispatch("validaCPF", value);
+      let isInvalid = await this.$store.dispatch('validaCPF', value);
       if (isInvalid) {
         this.cpf_representante = null;
       } else this.cpf_representante = value;
@@ -789,6 +792,7 @@ export default {
     async setCepRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
       let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      console.log(dadosEndereco);
       if (dadosEndereco.erro) {
         this.setBairroRepresentante("");
         document.querySelector("#bairro_representante").disabled = false;
