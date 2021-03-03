@@ -71,9 +71,13 @@
             @change="setUfRgSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option :value="'MG'">Minas Gerais</option>
-            <option :value="'RJ'">Rio de Janeiro</option>
-            <option :value="'SP'">São Paulo</option>
+            <option
+              v-for="uf_rg in dominios.uf"
+              :key="uf_rg.codigo"
+              :value="uf_rg.codigo"
+            >
+              {{ uf_rg.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -153,8 +157,13 @@
             @change="setEstadoCivilSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option value="1">Casado</option>
-            <option value="2">Solteiro</option>
+            <option
+              v-for="estado_civil in dominios.estadoCivil"
+              :key="estado_civil.codigo"
+              :value="estado_civil.codigo"
+            >
+              {{ estado_civil.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -266,9 +275,13 @@
             @change="setUfSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="SP">São Paulo</option>
+            <option
+              v-for="uf in dominios.uf"
+              :key="uf.codigo"
+              :value="uf.codigo"
+            >
+              {{ uf.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -348,9 +361,13 @@
             @change="setTipoLogradouroSocio($event.target.value)"
           >
             <option value="">--</option>
-            <option :value="1">Rua</option>
-            <option :value="2">Avenida</option>
-            <option :value="3">Praça</option>
+            <option
+              v-for="tipo_logradouro in dominios.tipoLogradouro"
+              :key="tipo_logradouro.id_tipo_logradouro"
+              :value="tipo_logradouro.id_tipo_logradouro"
+            >
+              {{ tipo_logradouro.descricao }}
+            </option>
           </select>
         </div>
         <div
@@ -435,11 +452,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
   props: ["kSocio"],
+  computed: {
+    ...mapGetters(["dominios"])
+  },
   data() {
     return {
       nome_socio: null,
@@ -459,6 +480,9 @@ export default {
       numero_socio: null,
       complemento_socio: null
     };
+  },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
   },
   validations: {
     nome_socio: {

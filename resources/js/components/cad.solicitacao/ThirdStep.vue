@@ -102,8 +102,13 @@
                 @change="setUfRgRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'SP'">MINAS GERAIS</option>
-                <option :value="'MG'">SÃO PAULO</option>
+                <option
+                  v-for="uf_rg in dominios.uf"
+                  :key="uf_rg.codigo"
+                  :value="uf_rg.codigo"
+                >
+                  {{ uf_rg.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -163,8 +168,13 @@
                 @change="setProfissaoRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'0007'">Aposentado</option>
-                <option :value="'0001'">Assalariado</option>
+                <option
+                  v-for="profissoes in dominios.profissao"
+                  :key="profissoes.codigo"
+                  :value="profissoes.codigo"
+                >
+                  {{ profissoes.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -194,8 +204,13 @@
                 @change="setEstadoCivilRepresentante($event.target.value)"
               >
                 <option value="">--</option>
-                <option :value="'S'">SOLTEIRO</option>
-                <option :value="'C'">CASADO</option>
+                <option
+                  v-for="estado_civil in dominios.estadoCivil"
+                  :key="estado_civil.codigo"
+                  :value="estado_civil.codigo"
+                >
+                  {{ estado_civil.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -265,9 +280,13 @@
                   "
                 >
                   <option value="">--</option>
-                  <option :value="1">RUA</option>
-                  <option :value="2">AVENIDA</option>
-                  <option :value="3">PRACA</option>
+                  <option
+                    v-for="tipo_logradouro in dominios.tipoLogradouro"
+                    :key="tipo_logradouro.id_tipo_logradouro"
+                    :value="tipo_logradouro.id_tipo_logradouro"
+                  >
+                    {{ tipo_logradouro.descricao }}
+                  </option>
                 </select>
               </div>
               <div
@@ -456,9 +475,13 @@
                   @change="setUfRepresentante($event.target.value)"
                 >
                   <option value="">--</option>
-                  <option :value="'MG'">Minas Gerais</option>
-                  <option :value="'SP'">São Paulo</option>
-                  <option :value="'ES'">Espirito Santo</option>
+                  <option
+                    v-for="uf in dominios.uf"
+                    :key="uf.codigo"
+                    :value="uf.codigo"
+                  >
+                    {{ uf.descricao }}
+                  </option>
                 </select>
               </div>
               <div
@@ -653,6 +676,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Solicitacao from "../Solicitacao.vue";
 import { required, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
@@ -660,6 +684,9 @@ import Socios from "./Socios.vue";
 
 export default {
   components: { Solicitacao, Socios },
+  computed: {
+    ...mapGetters(["dominios"])
+  },
   data() {
     return {
       nome_representante: "",
@@ -682,6 +709,9 @@ export default {
       sexo_representante: "",
       socios: 0
     };
+  },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
   },
   validations: {
     nome_representante: {
