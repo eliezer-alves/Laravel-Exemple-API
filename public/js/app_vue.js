@@ -1958,7 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "UfqPpqvGlmiHj9Si40n7v3shMRzxsoK713UyX334");
+params.append('client_secret', "kGOuKBcylJOSYPPLfaBpp8eItA2l28tgdD9J7lwk");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
@@ -2134,7 +2134,6 @@ var actions = {
   },
   fetchAtividades: function fetchAtividades(_ref3) {
     var commit = _ref3.commit;
-    console.log(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL);
     return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/atividade_comercial")).then(function (res) {
       commit('FETCH_ATIVIDADES', res.data);
     })["catch"](function (err) {

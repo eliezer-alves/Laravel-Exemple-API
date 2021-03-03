@@ -336,6 +336,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -349,9 +377,794 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\wamp64\\www\\capital_de_giro\\resources\\js\\components\\cad.solicitacao\\Socios.vue: Unexpected token (637:0)\n\n\u001b[0m \u001b[90m 635 |\u001b[39m       } \u001b[36melse\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 636 |\u001b[39m         \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetBairroSocio(dadosEndereco\u001b[33m.\u001b[39mbairro)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 637 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mUpdated\u001b[39m upstream\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 638 |\u001b[39m         \u001b[36mif\u001b[39m (dadosEndereco\u001b[33m.\u001b[39mbairro \u001b[33m!=\u001b[39m \u001b[32m\"\"\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 639 |\u001b[39m           document\u001b[33m.\u001b[39mquerySelector(\u001b[32m`#bairro_socio${this.kSocio}`\u001b[39m)\u001b[33m.\u001b[39mdisabled \u001b[33m=\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 640 |\u001b[39m\u001b[0m\n    at Parser._raise (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:776:17)\n    at Parser.raiseWithData (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:769:17)\n    at Parser.raise (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:737:17)\n    at Parser.unexpected (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:9253:16)\n    at Parser.parseExprAtom (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10743:20)\n    at Parser.parseExprSubscripts (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10318:23)\n    at Parser.parseUpdate (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10298:21)\n    at Parser.parseMaybeUnary (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10276:23)\n    at Parser.parseExprOps (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10141:23)\n    at Parser.parseMaybeConditional (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10115:23)\n    at Parser.parseMaybeAssign (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10078:21)\n    at Parser.parseExpressionBase (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10023:23)\n    at C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10017:39\n    at Parser.allowInAnd (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:11711:16)\n    at Parser.parseExpression (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:10017:17)\n    at Parser.parseStatementContent (C:\\wamp64\\www\\capital_de_giro\\node_modules\\@babel\\parser\\lib\\index.js:11977:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["kSocio"],
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
+  data: function data() {
+    return {
+      nome_socio: null,
+      cpf_socio: null,
+      uf_rg_socio: null,
+      numero_rg_socio: null,
+      sexo_socio: null,
+      estado_civil_socio: null,
+      email_socio: null,
+      telefone_socio: null,
+      cep_socio: null,
+      uf_socio: null,
+      cidade_socio: null,
+      bairro_socio: null,
+      tipo_logradouro_socio: null,
+      logradouro_socio: null,
+      numero_socio: null,
+      complemento_socio: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this.$store.commit("GET_ERRORS", {
+                invalid: _this.$v.$invalid
+              });
+
+              _context.next = 3;
+              return _this.$store.dispatch("fetchDominios");
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  validations: {
+    nome_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    cpf_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    uf_rg_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    numero_rg_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    sexo_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    estado_civil_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    email_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    telefone_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    cep_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    uf_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    cidade_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    bairro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    tipo_logradouro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    logradouro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    },
+    complemento_socio: {},
+    numero_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    }
+  },
+  methods: {
+    setNomeSocio: function setNomeSocio(value) {
+      this.nome_socio = value;
+      this.$v.nome_socio.$touch();
+    },
+    setCpfSocio: function setCpfSocio(value) {
+      var arrayCPF = document.querySelectorAll(".cpf");
+      this.$v.cpf_socio.isRepeatedCPF = false;
+
+      for (var i = 0; i < arrayCPF.length - 1; i++) {
+        if (arrayCPF[i].value == value) {
+          this.$v.cpf_socio.isRepeatedCPF = true;
+          break;
+        }
+      }
+
+      if (this.$v.cpf_socio.isRepeatedCPF) {
+        this.cpf_socio = value;
+      } else {
+        value = value.replace(/[^\d]+/g, "");
+        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
+
+        if (isInvalid) {
+          this.cpf_socio = null;
+        } else this.cpf_socio = value;
+      }
+
+      this.$v.cpf_socio.$touch();
+    },
+    setUfRgSocio: function setUfRgSocio(value) {
+      this.uf_rg_socio = value;
+      this.$v.uf_rg_socio.$touch();
+    },
+    setNumeroRgSocio: function setNumeroRgSocio(value) {
+      this.numero_rg_socio = value;
+      this.$v.numero_rg_socio.$touch();
+    },
+    setSexoSocio: function setSexoSocio(value) {
+      this.sexo_socio = value;
+      this.$v.sexo_socio.$touch();
+    },
+    setEstadoCivilSocio: function setEstadoCivilSocio(value) {
+      this.estado_civil_socio = value;
+      this.$v.estado_civil_socio.$touch();
+    },
+    setEmailSocio: function setEmailSocio(value) {
+      this.email_socio = value;
+      this.$v.email_socio.$touch();
+    },
+    setTelefoneSocio: function setTelefoneSocio(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.telefone_socio = value;
+      this.$v.telefone_socio.$touch();
+    },
+    setCepSocio: function setCepSocio(value) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var dadosEndereco;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                value = value.replace(/[^\d]+/g, "");
+                _context2.next = 3;
+                return _this2.$store.dispatch("getViaCep", value);
+
+              case 3:
+                dadosEndereco = _context2.sent;
+
+                if (dadosEndereco.erro) {
+                  _this2.setBairroSocio("");
+
+                  document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = false;
+
+                  _this2.setCidadeSocio("");
+
+                  document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = false;
+
+                  _this2.setLogradouroSocio("");
+
+                  document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = false;
+
+                  _this2.setUfSocio("");
+
+                  document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = false;
+
+                  _this2.setComplementoSocio("");
+
+                  _this2.cep_socio = null;
+
+                  _this2.$v.cep_socio.$touch();
+                } else {
+                  _this2.setBairroSocio(dadosEndereco.bairro);
+
+                  if (dadosEndereco.bairro != "") {
+                    document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = true;
+                  } else {
+                    document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = false;
+                  }
+
+                  _this2.setCidadeSocio(dadosEndereco.localidade);
+
+                  if (dadosEndereco.localidade != "") {
+                    document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = true;
+                  } else {
+                    document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = false;
+                  }
+
+                  _this2.setLogradouroSocio(dadosEndereco.logradouro);
+
+                  if (dadosEndereco.logradouro != "") {
+                    document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = true;
+                  } else {
+                    document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = false;
+                  }
+
+                  _this2.setUfSocio(dadosEndereco.uf);
+
+                  if (dadosEndereco.uf != "") {
+                    document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = true;
+                  } else {
+                    document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = false;
+                  }
+
+                  _this2.setComplementoSocio(dadosEndereco.complemento);
+
+                  _this2.cep_socio = value;
+
+                  _this2.$v.cep_socio.$touch();
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    setUfSocio: function setUfSocio(value) {
+      this.uf_socio = value;
+      this.$v.uf_socio.$touch();
+    },
+    setCidadeSocio: function setCidadeSocio(value) {
+      this.cidade_socio = value;
+      this.$v.cidade_socio.$touch();
+    },
+    setBairroSocio: function setBairroSocio(value) {
+      this.bairro_socio = value;
+      this.$v.bairro_socio.$touch();
+    },
+    setComplementoSocio: function setComplementoSocio(value) {
+      this.complemento_socio = value;
+      this.$v.complemento_socio.$touch();
+    },
+    setTipoLogradouroSocio: function setTipoLogradouroSocio(value) {
+      this.tipo_logradouro_socio = value;
+      this.$v.tipo_logradouro_socio.$touch();
+    },
+    setLogradouroSocio: function setLogradouroSocio(value) {
+      this.logradouro_socio = value;
+      this.$v.logradouro_socio.$touch();
+    },
+    setNumeroSocio: function setNumeroSocio(value) {
+      this.numero_socio = value;
+      this.$v.numero_socio.$touch();
+    },
+    setDados: function setDados() {
+      this.$store.commit("SET_SOCIOS_SOLICITACAO", {
+        kSocio: this.kSocio,
+        nome_socio: this.nome_socio,
+        cpf_socio: this.cpf_socio,
+        uf_rg_socio: this.uf_rg_socio,
+        numero_rg_socio: this.numero_rg_socio,
+        sexo_socio: this.sexo_socio,
+        estado_civil_socio: this.estado_civil_socio,
+        email_socio: this.email_socio,
+        telefone_socio: this.telefone_socio,
+        cep_socio: this.cep_socio,
+        uf_socio: this.uf_socio,
+        cidade_socio: this.cidade_socio,
+        bairro_socio: this.bairro_socio,
+        tipo_logradouro_socio: this.tipo_logradouro_socio,
+        logradouro_socio: this.logradouro_socio,
+        numero_socio: this.numero_socio,
+        complemento_socio: this.complemento_socio
+      });
+      this.$store.commit("GET_ERRORS", {
+        invalid: this.$v.$invalid
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -2096,7 +2909,38 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "w-1/4" }, [
           _c("div", { staticClass: "relative mb-2" }, [
-            _vm._m(0),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "absolute flex align-center items-center align-middle content-center",
+                staticStyle: {
+                  width: "calc(100% - 2.5rem - 1rem)",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "w-0 bg-teal-500 py-1 rounded",
+                      class: {
+                        "w-full":
+                          _vm.$router.currentRoute.name === "solicitacao-2" ||
+                          _vm.$router.currentRoute.name === "solicitacao-3" ||
+                          _vm.$router.currentRoute.name === "solicitacao-4"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -2155,7 +2999,37 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "w-1/4" }, [
           _c("div", { staticClass: "relative mb-2" }, [
-            _vm._m(1),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "absolute flex align-center items-center align-middle content-center",
+                staticStyle: {
+                  width: "calc(100% - 2.5rem - 1rem)",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "w-0 bg-teal-500 py-1 rounded",
+                      class: {
+                        "w-full":
+                          _vm.$router.currentRoute.name === "solicitacao-3" ||
+                          _vm.$router.currentRoute.name === "solicitacao-4"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -2182,17 +3056,21 @@ var render = function() {
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
                           viewBox: "0 0 24 24",
                           width: "24",
-                          height: "24"
+                          height: "24",
+                          stroke: "currentColor"
                         }
                       },
                       [
                         _c("path", {
-                          staticClass: "heroicon-ui",
                           attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
                             d:
-                              "M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"
+                              "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                           }
                         })
                       ]
@@ -2204,13 +3082,42 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Representante Legal")
+            _vm._v("Representantes")
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "w-1/4" }, [
           _c("div", { staticClass: "relative mb-2" }, [
-            _vm._m(2),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "absolute flex align-center items-center align-middle content-center",
+                staticStyle: {
+                  width: "calc(100% - 2.5rem - 1rem)",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "w-0 bg-teal-500 py-1 rounded",
+                      class: {
+                        "w-full":
+                          _vm.$router.currentRoute.name === "solicitacao-4"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -2237,17 +3144,20 @@ var render = function() {
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
                           viewBox: "0 0 24 24",
                           width: "24",
-                          height: "24"
+                          height: "24",
+                          stroke: "currentColor"
                         }
                       },
                       [
                         _c("path", {
-                          staticClass: "heroicon-ui",
                           attrs: {
-                            d:
-                              "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                           }
                         })
                       ]
@@ -2269,104 +3179,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "absolute flex align-center items-center align-middle content-center",
-        staticStyle: {
-          width: "calc(100% - 2.5rem - 1rem)",
-          top: "50%",
-          transform: "translate(-50%, -50%)"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-          },
-          [
-            _c("div", {
-              staticClass: "w-0 bg-teal-500 py-1 rounded",
-              staticStyle: { width: "0%" }
-            })
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "absolute flex align-center items-center align-middle content-center",
-        staticStyle: {
-          width: "calc(100% - 2.5rem - 1rem)",
-          top: "50%",
-          transform: "translate(-50%, -50%)"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-          },
-          [
-            _c("div", {
-              staticClass: "w-0 bg-teal-500 py-1 rounded",
-              staticStyle: { width: "0%" }
-            })
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "absolute flex align-center items-center align-middle content-center",
-        staticStyle: {
-          width: "calc(100% - 2.5rem - 1rem)",
-          top: "50%",
-          transform: "translate(-50%, -50%)"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-          },
-          [
-            _c("div", {
-              staticClass: "w-0 bg-teal-500 py-1 rounded",
-              staticStyle: { width: "0%" }
-            })
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -2426,7 +3239,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.nome_socio.$dirty && !_vm.$v.nome_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          Nome obrigatório.\n        ")
+                _vm._v("\n        Nome obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2475,13 +3288,13 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.cpf_socio.$dirty && !_vm.$v.cpf_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          CPF válido é obrigatório.\n        ")
+                _vm._v("\n        CPF válido é obrigatório.\n      ")
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.$v.cpf_socio.$dirty && _vm.$v.cpf_socio.isRepeatedCPF
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          CPF já está na lista.\n        ")
+                _vm._v("\n        CPF já está na lista.\n      ")
               ])
             : _vm._e()
         ]
@@ -2525,9 +3338,9 @@ var render = function() {
                       { key: uf_rg.codigo, domProps: { value: uf_rg.codigo } },
                       [
                         _vm._v(
-                          "\n              " +
+                          "\n            " +
                             _vm._s(uf_rg.descricao) +
-                            "\n            "
+                            "\n          "
                         )
                       ]
                     )
@@ -2540,7 +3353,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.uf_rg_socio.$dirty && !_vm.$v.uf_rg_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          UF do RG é obrigatório.\n        ")
+                _vm._v("\n        UF do RG é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2580,7 +3393,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.numero_rg_socio.$dirty && !_vm.$v.numero_rg_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          RG é obrigatório.\n        ")
+                _vm._v("\n        RG é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2630,7 +3443,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.sexo_socio.$dirty && !_vm.$v.sexo_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          Sexo é obrigatório.\n        ")
+                _vm._v("\n        Sexo é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2677,9 +3490,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n              " +
+                          "\n            " +
                             _vm._s(estado_civil.descricao) +
-                            "\n            "
+                            "\n          "
                         )
                       ]
                     )
@@ -2693,7 +3506,7 @@ var render = function() {
           _vm.$v.estado_civil_socio.$dirty &&
           !_vm.$v.estado_civil_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          Estado Civil é obrigatório.\n        ")
+                _vm._v("\n        Estado Civil é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2734,7 +3547,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.email_socio.$dirty && !_vm.$v.email_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          E-mail é obrigatório.\n        ")
+                _vm._v("\n        E-mail é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2782,7 +3595,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.telefone_socio.$dirty && !_vm.$v.telefone_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n          Telefone é obrigatório.\n        ")
+                _vm._v("\n        Telefone é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2811,15 +3624,39 @@ var render = function() {
                 staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
               },
               [
-                _vm._v(
-                  '\n<<<<<<< Updated upstream\n            @change="setCepSocio($event.target.value)"\n=======\n            @blur="setCepSocio($event.target.value)"\n>>>>>>> Stashed changes\n          />\n        '
-                )
+                _c("input", {
+                  directives: [
+                    {
+                      name: "mask",
+                      rawName: "v-mask",
+                      value: "#####-###",
+                      expression: "'#####-###'"
+                    }
+                  ],
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "cep_socio" + _vm.kSocio,
+                    name: "cep_socio" + _vm.kSocio,
+                    type: "text",
+                    placeholder: "#####-###"
+                  },
+                  domProps: { value: _vm.$v.cep_socio.$model },
+                  on: {
+                    change: function($event) {
+                      return _vm.setCepSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.setCepSocio($event.target.value)
+                    }
+                  }
+                })
               ]
             ),
             _vm._v(" "),
             _vm.$v.cep_socio.$dirty && !_vm.$v.cep_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          CEP é obrigatório.\n        ")
+                  _vm._v("\n        CEP é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -2867,9 +3704,9 @@ var render = function() {
                         { key: uf.codigo, domProps: { value: uf.codigo } },
                         [
                           _vm._v(
-                            "\n              " +
+                            "\n            " +
                               _vm._s(uf.descricao) +
-                              "\n            "
+                              "\n          "
                           )
                         ]
                       )
@@ -2882,7 +3719,7 @@ var render = function() {
             _vm._v(" "),
             _vm.$v.uf_socio.$dirty && !_vm.$v.uf_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          UF é obrigatório.\n        ")
+                  _vm._v("\n        UF é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -2926,7 +3763,7 @@ var render = function() {
             _vm._v(" "),
             _vm.$v.cidade_socio.$dirty && !_vm.$v.cidade_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          Cidade é obrigatório.\n        ")
+                  _vm._v("\n        Cidade é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -2969,7 +3806,7 @@ var render = function() {
             _vm._v(" "),
             _vm.$v.bairro_socio.$dirty && !_vm.$v.bairro_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          Bairro é obrigatório.\n        ")
+                  _vm._v("\n        Bairro é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -3022,9 +3859,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n              " +
+                            "\n            " +
                               _vm._s(tipo_logradouro.descricao) +
-                              "\n            "
+                              "\n          "
                           )
                         ]
                       )
@@ -3038,9 +3875,7 @@ var render = function() {
             _vm.$v.tipo_logradouro_socio.$dirty &&
             !_vm.$v.tipo_logradouro_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v(
-                    "\n          Tipo de Logradouro é obrigatório.\n        "
-                  )
+                  _vm._v("\n        Tipo de Logradouro é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -3082,7 +3917,7 @@ var render = function() {
             _vm._v(" "),
             _vm.$v.logradouro_socio.$dirty && !_vm.$v.logradouro_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          Logradouro é obrigatório.\n        ")
+                  _vm._v("\n        Logradouro é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]
@@ -3124,7 +3959,7 @@ var render = function() {
             _vm._v(" "),
             _vm.$v.numero_socio.$dirty && !_vm.$v.numero_socio.required
               ? _c("div", { staticClass: "text-red-600" }, [
-                  _vm._v("\n          Número é obrigatório.\n        ")
+                  _vm._v("\n        Número é obrigatório.\n      ")
                 ])
               : _vm._e()
           ]

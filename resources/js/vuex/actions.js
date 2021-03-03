@@ -31,7 +31,6 @@ let actions = {
             })
     },
     fetchAtividades({ commit }) {
-        console.log(API_URL);
         return axios.get(`${API_URL}/api/atividade_comercial`)
             .then(res => {
                 commit('FETCH_ATIVIDADES', res.data)
