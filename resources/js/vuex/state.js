@@ -2,7 +2,9 @@ let state = {
     errors: {},
     atividades: [],
     cliente: {},
-    solicitacao: {}
+    solicitacao: {
+        docs: []
+    },
 }
 
 export default state

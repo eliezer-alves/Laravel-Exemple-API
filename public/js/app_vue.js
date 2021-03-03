@@ -1958,11 +1958,12 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "Xz1zSrqlfIkvniiVT8wot2Pv2KRgWbXdFwScGWoB");
+params.append('client_secret', "fNImd8lK4kGvyzzOsewlJnxnPpwdpEJ3e5LgMYJg");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var API_URL = "http://127.0.0.1:8000";
+var API_URL = "http://127.0.0.1:8000"; //MIX_VIA_CEP=viacep.com.br/ws
+
 var VIA_CEP = "viacep.com.br/ws";
 
 
@@ -2302,11 +2303,21 @@ var mutations = {
     console.log(payload);
     state.atividades[index].descricao = descricao;
   },
-  DELETE_ATIVIDADE: function DELETE_ATIVIDADE(state, atividade) {
+  DELETE_ATIVIDADE: function DELETE_ATIVIDADE(state, payload) {
     var index = state.atividades.findIndex(function (item) {
-      return item.id_atividade_comercial === atividade.id_atividade_comercial;
+      return item.id_atividade_comercial === payload.id_atividade_comercial;
     });
     state.atividades.splice(index, 1);
+  },
+  SET_DOC_FILES: function SET_DOC_FILES(state, payload) {
+    var index = state.solicitacao.docs.findIndex(function (item) {
+      return item.name == payload.name;
+    });
+    if (index >= 0) state.solicitacao.docs.splice(index, 1);
+    state.solicitacao.docs.push(payload);
+  },
+  UNSET_DOC_FILES: function UNSET_DOC_FILES(state) {
+    state.solicitacao.docs.pop();
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mutations);
@@ -2328,7 +2339,9 @@ var state = {
   errors: {},
   atividades: [],
   cliente: {},
-  solicitacao: {}
+  solicitacao: {
+    docs: []
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (state);
 

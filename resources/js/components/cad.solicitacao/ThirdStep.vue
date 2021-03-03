@@ -101,9 +101,9 @@
                 :value="$v.uf_rg_representante.$model"
                 @change="setUfRgRepresentante($event.target.value)"
               >
-                <option value="">SELECIONAR</option>
+                <option value="">--</option>
                 <option :value="'SP'">MINAS GERAIS</option>
-                <option :value="'MG'">SÃO PAULOA</option>
+                <option :value="'MG'">SÃO PAULO</option>
               </select>
             </div>
             <div
@@ -132,9 +132,9 @@
                 :value="$v.sexo_representante.$model"
                 @change="setSexoRepresentante($event.target.value)"
               >
-                <option value="">SELECIONAR</option>
-                <option :value="'M'">MASCULINO</option>
-                <option :value="'F'">FEMININO</option>
+                <option value="">--</option>
+                <option :value="'M'">Masculino</option>
+                <option :value="'F'">Feminino</option>
               </select>
             </div>
             <div
@@ -162,9 +162,9 @@
                 :value="$v.profissao_representante.$model"
                 @change="setProfissaoRepresentante($event.target.value)"
               >
-                <option value="">SELECIONAR</option>
-                <option :value="'0007'">APOSENTADO</option>
-                <option :value="'0001'">ASSALARIADO</option>
+                <option value="">--</option>
+                <option :value="'0007'">Aposentado</option>
+                <option :value="'0001'">Assalariado</option>
               </select>
             </div>
             <div
@@ -193,7 +193,7 @@
                 :value="$v.estado_civil_representante.$model"
                 @change="setEstadoCivilRepresentante($event.target.value)"
               >
-                <option value="">SELECIONAR</option>
+                <option value="">--</option>
                 <option :value="'S'">SOLTEIRO</option>
                 <option :value="'C'">CASADO</option>
               </select>
@@ -264,7 +264,7 @@
                     setIdTipoLogradouroRepresentante($event.target.value)
                   "
                 >
-                  <option value="">SELECIONAR</option>
+                  <option value="">--</option>
                   <option :value="1">RUA</option>
                   <option :value="2">AVENIDA</option>
                   <option :value="3">PRACA</option>
@@ -455,7 +455,7 @@
                   :value="$v.uf_representante.$model"
                   @change="setUfRepresentante($event.target.value)"
                 >
-                  <option value="">SELECIONAR</option>
+                  <option value="">--</option>
                   <option :value="'MG'">Minas Gerais</option>
                   <option :value="'SP'">São Paulo</option>
                   <option :value="'ES'">Espirito Santo</option>

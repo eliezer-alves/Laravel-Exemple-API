@@ -20,10 +20,19 @@ let mutations = {
         console.log(payload);
         state.atividades[index].descricao = descricao;
     },
-    DELETE_ATIVIDADE(state, atividade) {
-        let index = state.atividades.findIndex(item => item.id_atividade_comercial === atividade.id_atividade_comercial);
+    DELETE_ATIVIDADE(state, payload) {
+        let index = state.atividades.findIndex(item => item.id_atividade_comercial === payload.id_atividade_comercial);
         state.atividades.splice(index, 1)
-    }
+    },
+    SET_DOC_FILES(state, payload) {
+        let index = state.solicitacao.docs.findIndex(item => item.name == payload.name);
+        if (index >= 0)
+            state.solicitacao.docs.splice(index, 1)
+        state.solicitacao.docs.push(payload);
+    },
+    UNSET_DOC_FILES(state) {
+        state.solicitacao.docs.pop()
+    },
 
 }
 export default mutations

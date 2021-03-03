@@ -1,10 +1,10 @@
 <template>
-  <div class="flex h-auto">
-    <side-bar class="flex-col mt-0"></side-bar>
+  <div class="h-full">
+    <side-bar>
     <div
-      class="flex-col lg:w-4/5 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
+      class="flex-col lg:w-11/12 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
     >
-      <h1 class="text-xl text-gray-600 font-bold">Meus contratos</h1>
+      <h1 class="text-xl text-gray-600 font-bold">Minhas Solicitações</h1>
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="flex flex-col mt-3">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -22,7 +22,7 @@
                       scope="col"
                       class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      <input type="checkbox" name="checked" id="checked" />
+                      <input type="checkbox" name="checked" class="text-teal-600" id="checked" />
                     </th>
                     <th
                       scope="col"
@@ -84,7 +84,123 @@
                   <tr>
                     <td class="px-4 py-4 whitespace-nowrap">
                       <div class="flex items-center">
-                        <input type="checkbox" name="" id="" />
+                        <input type="checkbox" name="" id="" class="text-teal-600" />
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12/12/2020</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12:00</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">547841528</div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      547841528
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      R$12.000
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      12/12/2021
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      Contrato
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <span
+                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
+                      >
+                        Aguardando Análise
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <input type="checkbox" name="" id="" class="text-teal-600" />
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12/12/2020</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12:00</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">547841528</div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      547841528
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      R$12.000
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      12/12/2021
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      Contrato
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <span
+                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
+                      >
+                        Aguardando Análise
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <input type="checkbox" name="" id="" class="text-teal-600" />
                       </div>
                     </td>
                     <td
@@ -135,7 +251,65 @@
                       <span
                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
                       >
-                        Aguardando Análise
+                        Negado
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                        <input type="checkbox" name="" id="" class="text-teal-600" />
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12/12/2020</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">
+                        <span>12:00</span>
+                      </div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      <div class="flex items-center">547841528</div>
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      547841528
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      R$12.000
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      12/12/2021
+                    </td>
+                    <td
+                      class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                    >
+                      Contrato
+                    </td>
+                    <td class="px-4 py-4 whitespace-nowrap">
+                      <span
+                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                      >
+                        Aprovado
                       </span>
                     </td>
                   </tr>
@@ -153,6 +327,7 @@
         </button>
       </router-link>
     </div>
+    </side-bar>
   </div>
 </template>
 <script>

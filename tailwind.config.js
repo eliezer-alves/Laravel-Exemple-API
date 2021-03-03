@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors')
+const forms = require('@tailwindcss/forms');
 
 module.exports = {
     darkMode: 'media',//'media' |'class',

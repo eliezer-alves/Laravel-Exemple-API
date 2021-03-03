@@ -2594,16 +2594,14 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "SP" } }, [
                         _vm._v("MINAS GERAIS")
                       ]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "MG" } }, [
-                        _vm._v("SÃO PAULOA")
+                        _vm._v("SÃO PAULO")
                       ])
                     ]
                   )
@@ -2662,16 +2660,14 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "M" } }, [
-                        _vm._v("MASCULINO")
+                        _vm._v("Masculino")
                       ]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "F" } }, [
-                        _vm._v("FEMININO")
+                        _vm._v("Feminino")
                       ])
                     ]
                   )
@@ -2734,16 +2730,14 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "0007" } }, [
-                        _vm._v("APOSENTADO")
+                        _vm._v("Aposentado")
                       ]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "0001" } }, [
-                        _vm._v("ASSALARIADO")
+                        _vm._v("Assalariado")
                       ])
                     ]
                   )
@@ -2808,9 +2802,7 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
                       _c("option", { domProps: { value: "S" } }, [
                         _vm._v("SOLTEIRO")
@@ -2949,9 +2941,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("SELECIONAR")
-                        ]),
+                        _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                         _vm._v(" "),
                         _c("option", { domProps: { value: 1 } }, [
                           _vm._v("RUA")
@@ -3354,9 +3344,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("SELECIONAR")
-                        ]),
+                        _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                         _vm._v(" "),
                         _c("option", { domProps: { value: "MG" } }, [
                           _vm._v("Minas Gerais")

@@ -425,12 +425,6 @@
                 @input="setComplemento($event.target.value)"
               />
             </div>
-            <div
-              class="text-red-600"
-              v-if="$v.complemento.$dirty && !$v.complemento.required"
-            >
-              Complemento é obrigatório.
-            </div>
           </div>
           <div
             class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -461,7 +455,7 @@
               class="text-red-600"
               v-if="$v.telefone.$dirty && !$v.telefone.minLength"
             >
-              Digite um telefone válido length.
+              Digite um telefone válido.
             </div>
           </div>
           <div
@@ -496,49 +490,20 @@
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Arquivos do Contrato Social
         </div>
-
-        <div
-          class="flex lg:flex-row md:flex-row flex-col font-bold text-gray-600 text-xs leading-8 uppercase mx-2 mt-3"
-        >
-          <div class="self-center">
-            <label
-              class="w-56 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-teal-800 cursor-pointer hover:bg-teal-800 hover:text-white"
-            >
-              <svg
-                class="w-8 h-8"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
-                />
-              </svg>
-              <span class="mt-2 text-base leading-normal"
-                >Selecione o arquivo</span
-              >
-              <input
-                id="contrato_social"
-                name="contrato_social"
-                type="file"
-                class="hidden"
-              />
-            </label>
-          </div>
-
-          <div class="lg:ml-5 md:ml-5 self-center">
-            <span class="text-base leading-normal">
-              Nome do Arquivo Selecionado
-            </span>
-          </div>
-        </div>
-        <div class="flex flex-row-reverse">
+        <contrato-upload v-for="doc in docs" :key="doc"></contrato-upload>
+        <div class="flex flex-row-reverse my-2">
           <button
+            @click="removeDocElement"
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
           >
             Remover
           </button>
           <button
+            @click="addDocElement"
+            :disabled="this.docs > this.solicitacao.docs.length"
+            :class="
+              this.docs > this.solicitacao.docs.length ? 'opacity-40' : ''
+            "
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
             Novo Documento
@@ -580,13 +545,15 @@ import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validarCNPJ } from "../../helper.js";
 
 import Solicitacao from "../Solicitacao.vue";
+import ContratoUpload from "./ContratoUpload.vue";
+
 export default {
-  components: { Solicitacao },
+  components: { Solicitacao, ContratoUpload },
   async mounted() {
     await this.$store.dispatch("fetchAtividades");
   },
   computed: {
-    ...mapGetters(["atividades"]),
+    ...mapGetters(["atividades", "solicitacao"]),
   },
   data() {
     return {
@@ -597,10 +564,10 @@ export default {
         precision: 0,
       },
       razao_social: null,
-      cnpj: "",
+      cnpj: null,
       nome_fantasia: null,
       inscricao_estadual: null,
-      rendimento_mensal: null,
+      rendimento_mensal: 1,
       id_atividade_comercial: null,
       tipo_empresa: null,
       cep: null,
@@ -613,6 +580,7 @@ export default {
       complemento: null,
       telefone: null,
       email: null,
+      docs: 0,
     };
   },
   validations: {
@@ -745,14 +713,22 @@ export default {
       this.email = value;
       this.$v.email.$touch();
     },
+    addDocElement() {
+      this.docs++;
+    },
+    removeDocElement() {
+      if (this.docs > 0) {
+        if (this.docs === this.solicitacao.docs.length)
+          this.$store.commit("UNSET_DOC_FILES");
+        --this.docs;
+      }
+    },
+    getDocs() {
+      console.log(this.solicitacao.docs);
+    },
   },
 };
 </script>
 
 <style>
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 </style>
