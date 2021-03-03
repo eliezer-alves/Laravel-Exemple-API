@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ModeloSicredController;
+use App\Http\Controllers\ClientSicredController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('admin')->group(function () {
-    Route::get('/admin/modelo-sicred', [ModeloSicredController::class, 'index']);
+Route::middleware(['auth'])->namespace('admin')->group(function () {
+    Route::get('/admin', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/admin/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
+    Route::get('/admin/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
 });
 
 Route::get('/solicitacao', function () {

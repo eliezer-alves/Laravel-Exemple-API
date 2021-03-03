@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ModeloSicredController extends Controller
+class ClientSicredController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ModeloSicredController extends Controller
      */
     public function index()
     {
-        return view('admin.modelo_sicred');
+        return view('admin.client_sicred');
     }
 
     /**
