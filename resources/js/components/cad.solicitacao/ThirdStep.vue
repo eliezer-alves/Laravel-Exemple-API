@@ -603,308 +603,23 @@
 
       <div class="my-2">
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
-          Sócios (incluir o representante legal)
+          Sócios
         </div>
-        <div class="grid lg:grid-cols-12 md:grid-cols-12">
-          <div
-            class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        <socios v-for="socio in socios" :key="socio" :kSocio='socio'/>
+        <div class="flex flex-row-reverse my-2">
+          <button
+            @click="removeSocioElement"
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
           >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="nome_socio">Nome (Representante)</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="nome_socio"
-                name="nome_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="Nome completo"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            Remover
+          </button>
+
+          <button
+            @click="addSocioElement"
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="cpf_socio">CPF Representante</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="cpf_socio"
-                name="cpf_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="###.###.###-##"
-                v-mask="'###.###.###-##'"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="uf_rg_socio">UF do RG</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <select
-                id="uf_rg_socio"
-                name="uf_rg_socio"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-              >
-                <option :value="'MG'">Minas Gerais</option>
-                <option :value="'RJ'">Rio de Janeiro</option>
-                <option :value="'SP'">São Paulo</option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="numero_rg_socio">Nº do RG</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="numero_rg_socio"
-                name="numero_rg_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="sexo_socio">Sexo</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <select
-                id="sexo_socio"
-                name="sexo_socio"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-              >
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="estado_civil_socio">Estado Cívil</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <select
-                id="estado_civil_socio"
-                name="estado_civil_socio"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-              >
-                <option value="1">Casado</option>
-                <option value="2">Solteiro</option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="email_socio">E-mail</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="email_socio"
-                name="email_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="mail@brasilcard.net"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="telefone_socio">Telefone</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="telefone_socio"
-                name="telefone_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="###.###.###-##"
-                v-mask="['(##) ####-####', '(##) #####-####']"
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          class="grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
-        >
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="cep_socio">CEP</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="cep_socio"
-                name="cep_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="#####-###"
-                v-mask="'#####-###'"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="uf_socio">UF</label>
-            </div>
-            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
-              <select
-                id="uf_socio"
-                name="uf_socio"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-              >
-                <option value="MG">Minas Gerais</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="SP">São Paulo</option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="cidade_socio">Cidade</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="cidade_socio"
-                name="cidade_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="Cidade"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="bairro_socio">Bairro</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="bairro_socio"
-                name="bairro_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-                placeholder="Bairro"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="tipo_logradouro_socio">Tipo de Logradouro</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <select
-                id="tipo_logradouro_socio"
-                name="tipo_logradouro_socio"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-              >
-                <option :value="1">Rua</option>
-                <option :value="2">Avenida</option>
-                <option :value="3">Praça</option>
-              </select>
-            </div>
-          </div>
-          <div
-            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="logradouro_socio">Logradouro</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="logradouro_socio"
-                name="logradouro_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="numero_socio">Número</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="numero_socio"
-                name="numero_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-              />
-            </div>
-          </div>
-          <div
-            class="lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          >
-            <div
-              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-            >
-              <label for="complemento_socio">Complemento</label>
-            </div>
-            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-              <input
-                id="complemento_socio"
-                name="complemento_socio"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                type="text"
-              />
-            </div>
-          </div>
+            Novo Sócio
+          </button>
         </div>
       </div>
 
@@ -923,7 +638,7 @@
               Avançar
             </button>
           </router-link>
-          <router-link :to="{ name: 'solicitacao-3' }">
+          <router-link :to="{ name: 'solicitacao-2' }">
             <button
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
             >
@@ -939,9 +654,10 @@
 <script>
 import Solicitacao from "../Solicitacao.vue";
 import { required, minLength } from "vuelidate/lib/validators";
+import Socios from "./Socios.vue";
 
 export default {
-  components: { Solicitacao },
+  components: { Solicitacao, Socios },
   data() {
     return {
       nome_representante: "",
@@ -962,6 +678,7 @@ export default {
       estado_civil_representante: "",
       profissao_representante: "",
       sexo_representante: "",
+      socios: 0,
     };
   },
   validations: {
@@ -1049,7 +766,6 @@ export default {
       this.sexo_representante = value;
       this.$v.sexo_representante.$touch();
     },
-
     setNomeMaeRepresentante(value) {
       this.nome_mae_representante = value;
       this.$v.nome_mae_representante.$touch();
@@ -1137,6 +853,16 @@ export default {
       else this.email_representante = null;
 
       this.$v.email_representante.$touch();
+    },
+    addSocioElement() {
+      this.socios++;
+    },
+    removeSocioElement() {
+      if (this.socios > 0) {
+        /* if (this.socios === this.solicitacao.socios.length)
+          this.$store.commit("UNSET_DOC_FILES"); */
+        --this.socios;
+      }
     },
   },
 };

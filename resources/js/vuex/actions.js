@@ -72,8 +72,7 @@ let actions = {
     },
 
     async getViaCep({ }, cep) {
-        const dadosEndereco = await axios.get(`https://${VIA_CEP}/${cep}/json`);
-
+        const dadosEndereco = await axios.get(`${VIA_CEP}/${cep}/json`);
         return dadosEndereco.data;
     },
 

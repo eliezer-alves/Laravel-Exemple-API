@@ -332,6 +332,589 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["kSocio"],
+  data: function data() {
+    return {
+      nome_socio: null,
+      cpf_socio: null,
+      uf_rg_socio: null,
+      numero_rg_socio: null,
+      sexo_socio: null,
+      estado_civil_socio: null,
+      email_socio: null,
+      telefone_socio: null,
+      cep_socio: null,
+      uf_socio: null,
+      cidade_socio: null,
+      bairro_socio: null,
+      tipo_logradouro_socio: null,
+      logradouro_socio: null,
+      numero_socio: null
+    };
+  },
+  validations: {
+    nome_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    cpf_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    uf_rg_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    numero_rg_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    sexo_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    estado_civil_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    email_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    telefone_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    cep_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    uf_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    cidade_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    bairro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    tipo_logradouro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    logradouro_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    },
+    numero_socio: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+    }
+  },
+  methods: {
+    setNomeSocio: function setNomeSocio(value) {
+      this.nome_socio = value;
+      this.$v.nome_socio.$touch();
+    },
+    setCpfSocio: function setCpfSocio(value) {
+      this.cpf_socio = value;
+      this.$v.cpf_socio.$touch();
+    },
+    setUfRgSocio: function setUfRgSocio(value) {
+      this.uf_rg_socio = value;
+      this.$v.uf_rg_socio.$touch();
+    },
+    setNumeroRgSocio: function setNumeroRgSocio(value) {
+      this.numero_rg_socio = value;
+      this.$v.numero_rg_socio.$touch();
+    },
+    setSexoSocio: function setSexoSocio(value) {
+      this.sexo_socio = value;
+      this.$v.sexo_socio.$touch();
+    },
+    setEstadoCivilSocio: function setEstadoCivilSocio(value) {
+      this.estado_civil_socio = value;
+      this.$v.estado_civil_socio.$touch();
+    },
+    setEmailSocio: function setEmailSocio(value) {
+      this.email_socio = value;
+      this.$v.email_socio.$touch();
+    },
+    setTelefoneSocio: function setTelefoneSocio(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.telefone_socio = value;
+      this.$v.telefone_socio.$touch();
+    },
+    setCepSocio: function setCepSocio(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.cep_socio = value;
+      this.$v.cep_socio.$touch();
+    },
+    setUfSocio: function setUfSocio(value) {
+      this.uf_socio = value;
+      this.$v.uf_socio.$touch();
+    },
+    setCidadeSocio: function setCidadeSocio(value) {
+      this.cidade_socio = value;
+      this.$v.cidade_socio.$touch();
+    },
+    setBairroSocio: function setBairroSocio(value) {
+      this.bairro_socio = value;
+      this.$v.bairro_socio.$touch();
+    },
+    setTipoLogradouroSocio: function setTipoLogradouroSocio(value) {
+      this.tipo_logradouro_socio = value;
+      this.$v.tipo_logradouro_socio.$touch();
+    },
+    setLogradouroSocio: function setLogradouroSocio(value) {
+      this.logradouro_socio = value;
+      this.$v.logradouro_socio.$touch();
+    },
+    setNumeroSocio: function setNumeroSocio(value) {
+      this.numero_socio = value;
+      this.$v.numero_socio.$touch();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js& ***!
@@ -346,7 +929,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1006,296 +1590,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
@@ -1316,63 +1617,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       email_representante: "",
       estado_civil_representante: "",
       profissao_representante: "",
-      sexo_representante: ""
+      sexo_representante: "",
+      socios: 0
     };
   },
   validations: {
     nome_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cpf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     nome_mae_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     id_tipo_logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     numero_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cep_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minLength)(8)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(8)
     },
     complemento_representante: {},
     bairro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cidade_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     celular_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minLength)(11)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(11)
     },
     email_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     estado_civil_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     profissao_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     sexo_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     }
   },
   methods: {
@@ -1537,6 +1839,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     setEmailRepresentante: function setEmailRepresentante(value) {
       if (value.indexOf("@") != -1) this.email_representante = value;else this.email_representante = null;
       this.$v.email_representante.$touch();
+    },
+    addSocioElement: function addSocioElement() {
+      this.socios++;
+    },
+    removeSocioElement: function removeSocioElement() {
+      if (this.socios > 0) {
+        /* if (this.socios === this.solicitacao.socios.length)
+          this.$store.commit("UNSET_DOC_FILES"); */
+        --this.socios;
+      }
     }
   }
 });
@@ -1677,6 +1989,45 @@ component.options.__file = "resources/js/components/Solicitacao.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/cad.solicitacao/Socios.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socios.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socios.vue?vue&type=template&id=422189ba& */ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&");
+/* harmony import */ var _Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socios.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/cad.solicitacao/Socios.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/cad.solicitacao/ThirdStep.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/cad.solicitacao/ThirdStep.vue ***!
@@ -1748,6 +2099,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socios.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************!*\
   !*** ./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=script&lang=js& ***!
@@ -1807,6 +2174,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_template_id_7131b70a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_template_id_7131b70a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Solicitacao.vue?vue&type=template&id=7131b70a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Solicitacao.vue?vue&type=template&id=7131b70a&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socios.vue?vue&type=template&id=422189ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&");
 
 
 /***/ }),
@@ -2342,6 +2726,980 @@ var staticRenderFns = [
             _c("div", {
               staticClass: "w-0 bg-teal-500 py-1 rounded",
               staticStyle: { width: "0%" }
+            })
+          ]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c("input", {
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "nome_socio_" + _vm.kSocio,
+                  name: "nome_socio_" + _vm.kSocio,
+                  type: "text",
+                  placeholder: "Nome completo"
+                },
+                domProps: { value: _vm.$v.nome_socio.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setNomeSocio($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.nome_socio.$dirty && !_vm.$v.nome_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Nome obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "mask",
+                    rawName: "v-mask",
+                    value: "###.###.###-##",
+                    expression: "'###.###.###-##'"
+                  }
+                ],
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "cpf_socio" + _vm.kSocio,
+                  name: "cpf_socio" + _vm.kSocio,
+                  type: "text",
+                  placeholder: "###.###.###-##"
+                },
+                domProps: { value: _vm.$v.cpf_socio.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setCpfSocio($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.cpf_socio.$dirty && !_vm.$v.cpf_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        CPF obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                  attrs: { id: "uf_rg_socio", name: "uf_rg_socio" },
+                  domProps: { value: _vm.$v.uf_rg_socio.$model },
+                  on: {
+                    change: function($event) {
+                      return _vm.setUfRgSocio($event.target.value)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                  _vm._v(" "),
+                  _c("option", { domProps: { value: "MG" } }, [
+                    _vm._v("Minas Gerais")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { domProps: { value: "RJ" } }, [
+                    _vm._v("Rio de Janeiro")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { domProps: { value: "SP" } }, [
+                    _vm._v("São Paulo")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.uf_rg_socio.$dirty && !_vm.$v.uf_rg_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        UF do RG é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(3),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c("input", {
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "numero_rg_socio",
+                  name: "numero_rg_socio",
+                  type: "text"
+                },
+                domProps: { value: _vm.$v.numero_rg_socio.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setNumeroRgSocio($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.numero_rg_socio.$dirty && !_vm.$v.numero_rg_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        RG é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(4),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                  attrs: { id: "sexo_socio", name: "sexo_socio" },
+                  domProps: { value: _vm.$v.sexo_socio.$model },
+                  on: {
+                    change: function($event) {
+                      return _vm.setSexoSocio($event.target.value)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "M" } }, [
+                    _vm._v("Masculino")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "F" } }, [_vm._v("Feminino")])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.sexo_socio.$dirty && !_vm.$v.sexo_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Sexo é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(5),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c(
+                "select",
+                {
+                  staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "estado_civil_socio",
+                    name: "estado_civil_socio"
+                  },
+                  domProps: { value: _vm.$v.estado_civil_socio.$model },
+                  on: {
+                    change: function($event) {
+                      return _vm.setEstadoCivilSocio($event.target.value)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Casado")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2" } }, [_vm._v("Solteiro")])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.estado_civil_socio.$dirty &&
+          !_vm.$v.estado_civil_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Estado Civil é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(6),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c("input", {
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "email_socio",
+                  name: "email_socio",
+                  type: "text",
+                  placeholder: "mail@brasilcard.net"
+                },
+                domProps: { value: _vm.$v.email_socio.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setEmailSocio($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.email_socio.$dirty && !_vm.$v.email_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mail é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _vm._m(7),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "mask",
+                    rawName: "v-mask",
+                    value: ["(##) ####-####", "(##) #####-####"],
+                    expression: "['(##) ####-####', '(##) #####-####']"
+                  }
+                ],
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "telefone_socio",
+                  name: "telefone_socio",
+                  type: "text",
+                  placeholder: "###.###.###-##"
+                },
+                domProps: { value: _vm.$v.telefone_socio.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setTelefoneSocio($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.telefone_socio.$dirty && !_vm.$v.telefone_socio.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Telefone é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(8),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "mask",
+                      rawName: "v-mask",
+                      value: "#####-###",
+                      expression: "'#####-###'"
+                    }
+                  ],
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "cep_socio",
+                    name: "cep_socio",
+                    type: "text",
+                    placeholder: "#####-###"
+                  },
+                  domProps: { value: _vm.$v.cep_socio.$model },
+                  on: {
+                    input: function($event) {
+                      return _vm.setCepSocio($event.target.value)
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.cep_socio.$dirty && !_vm.$v.cep_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        CEP é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(9),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "bg-white my-2 p-1 flex border border-gray-200 rounded"
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                    attrs: { id: "uf_socio", name: "uf_socio" },
+                    domProps: { value: _vm.$v.uf_socio.$model },
+                    on: {
+                      change: function($event) {
+                        return _vm.setUfSocio($event.target.value)
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "MG" } }, [
+                      _vm._v("Minas Gerais")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "RJ" } }, [
+                      _vm._v("Rio de Janeiro")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "SP" } }, [
+                      _vm._v("São Paulo")
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.uf_socio.$dirty && !_vm.$v.uf_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        UF é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "cidade_socio",
+                    name: "cidade_socio",
+                    type: "text",
+                    placeholder: "Cidade"
+                  },
+                  domProps: { value: _vm.$v.cidade_socio.$model },
+                  on: {
+                    input: function($event) {
+                      return _vm.setCidadeSocio($event.target.value)
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.cidade_socio.$dirty && !_vm.$v.cidade_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        Cidade é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(11),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "bairro_socio",
+                    name: "bairro_socio",
+                    type: "text",
+                    placeholder: "Bairro"
+                  },
+                  domProps: { value: _vm.$v.bairro_socio.$model },
+                  on: {
+                    input: function($event) {
+                      return _vm.setBairroSocio($event.target.value)
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.bairro_socio.$dirty && !_vm.$v.bairro_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        Bairro é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(12),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                    attrs: {
+                      id: "tipo_logradouro_socio",
+                      name: "tipo_logradouro_socio"
+                    },
+                    domProps: { value: _vm.$v.tipo_logradouro_socio.$model },
+                    on: {
+                      change: function($event) {
+                        return _vm.setTipoLogradouroSocio($event.target.value)
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                    _vm._v(" "),
+                    _c("option", { domProps: { value: 1 } }, [_vm._v("Rua")]),
+                    _vm._v(" "),
+                    _c("option", { domProps: { value: 2 } }, [
+                      _vm._v("Avenida")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { domProps: { value: 3 } }, [_vm._v("Praça")])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.tipo_logradouro_socio.$dirty &&
+            !_vm.$v.tipo_logradouro_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        Tipo de Logradouro é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(13),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "logradouro_socio",
+                    name: "logradouro_socio",
+                    type: "text"
+                  },
+                  domProps: { value: _vm.$v.logradouro_socio.$model },
+                  on: {
+                    input: function($event) {
+                      return _vm.setLogradouroSocio($event.target.value)
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.logradouro_socio.$dirty && !_vm.$v.logradouro_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        Logradouro é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(14),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "numero_socio",
+                    name: "numero_socio",
+                    type: "number"
+                  },
+                  domProps: { value: _vm.$v.numero_socio.$model },
+                  on: {
+                    input: function($event) {
+                      return _vm.setNumeroSocio($event.target.value)
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.$v.numero_socio.$dirty && !_vm.$v.numero_socio.required
+              ? _c("div", { staticClass: "text-red-600" }, [
+                  _vm._v("\n        Número é obrigatório.\n      ")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(15)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "nome_socio" } }, [_vm._v("Nome")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "cpf_socio" } }, [_vm._v("CPF")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "uf_rg_socio" } }, [_vm._v("UF do RG")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "numero_rg_socio" } }, [_vm._v("Nº do RG")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "sexo_socio" } }, [_vm._v("Sexo")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [
+        _c("label", { attrs: { for: "estado_civil_socio" } }, [
+          _vm._v("Estado Cívil")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "email_socio" } }, [_vm._v("E-mail")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "telefone_socio" } }, [_vm._v("Telefone")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "cep_socio" } }, [_vm._v("CEP")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "uf_socio" } }, [_vm._v("UF")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "cidade_socio" } }, [_vm._v("Cidade")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "bairro_socio" } }, [_vm._v("Bairro")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [
+        _c("label", { attrs: { for: "tipo_logradouro_socio" } }, [
+          _vm._v("Tipo de Logradouro")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [
+        _c("label", { attrs: { for: "logradouro_socio" } }, [
+          _vm._v("Logradouro")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [_c("label", { attrs: { for: "numero_socio" } }, [_vm._v("Número")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+          },
+          [
+            _c("label", { attrs: { for: "complemento_socio" } }, [
+              _vm._v("Complemento")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+          [
+            _c("input", {
+              staticClass:
+                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+              attrs: {
+                id: "complemento_socio",
+                name: "complemento_socio",
+                type: "text"
+              }
             })
           ]
         )
@@ -3646,765 +5004,47 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "my-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Sócios (incluir o representante legal)\n      ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
+      _c(
+        "div",
+        { staticClass: "my-2" },
+        [
           _c(
             "div",
             {
               staticClass:
-                "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                "w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
             },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "nome_socio" } }, [
-                    _vm._v("Nome (Representante)")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "nome_socio",
-                      name: "nome_socio",
-                      type: "text",
-                      placeholder: "Nome completo"
-                    }
-                  })
-                ]
-              )
-            ]
+            [_vm._v("\n        Sócios\n      ")]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "cpf_socio" } }, [
-                    _vm._v("CPF Representante")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "###.###.###-##",
-                        expression: "'###.###.###-##'"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "cpf_socio",
-                      name: "cpf_socio",
-                      type: "text",
-                      placeholder: "###.###.###-##"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
+          _vm._l(_vm.socios, function(socio) {
+            return _c("socios", { key: socio, attrs: { kSocio: socio } })
+          }),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "uf_rg_socio" } }, [
-                    _vm._v("UF do RG")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "uf_rg_socio", name: "uf_rg_socio" }
-                    },
-                    [
-                      _c("option", { domProps: { value: "MG" } }, [
-                        _vm._v("Minas Gerais")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: "RJ" } }, [
-                        _vm._v("Rio de Janeiro")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { domProps: { value: "SP" } }, [
-                        _vm._v("São Paulo")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "numero_rg_socio" } }, [
-                    _vm._v("Nº do RG")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "numero_rg_socio",
-                      name: "numero_rg_socio",
-                      type: "text"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "sexo_socio" } }, [
-                    _vm._v("Sexo")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "sexo_socio", name: "sexo_socio" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "M" } }, [
-                        _vm._v("Masculino")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "F" } }, [
-                        _vm._v("Feminino")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "estado_civil_socio" } }, [
-                    _vm._v("Estado Cívil")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "estado_civil_socio",
-                        name: "estado_civil_socio"
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Casado")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Solteiro")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "email_socio" } }, [
-                    _vm._v("E-mail")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "email_socio",
-                      name: "email_socio",
-                      type: "text",
-                      placeholder: "mail@brasilcard.net"
-                    }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "telefone_socio" } }, [
-                    _vm._v("Telefone")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: ["(##) ####-####", "(##) #####-####"],
-                        expression: "['(##) ####-####', '(##) #####-####']"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: {
-                      id: "telefone_socio",
-                      name: "telefone_socio",
-                      type: "text",
-                      placeholder: "###.###.###-##"
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
-          },
-          [
+          _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
             _c(
-              "div",
+              "button",
               {
                 staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition",
+                on: { click: _vm.removeSocioElement }
               },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cep_socio" } }, [
-                      _vm._v("CEP")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "mask",
-                          rawName: "v-mask",
-                          value: "#####-###",
-                          expression: "'#####-###'"
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "cep_socio",
-                        name: "cep_socio",
-                        type: "text",
-                        placeholder: "#####-###"
-                      }
-                    })
-                  ]
-                )
-              ]
+              [_vm._v("\n          Remover\n        ")]
             ),
             _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
                 staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
+                on: { click: _vm.addSocioElement }
               },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [_c("label", { attrs: { for: "uf_socio" } }, [_vm._v("UF")])]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 flex border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "p-1 px-2 outline-none w-full text-gray-800",
-                        attrs: { id: "uf_socio", name: "uf_socio" }
-                      },
-                      [
-                        _c("option", { attrs: { value: "MG" } }, [
-                          _vm._v("Minas Gerais")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "RJ" } }, [
-                          _vm._v("Rio de Janeiro")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "SP" } }, [
-                          _vm._v("São Paulo")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cidade_socio" } }, [
-                      _vm._v("Cidade")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "cidade_socio",
-                        name: "cidade_socio",
-                        type: "text",
-                        placeholder: "Cidade"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "bairro_socio" } }, [
-                      _vm._v("Bairro")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "bairro_socio",
-                        name: "bairro_socio",
-                        type: "text",
-                        placeholder: "Bairro"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "tipo_logradouro_socio" } }, [
-                      _vm._v("Tipo de Logradouro")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        staticClass:
-                          "p-1 px-2 outline-none w-full text-gray-800",
-                        attrs: {
-                          id: "tipo_logradouro_socio",
-                          name: "tipo_logradouro_socio"
-                        }
-                      },
-                      [
-                        _c("option", { domProps: { value: 1 } }, [
-                          _vm._v("Rua")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 2 } }, [
-                          _vm._v("Avenida")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 3 } }, [
-                          _vm._v("Praça")
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "logradouro_socio" } }, [
-                      _vm._v("Logradouro")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "logradouro_socio",
-                        name: "logradouro_socio",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "numero_socio" } }, [
-                      _vm._v("Número")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "numero_socio",
-                        name: "numero_socio",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "complemento_socio" } }, [
-                      _vm._v("Complemento")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "complemento_socio",
-                        name: "complemento_socio",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
-              ]
+              [_vm._v("\n          Novo Sócio\n        ")]
             )
-          ]
-        )
-      ]),
+          ])
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [
         _c(
@@ -4439,7 +5079,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
+            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
               _c(
                 "button",
                 {

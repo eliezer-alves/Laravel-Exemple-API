@@ -1,0 +1,574 @@
+<template>
+  <div>
+    <div class="grid lg:grid-cols-12 md:grid-cols-12">
+      <div
+        class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="nome_socio">Nome</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            :id="'nome_socio_' + kSocio"
+            :name="'nome_socio_' + kSocio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="Nome completo"
+            :value="$v.nome_socio.$model"
+            @input="setNomeSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.nome_socio.$dirty && !$v.nome_socio.required"
+        >
+          Nome obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="cpf_socio">CPF</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            :id="'cpf_socio' + kSocio"
+            :name="'cpf_socio' + kSocio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="###.###.###-##"
+            v-mask="'###.###.###-##'"
+            :value="$v.cpf_socio.$model"
+            @input="setCpfSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cpf_socio.$dirty && !$v.cpf_socio.required"
+        >
+          CPF obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="uf_rg_socio">UF do RG</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <select
+            id="uf_rg_socio"
+            name="uf_rg_socio"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            :value="$v.uf_rg_socio.$model"
+            @change="setUfRgSocio($event.target.value)"
+          >
+            <option value="">--</option>
+            <option :value="'MG'">Minas Gerais</option>
+            <option :value="'RJ'">Rio de Janeiro</option>
+            <option :value="'SP'">São Paulo</option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.uf_rg_socio.$dirty && !$v.uf_rg_socio.required"
+        >
+          UF do RG é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="numero_rg_socio">Nº do RG</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="numero_rg_socio"
+            name="numero_rg_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            :value="$v.numero_rg_socio.$model"
+            @input="setNumeroRgSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.numero_rg_socio.$dirty && !$v.numero_rg_socio.required"
+        >
+          RG é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="sexo_socio">Sexo</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <select
+            id="sexo_socio"
+            name="sexo_socio"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            :value="$v.sexo_socio.$model"
+            @change="setSexoSocio($event.target.value)"
+          >
+            <option value="">--</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.sexo_socio.$dirty && !$v.sexo_socio.required"
+        >
+          Sexo é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="estado_civil_socio">Estado Cívil</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <select
+            id="estado_civil_socio"
+            name="estado_civil_socio"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            :value="$v.estado_civil_socio.$model"
+            @change="setEstadoCivilSocio($event.target.value)"
+          >
+            <option value="">--</option>
+            <option value="1">Casado</option>
+            <option value="2">Solteiro</option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.estado_civil_socio.$dirty && !$v.estado_civil_socio.required"
+        >
+          Estado Civil é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="email_socio">E-mail</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="email_socio"
+            name="email_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="mail@brasilcard.net"
+            :value="$v.email_socio.$model"
+            @input="setEmailSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.email_socio.$dirty && !$v.email_socio.required"
+        >
+          E-mail é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="telefone_socio">Telefone</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="telefone_socio"
+            name="telefone_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="###.###.###-##"
+            v-mask="['(##) ####-####', '(##) #####-####']"
+            :value="$v.telefone_socio.$model"
+            @input="setTelefoneSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.telefone_socio.$dirty && !$v.telefone_socio.required"
+        >
+          Telefone é obrigatório.
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
+    >
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="cep_socio">CEP</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="cep_socio"
+            name="cep_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="#####-###"
+            v-mask="'#####-###'"
+            :value="$v.cep_socio.$model"
+            @input="setCepSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cep_socio.$dirty && !$v.cep_socio.required"
+        >
+          CEP é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="uf_socio">UF</label>
+        </div>
+        <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+          <select
+            id="uf_socio"
+            name="uf_socio"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            :value="$v.uf_socio.$model"
+            @change="setUfSocio($event.target.value)"
+          >
+            <option value="">--</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="SP">São Paulo</option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.uf_socio.$dirty && !$v.uf_socio.required"
+        >
+          UF é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="cidade_socio">Cidade</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="cidade_socio"
+            name="cidade_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="Cidade"
+            :value="$v.cidade_socio.$model"
+            @input="setCidadeSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cidade_socio.$dirty && !$v.cidade_socio.required"
+        >
+          Cidade é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="bairro_socio">Bairro</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="bairro_socio"
+            name="bairro_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            placeholder="Bairro"
+            :value="$v.bairro_socio.$model"
+            @input="setBairroSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.bairro_socio.$dirty && !$v.bairro_socio.required"
+        >
+          Bairro é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="tipo_logradouro_socio">Tipo de Logradouro</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <select
+            id="tipo_logradouro_socio"
+            name="tipo_logradouro_socio"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            :value="$v.tipo_logradouro_socio.$model"
+            @change="setTipoLogradouroSocio($event.target.value)"
+          >
+            <option value="">--</option>
+            <option :value="1">Rua</option>
+            <option :value="2">Avenida</option>
+            <option :value="3">Praça</option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="
+            $v.tipo_logradouro_socio.$dirty &&
+            !$v.tipo_logradouro_socio.required
+          "
+        >
+          Tipo de Logradouro é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="logradouro_socio">Logradouro</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="logradouro_socio"
+            name="logradouro_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            :value="$v.logradouro_socio.$model"
+            @input="setLogradouroSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.logradouro_socio.$dirty && !$v.logradouro_socio.required"
+        >
+          Logradouro é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="numero_socio">Número</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="numero_socio"
+            name="numero_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="number"
+            :value="$v.numero_socio.$model"
+            @input="setNumeroSocio($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.numero_socio.$dirty && !$v.numero_socio.required"
+        >
+          Número é obrigatório.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="complemento_socio">Complemento</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="complemento_socio"
+            name="complemento_socio"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { required, minValue, minLength, email } from "vuelidate/lib/validators";
+
+export default {
+  props: ["kSocio"],
+  data() {
+    return {
+      nome_socio: null,
+      cpf_socio: null,
+      uf_rg_socio: null,
+      numero_rg_socio: null,
+      sexo_socio: null,
+      estado_civil_socio: null,
+      email_socio: null,
+      telefone_socio: null,
+      cep_socio: null,
+      uf_socio: null,
+      cidade_socio: null,
+      bairro_socio: null,
+      tipo_logradouro_socio: null,
+      logradouro_socio: null,
+      numero_socio: null,
+    };
+  },
+  validations: {
+    nome_socio: {
+      required,
+    },
+    cpf_socio: {
+      required,
+    },
+    uf_rg_socio: {
+      required,
+    },
+    numero_rg_socio: {
+      required,
+    },
+    sexo_socio: {
+      required,
+    },
+    estado_civil_socio: {
+      required,
+    },
+    email_socio: {
+      required,
+    },
+    telefone_socio: {
+      required,
+    },
+    cep_socio: {
+      required,
+    },
+    uf_socio: {
+      required,
+    },
+    cidade_socio: {
+      required,
+    },
+    bairro_socio: {
+      required,
+    },
+    tipo_logradouro_socio: {
+      required,
+    },
+    logradouro_socio: {
+      required,
+    },
+    numero_socio: {
+      required,
+    },
+  },
+  methods: {
+    setNomeSocio(value) {
+      this.nome_socio = value;
+      this.$v.nome_socio.$touch();
+    },
+    setCpfSocio(value) {
+      this.cpf_socio = value;
+      this.$v.cpf_socio.$touch();
+    },
+    setUfRgSocio(value) {
+      this.uf_rg_socio = value;
+      this.$v.uf_rg_socio.$touch();
+    },
+    setNumeroRgSocio(value) {
+      this.numero_rg_socio = value;
+      this.$v.numero_rg_socio.$touch();
+    },
+    setSexoSocio(value) {
+      this.sexo_socio = value;
+      this.$v.sexo_socio.$touch();
+    },
+    setEstadoCivilSocio(value) {
+      this.estado_civil_socio = value;
+      this.$v.estado_civil_socio.$touch();
+    },
+    setEmailSocio(value) {
+      this.email_socio = value;
+      this.$v.email_socio.$touch();
+    },
+    setTelefoneSocio(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.telefone_socio = value;
+      this.$v.telefone_socio.$touch();
+    },
+    setCepSocio(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.cep_socio = value;
+      this.$v.cep_socio.$touch();
+    },
+    setUfSocio(value) {
+      this.uf_socio = value;
+      this.$v.uf_socio.$touch();
+    },
+    setCidadeSocio(value) {
+      this.cidade_socio = value;
+      this.$v.cidade_socio.$touch();
+    },
+    setBairroSocio(value) {
+      this.bairro_socio = value;
+      this.$v.bairro_socio.$touch();
+    },
+    setTipoLogradouroSocio(value) {
+      this.tipo_logradouro_socio = value;
+      this.$v.tipo_logradouro_socio.$touch();
+    },
+    setLogradouroSocio(value) {
+      this.logradouro_socio = value;
+      this.$v.logradouro_socio.$touch();
+    },
+    setNumeroSocio(value) {
+      this.numero_socio = value;
+      this.$v.numero_socio.$touch();
+    },
+  },
+};
+</script>
+
+<style>
+</style>

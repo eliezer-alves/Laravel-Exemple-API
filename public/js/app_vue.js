@@ -2193,7 +2193,7 @@ var actions = {
               _objectDestructuringEmpty(_ref7);
 
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.VIA_CEP, "/").concat(cep, "/json"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.VIA_CEP, "/").concat(cep, "/json"));
 
             case 3:
               dadosEndereco = _context3.sent;
