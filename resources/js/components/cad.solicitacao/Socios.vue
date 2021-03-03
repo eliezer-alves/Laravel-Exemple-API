@@ -64,8 +64,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            id="uf_rg_socio"
-            name="uf_rg_socio"
+            :id="'uf_rg_socio' + kSocio"
+            :name="'uf_rg_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.uf_rg_socio.$model"
             @change="setUfRgSocio($event.target.value)"
@@ -93,8 +93,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="numero_rg_socio"
-            name="numero_rg_socio"
+            :id="'numero_rg_socio' + kSocio"
+            :name="'numero_rg_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             :value="$v.numero_rg_socio.$model"
@@ -118,8 +118,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            id="sexo_socio"
-            name="sexo_socio"
+            :id="'sexo_socio' + kSocio"
+            :name="'sexo_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.sexo_socio.$model"
             @change="setSexoSocio($event.target.value)"
@@ -146,8 +146,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            id="estado_civil_socio"
-            name="estado_civil_socio"
+            :id="'estado_civil_socio' + kSocio"
+            :name="'estado_civil_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.estado_civil_socio.$model"
             @change="setEstadoCivilSocio($event.target.value)"
@@ -174,8 +174,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="email_socio"
-            name="email_socio"
+            :id="'email_socio' + kSocio"
+            :name="'email_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="mail@brasilcard.net"
@@ -200,8 +200,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="telefone_socio"
-            name="telefone_socio"
+            :id="'telefone_socio' + kSocio"
+            :name="'telefone_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="###.###.###-##"
@@ -231,8 +231,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="cep_socio"
-            name="cep_socio"
+            :id="'cep_socio' + kSocio"
+            :name="'cep_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="#####-###"
@@ -258,8 +258,8 @@
         </div>
         <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <select
-            id="uf_socio"
-            name="uf_socio"
+            :id="'uf_socio' + kSocio"
+            :name="'uf_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.uf_socio.$model"
             @change="setUfSocio($event.target.value)"
@@ -287,8 +287,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="cidade_socio"
-            name="cidade_socio"
+            :id="'cidade_socio' + kSocio"
+            :name="'cidade_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Cidade"
@@ -313,8 +313,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="bairro_socio"
-            name="bairro_socio"
+            :id="'bairro_socio' + kSocio"
+            :name="'bairro_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Bairro"
@@ -339,8 +339,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            id="tipo_logradouro_socio"
-            name="tipo_logradouro_socio"
+            :id="'tipo_logradouro_socio' + kSocio"
+            :name="'tipo_logradouro_socio' + kSocio"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.tipo_logradouro_socio.$model"
             @change="setTipoLogradouroSocio($event.target.value)"
@@ -355,7 +355,7 @@
           class="text-red-600"
           v-if="
             $v.tipo_logradouro_socio.$dirty &&
-            !$v.tipo_logradouro_socio.required
+              !$v.tipo_logradouro_socio.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -371,8 +371,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="logradouro_socio"
-            name="logradouro_socio"
+            :id="'logradouro_socio' + kSocio"
+            :name="'logradouro_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             :value="$v.logradouro_socio.$model"
@@ -396,8 +396,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="numero_socio"
-            name="numero_socio"
+            :id="'numero_socio' + kSocio"
+            :name="'numero_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="number"
             :value="$v.numero_socio.$model"
@@ -421,8 +421,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            id="complemento_socio"
-            name="complemento_socio"
+            :id="'complemento_socio' + kSocio"
+            :name="'complemento_socio' + kSocio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
           />
@@ -453,55 +453,55 @@ export default {
       bairro_socio: null,
       tipo_logradouro_socio: null,
       logradouro_socio: null,
-      numero_socio: null,
+      numero_socio: null
     };
   },
   validations: {
     nome_socio: {
-      required,
+      required
     },
     cpf_socio: {
-      required,
+      required
     },
     uf_rg_socio: {
-      required,
+      required
     },
     numero_rg_socio: {
-      required,
+      required
     },
     sexo_socio: {
-      required,
+      required
     },
     estado_civil_socio: {
-      required,
+      required
     },
     email_socio: {
-      required,
+      required
     },
     telefone_socio: {
-      required,
+      required
     },
     cep_socio: {
-      required,
+      required
     },
     uf_socio: {
-      required,
+      required
     },
     cidade_socio: {
-      required,
+      required
     },
     bairro_socio: {
-      required,
+      required
     },
     tipo_logradouro_socio: {
-      required,
+      required
     },
     logradouro_socio: {
-      required,
+      required
     },
     numero_socio: {
-      required,
-    },
+      required
+    }
   },
   methods: {
     setNomeSocio(value) {
@@ -565,8 +565,8 @@ export default {
     setNumeroSocio(value) {
       this.numero_socio = value;
       this.$v.numero_socio.$touch();
-    },
-  },
+    }
+  }
 };
 </script>
 

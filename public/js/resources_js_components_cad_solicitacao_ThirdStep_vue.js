@@ -2862,7 +2862,10 @@ var render = function() {
                 "select",
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                  attrs: { id: "uf_rg_socio", name: "uf_rg_socio" },
+                  attrs: {
+                    id: "uf_rg_socio" + _vm.kSocio,
+                    name: "uf_rg_socio" + _vm.kSocio
+                  },
                   domProps: { value: _vm.$v.uf_rg_socio.$model },
                   on: {
                     change: function($event) {
@@ -2914,8 +2917,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "numero_rg_socio",
-                  name: "numero_rg_socio",
+                  id: "numero_rg_socio" + _vm.kSocio,
+                  name: "numero_rg_socio" + _vm.kSocio,
                   type: "text"
                 },
                 domProps: { value: _vm.$v.numero_rg_socio.$model },
@@ -2953,7 +2956,10 @@ var render = function() {
                 "select",
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                  attrs: { id: "sexo_socio", name: "sexo_socio" },
+                  attrs: {
+                    id: "sexo_socio" + _vm.kSocio,
+                    name: "sexo_socio" + _vm.kSocio
+                  },
                   domProps: { value: _vm.$v.sexo_socio.$model },
                   on: {
                     change: function($event) {
@@ -3000,8 +3006,8 @@ var render = function() {
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "estado_civil_socio",
-                    name: "estado_civil_socio"
+                    id: "estado_civil_socio" + _vm.kSocio,
+                    name: "estado_civil_socio" + _vm.kSocio
                   },
                   domProps: { value: _vm.$v.estado_civil_socio.$model },
                   on: {
@@ -3047,8 +3053,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "email_socio",
-                  name: "email_socio",
+                  id: "email_socio" + _vm.kSocio,
+                  name: "email_socio" + _vm.kSocio,
                   type: "text",
                   placeholder: "mail@brasilcard.net"
                 },
@@ -3095,8 +3101,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "telefone_socio",
-                  name: "telefone_socio",
+                  id: "telefone_socio" + _vm.kSocio,
+                  name: "telefone_socio" + _vm.kSocio,
                   type: "text",
                   placeholder: "###.###.###-##"
                 },
@@ -3153,8 +3159,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cep_socio",
-                    name: "cep_socio",
+                    id: "cep_socio" + _vm.kSocio,
+                    name: "cep_socio" + _vm.kSocio,
                     type: "text",
                     placeholder: "#####-###"
                   },
@@ -3196,7 +3202,10 @@ var render = function() {
                   "select",
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                    attrs: { id: "uf_socio", name: "uf_socio" },
+                    attrs: {
+                      id: "uf_socio" + _vm.kSocio,
+                      name: "uf_socio" + _vm.kSocio
+                    },
                     domProps: { value: _vm.$v.uf_socio.$model },
                     on: {
                       change: function($event) {
@@ -3250,8 +3259,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cidade_socio",
-                    name: "cidade_socio",
+                    id: "cidade_socio" + _vm.kSocio,
+                    name: "cidade_socio" + _vm.kSocio,
                     type: "text",
                     placeholder: "Cidade"
                   },
@@ -3292,8 +3301,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "bairro_socio",
-                    name: "bairro_socio",
+                    id: "bairro_socio" + _vm.kSocio,
+                    name: "bairro_socio" + _vm.kSocio,
                     type: "text",
                     placeholder: "Bairro"
                   },
@@ -3335,8 +3344,8 @@ var render = function() {
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "tipo_logradouro_socio",
-                      name: "tipo_logradouro_socio"
+                      id: "tipo_logradouro_socio" + _vm.kSocio,
+                      name: "tipo_logradouro_socio" + _vm.kSocio
                     },
                     domProps: { value: _vm.$v.tipo_logradouro_socio.$model },
                     on: {
@@ -3388,8 +3397,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "logradouro_socio",
-                    name: "logradouro_socio",
+                    id: "logradouro_socio" + _vm.kSocio,
+                    name: "logradouro_socio" + _vm.kSocio,
                     type: "text"
                   },
                   domProps: { value: _vm.$v.logradouro_socio.$model },
@@ -3429,8 +3438,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "numero_socio",
-                    name: "numero_socio",
+                    id: "numero_socio" + _vm.kSocio,
+                    name: "numero_socio" + _vm.kSocio,
                     type: "number"
                   },
                   domProps: { value: _vm.$v.numero_socio.$model },
@@ -3451,7 +3460,34 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(15)
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(15),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "complemento_socio" + _vm.kSocio,
+                    name: "complemento_socio" + _vm.kSocio,
+                    type: "text"
+                  }
+                })
+              ]
+            )
+          ]
+        )
       ]
     )
   ])
@@ -3672,37 +3708,12 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
       },
       [
-        _c(
-          "div",
-          {
-            staticClass:
-              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-          },
-          [
-            _c("label", { attrs: { for: "complemento_socio" } }, [
-              _vm._v("Complemento")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
-          [
-            _c("input", {
-              staticClass:
-                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-              attrs: {
-                id: "complemento_socio",
-                name: "complemento_socio",
-                type: "text"
-              }
-            })
-          ]
-        )
+        _c("label", { attrs: { for: "complemento_socio" } }, [
+          _vm._v("Complemento")
+        ])
       ]
     )
   }
