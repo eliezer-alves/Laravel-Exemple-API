@@ -615,6 +615,8 @@
           </button>
 
           <button
+            :disabled="errors.invalid"
+            :class="{ 'opacity-40': errors.invalid }"
             @click="addSocioElement"
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
@@ -655,7 +657,7 @@
 <script>
 import Solicitacao from "../Solicitacao.vue";
 import { required, minLength } from "vuelidate/lib/validators";
-import { validarCPF } from "../../helper.js";
+import { mapGetters } from "vuex";
 
 import Socios from "./Socios.vue";
 
@@ -683,6 +685,9 @@ export default {
       sexo_representante: "",
       socios: 0,
     };
+  },
+  computed: {
+    ...mapGetters(["errors"]),
   },
   validations: {
     nome_representante: {
@@ -755,7 +760,7 @@ export default {
     },
     async setCpfRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
-      let isInvalid = await this.$store.dispatch('validaCPF', value);
+      let isInvalid = await this.$store.dispatch("validaCPF", value);
       if (isInvalid) {
         this.cpf_representante = null;
       } else this.cpf_representante = value;
@@ -863,8 +868,7 @@ export default {
     },
     removeSocioElement() {
       if (this.socios > 0) {
-        /* if (this.socios === this.solicitacao.socios.length)
-          this.$store.commit("UNSET_DOC_FILES"); */
+        this.errors.invalid = false;
         --this.socios;
       }
     },

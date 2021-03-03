@@ -146,7 +146,7 @@
           Finalizar
         </button>
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'solicitacao-2' }">
+          <router-link :to="{ name: 'solicitacao-2' }" @click="$v.$touch()">
             <button
               :disabled="$v.$invalid"
               :class="{'opacity-40':$v.$invalid}"

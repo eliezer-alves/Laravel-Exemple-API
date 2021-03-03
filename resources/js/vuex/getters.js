@@ -13,7 +13,7 @@ let getters = {
     },
     solicitacao: state => {
         return state.solicitacao
-    }
+    },
 }
 
 export default getters

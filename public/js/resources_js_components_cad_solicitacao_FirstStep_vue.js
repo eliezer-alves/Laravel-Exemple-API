@@ -1704,18 +1704,29 @@ var render = function() {
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                  class: { "opacity-40": _vm.$v.$invalid },
-                  attrs: { disabled: _vm.$v.$invalid }
-                },
-                [_vm._v("\n            Avançar\n          ")]
-              )
-            ]),
+            _c(
+              "router-link",
+              {
+                attrs: { to: { name: "solicitacao-2" } },
+                on: {
+                  click: function($event) {
+                    return _vm.$v.$touch()
+                  }
+                }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                    class: { "opacity-40": _vm.$v.$invalid },
+                    attrs: { disabled: _vm.$v.$invalid }
+                  },
+                  [_vm._v("\n            Avançar\n          ")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "button",

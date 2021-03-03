@@ -18,6 +18,7 @@
             placeholder="Nome completo"
             :value="$v.nome_socio.$model"
             @input="setNomeSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -45,6 +46,7 @@
             v-mask="'###.###.###-##'"
             :value="$v.cpf_socio.$model"
             @input="setCpfSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -99,6 +101,7 @@
             type="text"
             :value="$v.numero_rg_socio.$model"
             @input="setNumeroRgSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -181,6 +184,7 @@
             placeholder="mail@brasilcard.net"
             :value="$v.email_socio.$model"
             @input="setEmailSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -204,10 +208,10 @@
             name="telefone_socio"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
-            placeholder="###.###.###-##"
             v-mask="['(##) ####-####', '(##) #####-####']"
             :value="$v.telefone_socio.$model"
             @input="setTelefoneSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -239,6 +243,7 @@
             v-mask="'#####-###'"
             :value="$v.cep_socio.$model"
             @input="setCepSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -294,6 +299,7 @@
             placeholder="Cidade"
             :value="$v.cidade_socio.$model"
             @input="setCidadeSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -320,6 +326,7 @@
             placeholder="Bairro"
             :value="$v.bairro_socio.$model"
             @input="setBairroSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -377,6 +384,7 @@
             type="text"
             :value="$v.logradouro_socio.$model"
             @input="setLogradouroSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -402,6 +410,7 @@
             type="number"
             :value="$v.numero_socio.$model"
             @input="setNumeroSocio($event.target.value)"
+            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
           />
         </div>
         <div
@@ -434,6 +443,7 @@
 
 <script>
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 
 export default {
   props: ["kSocio"],
@@ -455,6 +465,15 @@ export default {
       logradouro_socio: null,
       numero_socio: null,
     };
+  },
+  mounted() {
+    this.$store.commit("GET_ERRORS", {
+      // id: this.kSocio,
+      invalid: this.$v.$invalid,
+    });
+  },
+  computed: {
+    ...mapGetters(["errors"]),
   },
   validations: {
     nome_socio: {

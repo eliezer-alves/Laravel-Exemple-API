@@ -343,7 +343,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -779,6 +795,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["kSocio"],
   data: function data() {
@@ -800,51 +817,58 @@ __webpack_require__.r(__webpack_exports__);
       numero_socio: null
     };
   },
+  mounted: function mounted() {
+    this.$store.commit("GET_ERRORS", {
+      // id: this.kSocio,
+      invalid: this.$v.$invalid
+    });
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["errors"])),
   validations: {
     nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     }
   },
   methods: {
@@ -930,14 +954,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
-/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
 //
 //
 //
@@ -1599,7 +1631,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_3__.default
+    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
@@ -1624,6 +1656,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       socios: 0
     };
   },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["errors"])),
   validations: {
     nome_representante: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
@@ -1704,7 +1737,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 value = value.replace(/[^\d]+/g, "");
                 _context.next = 3;
-                return _this.$store.dispatch('validaCPF', value);
+                return _this.$store.dispatch("validaCPF", value);
 
               case 3:
                 isInvalid = _context.sent;
@@ -1849,88 +1882,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     removeSocioElement: function removeSocioElement() {
       if (this.socios > 0) {
-        /* if (this.socios === this.solicitacao.socios.length)
-          this.$store.commit("UNSET_DOC_FILES"); */
+        this.errors.invalid = false;
         --this.socios;
       }
     }
   }
 });
-
-/***/ }),
-
-/***/ "./resources/js/helper.js":
-/*!********************************!*\
-  !*** ./resources/js/helper.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
-/* harmony export */   "validarCPF": () => (/* binding */ validarCPF)
-/* harmony export */ });
-var validarCNPJ = function validarCNPJ(cnpj) {
-  cnpj = cnpj.replace(/[^\d]+/g, '');
-  if (cnpj == '') return false;
-  if (cnpj.length != 14) return false; // Elimina CNPJs invalidos conhecidos
-
-  if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") return false; // Valida DVs
-
-  var tamanho = cnpj.length - 2;
-  var numeros = cnpj.substring(0, tamanho);
-  var digitos = cnpj.substring(tamanho);
-  var soma = 0;
-  var pos = tamanho - 7;
-
-  for (var i = tamanho; i >= 1; i--) {
-    soma += numeros.charAt(tamanho - i) * pos--;
-    if (pos < 2) pos = 9;
-  }
-
-  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-  if (resultado != digitos.charAt(0)) return false;
-  tamanho = tamanho + 1;
-  numeros = cnpj.substring(0, tamanho);
-  soma = 0;
-  pos = tamanho - 7;
-
-  for (var _i = tamanho; _i >= 1; _i--) {
-    soma += numeros.charAt(tamanho - _i) * pos--;
-    if (pos < 2) pos = 9;
-  }
-
-  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-  if (resultado != digitos.charAt(1)) return false;
-  return true;
-};
-
-var validarCPF = function validarCPF(cpf) {
-  var Soma = 0;
-  var Resto = 0;
-  var isInvalid = false;
-
-  for (var i = 1; i <= 9; i++) {
-    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
-  }
-
-  Resto = Soma * 10 % 11;
-  if (Resto == 10 || Resto == 11) Resto = 0;
-  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
-  Soma = 0;
-
-  for (var _i2 = 1; _i2 <= 10; _i2++) {
-    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
-  }
-
-  Resto = Soma * 10 % 11;
-  if (Resto == 10 || Resto == 11) Resto = 0;
-  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
-  return isInvalid;
-};
-
-
 
 /***/ }),
 
@@ -2862,6 +2819,11 @@ var render = function() {
                 on: {
                   input: function($event) {
                     return _vm.setNomeSocio($event.target.value)
+                  },
+                  blur: function($event) {
+                    return _vm.$store.commit("GET_ERRORS", {
+                      invalid: _vm.$v.$invalid
+                    })
                   }
                 }
               })
@@ -2910,6 +2872,11 @@ var render = function() {
                 on: {
                   input: function($event) {
                     return _vm.setCpfSocio($event.target.value)
+                  },
+                  blur: function($event) {
+                    return _vm.$store.commit("GET_ERRORS", {
+                      invalid: _vm.$v.$invalid
+                    })
                   }
                 }
               })
@@ -3001,6 +2968,11 @@ var render = function() {
                 on: {
                   input: function($event) {
                     return _vm.setNumeroRgSocio($event.target.value)
+                  },
+                  blur: function($event) {
+                    return _vm.$store.commit("GET_ERRORS", {
+                      invalid: _vm.$v.$invalid
+                    })
                   }
                 }
               })
@@ -3135,6 +3107,11 @@ var render = function() {
                 on: {
                   input: function($event) {
                     return _vm.setEmailSocio($event.target.value)
+                  },
+                  blur: function($event) {
+                    return _vm.$store.commit("GET_ERRORS", {
+                      invalid: _vm.$v.$invalid
+                    })
                   }
                 }
               })
@@ -3176,13 +3153,17 @@ var render = function() {
                 attrs: {
                   id: "telefone_socio",
                   name: "telefone_socio",
-                  type: "text",
-                  placeholder: "###.###.###-##"
+                  type: "text"
                 },
                 domProps: { value: _vm.$v.telefone_socio.$model },
                 on: {
                   input: function($event) {
                     return _vm.setTelefoneSocio($event.target.value)
+                  },
+                  blur: function($event) {
+                    return _vm.$store.commit("GET_ERRORS", {
+                      invalid: _vm.$v.$invalid
+                    })
                   }
                 }
               })
@@ -3241,6 +3222,11 @@ var render = function() {
                   on: {
                     input: function($event) {
                       return _vm.setCepSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$store.commit("GET_ERRORS", {
+                        invalid: _vm.$v.$invalid
+                      })
                     }
                   }
                 })
@@ -3338,6 +3324,11 @@ var render = function() {
                   on: {
                     input: function($event) {
                       return _vm.setCidadeSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$store.commit("GET_ERRORS", {
+                        invalid: _vm.$v.$invalid
+                      })
                     }
                   }
                 })
@@ -3380,6 +3371,11 @@ var render = function() {
                   on: {
                     input: function($event) {
                       return _vm.setBairroSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$store.commit("GET_ERRORS", {
+                        invalid: _vm.$v.$invalid
+                      })
                     }
                   }
                 })
@@ -3475,6 +3471,11 @@ var render = function() {
                   on: {
                     input: function($event) {
                       return _vm.setLogradouroSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$store.commit("GET_ERRORS", {
+                        invalid: _vm.$v.$invalid
+                      })
                     }
                   }
                 })
@@ -3516,6 +3517,11 @@ var render = function() {
                   on: {
                     input: function($event) {
                       return _vm.setNumeroSocio($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$store.commit("GET_ERRORS", {
+                        invalid: _vm.$v.$invalid
+                      })
                     }
                   }
                 })
@@ -5116,6 +5122,8 @@ var render = function() {
               {
                 staticClass:
                   "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
+                class: { "opacity-40": _vm.errors.invalid },
+                attrs: { disabled: _vm.errors.invalid },
                 on: { click: _vm.addSocioElement }
               },
               [_vm._v("\n          Novo Sócio\n        ")]

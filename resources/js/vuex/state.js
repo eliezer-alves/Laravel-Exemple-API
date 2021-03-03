@@ -1,9 +1,12 @@
 let state = {
-    errors: {},
+    errors: {
+        // invalid_socio: []
+    },
     atividades: [],
     cliente: {},
     solicitacao: {
-        docs: []
+        docs: [],
+        socios: []
     },
 }
 

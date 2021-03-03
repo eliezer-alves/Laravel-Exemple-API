@@ -581,7 +581,7 @@ export default {
       complemento: null,
       telefone: null,
       email: null,
-      docs: 0,
+      docs: 1,
     };
   },
   validations: {
