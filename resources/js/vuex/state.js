@@ -3,6 +3,7 @@ let state = {
         // invalid_socio: []
     },
     atividades: [],
+    dominios: {},
     cliente: {},
     solicitacao: {
         docs: [],

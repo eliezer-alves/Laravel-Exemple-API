@@ -1856,25 +1856,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tailwindcss_tailwind_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tailwindcss/tailwind.css */ "./node_modules/tailwindcss/tailwind.css");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _vuex_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vuex/actions */ "./resources/js/vuex/actions.js");
-/* harmony import */ var _vuex_mutations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vuex/mutations */ "./resources/js/vuex/mutations.js");
-/* harmony import */ var _vuex_getters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vuex/getters */ "./resources/js/vuex/getters.js");
-/* harmony import */ var _vuex_state__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vuex/state */ "./resources/js/vuex/state.js");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var v_money__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! v-money */ "./node_modules/v-money/dist/v-money.js");
-/* harmony import */ var v_money__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(v_money__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'lottie-vuejs/src/LottieAnimation.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _vuex_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vuex/actions */ "./resources/js/vuex/actions.js");
+/* harmony import */ var _vuex_mutations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vuex/mutations */ "./resources/js/vuex/mutations.js");
+/* harmony import */ var _vuex_getters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vuex/getters */ "./resources/js/vuex/getters.js");
+/* harmony import */ var _vuex_state__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./vuex/state */ "./resources/js/vuex/state.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var v_money__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! v-money */ "./node_modules/v-money/dist/v-money.js");
+/* harmony import */ var v_money__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(v_money__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vuex__WEBPACK_IMPORTED_MODULE_2__.default);
+ // import lottie-vuejs
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'lottie-vuejs/src/LottieAnimation.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())); // add lottie-animation to your global scope
+
+
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   mode: 'history',
   routes: __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js")
 });
@@ -1884,19 +1889,19 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__.default.Store({
   // strict: false,
-  state: _vuex_state__WEBPACK_IMPORTED_MODULE_7__.default,
-  getters: _vuex_getters__WEBPACK_IMPORTED_MODULE_6__.default,
-  mutations: _vuex_mutations__WEBPACK_IMPORTED_MODULE_5__.default,
-  actions: _vuex_actions__WEBPACK_IMPORTED_MODULE_4__.default
+  state: _vuex_state__WEBPACK_IMPORTED_MODULE_8__.default,
+  getters: _vuex_getters__WEBPACK_IMPORTED_MODULE_7__.default,
+  mutations: _vuex_mutations__WEBPACK_IMPORTED_MODULE_6__.default,
+  actions: _vuex_actions__WEBPACK_IMPORTED_MODULE_5__.default
 });
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_8___default()));
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_9___default()));
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use((v_money__WEBPACK_IMPORTED_MODULE_9___default()), {
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use((v_money__WEBPACK_IMPORTED_MODULE_10___default()), {
   precision: 4
 });
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vuelidate__WEBPACK_IMPORTED_MODULE_10__.default);
+vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vuelidate__WEBPACK_IMPORTED_MODULE_11__.default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   router: router,
   store: store,
@@ -2208,30 +2213,13 @@ var actions = {
       }, _callee3);
     }))();
   },
-  validaCPF: function validaCPF(_ref8, value) {
-    _objectDestructuringEmpty(_ref8);
-
-    var Soma = 0;
-    var Resto = 0;
-    var isInvalid = false;
-
-    for (var i = 1; i <= 9; i++) {
-      Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
-    }
-
-    Resto = Soma * 10 % 11;
-    if (Resto == 10 || Resto == 11) Resto = 0;
-    if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
-    Soma = 0;
-
-    for (var _i = 1; _i <= 10; _i++) {
-      Soma = Soma + parseInt(value.substring(_i - 1, _i)) * (12 - _i);
-    }
-
-    Resto = Soma * 10 % 11;
-    if (Resto == 10 || Resto == 11) Resto = 0;
-    if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
-    return isInvalid;
+  fetchDominios: function fetchDominios(_ref8) {
+    var commit = _ref8.commit;
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://127.0.0.1:8000/api/dominios').then(function (res) {
+      commit('FETCH_DOMINIO', res.data);
+    })["catch"](function (err) {
+      commit('GET_ERRORS', err.response.data.errors);
+    });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (actions);
@@ -2264,6 +2252,9 @@ var getters = {
   },
   solicitacao: function solicitacao(state) {
     return state.solicitacao;
+  },
+  dominios: function dominios(state) {
+    return state.dominios;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getters);
@@ -2319,6 +2310,9 @@ var mutations = {
   },
   UNSET_DOC_FILES: function UNSET_DOC_FILES(state) {
     state.solicitacao.docs.pop();
+  },
+  FETCH_DOMINIO: function FETCH_DOMINIO(state, payload) {
+    return state.dominios = payload;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mutations);
@@ -2340,6 +2334,7 @@ var state = {
   errors: {// invalid_socio: []
   },
   atividades: [],
+  dominios: {},
   cliente: {},
   solicitacao: {
     docs: [],

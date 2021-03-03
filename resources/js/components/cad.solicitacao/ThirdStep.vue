@@ -110,7 +110,7 @@
               class="text-red-600"
               v-if="
                 $v.uf_rg_representante.$dirty &&
-                !$v.uf_rg_representante.required
+                  !$v.uf_rg_representante.required
               "
             >
               UF do RG é obrigatório
@@ -171,7 +171,7 @@
               class="text-red-600"
               v-if="
                 $v.profissao_representante.$dirty &&
-                !$v.profissao_representante.required
+                  !$v.profissao_representante.required
               "
             >
               Profissão é obrigatória
@@ -202,7 +202,7 @@
               class="text-red-600"
               v-if="
                 $v.estado_civil_representante.$dirty &&
-                !$v.estado_civil_representante.required
+                  !$v.estado_civil_representante.required
               "
             >
               Estado Civil é obrigatório
@@ -229,7 +229,7 @@
               class="text-red-600"
               v-if="
                 $v.nome_mae_representante.$dirty &&
-                !$v.nome_mae_representante.required
+                  !$v.nome_mae_representante.required
               "
             >
               Nome da Mãe é obrigatório
@@ -274,7 +274,7 @@
                 class="text-red-600"
                 v-if="
                   $v.id_tipo_logradouro_representante.$dirty &&
-                  !$v.id_tipo_logradouro_representante.required
+                    !$v.id_tipo_logradouro_representante.required
                 "
               >
                 Tipo do Logradouro é obrigatório
@@ -301,7 +301,7 @@
                 class="text-red-600"
                 v-if="
                   $v.logradouro_representante.$dirty &&
-                  !$v.logradouro_representante.required
+                    !$v.logradouro_representante.required
                 "
               >
                 Logradouro é obrigatório
@@ -327,7 +327,7 @@
                 class="text-red-600"
                 v-if="
                   $v.numero_representante.$dirty &&
-                  !$v.numero_representante.required
+                    !$v.numero_representante.required
                 "
               >
                 Número é obrigatório
@@ -406,7 +406,7 @@
                 class="text-red-600"
                 v-if="
                   $v.bairro_representante.$dirty &&
-                  !$v.bairro_representante.required
+                    !$v.bairro_representante.required
                 "
               >
                 Bairro é obrigatório
@@ -433,7 +433,7 @@
                 class="text-red-600"
                 v-if="
                   $v.cidade_representante.$dirty &&
-                  !$v.cidade_representante.required
+                    !$v.cidade_representante.required
                 "
               >
                 Cidade é obrigatória
@@ -491,7 +491,7 @@
                 class="text-red-600"
                 v-if="
                   $v.celular_representante.$dirty &&
-                  !$v.celular_representante.required
+                    !$v.celular_representante.required
                 "
               >
                 Celular/Telefone é obrigatório
@@ -500,7 +500,7 @@
                 class="text-red-600"
                 v-if="
                   $v.celular_representante.$dirty &&
-                  !$v.celular_representante.minLength
+                    !$v.celular_representante.minLength
                 "
               >
                 Celular/Telefone Inválido
@@ -527,7 +527,8 @@
                 class="text-red-600"
                 v-if="
                   $v.email_representante.$dirty &&
-                  !$v.email_representante.required
+                    (!$v.email_representante.required ||
+                      !$v.email_representante.email)
                 "
               >
                 E-mail válido é obrigatório
@@ -656,10 +657,11 @@
 
 <script>
 import Solicitacao from "../Solicitacao.vue";
-import { required, minLength } from "vuelidate/lib/validators";
-import { mapGetters } from "vuex";
-
 import Socios from "./Socios.vue";
+
+import { required, minLength, email } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
+import { validaCPF } from "../../helper.js";
 
 export default {
   components: { Solicitacao, Socios },
@@ -683,7 +685,7 @@ export default {
       estado_civil_representante: "",
       profissao_representante: "",
       sexo_representante: "",
-      socios: 0,
+      socios: 0
     };
   },
   computed: {
@@ -691,59 +693,60 @@ export default {
   },
   validations: {
     nome_representante: {
-      required,
+      required
     },
     cpf_representante: {
-      required,
+      required
     },
     rg_representante: {
-      required,
+      required
     },
     uf_rg_representante: {
-      required,
+      required
     },
     nome_mae_representante: {
-      required,
+      required
     },
     id_tipo_logradouro_representante: {
-      required,
+      required
     },
     logradouro_representante: {
-      required,
+      required
     },
     numero_representante: {
-      required,
+      required
     },
     cep_representante: {
       required,
-      minLength: minLength(8),
+      minLength: minLength(8)
     },
     complemento_representante: {},
     bairro_representante: {
-      required,
+      required
     },
     cidade_representante: {
-      required,
+      required
     },
     uf_representante: {
-      required,
+      required
     },
     celular_representante: {
       required,
-      minLength: minLength(11),
+      minLength: minLength(11)
     },
     email_representante: {
       required,
+      email
     },
     estado_civil_representante: {
-      required,
+      required
     },
     profissao_representante: {
-      required,
+      required
     },
     sexo_representante: {
-      required,
-    },
+      required
+    }
   },
   methods: {
     setNomeRepresentante(value) {
@@ -760,7 +763,7 @@ export default {
     },
     async setCpfRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
-      let isInvalid = await this.$store.dispatch("validaCPF", value);
+      let isInvalid = validaCPF(value);
       if (isInvalid) {
         this.cpf_representante = null;
       } else this.cpf_representante = value;
@@ -810,6 +813,7 @@ export default {
 
         this.setUfRepresentante("");
         document.querySelector("#uf_representante").disabled = false;
+        this.setComplementoRepresentante("");
 
         this.cep_representante = null;
         this.$v.cep_representante.$touch();
@@ -858,9 +862,7 @@ export default {
       this.$v.celular_representante.$touch();
     },
     setEmailRepresentante(value) {
-      if (value.indexOf("@") != -1) this.email_representante = value;
-      else this.email_representante = null;
-
+      this.email_representante = value;
       this.$v.email_representante.$touch();
     },
     addSocioElement() {
@@ -871,8 +873,8 @@ export default {
         this.errors.invalid = false;
         --this.socios;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

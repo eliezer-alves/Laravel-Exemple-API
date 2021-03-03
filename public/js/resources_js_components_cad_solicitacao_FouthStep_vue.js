@@ -571,12 +571,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1824,12 +1818,6 @@ var render = function() {
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Agência é obrigatório\n          ")
                   ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.$v.agencia.$dirty && !_vm.$v.agencia.numeric
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            Agência Inválida\n          ")
-                  ])
                 : _vm._e()
             ]
           ),
@@ -1866,8 +1854,8 @@ var render = function() {
                       {
                         name: "mask",
                         rawName: "v-mask",
-                        value: "##",
-                        expression: "'##'"
+                        value: "####",
+                        expression: "'####'"
                       }
                     ],
                     staticClass:
@@ -1921,8 +1909,8 @@ var render = function() {
                       {
                         name: "mask",
                         rawName: "v-mask",
-                        value: "####",
-                        expression: "'####'"
+                        value: "############",
+                        expression: "'############'"
                       }
                     ],
                     staticClass:
@@ -1978,8 +1966,8 @@ var render = function() {
                       {
                         name: "mask",
                         rawName: "v-mask",
-                        value: "##",
-                        expression: "'##'"
+                        value: "####",
+                        expression: "'####'"
                       }
                     ],
                     staticClass:

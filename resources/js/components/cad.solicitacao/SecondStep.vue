@@ -183,7 +183,7 @@
               class="text-red-600"
               v-if="
                 $v.id_atividade_comercial.$dirty &&
-                !$v.id_atividade_comercial.required
+                  !$v.id_atividade_comercial.required
               "
             >
               Atividade Comercial é obrigatório.
@@ -267,9 +267,13 @@
                 @change="setUf($event.target.value)"
               >
                 <option value="">--</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="SP">São Paulo</option>
+                <option
+                  v-for="uf in dominios.uf"
+                  :key="uf.codigo"
+                  :value="uf.codigo"
+                >
+                  {{ uf.descricao }}
+                </option>
               </select>
             </div>
             <div class="text-red-600" v-if="$v.uf.$dirty && !$v.uf.required">
@@ -290,6 +294,7 @@
                 name="cidade"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
+                disabled
                 placeholder="Cidade"
                 :value="$v.cidade.$model"
                 @input="setCidade($event.target.value)"
@@ -345,9 +350,13 @@
                 @change="setTipoLogradouro($event.target.value)"
               >
                 <option value="">--</option>
-                <option value="1">Rua</option>
-                <option value="2">Avenida</option>
-                <option value="3">Praça</option>
+                <option
+                  v-for="tipo_logradouro in dominios.tipoLogradouro"
+                  :key="tipo_logradouro.id_tipo_logradouro"
+                  :value="tipo_logradouro.id_tipo_logradouro"
+                >
+                  {{ tipo_logradouro.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -554,7 +563,7 @@ export default {
     await this.$store.dispatch("fetchAtividades");
   },
   computed: {
-    ...mapGetters(["atividades", "solicitacao"]),
+    ...mapGetters(["atividades", "solicitacao", "dominios"])
   },
   data() {
     return {
@@ -562,7 +571,7 @@ export default {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 0,
+        precision: 0
       },
       razao_social: null,
       cnpj: null,
@@ -584,59 +593,62 @@ export default {
       docs: 1,
     };
   },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
+  },
   validations: {
     razao_social: {
-      required,
+      required
     },
     cnpj: {
-      required,
+      required
     },
     nome_fantasia: {
-      required,
+      required
     },
     inscricao_estadual: {
-      required,
+      required
     },
     rendimento_mensal: {
       required,
-      minValue: minValue(1),
+      minValue: minValue(1)
     },
     id_atividade_comercial: {
-      required,
+      required
     },
     tipo_empresa: {
-      required,
+      required
     },
     cep: {
-      required,
+      required
     },
     uf: {
-      required,
+      required
     },
     cidade: {
-      required,
+      required
     },
     bairro: {
-      required,
+      required
     },
     tipo_logradouro: {
-      required,
+      required
     },
     logradouro: {
-      required,
+      required
     },
     numero: {
-      required,
+      required
     },
     complemento: {},
     telefone: {
       required,
-      minLength: minLength(10),
+      minLength: minLength(10)
     },
     email: {
       required,
-      email,
-    },
+      email
+    }
   },
   methods: {
     setRazaoSocial(value) {
@@ -673,9 +685,46 @@ export default {
       this.tipo_empresa = value;
       this.$v.tipo_empresa.$touch();
     },
-    setCep(value) {
-      this.cep = value;
-      this.$v.cep.$touch();
+    async setCep(value) {
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      if (dadosEndereco.erro) {
+        this.setBairro("");
+        document.querySelector("#bairro").disabled = false;
+
+        this.setCidade("");
+        document.querySelector("#cidade").disabled = false;
+
+        this.setLogradouro("");
+        document.querySelector("#logradouro").disabled = false;
+
+        this.setUf("");
+        document.querySelector("#uf").disabled = false;
+        this.setComplemento("");
+
+        this.cep = null;
+        this.$v.cep.$touch();
+      } else {
+        this.setBairro(dadosEndereco.bairro);
+        if (dadosEndereco.bairro != "")
+          document.querySelector("#bairro").disabled = true;
+
+        this.setCidade(dadosEndereco.localidade);
+        if (dadosEndereco.localidade != "")
+          document.querySelector("#cidade").disabled = true;
+
+        this.setLogradouro(dadosEndereco.logradouro);
+        if (dadosEndereco.logradouro != "")
+          document.querySelector("#logradouro").disabled = true;
+
+        this.setUf(dadosEndereco.uf);
+        if (dadosEndereco.uf != "")
+          document.querySelector("#uf").disabled = true;
+
+        this.setComplemento(dadosEndereco.complemento);
+
+        this.cep = value;
+        this.$v.cep.$touch();
+      }
     },
     setUf(value) {
       this.uf = value;
@@ -726,8 +775,8 @@ export default {
     },
     getDocs() {
       console.log(this.solicitacao.docs);
-    },
-  },
+    }
+  }
 };
 </script>
 

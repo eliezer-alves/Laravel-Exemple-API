@@ -60,6 +60,6 @@ class Cliente extends Model
 
 	public function atividadeComercial()
 	{
-		return $this->beloongsTo(AtividadeComercial::class, 'id_atividade_comercial');
+		return $this->belongsTo(AtividadeComercial::class, 'id_atividade_comercial');
 	}
 }

@@ -343,8 +343,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -794,6 +803,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -814,7 +826,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       bairro_socio: null,
       tipo_logradouro_socio: null,
       logradouro_socio: null,
-      numero_socio: null
+      numero_socio: null,
+      complemento_socio: null
     };
   },
   mounted: function mounted() {
@@ -823,52 +836,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       invalid: this.$v.$invalid
     });
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["errors"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["errors"])),
   validations: {
     nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
+    complemento_socio: {},
     numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     }
   },
   methods: {
@@ -877,7 +891,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.nome_socio.$touch();
     },
     setCpfSocio: function setCpfSocio(value) {
-      this.cpf_socio = value;
+      value = value.replace(/[^\d]+/g, "");
+      var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
+
+      if (isInvalid) {
+        this.cpf_socio = null;
+      } else this.cpf_socio = value;
+
       this.$v.cpf_socio.$touch();
     },
     setUfRgSocio: function setUfRgSocio(value) {
@@ -905,10 +925,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.telefone_socio = value;
       this.$v.telefone_socio.$touch();
     },
-    setCepSocio: function setCepSocio(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.cep_socio = value;
-      this.$v.cep_socio.$touch();
+    setCepSocio: function setCepSocio(value, kSocio) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var dadosEndereco;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                value = value.replace(/[^\d]+/g, "");
+                _context.next = 3;
+                return _this.$store.dispatch("getViaCep", value);
+
+              case 3:
+                dadosEndereco = _context.sent;
+
+                if (dadosEndereco.erro) {
+                  _this.setBairroSocio("");
+
+                  document.querySelector("#bairro_socio".concat(kSocio)).disabled = false;
+
+                  _this.setCidadeSocio("");
+
+                  document.querySelector("#cidade_socio".concat(kSocio)).disabled = false;
+
+                  _this.setLogradouroSocio("");
+
+                  document.querySelector("#logradouro_socio".concat(kSocio)).disabled = false;
+
+                  _this.setUfSocio("");
+
+                  document.querySelector("#uf_socio".concat(kSocio)).disabled = false;
+
+                  _this.setComplementoSocio("");
+
+                  _this.cep_socio = null;
+
+                  _this.$v.cep_socio.$touch();
+                } else {
+                  _this.setBairroSocio(dadosEndereco.bairro);
+
+                  if (dadosEndereco.bairro != "") document.querySelector("#bairro_socio".concat(kSocio)).disabled = true;
+
+                  _this.setCidadeSocio(dadosEndereco.localidade);
+
+                  if (dadosEndereco.localidade != "") document.querySelector("#cidade_socio".concat(kSocio)).disabled = true;
+
+                  _this.setLogradouroSocio(dadosEndereco.logradouro);
+
+                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro_socio".concat(kSocio)).disabled = true;
+
+                  _this.setUfSocio(dadosEndereco.uf);
+
+                  if (dadosEndereco.uf != "") document.querySelector("#uf_socio".concat(kSocio)).disabled = true;
+
+                  _this.setComplementoSocio(dadosEndereco.complemento);
+
+                  _this.cep_socio = value;
+
+                  _this.$v.cep_socio.$touch();
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     setUfSocio: function setUfSocio(value) {
       this.uf_socio = value;
@@ -921,6 +1006,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setBairroSocio: function setBairroSocio(value) {
       this.bairro_socio = value;
       this.$v.bairro_socio.$touch();
+    },
+    setComplementoSocio: function setComplementoSocio(value) {
+      this.complemento_socio = value;
+      this.$v.complemento_socio.$touch();
     },
     setTipoLogradouroSocio: function setTipoLogradouroSocio(value) {
       this.tipo_logradouro_socio = value;
@@ -953,9 +1042,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1624,6 +1714,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+
 
 
 
@@ -1656,61 +1748,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       socios: 0
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["errors"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["errors"])),
   validations: {
     nome_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     cpf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     uf_rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     nome_mae_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     id_tipo_logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     numero_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     cep_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(8)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(8)
     },
     complemento_representante: {},
     bairro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     cidade_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     uf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     celular_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(11)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(11)
     },
     email_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
     },
     estado_civil_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     profissao_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     },
     sexo_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     }
   },
   methods: {
@@ -1736,11 +1829,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 value = value.replace(/[^\d]+/g, "");
-                _context.next = 3;
-                return _this.$store.dispatch("validaCPF", value);
-
-              case 3:
-                isInvalid = _context.sent;
+                isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_3__.validaCPF)(value);
 
                 if (isInvalid) {
                   _this.cpf_representante = null;
@@ -1748,7 +1837,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 _this.$v.cpf_representante.$touch();
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -1817,6 +1906,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this2.setUfRepresentante("");
 
                   document.querySelector("#uf_representante").disabled = false;
+
+                  _this2.setComplementoRepresentante("");
+
                   _this2.cep_representante = null;
 
                   _this2.$v.cep_representante.$touch();
@@ -1874,7 +1966,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.celular_representante.$touch();
     },
     setEmailRepresentante: function setEmailRepresentante(value) {
-      if (value.indexOf("@") != -1) this.email_representante = value;else this.email_representante = null;
+      this.email_representante = value;
       this.$v.email_representante.$touch();
     },
     addSocioElement: function addSocioElement() {
@@ -1888,6 +1980,81 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "validarCNPJ": () => (/* binding */ validarCNPJ),
+/* harmony export */   "validaCPF": () => (/* binding */ validaCPF)
+/* harmony export */ });
+var validarCNPJ = function validarCNPJ(cnpj) {
+  cnpj = cnpj.replace(/[^\d]+/g, '');
+  if (cnpj == '') return false;
+  if (cnpj.length != 14) return false; // Elimina CNPJs invalidos conhecidos
+
+  if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") return false; // Valida DVs
+
+  var tamanho = cnpj.length - 2;
+  var numeros = cnpj.substring(0, tamanho);
+  var digitos = cnpj.substring(tamanho);
+  var soma = 0;
+  var pos = tamanho - 7;
+
+  for (var i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(0)) return false;
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+
+  for (var _i = tamanho; _i >= 1; _i--) {
+    soma += numeros.charAt(tamanho - _i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != digitos.charAt(1)) return false;
+  return true;
+};
+
+var validaCPF = function validaCPF(value) {
+  var Soma = 0;
+  var Resto = 0;
+  var isInvalid = false;
+
+  for (var i = 1; i <= 9; i++) {
+    Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;else isInvalid = false;
+  Soma = 0;
+
+  for (var _i2 = 1; _i2 <= 10; _i2++) {
+    Soma = Soma + parseInt(value.substring(_i2 - 1, _i2)) * (12 - _i2);
+  }
+
+  Resto = Soma * 10 % 11;
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;else isInvalid = false;
+  return isInvalid;
+};
+
+
 
 /***/ }),
 
@@ -2885,7 +3052,7 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.cpf_socio.$dirty && !_vm.$v.cpf_socio.required
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        CPF obrigatório.\n      ")
+                _vm._v("\n        CPF válido é obrigatório.\n      ")
               ])
             : _vm._e()
         ]
@@ -2908,7 +3075,10 @@ var render = function() {
                 "select",
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                  attrs: { id: "uf_rg_socio", name: "uf_rg_socio" },
+                  attrs: {
+                    id: "uf_rg_socio" + _vm.kSocio,
+                    name: "uf_rg_socio" + _vm.kSocio
+                  },
                   domProps: { value: _vm.$v.uf_rg_socio.$model },
                   on: {
                     change: function($event) {
@@ -2960,8 +3130,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "numero_rg_socio",
-                  name: "numero_rg_socio",
+                  id: "numero_rg_socio" + _vm.kSocio,
+                  name: "numero_rg_socio" + _vm.kSocio,
                   type: "text"
                 },
                 domProps: { value: _vm.$v.numero_rg_socio.$model },
@@ -3004,7 +3174,10 @@ var render = function() {
                 "select",
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                  attrs: { id: "sexo_socio", name: "sexo_socio" },
+                  attrs: {
+                    id: "sexo_socio" + _vm.kSocio,
+                    name: "sexo_socio" + _vm.kSocio
+                  },
                   domProps: { value: _vm.$v.sexo_socio.$model },
                   on: {
                     change: function($event) {
@@ -3051,8 +3224,8 @@ var render = function() {
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "estado_civil_socio",
-                    name: "estado_civil_socio"
+                    id: "estado_civil_socio" + _vm.kSocio,
+                    name: "estado_civil_socio" + _vm.kSocio
                   },
                   domProps: { value: _vm.$v.estado_civil_socio.$model },
                   on: {
@@ -3098,8 +3271,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "email_socio",
-                  name: "email_socio",
+                  id: "email_socio" + _vm.kSocio,
+                  name: "email_socio" + _vm.kSocio,
                   type: "text",
                   placeholder: "mail@brasilcard.net"
                 },
@@ -3151,8 +3324,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "telefone_socio",
-                  name: "telefone_socio",
+                  id: "telefone_socio" + _vm.kSocio,
+                  name: "telefone_socio" + _vm.kSocio,
                   type: "text"
                 },
                 domProps: { value: _vm.$v.telefone_socio.$model },
@@ -3213,8 +3386,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cep_socio",
-                    name: "cep_socio",
+                    id: "cep_socio" + _vm.kSocio,
+                    name: "cep_socio" + _vm.kSocio,
                     type: "text",
                     placeholder: "#####-###"
                   },
@@ -3261,7 +3434,11 @@ var render = function() {
                   "select",
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                    attrs: { id: "uf_socio", name: "uf_socio" },
+                    attrs: {
+                      id: "uf_socio" + _vm.kSocio,
+                      name: "uf_socio" + _vm.kSocio,
+                      disabled: ""
+                    },
                     domProps: { value: _vm.$v.uf_socio.$model },
                     on: {
                       change: function($event) {
@@ -3315,10 +3492,11 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cidade_socio",
-                    name: "cidade_socio",
+                    id: "cidade_socio" + _vm.kSocio,
+                    name: "cidade_socio" + _vm.kSocio,
                     type: "text",
-                    placeholder: "Cidade"
+                    placeholder: "Cidade",
+                    disabled: ""
                   },
                   domProps: { value: _vm.$v.cidade_socio.$model },
                   on: {
@@ -3362,8 +3540,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "bairro_socio",
-                    name: "bairro_socio",
+                    id: "bairro_socio" + _vm.kSocio,
+                    name: "bairro_socio" + _vm.kSocio,
                     type: "text",
                     placeholder: "Bairro"
                   },
@@ -3410,8 +3588,8 @@ var render = function() {
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "tipo_logradouro_socio",
-                      name: "tipo_logradouro_socio"
+                      id: "tipo_logradouro_socio" + _vm.kSocio,
+                      name: "tipo_logradouro_socio" + _vm.kSocio
                     },
                     domProps: { value: _vm.$v.tipo_logradouro_socio.$model },
                     on: {
@@ -3463,8 +3641,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "logradouro_socio",
-                    name: "logradouro_socio",
+                    id: "logradouro_socio" + _vm.kSocio,
+                    name: "logradouro_socio" + _vm.kSocio,
                     type: "text"
                   },
                   domProps: { value: _vm.$v.logradouro_socio.$model },
@@ -3509,8 +3687,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "numero_socio",
-                    name: "numero_socio",
+                    id: "numero_socio" + _vm.kSocio,
+                    name: "numero_socio" + _vm.kSocio,
                     type: "number"
                   },
                   domProps: { value: _vm.$v.numero_socio.$model },
@@ -3536,7 +3714,34 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(15)
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(15),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "complemento_socio" + _vm.kSocio,
+                    name: "complemento_socio" + _vm.kSocio,
+                    type: "text"
+                  }
+                })
+              ]
+            )
+          ]
+        )
       ]
     )
   ])
@@ -3757,37 +3962,12 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
       },
       [
-        _c(
-          "div",
-          {
-            staticClass:
-              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-          },
-          [
-            _c("label", { attrs: { for: "complemento_socio" } }, [
-              _vm._v("Complemento")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
-          [
-            _c("input", {
-              staticClass:
-                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-              attrs: {
-                id: "complemento_socio",
-                name: "complemento_socio",
-                type: "text"
-              }
-            })
-          ]
-        )
+        _c("label", { attrs: { for: "complemento_socio" } }, [
+          _vm._v("Complemento")
+        ])
       ]
     )
   }
@@ -4927,7 +5107,8 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _vm.$v.email_representante.$dirty &&
-                !_vm.$v.email_representante.required
+                (!_vm.$v.email_representante.required ||
+                  !_vm.$v.email_representante.email)
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              E-mail válido é obrigatório\n            "

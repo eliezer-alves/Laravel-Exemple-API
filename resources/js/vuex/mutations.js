@@ -33,6 +33,8 @@ let mutations = {
     UNSET_DOC_FILES(state) {
         state.solicitacao.docs.pop()
     },
-
+    FETCH_DOMINIO(state, payload) {
+        return state.dominios = payload
+    },
 }
 export default mutations

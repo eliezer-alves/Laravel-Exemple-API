@@ -10,6 +10,7 @@
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
         v-model="cliente.cep"
         v-mask="'#####-###'"
+        @blur="setCepCliente($event.target.value)"
       />
       <span
         class="px-1 text-sm font-semibold text-red-600"
@@ -17,6 +18,9 @@
         :key="cep"
         >{{ cep }}</span
       >
+      <div class="text-red-600" v-if="$v.cep.$dirty && !$v.cep.required">
+        CEP Inválido
+      </div>
     </div>
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">UF</span>
@@ -122,6 +126,24 @@
         >
       </div>
     </div>
+    <div class="py-1 flex">
+      <div class="flex-col w-full mr-1">
+        <span class="px-1 text-sm text-gray-200">Complemento</span>
+        <input
+          id="complemento"
+          name="complemento"
+          type="text"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-model="cliente.complemento"
+        />
+        <span
+          class="px-1 text-sm font-semibold text-red-600"
+          v-for="complemento in errors.complemento"
+          :key="complemento"
+          >{{ complemento }}</span
+        >
+      </div>
+    </div>
     <button
       @click.prevent="cadastrarCliente()"
       class="my-2 w-full text-center text-gray-200 text-lg font-bold bg-green-800 hover:bg-green-900 p-3 rounded-md"
@@ -134,18 +156,29 @@
 import CadastroCliente from "../CadastroCliente.vue";
 import { mapGetters } from "vuex";
 import { mapFields } from "vuex-map-fields";
+import { required } from "vuelidate/lib/validators";
 
 export default {
   components: {
-    CadastroCliente,
+    CadastroCliente
   },
-  beforeCreate: function () {
+  data() {
+    return {
+      cep: "",
+      uf: "",
+      bairro: "",
+      cidade: "",
+      logradouro: "",
+      complemento: ""
+    };
+  },
+  beforeCreate: function() {
     document.body.className = "login";
   },
   computed: {
     ...mapGetters(["cliente", "errors"]),
     ...mapFields(["cliente", "errors"]),
-    validation: function () {
+    validation: function() {
       if (!this.cliente.cep) return false;
       if (!this.cliente.uf) return false;
       if (!this.cliente.cidade) return false;
@@ -154,12 +187,22 @@ export default {
       if (!this.cliente.logradouro) return false;
       if (!this.cliente.numero) return false;
       return true;
+    }
+  },
+  validations: {
+    cep: {
+      required
     },
+    uf: {},
+    bairro: {},
+    cidade: {},
+    logradouro: {},
+    complemento: {}
   },
   methods: {
     async cadastrarCliente() {
       const response = await this.$store.dispatch("createCliente", {
-        ...this.cliente,
+        ...this.cliente
       });
       console.log(response);
       if (!response) this.$router.push("cadastro-cliente");
@@ -169,7 +212,72 @@ export default {
         this.$router.push("login");
       }
     },
-  },
+    setLogradouro(value) {
+      this.cliente.logradouro = value;
+    },
+    setBairro(value) {
+      this.cliente.bairro = value;
+    },
+    setCidade(value) {
+      this.cliente.cidade = value;
+    },
+    setUf(value) {
+      this.cliente.uf = value;
+    },
+    setComplemento(value) {
+      this.cliente.complemento = value;
+    },
+    async setCepCliente(value) {
+      value = value.replace(/[^\d]+/g, "");
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      if (dadosEndereco.erro) {
+        this.setBairro("");
+        document.querySelector("#bairro").disabled = false;
+
+        this.setCidade("");
+        document.querySelector("#cidade").disabled = false;
+
+        this.setLogradouro("");
+        document.querySelector("#logradouro").disabled = false;
+
+        this.setUf("");
+        document.querySelector("#uf").disabled = false;
+
+        this.setComplemento("");
+        document.querySelector("#complemento").value = "";
+
+        this.cep = null;
+        this.$v.cep.$touch();
+      } else {
+        this.setBairro(dadosEndereco.bairro);
+        if (dadosEndereco.bairro != "") {
+          document.querySelector("#bairro").disabled = true;
+          document.querySelector("#bairro").value = dadosEndereco.bairro;
+        }
+
+        this.setCidade(dadosEndereco.localidade);
+        if (dadosEndereco.localidade != "") {
+          document.querySelector("#cidade").disabled = true;
+        }
+
+        this.setLogradouro(dadosEndereco.logradouro);
+        if (dadosEndereco.logradouro != "") {
+          document.querySelector("#logradouro").disabled = true;
+        }
+
+        this.setUf(dadosEndereco.uf);
+        if (dadosEndereco.uf != "") {
+          document.querySelector("#uf").disabled = true;
+        }
+        console.log(dadosEndereco);
+
+        this.setComplemento(dadosEndereco.complemento);
+
+        this.cep = value;
+        this.$v.cep.$touch();
+      }
+    }
+  }
 };
 </script>
 <style>

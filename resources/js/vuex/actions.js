@@ -75,30 +75,16 @@ let actions = {
         const dadosEndereco = await axios.get(`${VIA_CEP}/${cep}/json`);
         return dadosEndereco.data;
     },
-    validaCPF({ }, value) {
-        let Soma = 0;
-        let Resto = 0;
-        let isInvalid = false;
 
-        for (let i = 1; i <= 9; i++)
-            Soma = Soma + parseInt(value.substring(i - 1, i)) * (11 - i);
-        Resto = (Soma * 10) % 11;
+    fetchDominios({ commit }) {
+        return axios.get('http://127.0.0.1:8000/api/dominios')
+            .then(res => {
+                commit('FETCH_DOMINIO', res.data)
+            }).catch(err => {
+                commit('GET_ERRORS', err.response.data.errors)
+            })
+    },
 
-        if (Resto == 10 || Resto == 11) Resto = 0;
-        if (Resto != parseInt(value.substring(9, 10))) isInvalid = true;
-        else isInvalid = false;
-
-        Soma = 0;
-        for (let i = 1; i <= 10; i++)
-            Soma = Soma + parseInt(value.substring(i - 1, i)) * (12 - i);
-        Resto = (Soma * 10) % 11;
-
-        if (Resto == 10 || Resto == 11) Resto = 0;
-        if (Resto != parseInt(value.substring(10, 11))) isInvalid = true;
-        else isInvalid = false;
-
-        return isInvalid;
-    }
 }
 
 export default actions

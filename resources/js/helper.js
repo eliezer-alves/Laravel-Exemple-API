@@ -52,7 +52,7 @@ const validarCNPJ = (cnpj) => {
 
 }
 
-const validarCPF = (cpf) => {
+const validaCPF = (value) => {
     let Soma = 0;
     let Resto = 0;
     let isInvalid = false;
@@ -77,4 +77,4 @@ const validarCPF = (cpf) => {
     return isInvalid;
 }
 
-export { validarCNPJ, validarCPF }
+export { validarCNPJ, validaCPF }

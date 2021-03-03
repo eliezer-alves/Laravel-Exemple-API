@@ -16,11 +16,11 @@ class AtividadeComercial extends Model
     public $timestamps = true;
 
     protected $fillable = [
-    	'descricao'
+        'descricao'
     ];
 
     public function cliente()
     {
-    	return $this->hasMany(Cliente::class, 'id_atividade_comercial');
+        return $this->hasMany(Cliente::class, 'id_atividade_comercial');
     }
 }
