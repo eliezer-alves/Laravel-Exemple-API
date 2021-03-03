@@ -40,7 +40,7 @@
           <input
             :id="'cpf_socio' + kSocio"
             :name="'cpf_socio' + kSocio"
-            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf"
             type="text"
             placeholder="###.###.###-##"
             v-mask="'###.###.###-##'"
@@ -54,6 +54,12 @@
           v-if="$v.cpf_socio.$dirty && !$v.cpf_socio.required"
         >
           CPF válido é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cpf_socio.$dirty && $v.cpf_socio.isRepeatedCPF"
+        >
+          CPF já está na lista.
         </div>
       </div>
       <div
@@ -255,6 +261,7 @@
             v-mask="'#####-###'"
             :value="$v.cep_socio.$model"
             @change="setCepSocio($event.target.value)"
+            @blur="setCepSocio($event.target.value)"
           />
         </div>
         <div
@@ -385,7 +392,7 @@
           class="text-red-600"
           v-if="
             $v.tipo_logradouro_socio.$dirty &&
-            !$v.tipo_logradouro_socio.required
+              !$v.tipo_logradouro_socio.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -472,7 +479,7 @@ import { validaCPF } from "../../helper.js";
 export default {
   props: ["kSocio"],
   computed: {
-    ...mapGetters(["dominios", "solicitacao", "errors"]),
+    ...mapGetters(["dominios", "solicitacao", "errors"])
   },
   data() {
     return {
@@ -491,62 +498,62 @@ export default {
       tipo_logradouro_socio: null,
       logradouro_socio: null,
       numero_socio: null,
-      complemento_socio: null,
+      complemento_socio: null
     };
   },
   async mounted() {
     this.$store.commit("GET_ERRORS", {
-      invalid: this.$v.$invalid,
+      invalid: this.$v.$invalid
     });
     await this.$store.dispatch("fetchDominios");
   },
   validations: {
     nome_socio: {
-      required,
+      required
     },
     cpf_socio: {
-      required,
+      required
     },
     uf_rg_socio: {
-      required,
+      required
     },
     numero_rg_socio: {
-      required,
+      required
     },
     sexo_socio: {
-      required,
+      required
     },
     estado_civil_socio: {
-      required,
+      required
     },
     email_socio: {
-      required,
+      required
     },
     telefone_socio: {
-      required,
+      required
     },
     cep_socio: {
-      required,
+      required
     },
     uf_socio: {
-      required,
+      required
     },
     cidade_socio: {
-      required,
+      required
     },
     bairro_socio: {
-      required,
+      required
     },
     tipo_logradouro_socio: {
-      required,
+      required
     },
     logradouro_socio: {
-      required,
+      required
     },
     complemento_socio: {},
     numero_socio: {
-      required,
-    },
+      required
+    }
   },
   methods: {
     setNomeSocio(value) {
@@ -554,12 +561,24 @@ export default {
       this.$v.nome_socio.$touch();
     },
     setCpfSocio(value) {
-      value = value.replace(/[^\d]+/g, "");
-      let isInvalid = validaCPF(value);
-      if (isInvalid) {
-        this.cpf_socio = null;
-      } else this.cpf_socio = value;
+      let arrayCPF = document.querySelectorAll(".cpf");
+      this.$v.cpf_socio.isRepeatedCPF = false;
+      for (let i = 0; i < arrayCPF.length - 1; i++) {
+        if (arrayCPF[i].value == value) {
+          this.$v.cpf_socio.isRepeatedCPF = true;
+          break;
+        }
+      }
 
+      if (this.$v.cpf_socio.isRepeatedCPF) {
+        this.cpf_socio = value;
+      } else {
+        value = value.replace(/[^\d]+/g, "");
+        let isInvalid = validaCPF(value);
+        if (isInvalid) {
+          this.cpf_socio = null;
+        } else this.cpf_socio = value;
+      }
       this.$v.cpf_socio.$touch();
     },
     setUfRgSocio(value) {
@@ -611,22 +630,40 @@ export default {
         this.$v.cep_socio.$touch();
       } else {
         this.setBairroSocio(dadosEndereco.bairro);
-        if (dadosEndereco.bairro != "")
+        if (dadosEndereco.bairro != "") {
           document.querySelector(`#bairro_socio${this.kSocio}`).disabled = true;
+        } else {
+          document.querySelector(
+            `#bairro_socio${this.kSocio}`
+          ).disabled = false;
+        }
 
         this.setCidadeSocio(dadosEndereco.localidade);
-        if (dadosEndereco.localidade != "")
+        if (dadosEndereco.localidade != "") {
           document.querySelector(`#cidade_socio${this.kSocio}`).disabled = true;
+        } else {
+          document.querySelector(
+            `#cidade_socio${this.kSocio}`
+          ).disabled = false;
+        }
 
         this.setLogradouroSocio(dadosEndereco.logradouro);
-        if (dadosEndereco.logradouro != "")
+        if (dadosEndereco.logradouro != "") {
           document.querySelector(
             `#logradouro_socio${this.kSocio}`
           ).disabled = true;
+        } else {
+          document.querySelector(
+            `#logradouro_socio${this.kSocio}`
+          ).disabled = false;
+        }
 
         this.setUfSocio(dadosEndereco.uf);
-        if (dadosEndereco.uf != "")
+        if (dadosEndereco.uf != "") {
           document.querySelector(`#uf_socio${this.kSocio}`).disabled = true;
+        } else {
+          document.querySelector(`#uf_socio${this.kSocio}`).disabled = false;
+        }
 
         this.setComplementoSocio(dadosEndereco.complemento);
 
@@ -680,11 +717,11 @@ export default {
         tipo_logradouro_socio: this.tipo_logradouro_socio,
         logradouro_socio: this.logradouro_socio,
         numero_socio: this.numero_socio,
-        complemento_socio: this.complemento_socio,
+        complemento_socio: this.complemento_socio
       });
       this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
-    },
-  },
+    }
+  }
 };
 </script>
 

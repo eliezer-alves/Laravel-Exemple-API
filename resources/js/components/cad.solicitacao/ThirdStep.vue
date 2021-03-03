@@ -45,7 +45,7 @@
               <input
                 id="cpf_representante"
                 placeholder="###.###.###-##"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf"
                 type="text"
                 v-mask="'###.###.###-##'"
                 :value="$v.cpf_representante.$model"
