@@ -336,16 +336,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2802,36 +2792,47 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto rounded-full bg-teal-700 text-white text-lg flex items-center"
+                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700": _vm.$router.currentRoute.name === "solicitacao"
+                }
               },
               [
-                _c("span", { staticClass: "text-center text-white w-full" }, [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-full",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        stroke: "currentColor",
-                        width: "24",
-                        height: "24"
-                      }
-                    },
-                    [
-                      _c("path", {
+                _c(
+                  "span",
+                  { staticClass: "text-center text-gray-700 w-full" },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-full",
+                        class: {
+                          "text-white":
+                            _vm.$router.currentRoute.name === "solicitacao"
+                        },
                         attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          "stroke-width": "2",
-                          d:
-                            "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          width: "24",
+                          height: "24"
                         }
-                      })
-                    ]
-                  )
-                ])
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d:
+                              "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
               ]
             )
           ]),
@@ -2849,38 +2850,25 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto rounded-full bg-white text-lg flex items-center",
+                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
-                  "bg-teal-700": [
-                    _vm.$router.currentRoute.name === "solicitacao-2",
-                    _vm.$router.currentRoute.name === "solicitacao-3",
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                  ],
-                  "text-white": [
-                    _vm.$router.currentRoute.name === "solicitacao-2",
-                    _vm.$router.currentRoute.name === "solicitacao-3",
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                  ]
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-2"
                 }
               },
               [
                 _c(
                   "span",
-                  {
-                    staticClass: "text-center text-gray-700 w-full",
-                    class: {
-                      "text-white": [
-                        _vm.$router.currentRoute.name === "solicitacao-2",
-                        _vm.$router.currentRoute.name === "solicitacao-3",
-                        _vm.$router.currentRoute.name === "solicitacao-4"
-                      ]
-                    }
-                  },
+                  { staticClass: "text-center text-gray-700 w-full" },
                   [
                     _c(
                       "svg",
                       {
                         staticClass: "w-full",
+                        class: {
+                          "text-white":
+                            _vm.$router.currentRoute.name === "solicitacao-2"
+                        },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
                           fill: "none",
@@ -2921,7 +2909,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
                     _vm.$router.currentRoute.name === "solicitacao-3"
@@ -2930,12 +2918,16 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-center text-gray-600 w-full" },
+                  { staticClass: "text-center text-gray-700 w-full" },
                   [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full fill-current",
+                        staticClass: "w-full",
+                        class: {
+                          "text-white":
+                            _vm.$router.currentRoute.name === "solicitacao-3"
+                        },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
                           viewBox: "0 0 24 24",
@@ -2960,7 +2952,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Representantes")
+            _vm._v("Representante Legal")
           ])
         ]),
         _vm._v(" "),
@@ -2972,10 +2964,8 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
-                  "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-4",
                   "bg-teal-700":
                     _vm.$router.currentRoute.name === "solicitacao-4"
                 }
@@ -2983,12 +2973,16 @@ var render = function() {
               [
                 _c(
                   "span",
-                  { staticClass: "text-center text-gray-600 w-full" },
+                  { staticClass: "text-center text-gray-700 w-full" },
                   [
                     _c(
                       "svg",
                       {
-                        staticClass: "w-full fill-current",
+                        staticClass: "w-full",
+                        class: {
+                          "text-white":
+                            _vm.$router.currentRoute.name === "solicitacao-4"
+                        },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
                           viewBox: "0 0 24 24",
@@ -3049,7 +3043,7 @@ var staticRenderFns = [
           [
             _c("div", {
               staticClass: "w-0 bg-teal-500 py-1 rounded",
-              staticStyle: { width: "100%" }
+              staticStyle: { width: "0%" }
             })
           ]
         )
@@ -3081,7 +3075,7 @@ var staticRenderFns = [
           [
             _c("div", {
               staticClass: "w-0 bg-teal-500 py-1 rounded",
-              staticStyle: { width: "33%" }
+              staticStyle: { width: "0%" }
             })
           ]
         )

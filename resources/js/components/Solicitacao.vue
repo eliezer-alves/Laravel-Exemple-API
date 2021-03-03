@@ -5,11 +5,17 @@
       <div class="w-1/4">
         <div class="relative mb-2">
           <div
-            class="w-10 h-10 mx-auto rounded-full bg-teal-700 text-white text-lg flex items-center"
+            class="w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center"
+            :class="{
+              'bg-teal-700': $router.currentRoute.name === 'solicitacao',
+            }"
           >
-            <span class="text-center text-white w-full">
+            <span class="text-center text-gray-700 w-full">
               <svg
                 class="w-full"
+                :class="{
+                  'text-white': $router.currentRoute.name === 'solicitacao',
+                }"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -44,40 +50,22 @@
             <div
               class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
             >
-              <div
-                class="w-0 bg-teal-500 py-1 rounded"
-                style="width: 100%"
-              ></div>
+              <div class="w-0 bg-teal-500 py-1 rounded" style="width: 0%"></div>
             </div>
           </div>
 
           <div
-            class="w-10 h-10 mx-auto rounded-full bg-white text-lg flex items-center"
+            class="w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center"
             :class="{
-              'bg-teal-700': [
-                $router.currentRoute.name === 'solicitacao-2',
-                $router.currentRoute.name === 'solicitacao-3',
-                $router.currentRoute.name === 'solicitacao-4',
-              ],
-              'text-white': [
-                $router.currentRoute.name === 'solicitacao-2',
-                $router.currentRoute.name === 'solicitacao-3',
-                $router.currentRoute.name === 'solicitacao-4',
-              ],
+              'bg-teal-700': $router.currentRoute.name === 'solicitacao-2',
             }"
           >
-            <span
-              class="text-center text-gray-700 w-full"
-              :class="{
-                'text-white': [
-                  $router.currentRoute.name === 'solicitacao-2',
-                  $router.currentRoute.name === 'solicitacao-3',
-                  $router.currentRoute.name === 'solicitacao-4',
-                ],
-              }"
-            >
+            <span class="text-center text-gray-700 w-full">
               <svg
                 class="w-full"
+                :class="{
+                  'text-white': $router.currentRoute.name === 'solicitacao-2',
+                }"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -112,22 +100,22 @@
             <div
               class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
             >
-              <div
-                class="w-0 bg-teal-500 py-1 rounded"
-                style="width: 33%"
-              ></div>
+              <div class="w-0 bg-teal-500 py-1 rounded" style="width: 0%"></div>
             </div>
           </div>
 
           <div
-            class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+            class="w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center"
             :class="{
               'bg-teal-700': $router.currentRoute.name === 'solicitacao-3',
             }"
           >
-            <span class="text-center text-gray-600 w-full">
+            <span class="text-center text-gray-700 w-full">
               <svg
-                class="w-full fill-current"
+                class="w-full"
+                :class="{
+                  'text-white': $router.currentRoute.name === 'solicitacao-3',
+                }"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
@@ -142,7 +130,7 @@
           </div>
         </div>
 
-        <div class="text-xs text-center md:text-base">Representantes</div>
+        <div class="text-xs text-center md:text-base">Representante Legal</div>
       </div>
 
       <div class="w-1/4">
@@ -163,15 +151,17 @@
           </div>
 
           <div
-            class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+            class="w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center"
             :class="{
-              'bg-teal-700': $router.currentRoute.name === 'solicitacao-4',
               'bg-teal-700': $router.currentRoute.name === 'solicitacao-4',
             }"
           >
-            <span class="text-center text-gray-600 w-full">
+            <span class="text-center text-gray-700 w-full">
               <svg
-                class="w-full fill-current"
+                class="w-full"
+                :class="{
+                  'text-white': $router.currentRoute.name === 'solicitacao-4',
+                }"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
