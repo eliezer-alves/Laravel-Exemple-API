@@ -323,6 +323,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -597,7 +620,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao"])),
   data: function data() {
     return {
       money: {
@@ -681,6 +704,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setDigitoConta: function setDigitoConta(value) {
       this.digito_conta = value;
       this.$v.digito_conta.$touch();
+    },
+    setDados: function setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        banco: this.banco,
+        forma_liberacao: this.forma_liberacao,
+        agencia: this.agencia,
+        digito_agencia: this.digito_agencia,
+        conta: this.conta,
+        digito_conta: this.digito_conta
+      });
     }
   }
 });
@@ -1278,7 +1311,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-teal-700 text-white text-lg flex items-center"
               },
               [
                 _c("span", { staticClass: "text-center text-white w-full" }, [
@@ -1325,36 +1358,61 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-white text-lg flex items-center",
+                class: {
+                  "bg-teal-700": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ],
+                  "text-white": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ]
+                }
               },
               [
-                _c("span", { staticClass: "text-center text-white w-full" }, [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-full",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        width: "24",
-                        height: "24",
-                        stroke: "currentColor"
-                      }
-                    },
-                    [
-                      _c("path", {
+                _c(
+                  "span",
+                  {
+                    staticClass: "text-center text-gray-700 w-full",
+                    class: {
+                      "text-white": [
+                        _vm.$router.currentRoute.name === "solicitacao-2",
+                        _vm.$router.currentRoute.name === "solicitacao-3",
+                        _vm.$router.currentRoute.name === "solicitacao-4"
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-full",
                         attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          "stroke-width": "2",
-                          d:
-                            "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          width: "24",
+                          height: "24",
+                          stroke: "currentColor"
                         }
-                      })
-                    ]
-                  )
-                ])
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d:
+                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
               ]
             )
           ]),
@@ -1372,7 +1430,11 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-3"
+                }
               },
               [
                 _c(
@@ -1407,7 +1469,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("\n          Representante Legal\n        ")
+            _vm._v("Representantes")
           ])
         ]),
         _vm._v(" "),
@@ -1419,7 +1481,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4",
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                }
               },
               [
                 _c(

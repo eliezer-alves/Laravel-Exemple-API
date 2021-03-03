@@ -323,6 +323,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -346,6 +369,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
+var _components$computed$;
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -520,13 +545,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components$computed$ = {
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["solicitacao"])),
   data: function data() {
     return {
       money: {
@@ -541,51 +568,56 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       data_geracao_proposta: null,
       primeiro_vencimento: null
     };
-  },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["solicitacao", "errors"])),
-  validations: {
-    valor_solicitado: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(10000)
-    },
-    parcelas: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      between: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.between)(1, 36)
-    },
-    data_geracao_proposta: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
-    },
-    primeiro_vencimento: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
-    }
-  },
-  methods: {
-    submit: function submit() {
-      this.$v.$touch();
-
-      if (this.$v.$invalid) {
-        console.log('invalid');
-      }
-    },
-    setValorSolicitado: function setValorSolicitado(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.valor_solicitado = value;
-      this.$v.valor_solicitado.$touch();
-    },
-    setParcelas: function setParcelas(value) {
-      this.parcelas = value;
-      this.$v.parcelas.$touch();
-    },
-    setDataGeracaoProposta: function setDataGeracaoProposta(value) {
-      this.data_geracao_proposta = value;
-      this.$v.data_geracao_proposta.$touch();
-    },
-    setPrimeiroVencimento: function setPrimeiroVencimento(value) {
-      this.primeiro_vencimento = value;
-      this.$v.primeiro_vencimento.$touch();
-    }
   }
-});
+}, _defineProperty(_components$computed$, "computed", _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["solicitacao", "errors"]))), _defineProperty(_components$computed$, "validations", {
+  valor_solicitado: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
+    minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minValue)(10000)
+  },
+  parcelas: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
+    between: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.between)(1, 36)
+  },
+  data_geracao_proposta: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+  },
+  primeiro_vencimento: {
+    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+  }
+}), _defineProperty(_components$computed$, "methods", {
+  submit: function submit() {
+    this.$v.$touch();
+
+    if (this.$v.$invalid) {
+      console.log("invalid");
+    }
+  },
+  setValorSolicitado: function setValorSolicitado(value) {
+    value = value.replace(/[^\d]+/g, "");
+    this.valor_solicitado = value;
+    this.$v.valor_solicitado.$touch();
+  },
+  setParcelas: function setParcelas(value) {
+    this.parcelas = value;
+    this.$v.parcelas.$touch();
+  },
+  setDataGeracaoProposta: function setDataGeracaoProposta(value) {
+    this.data_geracao_proposta = value;
+    this.$v.data_geracao_proposta.$touch();
+  },
+  setPrimeiroVencimento: function setPrimeiroVencimento(value) {
+    this.primeiro_vencimento = value;
+    this.$v.primeiro_vencimento.$touch();
+  },
+  setDados: function setDados() {
+    this.$store.commit("SET_SOLICITACAO", {
+      valor_solicitado: this.valor_solicitado,
+      parcelas: this.parcelas,
+      data_geracao_proposta: this.data_geracao_proposta,
+      primeiro_vencimento: this.primeiro_vencimento
+    });
+  }
+}), _components$computed$);
 
 /***/ }),
 
@@ -1111,7 +1143,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-teal-700 text-white text-lg flex items-center"
               },
               [
                 _c("span", { staticClass: "text-center text-white w-full" }, [
@@ -1158,36 +1190,61 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-white text-lg flex items-center",
+                class: {
+                  "bg-teal-700": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ],
+                  "text-white": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ]
+                }
               },
               [
-                _c("span", { staticClass: "text-center text-white w-full" }, [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-full",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        width: "24",
-                        height: "24",
-                        stroke: "currentColor"
-                      }
-                    },
-                    [
-                      _c("path", {
+                _c(
+                  "span",
+                  {
+                    staticClass: "text-center text-gray-700 w-full",
+                    class: {
+                      "text-white": [
+                        _vm.$router.currentRoute.name === "solicitacao-2",
+                        _vm.$router.currentRoute.name === "solicitacao-3",
+                        _vm.$router.currentRoute.name === "solicitacao-4"
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-full",
                         attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          "stroke-width": "2",
-                          d:
-                            "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          width: "24",
+                          height: "24",
+                          stroke: "currentColor"
                         }
-                      })
-                    ]
-                  )
-                ])
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d:
+                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
               ]
             )
           ]),
@@ -1205,7 +1262,11 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-3"
+                }
               },
               [
                 _c(
@@ -1240,7 +1301,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("\n          Representante Legal\n        ")
+            _vm._v("Representantes")
           ])
         ]),
         _vm._v(" "),
@@ -1252,7 +1313,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4",
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                }
               },
               [
                 _c(
@@ -1704,29 +1771,19 @@ var render = function() {
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c(
-              "router-link",
-              {
-                attrs: { to: { name: "solicitacao-2" } },
-                on: {
-                  click: function($event) {
-                    return _vm.$v.$touch()
-                  }
-                }
-              },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                    class: { "opacity-40": _vm.$v.$invalid },
-                    attrs: { disabled: _vm.$v.$invalid }
-                  },
-                  [_vm._v("\n            Avançar\n          ")]
-                )
-              ]
-            ),
+            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                  class: { "opacity-40": _vm.$v.$invalid },
+                  attrs: { disabled: _vm.$v.$invalid },
+                  on: { click: _vm.setDados }
+                },
+                [_vm._v("\n            Avançar\n          ")]
+              )
+            ]),
             _vm._v(" "),
             _c(
               "button",

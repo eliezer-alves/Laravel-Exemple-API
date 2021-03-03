@@ -236,7 +236,7 @@ import { required } from "vuelidate/lib/validators";
 export default {
   components: { Solicitacao },
   computed: {
-    ...mapGetters(["dominios"])
+    ...mapGetters(["dominios", "solicitacao"]),
   },
   data() {
     return {
@@ -246,14 +246,14 @@ export default {
         prefix: "R$ ",
         suffix: "",
         precision: 2,
-        masked: false /* doesn't work with directive */
+        masked: false /* doesn't work with directive */,
       },
       banco: "",
       forma_liberacao: "",
       agencia: "",
       digito_agencia: "",
       conta: "",
-      digito_conta: ""
+      digito_conta: "",
     };
   },
   async mounted() {
@@ -261,23 +261,23 @@ export default {
   },
   validations: {
     banco: {
-      required
+      required,
     },
     forma_liberacao: {
-      required
+      required,
     },
     agencia: {
-      required
+      required,
     },
     digito_agencia: {
-      required
+      required,
     },
     conta: {
-      required
+      required,
     },
     digito_conta: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setBanco(value) {
@@ -303,8 +303,18 @@ export default {
     setDigitoConta(value) {
       this.digito_conta = value;
       this.$v.digito_conta.$touch();
-    }
-  }
+    },
+    setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        banco: this.banco,
+        forma_liberacao: this.forma_liberacao,
+        agencia: this.agencia,
+        digito_agencia: this.digito_agencia,
+        conta: this.conta,
+        digito_conta: this.digito_conta,
+      });
+    },
+  },
 };
 </script>
 

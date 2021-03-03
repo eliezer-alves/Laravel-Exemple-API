@@ -146,11 +146,12 @@
           Finalizar
         </button>
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'solicitacao-2' }" @click="$v.$touch()">
+          <router-link :to="{ name: 'solicitacao-2' }">
             <button
               :disabled="$v.$invalid"
-              :class="{'opacity-40':$v.$invalid}"
+              :class="{ 'opacity-40': $v.$invalid }"
               class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+              @click="setDados"
             >
               Avançar
             </button>
@@ -174,6 +175,7 @@ import Solicitacao from "../Solicitacao.vue";
 
 export default {
   components: { Solicitacao },
+  computed: { ...mapGetters(["solicitacao"]) },
   data() {
     return {
       money: {
@@ -209,10 +211,10 @@ export default {
     },
   },
   methods: {
-    submit(){
-      this.$v.$touch()
+    submit() {
+      this.$v.$touch();
       if (this.$v.$invalid) {
-        console.log('invalid');
+        console.log("invalid");
       }
     },
     setValorSolicitado(value) {
@@ -231,6 +233,14 @@ export default {
     setPrimeiroVencimento(value) {
       this.primeiro_vencimento = value;
       this.$v.primeiro_vencimento.$touch();
+    },
+    setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        valor_solicitado: this.valor_solicitado,
+        parcelas: this.parcelas,
+        data_geracao_proposta: this.data_geracao_proposta,
+        primeiro_vencimento: this.primeiro_vencimento,
+      });
     },
   },
 };

@@ -72,12 +72,13 @@ let actions = {
             })
     },
     async getViaCep({ }, cep) {
+        cep = cep.replace(/[^\d]+/g, '');
         const dadosEndereco = await axios.get(`${VIA_CEP}/${cep}/json`);
         return dadosEndereco.data;
     },
 
     fetchDominios({ commit }) {
-        return axios.get('http://127.0.0.1:8000/api/dominios')
+        return axios.get(`http://127.0.0.1:8000/api/dominios`)
             .then(res => {
                 commit('FETCH_DOMINIO', res.data)
             }).catch(err => {

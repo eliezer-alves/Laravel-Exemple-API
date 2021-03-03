@@ -18,7 +18,7 @@
             placeholder="Nome completo"
             :value="$v.nome_socio.$model"
             @input="setNomeSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -46,7 +46,7 @@
             v-mask="'###.###.###-##'"
             :value="$v.cpf_socio.$model"
             @input="setCpfSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -71,6 +71,7 @@
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.uf_rg_socio.$model"
             @change="setUfRgSocio($event.target.value)"
+            @blur="setDados"
           >
             <option value="">--</option>
             <option
@@ -105,7 +106,7 @@
             type="text"
             :value="$v.numero_rg_socio.$model"
             @input="setNumeroRgSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -130,6 +131,7 @@
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.sexo_socio.$model"
             @change="setSexoSocio($event.target.value)"
+            @blur="setDados"
           >
             <option value="">--</option>
             <option value="M">Masculino</option>
@@ -158,6 +160,7 @@
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.estado_civil_socio.$model"
             @change="setEstadoCivilSocio($event.target.value)"
+            @blur="setDados"
           >
             <option value="">--</option>
             <option
@@ -193,7 +196,7 @@
             placeholder="mail@brasilcard.net"
             :value="$v.email_socio.$model"
             @input="setEmailSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -220,7 +223,7 @@
             v-mask="['(##) ####-####', '(##) #####-####']"
             :value="$v.telefone_socio.$model"
             @input="setTelefoneSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -232,7 +235,7 @@
       </div>
     </div>
     <div
-      class="grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-teal-600 mt-5"
+      class="grid lg:grid-cols-12 md:grid-cols-12 border-t-2 border-b-2 border-teal-600 mt-5"
     >
       <div
         class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -251,8 +254,7 @@
             placeholder="#####-###"
             v-mask="'#####-###'"
             :value="$v.cep_socio.$model"
-            @input="setCepSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @change="setCepSocio($event.target.value)"
           />
         </div>
         <div
@@ -278,6 +280,7 @@
             disabled
             :value="$v.uf_socio.$model"
             @change="setUfSocio($event.target.value)"
+            @blur="setDados"
           >
             <option value="">--</option>
             <option
@@ -314,7 +317,7 @@
             disabled
             :value="$v.cidade_socio.$model"
             @input="setCidadeSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -341,7 +344,7 @@
             placeholder="Bairro"
             :value="$v.bairro_socio.$model"
             @input="setBairroSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -366,6 +369,7 @@
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.tipo_logradouro_socio.$model"
             @change="setTipoLogradouroSocio($event.target.value)"
+            @blur="setDados"
           >
             <option value="">--</option>
             <option
@@ -403,7 +407,7 @@
             type="text"
             :value="$v.logradouro_socio.$model"
             @input="setLogradouroSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -429,7 +433,7 @@
             type="number"
             :value="$v.numero_socio.$model"
             @input="setNumeroSocio($event.target.value)"
-            @blur="$store.commit('GET_ERRORS', { invalid: $v.$invalid })"
+            @blur="setDados"
           />
         </div>
         <div
@@ -463,13 +467,12 @@
 <script>
 import { mapGetters } from "vuex";
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
-import { mapGetters } from "vuex";
 import { validaCPF } from "../../helper.js";
 
 export default {
   props: ["kSocio"],
   computed: {
-    ...mapGetters(["dominios"]),
+    ...mapGetters(["dominios", "solicitacao", "errors"]),
   },
   data() {
     return {
@@ -493,13 +496,9 @@ export default {
   },
   async mounted() {
     this.$store.commit("GET_ERRORS", {
-      // id: this.kSocio,
       invalid: this.$v.$invalid,
     });
     await this.$store.dispatch("fetchDominios");
-  },
-  computed: {
-    ...mapGetters(["errors"]),
   },
   validations: {
     nome_socio: {
@@ -588,21 +587,23 @@ export default {
       this.telefone_socio = value;
       this.$v.telefone_socio.$touch();
     },
-    async setCepSocio(value, kSocio) {
+    async setCepSocio(value) {
       value = value.replace(/[^\d]+/g, "");
       let dadosEndereco = await this.$store.dispatch("getViaCep", value);
       if (dadosEndereco.erro) {
         this.setBairroSocio("");
-        document.querySelector(`#bairro_socio${kSocio}`).disabled = false;
+        document.querySelector(`#bairro_socio${this.kSocio}`).disabled = false;
 
         this.setCidadeSocio("");
-        document.querySelector(`#cidade_socio${kSocio}`).disabled = false;
+        document.querySelector(`#cidade_socio${this.kSocio}`).disabled = false;
 
         this.setLogradouroSocio("");
-        document.querySelector(`#logradouro_socio${kSocio}`).disabled = false;
+        document.querySelector(
+          `#logradouro_socio${this.kSocio}`
+        ).disabled = false;
 
         this.setUfSocio("");
-        document.querySelector(`#uf_socio${kSocio}`).disabled = false;
+        document.querySelector(`#uf_socio${this.kSocio}`).disabled = false;
 
         this.setComplementoSocio("");
 
@@ -611,19 +612,21 @@ export default {
       } else {
         this.setBairroSocio(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "")
-          document.querySelector(`#bairro_socio${kSocio}`).disabled = true;
+          document.querySelector(`#bairro_socio${this.kSocio}`).disabled = true;
 
         this.setCidadeSocio(dadosEndereco.localidade);
         if (dadosEndereco.localidade != "")
-          document.querySelector(`#cidade_socio${kSocio}`).disabled = true;
+          document.querySelector(`#cidade_socio${this.kSocio}`).disabled = true;
 
         this.setLogradouroSocio(dadosEndereco.logradouro);
         if (dadosEndereco.logradouro != "")
-          document.querySelector(`#logradouro_socio${kSocio}`).disabled = true;
+          document.querySelector(
+            `#logradouro_socio${this.kSocio}`
+          ).disabled = true;
 
         this.setUfSocio(dadosEndereco.uf);
         if (dadosEndereco.uf != "")
-          document.querySelector(`#uf_socio${kSocio}`).disabled = true;
+          document.querySelector(`#uf_socio${this.kSocio}`).disabled = true;
 
         this.setComplementoSocio(dadosEndereco.complemento);
 
@@ -658,6 +661,28 @@ export default {
     setNumeroSocio(value) {
       this.numero_socio = value;
       this.$v.numero_socio.$touch();
+    },
+    setDados() {
+      this.$store.commit("SET_SOCIOS_SOLICITACAO", {
+        kSocio: this.kSocio,
+        nome_socio: this.nome_socio,
+        cpf_socio: this.cpf_socio,
+        uf_rg_socio: this.uf_rg_socio,
+        numero_rg_socio: this.numero_rg_socio,
+        sexo_socio: this.sexo_socio,
+        estado_civil_socio: this.estado_civil_socio,
+        email_socio: this.email_socio,
+        telefone_socio: this.telefone_socio,
+        cep_socio: this.cep_socio,
+        uf_socio: this.uf_socio,
+        cidade_socio: this.cidade_socio,
+        bairro_socio: this.bairro_socio,
+        tipo_logradouro_socio: this.tipo_logradouro_socio,
+        logradouro_socio: this.logradouro_socio,
+        numero_socio: this.numero_socio,
+        complemento_socio: this.complemento_socio,
+      });
+      this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
     },
   },
 };

@@ -323,6 +323,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -421,8 +444,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
 /* harmony import */ var _ContratoUpload_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContratoUpload.vue */ "./resources/js/components/cad.solicitacao/ContratoUpload.vue");
 
-
-var _components$mounted$c;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -985,12 +1006,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components$mounted$c = {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     ContratoUpload: _ContratoUpload_vue__WEBPACK_IMPORTED_MODULE_3__.default
@@ -1007,6 +1029,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this.$store.dispatch("fetchAtividades");
 
             case 2:
+              _context.next = 4;
+              return _this.$store.dispatch("fetchDominios");
+
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -1042,234 +1068,236 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       email: null,
       docs: 1
     };
-  }
-}, _defineProperty(_components$mounted$c, "mounted", function mounted() {
-  var _this2 = this;
+  },
+  validations: {
+    razao_social: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    cnpj: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    nome_fantasia: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    inscricao_estadual: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    rendimento_mensal: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minValue)(1)
+    },
+    id_atividade_comercial: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    tipo_empresa: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    cep: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    uf: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    cidade: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    bairro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    tipo_logradouro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    logradouro: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    numero: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    },
+    complemento: {},
+    telefone: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(10)
+    },
+    email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
+    }
+  },
+  methods: {
+    setRazaoSocial: function setRazaoSocial(value) {
+      this.razao_social = value;
+      this.$v.razao_social.$touch();
+    },
+    setCnpj: function setCnpj(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.cnpj.validarCNPJ = true;
 
-  return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return _this2.$store.dispatch("fetchDominios");
-
-          case 2:
-          case "end":
-            return _context2.stop();
-        }
+      if (!(0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validarCNPJ)(value)) {
+        this.$v.cnpj.validarCNPJ = false;
       }
-    }, _callee2);
-  }))();
-}), _defineProperty(_components$mounted$c, "validations", {
-  razao_social: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  cnpj: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  nome_fantasia: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  inscricao_estadual: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  rendimento_mensal: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-    minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minValue)(1)
-  },
-  id_atividade_comercial: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  tipo_empresa: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  cep: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  uf: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  cidade: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  bairro: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  tipo_logradouro: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  logradouro: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  numero: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-  },
-  complemento: {},
-  telefone: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-    minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(10)
-  },
-  email: {
-    required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-    email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
-  }
-}), _defineProperty(_components$mounted$c, "methods", {
-  setRazaoSocial: function setRazaoSocial(value) {
-    this.razao_social = value;
-    this.$v.razao_social.$touch();
-  },
-  setCnpj: function setCnpj(value) {
-    value = value.replace(/[^\d]+/g, "");
-    this.$v.cnpj.validarCNPJ = true;
 
-    if (!(0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validarCNPJ)(value)) {
-      this.$v.cnpj.validarCNPJ = false;
-    }
+      this.cnpj = value;
+      this.$v.cnpj.$touch();
+    },
+    setNomeFantasia: function setNomeFantasia(value) {
+      this.nome_fantasia = value;
+      this.$v.nome_fantasia.$touch();
+    },
+    setInscricaoEstadual: function setInscricaoEstadual(value) {
+      this.inscricao_estadual = value;
+      this.$v.inscricao_estadual.$touch();
+    },
+    setRendimentoMensal: function setRendimentoMensal(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.rendimento_mensal = value;
+      this.$v.rendimento_mensal.$touch();
+    },
+    setIdAtividadeComercial: function setIdAtividadeComercial(value) {
+      this.id_atividade_comercial = value;
+      this.$v.id_atividade_comercial.$touch();
+    },
+    setTipoEmpresa: function setTipoEmpresa(value) {
+      this.tipo_empresa = value;
+      this.$v.tipo_empresa.$touch();
+    },
+    setCep: function setCep(value) {
+      var _this2 = this;
 
-    this.cnpj = value;
-    this.$v.cnpj.$touch();
-  },
-  setNomeFantasia: function setNomeFantasia(value) {
-    this.nome_fantasia = value;
-    this.$v.nome_fantasia.$touch();
-  },
-  setInscricaoEstadual: function setInscricaoEstadual(value) {
-    this.inscricao_estadual = value;
-    this.$v.inscricao_estadual.$touch();
-  },
-  setRendimentoMensal: function setRendimentoMensal(value) {
-    value = value.replace(/[^\d]+/g, "");
-    this.rendimento_mensal = value;
-    this.$v.rendimento_mensal.$touch();
-  },
-  setIdAtividadeComercial: function setIdAtividadeComercial(value) {
-    this.id_atividade_comercial = value;
-    this.$v.id_atividade_comercial.$touch();
-  },
-  setTipoEmpresa: function setTipoEmpresa(value) {
-    this.tipo_empresa = value;
-    this.$v.tipo_empresa.$touch();
-  },
-  setCep: function setCep(value) {
-    var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var dadosEndereco;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.$store.dispatch("getViaCep", value);
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var dadosEndereco;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return _this3.$store.dispatch("getViaCep", value);
+              case 2:
+                dadosEndereco = _context2.sent;
 
-            case 2:
-              dadosEndereco = _context3.sent;
+                if (dadosEndereco.erro) {
+                  _this2.setBairro("");
 
-              if (dadosEndereco.erro) {
-                _this3.setBairro("");
+                  document.querySelector("#bairro").disabled = false;
 
-                document.querySelector("#bairro").disabled = false;
+                  _this2.setCidade("");
 
-                _this3.setCidade("");
+                  document.querySelector("#cidade").disabled = false;
 
-                document.querySelector("#cidade").disabled = false;
+                  _this2.setLogradouro("");
 
-                _this3.setLogradouro("");
+                  document.querySelector("#logradouro").disabled = false;
 
-                document.querySelector("#logradouro").disabled = false;
+                  _this2.setUf("");
 
-                _this3.setUf("");
+                  document.querySelector("#uf").disabled = false;
 
-                document.querySelector("#uf").disabled = false;
+                  _this2.setComplemento("");
 
-                _this3.setComplemento("");
+                  _this2.cep = null;
 
-                _this3.cep = null;
+                  _this2.$v.cep.$touch();
+                } else {
+                  _this2.setBairro(dadosEndereco.bairro);
 
-                _this3.$v.cep.$touch();
-              } else {
-                _this3.setBairro(dadosEndereco.bairro);
+                  if (dadosEndereco.bairro != "") document.querySelector("#bairro").disabled = true;
 
-                if (dadosEndereco.bairro != "") document.querySelector("#bairro").disabled = true;
+                  _this2.setCidade(dadosEndereco.localidade);
 
-                _this3.setCidade(dadosEndereco.localidade);
+                  if (dadosEndereco.localidade != "") document.querySelector("#cidade").disabled = true;
 
-                if (dadosEndereco.localidade != "") document.querySelector("#cidade").disabled = true;
+                  _this2.setLogradouro(dadosEndereco.logradouro);
 
-                _this3.setLogradouro(dadosEndereco.logradouro);
+                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro").disabled = true;
 
-                if (dadosEndereco.logradouro != "") document.querySelector("#logradouro").disabled = true;
+                  _this2.setUf(dadosEndereco.uf);
 
-                _this3.setUf(dadosEndereco.uf);
+                  if (dadosEndereco.uf != "") document.querySelector("#uf").disabled = true;
 
-                if (dadosEndereco.uf != "") document.querySelector("#uf").disabled = true;
+                  _this2.setComplemento(dadosEndereco.complemento);
 
-                _this3.setComplemento(dadosEndereco.complemento);
+                  _this2.cep = value;
 
-                _this3.cep = value;
+                  _this2.$v.cep.$touch();
+                }
 
-                _this3.$v.cep.$touch();
-              }
-
-            case 4:
-            case "end":
-              return _context3.stop();
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
           }
-        }
-      }, _callee3);
-    }))();
-  },
-  setUf: function setUf(value) {
-    this.uf = value;
-    this.$v.uf.$touch();
-  },
-  setCidade: function setCidade(value) {
-    this.cidade = value;
-    this.$v.cidade.$touch();
-  },
-  setBairro: function setBairro(value) {
-    this.bairro = value;
-    this.$v.bairro.$touch();
-  },
-  setTipoLogradouro: function setTipoLogradouro(value) {
-    this.tipo_logradouro = value;
-    this.$v.tipo_logradouro.$touch();
-  },
-  setLogradouro: function setLogradouro(value) {
-    this.logradouro = value;
-    this.$v.logradouro.$touch();
-  },
-  setNumero: function setNumero(value) {
-    this.numero = value;
-    this.$v.numero.$touch();
-  },
-  setComplemento: function setComplemento(value) {
-    this.complemento = value;
-    this.$v.complemento.$touch();
-  },
-  setTelefone: function setTelefone(value) {
-    value = value.replace(/[^\d]+/g, "");
-    this.telefone = value;
-    this.$v.telefone.$touch();
-  },
-  setEmail: function setEmail(value) {
-    this.email = value;
-    this.$v.email.$touch();
-  },
-  addDocElement: function addDocElement() {
-    this.docs++;
-  },
-  removeDocElement: function removeDocElement() {
-    if (this.docs > 0) {
-      if (this.docs === this.solicitacao.docs.length) this.$store.commit("UNSET_DOC_FILES");
-      --this.docs;
+        }, _callee2);
+      }))();
+    },
+    setUf: function setUf(value) {
+      this.uf = value;
+      this.$v.uf.$touch();
+    },
+    setCidade: function setCidade(value) {
+      this.cidade = value;
+      this.$v.cidade.$touch();
+    },
+    setBairro: function setBairro(value) {
+      this.bairro = value;
+      this.$v.bairro.$touch();
+    },
+    setTipoLogradouro: function setTipoLogradouro(value) {
+      this.tipo_logradouro = value;
+      this.$v.tipo_logradouro.$touch();
+    },
+    setLogradouro: function setLogradouro(value) {
+      this.logradouro = value;
+      this.$v.logradouro.$touch();
+    },
+    setNumero: function setNumero(value) {
+      this.numero = value;
+      this.$v.numero.$touch();
+    },
+    setComplemento: function setComplemento(value) {
+      this.complemento = value;
+      this.$v.complemento.$touch();
+    },
+    setTelefone: function setTelefone(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.telefone = value;
+      this.$v.telefone.$touch();
+    },
+    setEmail: function setEmail(value) {
+      this.email = value;
+      this.$v.email.$touch();
+    },
+    addDocElement: function addDocElement() {
+      this.docs++;
+    },
+    removeDocElement: function removeDocElement() {
+      if (this.docs > 0) {
+        if (this.docs === this.solicitacao.docs.length) this.$store.commit("UNSET_DOC_FILES");
+        --this.docs;
+      }
+    },
+    setDados: function setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        razao_social: this.razao_social,
+        cnpj: this.cnpj,
+        nome_fantasia: this.nome_fantasia,
+        inscricao_estadual: this.inscricao_estadual,
+        rendimento_mensal: 1,
+        id_atividade_comercial: this.id_atividade_comercial,
+        tipo_empresa: this.tipo_empresa,
+        cep: this.cep,
+        uf: this.uf,
+        cidade: this.cidade,
+        bairro: this.bairro,
+        tipo_logradouro: this.tipo_logradouro,
+        logradouro: this.logradouro,
+        numero: this.numero,
+        complemento: this.complemento,
+        telefone: this.telefone,
+        email: this.email
+      });
     }
-  },
-  getDocs: function getDocs() {
-    console.log(this.solicitacao.docs);
   }
-}), _components$mounted$c);
+});
 
 /***/ }),
 
@@ -1942,7 +1970,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-teal-700 text-white text-lg flex items-center"
               },
               [
                 _c("span", { staticClass: "text-center text-white w-full" }, [
@@ -1989,36 +2017,61 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-teal-700 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto rounded-full bg-white text-lg flex items-center",
+                class: {
+                  "bg-teal-700": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ],
+                  "text-white": [
+                    _vm.$router.currentRoute.name === "solicitacao-2",
+                    _vm.$router.currentRoute.name === "solicitacao-3",
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                  ]
+                }
               },
               [
-                _c("span", { staticClass: "text-center text-white w-full" }, [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-full",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        width: "24",
-                        height: "24",
-                        stroke: "currentColor"
-                      }
-                    },
-                    [
-                      _c("path", {
+                _c(
+                  "span",
+                  {
+                    staticClass: "text-center text-gray-700 w-full",
+                    class: {
+                      "text-white": [
+                        _vm.$router.currentRoute.name === "solicitacao-2",
+                        _vm.$router.currentRoute.name === "solicitacao-3",
+                        _vm.$router.currentRoute.name === "solicitacao-4"
+                      ]
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-full",
                         attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          "stroke-width": "2",
-                          d:
-                            "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          width: "24",
+                          height: "24",
+                          stroke: "currentColor"
                         }
-                      })
-                    ]
-                  )
-                ])
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d:
+                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
               ]
             )
           ]),
@@ -2036,7 +2089,11 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-3"
+                }
               },
               [
                 _c(
@@ -2071,7 +2128,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("\n          Representante Legal\n        ")
+            _vm._v("Representantes")
           ])
         ]),
         _vm._v(" "),
@@ -2083,7 +2140,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center"
+                  "w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center",
+                class: {
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4",
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao-4"
+                }
               },
               [
                 _c(
@@ -3452,7 +3515,8 @@ var render = function() {
                   staticClass:
                     "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
                   class: { "opacity-40": _vm.$v.$invalid },
-                  attrs: { disabled: _vm.$v.$invalid }
+                  attrs: { disabled: _vm.$v.$invalid },
+                  on: { click: _vm.setDados }
                 },
                 [_vm._v("\n            Avançar\n          ")]
               )

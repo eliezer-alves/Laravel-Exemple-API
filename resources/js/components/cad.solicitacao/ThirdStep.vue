@@ -661,6 +661,7 @@
               :disabled="$v.$invalid"
               :class="{ 'opacity-40': $v.$invalid }"
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+              @click="setDados"
             >
               Avançar
             </button>
@@ -679,19 +680,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import Solicitacao from "../Solicitacao.vue";
 import Socios from "./Socios.vue";
 
-import { required, minLength, email } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
+import { required, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
   components: { Solicitacao, Socios },
-  computed: {
-    ...mapGetters(["dominios"]),
-  },
   data() {
     return {
       nome_representante: "",
@@ -716,7 +713,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["errors"]),
+    ...mapGetters(["dominios", "solicitacao", "errors"]),
   },
   async mounted() {
     await this.$store.dispatch("fetchDominios");
@@ -903,6 +900,28 @@ export default {
         this.errors.invalid = false;
         --this.socios;
       }
+    },
+    setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        nome_representante: this.nome_representante,
+        cpf_representante: this.cpf_representante,
+        rg_representante: this.rg_representante,
+        uf_rg_representante: this.uf_rg_representante,
+        nome_mae_representante: this.nome_mae_representante,
+        id_tipo_logradouro_representante: this.id_tipo_logradouro_representante,
+        logradouro_representante: this.logradouro_representante,
+        numero_representante: this.numero_representante,
+        cep_representante: this.cep_representante,
+        complemento_representante: this.complemento_representante,
+        bairro_representante: this.bairro_representante,
+        cidade_representante: this.cidade_representante,
+        uf_representante: this.uf_representante,
+        celular_representante: this.celular_representante,
+        email_representante: this.email_representante,
+        estado_civil_representante: this.estado_civil_representante,
+        profissao_representante: this.profissao_representante,
+        sexo_representante: this.sexo_representante,
+      });
     },
   },
 };

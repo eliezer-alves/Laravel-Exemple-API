@@ -36,5 +36,18 @@ let mutations = {
     FETCH_DOMINIO(state, payload) {
         return state.dominios = payload
     },
+    SET_SOLICITACAO(state, payload) {
+        state.solicitacao = { ...payload, ...state.solicitacao };
+    },
+    SET_SOCIOS_SOLICITACAO(state, payload) {
+        const { kSocio } = payload;
+        const index = state.solicitacao.socios.findIndex(item => item.kSocio === kSocio);
+        console.log(payload);
+        console.log(index);
+        if (index >= 0)
+            state.solicitacao.socios[index] = { ...payload, ...state.solicitacao };
+        else
+            state.solicitacao.socios.push({ ...payload, ...state.solicitacao });
+    }
 }
 export default mutations

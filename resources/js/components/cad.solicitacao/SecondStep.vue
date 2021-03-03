@@ -183,7 +183,7 @@
               class="text-red-600"
               v-if="
                 $v.id_atividade_comercial.$dirty &&
-                  !$v.id_atividade_comercial.required
+                !$v.id_atividade_comercial.required
               "
             >
               Atividade Comercial é obrigatório.
@@ -529,6 +529,7 @@
         <div class="flex-auto flex lg:flex-row-reverse md:flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-3' }">
             <button
+              @click="setDados"
               :disabled="$v.$invalid"
               :class="{ 'opacity-40': $v.$invalid }"
               class="text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
@@ -553,7 +554,6 @@
 import { mapGetters } from "vuex";
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validarCNPJ } from "../../helper.js";
-
 import Solicitacao from "../Solicitacao.vue";
 import ContratoUpload from "./ContratoUpload.vue";
 
@@ -561,9 +561,10 @@ export default {
   components: { Solicitacao, ContratoUpload },
   async mounted() {
     await this.$store.dispatch("fetchAtividades");
+    await this.$store.dispatch("fetchDominios");
   },
   computed: {
-    ...mapGetters(["atividades", "solicitacao", "dominios"])
+    ...mapGetters(["atividades", "solicitacao", "dominios"]),
   },
   data() {
     return {
@@ -571,7 +572,7 @@ export default {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 0
+        precision: 0,
       },
       razao_social: null,
       cnpj: null,
@@ -593,62 +594,59 @@ export default {
       docs: 1,
     };
   },
-  async mounted() {
-    await this.$store.dispatch("fetchDominios");
-  },
   validations: {
     razao_social: {
-      required
+      required,
     },
     cnpj: {
-      required
+      required,
     },
     nome_fantasia: {
-      required
+      required,
     },
     inscricao_estadual: {
-      required
+      required,
     },
     rendimento_mensal: {
       required,
-      minValue: minValue(1)
+      minValue: minValue(1),
     },
     id_atividade_comercial: {
-      required
+      required,
     },
     tipo_empresa: {
-      required
+      required,
     },
     cep: {
-      required
+      required,
     },
     uf: {
-      required
+      required,
     },
     cidade: {
-      required
+      required,
     },
     bairro: {
-      required
+      required,
     },
     tipo_logradouro: {
-      required
+      required,
     },
     logradouro: {
-      required
+      required,
     },
     numero: {
-      required
+      required,
     },
     complemento: {},
     telefone: {
       required,
-      minLength: minLength(10)
+      minLength: minLength(10),
     },
     email: {
       required,
-      email
-    }
+      email,
+    },
   },
   methods: {
     setRazaoSocial(value) {
@@ -773,10 +771,28 @@ export default {
         --this.docs;
       }
     },
-    getDocs() {
-      console.log(this.solicitacao.docs);
-    }
-  }
+    setDados() {
+      this.$store.commit("SET_SOLICITACAO", {
+        razao_social: this.razao_social,
+        cnpj: this.cnpj,
+        nome_fantasia: this.nome_fantasia,
+        inscricao_estadual: this.inscricao_estadual,
+        rendimento_mensal: 1,
+        id_atividade_comercial: this.id_atividade_comercial,
+        tipo_empresa: this.tipo_empresa,
+        cep: this.cep,
+        uf: this.uf,
+        cidade: this.cidade,
+        bairro: this.bairro,
+        tipo_logradouro: this.tipo_logradouro,
+        logradouro: this.logradouro,
+        numero: this.numero,
+        complemento: this.complemento,
+        telefone: this.telefone,
+        email: this.email,
+      });
+    },
+  },
 };
 </script>
 
