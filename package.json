@@ -27,6 +27,7 @@
         "vuex": "^3.6.2"
     },
     "dependencies": {
+        "lottie-vuejs": "^0.4.0",
         "v-money": "^0.8.1",
         "vue-spinner": "^1.0.4",
         "vue-the-mask": "^0.11.1",

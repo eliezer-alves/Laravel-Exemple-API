@@ -13,6 +13,9 @@ let getters = {
     },
     solicitacao: state => {
         return state.solicitacao
+    },
+    dominios: state => {
+        return state.dominios
     }
 }
 

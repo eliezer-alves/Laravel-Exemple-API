@@ -7,6 +7,10 @@ import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
+import LottieAnimation from "lottie-vuejs/src/LottieAnimation.vue"; // import lottie-vuejs
+Vue.use(LottieAnimation); // add lottie-animation to your global scope
+
+
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 

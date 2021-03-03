@@ -57,9 +57,13 @@
                 @change="setBanco($event.target.value)"
               >
                 <option value="">SELECIONAR</option>
-                <option :value="'0001'">Banco do Brasil</option>
-                <option :value="'0002'">Bradesco</option>
-                <option :value="'0003'">Itau</option>
+                <option
+                  v-for="banco in dominios.banco"
+                  :key="banco.codigo"
+                  :value="banco.codigo"
+                >
+                  {{ banco.descricao }}
+                </option>
               </select>
             </div>
             <div
@@ -121,12 +125,6 @@
             >
               Agência é obrigatório
             </div>
-            <div
-              class="text-red-600"
-              v-if="$v.agencia.$dirty && !$v.agencia.numeric"
-            >
-              Agência Inválida
-            </div>
           </div>
           <div
             class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -140,7 +138,7 @@
               <input
                 id="digito_agencia"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                v-mask="'##'"
+                v-mask="'####'"
                 :value="$v.digito_agencia.$model"
                 @input="setDigitoAgencia($event.target.value)"
               />
@@ -164,7 +162,7 @@
               <input
                 id="conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                v-mask="'####'"
+                v-mask="'############'"
                 :value="$v.conta.$model"
                 @input="setConta($event.target.value)"
               />
@@ -188,7 +186,7 @@
               <input
                 id="digito_conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                v-mask="'##'"
+                v-mask="'####'"
                 :value="$v.digito_conta.$model"
                 @input="setDigitoConta($event.target.value)"
               />
@@ -231,11 +229,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Solicitacao from "../Solicitacao.vue";
 import { required } from "vuelidate/lib/validators";
 
 export default {
   components: { Solicitacao },
+  computed: {
+    ...mapGetters(["dominios"])
+  },
   data() {
     return {
       money: {
@@ -244,35 +246,38 @@ export default {
         prefix: "R$ ",
         suffix: "",
         precision: 2,
-        masked: false /* doesn't work with directive */,
+        masked: false /* doesn't work with directive */
       },
       banco: "",
       forma_liberacao: "",
       agencia: "",
       digito_agencia: "",
       conta: "",
-      digito_conta: "",
+      digito_conta: ""
     };
+  },
+  async mounted() {
+    await this.$store.dispatch("fetchDominios");
   },
   validations: {
     banco: {
-      required,
+      required
     },
     forma_liberacao: {
-      required,
+      required
     },
     agencia: {
-      required,
+      required
     },
     digito_agencia: {
-      required,
+      required
     },
     conta: {
-      required,
+      required
     },
     digito_conta: {
-      required,
-    },
+      required
+    }
   },
   methods: {
     setBanco(value) {
@@ -298,8 +303,8 @@ export default {
     setDigitoConta(value) {
       this.digito_conta = value;
       this.$v.digito_conta.$touch();
-    },
-  },
+    }
+  }
 };
 </script>
 
