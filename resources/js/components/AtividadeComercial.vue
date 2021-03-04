@@ -121,6 +121,9 @@ export default {
       loading: false,
     };
   },
+  computed: {
+    ...mapGetters(["atividades"]),
+  },
   async mounted() {
     this.loading = true;
     await this.$store.dispatch("fetchAtividades");
@@ -142,9 +145,6 @@ export default {
       await this.$store.dispatch("deleteAtividade", atividade);
       this.loading = false;
     },
-  },
-  computed: {
-    ...mapGetters(["atividades"]),
   },
 };
 </script>

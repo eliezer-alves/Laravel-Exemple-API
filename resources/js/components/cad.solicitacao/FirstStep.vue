@@ -26,7 +26,7 @@
                   name="valor_solicitado"
                   placeholder="Nome da Empresa"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input"
-                  :value="$v.valor_solicitado.$model"
+                  :value="$v.solicitacao.valor_solicitado.$model"
                   v-money="money"
                   @input="setValorSolicitado($event.target.value)"
                 />
@@ -34,7 +34,8 @@
               <div
                 class="text-red-600"
                 v-if="
-                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.required
+                  $v.solicitacao.valor_solicitado.$dirty &&
+                  !$v.solicitacao.valor_solicitado.required
                 "
               >
                 Valor obrigatório
@@ -42,10 +43,13 @@
               <div
                 class="text-red-600"
                 v-if="
-                  $v.valor_solicitado.$dirty && !$v.valor_solicitado.minValue
+                  $v.solicitacao.valor_solicitado.$dirty &&
+                  !$v.solicitacao.valor_solicitado.minValue
                 "
               >
-                Valor minimo de R${{ $v.valor_solicitado.$params.minValue.min }}
+                Valor mínimo de R${{
+                  $v.solicitacao.valor_solicitado.$params.minValue.min / 100
+                }},00
               </div>
             </div>
             <div
@@ -62,22 +66,28 @@
                   name="parcelas"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="number"
-                  :value="$v.parcelas.$model"
-                  @input="setParcelas($event.target.value)"
+                  v-model.number="$v.solicitacao.parcelas.$model"
                 />
               </div>
               <div
                 class="text-red-600"
-                v-if="$v.parcelas.$dirty && !$v.parcelas.between"
+                v-if="
+                  $v.solicitacao.parcelas.$dirty &&
+                  !$v.solicitacao.parcelas.required
+                "
               >
-                Parcelas entre {{ $v.parcelas.$params.between.min }} e
-                {{ $v.parcelas.$params.between.max }}
+                Parcela(s) obrigatória
               </div>
               <div
                 class="text-red-600"
-                v-if="$v.parcelas.$dirty && !$v.parcelas.required"
+                v-if="
+                  $v.solicitacao.parcelas.$dirty &&
+                  !$v.solicitacao.parcelas.between
+                "
               >
-                Parcela(s) obrigatória
+                Parcelas entre
+                {{ $v.solicitacao.parcelas.$params.between.min }} e
+                {{ $v.solicitacao.parcelas.$params.between.max }}
               </div>
             </div>
             <div
@@ -94,15 +104,14 @@
                   name="data_geracao_proposta"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  :value="$v.data_geracao_proposta.$model"
-                  @input="setDataGeracaoProposta($event.target.value)"
+                  v-model="$v.solicitacao.data_geracao_proposta.$model"
                 />
               </div>
               <div
                 class="text-red-600"
                 v-if="
-                  $v.data_geracao_proposta.$dirty &&
-                  !$v.data_geracao_proposta.required
+                  $v.solicitacao.data_geracao_proposta.$dirty &&
+                  !$v.solicitacao.data_geracao_proposta.required
                 "
               >
                 Data obrigatória
@@ -122,15 +131,14 @@
                   name="primeiro_vencimento"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="date"
-                  :value="$v.primeiro_vencimento.$model"
-                  @input="setPrimeiroVencimento($event.target.value)"
+                  v-model="$v.solicitacao.primeiro_vencimento.$model"
                 />
               </div>
               <div
                 class="text-red-600"
                 v-if="
-                  $v.primeiro_vencimento.$dirty &&
-                  !$v.primeiro_vencimento.required
+                  $v.solicitacao.primeiro_vencimento.$dirty &&
+                  !$v.solicitacao.primeiro_vencimento.required
                 "
               >
                 Data obrigatória
@@ -151,7 +159,6 @@
               :disabled="$v.$invalid"
               :class="{ 'opacity-40': $v.$invalid }"
               class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-              @click="setDados"
             >
               Avançar
             </button>
@@ -169,49 +176,57 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { mapFields } from "vuex-map-fields";
+
 import { required, minValue, between, numeric } from "vuelidate/lib/validators";
 
 import Solicitacao from "../Solicitacao.vue";
 
 export default {
   components: { Solicitacao },
-  computed: { ...mapGetters(["solicitacao"]) },
+  computed: {
+    ...mapGetters(["solicitacao"]),
+    ...mapFields(["solicitacao"]),
+  },
   data() {
     return {
       money: {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 0,
+        precision: 2,
       },
-      submitStatus: null,
-      valor_solicitado: 10000,
-      parcelas: 1,
-      data_geracao_proposta: null,
-      primeiro_vencimento: null,
+      // submitStatus: null,
+      // valor_solicitado: 10000,
+      // parcelas: 1,
+      // data_geracao_proposta: null,
+      // primeiro_vencimento: null,
     };
   },
   computed: {
     ...mapGetters(["solicitacao", "errors"]),
   },
   validations: {
-    valor_solicitado: {
-      required,
-      minValue: minValue(10000),
-    },
-    parcelas: {
-      required,
-      between: between(1, 36),
-    },
-    data_geracao_proposta: {
-      required,
-    },
-    primeiro_vencimento: {
-      required,
+    solicitacao: {
+      valor_solicitado: {
+        required,
+        minValue: minValue(1000000),
+      },
+      parcelas: {
+        required,
+        between: between(1, 36),
+      },
+      data_geracao_proposta: {
+        required,
+      },
+      primeiro_vencimento: {
+        required,
+      },
     },
   },
   methods: {
     submit() {
+      // adds on mouse On event
       this.$v.$touch();
       if (this.$v.$invalid) {
         console.log("invalid");
@@ -219,10 +234,10 @@ export default {
     },
     setValorSolicitado(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.valor_solicitado = value;
-      this.$v.valor_solicitado.$touch();
+      this.solicitacao.valor_solicitado = value;
+      this.$v.solicitacao.valor_solicitado.$touch();
     },
-    setParcelas(value) {
+    /* setParcelas(value) {
       this.parcelas = value;
       this.$v.parcelas.$touch();
     },
@@ -241,7 +256,7 @@ export default {
         data_geracao_proposta: this.data_geracao_proposta,
         primeiro_vencimento: this.primeiro_vencimento,
       });
-    },
+    }, */
   },
 };
 </script>
