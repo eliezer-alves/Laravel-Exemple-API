@@ -22,12 +22,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->namespace('admin')->group(function () {
-    Route::get('/admin', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/admin/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
-    Route::get('/admin/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
+    Route::get('/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
+    Route::get('/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
 });
 
 Route::get('/solicitacao', function () {
