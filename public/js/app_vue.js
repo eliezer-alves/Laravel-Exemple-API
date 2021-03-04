@@ -2372,7 +2372,31 @@ var state = {
     telefone: '',
     email: '',
     docs: [],
-    socios: []
+    nome_representante: "",
+    cpf_representante: "",
+    rg_representante: "",
+    uf_rg_representante: "",
+    nome_mae_representante: "",
+    id_tipo_logradouro_representante: "",
+    logradouro_representante: "",
+    numero_representante: "",
+    cep_representante: "",
+    complemento_representante: "",
+    bairro_representante: "",
+    cidade_representante: "",
+    uf_representante: "",
+    celular_representante: "",
+    email_representante: "",
+    estado_civil_representante: "",
+    profissao_representante: "",
+    sexo_representante: "",
+    socios: [],
+    banco: "",
+    forma_liberacao: "",
+    agencia: "",
+    digito_agencia: "",
+    conta: "",
+    digito_conta: ""
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (state);

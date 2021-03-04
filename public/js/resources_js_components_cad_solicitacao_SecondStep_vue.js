@@ -364,6 +364,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1073,6 +1091,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -1196,51 +1216,90 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var dadosEndereco;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                /* let dadosEndereco = await this.$store.dispatch("getViaCep", value);
-                if (dadosEndereco.erro) {
-                  this.setBairro("");
-                  document.querySelector("#bairro").disabled = false;
-                    this.setCidade("");
-                  document.querySelector("#cidade").disabled = false;
-                    this.setLogradouro("");
-                  document.querySelector("#logradouro").disabled = false;
-                    this.setUf("");
-                  document.querySelector("#uf").disabled = false;
-                  this.setComplemento("");
-                    this.cep = null;
-                  this.$v.cep.$touch();
-                } else {
-                  this.setBairro(dadosEndereco.bairro);
-                  if (dadosEndereco.bairro != "")
-                    document.querySelector("#bairro").disabled = true;
-                    this.setCidade(dadosEndereco.localidade);
-                  if (dadosEndereco.localidade != "")
-                    document.querySelector("#cidade").disabled = true;
-                    this.setLogradouro(dadosEndereco.logradouro);
-                  if (dadosEndereco.logradouro != "")
-                    document.querySelector("#logradouro").disabled = true;
-                    this.setUf(dadosEndereco.uf);
-                  if (dadosEndereco.uf != "")
-                    document.querySelector("#uf").disabled = true;
-                    this.setComplemento(dadosEndereco.complemento);
-                  
-                 }
-                  */
-                _this2.solicitacao.cep = value;
-
-                _this2.$v.solicitacao.cep.$touch();
+                _context2.next = 2;
+                return _this2.$store.dispatch("getViaCep", value);
 
               case 2:
+                dadosEndereco = _context2.sent;
+
+                if (dadosEndereco.erro) {
+                  _this2.setBairro("");
+
+                  document.querySelector("#bairro").disabled = false;
+
+                  _this2.setCidade("");
+
+                  document.querySelector("#cidade").disabled = false;
+
+                  _this2.setLogradouro("");
+
+                  document.querySelector("#logradouro").disabled = false;
+
+                  _this2.setUf("");
+
+                  document.querySelector("#uf").disabled = false;
+
+                  _this2.setComplemento("");
+
+                  _this2.solicitacao.cep = null;
+
+                  _this2.$v.solicitacao.cep.$touch();
+                } else {
+                  _this2.setBairro(dadosEndereco.bairro);
+
+                  if (dadosEndereco.bairro != "") document.querySelector("#bairro").disabled = true;
+
+                  _this2.setCidade(dadosEndereco.localidade);
+
+                  if (dadosEndereco.localidade != "") document.querySelector("#cidade").disabled = true;
+
+                  _this2.setLogradouro(dadosEndereco.logradouro);
+
+                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro").disabled = true;
+
+                  _this2.setUf(dadosEndereco.uf);
+
+                  if (dadosEndereco.uf != "") document.querySelector("#uf").disabled = true;
+
+                  _this2.setComplemento(dadosEndereco.complemento);
+
+                  _this2.solicitacao.cep = value;
+
+                  _this2.$v.solicitacao.cep.$touch();
+                }
+
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
       }))();
+    },
+    setBairro: function setBairro(value) {
+      this.solicitacao.bairro = value;
+      this.$v.solicitacao.bairro.$touch();
+    },
+    setCidade: function setCidade(value) {
+      this.solicitacao.cidade = value;
+      this.$v.solicitacao.cidade.$touch();
+    },
+    setLogradouro: function setLogradouro(value) {
+      this.solicitacao.logradouro = value;
+      this.$v.solicitacao.logradouro.$touch();
+    },
+    setUf: function setUf(value) {
+      this.solicitacao.uf = value;
+      this.$v.solicitacao.uf.$touch();
+    },
+    setComplemento: function setComplemento(value) {
+      this.solicitacao.complemento = value;
+      this.$v.solicitacao.complemento.$touch();
     },
     setTelefone: function setTelefone(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -1932,7 +1991,11 @@ var render = function() {
                 staticClass:
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
-                  "bg-teal-700": _vm.$router.currentRoute.name === "solicitacao"
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao" ||
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -1946,7 +2009,10 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao"
+                            _vm.$router.currentRoute.name === "solicitacao" ||
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2022,7 +2088,9 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-2"
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -2036,7 +2104,9 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-2"
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2111,7 +2181,8 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-3"
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -2125,7 +2196,8 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-3"
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2322,7 +2394,8 @@ var render = function() {
                 ? _c(
                     "span",
                     {
-                      staticClass: "mt-2 text-base text-blue-500 leading-normal"
+                      staticClass:
+                        "mt-2 text-base text-yellow-500 leading-normal"
                     },
                     [_vm._v("\n          Documento repetido\n        ")]
                   )
@@ -2994,7 +3067,7 @@ var render = function() {
                     },
                     domProps: { value: _vm.$v.solicitacao.cep.$model },
                     on: {
-                      input: function($event) {
+                      blur: function($event) {
                         return _vm.setCep($event.target.value)
                       }
                     }
@@ -3714,14 +3787,26 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
               _c(
-                "button",
+                "div",
                 {
-                  staticClass:
-                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                  class: { "opacity-40": _vm.$v.$invalid },
-                  attrs: { disabled: _vm.$v.$invalid }
+                  on: {
+                    mouseenter: function($event) {
+                      return _vm.$v.$touch()
+                    }
+                  }
                 },
-                [_vm._v("\n            Avançar\n          ")]
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                      class: { "opacity-40": _vm.$v.$invalid },
+                      attrs: { disabled: _vm.$v.$invalid }
+                    },
+                    [_vm._v("\n              Avançar\n            ")]
+                  )
+                ]
               )
             ]),
             _vm._v(" "),

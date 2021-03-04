@@ -13,34 +13,37 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="valor_solicitado">Valor Solicitado*</label>
+              <label for="valor_solicitado">Valor Solicitado</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
                 id="valor_solicitado"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70"
+                v-money="money"
+                :value="solicitacao.valor_solicitado"
                 disabled
               />
             </div>
           </div>
-          <div
+           <div
             class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="parcelas">Parcelas*</label>
+              <label for="parcelas">Parcelas</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
                 id="parcelas"
-                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70"
                 type="text"
+                :value="solicitacao.parcelas"
                 disabled
               />
             </div>
           </div>
-          <div
+           <div
             class="lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
@@ -52,15 +55,15 @@
               <select
                 id="banco"
                 name="banco"
-                class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.banco.$model"
-                @change="setBanco($event.target.value)"
+                class="p-1 px-2 outline-none w-full text-gray-800 capitalize"
+                v-model="$v.solicitacao.banco.$model"
               >
-                <option value="">SELECIONAR</option>
+                <option value="">--</option>
                 <option
                   v-for="banco in dominios.banco"
                   :key="banco.codigo"
                   :value="banco.codigo"
+                  class="capitalize"
                 >
                   {{ banco.descricao }}
                 </option>
@@ -68,7 +71,7 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.banco.$dirty && !$v.banco.required"
+              v-if="$v.solicitacao.banco.$dirty && !$v.solicitacao.banco.required"
             >
               Banco é obrigatório
             </div>
@@ -86,18 +89,17 @@
                 id="forma_liberacao"
                 name="forma_liberacao"
                 class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.forma_liberacao.$model"
-                @change="setFormaLiberacao($event.target.value)"
+                v-model="$v.solicitacao.forma_liberacao.$model"
               >
-                <option value="">SELECIONAR</option>
-                <option :value="'1'">TED</option>
-                <option :value="'2'">DOC</option>
-                <option :value="'3'">PIX</option>
+                <option value="">--</option>
+                <option value="1">TED</option>
+                <option value="2">DOC</option>
+                <option value="3">PIX</option>
               </select>
             </div>
             <div
               class="text-red-600"
-              v-if="$v.forma_liberacao.$dirty && !$v.forma_liberacao.required"
+              v-if="$v.solicitacao.forma_liberacao.$dirty && !$v.solicitacao.forma_liberacao.required"
             >
               Forma de Liberação é obrigatório
             </div>
@@ -108,20 +110,19 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="agencia">Agência*</label>
+              <label for="agencia">Agência</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
                 id="agencia"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                :value="$v.agencia.$model"
-                @input="setAgencia($event.target.value)"
                 v-mask="'####'"
+                v-model="$v.solicitacao.agencia.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.agencia.$dirty && !$v.agencia.required"
+              v-if="$v.solicitacao.agencia.$dirty && !$v.solicitacao.agencia.required"
             >
               Agência é obrigatório
             </div>
@@ -132,20 +133,19 @@
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="digito_agencia">Dígito Agência*</label>
+              <label for="digito_agencia">Dígito Agência</label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
                 id="digito_agencia"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'####'"
-                :value="$v.digito_agencia.$model"
-                @input="setDigitoAgencia($event.target.value)"
+                v-model="$v.solicitacao.digito_agencia.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.digito_agencia.$dirty && !$v.digito_agencia.required"
+              v-if="$v.solicitacao.digito_agencia.$dirty && !$v.solicitacao.digito_agencia.required"
             >
               Digito da Agência é obrigatório
             </div>
@@ -163,13 +163,12 @@
                 id="conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'############'"
-                :value="$v.conta.$model"
-                @input="setConta($event.target.value)"
+                v-model="$v.solicitacao.conta.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.conta.$dirty && !$v.conta.required"
+              v-if="$v.solicitacao.conta.$dirty && !$v.solicitacao.conta.required"
             >
               Conta é obrigatório
             </div>
@@ -187,34 +186,29 @@
                 id="digito_conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'####'"
-                :value="$v.digito_conta.$model"
-                @input="setDigitoConta($event.target.value)"
+                v-model="$v.solicitacao.digito_conta.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.digito_conta.$dirty && !$v.digito_conta.required"
+              v-if="$v.solicitacao.digito_conta.$dirty && !$v.solicitacao.digito_conta.required"
             >
-              Digito da Conta é obrigatório
+              Dígito da Conta é obrigatório
             </div>
           </div>
         </div>
       </div>
 
       <div class="flex p-2 mt-4">
-        <button
-          class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-        >
-          Finalizar
-        </button>
+        <div @mouseenter="$v.$touch()">
+          <button
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+          >
+            Finalizar
+          </button>
+        </div>
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'finalizar' }">
-            <button
-              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-            >
-              Finalizar
-            </button>
-          </router-link>
+          <router-link :to="{ name: 'finalizar' }"> </router-link>
           <router-link :to="{ name: 'solicitacao-3' }">
             <button
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
@@ -230,6 +224,8 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { mapFields } from "vuex-map-fields";
+
 import Solicitacao from "../Solicitacao.vue";
 import { required } from "vuelidate/lib/validators";
 
@@ -237,6 +233,7 @@ export default {
   components: { Solicitacao },
   computed: {
     ...mapGetters(["dominios", "solicitacao"]),
+    ...mapFields(["solicitacao", "errors"]),
   },
   data() {
     return {
@@ -248,35 +245,31 @@ export default {
         precision: 2,
         masked: false /* doesn't work with directive */,
       },
-      banco: "",
-      forma_liberacao: "",
-      agencia: "",
-      digito_agencia: "",
-      conta: "",
-      digito_conta: "",
     };
   },
   async mounted() {
     await this.$store.dispatch("fetchDominios");
   },
   validations: {
-    banco: {
-      required,
-    },
-    forma_liberacao: {
-      required,
-    },
-    agencia: {
-      required,
-    },
-    digito_agencia: {
-      required,
-    },
-    conta: {
-      required,
-    },
-    digito_conta: {
-      required,
+    solicitacao: {
+      banco: {
+        required,
+      },
+      forma_liberacao: {
+        required,
+      },
+       agencia: {
+        required,
+      },
+      digito_agencia: {
+        required,
+      },
+      conta: {
+        required,
+      },
+      digito_conta: {
+        required,
+      },
     },
   },
   methods: {
