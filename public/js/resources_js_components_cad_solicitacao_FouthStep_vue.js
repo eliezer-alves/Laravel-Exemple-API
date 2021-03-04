@@ -404,9 +404,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+/* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -644,15 +645,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao"])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["dominios", "solicitacao"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__.mapFields)(["solicitacao", "errors"])),
   data: function data() {
     return {
       money: {
@@ -664,13 +665,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         masked: false
         /* doesn't work with directive */
 
-      },
-      banco: "",
-      forma_liberacao: "",
-      agencia: "",
-      digito_agencia: "",
-      conta: "",
-      digito_conta: ""
+      }
     };
   },
   mounted: function mounted() {
@@ -693,23 +688,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }))();
   },
   validations: {
-    banco: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    forma_liberacao: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    agencia: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    digito_agencia: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    conta: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    digito_conta: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    solicitacao: {
+      banco: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      forma_liberacao: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      agencia: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      digito_agencia: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      conta: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      digito_conta: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      }
     }
   },
   methods: {
@@ -1729,7 +1726,7 @@ var render = function() {
                 },
                 [
                   _c("label", { attrs: { for: "valor_solicitado" } }, [
-                    _vm._v("Valor Solicitado*")
+                    _vm._v("Valor Solicitado")
                   ])
                 ]
               ),
@@ -1742,9 +1739,18 @@ var render = function() {
                 },
                 [
                   _c("input", {
+                    directives: [
+                      {
+                        name: "money",
+                        rawName: "v-money",
+                        value: _vm.money,
+                        expression: "money"
+                      }
+                    ],
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "valor_solicitado", disabled: "" }
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                    attrs: { id: "valor_solicitado", disabled: "" },
+                    domProps: { value: _vm.solicitacao.valor_solicitado }
                   })
                 ]
               )
@@ -1766,7 +1772,7 @@ var render = function() {
                 },
                 [
                   _c("label", { attrs: { for: "parcelas" } }, [
-                    _vm._v("Parcelas*")
+                    _vm._v("Parcelas")
                   ])
                 ]
               ),
@@ -1780,8 +1786,9 @@ var render = function() {
                 [
                   _c("input", {
                     staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "parcelas", type: "text", disabled: "" }
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                    attrs: { id: "parcelas", type: "text", disabled: "" },
+                    domProps: { value: _vm.solicitacao.parcelas }
                   })
                 ]
               )
@@ -1814,25 +1821,46 @@ var render = function() {
                   _c(
                     "select",
                     {
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$v.solicitacao.banco.$model,
+                          expression: "$v.solicitacao.banco.$model"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 outline-none w-full text-gray-800 capitalize",
                       attrs: { id: "banco", name: "banco" },
-                      domProps: { value: _vm.$v.banco.$model },
                       on: {
                         change: function($event) {
-                          return _vm.setBanco($event.target.value)
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.banco,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
                       _vm._l(_vm.dominios.banco, function(banco) {
                         return _c(
                           "option",
                           {
                             key: banco.codigo,
+                            staticClass: "capitalize",
                             domProps: { value: banco.codigo }
                           },
                           [
@@ -1850,7 +1878,8 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.banco.$dirty && !_vm.$v.banco.required
+              _vm.$v.solicitacao.banco.$dirty &&
+              !_vm.$v.solicitacao.banco.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Banco é obrigatório\n          ")
                   ])
@@ -1888,37 +1917,51 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$v.solicitacao.forma_liberacao.$model,
+                          expression: "$v.solicitacao.forma_liberacao.$model"
+                        }
+                      ],
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                       attrs: { id: "forma_liberacao", name: "forma_liberacao" },
-                      domProps: { value: _vm.$v.forma_liberacao.$model },
                       on: {
                         change: function($event) {
-                          return _vm.setFormaLiberacao($event.target.value)
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.forma_liberacao,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("SELECIONAR")
-                      ]),
+                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
                       _vm._v(" "),
-                      _c("option", { domProps: { value: "1" } }, [
-                        _vm._v("TED")
-                      ]),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("TED")]),
                       _vm._v(" "),
-                      _c("option", { domProps: { value: "2" } }, [
-                        _vm._v("DOC")
-                      ]),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("DOC")]),
                       _vm._v(" "),
-                      _c("option", { domProps: { value: "3" } }, [
-                        _vm._v("PIX")
-                      ])
+                      _c("option", { attrs: { value: "3" } }, [_vm._v("PIX")])
                     ]
                   )
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.forma_liberacao.$dirty && !_vm.$v.forma_liberacao.required
+              _vm.$v.solicitacao.forma_liberacao.$dirty &&
+              !_vm.$v.solicitacao.forma_liberacao.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
                       "\n            Forma de Liberação é obrigatório\n          "
@@ -1943,7 +1986,7 @@ var render = function() {
                 },
                 [
                   _c("label", { attrs: { for: "agencia" } }, [
-                    _vm._v("Agência*")
+                    _vm._v("Agência")
                   ])
                 ]
               ),
@@ -1962,22 +2005,36 @@ var render = function() {
                         rawName: "v-mask",
                         value: "####",
                         expression: "'####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.solicitacao.agencia.$model,
+                        expression: "$v.solicitacao.agencia.$model"
                       }
                     ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: { id: "agencia" },
-                    domProps: { value: _vm.$v.agencia.$model },
+                    domProps: { value: _vm.$v.solicitacao.agencia.$model },
                     on: {
                       input: function($event) {
-                        return _vm.setAgencia($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.agencia,
+                          "$model",
+                          $event.target.value
+                        )
                       }
                     }
                   })
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.agencia.$dirty && !_vm.$v.agencia.required
+              _vm.$v.solicitacao.agencia.$dirty &&
+              !_vm.$v.solicitacao.agencia.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Agência é obrigatório\n          ")
                   ])
@@ -2000,7 +2057,7 @@ var render = function() {
                 },
                 [
                   _c("label", { attrs: { for: "digito_agencia" } }, [
-                    _vm._v("Dígito Agência*")
+                    _vm._v("Dígito Agência")
                   ])
                 ]
               ),
@@ -2019,22 +2076,38 @@ var render = function() {
                         rawName: "v-mask",
                         value: "####",
                         expression: "'####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.solicitacao.digito_agencia.$model,
+                        expression: "$v.solicitacao.digito_agencia.$model"
                       }
                     ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: { id: "digito_agencia" },
-                    domProps: { value: _vm.$v.digito_agencia.$model },
+                    domProps: {
+                      value: _vm.$v.solicitacao.digito_agencia.$model
+                    },
                     on: {
                       input: function($event) {
-                        return _vm.setDigitoAgencia($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.digito_agencia,
+                          "$model",
+                          $event.target.value
+                        )
                       }
                     }
                   })
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.digito_agencia.$dirty && !_vm.$v.digito_agencia.required
+              _vm.$v.solicitacao.digito_agencia.$dirty &&
+              !_vm.$v.solicitacao.digito_agencia.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
                       "\n            Digito da Agência é obrigatório\n          "
@@ -2074,22 +2147,36 @@ var render = function() {
                         rawName: "v-mask",
                         value: "############",
                         expression: "'############'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.solicitacao.conta.$model,
+                        expression: "$v.solicitacao.conta.$model"
                       }
                     ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: { id: "conta" },
-                    domProps: { value: _vm.$v.conta.$model },
+                    domProps: { value: _vm.$v.solicitacao.conta.$model },
                     on: {
                       input: function($event) {
-                        return _vm.setConta($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.conta,
+                          "$model",
+                          $event.target.value
+                        )
                       }
                     }
                   })
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.conta.$dirty && !_vm.$v.conta.required
+              _vm.$v.solicitacao.conta.$dirty &&
+              !_vm.$v.solicitacao.conta.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Conta é obrigatório\n          ")
                   ])
@@ -2136,7 +2223,7 @@ var render = function() {
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: { id: "digito_conta" },
-                    domProps: { value: _vm.$v.digito_conta.$model },
+                    domProps: { value: _vm.$v.solicitacao.digito_conta.$model },
                     on: {
                       input: function($event) {
                         return _vm.setDigitoConta($event.target.value)
@@ -2146,7 +2233,8 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.digito_conta.$dirty && !_vm.$v.digito_conta.required
+              _vm.$v.solicitacao.digito_conta.$dirty &&
+              !_vm.$v.solicitacao.digito_conta.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
                       "\n            Dígito da Conta é obrigatório\n          "

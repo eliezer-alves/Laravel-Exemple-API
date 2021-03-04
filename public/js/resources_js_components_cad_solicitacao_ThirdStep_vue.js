@@ -404,9 +404,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -895,9 +896,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["kSocio"],
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
     return {
       nome_socio: null,
@@ -943,50 +945,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   validations: {
     nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     },
     complemento_socio: {},
     numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
     }
   },
   methods: {
@@ -1009,7 +1011,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.cpf_socio = value;
       } else {
         value = value.replace(/[^\d]+/g, "");
-        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
+        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_2__.validaCPF)(value);
 
         if (isInvalid) {
           this.cpf_socio = null;
@@ -1217,7 +1219,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //

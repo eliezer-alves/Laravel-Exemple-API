@@ -46,7 +46,13 @@ let state = {
         estado_civil_representante: "",
         profissao_representante: "",
         sexo_representante: "",
-        socios: []
+        socios: [],
+        banco: "",
+        forma_liberacao: "",
+        agencia: "",
+        digito_agencia: "",
+        conta: "",
+        digito_conta: "",
     },
 }
 

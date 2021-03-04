@@ -392,7 +392,7 @@
           class="text-red-600"
           v-if="
             $v.tipo_logradouro_socio.$dirty &&
-              !$v.tipo_logradouro_socio.required
+            !$v.tipo_logradouro_socio.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -473,13 +473,15 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { required, minValue, minLength, email } from "vuelidate/lib/validators";
+import { mapFields } from "vuex-map-fields";
+
+import { required } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
   props: ["kSocio"],
   computed: {
-    ...mapGetters(["dominios", "solicitacao", "errors"])
+    ...mapGetters(["dominios", "solicitacao", "errors"]),
   },
   data() {
     return {
@@ -498,62 +500,62 @@ export default {
       tipo_logradouro_socio: null,
       logradouro_socio: null,
       numero_socio: null,
-      complemento_socio: null
+      complemento_socio: null,
     };
   },
   async mounted() {
     this.$store.commit("GET_ERRORS", {
-      invalid: this.$v.$invalid
+      invalid: this.$v.$invalid,
     });
     await this.$store.dispatch("fetchDominios");
   },
   validations: {
     nome_socio: {
-      required
+      required,
     },
     cpf_socio: {
-      required
+      required,
     },
     uf_rg_socio: {
-      required
+      required,
     },
     numero_rg_socio: {
-      required
+      required,
     },
     sexo_socio: {
-      required
+      required,
     },
     estado_civil_socio: {
-      required
+      required,
     },
     email_socio: {
-      required
+      required,
     },
     telefone_socio: {
-      required
+      required,
     },
     cep_socio: {
-      required
+      required,
     },
     uf_socio: {
-      required
+      required,
     },
     cidade_socio: {
-      required
+      required,
     },
     bairro_socio: {
-      required
+      required,
     },
     tipo_logradouro_socio: {
-      required
+      required,
     },
     logradouro_socio: {
-      required
+      required,
     },
     complemento_socio: {},
     numero_socio: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setNomeSocio(value) {
@@ -717,11 +719,11 @@ export default {
         tipo_logradouro_socio: this.tipo_logradouro_socio,
         logradouro_socio: this.logradouro_socio,
         numero_socio: this.numero_socio,
-        complemento_socio: this.complemento_socio
+        complemento_socio: this.complemento_socio,
       });
       this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
-    }
-  }
+    },
+  },
 };
 </script>
 

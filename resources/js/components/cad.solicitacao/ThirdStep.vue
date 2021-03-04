@@ -548,7 +548,6 @@
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="email"
                   v-model.trim="$v.solicitacao.email_representante.$model"
-                  
                 />
               </div>
               <div
@@ -778,7 +777,7 @@ export default {
         required,
         minLength: minLength(10),
       },
-       email_representante: {
+      email_representante: {
         required,
         email,
       },
