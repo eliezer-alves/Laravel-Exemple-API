@@ -10,17 +10,6 @@
       >
         Capital de Giro
       </h1>
-      <lottie-animation
-        path="/images/lottie.json"
-        name="lottie"
-        :loop="true"
-        :autoPlay="true"
-        :loopDelayMin="2.5"
-        :loopDelayMax="5"
-        :speed="1"
-        :width="256"
-        :height="256"
-      />
     </div>
 
     <div

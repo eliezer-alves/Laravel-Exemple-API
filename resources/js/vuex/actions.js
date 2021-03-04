@@ -77,7 +77,7 @@ let actions = {
     },
 
     fetchDominios({ commit }) {
-        return axios.get(`http://127.0.0.1:8000/api/dominios`)
+        return axios.get(`${API_URL}/api/dominios`)
             .then(res => {
                 commit('FETCH_DOMINIO', res.data)
             }).catch(err => {

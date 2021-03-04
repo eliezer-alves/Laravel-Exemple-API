@@ -2210,7 +2210,7 @@ var actions = {
   },
   fetchDominios: function fetchDominios(_ref8) {
     var commit = _ref8.commit;
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://127.0.0.1:8000/api/dominios").then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/api/dominios")).then(function (res) {
       commit('FETCH_DOMINIO', res.data);
     })["catch"](function (err) {
       commit('GET_ERRORS', err.response.data.errors);

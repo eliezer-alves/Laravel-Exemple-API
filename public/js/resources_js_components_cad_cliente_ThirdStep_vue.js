@@ -85,17 +85,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -806,43 +795,7 @@ var render = function() {
         "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1"
     },
     [
-      _c(
-        "div",
-        {
-          staticClass:
-            "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
-        },
-        [
-          _c("img", {
-            staticClass: "w-72",
-            attrs: { src: "/images/logoAgilVertical.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c(
-            "h1",
-            {
-              staticClass:
-                "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
-            },
-            [_vm._v("\n      Capital de Giro\n    ")]
-          ),
-          _vm._v(" "),
-          _c("lottie-animation", {
-            attrs: {
-              path: "/images/lottie.json",
-              name: "lottie",
-              loop: true,
-              autoPlay: true,
-              loopDelayMin: 2.5,
-              loopDelayMax: 5,
-              speed: 1,
-              width: 256,
-              height: 256
-            }
-          })
-        ],
-        1
-      ),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -953,7 +906,35 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
+      },
+      [
+        _c("img", {
+          staticClass: "w-72",
+          attrs: { src: "/images/logoAgilVertical.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c(
+          "h1",
+          {
+            staticClass:
+              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+          },
+          [_vm._v("\n      Capital de Giro\n    ")]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
