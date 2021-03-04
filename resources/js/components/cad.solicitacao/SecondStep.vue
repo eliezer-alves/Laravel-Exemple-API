@@ -20,13 +20,15 @@
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Razão Social"
-                :value="$v.razao_social.$model"
-                @input="setRazaoSocial($event.target.value)"
+                v-model.trim="$v.solicitacao.razao_social.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.razao_social.$dirty && !$v.razao_social.required"
+              v-if="
+                $v.solicitacao.razao_social.$dirty &&
+                !$v.solicitacao.razao_social.required
+              "
             >
               Razão social é obrigatório.
             </div>
@@ -46,19 +48,19 @@
                 placeholder="##.###.###/####-##"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'##.###.###/####-##'"
-                :value="cnpj"
+                :value="$v.solicitacao.cnpj.$model"
                 @input="setCnpj($event.target.value)"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.cnpj.$dirty && !$v.cnpj.required"
+              v-if="$v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.required"
             >
               CNPJ é obrigatório.
             </div>
             <div
               class="text-red-600"
-              v-if="$v.cnpj.$dirty && !$v.cnpj.validarCNPJ"
+              v-if="$v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.valid"
             >
               CNPJ inválido.
             </div>
@@ -78,13 +80,15 @@
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Nome Fantasia"
-                :value="$v.nome_fantasia.$model"
-                @input="setNomeFantasia($event.target.value)"
+                v-model.trim="$v.solicitacao.nome_fantasia.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.nome_fantasia.$dirty && !$v.nome_fantasia.required"
+              v-if="
+                $v.solicitacao.nome_fantasia.$dirty &&
+                !$v.solicitacao.nome_fantasia.required
+              "
             >
               Nome Fantasia é obrigatório.
             </div>
@@ -104,14 +108,15 @@
                 placeholder="##.###.####-#"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'##.###.####-#'"
-                :value="$v.inscricao_estadual.$model"
+                :value="$v.solicitacao.inscricao_estadual.$model"
                 @input="setInscricaoEstadual($event.target.value)"
               />
             </div>
             <div
               class="text-red-600"
               v-if="
-                $v.inscricao_estadual.$dirty && !$v.inscricao_estadual.required
+                $v.solicitacao.inscricao_estadual.$dirty &&
+                !$v.solicitacao.inscricao_estadual.required
               "
             >
               Inscrição Estadual é obrigatório.
@@ -131,14 +136,15 @@
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 v-money="money"
-                :value="$v.rendimento_mensal.$model"
+                :value="$v.solicitacao.rendimento_mensal.$model"
                 @input="setRendimentoMensal($event.target.value)"
               />
             </div>
             <div
               class="text-red-600"
               v-if="
-                $v.rendimento_mensal.$dirty && !$v.rendimento_mensal.required
+                $v.solicitacao.rendimento_mensal.$dirty &&
+                !$v.solicitacao.rendimento_mensal.required
               "
             >
               Rendimento Mensal é obrigatório.
@@ -146,11 +152,14 @@
             <div
               class="text-red-600"
               v-if="
-                $v.rendimento_mensal.$dirty && !$v.rendimento_mensal.minValue
+                $v.solicitacao.rendimento_mensal.$dirty &&
+                !$v.solicitacao.rendimento_mensal.minValue
               "
             >
               Valor mínimo de R$
-              {{ $v.rendimento_mensal.$params.minValue.min }},00.
+              {{
+                $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
+              }},00.
             </div>
           </div>
           <div
@@ -166,8 +175,7 @@
                 id="id_atividade_comercial"
                 name="id_atividade_comercial"
                 class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.id_atividade_comercial.$model"
-                @change="setIdAtividadeComercial($event.target.value)"
+                v-model="$v.solicitacao.id_atividade_comercial.$model"
               >
                 <option value="" selected>--</option>
                 <option
@@ -182,8 +190,8 @@
             <div
               class="text-red-600"
               v-if="
-                $v.id_atividade_comercial.$dirty &&
-                !$v.id_atividade_comercial.required
+                $v.solicitacao.id_atividade_comercial.$dirty &&
+                !$v.solicitacao.id_atividade_comercial.required
               "
             >
               Atividade Comercial é obrigatório.
@@ -202,8 +210,7 @@
                 id="tipo_empresa"
                 name="tipo_empresa"
                 class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.tipo_empresa.$model"
-                @change="setTipoEmpresa($event.target.value)"
+                v-model="$v.solicitacao.tipo_empresa.$model"
               >
                 <option value="" selected>--</option>
                 <option value="0">PJ Sociedade</option>
@@ -213,7 +220,10 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.tipo_empresa.$dirty && !$v.tipo_empresa.required"
+              v-if="
+                $v.solicitacao.tipo_empresa.$dirty &&
+                !$v.solicitacao.tipo_empresa.required
+              "
             >
               Tipo de Empresa é obrigatório.
             </div>
@@ -242,11 +252,14 @@
                 type="text"
                 placeholder="#####-###"
                 v-mask="'#####-###'"
-                :value="$v.cep.$model"
+                :value="$v.solicitacao.cep.$model"
                 @input="setCep($event.target.value)"
               />
             </div>
-            <div class="text-red-600" v-if="$v.cep.$dirty && !$v.cep.required">
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.cep.$dirty && !$v.solicitacao.cep.required"
+            >
               CEP é obrigatório.
             </div>
           </div>
@@ -263,8 +276,7 @@
                 id="uf"
                 name="uf"
                 class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.uf.$model"
-                @change="setUf($event.target.value)"
+                v-model="$v.solicitacao.uf.$model"
               >
                 <option value="">--</option>
                 <option
@@ -276,7 +288,10 @@
                 </option>
               </select>
             </div>
-            <div class="text-red-600" v-if="$v.uf.$dirty && !$v.uf.required">
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.uf.$dirty && !$v.solicitacao.uf.required"
+            >
               UF é obrigatório.
             </div>
           </div>
@@ -294,15 +309,15 @@
                 name="cidade"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
-                disabled
                 placeholder="Cidade"
-                :value="$v.cidade.$model"
-                @input="setCidade($event.target.value)"
+                v-model="$v.solicitacao.cidade.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.cidade.$dirty && !$v.cidade.required"
+              v-if="
+                $v.solicitacao.cidade.$dirty && !$v.solicitacao.cidade.required
+              "
             >
               Cidade é obrigatório.
             </div>
@@ -322,19 +337,20 @@
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 placeholder="Bairro"
-                :value="$v.bairro.$model"
-                @input="setBairro($event.target.value)"
+                v-model="$v.solicitacao.bairro.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.bairro.$dirty && !$v.bairro.required"
+              v-if="
+                $v.solicitacao.bairro.$dirty && !$v.solicitacao.bairro.required
+              "
             >
               Bairro é obrigatório.
             </div>
           </div>
           <div
-            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -346,8 +362,7 @@
                 id="tipo_logradouro"
                 name="tipo_logradouro"
                 class="p-1 px-2 outline-none w-full text-gray-800"
-                :value="$v.tipo_logradouro.$model"
-                @change="setTipoLogradouro($event.target.value)"
+                v-model="$v.solicitacao.tipo_logradouro.$model"
               >
                 <option value="">--</option>
                 <option
@@ -361,13 +376,16 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.tipo_logradouro.$dirty && !$v.tipo_logradouro.required"
+              v-if="
+                $v.solicitacao.tipo_logradouro.$dirty &&
+                !$v.solicitacao.tipo_logradouro.required
+              "
             >
               Tipo de Logradouro é obrigatório.
             </div>
           </div>
           <div
-            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -380,19 +398,21 @@
                 name="logradouro"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
-                :value="$v.logradouro.$model"
-                @input="setLogradouro($event.target.value)"
+                v-model="$v.solicitacao.logradouro.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.logradouro.$dirty && !$v.logradouro.required"
+              v-if="
+                $v.solicitacao.logradouro.$dirty &&
+                !$v.solicitacao.logradouro.required
+              "
             >
               Logradouro é obrigatório.
             </div>
           </div>
           <div
-            class="lg:col-span-1 md:col-span-1 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -405,13 +425,14 @@
                 name="numero"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="number"
-                :value="$v.numero.$model"
-                @input="setNumero($event.target.value)"
+                v-model="$v.solicitacao.numero.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.numero.$dirty && !$v.numero.required"
+              v-if="
+                $v.solicitacao.numero.$dirty && !$v.solicitacao.numero.required
+              "
             >
               Número é obrigatório.
             </div>
@@ -430,8 +451,7 @@
                 name="complemento"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
-                :value="$v.complemento.$model"
-                @input="setComplemento($event.target.value)"
+                v-model="$v.solicitacao.complemento.$model"
               />
             </div>
           </div>
@@ -450,21 +470,27 @@
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
                 v-mask="['(##) ####-####', '(##) #####-####']"
-                :value="$v.telefone.$model"
+                :value="$v.solicitacao.telefone.$model"
                 @input="setTelefone($event.target.value)"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.telefone.$dirty && !$v.telefone.required"
+              v-if="
+                $v.solicitacao.telefone.$dirty &&
+                !$v.solicitacao.telefone.required
+              "
             >
               Telefone é obrigatório.
             </div>
             <div
               class="text-red-600"
-              v-if="$v.telefone.$dirty && !$v.telefone.minLength"
+              v-if="
+                $v.solicitacao.telefone.$dirty &&
+                !$v.solicitacao.telefone.minLength
+              "
             >
-              Digite um telefone válido.
+              Tamanho válido.
             </div>
           </div>
           <div
@@ -481,13 +507,14 @@
                 name="email"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="email"
-                :value="$v.email.$model"
-                @input="setEmail($event.target.value)"
+                v-model="$v.solicitacao.email.$model"
               />
             </div>
             <div
               class="text-red-600"
-              v-if="$v.email.$dirty && !$v.email.required"
+              v-if="
+                $v.solicitacao.email.$dirty && !$v.solicitacao.email.required
+              "
             >
               E-mail é obrigatório.
             </div>
@@ -495,7 +522,7 @@
         </div>
       </div>
 
-      <div class="my-2">
+       <div class="my-2">
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Arquivos do Contrato Social
         </div>
@@ -529,7 +556,6 @@
         <div class="flex-auto flex lg:flex-row-reverse md:flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-3' }">
             <button
-              @click="setDados"
               :disabled="$v.$invalid"
               :class="{ 'opacity-40': $v.$invalid }"
               class="text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
@@ -552,6 +578,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { mapFields } from "vuex-map-fields";
 import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validarCNPJ } from "../../helper.js";
 import Solicitacao from "../Solicitacao.vue";
@@ -564,7 +591,8 @@ export default {
     await this.$store.dispatch("fetchDominios");
   },
   computed: {
-    ...mapGetters(["atividades", "solicitacao", "dominios"]),
+    ...mapGetters(["solicitacao", "atividades", "dominios"]),
+    ...mapFields(["solicitacao", "errors"]),
   },
   data() {
     return {
@@ -572,119 +600,51 @@ export default {
         decimal: ",",
         thousands: ".",
         prefix: "R$ ",
-        precision: 0,
+        precision: 2,
       },
-      razao_social: null,
-      cnpj: null,
-      nome_fantasia: null,
-      inscricao_estadual: null,
-      rendimento_mensal: 1,
-      id_atividade_comercial: null,
-      tipo_empresa: null,
-      cep: null,
-      uf: null,
-      cidade: null,
-      bairro: null,
-      tipo_logradouro: null,
-      logradouro: null,
-      numero: null,
-      complemento: null,
-      telefone: null,
-      email: null,
       docs: 1,
     };
   },
   validations: {
-    razao_social: {
-      required,
-    },
-    cnpj: {
-      required,
-    },
-    nome_fantasia: {
-      required,
-    },
-    inscricao_estadual: {
-      required,
-    },
-    rendimento_mensal: {
-      required,
-      minValue: minValue(1),
-    },
-    id_atividade_comercial: {
-      required,
-    },
-    tipo_empresa: {
-      required,
-    },
-    cep: {
-      required,
-    },
-    uf: {
-      required,
-    },
-    cidade: {
-      required,
-    },
-    bairro: {
-      required,
-    },
-    tipo_logradouro: {
-      required,
-    },
-    logradouro: {
-      required,
-    },
-    numero: {
-      required,
-    },
-    complemento: {},
-    telefone: {
-      required,
-      minLength: minLength(10),
-    },
-    email: {
-      required,
-      email,
+    solicitacao: {
+      razao_social: { required },
+      cnpj: { required },
+      nome_fantasia: { required },
+      inscricao_estadual: { required },
+      rendimento_mensal: { required, minValue: minValue(100) },
+      id_atividade_comercial: { required },
+      tipo_empresa: { required },
+      cep: { required },
+      uf: { required },
+      cidade: { required },
+      bairro: { required },
+      tipo_logradouro: { required },
+      logradouro: { required },
+      numero: { required },
+      complemento: {},
+      telefone: { required, minLength: minLength(10) },
+      email: { required, email },
     },
   },
   methods: {
-    setRazaoSocial(value) {
-      this.razao_social = value;
-      this.$v.razao_social.$touch();
-    },
     setCnpj(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.$v.cnpj.validarCNPJ = true;
-      if (!validarCNPJ(value)) {
-        this.$v.cnpj.validarCNPJ = false;
-      }
-      this.cnpj = value;
-      this.$v.cnpj.$touch();
-    },
-    setNomeFantasia(value) {
-      this.nome_fantasia = value;
-      this.$v.nome_fantasia.$touch();
+      this.$v.solicitacao.cnpj.valid = validarCNPJ(value);
+      this.solicitacao.cnpj = value;
+      this.$v.solicitacao.cnpj.$touch();
     },
     setInscricaoEstadual(value) {
-      this.inscricao_estadual = value;
-      this.$v.inscricao_estadual.$touch();
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.inscricao_estadual = value;
+      this.$v.solicitacao.inscricao_estadual.$touch();
     },
     setRendimentoMensal(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.rendimento_mensal = value;
-      this.$v.rendimento_mensal.$touch();
-    },
-    setIdAtividadeComercial(value) {
-      this.id_atividade_comercial = value;
-      this.$v.id_atividade_comercial.$touch();
-    },
-    setTipoEmpresa(value) {
-      this.tipo_empresa = value;
-      this.$v.tipo_empresa.$touch();
+      this.solicitacao.rendimento_mensal = value;
+      this.$v.solicitacao.rendimento_mensal.$touch();
     },
     async setCep(value) {
-      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      /* let dadosEndereco = await this.$store.dispatch("getViaCep", value);
       if (dadosEndereco.erro) {
         this.setBairro("");
         document.querySelector("#bairro").disabled = false;
@@ -719,47 +679,17 @@ export default {
           document.querySelector("#uf").disabled = true;
 
         this.setComplemento(dadosEndereco.complemento);
+        
+       }
+        */
 
-        this.cep = value;
-        this.$v.cep.$touch();
-      }
-    },
-    setUf(value) {
-      this.uf = value;
-      this.$v.uf.$touch();
-    },
-    setCidade(value) {
-      this.cidade = value;
-      this.$v.cidade.$touch();
-    },
-    setBairro(value) {
-      this.bairro = value;
-      this.$v.bairro.$touch();
-    },
-    setTipoLogradouro(value) {
-      this.tipo_logradouro = value;
-      this.$v.tipo_logradouro.$touch();
-    },
-    setLogradouro(value) {
-      this.logradouro = value;
-      this.$v.logradouro.$touch();
-    },
-    setNumero(value) {
-      this.numero = value;
-      this.$v.numero.$touch();
-    },
-    setComplemento(value) {
-      this.complemento = value;
-      this.$v.complemento.$touch();
+      this.solicitacao.cep = value;
+      this.$v.solicitacao.cep.$touch();
     },
     setTelefone(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.telefone = value;
-      this.$v.telefone.$touch();
-    },
-    setEmail(value) {
-      this.email = value;
-      this.$v.email.$touch();
+      this.solicitacao.telefone = value;
+      this.$v.solicitacao.telefone.$touch();
     },
     addDocElement() {
       this.docs++;
@@ -771,27 +701,7 @@ export default {
         --this.docs;
       }
     },
-    setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        razao_social: this.razao_social,
-        cnpj: this.cnpj,
-        nome_fantasia: this.nome_fantasia,
-        inscricao_estadual: this.inscricao_estadual,
-        rendimento_mensal: 1,
-        id_atividade_comercial: this.id_atividade_comercial,
-        tipo_empresa: this.tipo_empresa,
-        cep: this.cep,
-        uf: this.uf,
-        cidade: this.cidade,
-        bairro: this.bairro,
-        tipo_logradouro: this.tipo_logradouro,
-        logradouro: this.logradouro,
-        numero: this.numero,
-        complemento: this.complemento,
-        telefone: this.telefone,
-        email: this.email,
-      });
-    },
+    
   },
 };
 </script>

@@ -18,9 +18,15 @@
               d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
             />
           </svg>
-          <span class="mt-2 text-base leading-normal" v-if="!file"
-            >Selecione o arquivo</span
+          <span class="mt-2 text-base leading-normal" v-if="!file">
+            Selecione o arquivo
+          </span>
+          <span
+            class="mt-2 text-base text-blue-500 leading-normal"
+            v-if="!validDoc"
           >
+            Documento repetido
+          </span>
           <input
             id="contrato_social"
             name="contrato_social"
@@ -42,15 +48,28 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       file: "",
+      validDoc: true,
     };
+  },
+  computed: {
+    ...mapGetters(["solicitacao"]),
   },
   methods: {
     fileHandler() {
       this.file = this.$refs.file.files[0];
+      this.validDoc =
+        this.solicitacao.docs.findIndex(
+          (item) => item.name === this.file.name
+        ) >= 0
+          ? false
+          : true;
+
       this.$store.commit("SET_DOC_FILES", this.file);
     },
   },

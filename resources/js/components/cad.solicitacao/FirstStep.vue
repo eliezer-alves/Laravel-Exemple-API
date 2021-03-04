@@ -178,7 +178,7 @@
 import { mapGetters } from "vuex";
 import { mapFields } from "vuex-map-fields";
 
-import { required, minValue, between, numeric } from "vuelidate/lib/validators";
+import { required, minValue, between } from "vuelidate/lib/validators";
 
 import Solicitacao from "../Solicitacao.vue";
 
@@ -186,7 +186,7 @@ export default {
   components: { Solicitacao },
   computed: {
     ...mapGetters(["solicitacao"]),
-    ...mapFields(["solicitacao"]),
+    ...mapFields(["solicitacao", "errors"]),
   },
   data() {
     return {
@@ -196,15 +196,7 @@ export default {
         prefix: "R$ ",
         precision: 2,
       },
-      // submitStatus: null,
-      // valor_solicitado: 10000,
-      // parcelas: 1,
-      // data_geracao_proposta: null,
-      // primeiro_vencimento: null,
     };
-  },
-  computed: {
-    ...mapGetters(["solicitacao", "errors"]),
   },
   validations: {
     solicitacao: {
@@ -237,26 +229,6 @@ export default {
       this.solicitacao.valor_solicitado = value;
       this.$v.solicitacao.valor_solicitado.$touch();
     },
-    /* setParcelas(value) {
-      this.parcelas = value;
-      this.$v.parcelas.$touch();
-    },
-    setDataGeracaoProposta(value) {
-      this.data_geracao_proposta = value;
-      this.$v.data_geracao_proposta.$touch();
-    },
-    setPrimeiroVencimento(value) {
-      this.primeiro_vencimento = value;
-      this.$v.primeiro_vencimento.$touch();
-    },
-    setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        valor_solicitado: this.valor_solicitado,
-        parcelas: this.parcelas,
-        data_geracao_proposta: this.data_geracao_proposta,
-        primeiro_vencimento: this.primeiro_vencimento,
-      });
-    }, */
   },
 };
 </script>

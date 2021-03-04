@@ -388,8 +388,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-var _components$computed$;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -576,11 +574,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components$computed$ = {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["solicitacao"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.mapFields)(["solicitacao"])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["solicitacao"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.mapFields)(["solicitacao", "errors"])),
   data: function data() {
     return {
       money: {
@@ -588,67 +586,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         thousands: ".",
         prefix: "R$ ",
         precision: 2
-      } // submitStatus: null,
-      // valor_solicitado: 10000,
-      // parcelas: 1,
-      // data_geracao_proposta: null,
-      // primeiro_vencimento: null,
-
+      }
     };
-  }
-}, _defineProperty(_components$computed$, "computed", _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["solicitacao", "errors"]))), _defineProperty(_components$computed$, "validations", {
-  solicitacao: {
-    valor_solicitado: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minValue)(1000000)
-    },
-    parcelas: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
-      between: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.between)(1, 36)
-    },
-    data_geracao_proposta: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    primeiro_vencimento: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    }
-  }
-}), _defineProperty(_components$computed$, "methods", {
-  submit: function submit() {
-    // adds on mouse On event
-    this.$v.$touch();
-
-    if (this.$v.$invalid) {
-      console.log("invalid");
+  },
+  validations: {
+    solicitacao: {
+      valor_solicitado: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+        minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minValue)(1000000)
+      },
+      parcelas: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+        between: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.between)(1, 36)
+      },
+      data_geracao_proposta: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      primeiro_vencimento: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      }
     }
   },
-  setValorSolicitado: function setValorSolicitado(value) {
-    value = value.replace(/[^\d]+/g, "");
-    this.solicitacao.valor_solicitado = value;
-    this.$v.solicitacao.valor_solicitado.$touch();
-  }
-  /* setParcelas(value) {
-    this.parcelas = value;
-    this.$v.parcelas.$touch();
-  },
-  setDataGeracaoProposta(value) {
-    this.data_geracao_proposta = value;
-    this.$v.data_geracao_proposta.$touch();
-  },
-  setPrimeiroVencimento(value) {
-    this.primeiro_vencimento = value;
-    this.$v.primeiro_vencimento.$touch();
-  },
-  setDados() {
-    this.$store.commit("SET_SOLICITACAO", {
-      valor_solicitado: this.valor_solicitado,
-      parcelas: this.parcelas,
-      data_geracao_proposta: this.data_geracao_proposta,
-      primeiro_vencimento: this.primeiro_vencimento,
-    });
-  }, */
+  methods: {
+    submit: function submit() {
+      // adds on mouse On event
+      this.$v.$touch();
 
-}), _components$computed$);
+      if (this.$v.$invalid) {
+        console.log("invalid");
+      }
+    },
+    setValorSolicitado: function setValorSolicitado(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.valor_solicitado = value;
+      this.$v.solicitacao.valor_solicitado.$touch();
+    }
+  }
+});
 
 /***/ }),
 
