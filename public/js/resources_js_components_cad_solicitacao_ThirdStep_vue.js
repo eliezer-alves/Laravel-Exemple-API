@@ -1201,9 +1201,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
 /* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1899,6 +1900,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -1911,9 +1918,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      nome_representante: "",
-      cpf_representante: "",
-      rg_representante: "",
       uf_rg_representante: "",
       nome_mae_representante: "",
       id_tipo_logradouro_representante: "",
@@ -1932,7 +1936,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       socios: 0
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["dominios", "solicitacao", "errors"])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])),
   mounted: function mounted() {
     var _this = this;
 
@@ -1953,92 +1957,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }))();
   },
   validations: {
-    nome_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cpf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    uf_rg_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    nome_mae_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    id_tipo_logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    logradouro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    numero_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cep_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(8)
-    },
-    complemento_representante: {},
-    bairro_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    cidade_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    uf_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    celular_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(11)
-    },
-    email_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email
-    },
-    estado_civil_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    profissao_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
-    },
-    sexo_representante: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
+    solicitacao: {
+      nome_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      cpf_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      uf_rg_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      rg_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      sexo_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      profissao_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      estado_civil_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      nome_mae_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      id_tipo_logradouro_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      logradouro_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      numero_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      complemento_representante: {},
+      cep_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(8)
+      },
+      bairro_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      cidade_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      uf_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      celular_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(10)
+      },
+      email_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.email
+      }
     }
   },
   methods: {
-    setNomeRepresentante: function setNomeRepresentante(value) {
-      this.nome_representante = value;
-      this.$v.nome_representante.$touch();
-    },
-    setRgRepresentante: function setRgRepresentante(value) {
-      this.rg_representante = value;
-      this.$v.rg_representante.$touch();
-    },
-    setUfRgRepresentante: function setUfRgRepresentante(value) {
-      this.uf_rg_representante = value;
-      this.$v.uf_rg_representante.$touch();
-    },
     setCpfRepresentante: function setCpfRepresentante(value) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var isInvalid;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 value = value.replace(/[^\d]+/g, "");
-                isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_3__.validaCPF)(value);
+                _this2.$v.solicitacao.cpf_representante.invalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_4__.validaCPF)(value);
+                _this2.solicitacao.cpf_representante = value;
 
-                if (isInvalid) {
-                  _this2.cpf_representante = null;
-                } else _this2.cpf_representante = value;
-
-                _this2.$v.cpf_representante.$touch();
+                _this2.$v.solicitacao.cpf_representante.$touch();
 
               case 4:
               case "end":
@@ -2048,9 +2038,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee2);
       }))();
     },
-    setEstadoCivilRepresentante: function setEstadoCivilRepresentante(value) {
-      this.estado_civil_representante = value;
-      this.$v.estado_civil_representante.$touch();
+    setCepRepresentante: function setCepRepresentante(value) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var dadosEndereco;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                value = value.replace(/[^\d]+/g, "");
+                _context3.prev = 1;
+                _context3.next = 4;
+                return _this3.$store.dispatch("getViaCep", value);
+
+              case 4:
+                dadosEndereco = _context3.sent;
+                _context3.next = 12;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](1);
+                _this3.solicitacao.cep_representante = null;
+
+                _this3.$v.solicitacao.cep_representante.$touch();
+
+                console.log(_context3.t0);
+
+              case 12:
+                /* if (dadosEndereco.erro) {
+                  this.setBairroRepresentante("");
+                  document.querySelector("#bairro_representante").disabled = false;
+                    this.setCidadeRepresentante("");
+                  document.querySelector("#cidade_representante").disabled = false;
+                    this.setLogradouroRepresentante("");
+                  document.querySelector("#logradouro_representante").disabled = false;
+                    this.setUfRepresentante("");
+                  document.querySelector("#uf_representante").disabled = false;
+                  this.setComplementoRepresentante("");
+                    this.cep_representante = null;
+                  this.$v.cep_representante.$touch();
+                } else {
+                  this.setBairroRepresentante(dadosEndereco.bairro);
+                  if (dadosEndereco.bairro != "")
+                    document.querySelector("#bairro_representante").disabled = true;
+                    this.setCidadeRepresentante(dadosEndereco.localidade);
+                  if (dadosEndereco.localidade != "")
+                    document.querySelector("#cidade_representante").disabled = true;
+                    this.setLogradouroRepresentante(dadosEndereco.logradouro);
+                  if (dadosEndereco.logradouro != "")
+                    document.querySelector("#logradouro_representante").disabled = true;
+                    this.setUfRepresentante(dadosEndereco.uf);
+                  if (dadosEndereco.uf != "")
+                    document.querySelector("#uf_representante").disabled = true;
+                    this.setComplementoRepresentante(dadosEndereco.complemento);
+                } */
+                _this3.solicitacao.cep_representante = value;
+
+                _this3.$v.solicitacao.cep_representante.$touch();
+
+              case 14:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[1, 7]]);
+      }))();
+    },
+    setCelularRepresentante: function setCelularRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.celular_representante = value;
+      this.$v.solicitacao.celular_representante.$touch();
     },
     setSexoRepresentante: function setSexoRepresentante(value) {
       this.sexo_representante = value;
@@ -2076,77 +2135,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.numero_representante = value;
       this.$v.numero_representante.$touch();
     },
-    setCepRepresentante: function setCepRepresentante(value) {
-      var _this3 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var dadosEndereco;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                value = value.replace(/[^\d]+/g, "");
-                _context3.next = 3;
-                return _this3.$store.dispatch("getViaCep", value);
-
-              case 3:
-                dadosEndereco = _context3.sent;
-                console.log(dadosEndereco);
-
-                if (dadosEndereco.erro) {
-                  _this3.setBairroRepresentante("");
-
-                  document.querySelector("#bairro_representante").disabled = false;
-
-                  _this3.setCidadeRepresentante("");
-
-                  document.querySelector("#cidade_representante").disabled = false;
-
-                  _this3.setLogradouroRepresentante("");
-
-                  document.querySelector("#logradouro_representante").disabled = false;
-
-                  _this3.setUfRepresentante("");
-
-                  document.querySelector("#uf_representante").disabled = false;
-
-                  _this3.setComplementoRepresentante("");
-
-                  _this3.cep_representante = null;
-
-                  _this3.$v.cep_representante.$touch();
-                } else {
-                  _this3.setBairroRepresentante(dadosEndereco.bairro);
-
-                  if (dadosEndereco.bairro != "") document.querySelector("#bairro_representante").disabled = true;
-
-                  _this3.setCidadeRepresentante(dadosEndereco.localidade);
-
-                  if (dadosEndereco.localidade != "") document.querySelector("#cidade_representante").disabled = true;
-
-                  _this3.setLogradouroRepresentante(dadosEndereco.logradouro);
-
-                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro_representante").disabled = true;
-
-                  _this3.setUfRepresentante(dadosEndereco.uf);
-
-                  if (dadosEndereco.uf != "") document.querySelector("#uf_representante").disabled = true;
-
-                  _this3.setComplementoRepresentante(dadosEndereco.complemento);
-
-                  _this3.cep_representante = value;
-
-                  _this3.$v.cep_representante.$touch();
-                }
-
-              case 6:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
     setComplementoRepresentante: function setComplementoRepresentante(value) {
       this.complemento_representante = value;
       this.$v.complemento_representante.$touch();
@@ -2162,15 +2150,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setUfRepresentante: function setUfRepresentante(value) {
       this.uf_representante = value;
       this.$v.uf_representante.$touch();
-    },
-    setCelularRepresentante: function setCelularRepresentante(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.celular_representante = value;
-      this.$v.celular_representante.$touch();
-    },
-    setEmailRepresentante: function setEmailRepresentante(value) {
-      this.email_representante = value;
-      this.$v.email_representante.$touch();
     },
     addSocioElement: function addSocioElement() {
       this.socios++;
@@ -4319,27 +4298,48 @@ var render = function() {
                 },
                 [
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.trim",
+                        value: _vm.$v.solicitacao.nome_representante.$model,
+                        expression: "$v.solicitacao.nome_representante.$model",
+                        modifiers: { trim: true }
+                      }
+                    ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: {
                       id: "nome_representante",
                       placeholder: "Nome do Representante"
                     },
-                    domProps: { value: _vm.$v.nome_representante.$model },
+                    domProps: {
+                      value: _vm.$v.solicitacao.nome_representante.$model
+                    },
                     on: {
                       input: function($event) {
-                        return _vm.setNomeRepresentante($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.nome_representante,
+                          "$model",
+                          $event.target.value.trim()
+                        )
+                      },
+                      blur: function($event) {
+                        return _vm.$forceUpdate()
                       }
                     }
                   })
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.nome_representante.$dirty &&
-              !_vm.$v.nome_representante.required
+              _vm.$v.solicitacao.nome_representante.$dirty &&
+              !_vm.$v.solicitacao.nome_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
-                      "\n            Nome Representante é obrigatório\n          "
+                      "\n            Nome do Representante é obrigatório\n          "
                     )
                   ])
                 : _vm._e()
@@ -4389,7 +4389,9 @@ var render = function() {
                       placeholder: "###.###.###-##",
                       type: "text"
                     },
-                    domProps: { value: _vm.$v.cpf_representante.$model },
+                    domProps: {
+                      value: _vm.$v.solicitacao.cpf_representante.$model
+                    },
                     on: {
                       input: function($event) {
                         return _vm.setCpfRepresentante($event.target.value)
@@ -4399,60 +4401,19 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.cpf_representante.$dirty &&
-              !_vm.$v.cpf_representante.required
+              _vm.$v.solicitacao.cpf_representante.$dirty &&
+              !_vm.$v.solicitacao.cpf_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            CPF válido é obrigatório\n          ")
+                    _vm._v(
+                      "\n            CPF válido é obrigatório.\n          "
+                    )
                   ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "rg_representante" } }, [
-                    _vm._v("RG")
-                  ])
-                ]
-              ),
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "rg_representante", type: "text" },
-                    domProps: { value: _vm.$v.rg_representante.$model },
-                    on: {
-                      input: function($event) {
-                        return _vm.setRgRepresentante($event.target.value)
-                      }
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _vm.$v.rg_representante.$dirty &&
-              !_vm.$v.rg_representante.required
+              _vm.$v.solicitacao.cpf_representante.$dirty &&
+              _vm.$v.solicitacao.cpf_representante.invalid
                 ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            RG é obrigatório\n          ")
+                    _vm._v("\n            CPF inválido.\n          ")
                   ])
                 : _vm._e()
             ]
@@ -4488,15 +4449,37 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$v.solicitacao.uf_rg_representante.$model,
+                          expression:
+                            "$v.solicitacao.uf_rg_representante.$model"
+                        }
+                      ],
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                       attrs: {
                         id: "uf_rg_representante",
                         name: "uf_rg_representante"
                       },
-                      domProps: { value: _vm.$v.uf_rg_representante.$model },
                       on: {
                         change: function($event) {
-                          return _vm.setUfRgRepresentante($event.target.value)
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.uf_rg_representante,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -4525,10 +4508,77 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.uf_rg_representante.$dirty &&
-              !_vm.$v.uf_rg_representante.required
+              _vm.$v.solicitacao.uf_rg_representante.$dirty &&
+              !_vm.$v.solicitacao.uf_rg_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            UF do RG é obrigatório\n          ")
+                  ])
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                },
+                [
+                  _c("label", { attrs: { for: "rg_representante" } }, [
+                    _vm._v("RG")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.solicitacao.rg_representante.$model,
+                        expression: "$v.solicitacao.rg_representante.$model"
+                      }
+                    ],
+                    staticClass:
+                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                    attrs: { id: "rg_representante", type: "text" },
+                    domProps: {
+                      value: _vm.$v.solicitacao.rg_representante.$model
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.rg_representante,
+                          "$model",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm.$v.solicitacao.rg_representante.$dirty &&
+              !_vm.$v.solicitacao.rg_representante.required
+                ? _c("div", { staticClass: "text-red-600" }, [
+                    _vm._v("\n            RG é obrigatório\n          ")
                   ])
                 : _vm._e()
             ]
@@ -4564,15 +4614,36 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$v.solicitacao.sexo_representante.$model,
+                          expression: "$v.solicitacao.sexo_representante.$model"
+                        }
+                      ],
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                       attrs: {
                         id: "sexo_representante",
                         name: "sexo_representante"
                       },
-                      domProps: { value: _vm.$v.sexo_representante.$model },
                       on: {
                         change: function($event) {
-                          return _vm.setSexoRepresentante($event.target.value)
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.sexo_representante,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -4591,8 +4662,8 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.sexo_representante.$dirty &&
-              !_vm.$v.sexo_representante.required
+              _vm.$v.solicitacao.sexo_representante.$dirty &&
+              !_vm.$v.solicitacao.sexo_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Sexo é obrigatório\n          ")
                   ])
@@ -4630,18 +4701,37 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value:
+                            _vm.$v.solicitacao.profissao_representante.$model,
+                          expression:
+                            "$v.solicitacao.profissao_representante.$model"
+                        }
+                      ],
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                       attrs: {
                         id: "profissao_representante",
                         name: "profissao_representante"
                       },
-                      domProps: {
-                        value: _vm.$v.profissao_representante.$model
-                      },
                       on: {
                         change: function($event) {
-                          return _vm.setProfissaoRepresentante(
-                            $event.target.value
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.profissao_representante,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
                           )
                         }
                       }
@@ -4671,8 +4761,8 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.profissao_representante.$dirty &&
-              !_vm.$v.profissao_representante.required
+              _vm.$v.solicitacao.profissao_representante.$dirty &&
+              !_vm.$v.solicitacao.profissao_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v("\n            Profissão é obrigatória\n          ")
                   ])
@@ -4712,18 +4802,38 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value:
+                            _vm.$v.solicitacao.estado_civil_representante
+                              .$model,
+                          expression:
+                            "$v.solicitacao.estado_civil_representante.$model"
+                        }
+                      ],
                       staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                       attrs: {
                         id: "estado_civil_representante",
                         name: "estado_civil_representante"
                       },
-                      domProps: {
-                        value: _vm.$v.estado_civil_representante.$model
-                      },
                       on: {
                         change: function($event) {
-                          return _vm.setEstadoCivilRepresentante(
-                            $event.target.value
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.$v.solicitacao.estado_civil_representante,
+                            "$model",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
                           )
                         }
                       }
@@ -4753,8 +4863,8 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.estado_civil_representante.$dirty &&
-              !_vm.$v.estado_civil_representante.required
+              _vm.$v.solicitacao.estado_civil_representante.$dirty &&
+              !_vm.$v.solicitacao.estado_civil_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
                       "\n            Estado Civil é obrigatório\n          "
@@ -4792,21 +4902,43 @@ var render = function() {
                 },
                 [
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.trim",
+                        value: _vm.$v.solicitacao.nome_mae_representante.$model,
+                        expression:
+                          "$v.solicitacao.nome_mae_representante.$model",
+                        modifiers: { trim: true }
+                      }
+                    ],
                     staticClass:
                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                     attrs: { id: "nome_mae_representante", type: "text" },
-                    domProps: { value: _vm.$v.nome_mae_representante.$model },
+                    domProps: {
+                      value: _vm.$v.solicitacao.nome_mae_representante.$model
+                    },
                     on: {
                       input: function($event) {
-                        return _vm.setNomeMaeRepresentante($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.nome_mae_representante,
+                          "$model",
+                          $event.target.value.trim()
+                        )
+                      },
+                      blur: function($event) {
+                        return _vm.$forceUpdate()
                       }
                     }
                   })
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.nome_mae_representante.$dirty &&
-              !_vm.$v.nome_mae_representante.required
+              _vm.$v.solicitacao.nome_mae_representante.$dirty &&
+              !_vm.$v.solicitacao.nome_mae_representante.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
                       "\n            Nome da Mãe é obrigatório\n          "
@@ -4860,19 +4992,40 @@ var render = function() {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.$v.solicitacao
+                                .id_tipo_logradouro_representante.$model,
+                            expression:
+                              "\n                  $v.solicitacao.id_tipo_logradouro_representante.$model\n                "
+                          }
+                        ],
                         staticClass:
                           "p-1 px-2 outline-none w-full text-gray-800",
                         attrs: {
                           id: "id_tipo_logradouro_representante",
                           name: "id_tipo_logradouro_representante"
                         },
-                        domProps: {
-                          value: _vm.$v.id_tipo_logradouro_representante.$model
-                        },
                         on: {
                           change: function($event) {
-                            return _vm.setIdTipoLogradouroRepresentante(
-                              $event.target.value
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.$v.solicitacao
+                                .id_tipo_logradouro_representante,
+                              "$model",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
                             )
                           }
                         }
@@ -4906,8 +5059,8 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.id_tipo_logradouro_representante.$dirty &&
-                !_vm.$v.id_tipo_logradouro_representante.required
+                _vm.$v.solicitacao.id_tipo_logradouro_representante.$dirty &&
+                !_vm.$v.solicitacao.id_tipo_logradouro_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Tipo do Logradouro é obrigatório\n            "
@@ -4947,25 +5100,45 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value:
+                            _vm.$v.solicitacao.logradouro_representante.$model,
+                          expression:
+                            "$v.solicitacao.logradouro_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "logradouro_representante", type: "text" },
                       domProps: {
-                        value: _vm.$v.logradouro_representante.$model
+                        value:
+                          _vm.$v.solicitacao.logradouro_representante.$model
                       },
                       on: {
                         input: function($event) {
-                          return _vm.setLogradouroRepresentante(
-                            $event.target.value
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.logradouro_representante,
+                            "$model",
+                            $event.target.value.trim()
                           )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.logradouro_representante.$dirty &&
-                !_vm.$v.logradouro_representante.required
+                _vm.$v.solicitacao.logradouro_representante.$dirty &&
+                !_vm.$v.solicitacao.logradouro_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Logradouro é obrigatório\n            "
@@ -5003,21 +5176,43 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.numero_representante.$model,
+                          expression:
+                            "$v.solicitacao.numero_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "numero_representante" },
-                      domProps: { value: _vm.$v.numero_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.numero_representante.$model
+                      },
                       on: {
                         input: function($event) {
-                          return _vm.setNumeroRepresentante($event.target.value)
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.numero_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.numero_representante.$dirty &&
-                !_vm.$v.numero_representante.required
+                _vm.$v.solicitacao.numero_representante.$dirty &&
+                !_vm.$v.solicitacao.numero_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Número é obrigatório\n            "
@@ -5057,17 +5252,37 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value:
+                            _vm.$v.solicitacao.complemento_representante.$model,
+                          expression:
+                            "$v.solicitacao.complemento_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "complemento_representante", type: "text" },
                       domProps: {
-                        value: _vm.$v.complemento_representante.$model
+                        value:
+                          _vm.$v.solicitacao.complemento_representante.$model
                       },
                       on: {
-                        blur: function($event) {
-                          return _vm.setComplementoRepresentante(
-                            $event.target.value
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.complemento_representante,
+                            "$model",
+                            $event.target.value.trim()
                           )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
@@ -5115,7 +5330,9 @@ var render = function() {
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "cep_representante" },
-                      domProps: { value: _vm.$v.cep_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.cep_representante.$model
+                      },
                       on: {
                         blur: function($event) {
                           return _vm.setCepRepresentante($event.target.value)
@@ -5125,8 +5342,8 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.cep_representante.$dirty &&
-                !_vm.$v.cep_representante.required
+                _vm.$v.solicitacao.cep_representante.$dirty &&
+                !_vm.$v.solicitacao.cep_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Digite um CEP válido\n            "
@@ -5134,8 +5351,8 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.$v.cep_representante.$dirty &&
-                !_vm.$v.cep_representante.minLength
+                _vm.$v.solicitacao.cep_representante.$dirty &&
+                !_vm.$v.solicitacao.cep_representante.minLength
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v("\n              CEP inválido\n            ")
                     ])
@@ -5171,21 +5388,43 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.bairro_representante.$model,
+                          expression:
+                            "$v.solicitacao.bairro_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "bairro_representante", type: "text" },
-                      domProps: { value: _vm.$v.bairro_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.bairro_representante.$model
+                      },
                       on: {
                         input: function($event) {
-                          return _vm.setBairroRepresentante($event.target.value)
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.bairro_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.bairro_representante.$dirty &&
-                !_vm.$v.bairro_representante.required
+                _vm.$v.solicitacao.bairro_representante.$dirty &&
+                !_vm.$v.solicitacao.bairro_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Bairro é obrigatório\n            "
@@ -5223,21 +5462,43 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.cidade_representante.$model,
+                          expression:
+                            "$v.solicitacao.cidade_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "cidade_representante", type: "text" },
-                      domProps: { value: _vm.$v.cidade_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.cidade_representante.$model
+                      },
                       on: {
                         input: function($event) {
-                          return _vm.setCidadeRepresentante($event.target.value)
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.cidade_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.cidade_representante.$dirty &&
-                !_vm.$v.cidade_representante.required
+                _vm.$v.solicitacao.cidade_representante.$dirty &&
+                !_vm.$v.solicitacao.cidade_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Cidade é obrigatória\n            "
@@ -5277,16 +5538,37 @@ var render = function() {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.uf_representante.$model,
+                            expression: "$v.solicitacao.uf_representante.$model"
+                          }
+                        ],
                         staticClass:
                           "p-1 px-2 outline-none w-full text-gray-800",
                         attrs: {
                           id: "uf_representante",
                           name: "uf_representante"
                         },
-                        domProps: { value: _vm.$v.uf_representante.$model },
                         on: {
                           change: function($event) {
-                            return _vm.setUfRepresentante($event.target.value)
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.$v.solicitacao.uf_representante,
+                              "$model",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
@@ -5312,8 +5594,8 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.uf_representante.$dirty &&
-                !_vm.$v.uf_representante.required
+                _vm.$v.solicitacao.uf_representante.$dirty &&
+                !_vm.$v.solicitacao.uf_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v("\n              UF é obrigatório\n            ")
                     ])
@@ -5353,14 +5635,16 @@ var render = function() {
                         {
                           name: "mask",
                           rawName: "v-mask",
-                          value: "(##)#####-####",
-                          expression: "'(##)#####-####'"
+                          value: ["(##) ####-####", "(##) #####-####"],
+                          expression: "['(##) ####-####', '(##) #####-####']"
                         }
                       ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "celular_representante" },
-                      domProps: { value: _vm.$v.celular_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.celular_representante.$model
+                      },
                       on: {
                         input: function($event) {
                           return _vm.setCelularRepresentante(
@@ -5372,8 +5656,8 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.celular_representante.$dirty &&
-                !_vm.$v.celular_representante.required
+                _vm.$v.solicitacao.celular_representante.$dirty &&
+                !_vm.$v.solicitacao.celular_representante.required
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Celular/Telefone é obrigatório\n            "
@@ -5381,8 +5665,8 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.$v.celular_representante.$dirty &&
-                !_vm.$v.celular_representante.minLength
+                _vm.$v.solicitacao.celular_representante.$dirty &&
+                !_vm.$v.solicitacao.celular_representante.minLength
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              Celular/Telefone Inválido\n            "
@@ -5420,177 +5704,50 @@ var render = function() {
                   },
                   [
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.email_representante.$model,
+                          expression:
+                            "$v.solicitacao.email_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
                       staticClass:
                         "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                       attrs: { id: "email_representante", type: "email" },
-                      domProps: { value: _vm.$v.email_representante.$model },
+                      domProps: {
+                        value: _vm.$v.solicitacao.email_representante.$model
+                      },
                       on: {
                         input: function($event) {
-                          return _vm.setEmailRepresentante($event.target.value)
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.email_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.$v.email_representante.$dirty &&
-                (!_vm.$v.email_representante.required ||
-                  !_vm.$v.email_representante.email)
+                _vm.$v.solicitacao.email_representante.$dirty &&
+                (!_vm.$v.solicitacao.email_representante.required ||
+                  !_vm.$v.solicitacao.email_representante.email)
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
                         "\n              E-mail válido é obrigatório\n            "
                       )
                     ])
                   : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c("div", { staticClass: "flex flex-col" }, [
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mt-3" },
-                    [
-                      _c("input", {
-                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
-                        attrs: {
-                          type: "checkbox",
-                          name: "politicamente_exposto"
-                        }
-                      }),
-                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                        _vm._v("Pessoa Politicamente Exposta")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "cargo_politicamente_exposto" } },
-                              [_vm._v("Cargo")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                              attrs: {
-                                id: "cargo_politicamente_exposto",
-                                type: "text"
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c("div", { staticClass: "flex flex-col" }, [
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mt-3" },
-                    [
-                      _c("input", {
-                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
-                        attrs: {
-                          type: "checkbox",
-                          name: "parente_politicamente_exposto"
-                        }
-                      }),
-                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                        _vm._v("Parente Politicamente Exposta")
-                      ])
-                    ]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c(
-                      "label",
-                      { attrs: { for: "cargo_parente_politicamente_exposto" } },
-                      [_vm._v("Cargo")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: {
-                        id: "cargo_parente_politicamente_exposto",
-                        type: "text"
-                      }
-                    })
-                  ]
-                )
               ]
             )
           ])
