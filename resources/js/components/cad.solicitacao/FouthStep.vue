@@ -186,8 +186,7 @@
                 id="digito_conta"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 v-mask="'####'"
-                :value="$v.solicitacao.digito_conta.$model"
-                @input="setDigitoConta($event.target.value)"
+                v-model="$v.solicitacao.digito_conta.$model"
               />
             </div>
             <div

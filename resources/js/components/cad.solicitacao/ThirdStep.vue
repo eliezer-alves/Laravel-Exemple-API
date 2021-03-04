@@ -666,7 +666,6 @@
                 :disabled="$v.$invalid"
                 :class="{ 'opacity-40': $v.$invalid }"
                 class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-                @click="setDados"
               >
                 Avançar
               </button>
@@ -699,21 +698,6 @@ export default {
   components: { Solicitacao, Socios },
   data() {
     return {
-      uf_rg_representante: "",
-      nome_mae_representante: "",
-      id_tipo_logradouro_representante: "",
-      logradouro_representante: "",
-      numero_representante: null,
-      cep_representante: "",
-      complemento_representante: "",
-      bairro_representante: "",
-      cidade_representante: "",
-      uf_representante: "",
-      celular_representante: "",
-      email_representante: "",
-      estado_civil_representante: "",
-      profissao_representante: "",
-      sexo_representante: "",
       socios: 0,
     };
   },
@@ -723,6 +707,7 @@ export default {
   },
   async mounted() {
     await this.$store.dispatch("fetchDominios");
+    this.socios = this.solicitacao.socios.length;
   },
   validations: {
     solicitacao: {
@@ -792,14 +777,9 @@ export default {
     },
     async setCepRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
-      try {
-        let dadosEndereco = await this.$store.dispatch("getViaCep", value);
-      } catch (error) {
-        this.solicitacao.cep_representante = null;
-        this.$v.solicitacao.cep_representante.$touch();
-        console.log(error);
-      }
-      /* if (dadosEndereco.erro) {
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+
+      if (dadosEndereco.erro) {
         this.setBairroRepresentante("");
         document.querySelector("#bairro_representante").disabled = false;
 
@@ -833,54 +813,42 @@ export default {
           document.querySelector("#uf_representante").disabled = true;
 
         this.setComplementoRepresentante(dadosEndereco.complemento);
-      } */
-      this.solicitacao.cep_representante = value;
-      this.$v.solicitacao.cep_representante.$touch();
+        this.solicitacao.cep_representante = value;
+        this.$v.solicitacao.cep_representante.$touch();
+      }
     },
     setCelularRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.celular_representante = value;
       this.$v.solicitacao.celular_representante.$touch();
     },
-    setSexoRepresentante(value) {
-      this.sexo_representante = value;
-      this.$v.sexo_representante.$touch();
-    },
-    setNomeMaeRepresentante(value) {
-      this.nome_mae_representante = value;
-      this.$v.nome_mae_representante.$touch();
-    },
-    setProfissaoRepresentante(value) {
-      this.profissao_representante = value;
-      this.$v.profissao_representante.$touch();
-    },
     setIdTipoLogradouroRepresentante(value) {
-      this.id_tipo_logradouro_representante = value;
-      this.$v.id_tipo_logradouro_representante.$touch();
+      this.solicitacao.id_tipo_logradouro_representante = value;
+      this.$v.solicitacao.id_tipo_logradouro_representante.$touch();
     },
     setLogradouroRepresentante(value) {
-      this.logradouro_representante = value;
-      this.$v.logradouro_representante.$touch();
+      this.solicitacao.logradouro_representante = value;
+      this.$v.solicitacao.logradouro_representante.$touch();
     },
     setNumeroRepresentante(value) {
-      this.numero_representante = value;
-      this.$v.numero_representante.$touch();
+      this.solicitacao.numero_representante = value;
+      this.$v.solicitacao.numero_representante.$touch();
     },
     setComplementoRepresentante(value) {
-      this.complemento_representante = value;
-      this.$v.complemento_representante.$touch();
+      this.solicitacao.complemento_representante = value;
+      this.$v.solicitacao.complemento_representante.$touch();
     },
     setBairroRepresentante(value) {
-      this.bairro_representante = value;
-      this.$v.bairro_representante.$touch();
+      this.solicitacao.bairro_representante = value;
+      this.$v.solicitacao.bairro_representante.$touch();
     },
     setCidadeRepresentante(value) {
-      this.cidade_representante = value;
-      this.$v.cidade_representante.$touch();
+      this.solicitacao.cidade_representante = value;
+      this.$v.solicitacao.cidade_representante.$touch();
     },
     setUfRepresentante(value) {
-      this.uf_representante = value;
-      this.$v.uf_representante.$touch();
+      this.solicitacao.uf_representante = value;
+      this.$v.solicitacao.uf_representante.$touch();
     },
     addSocioElement() {
       this.socios++;
@@ -890,28 +858,6 @@ export default {
         this.errors.invalid = false;
         --this.socios;
       }
-    },
-    setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        nome_representante: this.nome_representante,
-        cpf_representante: this.cpf_representante,
-        rg_representante: this.rg_representante,
-        uf_rg_representante: this.uf_rg_representante,
-        nome_mae_representante: this.nome_mae_representante,
-        id_tipo_logradouro_representante: this.id_tipo_logradouro_representante,
-        logradouro_representante: this.logradouro_representante,
-        numero_representante: this.numero_representante,
-        cep_representante: this.cep_representante,
-        complemento_representante: this.complemento_representante,
-        bairro_representante: this.bairro_representante,
-        cidade_representante: this.cidade_representante,
-        uf_representante: this.uf_representante,
-        celular_representante: this.celular_representante,
-        email_representante: this.email_representante,
-        estado_civil_representante: this.estado_civil_representante,
-        profissao_representante: this.profissao_representante,
-        sexo_representante: this.sexo_representante,
-      });
     },
   },
 };

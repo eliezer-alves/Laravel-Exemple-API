@@ -253,7 +253,7 @@
                 placeholder="#####-###"
                 v-mask="'#####-###'"
                 :value="$v.solicitacao.cep.$model"
-                @input="setCep($event.target.value)"
+                @blur="setCep($event.target.value)"
               />
             </div>
             <div
@@ -646,7 +646,7 @@ export default {
       this.$v.solicitacao.rendimento_mensal.$touch();
     },
     async setCep(value) {
-      /* let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+      let dadosEndereco = await this.$store.dispatch("getViaCep", value);
       if (dadosEndereco.erro) {
         this.setBairro("");
         document.querySelector("#bairro").disabled = false;
@@ -661,8 +661,8 @@ export default {
         document.querySelector("#uf").disabled = false;
         this.setComplemento("");
 
-        this.cep = null;
-        this.$v.cep.$touch();
+        this.solicitacao.cep = null;
+        this.$v.solicitacao.cep.$touch();
       } else {
         this.setBairro(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "")
@@ -681,13 +681,32 @@ export default {
           document.querySelector("#uf").disabled = true;
 
         this.setComplemento(dadosEndereco.complemento);
-        
-       }
-        */
 
-      this.solicitacao.cep = value;
-      this.$v.solicitacao.cep.$touch();
+        this.solicitacao.cep = value;
+        this.$v.solicitacao.cep.$touch();
+      }
     },
+    setBairro(value) {
+      this.solicitacao.bairro = value;
+      this.$v.solicitacao.bairro.$touch();
+    },
+    setCidade(value) {
+      this.solicitacao.cidade = value;
+      this.$v.solicitacao.cidade.$touch();
+    },
+    setLogradouro(value) {
+      this.solicitacao.logradouro = value;
+      this.$v.solicitacao.logradouro.$touch();
+    },
+    setUf(value) {
+      this.solicitacao.uf = value;
+      this.$v.solicitacao.uf.$touch();
+    },
+    setComplemento(value) {
+      this.solicitacao.complemento = value;
+      this.$v.solicitacao.complemento.$touch();
+    },
+
     setTelefone(value) {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.telefone = value;

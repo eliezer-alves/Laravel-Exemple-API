@@ -644,7 +644,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2218,6 +2217,12 @@ var render = function() {
                         rawName: "v-mask",
                         value: "####",
                         expression: "'####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.solicitacao.digito_conta.$model,
+                        expression: "$v.solicitacao.digito_conta.$model"
                       }
                     ],
                     staticClass:
@@ -2226,7 +2231,14 @@ var render = function() {
                     domProps: { value: _vm.$v.solicitacao.digito_conta.$model },
                     on: {
                       input: function($event) {
-                        return _vm.setDigitoConta($event.target.value)
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$v.solicitacao.digito_conta,
+                          "$model",
+                          $event.target.value
+                        )
                       }
                     }
                   })

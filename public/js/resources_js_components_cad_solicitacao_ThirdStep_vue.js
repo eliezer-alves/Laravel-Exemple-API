@@ -404,10 +404,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helper.js */ "./resources/js/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -896,10 +895,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["kSocio"],
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["dominios", "solicitacao", "errors"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
     return {
       nome_socio: null,
@@ -945,50 +943,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   validations: {
     nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     complemento_socio: {},
     numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     }
   },
   methods: {
@@ -1011,7 +1009,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.cpf_socio = value;
       } else {
         value = value.replace(/[^\d]+/g, "");
-        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_2__.validaCPF)(value);
+        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
 
         if (isInvalid) {
           this.cpf_socio = null;
@@ -1905,7 +1903,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -1919,21 +1916,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      uf_rg_representante: "",
-      nome_mae_representante: "",
-      id_tipo_logradouro_representante: "",
-      logradouro_representante: "",
-      numero_representante: null,
-      cep_representante: "",
-      complemento_representante: "",
-      bairro_representante: "",
-      cidade_representante: "",
-      uf_representante: "",
-      celular_representante: "",
-      email_representante: "",
-      estado_civil_representante: "",
-      profissao_representante: "",
-      sexo_representante: "",
       socios: 0
     };
   },
@@ -1950,6 +1932,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               return _this.$store.dispatch("fetchDominios");
 
             case 2:
+              _this.socios = _this.solicitacao.socios.length;
+
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -2049,62 +2034,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context3.prev = _context3.next) {
               case 0:
                 value = value.replace(/[^\d]+/g, "");
-                _context3.prev = 1;
-                _context3.next = 4;
+                _context3.next = 3;
                 return _this3.$store.dispatch("getViaCep", value);
 
-              case 4:
+              case 3:
                 dadosEndereco = _context3.sent;
-                _context3.next = 12;
-                break;
 
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](1);
-                _this3.solicitacao.cep_representante = null;
+                if (dadosEndereco.erro) {
+                  _this3.setBairroRepresentante("");
 
-                _this3.$v.solicitacao.cep_representante.$touch();
-
-                console.log(_context3.t0);
-
-              case 12:
-                /* if (dadosEndereco.erro) {
-                  this.setBairroRepresentante("");
                   document.querySelector("#bairro_representante").disabled = false;
-                    this.setCidadeRepresentante("");
+
+                  _this3.setCidadeRepresentante("");
+
                   document.querySelector("#cidade_representante").disabled = false;
-                    this.setLogradouroRepresentante("");
+
+                  _this3.setLogradouroRepresentante("");
+
                   document.querySelector("#logradouro_representante").disabled = false;
-                    this.setUfRepresentante("");
+
+                  _this3.setUfRepresentante("");
+
                   document.querySelector("#uf_representante").disabled = false;
-                  this.setComplementoRepresentante("");
-                    this.cep_representante = null;
-                  this.$v.cep_representante.$touch();
+
+                  _this3.setComplementoRepresentante("");
+
+                  _this3.cep_representante = null;
+
+                  _this3.$v.cep_representante.$touch();
                 } else {
-                  this.setBairroRepresentante(dadosEndereco.bairro);
-                  if (dadosEndereco.bairro != "")
-                    document.querySelector("#bairro_representante").disabled = true;
-                    this.setCidadeRepresentante(dadosEndereco.localidade);
-                  if (dadosEndereco.localidade != "")
-                    document.querySelector("#cidade_representante").disabled = true;
-                    this.setLogradouroRepresentante(dadosEndereco.logradouro);
-                  if (dadosEndereco.logradouro != "")
-                    document.querySelector("#logradouro_representante").disabled = true;
-                    this.setUfRepresentante(dadosEndereco.uf);
-                  if (dadosEndereco.uf != "")
-                    document.querySelector("#uf_representante").disabled = true;
-                    this.setComplementoRepresentante(dadosEndereco.complemento);
-                } */
-                _this3.solicitacao.cep_representante = value;
+                  _this3.setBairroRepresentante(dadosEndereco.bairro);
 
-                _this3.$v.solicitacao.cep_representante.$touch();
+                  if (dadosEndereco.bairro != "") document.querySelector("#bairro_representante").disabled = true;
 
-              case 14:
+                  _this3.setCidadeRepresentante(dadosEndereco.localidade);
+
+                  if (dadosEndereco.localidade != "") document.querySelector("#cidade_representante").disabled = true;
+
+                  _this3.setLogradouroRepresentante(dadosEndereco.logradouro);
+
+                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro_representante").disabled = true;
+
+                  _this3.setUfRepresentante(dadosEndereco.uf);
+
+                  if (dadosEndereco.uf != "") document.querySelector("#uf_representante").disabled = true;
+
+                  _this3.setComplementoRepresentante(dadosEndereco.complemento);
+
+                  _this3.solicitacao.cep_representante = value;
+
+                  _this3.$v.solicitacao.cep_representante.$touch();
+                }
+
+              case 5:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[1, 7]]);
+        }, _callee3);
       }))();
     },
     setCelularRepresentante: function setCelularRepresentante(value) {
@@ -2112,45 +2099,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.solicitacao.celular_representante = value;
       this.$v.solicitacao.celular_representante.$touch();
     },
-    setSexoRepresentante: function setSexoRepresentante(value) {
-      this.sexo_representante = value;
-      this.$v.sexo_representante.$touch();
-    },
-    setNomeMaeRepresentante: function setNomeMaeRepresentante(value) {
-      this.nome_mae_representante = value;
-      this.$v.nome_mae_representante.$touch();
-    },
-    setProfissaoRepresentante: function setProfissaoRepresentante(value) {
-      this.profissao_representante = value;
-      this.$v.profissao_representante.$touch();
-    },
     setIdTipoLogradouroRepresentante: function setIdTipoLogradouroRepresentante(value) {
-      this.id_tipo_logradouro_representante = value;
-      this.$v.id_tipo_logradouro_representante.$touch();
+      this.solicitacao.id_tipo_logradouro_representante = value;
+      this.$v.solicitacao.id_tipo_logradouro_representante.$touch();
     },
     setLogradouroRepresentante: function setLogradouroRepresentante(value) {
-      this.logradouro_representante = value;
-      this.$v.logradouro_representante.$touch();
+      this.solicitacao.logradouro_representante = value;
+      this.$v.solicitacao.logradouro_representante.$touch();
     },
     setNumeroRepresentante: function setNumeroRepresentante(value) {
-      this.numero_representante = value;
-      this.$v.numero_representante.$touch();
+      this.solicitacao.numero_representante = value;
+      this.$v.solicitacao.numero_representante.$touch();
     },
     setComplementoRepresentante: function setComplementoRepresentante(value) {
-      this.complemento_representante = value;
-      this.$v.complemento_representante.$touch();
+      this.solicitacao.complemento_representante = value;
+      this.$v.solicitacao.complemento_representante.$touch();
     },
     setBairroRepresentante: function setBairroRepresentante(value) {
-      this.bairro_representante = value;
-      this.$v.bairro_representante.$touch();
+      this.solicitacao.bairro_representante = value;
+      this.$v.solicitacao.bairro_representante.$touch();
     },
     setCidadeRepresentante: function setCidadeRepresentante(value) {
-      this.cidade_representante = value;
-      this.$v.cidade_representante.$touch();
+      this.solicitacao.cidade_representante = value;
+      this.$v.solicitacao.cidade_representante.$touch();
     },
     setUfRepresentante: function setUfRepresentante(value) {
-      this.uf_representante = value;
-      this.$v.uf_representante.$touch();
+      this.solicitacao.uf_representante = value;
+      this.$v.solicitacao.uf_representante.$touch();
     },
     addSocioElement: function addSocioElement() {
       this.socios++;
@@ -2160,28 +2135,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.errors.invalid = false;
         --this.socios;
       }
-    },
-    setDados: function setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        nome_representante: this.nome_representante,
-        cpf_representante: this.cpf_representante,
-        rg_representante: this.rg_representante,
-        uf_rg_representante: this.uf_rg_representante,
-        nome_mae_representante: this.nome_mae_representante,
-        id_tipo_logradouro_representante: this.id_tipo_logradouro_representante,
-        logradouro_representante: this.logradouro_representante,
-        numero_representante: this.numero_representante,
-        cep_representante: this.cep_representante,
-        complemento_representante: this.complemento_representante,
-        bairro_representante: this.bairro_representante,
-        cidade_representante: this.cidade_representante,
-        uf_representante: this.uf_representante,
-        celular_representante: this.celular_representante,
-        email_representante: this.email_representante,
-        estado_civil_representante: this.estado_civil_representante,
-        profissao_representante: this.profissao_representante,
-        sexo_representante: this.sexo_representante
-      });
     }
   }
 });
@@ -5830,8 +5783,7 @@ var render = function() {
                       staticClass:
                         "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
                       class: { "opacity-40": _vm.$v.$invalid },
-                      attrs: { disabled: _vm.$v.$invalid },
-                      on: { click: _vm.setDados }
+                      attrs: { disabled: _vm.$v.$invalid }
                     },
                     [_vm._v("\n              Avançar\n            ")]
                   )
