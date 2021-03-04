@@ -149,19 +149,22 @@
       </div>
       <div class="flex p-2 mt-4">
         <button
+          @mouseenter="$v.$touch()"
           class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
         >
           Finalizar
         </button>
         <div class="flex-auto flex flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-2' }">
-            <button
-              :disabled="$v.$invalid"
-              :class="{ 'opacity-40': $v.$invalid }"
-              class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-            >
-              Avançar
-            </button>
+            <div @mouseenter="$v.$touch()">
+              <button
+                :disabled="$v.$invalid"
+                :class="{ 'opacity-40': $v.$invalid }"
+                class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+              >
+                Avançar
+              </button>
+            </div>
           </router-link>
           <button
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"

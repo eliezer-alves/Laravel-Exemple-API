@@ -22,7 +22,7 @@
             Selecione o arquivo
           </span>
           <span
-            class="mt-2 text-base text-blue-500 leading-normal"
+            class="mt-2 text-base text-yellow-500 leading-normal"
             v-if="!validDoc"
           >
             Documento repetido

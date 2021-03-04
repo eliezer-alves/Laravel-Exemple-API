@@ -364,6 +364,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -401,10 +419,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
 //
 //
 //
@@ -1331,7 +1345,11 @@ var render = function() {
                 staticClass:
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
-                  "bg-teal-700": _vm.$router.currentRoute.name === "solicitacao"
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao" ||
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -1345,7 +1363,10 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao"
+                            _vm.$router.currentRoute.name === "solicitacao" ||
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -1421,7 +1442,9 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-2"
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -1435,7 +1458,9 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-2"
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -1510,7 +1535,8 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-3"
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -1524,7 +1550,8 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-3"
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2122,7 +2149,7 @@ var render = function() {
               _vm.$v.digito_conta.$dirty && !_vm.$v.digito_conta.required
                 ? _c("div", { staticClass: "text-red-600" }, [
                     _vm._v(
-                      "\n            Digito da Conta é obrigatório\n          "
+                      "\n            Dígito da Conta é obrigatório\n          "
                     )
                   ])
                 : _vm._e()
@@ -2133,28 +2160,31 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [
         _c(
-          "button",
+          "div",
           {
-            staticClass:
-              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+            on: {
+              mouseenter: function($event) {
+                return _vm.$v.$touch()
+              }
+            }
           },
-          [_vm._v("\n        Finalizar\n      ")]
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+              },
+              [_vm._v("\n          Finalizar\n        ")]
+            )
+          ]
         ),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "finalizar" } } }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-                },
-                [_vm._v("\n            Finalizar\n          ")]
-              )
-            ]),
+            _c("router-link", { attrs: { to: { name: "finalizar" } } }),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
               _c(

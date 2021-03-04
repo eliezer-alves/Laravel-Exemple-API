@@ -657,14 +657,16 @@
         </button>
         <div class="flex-auto flex flex-row-reverse">
           <router-link :to="{ name: 'solicitacao-4' }">
-            <button
-              :disabled="$v.$invalid"
-              :class="{ 'opacity-40': $v.$invalid }"
-              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-              @click="setDados"
-            >
-              Avançar
-            </button>
+            <div @mouseenter="$v.$touch()">
+              <button
+                :disabled="$v.$invalid"
+                :class="{ 'opacity-40': $v.$invalid }"
+                class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                @click="setDados"
+              >
+                Avançar
+              </button>
+            </div>
           </router-link>
           <router-link :to="{ name: 'solicitacao-2' }">
             <button

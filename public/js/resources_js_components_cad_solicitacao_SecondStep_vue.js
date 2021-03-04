@@ -364,6 +364,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -495,6 +513,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -1932,7 +1952,11 @@ var render = function() {
                 staticClass:
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
-                  "bg-teal-700": _vm.$router.currentRoute.name === "solicitacao"
+                  "bg-teal-700":
+                    _vm.$router.currentRoute.name === "solicitacao" ||
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -1946,7 +1970,10 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao"
+                            _vm.$router.currentRoute.name === "solicitacao" ||
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2022,7 +2049,9 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-2"
+                    _vm.$router.currentRoute.name === "solicitacao-2" ||
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -2036,7 +2065,9 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-2"
+                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2111,7 +2142,8 @@ var render = function() {
                   "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
                 class: {
                   "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-3"
+                    _vm.$router.currentRoute.name === "solicitacao-3" ||
+                    _vm.$router.currentRoute.name === "solicitacao-4"
                 }
               },
               [
@@ -2125,7 +2157,8 @@ var render = function() {
                         staticClass: "w-full",
                         class: {
                           "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-3"
+                            _vm.$router.currentRoute.name === "solicitacao-3" ||
+                            _vm.$router.currentRoute.name === "solicitacao-4"
                         },
                         attrs: {
                           xmlns: "http://www.w3.org/2000/svg",
@@ -2322,7 +2355,8 @@ var render = function() {
                 ? _c(
                     "span",
                     {
-                      staticClass: "mt-2 text-base text-blue-500 leading-normal"
+                      staticClass:
+                        "mt-2 text-base text-yellow-500 leading-normal"
                     },
                     [_vm._v("\n          Documento repetido\n        ")]
                   )
@@ -3714,14 +3748,26 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
               _c(
-                "button",
+                "div",
                 {
-                  staticClass:
-                    "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                  class: { "opacity-40": _vm.$v.$invalid },
-                  attrs: { disabled: _vm.$v.$invalid }
+                  on: {
+                    mouseenter: function($event) {
+                      return _vm.$v.$touch()
+                    }
+                  }
                 },
-                [_vm._v("\n            Avançar\n          ")]
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-base mx-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                      class: { "opacity-40": _vm.$v.$invalid },
+                      attrs: { disabled: _vm.$v.$invalid }
+                    },
+                    [_vm._v("\n              Avançar\n            ")]
+                  )
+                ]
               )
             ]),
             _vm._v(" "),
