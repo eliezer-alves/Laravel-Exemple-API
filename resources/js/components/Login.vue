@@ -11,8 +11,8 @@
         <div class="flex justify-center">
           <span
             class="px-1 text-sm font-semibold text-yellow-200  w-full text-center"
-            v-if="errors.error"
-            >{{ errors.error }}</span
+            v-if="errors.error == 'invalid_grant'"
+            >Usuário/Senha inválida</span
           >
         </div>
         <div class="mt-1 text-sm">
