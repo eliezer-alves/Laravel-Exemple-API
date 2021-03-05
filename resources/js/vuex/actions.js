@@ -5,7 +5,7 @@ let actions = {
     async login({ commit }, cliente) {
 
         cliente.username = await cliente.username.replace(/[^\d]+/g, '');
-        console.log(cliente.username);
+        // console.log(cliente.username);
 
         params.append('username', cliente.username);
         params.append('password', cliente.password);

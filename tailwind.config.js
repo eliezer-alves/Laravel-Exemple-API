@@ -23,14 +23,14 @@ module.exports = {
                 current: 'currentColor',
                 teal: colors.teal,
             },
-            opacity: ['disabled'],
+
         },
 
     },
 
     variants: {
         extend: {
-
+            opacity: ['disabled'],
         },
     },
 

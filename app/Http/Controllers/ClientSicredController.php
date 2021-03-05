@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ClientSicredService;
+
 use Illuminate\Http\Request;
 
 class ClientSicredController extends Controller
 {
+    protected $clientSicredService;
+
+    public function __construct(ClientSicredService $clientSicredService)
+    {
+        $this->clientSicredService = $clientSicredService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,9 @@ class ClientSicredController extends Controller
      */
     public function index()
     {
-        return view('admin.client_sicred');
+        $dados['clients'] = $this->clientSicredService->all();
+
+        return view('admin.client_sicred', $dados);
     }
 
     /**

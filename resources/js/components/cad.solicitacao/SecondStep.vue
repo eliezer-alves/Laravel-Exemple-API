@@ -526,19 +526,42 @@
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Arquivos do Contrato Social
         </div>
-        <contrato-upload v-for="doc in docs" :key="doc"></contrato-upload>
+        <div
+          class="flex justify-between"
+          v-for="docElement in docElements"
+          :key="docElement"
+        >
+          <contrato-upload></contrato-upload>
+          <svg
+            @click="removeDocElement(docElement)"
+            class="cursor-pointer text-red-600 hover:text-red-800 self-center"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            width="50"
+            height="50"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm1 8a1 1 0 100 2h6a1 1 0 100-2H7z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
         <div class="flex flex-row-reverse my-2">
-          <button
-            @click="removeDocElement"
+          <!-- @click="removeDocElement" -->
+          <!-- <button
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
           >
             Remover
-          </button>
+          </button> -->
           <button
             @click="addDocElement"
-            :disabled="this.docs > this.solicitacao.docs.length"
+            :disabled="this.docElements > this.solicitacao.docs.length"
             :class="
-              this.docs > this.solicitacao.docs.length ? 'opacity-40' : ''
+              this.docElements > this.solicitacao.docs.length
+                ? 'opacity-40'
+                : ''
             "
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
@@ -604,7 +627,7 @@ export default {
         prefix: "R$ ",
         precision: 2,
       },
-      docs: 1,
+      docElements: 0,
     };
   },
   validations: {
@@ -713,13 +736,13 @@ export default {
       this.$v.solicitacao.telefone.$touch();
     },
     addDocElement() {
-      this.docs++;
+      this.docElements++;
     },
-    removeDocElement() {
-      if (this.docs > 0) {
-        if (this.docs === this.solicitacao.docs.length)
-          this.$store.commit("UNSET_DOC_FILES");
-        --this.docs;
+    removeDocElement(kDoc) {
+      // console.log(kDoc);
+      if (this.docElements > 0) {
+        this.$store.commit("UNSET_DOC_FILES", { kDoc });
+        this.docElements--;
       }
     },
   },

@@ -25,13 +25,17 @@ let mutations = {
         state.atividades.splice(index, 1)
     },
     SET_DOC_FILES(state, payload) {
-        let index = state.solicitacao.docs.findIndex(item => item.name == payload.name);
-        if (index >= 0)
-            state.solicitacao.docs.splice(index, 1)
         state.solicitacao.docs.push(payload);
     },
-    UNSET_DOC_FILES(state) {
-        state.solicitacao.docs.pop()
+    UNSET_DOC_FILES(state, payload) {
+        console.log(state.solicitacao.docs);
+        let kDoc = payload.kDoc;
+        kDoc--;
+
+        console.log(kDoc);
+        state.solicitacao.docs.splice(kDoc, 1);
+        
+        console.log(state.solicitacao.docs);
     },
     FETCH_DOMINIO(state, payload) {
         return state.dominios = payload

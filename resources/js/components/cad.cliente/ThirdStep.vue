@@ -1,5 +1,5 @@
 <template>
-  <cadastro-cliente :validation="validation">
+  <cadastro-cliente>
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">CEP</span>
       <input
@@ -8,19 +8,22 @@
         placeholder="37750-000"
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.cep"
         v-mask="'#####-###'"
+        :value="$v.cliente.cep.$model"
         @blur="setCepCliente($event.target.value)"
       />
+      <div
+        class="text-red-600"
+        v-if="$v.cliente.cep.$dirty && !$v.cliente.cep.required"
+      >
+        CEP Inválido.
+      </div>
       <span
         class="px-1 text-sm font-semibold text-red-600"
         v-for="cep in errors.cep"
         :key="cep"
         >{{ cep }}</span
       >
-      <div class="text-red-600" v-if="$v.cep.$dirty && !$v.cep.required">
-        CEP Inválido
-      </div>
     </div>
     <div class="py-1">
       <span class="px-1 text-sm text-gray-200">UF</span>
@@ -28,12 +31,19 @@
         id="uf"
         name="uf"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.uf"
+        v-model="$v.cliente.uf.$model"
       >
-        <option :value="'MG'">Minas Gerais</option>
-        <option :value="'RJ'">Rio de Janeiro</option>
-        <option :value="'SP'">São Paulo</option>
+        <option value="">--</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="SP">São Paulo</option>
       </select>
+      <div
+        class="text-red-600"
+        v-if="$v.cliente.uf.$dirty && !$v.cliente.uf.required"
+      >
+        UF Inválida.
+      </div>
       <span
         class="px-1 text-sm font-semibold text-red-600"
         v-for="uf in errors.uf"
@@ -48,8 +58,14 @@
         name="cidade"
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.cidade"
+        v-model="$v.cliente.cidade.$model"
       />
+      <div
+        class="text-red-600"
+        v-if="$v.cliente.cidade.$dirty && !$v.cliente.cidade.required"
+      >
+        Cidade Inválida.
+      </div>
       <span
         class="px-1 text-sm font-semibold text-red-600"
         v-for="cidade in errors.cidade"
@@ -64,8 +80,14 @@
         name="bairro"
         type="text"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="cliente.bairro"
+        v-model="$v.cliente.bairro.$model"
       />
+      <div
+        class="text-red-600"
+        v-if="$v.cliente.bairro.$dirty && !$v.cliente.bairro.required"
+      >
+        Bairro Inválido.
+      </div>
       <span
         class="px-1 text-sm font-semibold text-red-600"
         v-for="bairro in errors.bairro"
@@ -79,12 +101,22 @@
         id="id_tipo_logradouro"
         name="id_tipo_logradouro"
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model.number="cliente.id_tipo_logradouro"
+        v-model="$v.cliente.id_tipo_logradouro.$model"
       >
+        <option value="">--</option>
         <option value="0">Avenida</option>
         <option value="1">Praça</option>
         <option value="2">Rua</option>
       </select>
+      <div
+        class="text-red-600"
+        v-if="
+          $v.cliente.id_tipo_logradouro.$dirty &&
+          !$v.cliente.id_tipo_logradouro.required
+        "
+      >
+        Tipo de Logradouro Inválido.
+      </div>
       <span
         class="px-1 text-sm font-semibold text-red-600"
         v-for="id_tipo_logradouro in errors.id_tipo_logradouro"
@@ -100,8 +132,14 @@
           name="logradouro"
           type="text"
           class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-          v-model="cliente.logradouro"
+          v-model.trim="$v.cliente.logradouro.$model"
         />
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.logradouro.$dirty && !$v.cliente.logradouro.required"
+        >
+          Logradouro Inválido.
+        </div>
         <span
           class="px-1 text-sm font-semibold text-red-600"
           v-for="logradouro in errors.logradouro"
@@ -114,10 +152,16 @@
         <input
           id="numero"
           name="numero"
-          type="number"
+          type="text"
           class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-          v-model="cliente.numero"
+          v-model="$v.cliente.numero.$model"
         />
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.numero.$dirty && !$v.cliente.numero.required"
+        >
+          Número Inválido.
+        </div>
         <span
           class="px-1 text-sm font-semibold text-red-600"
           v-for="numero in errors.numero"
@@ -134,7 +178,7 @@
           name="complemento"
           type="text"
           class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-          v-model="cliente.complemento"
+          v-model="$v.cliente.complemento.$model"
         />
         <span
           class="px-1 text-sm font-semibold text-red-600"
@@ -144,8 +188,26 @@
         >
       </div>
     </div>
+    <div class="flex justify-between">
+      <router-link :to="{ name: 'cadastro-cliente-2' }">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="text-gray-200 hover:text-teal-600 w-12"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 16l-4-4m0 0l4-4m-4 4h18"
+          />
+        </svg>
+      </router-link>
+    </div>
     <button
-      @click.prevent="cadastrarCliente()"
+      @click.prevent="validateFields"
       class="my-2 w-full text-center text-gray-200 text-lg font-bold bg-green-800 hover:bg-green-900 p-3 rounded-md"
     >
       Cadastrar
@@ -160,49 +222,31 @@ import { required } from "vuelidate/lib/validators";
 
 export default {
   components: {
-    CadastroCliente
+    CadastroCliente,
   },
-  data() {
-    return {
-      cep: "",
-      uf: "",
-      bairro: "",
-      cidade: "",
-      logradouro: "",
-      complemento: ""
-    };
-  },
-  beforeCreate: function() {
+  beforeCreate: function () {
     document.body.className = "login";
   },
   computed: {
     ...mapGetters(["cliente", "errors"]),
     ...mapFields(["cliente", "errors"]),
-    validation: function() {
-      if (!this.cliente.cep) return false;
-      if (!this.cliente.uf) return false;
-      if (!this.cliente.cidade) return false;
-      if (!this.cliente.bairro) return false;
-      if (!this.cliente.id_tipo_logradouro) return false;
-      if (!this.cliente.logradouro) return false;
-      if (!this.cliente.numero) return false;
-      return true;
-    }
   },
   validations: {
-    cep: {
-      required
+    cliente: {
+      cep: { required },
+      uf: { required },
+      bairro: { required },
+      cidade: { required },
+      id_tipo_logradouro: { required },
+      logradouro: { required },
+      numero: { required },
+      complemento: {},
     },
-    uf: {},
-    bairro: {},
-    cidade: {},
-    logradouro: {},
-    complemento: {}
   },
   methods: {
     async cadastrarCliente() {
       const response = await this.$store.dispatch("createCliente", {
-        ...this.cliente
+        ...this.cliente,
       });
       console.log(response);
       if (!response) this.$router.push("cadastro-cliente");
@@ -212,24 +256,16 @@ export default {
         this.$router.push("login");
       }
     },
-    setLogradouro(value) {
-      this.cliente.logradouro = value;
-    },
-    setBairro(value) {
-      this.cliente.bairro = value;
-    },
-    setCidade(value) {
-      this.cliente.cidade = value;
-    },
-    setUf(value) {
-      this.cliente.uf = value;
-    },
-    setComplemento(value) {
-      this.cliente.complemento = value;
+    validateFields() {
+      if (!this.$v.$invalid) {
+        this.cadastrarCliente();
+      }
+      this.$v.$touch();
     },
     async setCepCliente(value) {
       value = value.replace(/[^\d]+/g, "");
       let dadosEndereco = await this.$store.dispatch("getViaCep", value);
+
       if (dadosEndereco.erro) {
         this.setBairro("");
         document.querySelector("#bairro").disabled = false;
@@ -246,8 +282,8 @@ export default {
         this.setComplemento("");
         document.querySelector("#complemento").value = "";
 
-        this.cep = null;
-        this.$v.cep.$touch();
+        this.$v.cliente.cep.$model = null;
+        this.$v.cliente.cep.$touch();
       } else {
         this.setBairro(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "") {
@@ -273,11 +309,26 @@ export default {
 
         this.setComplemento(dadosEndereco.complemento);
 
-        this.cep = value;
-        this.$v.cep.$touch();
+        this.$v.cliente.cep.$model = value;
+        this.$v.cliente.cep.$touch();
       }
-    }
-  }
+    },
+    setLogradouro(value) {
+      this.$v.cliente.logradouro.$model = value;
+    },
+    setBairro(value) {
+      this.$v.cliente.bairro.$model = value;
+    },
+    setCidade(value) {
+      this.$v.cliente.cidade.$model = value;
+    },
+    setUf(value) {
+      this.$v.cliente.uf.$model = value;
+    },
+    setComplemento(value) {
+      this.$v.cliente.complemento.$model = value;
+    },
+  },
 };
 </script>
 <style>

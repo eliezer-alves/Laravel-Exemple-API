@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ModeloSicredService;
+
 use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
 {
+    protected $modeloSicredService;
+
+    public function __construct(ModeloSicredService $modeloSicredService)
+    {
+        $this->modeloSicredService = $modeloSicredService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,9 @@ class ModeloSicredController extends Controller
      */
     public function index()
     {
-        return view('admin.modelo_sicred');
+        $dados['modelos'] = $this->modeloSicredService->all();
+
+        return view('admin.modelo_sicred', $dados);
     }
 
     /**

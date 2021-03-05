@@ -469,13 +469,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["solicitacao"])),
   methods: {
     fileHandler: function fileHandler() {
+      this.file = this.$refs.file.files[0];
+      this.validDoc = this.validDocument();
+      if (this.validDoc) this.$store.commit("SET_DOC_FILES", this.file);
+    },
+    validDocument: function validDocument() {
       var _this = this;
 
-      this.file = this.$refs.file.files[0];
-      this.validDoc = this.solicitacao.docs.findIndex(function (item) {
-        return item.name === _this.file.name;
-      }) >= 0 ? false : true;
-      this.$store.commit("SET_DOC_FILES", this.file);
+      var index = this.$store.state.solicitacao.docs.findIndex(function (item) {
+        return item.name == _this.file.name;
+      });
+      if (index >= 0) return false;
+      return true;
     }
   }
 });
@@ -513,6 +518,29 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1136,7 +1164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         prefix: "R$ ",
         precision: 2
       },
-      docs: 1
+      docElements: 0
     };
   },
   validations: {
@@ -1307,12 +1335,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$v.solicitacao.telefone.$touch();
     },
     addDocElement: function addDocElement() {
-      this.docs++;
+      this.docElements++;
     },
-    removeDocElement: function removeDocElement() {
-      if (this.docs > 0) {
-        if (this.docs === this.solicitacao.docs.length) this.$store.commit("UNSET_DOC_FILES");
-        --this.docs;
+    removeDocElement: function removeDocElement(kDoc) {
+      // console.log(kDoc);
+      if (this.docElements > 0) {
+        this.$store.commit("UNSET_DOC_FILES", {
+          kDoc: kDoc
+        });
+        this.docElements--;
       }
     }
   }
@@ -2384,12 +2415,6 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              !_vm.file
-                ? _c("span", { staticClass: "mt-2 text-base leading-normal" }, [
-                    _vm._v("\n          Selecione o arquivo\n        ")
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               !_vm.validDoc
                 ? _c(
                     "span",
@@ -2399,7 +2424,9 @@ var render = function() {
                     },
                     [_vm._v("\n          Documento repetido\n        ")]
                   )
-                : _vm._e(),
+                : _c("span", { staticClass: "mt-2 text-base leading-normal" }, [
+                    _vm._v("\n          Selecione o arquivo\n        ")
+                  ]),
               _vm._v(" "),
               _c("input", {
                 ref: "file",
@@ -3736,8 +3763,45 @@ var render = function() {
             [_vm._v("\n        Arquivos do Contrato Social\n      ")]
           ),
           _vm._v(" "),
-          _vm._l(_vm.docs, function(doc) {
-            return _c("contrato-upload", { key: doc })
+          _vm._l(_vm.docElements, function(docElement) {
+            return _c(
+              "div",
+              { key: docElement, staticClass: "flex justify-between" },
+              [
+                _c("contrato-upload"),
+                _vm._v(" "),
+                _c(
+                  "svg",
+                  {
+                    staticClass:
+                      "cursor-pointer text-red-600 hover:text-red-800 self-center",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 20 20",
+                      fill: "currentColor",
+                      width: "50",
+                      height: "50"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.removeDocElement(docElement)
+                      }
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm1 8a1 1 0 100 2h6a1 1 0 100-2H7z",
+                        "clip-rule": "evenodd"
+                      }
+                    })
+                  ]
+                )
+              ],
+              1
+            )
           }),
           _vm._v(" "),
           _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
@@ -3745,20 +3809,14 @@ var render = function() {
               "button",
               {
                 staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition",
-                on: { click: _vm.removeDocElement }
-              },
-              [_vm._v("\n          Remover\n        ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass:
                   "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
                 class:
-                  this.docs > this.solicitacao.docs.length ? "opacity-40" : "",
-                attrs: { disabled: this.docs > this.solicitacao.docs.length },
+                  this.docElements > this.solicitacao.docs.length
+                    ? "opacity-40"
+                    : "",
+                attrs: {
+                  disabled: this.docElements > this.solicitacao.docs.length
+                },
                 on: { click: _vm.addDocElement }
               },
               [_vm._v("\n          Novo Documento\n        ")]

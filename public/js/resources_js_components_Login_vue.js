@@ -332,14 +332,14 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "flex justify-center" }, [
-            _vm.errors.error
+            _vm.errors.error == "invalid_grant"
               ? _c(
                   "span",
                   {
                     staticClass:
                       "px-1 text-sm font-semibold text-yellow-200  w-full text-center"
                   },
-                  [_vm._v(_vm._s(_vm.errors.error))]
+                  [_vm._v("Usuário/Senha inválida")]
                 )
               : _vm._e()
           ]),

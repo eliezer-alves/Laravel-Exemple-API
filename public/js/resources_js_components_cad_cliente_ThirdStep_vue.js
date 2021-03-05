@@ -51,40 +51,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -314,6 +280,68 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -322,40 +350,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     CadastroCliente: _CadastroCliente_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  data: function data() {
-    return {
-      cep: "",
-      uf: "",
-      bairro: "",
-      cidade: "",
-      logradouro: "",
-      complemento: ""
-    };
-  },
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["cliente", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__.mapFields)(["cliente", "errors"])), {}, {
-    validation: function validation() {
-      if (!this.cliente.cep) return false;
-      if (!this.cliente.uf) return false;
-      if (!this.cliente.cidade) return false;
-      if (!this.cliente.bairro) return false;
-      if (!this.cliente.id_tipo_logradouro) return false;
-      if (!this.cliente.logradouro) return false;
-      if (!this.cliente.numero) return false;
-      return true;
-    }
-  }),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["cliente", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__.mapFields)(["cliente", "errors"])),
   validations: {
-    cep: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
-    },
-    uf: {},
-    bairro: {},
-    cidade: {},
-    logradouro: {},
-    complemento: {}
+    cliente: {
+      cep: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      uf: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      bairro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      cidade: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      id_tipo_logradouro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      logradouro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      numero: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      },
+      complemento: {}
+    }
   },
   methods: {
     cadastrarCliente: function cadastrarCliente() {
@@ -388,20 +411,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee);
       }))();
     },
-    setLogradouro: function setLogradouro(value) {
-      this.cliente.logradouro = value;
-    },
-    setBairro: function setBairro(value) {
-      this.cliente.bairro = value;
-    },
-    setCidade: function setCidade(value) {
-      this.cliente.cidade = value;
-    },
-    setUf: function setUf(value) {
-      this.cliente.uf = value;
-    },
-    setComplemento: function setComplemento(value) {
-      this.cliente.complemento = value;
+    validateFields: function validateFields() {
+      if (!this.$v.$invalid) {
+        this.cadastrarCliente();
+      }
+
+      this.$v.$touch();
     },
     setCepCliente: function setCepCliente(value) {
       var _this2 = this;
@@ -439,9 +454,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this2.setComplemento("");
 
                   document.querySelector("#complemento").value = "";
-                  _this2.cep = null;
+                  _this2.$v.cliente.cep.$model = null;
 
-                  _this2.$v.cep.$touch();
+                  _this2.$v.cliente.cep.$touch();
                 } else {
                   _this2.setBairro(dadosEndereco.bairro);
 
@@ -472,9 +487,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this2.setComplemento(dadosEndereco.complemento);
 
-                  _this2.cep = value;
+                  _this2.$v.cliente.cep.$model = value;
 
-                  _this2.$v.cep.$touch();
+                  _this2.$v.cliente.cep.$touch();
                 }
 
               case 5:
@@ -484,6 +499,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee2);
       }))();
+    },
+    setLogradouro: function setLogradouro(value) {
+      this.$v.cliente.logradouro.$model = value;
+    },
+    setBairro: function setBairro(value) {
+      this.$v.cliente.bairro.$model = value;
+    },
+    setCidade: function setCidade(value) {
+      this.$v.cliente.cidade.$model = value;
+    },
+    setUf: function setUf(value) {
+      this.$v.cliente.uf.$model = value;
+    },
+    setComplemento: function setComplemento(value) {
+      this.$v.cliente.complemento.$model = value;
     }
   }
 });
@@ -792,7 +822,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1"
+        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
     },
     [
       _vm._m(0),
@@ -801,14 +831,14 @@ var render = function() {
         "div",
         {
           staticClass:
-            "w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
+            "xl:w-7/12 lg:w-7/12 md:w-7/12 w-9/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-60 shadow-md rounded-md pt-1 pb-3"
         },
         [
           _c(
             "h1",
             {
               staticClass:
-                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-300"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -824,82 +854,6 @@ var render = function() {
               }
             },
             [_c("div", { staticClass: "grid" }, [_vm._t("default")], 2)]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex justify-between" },
-            [
-              _c("router-link", { attrs: { to: _vm.goBack() } }, [
-                _c(
-                  "svg",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !(_vm.currentRoute === "cadastro-cliente"),
-                        expression: "!(currentRoute === 'cadastro-cliente')"
-                      }
-                    ],
-                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      fill: "none",
-                      viewBox: "0 0 24 24",
-                      stroke: "currentColor"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                        "stroke-width": "2",
-                        d: "M7 16l-4-4m0 0l4-4m-4 4h18"
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("router-link", { attrs: { to: _vm.goFoward() } }, [
-                _c(
-                  "svg",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value:
-                          !(_vm.currentRoute === "cadastro-cliente-3") &&
-                          _vm.validation,
-                        expression:
-                          "!(currentRoute === 'cadastro-cliente-3') && validation"
-                      }
-                    ],
-                    staticClass: "text-gray-200 hover:text-teal-600 w-12",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      fill: "none",
-                      viewBox: "0 0 24 24",
-                      stroke: "currentColor"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                        "stroke-width": "2",
-                        d: "M17 8l4 4m0 0l-4 4m4-4H3"
-                      }
-                    })
-                  ]
-                )
-              ])
-            ],
-            1
           )
         ]
       )
@@ -927,7 +881,7 @@ var staticRenderFns = [
           "h1",
           {
             staticClass:
-              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-green-600"
           },
           [_vm._v("\n      Capital de Giro\n    ")]
         )
@@ -957,7 +911,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", { attrs: { validation: _vm.validation } }, [
+  return _c("cadastro-cliente", [
     _c(
       "div",
       { staticClass: "py-1" },
@@ -968,12 +922,6 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.cliente.cep,
-              expression: "cliente.cep"
-            },
             {
               name: "mask",
               rawName: "v-mask",
@@ -989,19 +937,19 @@ var render = function() {
             placeholder: "37750-000",
             type: "text"
           },
-          domProps: { value: _vm.cliente.cep },
+          domProps: { value: _vm.$v.cliente.cep.$model },
           on: {
             blur: function($event) {
               return _vm.setCepCliente($event.target.value)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.cliente, "cep", $event.target.value)
             }
           }
         }),
+        _vm._v(" "),
+        _vm.$v.cliente.cep.$dirty && !_vm.$v.cliente.cep.required
+          ? _c("div", { staticClass: "text-red-600" }, [
+              _vm._v("\n      CEP Inválido.\n    ")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.errors.cep, function(cep) {
           return _c(
@@ -1012,13 +960,7 @@ var render = function() {
             },
             [_vm._v(_vm._s(cep))]
           )
-        }),
-        _vm._v(" "),
-        _vm.$v.cep.$dirty && !_vm.$v.cep.required
-          ? _c("div", { staticClass: "text-red-600" }, [
-              _vm._v("\n      CEP Inválido\n    ")
-            ])
-          : _vm._e()
+        })
       ],
       2
     ),
@@ -1038,8 +980,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.cliente.uf,
-                expression: "cliente.uf"
+                value: _vm.$v.cliente.uf.$model,
+                expression: "$v.cliente.uf.$model"
               }
             ],
             staticClass:
@@ -1056,25 +998,31 @@ var render = function() {
                     return val
                   })
                 _vm.$set(
-                  _vm.cliente,
-                  "uf",
+                  _vm.$v.cliente.uf,
+                  "$model",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
               }
             }
           },
           [
-            _c("option", { domProps: { value: "MG" } }, [
-              _vm._v("Minas Gerais")
-            ]),
+            _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
             _vm._v(" "),
-            _c("option", { domProps: { value: "RJ" } }, [
+            _c("option", { attrs: { value: "MG" } }, [_vm._v("Minas Gerais")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "RJ" } }, [
               _vm._v("Rio de Janeiro")
             ]),
             _vm._v(" "),
-            _c("option", { domProps: { value: "SP" } }, [_vm._v("São Paulo")])
+            _c("option", { attrs: { value: "SP" } }, [_vm._v("São Paulo")])
           ]
         ),
+        _vm._v(" "),
+        _vm.$v.cliente.uf.$dirty && !_vm.$v.cliente.uf.required
+          ? _c("div", { staticClass: "text-red-600" }, [
+              _vm._v("\n      UF Inválida.\n    ")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.errors.uf, function(uf) {
           return _c(
@@ -1100,23 +1048,29 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.cliente.cidade,
-              expression: "cliente.cidade"
+              value: _vm.$v.cliente.cidade.$model,
+              expression: "$v.cliente.cidade.$model"
             }
           ],
           staticClass:
             "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
           attrs: { id: "cidade", name: "cidade", type: "text" },
-          domProps: { value: _vm.cliente.cidade },
+          domProps: { value: _vm.$v.cliente.cidade.$model },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.cliente, "cidade", $event.target.value)
+              _vm.$set(_vm.$v.cliente.cidade, "$model", $event.target.value)
             }
           }
         }),
+        _vm._v(" "),
+        _vm.$v.cliente.cidade.$dirty && !_vm.$v.cliente.cidade.required
+          ? _c("div", { staticClass: "text-red-600" }, [
+              _vm._v("\n      Cidade Inválida.\n    ")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.errors.cidade, function(cidade) {
           return _c(
@@ -1145,23 +1099,29 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.cliente.bairro,
-              expression: "cliente.bairro"
+              value: _vm.$v.cliente.bairro.$model,
+              expression: "$v.cliente.bairro.$model"
             }
           ],
           staticClass:
             "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
           attrs: { id: "bairro", name: "bairro", type: "text" },
-          domProps: { value: _vm.cliente.bairro },
+          domProps: { value: _vm.$v.cliente.bairro.$model },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.cliente, "bairro", $event.target.value)
+              _vm.$set(_vm.$v.cliente.bairro, "$model", $event.target.value)
             }
           }
         }),
+        _vm._v(" "),
+        _vm.$v.cliente.bairro.$dirty && !_vm.$v.cliente.bairro.required
+          ? _c("div", { staticClass: "text-red-600" }, [
+              _vm._v("\n      Bairro Inválido.\n    ")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.errors.bairro, function(bairro) {
           return _c(
@@ -1191,10 +1151,9 @@ var render = function() {
             directives: [
               {
                 name: "model",
-                rawName: "v-model.number",
-                value: _vm.cliente.id_tipo_logradouro,
-                expression: "cliente.id_tipo_logradouro",
-                modifiers: { number: true }
+                rawName: "v-model",
+                value: _vm.$v.cliente.id_tipo_logradouro.$model,
+                expression: "$v.cliente.id_tipo_logradouro.$model"
               }
             ],
             staticClass:
@@ -1208,17 +1167,19 @@ var render = function() {
                   })
                   .map(function(o) {
                     var val = "_value" in o ? o._value : o.value
-                    return _vm._n(val)
+                    return val
                   })
                 _vm.$set(
-                  _vm.cliente,
-                  "id_tipo_logradouro",
+                  _vm.$v.cliente.id_tipo_logradouro,
+                  "$model",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
               }
             }
           },
           [
+            _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+            _vm._v(" "),
             _c("option", { attrs: { value: "0" } }, [_vm._v("Avenida")]),
             _vm._v(" "),
             _c("option", { attrs: { value: "1" } }, [_vm._v("Praça")]),
@@ -1226,6 +1187,13 @@ var render = function() {
             _c("option", { attrs: { value: "2" } }, [_vm._v("Rua")])
           ]
         ),
+        _vm._v(" "),
+        _vm.$v.cliente.id_tipo_logradouro.$dirty &&
+        !_vm.$v.cliente.id_tipo_logradouro.required
+          ? _c("div", { staticClass: "text-red-600" }, [
+              _vm._v("\n      Tipo de Logradouro Inválido.\n    ")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.errors.id_tipo_logradouro, function(id_tipo_logradouro) {
           return _c(
@@ -1254,24 +1222,39 @@ var render = function() {
             directives: [
               {
                 name: "model",
-                rawName: "v-model",
-                value: _vm.cliente.logradouro,
-                expression: "cliente.logradouro"
+                rawName: "v-model.trim",
+                value: _vm.$v.cliente.logradouro.$model,
+                expression: "$v.cliente.logradouro.$model",
+                modifiers: { trim: true }
               }
             ],
             staticClass:
               "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
             attrs: { id: "logradouro", name: "logradouro", type: "text" },
-            domProps: { value: _vm.cliente.logradouro },
+            domProps: { value: _vm.$v.cliente.logradouro.$model },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.cliente, "logradouro", $event.target.value)
+                _vm.$set(
+                  _vm.$v.cliente.logradouro,
+                  "$model",
+                  $event.target.value.trim()
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
               }
             }
           }),
+          _vm._v(" "),
+          _vm.$v.cliente.logradouro.$dirty &&
+          !_vm.$v.cliente.logradouro.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Logradouro Inválido.\n      ")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.errors.logradouro, function(logradouro) {
             return _c(
@@ -1300,23 +1283,29 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.cliente.numero,
-                expression: "cliente.numero"
+                value: _vm.$v.cliente.numero.$model,
+                expression: "$v.cliente.numero.$model"
               }
             ],
             staticClass:
               "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-            attrs: { id: "numero", name: "numero", type: "number" },
-            domProps: { value: _vm.cliente.numero },
+            attrs: { id: "numero", name: "numero", type: "text" },
+            domProps: { value: _vm.$v.cliente.numero.$model },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.cliente, "numero", $event.target.value)
+                _vm.$set(_vm.$v.cliente.numero, "$model", $event.target.value)
               }
             }
           }),
+          _vm._v(" "),
+          _vm.$v.cliente.numero.$dirty && !_vm.$v.cliente.numero.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Número Inválido.\n      ")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.errors.numero, function(numero) {
             return _c(
@@ -1347,20 +1336,24 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.cliente.complemento,
-                expression: "cliente.complemento"
+                value: _vm.$v.cliente.complemento.$model,
+                expression: "$v.cliente.complemento.$model"
               }
             ],
             staticClass:
               "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
             attrs: { id: "complemento", name: "complemento", type: "text" },
-            domProps: { value: _vm.cliente.complemento },
+            domProps: { value: _vm.$v.cliente.complemento.$model },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.cliente, "complemento", $event.target.value)
+                _vm.$set(
+                  _vm.$v.cliente.complemento,
+                  "$model",
+                  $event.target.value
+                )
               }
             }
           }),
@@ -1381,6 +1374,38 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c(
+      "div",
+      { staticClass: "flex justify-between" },
+      [
+        _c("router-link", { attrs: { to: { name: "cadastro-cliente-2" } } }, [
+          _c(
+            "svg",
+            {
+              staticClass: "text-gray-200 hover:text-teal-600 w-12",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "2",
+                  d: "M7 16l-4-4m0 0l4-4m-4 4h18"
+                }
+              })
+            ]
+          )
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
       "button",
       {
         staticClass:
@@ -1388,7 +1413,7 @@ var render = function() {
         on: {
           click: function($event) {
             $event.preventDefault()
-            return _vm.cadastrarCliente()
+            return _vm.validateFields($event)
           }
         }
       },

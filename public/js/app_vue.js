@@ -2101,10 +2101,10 @@ var actions = {
 
             case 3:
               cliente.username = _context.sent;
-              console.log(cliente.username);
+              // console.log(cliente.username);
               _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('username', cliente.username);
               _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('password', cliente.password);
-              _context.next = 9;
+              _context.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_2__.params, _config_api__WEBPACK_IMPORTED_MODULE_2__.header).then(function (res) {
                 if (res.status === 200) // commit('CREATE_CLIENTE', cliente)
                   return res;
@@ -2113,10 +2113,10 @@ var actions = {
                 // console.log('error', Object.assign({}, err));
               });
 
-            case 9:
+            case 8:
               return _context.abrupt("return", _context.sent);
 
-            case 10:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -2303,14 +2303,15 @@ var mutations = {
     state.atividades.splice(index, 1);
   },
   SET_DOC_FILES: function SET_DOC_FILES(state, payload) {
-    var index = state.solicitacao.docs.findIndex(function (item) {
-      return item.name == payload.name;
-    });
-    if (index >= 0) state.solicitacao.docs.splice(index, 1);
     state.solicitacao.docs.push(payload);
   },
-  UNSET_DOC_FILES: function UNSET_DOC_FILES(state) {
-    state.solicitacao.docs.pop();
+  UNSET_DOC_FILES: function UNSET_DOC_FILES(state, payload) {
+    console.log(state.solicitacao.docs);
+    var kDoc = payload.kDoc;
+    kDoc--;
+    console.log(kDoc);
+    state.solicitacao.docs.splice(kDoc, 1);
+    console.log(state.solicitacao.docs);
   },
   FETCH_DOMINIO: function FETCH_DOMINIO(state, payload) {
     return state.dominios = payload;
@@ -2348,7 +2349,26 @@ var state = {
   },
   atividades: [],
   dominios: {},
-  cliente: {},
+  cliente: {
+    cnpj: '',
+    inscricao_estadual: '',
+    id_atividade_comercial: '',
+    nome_fantasia: '',
+    razao_social: '',
+    celular: '',
+    email: '',
+    email_confirmation: '',
+    senha: '',
+    senha_confirmation: '',
+    cep: '',
+    uf: '',
+    cidade: '',
+    bairro: '',
+    id_tipo_logradouro: '',
+    logradouro: '',
+    numero: '',
+    complemento: ''
+  },
   solicitacao: {
     valor_solicitado: 1000000,
     parcelas: 1,
