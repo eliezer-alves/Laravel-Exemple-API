@@ -1958,11 +1958,11 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "AEaC1VxVMsOVtTQfj81lQEROkc6vtgFP5OiUQyVd");
+params.append('client_secret', "kGOuKBcylJOSYPPLfaBpp8eItA2l28tgdD9J7lwk");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var API_URL = "http://192.168.254.15:8085"; //MIX_VIA_CEP=viacep.com.br/ws
+var API_URL = "http://127.0.0.1:8000"; //MIX_VIA_CEP=viacep.com.br/ws
 
 var VIA_CEP = "https://viacep.com.br/ws";
 
@@ -2348,7 +2348,26 @@ var state = {
   },
   atividades: [],
   dominios: {},
-  cliente: {},
+  cliente: {
+    cnpj: '',
+    inscricao_estadual: '',
+    id_atividade_comercial: '',
+    nome_fantasia: '',
+    razao_social: '',
+    celular: '',
+    email: '',
+    email_confirmation: '',
+    senha: '',
+    senha_confirmation: '',
+    cep: '',
+    uf: '',
+    cidade: '',
+    bairro: '',
+    id_tipo_logradouro: '',
+    logradouro: '',
+    numero: '',
+    complemento: ''
+  },
   solicitacao: {
     valor_solicitado: 1000000,
     parcelas: 1,

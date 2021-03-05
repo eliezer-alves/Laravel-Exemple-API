@@ -1,33 +1,24 @@
 <template>
   <!-- component -->
-  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-1">
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
+  >
     <div
       class="lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
     >
       <img src="/images/logoAgilVertical.png" class="w-72" alt="" />
       <h1
-        class="mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600"
+        class="mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-green-600"
       >
         Capital de Giro
       </h1>
-      <lottie-animation
-        path="/images/lottie.json"
-        name="lottie"
-        :loop="true"
-        :autoPlay="true"
-        :loopDelayMin="2.5"
-        :loopDelayMax="5"
-        :speed="1"
-        :width="256"
-        :height="256"
-      />
     </div>
 
     <div
-      class="w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-30 shadow-md rounded-md py-1"
+      class="xl:w-7/12 lg:w-7/12 md:w-7/12 w-9/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-60 shadow-md rounded-md pt-1 pb-3"
     >
       <h1
-        class="mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-500"
+        class="mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-300"
       >
         Formulário de Cadastro
       </h1>
@@ -36,7 +27,7 @@
           <slot></slot>
         </div>
       </form>
-      <div class="flex justify-between">
+      <!-- <div class="flex justify-between">
         <router-link :to="goBack()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,37 +62,37 @@
             />
           </svg>
         </router-link>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {};
   },
   props: ["validation"],
-  beforeCreate: function() {
+  beforeCreate: function () {
     document.body.className = "login";
   },
   async mounted() {},
   computed: {
-    currentRoute: function() {
+    currentRoute: function () {
       return this.$router.currentRoute.name;
-    }
+    },
   },
   methods: {
-    goBack: function() {
+    goBack: function () {
       return this.currentRoute === "cadastro-cliente-3"
         ? { name: "cadastro-cliente-2" }
         : { name: "cadastro-cliente" };
     },
-    goFoward: function() {
+    goFoward: function () {
       return this.currentRoute === "cadastro-cliente"
         ? { name: "cadastro-cliente-2" }
         : { name: "cadastro-cliente-3" };
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
