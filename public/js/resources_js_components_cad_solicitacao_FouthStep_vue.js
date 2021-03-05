@@ -644,6 +644,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -733,15 +749,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.digito_conta = value;
       this.$v.digito_conta.$touch();
     },
-    setDados: function setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        banco: this.banco,
-        forma_liberacao: this.forma_liberacao,
-        agencia: this.agencia,
-        digito_agencia: this.digito_agencia,
-        conta: this.conta,
-        digito_conta: this.digito_conta
-      });
+    validateFields: function validateFields() {
+      if (!this.$v.$invalid) {
+        this.$router.push("solicitacao-3");
+      }
+
+      this.$v.$touch();
     }
   }
 });
@@ -2260,32 +2273,20 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "flex p-2 mt-4" }, [
         _c(
-          "div",
+          "button",
           {
-            on: {
-              mouseenter: function($event) {
-                return _vm.$v.$touch()
-              }
-            }
+            staticClass:
+              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition",
+            class: { "opacity-40": _vm.$v.$invalid },
+            on: { click: _vm.validateFields }
           },
-          [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-              },
-              [_vm._v("\n          Finalizar\n        ")]
-            )
-          ]
+          [_vm._v("\n        Finalizar\n      ")]
         ),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "finalizar" } } }),
-            _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
               _c(
                 "button",

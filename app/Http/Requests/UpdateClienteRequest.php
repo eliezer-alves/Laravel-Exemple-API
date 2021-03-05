@@ -29,10 +29,10 @@ class UpdateClienteRequest extends FormRequest
             'nome_fantasia' => ['string'],
             'razao_social' => ['string'],
             'ramo_atividade' => ['numeric'],
-            'celular' => ['string', 'celular_com_ddd'],
+            'celular' => ['string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'email' => ['string', 'email', 'confirmed'],
             'senha' => ['string', 'between:6,12', 'confirmed'],
-            'cep' => ['string', 'formato_cep'],
+            'cep' => ['string', 'regex:/^[0-9]+$/u', 'size:7'],
             'uf' => ['string', 'size:2', new Uf],
             'cidade' => ['string'],
             'bairro' => ['string'],
@@ -51,7 +51,6 @@ class UpdateClienteRequest extends FormRequest
     {
         return [
             'cnpj.string' => 'O campo cnpj é do tipo texto.',
-            'cnpj.string' => 'O campo cnpj é do tipo texto.',
             'cnpj.regex' => 'O campo cnpj no formato inválido.',
 
             'nome_fantasia.string' => 'O campo nome_fantasia é do tipo texto.',
@@ -61,6 +60,8 @@ class UpdateClienteRequest extends FormRequest
             'ramo_atividade.numeric' => 'O campo ramo_atividade é do tipo numérico.',
 
             'celular.string' => 'O campo celular é do tipo texto.',
+            'celular.between' => 'O campo celular está com formato inválido.',
+            'celular.regex' => 'O campo celular está com formato inválido.',
 
             'email.string' => 'O campo email é do tipo texto.',
             'email.email' => 'O campo email deve conter um endereço de email válido.',
@@ -71,6 +72,8 @@ class UpdateClienteRequest extends FormRequest
             'senha.confirmed' => 'Confirmação de senha inválida.',
 
             'cep.string' => 'O campo cep é do tipo texto.',
+            'cep.regex' => 'O campo com formato inválido.',
+            'cep.size' => 'O campo com formato inválido.',
 
             'uf.string' => 'O campo uf é do tipo texto.',
             'uf.size' => 'O campo uf deve possuir 2 caracteres.',

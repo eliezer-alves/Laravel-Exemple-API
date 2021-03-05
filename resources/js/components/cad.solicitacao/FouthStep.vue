@@ -25,7 +25,7 @@
               />
             </div>
           </div>
-           <div
+          <div
             class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
@@ -43,7 +43,7 @@
               />
             </div>
           </div>
-           <div
+          <div
             class="lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
@@ -71,7 +71,9 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.banco.$dirty && !$v.solicitacao.banco.required"
+              v-if="
+                $v.solicitacao.banco.$dirty && !$v.solicitacao.banco.required
+              "
             >
               Banco é obrigatório
             </div>
@@ -99,7 +101,10 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.forma_liberacao.$dirty && !$v.solicitacao.forma_liberacao.required"
+              v-if="
+                $v.solicitacao.forma_liberacao.$dirty &&
+                !$v.solicitacao.forma_liberacao.required
+              "
             >
               Forma de Liberação é obrigatório
             </div>
@@ -122,7 +127,10 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.agencia.$dirty && !$v.solicitacao.agencia.required"
+              v-if="
+                $v.solicitacao.agencia.$dirty &&
+                !$v.solicitacao.agencia.required
+              "
             >
               Agência é obrigatório
             </div>
@@ -145,7 +153,10 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.digito_agencia.$dirty && !$v.solicitacao.digito_agencia.required"
+              v-if="
+                $v.solicitacao.digito_agencia.$dirty &&
+                !$v.solicitacao.digito_agencia.required
+              "
             >
               Digito da Agência é obrigatório
             </div>
@@ -168,7 +179,9 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.conta.$dirty && !$v.solicitacao.conta.required"
+              v-if="
+                $v.solicitacao.conta.$dirty && !$v.solicitacao.conta.required
+              "
             >
               Conta é obrigatório
             </div>
@@ -191,7 +204,10 @@
             </div>
             <div
               class="text-red-600"
-              v-if="$v.solicitacao.digito_conta.$dirty && !$v.solicitacao.digito_conta.required"
+              v-if="
+                $v.solicitacao.digito_conta.$dirty &&
+                !$v.solicitacao.digito_conta.required
+              "
             >
               Dígito da Conta é obrigatório
             </div>
@@ -200,15 +216,15 @@
       </div>
 
       <div class="flex p-2 mt-4">
-        <div @mouseenter="$v.$touch()">
-          <button
-            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-          >
-            Finalizar
-          </button>
-        </div>
+        <button
+          @click="validateFields"
+          :class="{ 'opacity-40': $v.$invalid }"
+          class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+        >
+          Finalizar
+        </button>
+
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'finalizar' }"> </router-link>
           <router-link :to="{ name: 'solicitacao-3' }">
             <button
               class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
@@ -258,7 +274,7 @@ export default {
       forma_liberacao: {
         required,
       },
-       agencia: {
+      agencia: {
         required,
       },
       digito_agencia: {
@@ -297,15 +313,11 @@ export default {
       this.digito_conta = value;
       this.$v.digito_conta.$touch();
     },
-    setDados() {
-      this.$store.commit("SET_SOLICITACAO", {
-        banco: this.banco,
-        forma_liberacao: this.forma_liberacao,
-        agencia: this.agencia,
-        digito_agencia: this.digito_agencia,
-        conta: this.conta,
-        digito_conta: this.digito_conta,
-      });
+    validateFields() {
+      if (!this.$v.$invalid) {
+        this.$router.push("solicitacao-3");
+      }
+      this.$v.$touch();
     },
   },
 };

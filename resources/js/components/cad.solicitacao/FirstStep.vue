@@ -155,17 +155,14 @@
           Finalizar
         </button>
         <div class="flex-auto flex flex-row-reverse">
-          <router-link :to="{ name: 'solicitacao-2' }">
-            <div @mouseenter="$v.$touch()">
-              <button
-                :disabled="$v.$invalid"
-                :class="{ 'opacity-40': $v.$invalid }"
-                class="text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-              >
-                Avançar
-              </button>
-            </div>
-          </router-link>
+          <button
+            @click="validateFields"
+            :class="{ 'opacity-40': $v.$invalid }"
+            class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+          >
+            Avançar
+          </button>
+
           <button
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
@@ -220,17 +217,16 @@ export default {
     },
   },
   methods: {
-    submit() {
-      // adds on mouse On event
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        console.log("invalid");
-      }
-    },
     setValorSolicitado(value) {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.valor_solicitado = value;
       this.$v.solicitacao.valor_solicitado.$touch();
+    },
+    validateFields() {
+      if (!this.$v.$invalid) {
+        this.$router.push("solicitacao-2");
+      }
+      this.$v.$touch();
     },
   },
 };

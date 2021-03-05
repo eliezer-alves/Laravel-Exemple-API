@@ -1900,9 +1900,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2135,6 +2132,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.errors.invalid = false;
         --this.socios;
       }
+    },
+    validateFields: function validateFields() {
+      if (!this.$v.$invalid) {
+        this.$router.push("solicitacao-3");
+      }
+
+      this.$v.$touch();
     }
   }
 });
@@ -5766,30 +5770,16 @@ var render = function() {
           "div",
           { staticClass: "flex-auto flex flex-row-reverse" },
           [
-            _c("router-link", { attrs: { to: { name: "solicitacao-4" } } }, [
-              _c(
-                "div",
-                {
-                  on: {
-                    mouseenter: function($event) {
-                      return _vm.$v.$touch()
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                      class: { "opacity-40": _vm.$v.$invalid },
-                      attrs: { disabled: _vm.$v.$invalid }
-                    },
-                    [_vm._v("\n              Avançar\n            ")]
-                  )
-                ]
-              )
-            ]),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                class: { "opacity-40": _vm.$v.$invalid },
+                on: { click: _vm.validateFields }
+              },
+              [_vm._v("\n          Avançar\n        ")]
+            ),
             _vm._v(" "),
             _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
               _c(

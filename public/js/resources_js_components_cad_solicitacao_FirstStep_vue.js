@@ -588,9 +588,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -629,18 +626,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
-    submit: function submit() {
-      // adds on mouse On event
-      this.$v.$touch();
-
-      if (this.$v.$invalid) {
-        console.log("invalid");
-      }
-    },
     setValorSolicitado: function setValorSolicitado(value) {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.valor_solicitado = value;
       this.$v.solicitacao.valor_solicitado.$touch();
+    },
+    validateFields: function validateFields() {
+      if (!this.$v.$invalid) {
+        this.$router.push("solicitacao-2");
+      }
+
+      this.$v.$touch();
     }
   }
 });
@@ -1882,46 +1878,27 @@ var render = function() {
           [_vm._v("\n        Finalizar\n      ")]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex-auto flex flex-row-reverse" },
-          [
-            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
-              _c(
-                "div",
-                {
-                  on: {
-                    mouseenter: function($event) {
-                      return _vm.$v.$touch()
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "text-base ml-2 disabled:opacity-50 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                      class: { "opacity-40": _vm.$v.$invalid },
-                      attrs: { disabled: _vm.$v.$invalid }
-                    },
-                    [_vm._v("\n              Avançar\n            ")]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-              },
-              [_vm._v("\n          Simular\n        ")]
-            )
-          ],
-          1
-        )
+        _c("div", { staticClass: "flex-auto flex flex-row-reverse" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+              class: { "opacity-40": _vm.$v.$invalid },
+              on: { click: _vm.validateFields }
+            },
+            [_vm._v("\n          Avançar\n        ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+            },
+            [_vm._v("\n          Simular\n        ")]
+          )
+        ])
       ])
     ])
   ])

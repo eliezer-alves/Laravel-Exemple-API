@@ -29,10 +29,10 @@ class StoreClienteRequest extends FormRequest
             'inscricao_estadual' => 'required',
             'nome_fantasia' => ['required', 'string'],
             'razao_social' => ['required', 'string'],
-            'celular' => ['required', 'string', 'celular_com_ddd'],
+            'celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
-            'cep' => ['required', 'string', 'formato_cep'],
+            'cep' => ['required', 'string', 'regex:/^[0-9]+$/u', 'size:7'],
             'uf' => ['required', 'string', 'size:2', new Uf],
             'cidade' => ['required', 'string'],
             'bairro' => ['required', 'string'],
@@ -67,6 +67,7 @@ class StoreClienteRequest extends FormRequest
 
             'celular.required' => 'O campo celular é obrigatório.',
             'celular.string' => 'O campo celular é do tipo texto.',
+            'celular.between' => 'O campo celular está com formato inválido.',
 
             'email.required' => 'O campo email é obrigatório.',
             'email.string' => 'O campo email é do tipo texto.',
@@ -80,6 +81,8 @@ class StoreClienteRequest extends FormRequest
 
             'cep.required' => 'O campo cep é obrigatório.',
             'cep.string' => 'O campo cep é do tipo texto.',
+            'cep.regex' => 'O campo com formato inválido.',
+            'cep.size' => 'O campo com formato inválido.',
 
             'uf.required' => 'O campo uf é obrigatório.',
             'uf.string' => 'O campo uf é do tipo texto.',
