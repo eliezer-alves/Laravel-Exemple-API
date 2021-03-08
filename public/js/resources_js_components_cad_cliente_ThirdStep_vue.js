@@ -116,16 +116,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -353,7 +357,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["cliente", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__.mapFields)(["cliente", "errors"])),
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.$store.dispatch("fetchDominios");
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["cliente", "errors", "dominios"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__.mapFields)(["cliente", "errors"])),
   validations: {
     cliente: {
       cep: {
@@ -382,33 +405,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     cadastrarCliente: function cadastrarCliente() {
-      var _this = this;
+      var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
-                return _this.$store.dispatch("createCliente", _objectSpread({}, _this.cliente));
+                _context2.next = 2;
+                return _this2.$store.dispatch("createCliente", _objectSpread({}, _this2.cliente));
 
               case 2:
-                response = _context.sent;
+                response = _context2.sent;
                 console.log(response);
-                if (!response) _this.$router.push("cadastro-cliente");else {
-                  _this.cliente = {};
-                  _this.errors = [];
+                if (!response) _this2.$router.push("cadastro-cliente");else {
+                  _this2.cliente = {};
+                  _this2.errors = [];
 
-                  _this.$router.push("login");
+                  _this2.$router.push("login");
                 }
 
               case 5:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee);
+        }, _callee2);
       }))();
     },
     validateFields: function validateFields() {
@@ -419,65 +442,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.$touch();
     },
     setCepCliente: function setCepCliente(value) {
-      var _this2 = this;
+      var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var dadosEndereco;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 value = value.replace(/[^\d]+/g, "");
-                _context2.next = 3;
-                return _this2.$store.dispatch("getViaCep", value);
+                _context3.next = 3;
+                return _this3.$store.dispatch("getViaCep", value);
 
               case 3:
-                dadosEndereco = _context2.sent;
+                dadosEndereco = _context3.sent;
 
                 if (dadosEndereco.erro) {
-                  _this2.setBairro("");
+                  _this3.setBairro("");
 
                   document.querySelector("#bairro").disabled = false;
 
-                  _this2.setCidade("");
+                  _this3.setCidade("");
 
                   document.querySelector("#cidade").disabled = false;
 
-                  _this2.setLogradouro("");
+                  _this3.setLogradouro("");
 
                   document.querySelector("#logradouro").disabled = false;
 
-                  _this2.setUf("");
+                  _this3.setUf("");
 
                   document.querySelector("#uf").disabled = false;
 
-                  _this2.setComplemento("");
+                  _this3.setComplemento("");
 
                   document.querySelector("#complemento").value = "";
-                  _this2.$v.cliente.cep.$model = null;
+                  _this3.$v.cliente.cep.$model = null;
 
-                  _this2.$v.cliente.cep.$touch();
+                  _this3.$v.cliente.cep.$touch();
                 } else {
-                  _this2.setBairro(dadosEndereco.bairro);
+                  _this3.setBairro(dadosEndereco.bairro);
 
                   if (dadosEndereco.bairro != "") {
                     document.querySelector("#bairro").disabled = true;
                     document.querySelector("#bairro").value = dadosEndereco.bairro;
                   }
 
-                  _this2.setCidade(dadosEndereco.localidade);
+                  _this3.setCidade(dadosEndereco.localidade);
 
                   if (dadosEndereco.localidade != "") {
                     document.querySelector("#cidade").disabled = true;
                   }
 
-                  _this2.setLogradouro(dadosEndereco.logradouro);
+                  _this3.setLogradouro(dadosEndereco.logradouro);
 
                   if (dadosEndereco.logradouro != "") {
                     document.querySelector("#logradouro").disabled = true;
                   }
 
-                  _this2.setUf(dadosEndereco.uf);
+                  _this3.setUf(dadosEndereco.uf);
 
                   if (dadosEndereco.uf != "") {
                     document.querySelector("#uf").disabled = true;
@@ -485,19 +508,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   console.log(dadosEndereco);
 
-                  _this2.setComplemento(dadosEndereco.complemento);
+                  _this3.setComplemento(dadosEndereco.complemento);
 
-                  _this2.$v.cliente.cep.$model = value;
+                  _this3.$v.cliente.cep.$model = value;
 
-                  _this2.$v.cliente.cep.$touch();
+                  _this3.$v.cliente.cep.$touch();
                 }
 
               case 5:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     },
     setLogradouro: function setLogradouro(value) {
@@ -1008,14 +1031,15 @@ var render = function() {
           [
             _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "MG" } }, [_vm._v("Minas Gerais")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "RJ" } }, [
-              _vm._v("Rio de Janeiro")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "SP" } }, [_vm._v("São Paulo")])
-          ]
+            _vm._l(_vm.dominios.uf, function(uf) {
+              return _c(
+                "option",
+                { key: uf.codigo, domProps: { value: uf.codigo } },
+                [_vm._v("\n        " + _vm._s(uf.descricao) + "\n      ")]
+              )
+            })
+          ],
+          2
         ),
         _vm._v(" "),
         _vm.$v.cliente.uf.$dirty && !_vm.$v.cliente.uf.required
@@ -1180,12 +1204,24 @@ var render = function() {
           [
             _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "0" } }, [_vm._v("Avenida")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Praça")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Rua")])
-          ]
+            _vm._l(_vm.dominios.tipoLogradouro, function(tipo_logradouro) {
+              return _c(
+                "option",
+                {
+                  key: tipo_logradouro.id_tipo_logradouro,
+                  domProps: { value: tipo_logradouro.id_tipo_logradouro }
+                },
+                [
+                  _vm._v(
+                    "\n        " +
+                      _vm._s(tipo_logradouro.descricao) +
+                      "\n      "
+                  )
+                ]
+              )
+            })
+          ],
+          2
         ),
         _vm._v(" "),
         _vm.$v.cliente.id_tipo_logradouro.$dirty &&

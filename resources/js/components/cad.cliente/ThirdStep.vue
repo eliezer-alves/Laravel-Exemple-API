@@ -34,9 +34,9 @@
         v-model="$v.cliente.uf.$model"
       >
         <option value="">--</option>
-        <option value="MG">Minas Gerais</option>
-        <option value="RJ">Rio de Janeiro</option>
-        <option value="SP">São Paulo</option>
+        <option v-for="uf in dominios.uf" :key="uf.codigo" :value="uf.codigo">
+          {{ uf.descricao }}
+        </option>
       </select>
       <div
         class="text-red-600"
@@ -104,9 +104,13 @@
         v-model="$v.cliente.id_tipo_logradouro.$model"
       >
         <option value="">--</option>
-        <option value="0">Avenida</option>
-        <option value="1">Praça</option>
-        <option value="2">Rua</option>
+        <option
+          v-for="tipo_logradouro in dominios.tipoLogradouro"
+          :key="tipo_logradouro.id_tipo_logradouro"
+          :value="tipo_logradouro.id_tipo_logradouro"
+        >
+          {{ tipo_logradouro.descricao }}
+        </option>
       </select>
       <div
         class="text-red-600"
@@ -227,8 +231,11 @@ export default {
   beforeCreate: function () {
     document.body.className = "login";
   },
+  async mounted(){
+    await this.$store.dispatch("fetchDominios");
+  },
   computed: {
-    ...mapGetters(["cliente", "errors"]),
+    ...mapGetters(["cliente", "errors", "dominios"]),
     ...mapFields(["cliente", "errors"]),
   },
   validations: {
