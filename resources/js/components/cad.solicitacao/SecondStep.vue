@@ -526,37 +526,21 @@
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Arquivos do Contrato Social
         </div>
-        <div
+
+        <component
           class="flex justify-between"
-          v-for="docElement in docElements"
-          :key="docElement"
-        >
-          <contrato-upload></contrato-upload>
-          <svg
-            @click="removeDocElement(docElement)"
-            class="cursor-pointer text-red-600 hover:text-red-800 self-center"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            width="50"
-            height="50"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm1 8a1 1 0 100 2h6a1 1 0 100-2H7z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </div>
-        <div class="flex flex-row-reverse my-2">
+          v-for="doc in this.solicitacao.docs"
+          :is="'contrato-upload'"
+          :id="doc.id"
+          :key="doc.id"
+          @remove="removeDocElement"
+        />
+
+        <div class="flex flex-row-reverse my-5">
           <button
             @click="addDocElement"
-            :disabled="this.docElements > this.solicitacao.docs.length"
-            :class="
-              this.docElements > this.solicitacao.docs.length
-                ? 'opacity-40'
-                : ''
-            "
+            :disabled="!this.validDocElement"
+            :class="{ 'opacity-50': !this.validDocElement }"
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
             Novo Documento
@@ -609,6 +593,15 @@ export default {
   computed: {
     ...mapGetters(["solicitacao", "atividades", "dominios"]),
     ...mapFields(["solicitacao", "errors"]),
+    validDocElement: function () {
+      const index = this.solicitacao.docs.findIndex(
+        (doc) => doc.file === "" || doc.valid === false
+      );
+      // console.log('Encontrou');
+      // console.log(index);
+      if (index >= 0) return false;
+      return true;
+    },
   },
   data() {
     return {
@@ -720,22 +713,24 @@ export default {
       this.solicitacao.complemento = value;
       this.$v.solicitacao.complemento.$touch();
     },
-
     setTelefone(value) {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.telefone = value;
       this.$v.solicitacao.telefone.$touch();
     },
+
     addDocElement() {
-      this.docElements++;
+      this.solicitacao.docs.push({
+        file: "",
+        valid: false,
+        id: this.docElements++,
+      });
     },
-    removeDocElement(kDoc) {
-      // console.log(kDoc);
-      if (this.docElements > 0) {
-        this.$store.commit("UNSET_DOC_FILES", { kDoc });
-        this.docElements--;
-      }
+    removeDocElement(id) {
+      const index = this.solicitacao.docs.findIndex((f) => f.id === id);
+      this.solicitacao.docs.splice(index, 1);
     },
+
     validateFields() {
       if (!this.$v.$invalid) {
         this.$router.push("solicitacao-3");
