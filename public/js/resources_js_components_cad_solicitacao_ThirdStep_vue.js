@@ -130,6 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {},
   data: function data() {
@@ -2593,7 +2594,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row h-full" }, [
+  return _c("div", { staticClass: "flex flex-row " }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },
@@ -2762,7 +2763,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 h-screen w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 \n w-screen" },
       [_vm._t("default")],
       2
     )
@@ -2803,351 +2804,358 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container lg:w-8/12 mx-auto mt-16" },
-    [
-      _c("div", { staticClass: "flex" }, [
-        _c("div", { staticClass: "w-1/4" }, [
-          _c("div", { staticClass: "relative mb-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
-                class: {
-                  "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao" ||
-                    _vm.$router.currentRoute.name === "solicitacao-2" ||
-                    _vm.$router.currentRoute.name === "solicitacao-3" ||
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                }
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-center text-gray-700 w-full" },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-full",
+  return _c("side-bar", [
+    _c(
+      "div",
+      { staticClass: "container lg:w-8/12 mx-auto mt-16" },
+      [
+        _c("div", { staticClass: "flex" }, [
+          _c("div", { staticClass: "w-1/4" }, [
+            _c("div", { staticClass: "relative mb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
+                  class: {
+                    "bg-teal-700":
+                      _vm.$router.currentRoute.name === "solicitacao" ||
+                      _vm.$router.currentRoute.name === "solicitacao-2" ||
+                      _vm.$router.currentRoute.name === "solicitacao-3" ||
+                      _vm.$router.currentRoute.name === "solicitacao-4"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "text-center text-gray-700 w-full" },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-full",
+                          class: {
+                            "text-white":
+                              _vm.$router.currentRoute.name === "solicitacao" ||
+                              _vm.$router.currentRoute.name ===
+                                "solicitacao-2" ||
+                              _vm.$router.currentRoute.name ===
+                                "solicitacao-3" ||
+                              _vm.$router.currentRoute.name === "solicitacao-4"
+                          },
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor",
+                            width: "24",
+                            height: "24"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d:
+                                "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+              _vm._v("Simulação")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-1/4" }, [
+            _c("div", { staticClass: "relative mb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute flex align-center items-center align-middle content-center",
+                  staticStyle: {
+                    width: "calc(100% - 2.5rem - 1rem)",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "w-0 bg-teal-500 py-1 rounded",
                         class: {
-                          "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao" ||
+                          "w-full":
                             _vm.$router.currentRoute.name === "solicitacao-2" ||
                             _vm.$router.currentRoute.name === "solicitacao-3" ||
                             _vm.$router.currentRoute.name === "solicitacao-4"
-                        },
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
-                          viewBox: "0 0 24 24",
-                          stroke: "currentColor",
-                          width: "24",
-                          height: "24"
                         }
-                      },
-                      [
-                        _c("path", {
+                      })
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
+                  class: {
+                    "bg-teal-700":
+                      _vm.$router.currentRoute.name === "solicitacao-2" ||
+                      _vm.$router.currentRoute.name === "solicitacao-3" ||
+                      _vm.$router.currentRoute.name === "solicitacao-4"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "text-center text-gray-700 w-full" },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-full",
+                          class: {
+                            "text-white":
+                              _vm.$router.currentRoute.name ===
+                                "solicitacao-2" ||
+                              _vm.$router.currentRoute.name ===
+                                "solicitacao-3" ||
+                              _vm.$router.currentRoute.name === "solicitacao-4"
+                          },
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d:
-                              "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                            xmlns: "http://www.w3.org/2000/svg",
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            width: "24",
+                            height: "24",
+                            stroke: "currentColor"
                           }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d:
+                                "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+              _vm._v("Empresa")
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Simulação")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/4" }, [
-          _c("div", { staticClass: "relative mb-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "absolute flex align-center items-center align-middle content-center",
-                staticStyle: {
-                  width: "calc(100% - 2.5rem - 1rem)",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                  },
-                  [
-                    _c("div", {
-                      staticClass: "w-0 bg-teal-500 py-1 rounded",
-                      class: {
-                        "w-full":
-                          _vm.$router.currentRoute.name === "solicitacao-2" ||
-                          _vm.$router.currentRoute.name === "solicitacao-3" ||
-                          _vm.$router.currentRoute.name === "solicitacao-4"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
-                class: {
-                  "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-2" ||
-                    _vm.$router.currentRoute.name === "solicitacao-3" ||
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                }
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-center text-gray-700 w-full" },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-full",
+          _c("div", { staticClass: "w-1/4" }, [
+            _c("div", { staticClass: "relative mb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute flex align-center items-center align-middle content-center",
+                  staticStyle: {
+                    width: "calc(100% - 2.5rem - 1rem)",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "w-0 bg-teal-500 py-1 rounded",
                         class: {
-                          "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-2" ||
+                          "w-full":
                             _vm.$router.currentRoute.name === "solicitacao-3" ||
                             _vm.$router.currentRoute.name === "solicitacao-4"
-                        },
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                          stroke: "currentColor"
                         }
-                      },
-                      [
-                        _c("path", {
+                      })
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
+                  class: {
+                    "bg-teal-700":
+                      _vm.$router.currentRoute.name === "solicitacao-3" ||
+                      _vm.$router.currentRoute.name === "solicitacao-4"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "text-center text-gray-700 w-full" },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-full",
+                          class: {
+                            "text-white":
+                              _vm.$router.currentRoute.name ===
+                                "solicitacao-3" ||
+                              _vm.$router.currentRoute.name === "solicitacao-4"
+                          },
                           attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d:
-                              "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                            xmlns: "http://www.w3.org/2000/svg",
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            width: "24",
+                            height: "24",
+                            stroke: "currentColor"
                           }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d:
+                                "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+              _vm._v("Representantes")
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Empresa")
+          _c("div", { staticClass: "w-1/4" }, [
+            _c("div", { staticClass: "relative mb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute flex align-center items-center align-middle content-center",
+                  staticStyle: {
+                    width: "calc(100% - 2.5rem - 1rem)",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "w-0 bg-teal-500 py-1 rounded",
+                        class: {
+                          "w-full":
+                            _vm.$router.currentRoute.name === "solicitacao-4"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
+                  class: {
+                    "bg-teal-700":
+                      _vm.$router.currentRoute.name === "solicitacao-4"
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    { staticClass: "text-center text-gray-700 w-full" },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-full",
+                          class: {
+                            "text-white":
+                              _vm.$router.currentRoute.name === "solicitacao-4"
+                          },
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            width: "24",
+                            height: "24",
+                            stroke: "currentColor"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-xs text-center md:text-base" }, [
+              _vm._v("Concluir")
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "w-1/4" }, [
-          _c("div", { staticClass: "relative mb-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "absolute flex align-center items-center align-middle content-center",
-                staticStyle: {
-                  width: "calc(100% - 2.5rem - 1rem)",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                  },
-                  [
-                    _c("div", {
-                      staticClass: "w-0 bg-teal-500 py-1 rounded",
-                      class: {
-                        "w-full":
-                          _vm.$router.currentRoute.name === "solicitacao-3" ||
-                          _vm.$router.currentRoute.name === "solicitacao-4"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
-                class: {
-                  "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-3" ||
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                }
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-center text-gray-700 w-full" },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-full",
-                        class: {
-                          "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-3" ||
-                            _vm.$router.currentRoute.name === "solicitacao-4"
-                        },
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                          stroke: "currentColor"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d:
-                              "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Representantes")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-1/4" }, [
-          _c("div", { staticClass: "relative mb-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "absolute flex align-center items-center align-middle content-center",
-                staticStyle: {
-                  width: "calc(100% - 2.5rem - 1rem)",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
-                  },
-                  [
-                    _c("div", {
-                      staticClass: "w-0 bg-teal-500 py-1 rounded",
-                      class: {
-                        "w-full":
-                          _vm.$router.currentRoute.name === "solicitacao-4"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-10 h-10 mx-auto bg-white rounded-full text-lg text-white flex items-center",
-                class: {
-                  "bg-teal-700":
-                    _vm.$router.currentRoute.name === "solicitacao-4"
-                }
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-center text-gray-700 w-full" },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-full",
-                        class: {
-                          "text-white":
-                            _vm.$router.currentRoute.name === "solicitacao-4"
-                        },
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          fill: "none",
-                          viewBox: "0 0 24 24",
-                          width: "24",
-                          height: "24",
-                          stroke: "currentColor"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            "stroke-width": "2",
-                            d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-xs text-center md:text-base" }, [
-            _vm._v("Concluir")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._t("default")
-    ],
-    2
-  )
+        _vm._t("default")
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

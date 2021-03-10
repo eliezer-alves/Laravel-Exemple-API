@@ -2,8 +2,8 @@
   <div
     class="flex flex-col font-bold text-gray-600 text-xs leading-8 uppercase mx-2 mt-3"
   >
-    <div class="flex justify-around">
-      <div class="">
+    <div class="flex justify-between">
+      <div>
         <label
           class="w-56 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-teal-800 cursor-pointer hover:bg-teal-800 hover:text-white"
           :class="{ 'bg-teal-800': file, 'text-white': file }"
@@ -39,7 +39,7 @@
         </label>
       </div>
 
-      <div>
+      <div class="self-center">
         <svg
           @click="removeDoc"
           class="cursor-pointer text-red-600 hover:text-red-800 self-center"
@@ -57,7 +57,7 @@
         </svg>
       </div>
     </div>
-    <div class="lg:ml-5 md:ml-5 self-center">
+    <div>
       <span class="text-base leading-normal">
         {{ file.name }}
       </span>

@@ -1,5 +1,5 @@
 <template>
-  <!-- <side-bar> -->
+  <side-bar>
   <div class="container lg:w-8/12 mx-auto mt-16">
     <div class="flex">
       <div class="w-1/4">
@@ -227,7 +227,7 @@
     </div>
     <slot></slot>
   </div>
-  <!-- </side-bar> -->
+  </side-bar>
 </template>
 <script>
 import SideBar from "./SideBar.vue";

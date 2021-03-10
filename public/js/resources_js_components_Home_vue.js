@@ -344,6 +344,642 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -367,6 +1003,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -724,836 +1361,2535 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "h-full" },
-    [
-      _c("side-bar", [
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex-col lg:w-11/12 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
-          },
-          [
-            _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
-              _vm._v("Minhas Solicitações")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-col mt-3" }, [
+  return _c("side-bar", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "flex-col lg:w-11/12 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
+      },
+      [
+        _c("h1", { staticClass: "text-xl text-gray-600 font-bold" }, [
+          _vm._v("Minhas Solicitações")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex flex-col mt-3" }, [
+          _c(
+            "div",
+            { staticClass: "-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" },
+            [
               _c(
                 "div",
-                { staticClass: "-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" },
+                {
+                  staticClass:
+                    "py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                },
                 [
                   _c(
                     "div",
                     {
                       staticClass:
-                        "py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                        "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
                     },
                     [
                       _c(
-                        "div",
-                        {
-                          staticClass:
-                            "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
-                        },
+                        "table",
+                        { staticClass: "min-w-full divide-y divide-gray-200" },
                         [
-                          _c(
-                            "table",
-                            {
-                              staticClass: "min-w-full divide-y divide-gray-200"
-                            },
-                            [
-                              _c("thead", { staticClass: "bg-gray-50" }, [
-                                _c("tr", [
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _c("input", {
-                                        staticClass: "text-teal-600",
-                                        attrs: {
-                                          type: "checkbox",
-                                          name: "checked",
-                                          id: "checked"
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Data Solicitação\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Hora\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    N° Proposta\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    N° Contrato\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    N° Parc.\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Valor\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    1° Vencimento\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Contrato\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass:
-                                        "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                      attrs: { scope: "col" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                    Status\n                  "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
+                          _c("thead", { staticClass: "bg-gray-50" }, [
+                            _c("tr", [
                               _c(
-                                "tbody",
+                                "th",
                                 {
                                   staticClass:
-                                    "bg-white divide-y divide-gray-200"
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
                                 },
                                 [
-                                  _c("tr", [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [
-                                            _c("input", {
-                                              staticClass: "text-teal-600",
-                                              attrs: {
-                                                type: "checkbox",
-                                                name: "",
-                                                id: ""
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12/12/2020")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12:00")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_vm._v("547841528")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    547841528\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    5\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    R$12.000\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    12/12/2021\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    Contrato\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Aguardando Análise\n                    "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [
-                                            _c("input", {
-                                              staticClass: "text-teal-600",
-                                              attrs: {
-                                                type: "checkbox",
-                                                name: "",
-                                                id: ""
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12/12/2020")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12:00")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_vm._v("547841528")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    547841528\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    5\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    R$12.000\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    12/12/2021\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    Contrato\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Aguardando Análise\n                    "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [
-                                            _c("input", {
-                                              staticClass: "text-teal-600",
-                                              attrs: {
-                                                type: "checkbox",
-                                                name: "",
-                                                id: ""
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12/12/2020")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12:00")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_vm._v("547841528")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    547841528\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    5\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    R$12.000\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    12/12/2021\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    Contrato\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Negado\n                    "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("tr", [
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [
-                                            _c("input", {
-                                              staticClass: "text-teal-600",
-                                              attrs: {
-                                                type: "checkbox",
-                                                name: "",
-                                                id: ""
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12/12/2020")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_c("span", [_vm._v("12:00")])]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "flex items-center" },
-                                          [_vm._v("547841528")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    547841528\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    5\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    R$12.000\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    12/12/2021\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                    Contrato\n                  "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "px-4 py-4 whitespace-nowrap"
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Aprovado\n                    "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
+                                  _c("input", {
+                                    staticClass: "text-teal-600",
+                                    attrs: {
+                                      type: "checkbox",
+                                      name: "checked",
+                                      id: "checked"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Data Solicitação\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Hora\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  N° Proposta\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  N° Contrato\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  N° Parc.\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Valor\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  1° Vencimento\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Contrato\n                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "th",
+                                {
+                                  staticClass:
+                                    "px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                  attrs: { scope: "col" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  Status\n                "
+                                  )
                                 ]
                               )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            {
+                              staticClass: "bg-white divide-y divide-gray-200"
+                            },
+                            [
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aguardando Análise\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-yellow-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aguardando Análise\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Negado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c("input", {
+                                          staticClass: "text-teal-600",
+                                          attrs: {
+                                            type: "checkbox",
+                                            name: "",
+                                            id: ""
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12/12/2020")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_c("span", [_vm._v("12:00")])]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [_vm._v("547841528")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  547841528\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  5\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  R$12.000\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  12/12/2021\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "px-4 py-4 whitespace-nowrap text-sm text-gray-500"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                  Contrato\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "px-4 py-4 whitespace-nowrap"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-500"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                    Aprovado\n                  "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
                             ]
                           )
                         ]
@@ -1562,25 +3898,24 @@ var render = function() {
                   )
                 ]
               )
-            ]),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "mt-3 text-center w-full text-white text-lg font-bold bg-gray-500 p-2 rounded-md"
-                },
-                [_vm._v("\n        Nova solicitacao\n      ")]
-              )
-            ])
-          ],
-          1
-        )
-      ])
-    ],
-    1
-  )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "solicitacao" } } }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "mt-3 text-center w-full text-white text-lg font-bold bg-gray-500 p-2 rounded-md"
+            },
+            [_vm._v("\n      Nova solicitacao\n    ")]
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1605,7 +3940,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row h-full" }, [
+  return _c("div", { staticClass: "flex flex-row " }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },
@@ -1774,7 +4109,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 h-screen w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 \n w-screen" },
       [_vm._t("default")],
       2
     )
