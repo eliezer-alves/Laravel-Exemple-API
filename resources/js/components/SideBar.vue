@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-row h-full">
+  <div class="flex flex-row">
     <!-- Sidebar -->
     <nav class="bg-gray-900 w-20 justify-between flex flex-col">
       <div class="mt-10 mb-10">
-        <!-- <a href="#">
+        <router-link :to="{ name: 'home' }">
           <img
-            src="https://randomuser.me/api/portraits/women/76.jpg"
-            class="rounded-full w-10  mb-3 mx-auto"
+            src="https://randomuser.me/api/portraits/women/40.jpg"
+            class="rounded-full w-10 mb-3 mx-auto"
           />
-        </a> -->
+        </router-link>
         <div class="mt-10">
           <ul>
             <li class="mb-6">
@@ -121,7 +121,9 @@
 export default {
   created: function () {},
   data: () => {
-    return {};
+    return {
+      
+    };
   },
 };
 </script>

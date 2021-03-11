@@ -355,17 +355,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
         sameAsSenha: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.sameAs)("senha")
       }
-      /*      
-      cep: { required },
-      uf: { required },
-      cidade: { required },
-      bairro: { required },
-      tipo_logradouro: { required },
-      logradouro: { required },
-      numero: { required },
-      complemento: {},
-      */
-
     }
   },
   methods: {

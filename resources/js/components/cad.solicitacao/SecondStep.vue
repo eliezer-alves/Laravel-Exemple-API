@@ -597,8 +597,6 @@ export default {
       const index = this.solicitacao.docs.findIndex(
         (doc) => doc.file === "" || doc.valid === false
       );
-      // console.log('Encontrou');
-      // console.log(index);
       if (index >= 0) return false;
       return true;
     },

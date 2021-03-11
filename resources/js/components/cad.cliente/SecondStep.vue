@@ -225,16 +225,6 @@ export default {
       email_confirmation: { required, email, sameAsEmail: sameAs("email") },
       senha: { required },
       senha_confirmation: { required, sameAsSenha: sameAs("senha") },
-      /*      
-      cep: { required },
-      uf: { required },
-      cidade: { required },
-      bairro: { required },
-      tipo_logradouro: { required },
-      logradouro: { required },
-      numero: { required },
-      complemento: {},
- */
     },
   },
   methods: {
