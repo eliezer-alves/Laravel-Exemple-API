@@ -361,11 +361,12 @@
           Bairro é obrigatório.
         </div>
       </div>
+      
       <div
         class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
       >
         <div
-          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
         >
           <label for="tipo_logradouro_socio">Tipo de Logradouro</label>
         </div>

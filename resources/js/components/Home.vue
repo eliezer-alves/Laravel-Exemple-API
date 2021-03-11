@@ -4,7 +4,6 @@
       class="flex-col lg:w-11/12 md:w-9/12 w-8/12 m-auto my-10 justify-items-center"
     >
       <h1 class="text-xl text-gray-600 font-bold">Minhas Solicitações</h1>
-      <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="flex flex-col mt-3">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div
@@ -15,7 +14,6 @@
             >
               <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
-                  <!--			 -->
                   <tr>
                     <th
                       scope="col"

@@ -1,6 +1,6 @@
 <template>
   <side-bar>
-  <div class="container lg:w-8/12 mx-auto mt-16">
+  <div class="lg:w-8/12 mx-auto mt-16">
     <div class="flex">
       <div class="w-1/4">
         <div class="relative mb-2">

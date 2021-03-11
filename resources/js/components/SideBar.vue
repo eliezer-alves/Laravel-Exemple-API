@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-row ">
+  <div class="flex flex-row h-full">
     <!-- Sidebar -->
     <nav class="bg-gray-900 w-20 justify-between flex flex-col">
       <div class="mt-10 mb-10">
-        <a href="#">
+        <!-- <a href="#">
           <img
             src="https://randomuser.me/api/portraits/women/76.jpg"
-            class="rounded-full w-10 h-10 mb-3 mx-auto"
+            class="rounded-full w-10  mb-3 mx-auto"
           />
-        </a>
+        </a> -->
         <div class="mt-10">
           <ul>
             <li class="mb-6">
@@ -112,8 +112,7 @@
         </a>
       </div>
     </nav>
-    <div class="px-16 py-4 text-gray-700 bg-gray-300 
-   w-screen">
+    <div class="px-16 py-4 text-gray-700 bg-gray-300 w-screen">
       <slot></slot>
     </div>
   </div>

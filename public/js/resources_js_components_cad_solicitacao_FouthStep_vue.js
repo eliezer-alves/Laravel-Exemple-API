@@ -130,7 +130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {},
   data: function data() {
@@ -1132,14 +1131,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row " }, [
+  return _c("div", { staticClass: "flex flex-row h-full" }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },
       [
         _c("div", { staticClass: "mt-10 mb-10" }, [
-          _vm._m(0),
-          _vm._v(" "),
           _c("div", { staticClass: "mt-10" }, [
             _c("ul", [
               _c("li", { staticClass: "mb-6" }, [
@@ -1301,25 +1298,13 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 \n w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen" },
       [_vm._t("default")],
       2
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("img", {
-        staticClass: "rounded-full w-10 h-10 mb-3 mx-auto",
-        attrs: { src: "https://randomuser.me/api/portraits/women/76.jpg" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1345,7 +1330,7 @@ var render = function() {
   return _c("side-bar", [
     _c(
       "div",
-      { staticClass: "container lg:w-8/12 mx-auto mt-16" },
+      { staticClass: "lg:w-8/12 mx-auto mt-16" },
       [
         _c("div", { staticClass: "flex" }, [
           _c("div", { staticClass: "w-1/4" }, [
@@ -1719,7 +1704,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4 h-6" }, [
+    _c("div", { staticClass: "p-4" }, [
       _c("div", { staticClass: "my-1" }, [
         _c(
           "div",

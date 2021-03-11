@@ -130,7 +130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {},
   data: function data() {
@@ -420,6 +419,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -1901,6 +1901,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2594,14 +2597,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-row " }, [
+  return _c("div", { staticClass: "flex flex-row h-full" }, [
     _c(
       "nav",
       { staticClass: "bg-gray-900 w-20 justify-between flex flex-col" },
       [
         _c("div", { staticClass: "mt-10 mb-10" }, [
-          _vm._m(0),
-          _vm._v(" "),
           _c("div", { staticClass: "mt-10" }, [
             _c("ul", [
               _c("li", { staticClass: "mb-6" }, [
@@ -2763,25 +2764,13 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 \n w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen" },
       [_vm._t("default")],
       2
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("img", {
-        staticClass: "rounded-full w-10 h-10 mb-3 mx-auto",
-        attrs: { src: "https://randomuser.me/api/portraits/women/76.jpg" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -2807,7 +2796,7 @@ var render = function() {
   return _c("side-bar", [
     _c(
       "div",
-      { staticClass: "container lg:w-8/12 mx-auto mt-16" },
+      { staticClass: "lg:w-8/12 mx-auto mt-16" },
       [
         _c("div", { staticClass: "flex" }, [
           _c("div", { staticClass: "w-1/4" }, [
@@ -4144,7 +4133,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
       },
       [
         _c("label", { attrs: { for: "tipo_logradouro_socio" } }, [
@@ -4224,7 +4213,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4 h-6" }, [
+    _c("div", { staticClass: "p-4" }, [
       _c("div", { staticClass: "my-1" }, [
         _c(
           "div",
@@ -4930,7 +4919,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -4940,10 +4929,322 @@ var render = function() {
                       "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                   },
                   [
+                    _c("label", { attrs: { for: "cep_representante" } }, [
+                      _vm._v("CEP")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "#####-###",
+                          expression: "'#####-###'"
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cep_representante" },
+                      domProps: {
+                        value: _vm.$v.solicitacao.cep_representante.$model
+                      },
+                      on: {
+                        blur: function($event) {
+                          return _vm.setCepRepresentante($event.target.value)
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.$v.solicitacao.cep_representante.$dirty &&
+                !_vm.$v.solicitacao.cep_representante.required
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v(
+                        "\n              Digite um CEP válido\n            "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.$v.solicitacao.cep_representante.$dirty &&
+                !_vm.$v.solicitacao.cep_representante.minLength
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v("\n              CEP inválido\n            ")
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "uf_representante" } }, [
+                      _vm._v("UF")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.uf_representante.$model,
+                            expression: "$v.solicitacao.uf_representante.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "uf_representante",
+                          name: "uf_representante"
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.$v.solicitacao.uf_representante,
+                              "$model",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.dominios.uf, function(uf) {
+                          return _c(
+                            "option",
+                            { key: uf.codigo, domProps: { value: uf.codigo } },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(uf.descricao) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.$v.solicitacao.uf_representante.$dirty &&
+                !_vm.$v.solicitacao.uf_representante.required
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v("\n              UF é obrigatório\n            ")
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "cidade_representante" } }, [
+                      _vm._v("Cidade")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.cidade_representante.$model,
+                          expression:
+                            "$v.solicitacao.cidade_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "cidade_representante", type: "text" },
+                      domProps: {
+                        value: _vm.$v.solicitacao.cidade_representante.$model
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.cidade_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.$v.solicitacao.cidade_representante.$dirty &&
+                !_vm.$v.solicitacao.cidade_representante.required
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v(
+                        "\n              Cidade é obrigatória\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c("label", { attrs: { for: "bairro_representante" } }, [
+                      _vm._v("Bairro")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.$v.solicitacao.bairro_representante.$model,
+                          expression:
+                            "$v.solicitacao.bairro_representante.$model",
+                          modifiers: { trim: true }
+                        }
+                      ],
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: { id: "bairro_representante", type: "text" },
+                      domProps: {
+                        value: _vm.$v.solicitacao.bairro_representante.$model
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$v.solicitacao.bairro_representante,
+                            "$model",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.$v.solicitacao.bairro_representante.$dirty &&
+                !_vm.$v.solicitacao.bairro_representante.required
+                  ? _c("div", { staticClass: "text-red-600" }, [
+                      _vm._v(
+                        "\n              Bairro é obrigatório\n            "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
+                  },
+                  [
                     _c(
                       "label",
                       { attrs: { for: "id_tipo_logradouro_representante" } },
-                      [_vm._v("Tipo Logradouro")]
+                      [_vm._v("Tipo de Logradouro")]
                     )
                   ]
                 ),
@@ -5040,7 +5341,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -5118,7 +5419,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -5192,7 +5493,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               },
               [
                 _c(
@@ -5254,318 +5555,6 @@ var render = function() {
                     })
                   ]
                 )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cep_representante" } }, [
-                      _vm._v("CEP")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "mask",
-                          rawName: "v-mask",
-                          value: "#####-###",
-                          expression: "'#####-###'"
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "cep_representante" },
-                      domProps: {
-                        value: _vm.$v.solicitacao.cep_representante.$model
-                      },
-                      on: {
-                        blur: function($event) {
-                          return _vm.setCepRepresentante($event.target.value)
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.$v.solicitacao.cep_representante.$dirty &&
-                !_vm.$v.solicitacao.cep_representante.required
-                  ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v(
-                        "\n              Digite um CEP válido\n            "
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.$v.solicitacao.cep_representante.$dirty &&
-                !_vm.$v.solicitacao.cep_representante.minLength
-                  ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v("\n              CEP inválido\n            ")
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "bairro_representante" } }, [
-                      _vm._v("Bairro")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.trim",
-                          value: _vm.$v.solicitacao.bairro_representante.$model,
-                          expression:
-                            "$v.solicitacao.bairro_representante.$model",
-                          modifiers: { trim: true }
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "bairro_representante", type: "text" },
-                      domProps: {
-                        value: _vm.$v.solicitacao.bairro_representante.$model
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.$v.solicitacao.bairro_representante,
-                            "$model",
-                            $event.target.value.trim()
-                          )
-                        },
-                        blur: function($event) {
-                          return _vm.$forceUpdate()
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.$v.solicitacao.bairro_representante.$dirty &&
-                !_vm.$v.solicitacao.bairro_representante.required
-                  ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v(
-                        "\n              Bairro é obrigatório\n            "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "cidade_representante" } }, [
-                      _vm._v("Cidade")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.trim",
-                          value: _vm.$v.solicitacao.cidade_representante.$model,
-                          expression:
-                            "$v.solicitacao.cidade_representante.$model",
-                          modifiers: { trim: true }
-                        }
-                      ],
-                      staticClass:
-                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                      attrs: { id: "cidade_representante", type: "text" },
-                      domProps: {
-                        value: _vm.$v.solicitacao.cidade_representante.$model
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.$v.solicitacao.cidade_representante,
-                            "$model",
-                            $event.target.value.trim()
-                          )
-                        },
-                        blur: function($event) {
-                          return _vm.$forceUpdate()
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.$v.solicitacao.cidade_representante.$dirty &&
-                !_vm.$v.solicitacao.cidade_representante.required
-                  ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v(
-                        "\n              Cidade é obrigatória\n            "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                  },
-                  [
-                    _c("label", { attrs: { for: "uf_representante" } }, [
-                      _vm._v("UF")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "bg-white my-2 p-1 border border-gray-200 rounded"
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.$v.solicitacao.uf_representante.$model,
-                            expression: "$v.solicitacao.uf_representante.$model"
-                          }
-                        ],
-                        staticClass:
-                          "p-1 px-2 outline-none w-full text-gray-800",
-                        attrs: {
-                          id: "uf_representante",
-                          name: "uf_representante"
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.$v.solicitacao.uf_representante,
-                              "$model",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
-                        _vm._v(" "),
-                        _vm._l(_vm.dominios.uf, function(uf) {
-                          return _c(
-                            "option",
-                            { key: uf.codigo, domProps: { value: uf.codigo } },
-                            [
-                              _vm._v(
-                                "\n                  " +
-                                  _vm._s(uf.descricao) +
-                                  "\n                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.$v.solicitacao.uf_representante.$dirty &&
-                !_vm.$v.solicitacao.uf_representante.required
-                  ? _c("div", { staticClass: "text-red-600" }, [
-                      _vm._v("\n              UF é obrigatório\n            ")
-                    ])
-                  : _vm._e()
               ]
             ),
             _vm._v(" "),

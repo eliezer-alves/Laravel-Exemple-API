@@ -1,6 +1,6 @@
 <template>
   <solicitacao>
-    <div class="p-4 h-6">
+    <div class="p-4">
       <div class="my-1">
         <div class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm">
           Dados Representante Legal
@@ -269,114 +269,7 @@
           </div>
           <div class="grid lg:grid-cols-12 md:grid-cols-12">
             <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="id_tipo_logradouro_representante"
-                  >Tipo Logradouro</label
-                >
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <select
-                  id="id_tipo_logradouro_representante"
-                  name="id_tipo_logradouro_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
-                  v-model="
-                    $v.solicitacao.id_tipo_logradouro_representante.$model
-                  "
-                >
-                  <option value="">--</option>
-                  <option
-                    v-for="tipo_logradouro in dominios.tipoLogradouro"
-                    :key="tipo_logradouro.id_tipo_logradouro"
-                    :value="tipo_logradouro.id_tipo_logradouro"
-                  >
-                    {{ tipo_logradouro.descricao }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.id_tipo_logradouro_representante.$dirty &&
-                  !$v.solicitacao.id_tipo_logradouro_representante.required
-                "
-              >
-                Tipo do Logradouro é obrigatório
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="logradouro_representante">Logradouro</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="logradouro_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                  v-model.trim="$v.solicitacao.logradouro_representante.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.logradouro_representante.$dirty &&
-                  !$v.solicitacao.logradouro_representante.required
-                "
-              >
-                Logradouro é obrigatório
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="numero_representante">Número</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="numero_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  v-model.trim="$v.solicitacao.numero_representante.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.numero_representante.$dirty &&
-                  !$v.solicitacao.numero_representante.required
-                "
-              >
-                Número é obrigatório
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="complemento_representante">Complemento</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="complemento_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                  v-model.trim="$v.solicitacao.complemento_representante.$model"
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -412,59 +305,7 @@
               </div>
             </div>
             <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="bairro_representante">Bairro</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="bairro_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                  v-model.trim="$v.solicitacao.bairro_representante.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.bairro_representante.$dirty &&
-                  !$v.solicitacao.bairro_representante.required
-                "
-              >
-                Bairro é obrigatório
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cidade_representante">Cidade</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="cidade_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                  v-model.trim="$v.solicitacao.cidade_representante.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.cidade_representante.$dirty &&
-                  !$v.solicitacao.cidade_representante.required
-                "
-              >
-                Cidade é obrigatória
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -498,6 +339,168 @@
                 UF é obrigatório
               </div>
             </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="cidade_representante">Cidade</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="cidade_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-model.trim="$v.solicitacao.cidade_representante.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.cidade_representante.$dirty &&
+                  !$v.solicitacao.cidade_representante.required
+                "
+              >
+                Cidade é obrigatória
+              </div>
+            </div>
+
+            <div
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="bairro_representante">Bairro</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="bairro_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-model.trim="$v.solicitacao.bairro_representante.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.bairro_representante.$dirty &&
+                  !$v.solicitacao.bairro_representante.required
+                "
+              >
+                Bairro é obrigatório
+              </div>
+            </div>
+
+            <div
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
+              >
+                <label for="id_tipo_logradouro_representante"
+                  >Tipo de Logradouro</label
+                >
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <select
+                  id="id_tipo_logradouro_representante"
+                  name="id_tipo_logradouro_representante"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="
+                    $v.solicitacao.id_tipo_logradouro_representante.$model
+                  "
+                >
+                  <option value="">--</option>
+                  <option
+                    v-for="tipo_logradouro in dominios.tipoLogradouro"
+                    :key="tipo_logradouro.id_tipo_logradouro"
+                    :value="tipo_logradouro.id_tipo_logradouro"
+                  >
+                    {{ tipo_logradouro.descricao }}
+                  </option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.id_tipo_logradouro_representante.$dirty &&
+                  !$v.solicitacao.id_tipo_logradouro_representante.required
+                "
+              >
+                Tipo do Logradouro é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="logradouro_representante">Logradouro</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="logradouro_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-model.trim="$v.solicitacao.logradouro_representante.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.logradouro_representante.$dirty &&
+                  !$v.solicitacao.logradouro_representante.required
+                "
+              >
+                Logradouro é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="numero_representante">Número</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="numero_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  v-model.trim="$v.solicitacao.numero_representante.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.numero_representante.$dirty &&
+                  !$v.solicitacao.numero_representante.required
+                "
+              >
+                Número é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="complemento_representante">Complemento</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="complemento_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-model.trim="$v.solicitacao.complemento_representante.$model"
+                />
+              </div>
+            </div>
+
             <div
               class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
