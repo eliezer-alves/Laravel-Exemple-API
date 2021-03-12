@@ -391,10 +391,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -897,7 +897,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["kSocio"],
+  props: ["id"],
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
     return {
@@ -1063,19 +1063,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 if (dadosEndereco.erro) {
                   _this2.setBairroSocio("");
 
-                  document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = false;
+                  document.querySelector("#bairro_socio".concat(_this2.id)).disabled = false;
 
                   _this2.setCidadeSocio("");
 
-                  document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = false;
+                  document.querySelector("#cidade_socio".concat(_this2.id)).disabled = false;
 
                   _this2.setLogradouroSocio("");
 
-                  document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = false;
+                  document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = false;
 
                   _this2.setUfSocio("");
 
-                  document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = false;
+                  document.querySelector("#uf_socio".concat(_this2.id)).disabled = false;
 
                   _this2.setComplementoSocio("");
 
@@ -1086,33 +1086,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this2.setBairroSocio(dadosEndereco.bairro);
 
                   if (dadosEndereco.bairro != "") {
-                    document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = true;
+                    document.querySelector("#bairro_socio".concat(_this2.id)).disabled = true;
                   } else {
-                    document.querySelector("#bairro_socio".concat(_this2.kSocio)).disabled = false;
+                    document.querySelector("#bairro_socio".concat(_this2.id)).disabled = false;
                   }
 
                   _this2.setCidadeSocio(dadosEndereco.localidade);
 
                   if (dadosEndereco.localidade != "") {
-                    document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = true;
+                    document.querySelector("#cidade_socio".concat(_this2.id)).disabled = true;
                   } else {
-                    document.querySelector("#cidade_socio".concat(_this2.kSocio)).disabled = false;
+                    document.querySelector("#cidade_socio".concat(_this2.id)).disabled = false;
                   }
 
                   _this2.setLogradouroSocio(dadosEndereco.logradouro);
 
                   if (dadosEndereco.logradouro != "") {
-                    document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = true;
+                    document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = true;
                   } else {
-                    document.querySelector("#logradouro_socio".concat(_this2.kSocio)).disabled = false;
+                    document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = false;
                   }
 
                   _this2.setUfSocio(dadosEndereco.uf);
 
                   if (dadosEndereco.uf != "") {
-                    document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = true;
+                    document.querySelector("#uf_socio".concat(_this2.id)).disabled = true;
                   } else {
-                    document.querySelector("#uf_socio".concat(_this2.kSocio)).disabled = false;
+                    document.querySelector("#uf_socio".concat(_this2.id)).disabled = false;
                   }
 
                   _this2.setComplementoSocio(dadosEndereco.complemento);
@@ -1159,28 +1159,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.numero_socio.$touch();
     },
     setDados: function setDados() {
-      this.$store.commit("SET_SOCIOS_SOLICITACAO", {
-        kSocio: this.kSocio,
-        nome_socio: this.nome_socio,
-        cpf_socio: this.cpf_socio,
-        uf_rg_socio: this.uf_rg_socio,
-        numero_rg_socio: this.numero_rg_socio,
-        sexo_socio: this.sexo_socio,
-        estado_civil_socio: this.estado_civil_socio,
-        email_socio: this.email_socio,
-        telefone_socio: this.telefone_socio,
-        cep_socio: this.cep_socio,
-        uf_socio: this.uf_socio,
-        cidade_socio: this.cidade_socio,
-        bairro_socio: this.bairro_socio,
-        tipo_logradouro_socio: this.tipo_logradouro_socio,
-        logradouro_socio: this.logradouro_socio,
-        numero_socio: this.numero_socio,
-        complemento_socio: this.complemento_socio
+      var _this3 = this;
+
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.id === _this3.id;
       });
-      this.$store.commit("GET_ERRORS", {
-        invalid: this.$v.$invalid
-      });
+
+      if (index >= 0) {
+        this.solicitacao.socios[index] = {
+          id: this.id,
+          valid: !this.$v.$invalid,
+          nome_socio: this.nome_socio,
+          cpf_socio: this.cpf_socio,
+          uf_rg_socio: this.uf_rg_socio,
+          numero_rg_socio: this.numero_rg_socio,
+          sexo_socio: this.sexo_socio,
+          estado_civil_socio: this.estado_civil_socio,
+          email_socio: this.email_socio,
+          telefone_socio: this.telefone_socio,
+          cep_socio: this.cep_socio,
+          uf_socio: this.uf_socio,
+          cidade_socio: this.cidade_socio,
+          bairro_socio: this.bairro_socio,
+          tipo_logradouro_socio: this.tipo_logradouro_socio,
+          logradouro_socio: this.logradouro_socio,
+          numero_socio: this.numero_socio,
+          complemento_socio: this.complemento_socio
+        };
+        console.log(this.solicitacao.socios[index]);
+      } // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+
     }
   }
 });
@@ -1201,7 +1209,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Solicitacao.vue */ "./resources/js/components/Solicitacao.vue");
-/* harmony import */ var _Socios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socios.vue */ "./resources/js/components/cad.solicitacao/Socios.vue");
+/* harmony import */ var _Socio_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socio.vue */ "./resources/js/components/cad.solicitacao/Socio.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
@@ -1904,6 +1912,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1913,14 +1929,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Solicitacao: _Solicitacao_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Socios: _Socios_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    Socio: _Socio_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
-      socios: 0
+      socio_count: 0
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])),
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])), {}, {
+    validSocioElement: function validSocioElement() {
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.valid === false;
+      });
+      console.log(index);
+      if (index >= 0) return false;
+      return true;
+    }
+  }),
   mounted: function mounted() {
     var _this = this;
 
@@ -1933,9 +1958,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               return _this.$store.dispatch("fetchDominios");
 
             case 2:
-              _this.socios = _this.solicitacao.socios.length;
-
-            case 3:
             case "end":
               return _context.stop();
           }
@@ -2129,7 +2151,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.solicitacao.uf_representante.$touch();
     },
     addSocioElement: function addSocioElement() {
-      this.socios++;
+      this.solicitacao.socios.push({
+        id: this.socio_count++,
+        valid: false,
+        nome_socio: "",
+        cpf_socio: "",
+        uf_rg_socio: "",
+        numero_rg_socio: "",
+        sexo_socio: "",
+        estado_civil_socio: "",
+        email_socio: "",
+        telefone_socio: "",
+        cep_socio: "",
+        uf_socio: "",
+        cidade_socio: "",
+        bairro_socio: "",
+        tipo_logradouro_socio: "",
+        logradouro_socio: "",
+        numero_socio: "",
+        complemento_socio: ""
+      });
     },
     removeSocioElement: function removeSocioElement() {
       if (this.socios > 0) {
@@ -2358,10 +2399,10 @@ component.options.__file = "resources/js/components/Solicitacao.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/Socios.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/Socios.vue ***!
-  \************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/Socio.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socio.vue ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2369,8 +2410,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socios.vue?vue&type=template&id=422189ba& */ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&");
-/* harmony import */ var _Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socios.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=40e12600& */ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600&");
+/* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -2380,9 +2421,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -2392,7 +2433,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/cad.solicitacao/Socios.vue"
+component.options.__file = "resources/js/components/cad.solicitacao/Socio.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -2468,10 +2509,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2479,8 +2520,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socios.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -2547,19 +2588,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600& ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socios_vue_vue_type_template_id_422189ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socios.vue?vue&type=template&id=422189ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socio.vue?vue&type=template&id=40e12600& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600&");
 
 
 /***/ }),
@@ -3167,10 +3208,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socios.vue?vue&type=template&id=422189ba& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3202,8 +3243,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "nome_socio_" + _vm.kSocio,
-                  name: "nome_socio_" + _vm.kSocio,
+                  id: "nome_socio_" + _vm.id,
+                  name: "nome_socio_" + _vm.id,
                   type: "text",
                   placeholder: "Nome completo"
                 },
@@ -3251,8 +3292,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf",
                 attrs: {
-                  id: "cpf_socio" + _vm.kSocio,
-                  name: "cpf_socio" + _vm.kSocio,
+                  id: "cpf_socio" + _vm.id,
+                  name: "cpf_socio" + _vm.id,
                   type: "text",
                   placeholder: "###.###.###-##"
                 },
@@ -3299,8 +3340,8 @@ var render = function() {
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "uf_rg_socio" + _vm.kSocio,
-                    name: "uf_rg_socio" + _vm.kSocio
+                    id: "uf_rg_socio" + _vm.id,
+                    name: "uf_rg_socio" + _vm.id
                   },
                   domProps: { value: _vm.$v.uf_rg_socio.$model },
                   on: {
@@ -3357,8 +3398,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "numero_rg_socio" + _vm.kSocio,
-                  name: "numero_rg_socio" + _vm.kSocio,
+                  id: "numero_rg_socio" + _vm.id,
+                  name: "numero_rg_socio" + _vm.id,
                   type: "text"
                 },
                 domProps: { value: _vm.$v.numero_rg_socio.$model },
@@ -3398,8 +3439,8 @@ var render = function() {
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "sexo_socio" + _vm.kSocio,
-                    name: "sexo_socio" + _vm.kSocio
+                    id: "sexo_socio" + _vm.id,
+                    name: "sexo_socio" + _vm.id
                   },
                   domProps: { value: _vm.$v.sexo_socio.$model },
                   on: {
@@ -3448,8 +3489,8 @@ var render = function() {
                 {
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "estado_civil_socio" + _vm.kSocio,
-                    name: "estado_civil_socio" + _vm.kSocio
+                    id: "estado_civil_socio" + _vm.id,
+                    name: "estado_civil_socio" + _vm.id
                   },
                   domProps: { value: _vm.$v.estado_civil_socio.$model },
                   on: {
@@ -3510,8 +3551,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "email_socio" + _vm.kSocio,
-                  name: "email_socio" + _vm.kSocio,
+                  id: "email_socio" + _vm.id,
+                  name: "email_socio" + _vm.id,
                   type: "text",
                   placeholder: "mail@brasilcard.net"
                 },
@@ -3559,8 +3600,8 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "telefone_socio" + _vm.kSocio,
-                  name: "telefone_socio" + _vm.kSocio,
+                  id: "telefone_socio" + _vm.id,
+                  name: "telefone_socio" + _vm.id,
                   type: "text"
                 },
                 domProps: { value: _vm.$v.telefone_socio.$model },
@@ -3617,8 +3658,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cep_socio" + _vm.kSocio,
-                    name: "cep_socio" + _vm.kSocio,
+                    id: "cep_socio" + _vm.id,
+                    name: "cep_socio" + _vm.id,
                     type: "text",
                     placeholder: "#####-###"
                   },
@@ -3664,8 +3705,8 @@ var render = function() {
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "uf_socio" + _vm.kSocio,
-                      name: "uf_socio" + _vm.kSocio,
+                      id: "uf_socio" + _vm.id,
+                      name: "uf_socio" + _vm.id,
                       disabled: ""
                     },
                     domProps: { value: _vm.$v.uf_socio.$model },
@@ -3725,8 +3766,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cidade_socio" + _vm.kSocio,
-                    name: "cidade_socio" + _vm.kSocio,
+                    id: "cidade_socio" + _vm.id,
+                    name: "cidade_socio" + _vm.id,
                     type: "text",
                     placeholder: "Cidade",
                     disabled: ""
@@ -3769,8 +3810,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "bairro_socio" + _vm.kSocio,
-                    name: "bairro_socio" + _vm.kSocio,
+                    id: "bairro_socio" + _vm.id,
+                    name: "bairro_socio" + _vm.id,
                     type: "text",
                     placeholder: "Bairro"
                   },
@@ -3813,8 +3854,8 @@ var render = function() {
                   {
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "tipo_logradouro_socio" + _vm.kSocio,
-                      name: "tipo_logradouro_socio" + _vm.kSocio
+                      id: "tipo_logradouro_socio" + _vm.id,
+                      name: "tipo_logradouro_socio" + _vm.id
                     },
                     domProps: { value: _vm.$v.tipo_logradouro_socio.$model },
                     on: {
@@ -3881,8 +3922,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "logradouro_socio" + _vm.kSocio,
-                    name: "logradouro_socio" + _vm.kSocio,
+                    id: "logradouro_socio" + _vm.id,
+                    name: "logradouro_socio" + _vm.id,
                     type: "text"
                   },
                   domProps: { value: _vm.$v.logradouro_socio.$model },
@@ -3923,8 +3964,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "numero_socio" + _vm.kSocio,
-                    name: "numero_socio" + _vm.kSocio,
+                    id: "numero_socio" + _vm.id,
+                    name: "numero_socio" + _vm.id,
                     type: "number"
                   },
                   domProps: { value: _vm.$v.numero_socio.$model },
@@ -3965,8 +4006,8 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "complemento_socio" + _vm.kSocio,
-                    name: "complemento_socio" + _vm.kSocio,
+                    id: "complemento_socio" + _vm.id,
+                    name: "complemento_socio" + _vm.id,
                     type: "text"
                   }
                 })
@@ -5736,8 +5777,13 @@ var render = function() {
             [_vm._v("\n        Sócios\n      ")]
           ),
           _vm._v(" "),
-          _vm._l(_vm.socios, function(socio) {
-            return _c("socios", { key: socio, attrs: { kSocio: socio } })
+          _vm._l(this.solicitacao.socios, function(socio) {
+            return _c("socio", {
+              key: socio.id,
+              tag: "socio",
+              attrs: { id: socio.id },
+              on: { remove: _vm.removeSocioElement }
+            })
           }),
           _vm._v(" "),
           _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
@@ -5756,8 +5802,8 @@ var render = function() {
               {
                 staticClass:
                   "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
-                class: { "opacity-40": _vm.errors.invalid },
-                attrs: { disabled: _vm.errors.invalid },
+                class: { "opacity-40": !_vm.validSocioElement },
+                attrs: { disabled: !_vm.validSocioElement },
                 on: { click: _vm.addSocioElement }
               },
               [_vm._v("\n          Novo Sócio\n        ")]
@@ -5767,45 +5813,52 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "flex p-2 mt-4" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-          },
-          [_vm._v("\n        Finalizar\n      ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex-auto flex flex-row-reverse" },
-          [
+      _c(
+        "div",
+        { staticClass: "flex p-2 mt-4" },
+        [
+          _c("router-link", { attrs: { to: { name: "home" } } }, [
             _c(
               "button",
               {
                 staticClass:
-                  "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                class: { "opacity-40": _vm.$v.$invalid },
-                on: { click: _vm.validateFields }
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
               },
-              [_vm._v("\n          Avançar\n        ")]
-            ),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
+              [_vm._v("\n          Finalizar\n        ")]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex-auto flex flex-row-reverse" },
+            [
               _c(
                 "button",
                 {
                   staticClass:
-                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                  class: { "opacity-40": _vm.$v.$invalid },
+                  on: { click: _vm.validateFields }
                 },
-                [_vm._v("\n            Retornar\n          ")]
-              )
-            ])
-          ],
-          1
-        )
-      ])
+                [_vm._v("\n          Avançar\n        ")]
+              ),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: { name: "solicitacao-2" } } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                  },
+                  [_vm._v("\n            Retornar\n          ")]
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
     ])
   ])
 }

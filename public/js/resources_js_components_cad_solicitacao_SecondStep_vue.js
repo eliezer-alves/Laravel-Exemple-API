@@ -1184,7 +1184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         prefix: "R$ ",
         precision: 2
       },
-      docElements: 0
+      doc_element: 0
     };
   },
   validations: {
@@ -1358,7 +1358,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.docElements++
+        id: this.doc_element++
       });
     },
     removeDocElement: function removeDocElement(id) {

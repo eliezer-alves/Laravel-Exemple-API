@@ -609,7 +609,7 @@ export default {
         prefix: "R$ ",
         precision: 2,
       },
-      docElements: 0,
+      doc_element: 0,
     };
   },
   validations: {
@@ -721,7 +721,7 @@ export default {
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.docElements++,
+        id: this.doc_element++,
       });
     },
     removeDocElement(id) {

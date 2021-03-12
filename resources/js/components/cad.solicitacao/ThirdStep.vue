@@ -636,7 +636,13 @@
         <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
           Sócios
         </div>
-        <socios v-for="socio in socios" :key="socio" :kSocio="socio" />
+        <socio
+          v-for="socio in this.solicitacao.socios"
+          :is="'socio'"
+          :id="socio.id"
+          :key="socio.id"
+          @remove="removeSocioElement"
+        />
         <div class="flex flex-row-reverse my-2">
           <button
             @click="removeSocioElement"
@@ -646,8 +652,8 @@
           </button>
 
           <button
-            :disabled="errors.invalid"
-            :class="{ 'opacity-40': errors.invalid }"
+            :disabled="!validSocioElement"
+            :class="{ 'opacity-40': !validSocioElement }"
             @click="addSocioElement"
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
           >
@@ -657,11 +663,13 @@
       </div>
 
       <div class="flex p-2 mt-4">
-        <button
-          class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-        >
-          Finalizar
-        </button>
+        <router-link :to="{ name: 'home' }">
+          <button
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+          >
+            Finalizar
+          </button>
+        </router-link>
         <div class="flex-auto flex flex-row-reverse">
           <button
             @click="validateFields"
@@ -686,7 +694,7 @@
 
 <script>
 import Solicitacao from "../Solicitacao.vue";
-import Socios from "./Socios.vue";
+import Socio from "./Socio.vue";
 
 import { mapGetters } from "vuex";
 import { mapFields } from "vuex-map-fields";
@@ -695,19 +703,27 @@ import { required, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
-  components: { Solicitacao, Socios },
+  components: { Solicitacao, Socio },
   data() {
     return {
-      socios: 0,
+      socio_count: 0,
     };
   },
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
     ...mapFields(["solicitacao", "errors"]),
+    validSocioElement: function () {
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.valid === false
+      );
+      console.log(index);
+      if (index >= 0) return false;
+      return true;
+    },
   },
   async mounted() {
     await this.$store.dispatch("fetchDominios");
-    this.socios = this.solicitacao.socios.length;
+    // this.socios = this.solicitacao.socios.length;
   },
   validations: {
     solicitacao: {
@@ -851,7 +867,26 @@ export default {
       this.$v.solicitacao.uf_representante.$touch();
     },
     addSocioElement() {
-      this.socios++;
+      this.solicitacao.socios.push({
+        id: this.socio_count++,
+        valid: false,
+        nome_socio: "",
+        cpf_socio: "",
+        uf_rg_socio: "",
+        numero_rg_socio: "",
+        sexo_socio: "",
+        estado_civil_socio: "",
+        email_socio: "",
+        telefone_socio: "",
+        cep_socio: "",
+        uf_socio: "",
+        cidade_socio: "",
+        bairro_socio: "",
+        tipo_logradouro_socio: "",
+        logradouro_socio: "",
+        numero_socio: "",
+        complemento_socio: "",
+      });
     },
     removeSocioElement() {
       if (this.socios > 0) {

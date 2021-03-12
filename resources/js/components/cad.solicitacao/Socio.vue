@@ -11,8 +11,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'nome_socio_' + kSocio"
-            :name="'nome_socio_' + kSocio"
+            :id="'nome_socio_' + id"
+            :name="'nome_socio_' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Nome completo"
@@ -38,8 +38,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cpf_socio' + kSocio"
-            :name="'cpf_socio' + kSocio"
+            :id="'cpf_socio' + id"
+            :name="'cpf_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf"
             type="text"
             placeholder="###.###.###-##"
@@ -72,8 +72,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'uf_rg_socio' + kSocio"
-            :name="'uf_rg_socio' + kSocio"
+            :id="'uf_rg_socio' + id"
+            :name="'uf_rg_socio' + id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.uf_rg_socio.$model"
             @change="setUfRgSocio($event.target.value)"
@@ -106,8 +106,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'numero_rg_socio' + kSocio"
-            :name="'numero_rg_socio' + kSocio"
+            :id="'numero_rg_socio' + id"
+            :name="'numero_rg_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             :value="$v.numero_rg_socio.$model"
@@ -132,8 +132,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'sexo_socio' + kSocio"
-            :name="'sexo_socio' + kSocio"
+            :id="'sexo_socio' + id"
+            :name="'sexo_socio' + id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.sexo_socio.$model"
             @change="setSexoSocio($event.target.value)"
@@ -161,8 +161,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'estado_civil_socio' + kSocio"
-            :name="'estado_civil_socio' + kSocio"
+            :id="'estado_civil_socio' + id"
+            :name="'estado_civil_socio' + id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.estado_civil_socio.$model"
             @change="setEstadoCivilSocio($event.target.value)"
@@ -195,8 +195,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'email_socio' + kSocio"
-            :name="'email_socio' + kSocio"
+            :id="'email_socio' + id"
+            :name="'email_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="mail@brasilcard.net"
@@ -222,8 +222,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'telefone_socio' + kSocio"
-            :name="'telefone_socio' + kSocio"
+            :id="'telefone_socio' + id"
+            :name="'telefone_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             v-mask="['(##) ####-####', '(##) #####-####']"
@@ -253,8 +253,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cep_socio' + kSocio"
-            :name="'cep_socio' + kSocio"
+            :id="'cep_socio' + id"
+            :name="'cep_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="#####-###"
@@ -281,8 +281,8 @@
         </div>
         <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <select
-            :id="'uf_socio' + kSocio"
-            :name="'uf_socio' + kSocio"
+            :id="'uf_socio' + id"
+            :name="'uf_socio' + id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             disabled
             :value="$v.uf_socio.$model"
@@ -316,8 +316,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cidade_socio' + kSocio"
-            :name="'cidade_socio' + kSocio"
+            :id="'cidade_socio' + id"
+            :name="'cidade_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Cidade"
@@ -344,8 +344,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'bairro_socio' + kSocio"
-            :name="'bairro_socio' + kSocio"
+            :id="'bairro_socio' + id"
+            :name="'bairro_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Bairro"
@@ -361,7 +361,7 @@
           Bairro é obrigatório.
         </div>
       </div>
-      
+
       <div
         class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
       >
@@ -372,8 +372,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'tipo_logradouro_socio' + kSocio"
-            :name="'tipo_logradouro_socio' + kSocio"
+            :id="'tipo_logradouro_socio' + id"
+            :name="'tipo_logradouro_socio' + id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             :value="$v.tipo_logradouro_socio.$model"
             @change="setTipoLogradouroSocio($event.target.value)"
@@ -393,7 +393,7 @@
           class="text-red-600"
           v-if="
             $v.tipo_logradouro_socio.$dirty &&
-              !$v.tipo_logradouro_socio.required
+            !$v.tipo_logradouro_socio.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -409,8 +409,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'logradouro_socio' + kSocio"
-            :name="'logradouro_socio' + kSocio"
+            :id="'logradouro_socio' + id"
+            :name="'logradouro_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             :value="$v.logradouro_socio.$model"
@@ -435,8 +435,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'numero_socio' + kSocio"
-            :name="'numero_socio' + kSocio"
+            :id="'numero_socio' + id"
+            :name="'numero_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="number"
             :value="$v.numero_socio.$model"
@@ -461,8 +461,8 @@
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'complemento_socio' + kSocio"
-            :name="'complemento_socio' + kSocio"
+            :id="'complemento_socio' + id"
+            :name="'complemento_socio' + id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
           />
@@ -478,9 +478,9 @@ import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
-  props: ["kSocio"],
+  props: ["id"],
   computed: {
-    ...mapGetters(["dominios", "solicitacao", "errors"])
+    ...mapGetters(["dominios", "solicitacao", "errors"]),
   },
   data() {
     return {
@@ -499,62 +499,62 @@ export default {
       tipo_logradouro_socio: null,
       logradouro_socio: null,
       numero_socio: null,
-      complemento_socio: null
+      complemento_socio: null,
     };
   },
   async mounted() {
     this.$store.commit("GET_ERRORS", {
-      invalid: this.$v.$invalid
+      invalid: this.$v.$invalid,
     });
     await this.$store.dispatch("fetchDominios");
   },
   validations: {
     nome_socio: {
-      required
+      required,
     },
     cpf_socio: {
-      required
+      required,
     },
     uf_rg_socio: {
-      required
+      required,
     },
     numero_rg_socio: {
-      required
+      required,
     },
     sexo_socio: {
-      required
+      required,
     },
     estado_civil_socio: {
-      required
+      required,
     },
     email_socio: {
-      required
+      required,
     },
     telefone_socio: {
-      required
+      required,
     },
     cep_socio: {
-      required
+      required,
     },
     uf_socio: {
-      required
+      required,
     },
     cidade_socio: {
-      required
+      required,
     },
     bairro_socio: {
-      required
+      required,
     },
     tipo_logradouro_socio: {
-      required
+      required,
     },
     logradouro_socio: {
-      required
+      required,
     },
     complemento_socio: {},
     numero_socio: {
-      required
-    }
+      required,
+    },
   },
   methods: {
     setNomeSocio(value) {
@@ -612,18 +612,16 @@ export default {
       let dadosEndereco = await this.$store.dispatch("getViaCep", value);
       if (dadosEndereco.erro) {
         this.setBairroSocio("");
-        document.querySelector(`#bairro_socio${this.kSocio}`).disabled = false;
+        document.querySelector(`#bairro_socio${this.id}`).disabled = false;
 
         this.setCidadeSocio("");
-        document.querySelector(`#cidade_socio${this.kSocio}`).disabled = false;
+        document.querySelector(`#cidade_socio${this.id}`).disabled = false;
 
         this.setLogradouroSocio("");
-        document.querySelector(
-          `#logradouro_socio${this.kSocio}`
-        ).disabled = false;
+        document.querySelector(`#logradouro_socio${this.id}`).disabled = false;
 
         this.setUfSocio("");
-        document.querySelector(`#uf_socio${this.kSocio}`).disabled = false;
+        document.querySelector(`#uf_socio${this.id}`).disabled = false;
 
         this.setComplementoSocio("");
 
@@ -632,38 +630,32 @@ export default {
       } else {
         this.setBairroSocio(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "") {
-          document.querySelector(`#bairro_socio${this.kSocio}`).disabled = true;
+          document.querySelector(`#bairro_socio${this.id}`).disabled = true;
         } else {
-          document.querySelector(
-            `#bairro_socio${this.kSocio}`
-          ).disabled = false;
+          document.querySelector(`#bairro_socio${this.id}`).disabled = false;
         }
 
         this.setCidadeSocio(dadosEndereco.localidade);
         if (dadosEndereco.localidade != "") {
-          document.querySelector(`#cidade_socio${this.kSocio}`).disabled = true;
+          document.querySelector(`#cidade_socio${this.id}`).disabled = true;
         } else {
-          document.querySelector(
-            `#cidade_socio${this.kSocio}`
-          ).disabled = false;
+          document.querySelector(`#cidade_socio${this.id}`).disabled = false;
         }
 
         this.setLogradouroSocio(dadosEndereco.logradouro);
         if (dadosEndereco.logradouro != "") {
-          document.querySelector(
-            `#logradouro_socio${this.kSocio}`
-          ).disabled = true;
+          document.querySelector(`#logradouro_socio${this.id}`).disabled = true;
         } else {
           document.querySelector(
-            `#logradouro_socio${this.kSocio}`
+            `#logradouro_socio${this.id}`
           ).disabled = false;
         }
 
         this.setUfSocio(dadosEndereco.uf);
         if (dadosEndereco.uf != "") {
-          document.querySelector(`#uf_socio${this.kSocio}`).disabled = true;
+          document.querySelector(`#uf_socio${this.id}`).disabled = true;
         } else {
-          document.querySelector(`#uf_socio${this.kSocio}`).disabled = false;
+          document.querySelector(`#uf_socio${this.id}`).disabled = false;
         }
 
         this.setComplementoSocio(dadosEndereco.complemento);
@@ -701,28 +693,35 @@ export default {
       this.$v.numero_socio.$touch();
     },
     setDados() {
-      this.$store.commit("SET_SOCIOS_SOLICITACAO", {
-        kSocio: this.kSocio,
-        nome_socio: this.nome_socio,
-        cpf_socio: this.cpf_socio,
-        uf_rg_socio: this.uf_rg_socio,
-        numero_rg_socio: this.numero_rg_socio,
-        sexo_socio: this.sexo_socio,
-        estado_civil_socio: this.estado_civil_socio,
-        email_socio: this.email_socio,
-        telefone_socio: this.telefone_socio,
-        cep_socio: this.cep_socio,
-        uf_socio: this.uf_socio,
-        cidade_socio: this.cidade_socio,
-        bairro_socio: this.bairro_socio,
-        tipo_logradouro_socio: this.tipo_logradouro_socio,
-        logradouro_socio: this.logradouro_socio,
-        numero_socio: this.numero_socio,
-        complemento_socio: this.complemento_socio
-      });
-      this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
-    }
-  }
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.id === this.id
+      );
+      if (index >= 0) {
+        this.solicitacao.socios[index] = {
+          id: this.id,
+          valid: !this.$v.$invalid,
+          nome_socio: this.nome_socio,
+          cpf_socio: this.cpf_socio,
+          uf_rg_socio: this.uf_rg_socio,
+          numero_rg_socio: this.numero_rg_socio,
+          sexo_socio: this.sexo_socio,
+          estado_civil_socio: this.estado_civil_socio,
+          email_socio: this.email_socio,
+          telefone_socio: this.telefone_socio,
+          cep_socio: this.cep_socio,
+          uf_socio: this.uf_socio,
+          cidade_socio: this.cidade_socio,
+          bairro_socio: this.bairro_socio,
+          tipo_logradouro_socio: this.tipo_logradouro_socio,
+          logradouro_socio: this.logradouro_socio,
+          numero_socio: this.numero_socio,
+          complemento_socio: this.complemento_socio,
+        };
+        console.log(this.solicitacao.socios[index]);
+      }
+      // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+    },
+  },
 };
 </script>
 
