@@ -883,16 +883,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -901,22 +891,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
     return {
-      nome_socio: null,
-      cpf_socio: null,
-      uf_rg_socio: null,
-      numero_rg_socio: null,
-      sexo_socio: null,
-      estado_civil_socio: null,
-      email_socio: null,
-      telefone_socio: null,
-      cep_socio: null,
-      uf_socio: null,
-      cidade_socio: null,
-      bairro_socio: null,
-      tipo_logradouro_socio: null,
-      logradouro_socio: null,
-      numero_socio: null,
-      complemento_socio: null
+      socio: {}
     };
   },
   mounted: function mounted() {
@@ -935,6 +910,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               return _this.$store.dispatch("fetchDominios");
 
             case 3:
+              _this.socio = _this.getSocio();
+
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -943,109 +921,99 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }))();
   },
   validations: {
-    nome_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    cpf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    uf_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    numero_rg_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    sexo_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    estado_civil_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    email_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    telefone_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    cep_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    uf_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    cidade_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    bairro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    tipo_logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    logradouro_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-    },
-    complemento_socio: {},
-    numero_socio: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+    socio: {
+      nome: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      cpf: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      uf_rg: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      numero_rg: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      sexo: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      estado_civil: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      telefone: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      cep: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      uf: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      cidade: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      bairro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      tipo_logradouro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      logradouro: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      complemento: {},
+      numero: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      }
     }
   },
   methods: {
+    getSocio: function getSocio() {
+      var _this2 = this;
+
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.id === _this2.id;
+      });
+      return this.solicitacao.socios[index];
+    },
     setNomeSocio: function setNomeSocio(value) {
-      this.nome_socio = value;
-      this.$v.nome_socio.$touch();
+      this.socio.nome = value;
+      this.$v.socio.nome.$touch();
     },
     setCpfSocio: function setCpfSocio(value) {
       var arrayCPF = document.querySelectorAll(".cpf");
-      this.$v.cpf_socio.isRepeatedCPF = false;
+      this.$v.socio.cpf.isRepeatedCPF = false;
 
       for (var i = 0; i < arrayCPF.length - 1; i++) {
         if (arrayCPF[i].value == value) {
-          this.$v.cpf_socio.isRepeatedCPF = true;
+          this.$v.socio.cpf.isRepeatedCPF = true;
           break;
         }
       }
 
-      if (this.$v.cpf_socio.isRepeatedCPF) {
-        this.cpf_socio = value;
+      if (this.$v.socio.cpf.isRepeatedCPF) {
+        this.socio.cpf = value;
       } else {
         value = value.replace(/[^\d]+/g, "");
         var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
 
         if (isInvalid) {
-          this.cpf_socio = null;
-        } else this.cpf_socio = value;
+          this.socio.cpf = null;
+        } else this.socio.cpf = value;
       }
 
-      this.$v.cpf_socio.$touch();
-    },
-    setUfRgSocio: function setUfRgSocio(value) {
-      this.uf_rg_socio = value;
-      this.$v.uf_rg_socio.$touch();
-    },
-    setNumeroRgSocio: function setNumeroRgSocio(value) {
-      this.numero_rg_socio = value;
-      this.$v.numero_rg_socio.$touch();
-    },
-    setSexoSocio: function setSexoSocio(value) {
-      this.sexo_socio = value;
-      this.$v.sexo_socio.$touch();
-    },
-    setEstadoCivilSocio: function setEstadoCivilSocio(value) {
-      this.estado_civil_socio = value;
-      this.$v.estado_civil_socio.$touch();
-    },
-    setEmailSocio: function setEmailSocio(value) {
-      this.email_socio = value;
-      this.$v.email_socio.$touch();
+      this.$v.socio.cpf.$touch();
     },
     setTelefoneSocio: function setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.telefone_socio = value;
-      this.$v.telefone_socio.$touch();
+      this.socio.telefone = value;
+      this.$v.socio.telefone.$touch();
     },
     setCepSocio: function setCepSocio(value) {
-      var _this2 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var dadosEndereco;
@@ -1055,71 +1023,71 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 value = value.replace(/[^\d]+/g, "");
                 _context2.next = 3;
-                return _this2.$store.dispatch("getViaCep", value);
+                return _this3.$store.dispatch("getViaCep", value);
 
               case 3:
                 dadosEndereco = _context2.sent;
 
                 if (dadosEndereco.erro) {
-                  _this2.setBairroSocio("");
+                  _this3.setBairroSocio("");
 
-                  document.querySelector("#bairro_socio".concat(_this2.id)).disabled = false;
+                  document.querySelector("#bairro_socio_".concat(_this3.id)).disabled = false;
 
-                  _this2.setCidadeSocio("");
+                  _this3.setCidadeSocio("");
 
-                  document.querySelector("#cidade_socio".concat(_this2.id)).disabled = false;
+                  document.querySelector("#cidade_socio_".concat(_this3.id)).disabled = false;
 
-                  _this2.setLogradouroSocio("");
+                  _this3.setLogradouroSocio("");
 
-                  document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = false;
+                  document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = false;
 
-                  _this2.setUfSocio("");
+                  _this3.setUfSocio("");
 
-                  document.querySelector("#uf_socio".concat(_this2.id)).disabled = false;
+                  document.querySelector("#uf_socio_".concat(_this3.id)).disabled = false;
 
-                  _this2.setComplementoSocio("");
+                  _this3.setComplementoSocio("");
 
-                  _this2.cep_socio = null;
+                  _this3.socio.cep = null;
 
-                  _this2.$v.cep_socio.$touch();
+                  _this3.$v.socio.cep.$touch();
                 } else {
-                  _this2.setBairroSocio(dadosEndereco.bairro);
+                  _this3.setBairroSocio(dadosEndereco.bairro);
 
                   if (dadosEndereco.bairro != "") {
-                    document.querySelector("#bairro_socio".concat(_this2.id)).disabled = true;
+                    document.querySelector("#bairro_socio_".concat(_this3.id)).disabled = true;
                   } else {
-                    document.querySelector("#bairro_socio".concat(_this2.id)).disabled = false;
+                    document.querySelector("#bairro_socio_".concat(_this3.id)).disabled = false;
                   }
 
-                  _this2.setCidadeSocio(dadosEndereco.localidade);
+                  _this3.setCidadeSocio(dadosEndereco.localidade);
 
                   if (dadosEndereco.localidade != "") {
-                    document.querySelector("#cidade_socio".concat(_this2.id)).disabled = true;
+                    document.querySelector("#cidade_socio_".concat(_this3.id)).disabled = true;
                   } else {
-                    document.querySelector("#cidade_socio".concat(_this2.id)).disabled = false;
+                    document.querySelector("#cidade_socio_".concat(_this3.id)).disabled = false;
                   }
 
-                  _this2.setLogradouroSocio(dadosEndereco.logradouro);
+                  _this3.setLogradouroSocio(dadosEndereco.logradouro);
 
                   if (dadosEndereco.logradouro != "") {
-                    document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = true;
+                    document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = true;
                   } else {
-                    document.querySelector("#logradouro_socio".concat(_this2.id)).disabled = false;
+                    document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = false;
                   }
 
-                  _this2.setUfSocio(dadosEndereco.uf);
+                  _this3.setUfSocio(dadosEndereco.uf);
 
                   if (dadosEndereco.uf != "") {
-                    document.querySelector("#uf_socio".concat(_this2.id)).disabled = true;
+                    document.querySelector("#uf_socio_".concat(_this3.id)).disabled = true;
                   } else {
-                    document.querySelector("#uf_socio".concat(_this2.id)).disabled = false;
+                    document.querySelector("#uf_socio_".concat(_this3.id)).disabled = false;
                   }
 
-                  _this2.setComplementoSocio(dadosEndereco.complemento);
+                  _this3.setComplementoSocio(dadosEndereco.complemento);
 
-                  _this2.cep_socio = value;
+                  _this3.socio.cep = value;
 
-                  _this2.$v.cep_socio.$touch();
+                  _this3.$v.socio.cep.$touch();
                 }
 
               case 5:
@@ -1131,64 +1099,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     setUfSocio: function setUfSocio(value) {
-      this.uf_socio = value;
-      this.$v.uf_socio.$touch();
+      this.socio.uf = value;
+      this.$v.socio.uf.$touch();
     },
     setCidadeSocio: function setCidadeSocio(value) {
-      this.cidade_socio = value;
-      this.$v.cidade_socio.$touch();
+      this.socio.cidade = value;
+      this.$v.socio.cidade.$touch();
     },
     setBairroSocio: function setBairroSocio(value) {
-      this.bairro_socio = value;
-      this.$v.bairro_socio.$touch();
+      this.socio.bairro = value;
+      this.$v.socio.bairro.$touch();
     },
     setComplementoSocio: function setComplementoSocio(value) {
-      this.complemento_socio = value;
-      this.$v.complemento_socio.$touch();
+      this.socio.complemento = value;
+      this.$v.socio.complemento.$touch();
     },
     setTipoLogradouroSocio: function setTipoLogradouroSocio(value) {
-      this.tipo_logradouro_socio = value;
-      this.$v.tipo_logradouro_socio.$touch();
+      this.socio.tipo_logradouro = value;
+      this.$v.socio.tipo_logradouro.$touch();
     },
     setLogradouroSocio: function setLogradouroSocio(value) {
-      this.logradouro_socio = value;
-      this.$v.logradouro_socio.$touch();
+      this.socio.logradouro = value;
+      this.$v.socio.logradouro.$touch();
     },
     setNumeroSocio: function setNumeroSocio(value) {
-      this.numero_socio = value;
-      this.$v.numero_socio.$touch();
+      this.socio.numero = value;
+      this.$v.socio.numero.$touch();
     },
-    setDados: function setDados() {
-      var _this3 = this;
+    salvarSocio: function salvarSocio() {
+      var _this4 = this;
 
-      var index = this.solicitacao.socios.findIndex(function (socio) {
-        return socio.id === _this3.id;
-      });
+      if (!this.$v.$invalid) {
+        var index = this.solicitacao.socios.findIndex(function (socio) {
+          return socio.id === _this4.id;
+        });
 
-      if (index >= 0) {
-        this.solicitacao.socios[index] = {
-          id: this.id,
-          valid: !this.$v.$invalid,
-          nome_socio: this.nome_socio,
-          cpf_socio: this.cpf_socio,
-          uf_rg_socio: this.uf_rg_socio,
-          numero_rg_socio: this.numero_rg_socio,
-          sexo_socio: this.sexo_socio,
-          estado_civil_socio: this.estado_civil_socio,
-          email_socio: this.email_socio,
-          telefone_socio: this.telefone_socio,
-          cep_socio: this.cep_socio,
-          uf_socio: this.uf_socio,
-          cidade_socio: this.cidade_socio,
-          bairro_socio: this.bairro_socio,
-          tipo_logradouro_socio: this.tipo_logradouro_socio,
-          logradouro_socio: this.logradouro_socio,
-          numero_socio: this.numero_socio,
-          complemento_socio: this.complemento_socio
-        };
-        console.log(this.solicitacao.socios[index]);
-      } // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+        if (index >= 0) {
+          this.socio.valid = true;
+          this.solicitacao.socios[index] = this.socio;
+          this.$emit("update:validSocioElement", !this.$v.$invalid);
+          console.log(this.solicitacao.socios[index]);
+        }
+      }
 
+      this.$v.$touch(); // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+    },
+    removeSocio: function removeSocio() {
+      this.$emit("remove", this.id);
     }
   }
 });
@@ -1913,13 +1870,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1933,15 +1883,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      socio_count: 0
+      socio_count: 0 // validSocioElement: true,
+
     };
   },
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])), {}, {
     validSocioElement: function validSocioElement() {
-      var index = this.solicitacao.socios.findIndex(function (socio) {
-        return socio.valid === false;
+      var index = this.solicitacao.socios.findIndex(function (s) {
+        return s.valid === false;
       });
-      console.log(index);
       if (index >= 0) return false;
       return true;
     }
@@ -2154,33 +2104,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.solicitacao.socios.push({
         id: this.socio_count++,
         valid: false,
-        nome_socio: "",
-        cpf_socio: "",
-        uf_rg_socio: "",
-        numero_rg_socio: "",
-        sexo_socio: "",
-        estado_civil_socio: "",
-        email_socio: "",
-        telefone_socio: "",
-        cep_socio: "",
-        uf_socio: "",
-        cidade_socio: "",
-        bairro_socio: "",
-        tipo_logradouro_socio: "",
-        logradouro_socio: "",
-        numero_socio: "",
-        complemento_socio: ""
-      });
+        nome: "",
+        cpf: "",
+        uf_rg: "",
+        numero_rg: "",
+        sexo: "",
+        estado_civil: "",
+        email: "",
+        telefone: "",
+        cep: "",
+        uf: "",
+        cidade: "",
+        bairro: "",
+        tipo_logradouro: "",
+        logradouro: "",
+        numero: "",
+        complemento: ""
+      }); // this.validSocioElement = this.validSocio();
     },
-    removeSocioElement: function removeSocioElement() {
-      if (this.socios > 0) {
-        this.errors.invalid = false;
-        --this.socios;
-      }
+    removeSocioElement: function removeSocioElement(id) {
+      var index = this.solicitacao.socios.findIndex(function (s) {
+        return s.id === id;
+      });
+      this.solicitacao.socios.splice(index, 1); // this.validSocioElement = this.validSocio();
+    },
+    validSocio: function validSocio() {
+      var index = this.solicitacao.socios.findIndex(function (s) {
+        return s.valid === false;
+      });
+      if (index >= 0) return false;
+      return true;
     },
     validateFields: function validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("solicitacao-3");
+        this.$router.push("solicitacao-4");
       }
 
       this.$v.$touch();
@@ -3233,33 +3190,54 @@ var render = function() {
             "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "nome_socio_" + _vm.socio.id } }, [
+                _vm._v("Nome")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
             [
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$v.socio.nome.$model,
+                    expression: "$v.socio.nome.$model"
+                  }
+                ],
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "nome_socio_" + _vm.id,
-                  name: "nome_socio_" + _vm.id,
+                  id: "nome_socio_" + _vm.socio.id,
+                  name: "nome_socio_" + _vm.socio.id,
                   type: "text",
                   placeholder: "Nome completo"
                 },
-                domProps: { value: _vm.$v.nome_socio.$model },
+                domProps: { value: _vm.$v.socio.nome.$model },
                 on: {
                   input: function($event) {
-                    return _vm.setNomeSocio($event.target.value)
-                  },
-                  blur: _vm.setDados
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.$v.socio.nome, "$model", $event.target.value)
+                  }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.nome_socio.$dirty && !_vm.$v.nome_socio.required
+          _vm.$v.socio.nome.$dirty && !_vm.$v.socio.nome.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        Nome obrigatório.\n      ")
               ])
@@ -3274,7 +3252,18 @@ var render = function() {
             "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(1),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "cpf_socio_" + _vm.socio.id } }, [
+                _vm._v("CPF")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -3292,29 +3281,28 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf",
                 attrs: {
-                  id: "cpf_socio" + _vm.id,
-                  name: "cpf_socio" + _vm.id,
+                  id: "cpf_socio_" + _vm.socio.id,
+                  name: "cpf_socio_" + _vm.socio.id,
                   type: "text",
                   placeholder: "###.###.###-##"
                 },
-                domProps: { value: _vm.$v.cpf_socio.$model },
+                domProps: { value: _vm.$v.socio.cpf.$model },
                 on: {
                   input: function($event) {
                     return _vm.setCpfSocio($event.target.value)
-                  },
-                  blur: _vm.setDados
+                  }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.cpf_socio.$dirty && !_vm.$v.cpf_socio.required
+          _vm.$v.socio.cpf.$dirty && !_vm.$v.socio.cpf.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        CPF válido é obrigatório.\n      ")
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.$v.cpf_socio.$dirty && _vm.$v.cpf_socio.isRepeatedCPF
+          _vm.$v.socio.cpf.$dirty && _vm.$v.socio.cpf.isRepeatedCPF
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        CPF já está na lista.\n      ")
               ])
@@ -3329,7 +3317,18 @@ var render = function() {
             "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(2),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "uf_rg_socio_" + _vm.socio.id } }, [
+                _vm._v("UF do RG")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -3338,17 +3337,37 @@ var render = function() {
               _c(
                 "select",
                 {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.uf_rg.$model,
+                      expression: "$v.socio.uf_rg.$model"
+                    }
+                  ],
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "uf_rg_socio" + _vm.id,
-                    name: "uf_rg_socio" + _vm.id
+                    id: "uf_rg_socio_" + _vm.socio.id,
+                    name: "uf_rg_socio_" + _vm.socio.id
                   },
-                  domProps: { value: _vm.$v.uf_rg_socio.$model },
                   on: {
                     change: function($event) {
-                      return _vm.setUfRgSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.$v.socio.uf_rg,
+                        "$model",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
                 },
                 [
@@ -3373,7 +3392,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.$v.uf_rg_socio.$dirty && !_vm.$v.uf_rg_socio.required
+          _vm.$v.socio.uf_rg.$dirty && !_vm.$v.socio.uf_rg.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        UF do RG é obrigatório.\n      ")
               ])
@@ -3388,32 +3407,59 @@ var render = function() {
             "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(3),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c(
+                "label",
+                { attrs: { for: "numero_rg_socio_" + _vm.socio.id } },
+                [_vm._v("Nº do RG")]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
             [
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$v.socio.numero_rg.$model,
+                    expression: "$v.socio.numero_rg.$model"
+                  }
+                ],
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "numero_rg_socio" + _vm.id,
-                  name: "numero_rg_socio" + _vm.id,
+                  id: "numero_rg_socio_" + _vm.socio.id,
+                  name: "numero_rg_socio_" + _vm.socio.id,
                   type: "text"
                 },
-                domProps: { value: _vm.$v.numero_rg_socio.$model },
+                domProps: { value: _vm.$v.socio.numero_rg.$model },
                 on: {
                   input: function($event) {
-                    return _vm.setNumeroRgSocio($event.target.value)
-                  },
-                  blur: _vm.setDados
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$v.socio.numero_rg,
+                      "$model",
+                      $event.target.value
+                    )
+                  }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.numero_rg_socio.$dirty && !_vm.$v.numero_rg_socio.required
+          _vm.$v.socio.numero_rg.$dirty && !_vm.$v.socio.numero_rg.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        RG é obrigatório.\n      ")
               ])
@@ -3428,7 +3474,18 @@ var render = function() {
             "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(4),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "sexo_socio_" + _vm.socio.id } }, [
+                _vm._v("Sexo")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -3437,17 +3494,37 @@ var render = function() {
               _c(
                 "select",
                 {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.sexo.$model,
+                      expression: "$v.socio.sexo.$model"
+                    }
+                  ],
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "sexo_socio" + _vm.id,
-                    name: "sexo_socio" + _vm.id
+                    id: "sexo_socio_" + _vm.socio.id,
+                    name: "sexo_socio_" + _vm.socio.id
                   },
-                  domProps: { value: _vm.$v.sexo_socio.$model },
                   on: {
                     change: function($event) {
-                      return _vm.setSexoSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.$v.socio.sexo,
+                        "$model",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
                 },
                 [
@@ -3463,7 +3540,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.$v.sexo_socio.$dirty && !_vm.$v.sexo_socio.required
+          _vm.$v.socio.sexo.$dirty && !_vm.$v.socio.sexo.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        Sexo é obrigatório.\n      ")
               ])
@@ -3478,7 +3555,20 @@ var render = function() {
             "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(5),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c(
+                "label",
+                { attrs: { for: "estado_civil_socio_" + _vm.socio.id } },
+                [_vm._v("Estado Cívil")]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -3487,17 +3577,37 @@ var render = function() {
               _c(
                 "select",
                 {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.estado_civil.$model,
+                      expression: "$v.socio.estado_civil.$model"
+                    }
+                  ],
                   staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                   attrs: {
-                    id: "estado_civil_socio" + _vm.id,
-                    name: "estado_civil_socio" + _vm.id
+                    id: "estado_civil_socio_" + _vm.socio.id,
+                    name: "estado_civil_socio_" + _vm.socio.id
                   },
-                  domProps: { value: _vm.$v.estado_civil_socio.$model },
                   on: {
                     change: function($event) {
-                      return _vm.setEstadoCivilSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.$v.socio.estado_civil,
+                        "$model",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
                 },
                 [
@@ -3525,8 +3635,8 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.$v.estado_civil_socio.$dirty &&
-          !_vm.$v.estado_civil_socio.required
+          _vm.$v.socio.estado_civil.$dirty &&
+          !_vm.$v.socio.estado_civil.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        Estado Civil é obrigatório.\n      ")
               ])
@@ -3541,33 +3651,54 @@ var render = function() {
             "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(6),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "email_socio_" + _vm.socio.id } }, [
+                _vm._v("E-mail")
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
             [
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$v.socio.email.$model,
+                    expression: "$v.socio.email.$model"
+                  }
+                ],
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "email_socio" + _vm.id,
-                  name: "email_socio" + _vm.id,
+                  id: "email_socio_" + _vm.socio.id,
+                  name: "email_socio_" + _vm.socio.id,
                   type: "text",
                   placeholder: "mail@brasilcard.net"
                 },
-                domProps: { value: _vm.$v.email_socio.$model },
+                domProps: { value: _vm.$v.socio.email.$model },
                 on: {
                   input: function($event) {
-                    return _vm.setEmailSocio($event.target.value)
-                  },
-                  blur: _vm.setDados
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.$v.socio.email, "$model", $event.target.value)
+                  }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.email_socio.$dirty && !_vm.$v.email_socio.required
+          _vm.$v.socio.email.$dirty && !_vm.$v.socio.email.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        E-mail é obrigatório.\n      ")
               ])
@@ -3582,7 +3713,20 @@ var render = function() {
             "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         },
         [
-          _vm._m(7),
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c(
+                "label",
+                { attrs: { for: "telefone_socio_" + _vm.socio.id } },
+                [_vm._v("Telefone")]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -3600,22 +3744,21 @@ var render = function() {
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
-                  id: "telefone_socio" + _vm.id,
-                  name: "telefone_socio" + _vm.id,
+                  id: "telefone_socio_" + _vm.socio.id,
+                  name: "telefone_socio_" + _vm.socio.id,
                   type: "text"
                 },
-                domProps: { value: _vm.$v.telefone_socio.$model },
+                domProps: { value: _vm.$v.socio.telefone.$model },
                 on: {
                   input: function($event) {
                     return _vm.setTelefoneSocio($event.target.value)
-                  },
-                  blur: _vm.setDados
+                  }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.telefone_socio.$dirty && !_vm.$v.telefone_socio.required
+          _vm.$v.socio.telefone.$dirty && !_vm.$v.socio.telefone.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        Telefone é obrigatório.\n      ")
               ])
@@ -3638,7 +3781,18 @@ var render = function() {
               "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(8),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c("label", { attrs: { for: "cep_socio_" + _vm.socio.id } }, [
+                  _vm._v("CEP")
+                ])
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3658,16 +3812,13 @@ var render = function() {
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cep_socio" + _vm.id,
-                    name: "cep_socio" + _vm.id,
+                    id: "cep_socio_" + _vm.socio.id,
+                    name: "cep_socio_" + _vm.socio.id,
                     type: "text",
                     placeholder: "#####-###"
                   },
-                  domProps: { value: _vm.$v.cep_socio.$model },
+                  domProps: { value: _vm.$v.socio.cep.$model },
                   on: {
-                    change: function($event) {
-                      return _vm.setCepSocio($event.target.value)
-                    },
                     blur: function($event) {
                       return _vm.setCepSocio($event.target.value)
                     }
@@ -3676,7 +3827,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm.$v.cep_socio.$dirty && !_vm.$v.cep_socio.required
+            _vm.$v.socio.cep.$dirty && !_vm.$v.socio.cep.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        CEP é obrigatório.\n      ")
                 ])
@@ -3691,7 +3842,18 @@ var render = function() {
               "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(9),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c("label", { attrs: { for: "uf_socio_" + _vm.socio.id } }, [
+                  _vm._v("UF")
+                ])
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3703,18 +3865,38 @@ var render = function() {
                 _c(
                   "select",
                   {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.socio.uf.$model,
+                        expression: "$v.socio.uf.$model"
+                      }
+                    ],
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "uf_socio" + _vm.id,
-                      name: "uf_socio" + _vm.id,
+                      id: "uf_socio_" + _vm.socio.id,
+                      name: "uf_socio_" + _vm.socio.id,
                       disabled: ""
                     },
-                    domProps: { value: _vm.$v.uf_socio.$model },
                     on: {
                       change: function($event) {
-                        return _vm.setUfSocio($event.target.value)
-                      },
-                      blur: _vm.setDados
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.$v.socio.uf,
+                          "$model",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
                     }
                   },
                   [
@@ -3739,7 +3921,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm.$v.uf_socio.$dirty && !_vm.$v.uf_socio.required
+            _vm.$v.socio.uf.$dirty && !_vm.$v.socio.uf.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        UF é obrigatório.\n      ")
                 ])
@@ -3754,7 +3936,20 @@ var render = function() {
               "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(10),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "cidade_socio_" + _vm.socio.id } },
+                  [_vm._v("Cidade")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3763,27 +3958,41 @@ var render = function() {
               },
               [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.cidade.$model,
+                      expression: "$v.socio.cidade.$model"
+                    }
+                  ],
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "cidade_socio" + _vm.id,
-                    name: "cidade_socio" + _vm.id,
+                    id: "cidade_socio_" + _vm.socio.id,
+                    name: "cidade_socio_" + _vm.socio.id,
                     type: "text",
                     placeholder: "Cidade",
                     disabled: ""
                   },
-                  domProps: { value: _vm.$v.cidade_socio.$model },
+                  domProps: { value: _vm.$v.socio.cidade.$model },
                   on: {
                     input: function($event) {
-                      return _vm.setCidadeSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.cidade,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
                   }
                 })
               ]
             ),
             _vm._v(" "),
-            _vm.$v.cidade_socio.$dirty && !_vm.$v.cidade_socio.required
+            _vm.$v.socio.cidade.$dirty && !_vm.$v.socio.cidade.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        Cidade é obrigatório.\n      ")
                 ])
@@ -3798,7 +4007,20 @@ var render = function() {
               "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(11),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "bairro_socio_" + _vm.socio.id } },
+                  [_vm._v("Bairro")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3807,26 +4029,40 @@ var render = function() {
               },
               [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.bairro.$model,
+                      expression: "$v.socio.bairro.$model"
+                    }
+                  ],
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "bairro_socio" + _vm.id,
-                    name: "bairro_socio" + _vm.id,
+                    id: "bairro_socio_" + _vm.socio.id,
+                    name: "bairro_socio_" + _vm.socio.id,
                     type: "text",
                     placeholder: "Bairro"
                   },
-                  domProps: { value: _vm.$v.bairro_socio.$model },
+                  domProps: { value: _vm.$v.socio.bairro.$model },
                   on: {
                     input: function($event) {
-                      return _vm.setBairroSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.bairro,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
                   }
                 })
               ]
             ),
             _vm._v(" "),
-            _vm.$v.bairro_socio.$dirty && !_vm.$v.bairro_socio.required
+            _vm.$v.socio.bairro.$dirty && !_vm.$v.socio.bairro.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        Bairro é obrigatório.\n      ")
                 ])
@@ -3841,7 +4077,20 @@ var render = function() {
               "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(12),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "tipo_logradouro_socio_" + _vm.socio.id } },
+                  [_vm._v("Tipo de Logradouro")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3852,17 +4101,37 @@ var render = function() {
                 _c(
                   "select",
                   {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$v.socio.tipo_logradouro.$model,
+                        expression: "$v.socio.tipo_logradouro.$model"
+                      }
+                    ],
                     staticClass: "p-1 px-2 outline-none w-full text-gray-800",
                     attrs: {
-                      id: "tipo_logradouro_socio" + _vm.id,
-                      name: "tipo_logradouro_socio" + _vm.id
+                      id: "tipo_logradouro_socio_" + _vm.socio.id,
+                      name: "tipo_logradouro_socio_" + _vm.socio.id
                     },
-                    domProps: { value: _vm.$v.tipo_logradouro_socio.$model },
                     on: {
                       change: function($event) {
-                        return _vm.setTipoLogradouroSocio($event.target.value)
-                      },
-                      blur: _vm.setDados
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.$v.socio.tipo_logradouro,
+                          "$model",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
                     }
                   },
                   [
@@ -3894,8 +4163,8 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm.$v.tipo_logradouro_socio.$dirty &&
-            !_vm.$v.tipo_logradouro_socio.required
+            _vm.$v.socio.tipo_logradouro.$dirty &&
+            !_vm.$v.socio.tipo_logradouro.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        Tipo de Logradouro é obrigatório.\n      ")
                 ])
@@ -3910,7 +4179,20 @@ var render = function() {
               "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(13),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "logradouro_socio_" + _vm.socio.id } },
+                  [_vm._v("Logradouro")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3919,25 +4201,39 @@ var render = function() {
               },
               [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.logradouro.$model,
+                      expression: "$v.socio.logradouro.$model"
+                    }
+                  ],
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "logradouro_socio" + _vm.id,
-                    name: "logradouro_socio" + _vm.id,
+                    id: "logradouro_socio_" + _vm.socio.id,
+                    name: "logradouro_socio_" + _vm.socio.id,
                     type: "text"
                   },
-                  domProps: { value: _vm.$v.logradouro_socio.$model },
+                  domProps: { value: _vm.$v.socio.logradouro.$model },
                   on: {
                     input: function($event) {
-                      return _vm.setLogradouroSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.logradouro,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
                   }
                 })
               ]
             ),
             _vm._v(" "),
-            _vm.$v.logradouro_socio.$dirty && !_vm.$v.logradouro_socio.required
+            _vm.$v.socio.logradouro.$dirty && !_vm.$v.socio.logradouro.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        Logradouro é obrigatório.\n      ")
                 ])
@@ -3952,7 +4248,20 @@ var render = function() {
               "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(14),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "numero_socio_" + _vm.socio.id } },
+                  [_vm._v("Número")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -3961,25 +4270,39 @@ var render = function() {
               },
               [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.numero.$model,
+                      expression: "$v.socio.numero.$model"
+                    }
+                  ],
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "numero_socio" + _vm.id,
-                    name: "numero_socio" + _vm.id,
+                    id: "numero_socio_" + _vm.socio.id,
+                    name: "numero_socio_" + _vm.socio.id,
                     type: "number"
                   },
-                  domProps: { value: _vm.$v.numero_socio.$model },
+                  domProps: { value: _vm.$v.socio.numero.$model },
                   on: {
                     input: function($event) {
-                      return _vm.setNumeroSocio($event.target.value)
-                    },
-                    blur: _vm.setDados
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.numero,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
                   }
                 })
               ]
             ),
             _vm._v(" "),
-            _vm.$v.numero_socio.$dirty && !_vm.$v.numero_socio.required
+            _vm.$v.socio.numero.$dirty && !_vm.$v.socio.numero.required
               ? _c("div", { staticClass: "text-red-600" }, [
                   _vm._v("\n        Número é obrigatório.\n      ")
                 ])
@@ -3994,7 +4317,20 @@ var render = function() {
               "lg:col-span-9 md:col-span-9 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           },
           [
-            _vm._m(15),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              },
+              [
+                _c(
+                  "label",
+                  { attrs: { for: "complemento_socio_" + _vm.socio.id } },
+                  [_vm._v("Complemento")]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -4003,12 +4339,33 @@ var render = function() {
               },
               [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.complemento.$model,
+                      expression: "$v.socio.complemento.$model"
+                    }
+                  ],
                   staticClass:
                     "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                   attrs: {
-                    id: "complemento_socio" + _vm.id,
-                    name: "complemento_socio" + _vm.id,
+                    id: "complemento_socio_" + _vm.socio.id,
+                    name: "complemento_socio_" + _vm.socio.id,
                     type: "text"
+                  },
+                  domProps: { value: _vm.$v.socio.complemento.$model },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.complemento,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
                   }
                 })
               ]
@@ -4016,235 +4373,32 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition",
+          on: { click: _vm.removeSocio }
+        },
+        [_vm._v("\n      Remover\n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
+          on: { click: _vm.salvarSocio }
+        },
+        [_vm._v("\n      Salvar Sócio\n    ")]
+      )
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "nome_socio" } }, [_vm._v("Nome")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "cpf_socio" } }, [_vm._v("CPF")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "uf_rg_socio" } }, [_vm._v("UF do RG")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "numero_rg_socio" } }, [_vm._v("Nº do RG")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "sexo_socio" } }, [_vm._v("Sexo")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [
-        _c("label", { attrs: { for: "estado_civil_socio" } }, [
-          _vm._v("Estado Cívil")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "email_socio" } }, [_vm._v("E-mail")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "telefone_socio" } }, [_vm._v("Telefone")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "cep_socio" } }, [_vm._v("CEP")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "uf_socio" } }, [_vm._v("UF")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "cidade_socio" } }, [_vm._v("Cidade")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "bairro_socio" } }, [_vm._v("Bairro")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
-      },
-      [
-        _c("label", { attrs: { for: "tipo_logradouro_socio" } }, [
-          _vm._v("Tipo de Logradouro")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [
-        _c("label", { attrs: { for: "logradouro_socio" } }, [
-          _vm._v("Logradouro")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [_c("label", { attrs: { for: "numero_socio" } }, [_vm._v("Número")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [
-        _c("label", { attrs: { for: "complemento_socio" } }, [
-          _vm._v("Complemento")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5780,23 +5934,20 @@ var render = function() {
           _vm._l(this.solicitacao.socios, function(socio) {
             return _c("socio", {
               key: socio.id,
-              tag: "socio",
-              attrs: { id: socio.id },
-              on: { remove: _vm.removeSocioElement }
+              attrs: { id: socio.id, validSocioElement: _vm.validSocioElement },
+              on: {
+                remove: _vm.removeSocioElement,
+                "update:validSocioElement": function($event) {
+                  _vm.validSocioElement = $event
+                },
+                "update:valid-socio-element": function($event) {
+                  _vm.validSocioElement = $event
+                }
+              }
             })
           }),
           _vm._v(" "),
           _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition",
-                on: { click: _vm.removeSocioElement }
-              },
-              [_vm._v("\n          Remover\n        ")]
-            ),
-            _vm._v(" "),
             _c(
               "button",
               {

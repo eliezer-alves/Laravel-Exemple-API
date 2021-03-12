@@ -315,7 +315,7 @@ export default {
     },
     validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("solicitacao-3");
+        this.$router.push("home");
       }
       this.$v.$touch();
     },

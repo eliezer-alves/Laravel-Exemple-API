@@ -7,23 +7,21 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="nome_socio">Nome</label>
+          <label :for="'nome_socio_' + socio.id">Nome</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'nome_socio_' + id"
-            :name="'nome_socio_' + id"
+            :id="'nome_socio_' + socio.id"
+            :name="'nome_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Nome completo"
-            :value="$v.nome_socio.$model"
-            @input="setNomeSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.nome.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.nome_socio.$dirty && !$v.nome_socio.required"
+          v-if="$v.socio.nome.$dirty && !$v.socio.nome.required"
         >
           Nome obrigatório.
         </div>
@@ -34,30 +32,29 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="cpf_socio">CPF</label>
+          <label :for="'cpf_socio_' + socio.id">CPF</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cpf_socio' + id"
-            :name="'cpf_socio' + id"
+            :id="'cpf_socio_' + socio.id"
+            :name="'cpf_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf"
             type="text"
             placeholder="###.###.###-##"
             v-mask="'###.###.###-##'"
-            :value="$v.cpf_socio.$model"
+            :value="$v.socio.cpf.$model"
             @input="setCpfSocio($event.target.value)"
-            @blur="setDados"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.cpf_socio.$dirty && !$v.cpf_socio.required"
+          v-if="$v.socio.cpf.$dirty && !$v.socio.cpf.required"
         >
           CPF válido é obrigatório.
         </div>
         <div
           class="text-red-600"
-          v-if="$v.cpf_socio.$dirty && $v.cpf_socio.isRepeatedCPF"
+          v-if="$v.socio.cpf.$dirty && $v.socio.cpf.isRepeatedCPF"
         >
           CPF já está na lista.
         </div>
@@ -68,16 +65,14 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="uf_rg_socio">UF do RG</label>
+          <label :for="'uf_rg_socio_' + socio.id">UF do RG</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'uf_rg_socio' + id"
-            :name="'uf_rg_socio' + id"
+            :id="'uf_rg_socio_' + socio.id"
+            :name="'uf_rg_socio_' + socio.id"
             class="p-1 px-2 outline-none w-full text-gray-800"
-            :value="$v.uf_rg_socio.$model"
-            @change="setUfRgSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.uf_rg.$model"
           >
             <option value="">--</option>
             <option
@@ -91,7 +86,7 @@
         </div>
         <div
           class="text-red-600"
-          v-if="$v.uf_rg_socio.$dirty && !$v.uf_rg_socio.required"
+          v-if="$v.socio.uf_rg.$dirty && !$v.socio.uf_rg.required"
         >
           UF do RG é obrigatório.
         </div>
@@ -102,22 +97,20 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="numero_rg_socio">Nº do RG</label>
+          <label :for="'numero_rg_socio_' + socio.id">Nº do RG</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'numero_rg_socio' + id"
-            :name="'numero_rg_socio' + id"
+            :id="'numero_rg_socio_' + socio.id"
+            :name="'numero_rg_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
-            :value="$v.numero_rg_socio.$model"
-            @input="setNumeroRgSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.numero_rg.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.numero_rg_socio.$dirty && !$v.numero_rg_socio.required"
+          v-if="$v.socio.numero_rg.$dirty && !$v.socio.numero_rg.required"
         >
           RG é obrigatório.
         </div>
@@ -128,16 +121,14 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="sexo_socio">Sexo</label>
+          <label :for="'sexo_socio_' + socio.id">Sexo</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'sexo_socio' + id"
-            :name="'sexo_socio' + id"
+            :id="'sexo_socio_' + socio.id"
+            :name="'sexo_socio_' + socio.id"
             class="p-1 px-2 outline-none w-full text-gray-800"
-            :value="$v.sexo_socio.$model"
-            @change="setSexoSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.sexo.$model"
           >
             <option value="">--</option>
             <option value="M">Masculino</option>
@@ -146,7 +137,7 @@
         </div>
         <div
           class="text-red-600"
-          v-if="$v.sexo_socio.$dirty && !$v.sexo_socio.required"
+          v-if="$v.socio.sexo.$dirty && !$v.socio.sexo.required"
         >
           Sexo é obrigatório.
         </div>
@@ -157,16 +148,14 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="estado_civil_socio">Estado Cívil</label>
+          <label :for="'estado_civil_socio_' + socio.id">Estado Cívil</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'estado_civil_socio' + id"
-            :name="'estado_civil_socio' + id"
+            :id="'estado_civil_socio_' + socio.id"
+            :name="'estado_civil_socio_' + socio.id"
             class="p-1 px-2 outline-none w-full text-gray-800"
-            :value="$v.estado_civil_socio.$model"
-            @change="setEstadoCivilSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.estado_civil.$model"
           >
             <option value="">--</option>
             <option
@@ -180,7 +169,7 @@
         </div>
         <div
           class="text-red-600"
-          v-if="$v.estado_civil_socio.$dirty && !$v.estado_civil_socio.required"
+          v-if="$v.socio.estado_civil.$dirty && !$v.socio.estado_civil.required"
         >
           Estado Civil é obrigatório.
         </div>
@@ -191,23 +180,21 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="email_socio">E-mail</label>
+          <label :for="'email_socio_' + socio.id">E-mail</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'email_socio' + id"
-            :name="'email_socio' + id"
+            :id="'email_socio_' + socio.id"
+            :name="'email_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="mail@brasilcard.net"
-            :value="$v.email_socio.$model"
-            @input="setEmailSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.email.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.email_socio.$dirty && !$v.email_socio.required"
+          v-if="$v.socio.email.$dirty && !$v.socio.email.required"
         >
           E-mail é obrigatório.
         </div>
@@ -218,23 +205,22 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="telefone_socio">Telefone</label>
+          <label :for="'telefone_socio_' + socio.id">Telefone</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'telefone_socio' + id"
-            :name="'telefone_socio' + id"
+            :id="'telefone_socio_' + socio.id"
+            :name="'telefone_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             v-mask="['(##) ####-####', '(##) #####-####']"
-            :value="$v.telefone_socio.$model"
+            :value="$v.socio.telefone.$model"
             @input="setTelefoneSocio($event.target.value)"
-            @blur="setDados"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.telefone_socio.$dirty && !$v.telefone_socio.required"
+          v-if="$v.socio.telefone.$dirty && !$v.socio.telefone.required"
         >
           Telefone é obrigatório.
         </div>
@@ -249,24 +235,23 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="cep_socio">CEP</label>
+          <label :for="'cep_socio_' + socio.id">CEP</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cep_socio' + id"
-            :name="'cep_socio' + id"
+            :id="'cep_socio_' + socio.id"
+            :name="'cep_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="#####-###"
             v-mask="'#####-###'"
-            :value="$v.cep_socio.$model"
-            @change="setCepSocio($event.target.value)"
+            :value="$v.socio.cep.$model"
             @blur="setCepSocio($event.target.value)"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.cep_socio.$dirty && !$v.cep_socio.required"
+          v-if="$v.socio.cep.$dirty && !$v.socio.cep.required"
         >
           CEP é obrigatório.
         </div>
@@ -277,17 +262,15 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="uf_socio">UF</label>
+          <label :for="'uf_socio_' + socio.id">UF</label>
         </div>
         <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <select
-            :id="'uf_socio' + id"
-            :name="'uf_socio' + id"
+            :id="'uf_socio_' + socio.id"
+            :name="'uf_socio_' + socio.id"
             class="p-1 px-2 outline-none w-full text-gray-800"
             disabled
-            :value="$v.uf_socio.$model"
-            @change="setUfSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.uf.$model"
           >
             <option value="">--</option>
             <option
@@ -301,7 +284,7 @@
         </div>
         <div
           class="text-red-600"
-          v-if="$v.uf_socio.$dirty && !$v.uf_socio.required"
+          v-if="$v.socio.uf.$dirty && !$v.socio.uf.required"
         >
           UF é obrigatório.
         </div>
@@ -312,24 +295,22 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="cidade_socio">Cidade</label>
+          <label :for="'cidade_socio_' + socio.id">Cidade</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'cidade_socio' + id"
-            :name="'cidade_socio' + id"
+            :id="'cidade_socio_' + socio.id"
+            :name="'cidade_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Cidade"
             disabled
-            :value="$v.cidade_socio.$model"
-            @input="setCidadeSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.cidade.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.cidade_socio.$dirty && !$v.cidade_socio.required"
+          v-if="$v.socio.cidade.$dirty && !$v.socio.cidade.required"
         >
           Cidade é obrigatório.
         </div>
@@ -340,23 +321,21 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="bairro_socio">Bairro</label>
+          <label :for="'bairro_socio_' + socio.id">Bairro</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'bairro_socio' + id"
-            :name="'bairro_socio' + id"
+            :id="'bairro_socio_' + socio.id"
+            :name="'bairro_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="Bairro"
-            :value="$v.bairro_socio.$model"
-            @input="setBairroSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.bairro.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.bairro_socio.$dirty && !$v.bairro_socio.required"
+          v-if="$v.socio.bairro.$dirty && !$v.socio.bairro.required"
         >
           Bairro é obrigatório.
         </div>
@@ -368,16 +347,16 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
         >
-          <label for="tipo_logradouro_socio">Tipo de Logradouro</label>
+          <label :for="'tipo_logradouro_socio_' + socio.id"
+            >Tipo de Logradouro</label
+          >
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
-            :id="'tipo_logradouro_socio' + id"
-            :name="'tipo_logradouro_socio' + id"
+            :id="'tipo_logradouro_socio_' + socio.id"
+            :name="'tipo_logradouro_socio_' + socio.id"
             class="p-1 px-2 outline-none w-full text-gray-800"
-            :value="$v.tipo_logradouro_socio.$model"
-            @change="setTipoLogradouroSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.tipo_logradouro.$model"
           >
             <option value="">--</option>
             <option
@@ -392,8 +371,8 @@
         <div
           class="text-red-600"
           v-if="
-            $v.tipo_logradouro_socio.$dirty &&
-            !$v.tipo_logradouro_socio.required
+            $v.socio.tipo_logradouro.$dirty &&
+            !$v.socio.tipo_logradouro.required
           "
         >
           Tipo de Logradouro é obrigatório.
@@ -405,22 +384,20 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="logradouro_socio">Logradouro</label>
+          <label :for="'logradouro_socio_' + socio.id">Logradouro</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'logradouro_socio' + id"
-            :name="'logradouro_socio' + id"
+            :id="'logradouro_socio_' + socio.id"
+            :name="'logradouro_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
-            :value="$v.logradouro_socio.$model"
-            @input="setLogradouroSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.logradouro.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.logradouro_socio.$dirty && !$v.logradouro_socio.required"
+          v-if="$v.socio.logradouro.$dirty && !$v.socio.logradouro.required"
         >
           Logradouro é obrigatório.
         </div>
@@ -431,22 +408,20 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="numero_socio">Número</label>
+          <label :for="'numero_socio_' + socio.id">Número</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'numero_socio' + id"
-            :name="'numero_socio' + id"
+            :id="'numero_socio_' + socio.id"
+            :name="'numero_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="number"
-            :value="$v.numero_socio.$model"
-            @input="setNumeroSocio($event.target.value)"
-            @blur="setDados"
+            v-model="$v.socio.numero.$model"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.numero_socio.$dirty && !$v.numero_socio.required"
+          v-if="$v.socio.numero.$dirty && !$v.socio.numero.required"
         >
           Número é obrigatório.
         </div>
@@ -457,17 +432,32 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
-          <label for="complemento_socio">Complemento</label>
+          <label :for="'complemento_socio_' + socio.id">Complemento</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <input
-            :id="'complemento_socio' + id"
-            :name="'complemento_socio' + id"
+            :id="'complemento_socio_' + socio.id"
+            :name="'complemento_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
+            v-model="$v.socio.complemento.$model"
           />
         </div>
       </div>
+    </div>
+    <div class="flex flex-row-reverse my-2">
+      <button
+        @click="removeSocio"
+        class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
+      >
+        Remover
+      </button>
+      <button
+        @click="salvarSocio"
+        class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+      >
+        Salvar Sócio
+      </button>
     </div>
   </div>
 </template>
@@ -484,22 +474,7 @@ export default {
   },
   data() {
     return {
-      nome_socio: null,
-      cpf_socio: null,
-      uf_rg_socio: null,
-      numero_rg_socio: null,
-      sexo_socio: null,
-      estado_civil_socio: null,
-      email_socio: null,
-      telefone_socio: null,
-      cep_socio: null,
-      uf_socio: null,
-      cidade_socio: null,
-      bairro_socio: null,
-      tipo_logradouro_socio: null,
-      logradouro_socio: null,
-      numero_socio: null,
-      complemento_socio: null,
+      socio: {},
     };
   },
   async mounted() {
@@ -507,219 +482,199 @@ export default {
       invalid: this.$v.$invalid,
     });
     await this.$store.dispatch("fetchDominios");
+    this.socio = this.getSocio();
   },
   validations: {
-    nome_socio: {
-      required,
-    },
-    cpf_socio: {
-      required,
-    },
-    uf_rg_socio: {
-      required,
-    },
-    numero_rg_socio: {
-      required,
-    },
-    sexo_socio: {
-      required,
-    },
-    estado_civil_socio: {
-      required,
-    },
-    email_socio: {
-      required,
-    },
-    telefone_socio: {
-      required,
-    },
-    cep_socio: {
-      required,
-    },
-    uf_socio: {
-      required,
-    },
-    cidade_socio: {
-      required,
-    },
-    bairro_socio: {
-      required,
-    },
-    tipo_logradouro_socio: {
-      required,
-    },
-    logradouro_socio: {
-      required,
-    },
-    complemento_socio: {},
-    numero_socio: {
-      required,
+    socio: {
+      nome: {
+        required,
+      },
+      cpf: {
+        required,
+      },
+      uf_rg: {
+        required,
+      },
+      numero_rg: {
+        required,
+      },
+      sexo: {
+        required,
+      },
+      estado_civil: {
+        required,
+      },
+      email: {
+        required,
+      },
+      telefone: {
+        required,
+      },
+      cep: {
+        required,
+      },
+      uf: {
+        required,
+      },
+      cidade: {
+        required,
+      },
+      bairro: {
+        required,
+      },
+      tipo_logradouro: {
+        required,
+      },
+      logradouro: {
+        required,
+      },
+      complemento: {},
+      numero: {
+        required,
+      },
     },
   },
   methods: {
+    getSocio() {
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.id === this.id
+      );
+      return this.solicitacao.socios[index];
+    },
     setNomeSocio(value) {
-      this.nome_socio = value;
-      this.$v.nome_socio.$touch();
+      this.socio.nome = value;
+      this.$v.socio.nome.$touch();
     },
     setCpfSocio(value) {
       let arrayCPF = document.querySelectorAll(".cpf");
-      this.$v.cpf_socio.isRepeatedCPF = false;
+      this.$v.socio.cpf.isRepeatedCPF = false;
       for (let i = 0; i < arrayCPF.length - 1; i++) {
         if (arrayCPF[i].value == value) {
-          this.$v.cpf_socio.isRepeatedCPF = true;
+          this.$v.socio.cpf.isRepeatedCPF = true;
           break;
         }
       }
 
-      if (this.$v.cpf_socio.isRepeatedCPF) {
-        this.cpf_socio = value;
+      if (this.$v.socio.cpf.isRepeatedCPF) {
+        this.socio.cpf = value;
       } else {
         value = value.replace(/[^\d]+/g, "");
         let isInvalid = validaCPF(value);
         if (isInvalid) {
-          this.cpf_socio = null;
-        } else this.cpf_socio = value;
+          this.socio.cpf = null;
+        } else this.socio.cpf = value;
       }
-      this.$v.cpf_socio.$touch();
-    },
-    setUfRgSocio(value) {
-      this.uf_rg_socio = value;
-      this.$v.uf_rg_socio.$touch();
-    },
-    setNumeroRgSocio(value) {
-      this.numero_rg_socio = value;
-      this.$v.numero_rg_socio.$touch();
-    },
-    setSexoSocio(value) {
-      this.sexo_socio = value;
-      this.$v.sexo_socio.$touch();
-    },
-    setEstadoCivilSocio(value) {
-      this.estado_civil_socio = value;
-      this.$v.estado_civil_socio.$touch();
-    },
-    setEmailSocio(value) {
-      this.email_socio = value;
-      this.$v.email_socio.$touch();
+      this.$v.socio.cpf.$touch();
     },
     setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.telefone_socio = value;
-      this.$v.telefone_socio.$touch();
+      this.socio.telefone = value;
+      this.$v.socio.telefone.$touch();
     },
     async setCepSocio(value) {
       value = value.replace(/[^\d]+/g, "");
       let dadosEndereco = await this.$store.dispatch("getViaCep", value);
       if (dadosEndereco.erro) {
         this.setBairroSocio("");
-        document.querySelector(`#bairro_socio${this.id}`).disabled = false;
+        document.querySelector(`#bairro_socio_${this.id}`).disabled = false;
 
         this.setCidadeSocio("");
-        document.querySelector(`#cidade_socio${this.id}`).disabled = false;
+        document.querySelector(`#cidade_socio_${this.id}`).disabled = false;
 
         this.setLogradouroSocio("");
-        document.querySelector(`#logradouro_socio${this.id}`).disabled = false;
+        document.querySelector(`#logradouro_socio_${this.id}`).disabled = false;
 
         this.setUfSocio("");
-        document.querySelector(`#uf_socio${this.id}`).disabled = false;
+        document.querySelector(`#uf_socio_${this.id}`).disabled = false;
 
         this.setComplementoSocio("");
 
-        this.cep_socio = null;
-        this.$v.cep_socio.$touch();
+        this.socio.cep = null;
+        this.$v.socio.cep.$touch();
       } else {
         this.setBairroSocio(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "") {
-          document.querySelector(`#bairro_socio${this.id}`).disabled = true;
+          document.querySelector(`#bairro_socio_${this.id}`).disabled = true;
         } else {
-          document.querySelector(`#bairro_socio${this.id}`).disabled = false;
+          document.querySelector(`#bairro_socio_${this.id}`).disabled = false;
         }
 
         this.setCidadeSocio(dadosEndereco.localidade);
         if (dadosEndereco.localidade != "") {
-          document.querySelector(`#cidade_socio${this.id}`).disabled = true;
+          document.querySelector(`#cidade_socio_${this.id}`).disabled = true;
         } else {
-          document.querySelector(`#cidade_socio${this.id}`).disabled = false;
+          document.querySelector(`#cidade_socio_${this.id}`).disabled = false;
         }
 
         this.setLogradouroSocio(dadosEndereco.logradouro);
         if (dadosEndereco.logradouro != "") {
-          document.querySelector(`#logradouro_socio${this.id}`).disabled = true;
+          document.querySelector(
+            `#logradouro_socio_${this.id}`
+          ).disabled = true;
         } else {
           document.querySelector(
-            `#logradouro_socio${this.id}`
+            `#logradouro_socio_${this.id}`
           ).disabled = false;
         }
 
         this.setUfSocio(dadosEndereco.uf);
         if (dadosEndereco.uf != "") {
-          document.querySelector(`#uf_socio${this.id}`).disabled = true;
+          document.querySelector(`#uf_socio_${this.id}`).disabled = true;
         } else {
-          document.querySelector(`#uf_socio${this.id}`).disabled = false;
+          document.querySelector(`#uf_socio_${this.id}`).disabled = false;
         }
 
         this.setComplementoSocio(dadosEndereco.complemento);
 
-        this.cep_socio = value;
-        this.$v.cep_socio.$touch();
+        this.socio.cep = value;
+        this.$v.socio.cep.$touch();
       }
     },
     setUfSocio(value) {
-      this.uf_socio = value;
-      this.$v.uf_socio.$touch();
+      this.socio.uf = value;
+      this.$v.socio.uf.$touch();
     },
     setCidadeSocio(value) {
-      this.cidade_socio = value;
-      this.$v.cidade_socio.$touch();
+      this.socio.cidade = value;
+      this.$v.socio.cidade.$touch();
     },
     setBairroSocio(value) {
-      this.bairro_socio = value;
-      this.$v.bairro_socio.$touch();
+      this.socio.bairro = value;
+      this.$v.socio.bairro.$touch();
     },
     setComplementoSocio(value) {
-      this.complemento_socio = value;
-      this.$v.complemento_socio.$touch();
+      this.socio.complemento = value;
+      this.$v.socio.complemento.$touch();
     },
     setTipoLogradouroSocio(value) {
-      this.tipo_logradouro_socio = value;
-      this.$v.tipo_logradouro_socio.$touch();
+      this.socio.tipo_logradouro = value;
+      this.$v.socio.tipo_logradouro.$touch();
     },
     setLogradouroSocio(value) {
-      this.logradouro_socio = value;
-      this.$v.logradouro_socio.$touch();
+      this.socio.logradouro = value;
+      this.$v.socio.logradouro.$touch();
     },
     setNumeroSocio(value) {
-      this.numero_socio = value;
-      this.$v.numero_socio.$touch();
+      this.socio.numero = value;
+      this.$v.socio.numero.$touch();
     },
-    setDados() {
-      const index = this.solicitacao.socios.findIndex(
-        (socio) => socio.id === this.id
-      );
-      if (index >= 0) {
-        this.solicitacao.socios[index] = {
-          id: this.id,
-          valid: !this.$v.$invalid,
-          nome_socio: this.nome_socio,
-          cpf_socio: this.cpf_socio,
-          uf_rg_socio: this.uf_rg_socio,
-          numero_rg_socio: this.numero_rg_socio,
-          sexo_socio: this.sexo_socio,
-          estado_civil_socio: this.estado_civil_socio,
-          email_socio: this.email_socio,
-          telefone_socio: this.telefone_socio,
-          cep_socio: this.cep_socio,
-          uf_socio: this.uf_socio,
-          cidade_socio: this.cidade_socio,
-          bairro_socio: this.bairro_socio,
-          tipo_logradouro_socio: this.tipo_logradouro_socio,
-          logradouro_socio: this.logradouro_socio,
-          numero_socio: this.numero_socio,
-          complemento_socio: this.complemento_socio,
-        };
-        console.log(this.solicitacao.socios[index]);
+    salvarSocio() {
+      if (!this.$v.$invalid) {
+        const index = this.solicitacao.socios.findIndex(
+          (socio) => socio.id === this.id
+        );
+        if (index >= 0) {
+          this.socio.valid = true;
+          this.solicitacao.socios[index] = this.socio;
+          this.$emit("update:validSocioElement", !this.$v.$invalid);
+          console.log(this.solicitacao.socios[index]);
+        }
       }
+      this.$v.$touch();
       // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+    },
+    removeSocio() {
+      this.$emit("remove", this.id);
     },
   },
 };

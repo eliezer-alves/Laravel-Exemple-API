@@ -751,7 +751,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     validateFields: function validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("solicitacao-3");
+        this.$router.push("home");
       }
 
       this.$v.$touch();

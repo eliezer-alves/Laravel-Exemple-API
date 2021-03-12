@@ -638,19 +638,12 @@
         </div>
         <socio
           v-for="socio in this.solicitacao.socios"
-          :is="'socio'"
           :id="socio.id"
           :key="socio.id"
           @remove="removeSocioElement"
+          :validSocioElement.sync="validSocioElement"
         />
         <div class="flex flex-row-reverse my-2">
-          <button
-            @click="removeSocioElement"
-            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-red-200 bg-red-100 text-red-700 border duration-200 ease-in-out border-red-600 transition"
-          >
-            Remover
-          </button>
-
           <button
             :disabled="!validSocioElement"
             :class="{ 'opacity-40': !validSocioElement }"
@@ -707,23 +700,20 @@ export default {
   data() {
     return {
       socio_count: 0,
+      // validSocioElement: true,
     };
   },
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
     ...mapFields(["solicitacao", "errors"]),
     validSocioElement: function () {
-      const index = this.solicitacao.socios.findIndex(
-        (socio) => socio.valid === false
-      );
-      console.log(index);
+      const index = this.solicitacao.socios.findIndex((s) => s.valid === false);
       if (index >= 0) return false;
       return true;
     },
   },
   async mounted() {
     await this.$store.dispatch("fetchDominios");
-    // this.socios = this.solicitacao.socios.length;
   },
   validations: {
     solicitacao: {
@@ -870,33 +860,38 @@ export default {
       this.solicitacao.socios.push({
         id: this.socio_count++,
         valid: false,
-        nome_socio: "",
-        cpf_socio: "",
-        uf_rg_socio: "",
-        numero_rg_socio: "",
-        sexo_socio: "",
-        estado_civil_socio: "",
-        email_socio: "",
-        telefone_socio: "",
-        cep_socio: "",
-        uf_socio: "",
-        cidade_socio: "",
-        bairro_socio: "",
-        tipo_logradouro_socio: "",
-        logradouro_socio: "",
-        numero_socio: "",
-        complemento_socio: "",
+        nome: "",
+        cpf: "",
+        uf_rg: "",
+        numero_rg: "",
+        sexo: "",
+        estado_civil: "",
+        email: "",
+        telefone: "",
+        cep: "",
+        uf: "",
+        cidade: "",
+        bairro: "",
+        tipo_logradouro: "",
+        logradouro: "",
+        numero: "",
+        complemento: "",
       });
+      // this.validSocioElement = this.validSocio();
     },
-    removeSocioElement() {
-      if (this.socios > 0) {
-        this.errors.invalid = false;
-        --this.socios;
-      }
+    removeSocioElement(id) {
+      const index = this.solicitacao.socios.findIndex((s) => s.id === id);
+      this.solicitacao.socios.splice(index, 1);
+      // this.validSocioElement = this.validSocio();
+    },
+    validSocio() {
+      const index = this.solicitacao.socios.findIndex((s) => s.valid === false);
+      if (index >= 0) return false;
+      return true;
     },
     validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("solicitacao-3");
+        this.$router.push("solicitacao-4");
       }
       this.$v.$touch();
     },
