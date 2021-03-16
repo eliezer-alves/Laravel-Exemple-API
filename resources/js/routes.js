@@ -7,7 +7,8 @@ module.exports = [
     {
         path: '/app/home',
         name: 'home',
-        component: () => import('./components/Home.vue')
+        component: () => import('./components/Home.vue'),
+        props: true
     },
     {
         path: '/app/login',

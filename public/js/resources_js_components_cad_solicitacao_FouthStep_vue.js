@@ -755,7 +755,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     validateFields: function validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("home");
+        this.$router.push({
+          name: "home",
+          params: {
+            successPopUp: true
+          }
+        });
       }
 
       this.$v.$touch();

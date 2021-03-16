@@ -1998,7 +1998,8 @@ module.exports = [{
   name: 'home',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home.vue */ "./resources/js/components/Home.vue"));
-  }
+  },
+  props: true
 }, {
   path: '/app/login',
   name: 'login',

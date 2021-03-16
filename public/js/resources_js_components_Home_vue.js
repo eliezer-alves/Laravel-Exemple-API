@@ -1065,8 +1065,22 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     SideBar: _SideBar__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  props: ["successPopUp"],
   beforeCreate: function beforeCreate() {
     document.body.className = "home";
+  },
+  mounted: function mounted() {
+    this.cadastroPropostaModal();
+  },
+  methods: {
+    cadastroPropostaModal: function cadastroPropostaModal() {
+      if (this.successPopUp) this.$swal({
+        title: "Proposta gerada com sucesso.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   }
 });
 

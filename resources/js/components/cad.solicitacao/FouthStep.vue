@@ -319,7 +319,7 @@ export default {
     },
     validateFields() {
       if (!this.$v.$invalid) {
-        this.$router.push("home");
+        this.$router.push({ name: "home", params: { successPopUp: true } });
       }
       this.$v.$touch();
     },

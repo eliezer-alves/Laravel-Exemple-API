@@ -1052,8 +1052,23 @@ export default {
   components: {
     SideBar,
   },
+  props: ["successPopUp"],
   beforeCreate: function () {
     document.body.className = "home";
+  },
+  mounted() {
+    this.cadastroPropostaModal();
+  },
+  methods: {
+    cadastroPropostaModal() {
+      if (this.successPopUp)
+        this.$swal({
+          title: "Proposta gerada com sucesso.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    },
   },
 };
 </script>
