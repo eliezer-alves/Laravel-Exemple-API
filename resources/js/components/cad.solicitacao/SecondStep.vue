@@ -533,6 +533,7 @@
           :is="'contrato-upload'"
           :id="doc.id"
           :key="doc.id"
+          :fileName="doc.file.name"
           @remove="removeDocElement"
         />
 
@@ -609,7 +610,6 @@ export default {
         prefix: "R$ ",
         precision: 2,
       },
-      doc_element: 0,
     };
   },
   validations: {
@@ -721,7 +721,7 @@ export default {
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.doc_element++,
+        id: this.solicitacao.doc_element++,
       });
     },
     removeDocElement(id) {

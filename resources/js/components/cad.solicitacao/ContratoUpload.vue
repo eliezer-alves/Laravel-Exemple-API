@@ -6,7 +6,7 @@
       <div>
         <label
           class="w-56 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-teal-800 cursor-pointer hover:bg-teal-800 hover:text-white"
-          :class="{ 'bg-teal-800': file, 'text-white': file }"
+          :class="{ 'bg-teal-800': name, 'text-white': name }"
         >
           <svg
             class="w-8 h-8"
@@ -18,16 +18,15 @@
               d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
             />
           </svg>
-          <span class="mt-2 text-base leading-normal" v-if="!this.file">
-            Selecione o arquivo
-          </span>
           <span
             class="mt-2 text-base text-yellow-500 leading-normal"
-            v-else-if="!valid"
+            v-if="!valid"
           >
             Documento repetido
           </span>
-
+          <span class="mt-2 text-base leading-normal" v-else-if="!this.name">
+            Selecione o arquivo
+          </span>
           <input
             id="contrato_social"
             name="contrato_social"
@@ -59,7 +58,7 @@
     </div>
     <div>
       <span class="text-base leading-normal">
-        {{ file.name }}
+        {{ name }}
       </span>
     </div>
   </div>
@@ -69,15 +68,18 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["id"],
+  props: ["id", "fileName"],
   data() {
     return {
       file: "",
-      valid: false,
+      valid: true,
     };
   },
   computed: {
     ...mapGetters(["solicitacao"]),
+    name: function () {
+      return this.$props.fileName;
+    },
   },
   methods: {
     fileHandler() {
@@ -95,14 +97,8 @@ export default {
       const doc_index = this.$store.state.solicitacao.docs.findIndex(
         (item) => item.file.name == this.file.name
       );
-      if (doc_index >= 0) {
-        const doc_rep_index = this.$store.state.solicitacao.docs
-          .map((e) => {
-            return e.file.name;
-          })
-          .indexOf(this.file.name, doc_index);
-        this.valid = false;
-      } else this.valid = true;
+      if (doc_index >= 0) this.valid = false;
+      else this.valid = true;
     },
     removeDoc() {
       this.$emit("remove", this.id);

@@ -475,17 +475,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["id"],
+  props: ["id", "fileName"],
   data: function data() {
     return {
       file: "",
-      valid: false
+      valid: true
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["solicitacao"])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["solicitacao"])), {}, {
+    name: function name() {
+      return this.$props.fileName;
+    }
+  }),
   methods: {
     fileHandler: function fileHandler() {
       var _this = this;
@@ -508,13 +511,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var doc_index = this.$store.state.solicitacao.docs.findIndex(function (item) {
         return item.file.name == _this2.file.name;
       });
-
-      if (doc_index >= 0) {
-        var doc_rep_index = this.$store.state.solicitacao.docs.map(function (e) {
-          return e.file.name;
-        }).indexOf(this.file.name, doc_index);
-        this.valid = false;
-      } else this.valid = true;
+      if (doc_index >= 0) this.valid = false;else this.valid = true;
     },
     removeDoc: function removeDoc() {
       this.$emit("remove", this.id);
@@ -555,6 +552,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -1183,8 +1181,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         thousands: ".",
         prefix: "R$ ",
         precision: 2
-      },
-      doc_element: 0
+      }
     };
   },
   validations: {
@@ -1358,7 +1355,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.doc_element++
+        id: this.solicitacao.doc_element++
       });
     },
     removeDocElement: function removeDocElement(id) {
@@ -2427,7 +2424,7 @@ var render = function() {
             {
               staticClass:
                 "w-56 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-teal-800 cursor-pointer hover:bg-teal-800 hover:text-white",
-              class: { "bg-teal-800": _vm.file, "text-white": _vm.file }
+              class: { "bg-teal-800": _vm.name, "text-white": _vm.name }
             },
             [
               _c(
@@ -2450,11 +2447,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              !this.file
-                ? _c("span", { staticClass: "mt-2 text-base leading-normal" }, [
-                    _vm._v("\n          Selecione o arquivo\n        ")
-                  ])
-                : !_vm.valid
+              !_vm.valid
                 ? _c(
                     "span",
                     {
@@ -2463,6 +2456,10 @@ var render = function() {
                     },
                     [_vm._v("\n          Documento repetido\n        ")]
                   )
+                : !this.name
+                ? _c("span", { staticClass: "mt-2 text-base leading-normal" }, [
+                    _vm._v("\n          Selecione o arquivo\n        ")
+                  ])
                 : _vm._e(),
               _vm._v(" "),
               _c("input", {
@@ -2510,7 +2507,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", [
         _c("span", { staticClass: "text-base leading-normal" }, [
-          _vm._v("\n      " + _vm._s(_vm.file.name) + "\n    ")
+          _vm._v("\n      " + _vm._s(_vm.name) + "\n    ")
         ])
       ])
     ]
@@ -3833,7 +3830,7 @@ var render = function() {
               key: doc.id,
               tag: "component",
               staticClass: "flex justify-between",
-              attrs: { id: doc.id },
+              attrs: { id: doc.id, fileName: doc.file.name },
               on: { remove: _vm.removeDocElement }
             })
           }),

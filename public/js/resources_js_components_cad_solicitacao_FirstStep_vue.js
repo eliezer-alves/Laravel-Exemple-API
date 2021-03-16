@@ -1532,7 +1532,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4" }, [
+    _c("div", { staticClass: "p-4 h-screen" }, [
       _c("div", { staticClass: "my-2" }, [
         _c(
           "div",

@@ -48,6 +48,7 @@ let state = {
         telefone: '',
         email: '',
         docs: [],
+        doc_element: 0,
         nome_representante: "",
         cpf_representante: "",
         rg_representante: "",
