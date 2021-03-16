@@ -12,7 +12,8 @@ module.exports = [
     {
         path: '/app/login',
         name: 'login',
-        component: () => import('./components/Login.vue')
+        component: () => import('./components/Login.vue'),
+        props: true
     },
     {
         path: '/app/login-admin',

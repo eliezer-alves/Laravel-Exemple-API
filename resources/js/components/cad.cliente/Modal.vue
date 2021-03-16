@@ -66,29 +66,110 @@
                 class="text-lg leading-6 font-medium text-gray-900"
                 id="modal-headline"
               >
-                Erro ao cadastrar
+                Erro ao realizar cadastro
               </h3>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
                   Por favor, verifique se os dados são todos válidos.
                 </p>
               </div>
+              <ul class="mt-5 px-1 text-sm text-red-600 list-none">
+                <li v-for="cnpj in errors.cnpj" :key="cnpj">
+                  {{ cnpj }}
+                </li>
+                <li
+                  v-for="inscricao_estadual in errors.inscricao_estadual"
+                  :key="inscricao_estadual"
+                >
+                  {{ inscricao_estadual }}
+                </li>
+                <li
+                  v-for="id_atividade_comercial in errors.id_atividade_comercial"
+                  :key="id_atividade_comercial"
+                >
+                  {{ id_atividade_comercial }}
+                </li>
+                <li
+                  v-for="nome_fantasia in errors.nome_fantasia"
+                  :key="nome_fantasia"
+                >
+                  {{ nome_fantasia }}
+                </li>
+                <li
+                  v-for="razao_social in errors.razao_social"
+                  :key="razao_social"
+                >
+                  {{ razao_social }}
+                </li>
+                <li v-for="celular in errors.celular" :key="celular">
+                  {{ celular }}
+                </li>
+                <li v-for="email in errors.email" :key="email">
+                  {{ email }}
+                </li>
+                <li
+                  v-for="email_confirmation in errors.email_confirmation"
+                  :key="email_confirmation"
+                >
+                  {{ email_confirmation }}
+                </li>
+                <li v-for="senha in errors.senha" :key="senha">
+                  {{ senha }}
+                </li>
+                <li
+                  v-for="senha_confirmation in errors.senha_confirmation"
+                  :key="senha_confirmation"
+                >
+                  {{ senha_confirmation }}
+                </li>
+                <li v-for="cep in errors.cep" :key="cep">
+                  {{ cep }}
+                </li>
+                <li v-for="uf in errors.uf" :key="uf">
+                  {{ uf }}
+                </li>
+                <li v-for="cidade in errors.cidade" :key="cidade">
+                  {{ cidade }}
+                </li>
+                <li v-for="bairro in errors.bairro" :key="bairro">
+                  {{ bairro }}
+                </li>
+                <li
+                  v-for="id_tipo_logradouro in errors.id_tipo_logradouro"
+                  :key="id_tipo_logradouro"
+                >
+                  {{ id_tipo_logradouro }}
+                </li>
+                <li v-for="logradouro in errors.logradouro" :key="logradouro">
+                  {{ logradouro }}
+                </li>
+                <li v-for="numero in errors.numero" :key="numero">
+                  {{ numero }}
+                </li>
+                <li
+                  v-for="complemento in errors.complemento"
+                  :key="complemento"
+                >
+                  {{ complemento }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <button
+            @click="closeModal"
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
           >
-            Deactivate
+            Fechar
           </button>
-          <button
+          <!-- <button
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
           >
             Cancel
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -96,10 +177,23 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-    methods: {
-        goTo
-    }
+  computed: {
+    ...mapGetters(["errors"]),
+  },
+  methods: {
+    closeModal() {
+      this.$store.commit("SHOW_MODAL", false);
+    },
+  },
+  filters: {
+    clearString(string) {
+      console.log(string);
+      // return string.replace(/['"\[\]]+/, "");
+      return string;
+    },
+  },
 };
 </script>
 

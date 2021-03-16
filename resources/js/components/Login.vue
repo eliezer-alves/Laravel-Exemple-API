@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:w-4/12 md:6/12 w-10/12 mx-auto my-6 ">
+  <div class="lg:w-4/12 md:6/12 w-10/12 mx-auto my-6">
     <div class="py-2 rounded-xl">
       <img
         class="mx-auto lg:w-72 w-44"
@@ -10,7 +10,7 @@
       <form @submit="login(cliente)" class="mt-2 mx-auto w-72">
         <div class="flex justify-center">
           <span
-            class="px-1 text-sm font-semibold text-yellow-200  w-full text-center"
+            class="px-1 text-sm font-semibold text-yellow-200 w-full text-center"
             v-if="errors.error == 'invalid_grant'"
             >Usuário/Senha inválida</span
           >
@@ -48,6 +48,12 @@
         >
           Entrar
         </button>
+        <button
+          class="block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md"
+          @click.prevent="cadastroSucessoModal"
+        >
+          Modal
+        </button>
         <p class="mt-2 text-center text-md font-light text-white">
           Não tem uma conta?
           <router-link to="cadastro-cliente">
@@ -64,6 +70,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+  props: ["successPopUp"],
   data() {
     return {
       cliente: {
@@ -75,6 +82,12 @@ export default {
   beforeCreate: function () {
     document.body.className = "login";
   },
+  mounted() {
+    this.cadastroSucessoModal();
+  },
+  computed: {
+    ...mapGetters(["errors"]),
+  },
   methods: {
     validateFields(cliente) {
       if (!cliente.username) return false;
@@ -83,7 +96,7 @@ export default {
     },
     async login(cliente) {
       if (!this.validateFields(cliente))
-        return this.$store.commit("GET_ERRORS", {
+        return this.$store.commit("ERRORS", {
           error: "Usuário/Senha vazio",
         });
 
@@ -91,9 +104,27 @@ export default {
       if (response) return this.$router.push("home");
       console.log(this.errors);
     },
-  },
-  computed: {
-    ...mapGetters(["errors"]),
+    cadastroSucessoModal() {
+      if (this.successPopUp)
+        this.$swal({
+          title: "Cliente cadastrado com sucesso.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      this.$swal({
+        title: "Cliente cadastrado com sucesso.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    },
   },
 };
 </script>

@@ -24,12 +24,6 @@
       >
         Telefone inválido
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="celular in errors.celular"
-        :key="celular"
-        >{{ celular }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">E-mail</span>
@@ -53,12 +47,6 @@
       >
         E-mail inválido.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="email in errors.email"
-        :key="email"
-        >{{ email }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Confirmar E-mail</span>
@@ -97,18 +85,6 @@
       >
         E-mails devem ser idênticos
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="email in errors.email"
-        :key="email"
-        >{{ email }}</span
-      >
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="email_confirmation in errors.email_confirmation"
-        :key="email_confirmation"
-        >{{ email_confirmation }}
-      </span>
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Senha</span>
@@ -119,13 +95,7 @@
         class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
         v-model="$v.cliente.senha.$model"
       />
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="senha in errors.senha"
-        :key="senha"
-      >
-        {{ senha }}
-      </span>
+
       <div
         class="text-red-600"
         v-if="$v.cliente.senha.$dirty && !$v.cliente.senha.required"
@@ -160,13 +130,7 @@
       >
         Senhas devem ser idênticas.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="senha_confirmation in errors.senha_confirmation"
-        :key="senha_confirmation"
-      >
-        {{ senha_confirmation }}
-      </span>
+
       <div class="flex justify-between">
         <router-link :to="{ name: 'cadastro-cliente' }">
           <svg

@@ -16,16 +16,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -90,6 +96,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["successPopUp"],
   data: function data() {
     return {
       cliente: {
@@ -101,6 +108,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   beforeCreate: function beforeCreate() {
     document.body.className = "login";
   },
+  mounted: function mounted() {
+    this.cadastroSucessoModal();
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["errors"])),
   methods: {
     validateFields: function validateFields(cliente) {
       if (!cliente.username) return false;
@@ -121,7 +132,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                return _context.abrupt("return", _this.$store.commit("GET_ERRORS", {
+                return _context.abrupt("return", _this.$store.commit("ERRORS", {
                   error: "Usuário/Senha vazio"
                 }));
 
@@ -149,9 +160,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    cadastroSucessoModal: function cadastroSucessoModal() {
+      if (this.successPopUp) this.$swal({
+        title: "Cliente cadastrado com sucesso.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown"
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp"
+        }
+      });
+      this.$swal({
+        title: "Cliente cadastrado com sucesso.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown"
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp"
+        }
+      });
     }
-  },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["errors"]))
+  }
 });
 
 /***/ }),
@@ -313,7 +343,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6 " }, [
+  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6" }, [
     _c("div", { staticClass: "py-2 rounded-xl" }, [
       _c("img", {
         staticClass: "mx-auto lg:w-72 w-44",
@@ -337,7 +367,7 @@ var render = function() {
                   "span",
                   {
                     staticClass:
-                      "px-1 text-sm font-semibold text-yellow-200  w-full text-center"
+                      "px-1 text-sm font-semibold text-yellow-200 w-full text-center"
                   },
                   [_vm._v("Usuário/Senha inválida")]
                 )
@@ -438,6 +468,21 @@ var render = function() {
               }
             },
             [_vm._v("\n        Entrar\n      ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.cadastroSucessoModal($event)
+                }
+              }
+            },
+            [_vm._v("\n        Modal\n      ")]
           ),
           _vm._v(" "),
           _c(

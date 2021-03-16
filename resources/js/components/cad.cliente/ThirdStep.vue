@@ -18,12 +18,6 @@
       >
         CEP Inválido.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="cep in errors.cep"
-        :key="cep"
-        >{{ cep }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">UF</span>
@@ -44,12 +38,6 @@
       >
         UF Inválida.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="uf in errors.uf"
-        :key="uf"
-        >{{ uf }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Cidade</span>
@@ -66,12 +54,6 @@
       >
         Cidade Inválida.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="cidade in errors.cidade"
-        :key="cidade"
-        >{{ cidade }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Bairro</span>
@@ -88,12 +70,6 @@
       >
         Bairro Inválido.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="bairro in errors.bairro"
-        :key="bairro"
-        >{{ bairro }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Tipo de Logradouro</span>
@@ -121,12 +97,6 @@
       >
         Tipo de Logradouro Inválido.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="id_tipo_logradouro in errors.id_tipo_logradouro"
-        :key="id_tipo_logradouro"
-        >{{ id_tipo_logradouro }}</span
-      >
     </div>
     <div class="py-1 flex">
       <div class="flex-col w-full mr-1">
@@ -258,14 +228,11 @@ export default {
       const response = await this.$store.dispatch("createCliente", {
         ...this.cliente,
       });
-      console.log(response);
+
       if (!response) {
         this.$store.commit("SHOW_MODAL", true);
-        // this.$router.push("cadastro-cliente");
       } else {
-        this.cliente = {};
-        this.errors = [];
-        this.$router.push("login");
+        this.$router.push({ name: "login", params: { successPopUp: true } });
       }
     },
     validateFields() {

@@ -24,12 +24,6 @@
       >
         CNPJ inválido.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="cnpj in errors.cnpj"
-        :key="cnpj"
-        >{{ cnpj }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Insc. Estadual</span>
@@ -52,12 +46,6 @@
       >
         Inscrição Estadual é obrigatório.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="inscricao_estadual in errors.inscricao_estadual"
-        :key="inscricao_estadual"
-        >{{ inscricao_estadual }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Atividade Comercial</span>
@@ -85,12 +73,6 @@
       >
         Atividade Comercial é obrigatório.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="id_atividade_comercial in errors.id_atividade_comercial"
-        :key="id_atividade_comercial"
-        >{{ id_atividade_comercial }}
-      </span>
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Nome Fantasia</span>
@@ -109,12 +91,6 @@
       >
         Nome Fantasia é obrigatório.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="nome_fantasia in errors.nome_fantasia"
-        :key="nome_fantasia"
-        >{{ nome_fantasia }}</span
-      >
     </div>
     <div class="py-1">
       <span class="px-1 text-sm font-bold text-white">Razão Social</span>
@@ -133,30 +109,23 @@
       >
         Razão Social é obrigatório.
       </div>
-      <span
-        class="px-1 text-sm font-semibold text-red-600"
-        v-for="razao_social in errors.razao_social"
-        :key="razao_social"
-        >{{ razao_social }}</span
-      >
     </div>
     <div class="flex justify-end">
-        <svg
-          @click="validateFields"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          class="text-gray-200 hover:text-teal-600 w-12 cursor-pointer"
-
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          />
-        </svg>
+      <svg
+        @click="validateFields"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="text-gray-200 hover:text-teal-600 w-12 cursor-pointer"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
+        />
+      </svg>
     </div>
   </cadastro-cliente>
 </template>
@@ -181,7 +150,6 @@ export default {
   computed: {
     ...mapGetters(["atividades", "cliente", "errors"]),
     ...mapFields(["cliente", "errors"]),
-    
   },
   validations: {
     cliente: {
@@ -205,11 +173,11 @@ export default {
       this.$v.cliente.inscricao_estadual.$touch();
     },
     validateFields() {
-      if(!this.$v.$invalid){
+      if (!this.$v.$invalid) {
         this.$router.push("cadastro-cliente-2");
       }
       this.$v.$touch();
-    }
+    },
   },
 };
 </script>

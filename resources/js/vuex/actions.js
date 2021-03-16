@@ -16,7 +16,7 @@ let actions = {
                     // commit('CREATE_CLIENTE', cliente)
                     return res;
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data)
+                commit('ERRORS', err.response.data)
                 // console.log(err.response.data.error);
                 // console.log('error', Object.assign({}, err));
 
@@ -27,7 +27,7 @@ let actions = {
             .then(res => {
                 commit('CREATE_ATIVIDADE', res.data)
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
     fetchAtividades({ commit }) {
@@ -35,7 +35,7 @@ let actions = {
             .then(res => {
                 commit('FETCH_ATIVIDADES', res.data)
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
     updateAtividade({ commit }, atividade) {
@@ -44,7 +44,7 @@ let actions = {
                 console.log(res);
                 commit('UPDATE_ATIVIDADE', res.data)
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
     deleteAtividade({ commit }, atividade) {
@@ -53,21 +53,20 @@ let actions = {
                 if (res.status === 200)
                     commit('DELETE_ATIVIDADE', atividade)
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
     async createCliente({ commit }, cliente) {
         console.log(cliente);
-        cliente.cnpj = cliente.cnpj.replace(/[^\d]+/g, '');
-
-        console.log(cliente);
         return axios.post(`${API_URL}/api/cliente`, cliente)
             .then(res => {
-                if (res.status === 200)
-                    commit('CREATE_CLIENTE', cliente)
+                if (res.status === 200) {
+                    commit('ERRORS', [])
+                    commit('SET_EMPTY_CLIENTE', {})
+                }
                 return res;
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
     async getViaCep({ }, cep) {
@@ -81,7 +80,7 @@ let actions = {
             .then(res => {
                 commit('FETCH_DOMINIO', res.data)
             }).catch(err => {
-                commit('GET_ERRORS', err.response.data.errors)
+                commit('ERRORS', err.response.data.errors)
             })
     },
 

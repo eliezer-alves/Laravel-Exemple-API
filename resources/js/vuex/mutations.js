@@ -8,7 +8,7 @@ let mutations = {
     SHOW_MODAL(state, payload) {
         state.showModal = payload;
     },
-    GET_ERRORS(state, payload) {
+    ERRORS(state, payload) {
         state.errors = payload;
     },
     CREATE_ATIVIDADE(state, payload) {
@@ -27,6 +27,11 @@ let mutations = {
         let index = state.atividades.findIndex(item => item.id_atividade_comercial === payload.id_atividade_comercial);
         state.atividades.splice(index, 1)
     },
+    SET_EMPTY_CLIENTE(state) {
+        state.cliente.forEach(function(prop) {
+            prop = '';
+        });
+    },
     SET_DOC_FILES(state, payload) {
         state.solicitacao.docs.push(payload);
     },
@@ -37,7 +42,7 @@ let mutations = {
 
         console.log(kDoc);
         state.solicitacao.docs.splice(kDoc, 1);
-        
+
         console.log(state.solicitacao.docs);
     },
     FETCH_DOMINIO(state, payload) {

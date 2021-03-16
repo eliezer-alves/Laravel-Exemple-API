@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import Modal from './Modal.vue';
+import Modal from './cad.cliente/Modal.vue';
 
 export default {
   components: { Modal },

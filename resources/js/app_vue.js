@@ -1,12 +1,9 @@
 require("./bootstrap");
-
 import "tailwindcss/tailwind.css";
-
 import Vue from "vue";
 
-import Vuex from "vuex";
-Vue.use(Vuex);
 
+//VUE ROUTER
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
@@ -14,6 +11,10 @@ const router = new VueRouter({
     mode: 'history',
     routes: require("./routes.js"),
 });
+
+//VUEX
+import Vuex from "vuex";
+Vue.use(Vuex);
 
 import actions from './vuex/actions'
 import mutations from './vuex/mutations'
@@ -28,14 +29,21 @@ const store = new Vuex.Store({
     actions
 });
 
+//VUE THE MASK
 import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
 
 import money from 'v-money'
 Vue.use(money, { precision: 4 })
 
+//VUELIDATE
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
+
+//SWEET ALERT 2
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; // If you don't need the styles, do not connect
+Vue.use(VueSweetalert2);
 
 const app = new Vue({
     router,
