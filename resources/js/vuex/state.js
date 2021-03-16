@@ -1,4 +1,5 @@
 let state = {
+    showModal: false,
     errors: {
         // invalid_socio: []
     },

@@ -1,7 +1,7 @@
 <template>
   <cadastro-cliente>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">CEP</span>
+      <span class="px-1 text-sm font-bold text-white">CEP</span>
       <input
         id="cep"
         name="cep"
@@ -26,7 +26,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">UF</span>
+      <span class="px-1 text-sm font-bold text-white">UF</span>
       <select
         id="uf"
         name="uf"
@@ -52,7 +52,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Cidade</span>
+      <span class="px-1 text-sm font-bold text-white">Cidade</span>
       <input
         id="cidade"
         name="cidade"
@@ -74,7 +74,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Bairro</span>
+      <span class="px-1 text-sm font-bold text-white">Bairro</span>
       <input
         id="bairro"
         name="bairro"
@@ -96,7 +96,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Tipo de Logradouro</span>
+      <span class="px-1 text-sm font-bold text-white">Tipo de Logradouro</span>
       <select
         id="id_tipo_logradouro"
         name="id_tipo_logradouro"
@@ -130,7 +130,7 @@
     </div>
     <div class="py-1 flex">
       <div class="flex-col w-full mr-1">
-        <span class="px-1 text-sm text-gray-200">Logradouro</span>
+        <span class="px-1 text-sm font-bold text-white">Logradouro</span>
         <input
           id="logradouro"
           name="logradouro"
@@ -152,11 +152,11 @@
         >
       </div>
       <div class="flex-col">
-        <span class="px-1 text-sm text-gray-200">Número</span>
+        <span class="px-1 text-sm font-bold text-white">Número</span>
         <input
           id="numero"
           name="numero"
-          type="text"
+          type="number"
           class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
           v-model="$v.cliente.numero.$model"
         />
@@ -176,7 +176,7 @@
     </div>
     <div class="py-1 flex">
       <div class="flex-col w-full mr-1">
-        <span class="px-1 text-sm text-gray-200">Complemento</span>
+        <span class="px-1 text-sm font-bold text-white">Complemento</span>
         <input
           id="complemento"
           name="complemento"
@@ -199,7 +199,7 @@
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="text-gray-200 hover:text-teal-600 w-12"
+          class="font-bold text-white hover:text-teal-600 w-12"
         >
           <path
             stroke-linecap="round"
@@ -212,7 +212,7 @@
     </div>
     <button
       @click.prevent="validateFields"
-      class="my-2 w-full text-center text-gray-200 text-lg font-bold bg-green-800 hover:bg-green-900 p-3 rounded-md"
+      class="my-2 w-full text-center text-white text-lg font-bold bg-teal-600 hover:bg-teal-800 p-3 rounded-md"
     >
       Cadastrar
     </button>
@@ -231,8 +231,11 @@ export default {
   beforeCreate: function () {
     document.body.className = "login";
   },
-  async mounted(){
+  async mounted() {
     await this.$store.dispatch("fetchDominios");
+  },
+  data() {
+    return {};
   },
   computed: {
     ...mapGetters(["cliente", "errors", "dominios"]),
@@ -256,8 +259,10 @@ export default {
         ...this.cliente,
       });
       console.log(response);
-      if (!response) this.$router.push("cadastro-cliente");
-      else {
+      if (!response) {
+        this.$store.commit("SHOW_MODAL", true);
+        // this.$router.push("cadastro-cliente");
+      } else {
         this.cliente = {};
         this.errors = [];
         this.$router.push("login");
@@ -293,10 +298,10 @@ export default {
         this.$v.cliente.cep.$touch();
       } else {
         this.setBairro(dadosEndereco.bairro);
-        if (dadosEndereco.bairro != "") {
+        /* if (dadosEndereco.bairro != "") {
           document.querySelector("#bairro").disabled = true;
           document.querySelector("#bairro").value = dadosEndereco.bairro;
-        }
+        } */
 
         this.setCidade(dadosEndereco.localidade);
         if (dadosEndereco.localidade != "") {
@@ -304,9 +309,9 @@ export default {
         }
 
         this.setLogradouro(dadosEndereco.logradouro);
-        if (dadosEndereco.logradouro != "") {
+        /* if (dadosEndereco.logradouro != "") {
           document.querySelector("#logradouro").disabled = true;
-        }
+        } */
 
         this.setUf(dadosEndereco.uf);
         if (dadosEndereco.uf != "") {

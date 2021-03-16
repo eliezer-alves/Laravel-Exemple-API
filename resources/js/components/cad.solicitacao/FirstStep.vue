@@ -1,7 +1,7 @@
 <template>
   <solicitacao>
-    <div class="p-4 h-screen">
-      <div class="my-1">
+    <div class="p-4">
+      <div class="my-2">
         <div class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm">
           Dados da Simulação
         </div>
@@ -150,7 +150,7 @@
       <div class="flex p-2 mt-4">
         <router-link :to="{ name: 'home' }">
           <button
-            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+            class="text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
           >
             Finalizar
           </button>

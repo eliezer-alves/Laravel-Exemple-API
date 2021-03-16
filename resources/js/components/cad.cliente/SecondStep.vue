@@ -1,7 +1,7 @@
 <template>
   <cadastro-cliente>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Celular</span>
+      <span class="px-1 text-sm font-bold text-white">Celular</span>
       <input
         id="celular"
         name="celular"
@@ -32,7 +32,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">E-mail</span>
+      <span class="px-1 text-sm font-bold text-white">E-mail</span>
       <input
         id="email"
         name="email"
@@ -61,7 +61,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Confirmar E-mail</span>
+      <span class="px-1 text-sm font-bold text-white">Confirmar E-mail</span>
       <input
         id="email_confirmation"
         name="email_confirmation"
@@ -111,7 +111,7 @@
       </span>
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Senha</span>
+      <span class="px-1 text-sm font-bold text-white">Senha</span>
       <input
         id="senha"
         name="senha"
@@ -134,7 +134,7 @@
       </div>
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-gray-200">Confirmar Senha</span>
+      <span class="px-1 text-sm font-bold text-white">Confirmar Senha</span>
       <input
         id="senha_confirmation"
         name="senha_confirmation"
@@ -174,7 +174,7 @@
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            class="text-gray-200 hover:text-teal-600 w-12"
+            class="font-bold text-white hover:text-teal-600 w-12"
           >
             <path
               stroke-linecap="round"
@@ -191,7 +191,7 @@
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="text-gray-200 hover:text-teal-600 w-12"
+          class="font-bold text-white hover:text-teal-600 w-12"
         >
           <path
             stroke-linecap="round"

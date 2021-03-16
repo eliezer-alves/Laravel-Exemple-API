@@ -5,6 +5,9 @@ let mutations = {
     LOGIN(state, payload) {
 
     },
+    SHOW_MODAL(state, payload) {
+        state.showModal = payload;
+    },
     GET_ERRORS(state, payload) {
         state.errors = payload;
     },

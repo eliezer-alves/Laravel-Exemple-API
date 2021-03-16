@@ -1532,8 +1532,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("solicitacao", [
-    _c("div", { staticClass: "p-4 h-screen" }, [
-      _c("div", { staticClass: "my-1" }, [
+    _c("div", { staticClass: "p-4" }, [
+      _c("div", { staticClass: "my-2" }, [
         _c(
           "div",
           {
@@ -1880,7 +1880,7 @@ var render = function() {
               "button",
               {
                 staticClass:
-                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+                  "text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
               },
               [_vm._v("\n          Finalizar\n        ")]
             )

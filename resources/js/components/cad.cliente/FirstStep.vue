@@ -1,7 +1,7 @@
 <template>
   <cadastro-cliente>
     <div class="py-1">
-      <span class="px-1 text-sm text-white">CNPJ</span>
+      <span class="px-1 text-sm font-bold text-white">CNPJ</span>
       <input
         id="cnpj"
         name="cnpj"
@@ -32,7 +32,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-white">Insc. Estadual</span>
+      <span class="px-1 text-sm font-bold text-white">Insc. Estadual</span>
       <input
         id="inscricao_estadual"
         name="inscricao_estadual"
@@ -60,7 +60,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-white">Atividade Comercial</span>
+      <span class="px-1 text-sm font-bold text-white">Atividade Comercial</span>
       <select
         id="id_atividade_comercial"
         name="id_atividade_comercial"
@@ -93,7 +93,7 @@
       </span>
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-white">Nome Fantasia</span>
+      <span class="px-1 text-sm font-bold text-white">Nome Fantasia</span>
       <input
         id="nome_fantasia"
         name="nome_fantasia"
@@ -117,7 +117,7 @@
       >
     </div>
     <div class="py-1">
-      <span class="px-1 text-sm text-white">Razão Social</span>
+      <span class="px-1 text-sm font-bold text-white">Razão Social</span>
       <input
         id="razao_social"
         name="razao_social"

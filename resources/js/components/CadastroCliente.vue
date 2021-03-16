@@ -8,17 +8,17 @@
     >
       <img src="/images/logoAgilVertical.png" class="w-72" alt="" />
       <h1
-        class="mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-green-600"
+        class="mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
       >
         Capital de Giro
       </h1>
     </div>
 
     <div
-      class="xl:w-7/12 lg:w-7/12 md:w-7/12 w-9/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-60 shadow-md rounded-md pt-1 pb-3"
+      class="xl:w-7/12 lg:w-7/12 md:w-7/12 w-9/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-40 shadow-md rounded-md pt-1 pb-3"
     >
       <h1
-        class="mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-gray-200 to-gray-200 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-300"
+        class="mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-white to-white hover:bg-gradient-to-l hover:from-yellow-300  hover:to-teal-600"
       >
         Formulário de Cadastro
       </h1>
@@ -28,10 +28,14 @@
         </div>
       </form>
     </div>
+    <Modal v-show="showModal" />
   </div>
 </template>
 <script>
+import Modal from './Modal.vue';
+
 export default {
+  components: { Modal },
   data: function () {
     return {};
   },
@@ -44,6 +48,9 @@ export default {
     currentRoute: function () {
       return this.$router.currentRoute.name;
     },
+    showModal: function() {
+      return this.$store.state.showModal;
+    }
   },
   methods: {
     goBack: function () {

@@ -32,7 +32,7 @@ class StoreClienteRequest extends FormRequest
             'celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
-            'cep' => ['required', 'string', 'regex:/^[0-9]+$/u', 'size:7'],
+            'cep' => ['required', 'string', 'regex:/^[0-9]+$/u'],
             'uf' => ['required', 'string', 'size:2', new Uf],
             'cidade' => ['required', 'string'],
             'bairro' => ['required', 'string'],
@@ -81,8 +81,7 @@ class StoreClienteRequest extends FormRequest
 
             'cep.required' => 'O campo cep é obrigatório.',
             'cep.string' => 'O campo cep é do tipo texto.',
-            'cep.regex' => 'O campo com formato inválido.',
-            'cep.size' => 'O campo com formato inválido.',
+            'cep.regex' => 'O campo cep com formato inválido.',
 
             'uf.required' => 'O campo uf é obrigatório.',
             'uf.string' => 'O campo uf é do tipo texto.',

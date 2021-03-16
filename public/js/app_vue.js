@@ -1958,7 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "1");
-params.append('client_secret', "Vac7AjHAiJD87Oh2je9fIfIwqWsXQtHBbDZCl89m");
+params.append('client_secret', "kGOuKBcylJOSYPPLfaBpp8eItA2l28tgdD9J7lwk");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
@@ -2278,6 +2278,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var mutations = {
   updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
   LOGIN: function LOGIN(state, payload) {},
+  SHOW_MODAL: function SHOW_MODAL(state, payload) {
+    state.showModal = payload;
+  },
   GET_ERRORS: function GET_ERRORS(state, payload) {
     state.errors = payload;
   },
@@ -2345,6 +2348,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var state = {
+  showModal: false,
   errors: {// invalid_socio: []
   },
   atividades: [],
