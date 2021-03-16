@@ -658,7 +658,12 @@ export default {
           this.socio.valid = true;
           this.solicitacao.socios[index] = this.socio;
           this.$emit("update:validSocioElement", !this.$v.$invalid);
-          console.log(this.solicitacao.socios[index]);
+          this.$swal({
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // console.log(this.solicitacao.socios[index]);
         }
       }
       this.$v.$touch();

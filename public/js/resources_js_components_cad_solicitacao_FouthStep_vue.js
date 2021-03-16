@@ -660,6 +660,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -802,7 +806,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput::-webkit-outer-spin-button,\r\ninput::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1717,509 +1721,301 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("solicitacao", [
-    _c("div", { staticClass: "p-4" }, [
-      _c("div", { staticClass: "my-1" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
-          },
-          [_vm._v("\n        Dados Representante Legal\n      ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
+  return _c(
+    "transition",
+    { attrs: { name: "fade" } },
+    [
+      _c("solicitacao", [
+        _c("div", { staticClass: "p-4" }, [
+          _c("div", { staticClass: "my-1" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
+              },
+              [_vm._v("\n          Dados Representante Legal\n        ")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
               _c(
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "valor_solicitado" } }, [
-                    _vm._v("Valor Solicitado")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "money",
-                        rawName: "v-money",
-                        value: _vm.money,
-                        expression: "money"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
-                    attrs: { id: "valor_solicitado", disabled: "" },
-                    domProps: { value: _vm.solicitacao.valor_solicitado }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "parcelas" } }, [
-                    _vm._v("Parcelas")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
-                    attrs: { id: "parcelas", type: "text", disabled: "" },
-                    domProps: { value: _vm.solicitacao.parcelas }
-                  })
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "banco" } }, [_vm._v("Bancos")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
-                    "select",
+                    "div",
                     {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.$v.solicitacao.banco.$model,
-                          expression: "$v.solicitacao.banco.$model"
-                        }
-                      ],
                       staticClass:
-                        "p-1 px-2 outline-none w-full text-gray-800 capitalize",
-                      attrs: { id: "banco", name: "banco" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.$v.solicitacao.banco,
-                            "$model",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
-                      _vm._v(" "),
-                      _vm._l(_vm.dominios.banco, function(banco) {
-                        return _c(
-                          "option",
-                          {
-                            key: banco.codigo,
-                            staticClass: "capitalize",
-                            domProps: { value: banco.codigo }
-                          },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(banco.descricao) +
-                                "\n              "
-                            )
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm.$v.solicitacao.banco.$dirty &&
-              !_vm.$v.solicitacao.banco.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            Banco é obrigatório\n          ")
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "forma_liberacao" } }, [
-                    _vm._v("Forma de Liberação")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
+                      _c("label", { attrs: { for: "valor_solicitado" } }, [
+                        _vm._v("Valor Solicitado")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
                   _c(
-                    "select",
+                    "div",
                     {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.$v.solicitacao.forma_liberacao.$model,
-                          expression: "$v.solicitacao.forma_liberacao.$model"
-                        }
-                      ],
-                      staticClass: "p-1 px-2 outline-none w-full text-gray-800",
-                      attrs: { id: "forma_liberacao", name: "forma_liberacao" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.$v.solicitacao.forma_liberacao,
-                            "$model",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
                     },
                     [
-                      _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [_vm._v("TED")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [_vm._v("DOC")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [_vm._v("PIX")])
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "money",
+                            rawName: "v-money",
+                            value: _vm.money,
+                            expression: "money"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                        attrs: { id: "valor_solicitado", disabled: "" },
+                        domProps: { value: _vm.solicitacao.valor_solicitado }
+                      })
                     ]
                   )
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.solicitacao.forma_liberacao.$dirty &&
-              !_vm.$v.solicitacao.forma_liberacao.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v(
-                      "\n            Forma de Liberação é obrigatório\n          "
-                    )
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
               _c(
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
-                  _c("label", { attrs: { for: "agencia" } }, [
-                    _vm._v("Agência")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "####",
-                        expression: "'####'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.$v.solicitacao.agencia.$model,
-                        expression: "$v.solicitacao.agencia.$model"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "agencia" },
-                    domProps: { value: _vm.$v.solicitacao.agencia.$model },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.$v.solicitacao.agencia,
-                          "$model",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _vm.$v.solicitacao.agencia.$dirty &&
-              !_vm.$v.solicitacao.agencia.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            Agência é obrigatório\n          ")
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [
-                  _c("label", { attrs: { for: "digito_agencia" } }, [
-                    _vm._v("Dígito Agência")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "####",
-                        expression: "'####'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.$v.solicitacao.digito_agencia.$model,
-                        expression: "$v.solicitacao.digito_agencia.$model"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "digito_agencia" },
-                    domProps: {
-                      value: _vm.$v.solicitacao.digito_agencia.$model
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                     },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.$v.solicitacao.digito_agencia,
-                          "$model",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                    [
+                      _c("label", { attrs: { for: "parcelas" } }, [
+                        _vm._v("Parcelas")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                        attrs: { id: "parcelas", type: "text", disabled: "" },
+                        domProps: { value: _vm.solicitacao.parcelas }
+                      })
+                    ]
+                  )
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.solicitacao.digito_agencia.$dirty &&
-              !_vm.$v.solicitacao.digito_agencia.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v(
-                      "\n            Digito da Agência é obrigatório\n          "
-                    )
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
               _c(
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                },
-                [_c("label", { attrs: { for: "conta" } }, [_vm._v("Conta*")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                    "lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "############",
-                        expression: "'############'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.$v.solicitacao.conta.$model,
-                        expression: "$v.solicitacao.conta.$model"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "conta" },
-                    domProps: { value: _vm.$v.solicitacao.conta.$model },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.$v.solicitacao.conta,
-                          "$model",
-                          $event.target.value
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "banco" } }, [
+                        _vm._v("Bancos")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.$v.solicitacao.banco.$model,
+                              expression: "$v.solicitacao.banco.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800 capitalize",
+                          attrs: { id: "banco", name: "banco" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.banco,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.dominios.banco, function(banco) {
+                            return _c(
+                              "option",
+                              {
+                                key: banco.codigo,
+                                staticClass: "capitalize",
+                                domProps: { value: banco.codigo }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(banco.descricao) +
+                                    "\n                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.banco.$dirty &&
+                  !_vm.$v.solicitacao.banco.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Banco é obrigatório\n            "
                         )
-                      }
-                    }
-                  })
+                      ])
+                    : _vm._e()
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.solicitacao.conta.$dirty &&
-              !_vm.$v.solicitacao.conta.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n            Conta é obrigatório\n          ")
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            },
-            [
               _c(
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
-                  _c("label", { attrs: { for: "digito_conta" } }, [
-                    _vm._v("Dígito Conta*")
-                  ])
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "forma_liberacao" } }, [
+                        _vm._v("Forma de Liberação")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.$v.solicitacao.forma_liberacao.$model,
+                              expression:
+                                "$v.solicitacao.forma_liberacao.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: {
+                            id: "forma_liberacao",
+                            name: "forma_liberacao"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.forma_liberacao,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("TED")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("DOC")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("PIX")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.forma_liberacao.$dirty &&
+                  !_vm.$v.solicitacao.forma_liberacao.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Forma de Liberação é obrigatório\n            "
+                        )
+                      ])
+                    : _vm._e()
                 ]
               ),
               _vm._v(" "),
@@ -2227,89 +2023,339 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "bg-white my-2 p-1 border border-gray-200 rounded"
+                    "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "####",
-                        expression: "'####'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.$v.solicitacao.digito_conta.$model,
-                        expression: "$v.solicitacao.digito_conta.$model"
-                      }
-                    ],
-                    staticClass:
-                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                    attrs: { id: "digito_conta" },
-                    domProps: { value: _vm.$v.solicitacao.digito_conta.$model },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "agencia" } }, [
+                        _vm._v("Agência")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "mask",
+                            rawName: "v-mask",
+                            value: "####",
+                            expression: "'####'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.agencia.$model,
+                            expression: "$v.solicitacao.agencia.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: { id: "agencia" },
+                        domProps: { value: _vm.$v.solicitacao.agencia.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.agencia,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.$v.solicitacao.digito_conta,
-                          "$model",
-                          $event.target.value
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.agencia.$dirty &&
+                  !_vm.$v.solicitacao.agencia.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Agência é obrigatório\n            "
                         )
-                      }
-                    }
-                  })
+                      ])
+                    : _vm._e()
                 ]
               ),
               _vm._v(" "),
-              _vm.$v.solicitacao.digito_conta.$dirty &&
-              !_vm.$v.solicitacao.digito_conta.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v(
-                      "\n            Dígito da Conta é obrigatório\n          "
-                    )
-                  ])
-                : _vm._e()
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex p-2 mt-4" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition",
-            class: { "opacity-40": _vm.$v.$invalid },
-            on: { click: _vm.validateFields }
-          },
-          [_vm._v("\n        Finalizar\n      ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex-auto flex flex-row-reverse" },
-          [
-            _c("router-link", { attrs: { to: { name: "solicitacao-3" } } }, [
               _c(
-                "button",
+                "div",
                 {
                   staticClass:
-                    "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                    "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
-                [_vm._v("\n            Retornar\n          ")]
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "digito_agencia" } }, [
+                        _vm._v("Dígito Agência")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "mask",
+                            rawName: "v-mask",
+                            value: "####",
+                            expression: "'####'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.digito_agencia.$model,
+                            expression: "$v.solicitacao.digito_agencia.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: { id: "digito_agencia" },
+                        domProps: {
+                          value: _vm.$v.solicitacao.digito_agencia.$model
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.digito_agencia,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.digito_agencia.$dirty &&
+                  !_vm.$v.solicitacao.digito_agencia.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Digito da Agência é obrigatório\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-10 md:col-span-10 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "conta" } }, [
+                        _vm._v("Conta*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "mask",
+                            rawName: "v-mask",
+                            value: "############",
+                            expression: "'############'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.conta.$model,
+                            expression: "$v.solicitacao.conta.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: { id: "conta" },
+                        domProps: { value: _vm.$v.solicitacao.conta.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.conta,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.conta.$dirty &&
+                  !_vm.$v.solicitacao.conta.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Conta é obrigatório\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "digito_conta" } }, [
+                        _vm._v("Dígito Conta*")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "mask",
+                            rawName: "v-mask",
+                            value: "####",
+                            expression: "'####'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.solicitacao.digito_conta.$model,
+                            expression: "$v.solicitacao.digito_conta.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: { id: "digito_conta" },
+                        domProps: {
+                          value: _vm.$v.solicitacao.digito_conta.$model
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.digito_conta,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.digito_conta.$dirty &&
+                  !_vm.$v.solicitacao.digito_conta.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Dígito da Conta é obrigatório\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
               )
             ])
-          ],
-          1
-        )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex p-2 mt-4" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition",
+                class: { "opacity-40": _vm.$v.$invalid },
+                on: { click: _vm.validateFields }
+              },
+              [_vm._v("\n          Finalizar\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "flex-auto flex flex-row-reverse" },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "solicitacao-3" } } },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                      },
+                      [_vm._v("\n              Retornar\n            ")]
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
