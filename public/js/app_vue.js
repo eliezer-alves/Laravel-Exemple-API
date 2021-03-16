@@ -2395,6 +2395,8 @@ var state = {
     complemento: ''
   },
   solicitacao: {
+    tac: 5000,
+    taxa_juros: 1199,
     valor_solicitado: 1000000,
     parcelas: 1,
     data_geracao_proposta: '',
@@ -2417,7 +2419,7 @@ var state = {
     telefone: '',
     email: '',
     docs: [],
-    doc_element: 0,
+    doc_count: 0,
     nome_representante: "",
     cpf_representante: "",
     rg_representante: "",
@@ -2437,6 +2439,7 @@ var state = {
     profissao_representante: "",
     sexo_representante: "",
     socios: [],
+    socio_count: 0,
     banco: "",
     forma_liberacao: "",
     agencia: "",

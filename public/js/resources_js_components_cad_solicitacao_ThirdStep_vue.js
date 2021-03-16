@@ -883,6 +883,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -902,7 +908,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$store.commit("GET_ERRORS", {
+              _this.$store.commit("ERRORS", {
                 invalid: _this.$v.$invalid
               });
 
@@ -984,28 +990,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$v.socio.nome.$touch();
     },
     setCpfSocio: function setCpfSocio(value) {
-      var arrayCPF = document.querySelectorAll(".cpf");
-      this.$v.socio.cpf.isRepeatedCPF = false;
-
-      for (var i = 0; i < arrayCPF.length - 1; i++) {
-        if (arrayCPF[i].value == value) {
-          this.$v.socio.cpf.isRepeatedCPF = true;
-          break;
-        }
-      }
-
-      if (this.$v.socio.cpf.isRepeatedCPF) {
-        this.socio.cpf = value;
-      } else {
-        value = value.replace(/[^\d]+/g, "");
-        var isInvalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
-
-        if (isInvalid) {
-          this.socio.cpf = null;
-        } else this.socio.cpf = value;
-      }
-
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.socio.cpf.repeated = this.verificaCpfRepetido(value);
+      this.$v.socio.cpf.invalid = (0,_helper_js__WEBPACK_IMPORTED_MODULE_1__.validaCPF)(value);
+      this.$v.socio.cpf.$model = value;
       this.$v.socio.cpf.$touch();
+    },
+    verificaCpfRepetido: function verificaCpfRepetido(cpf) {
+      if (this.solicitacao.cpf_representante === cpf) return true;
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.cpf === cpf;
+      });
+      return index >= 0 ? true : false;
     },
     setTelefoneSocio: function setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -1039,8 +1035,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this3.setLogradouroSocio("");
 
-                  document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = false;
-
                   _this3.setUfSocio("");
 
                   document.querySelector("#uf_socio_".concat(_this3.id)).disabled = false;
@@ -1068,12 +1062,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
 
                   _this3.setLogradouroSocio(dadosEndereco.logradouro);
-
-                  if (dadosEndereco.logradouro != "") {
-                    document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = true;
-                  } else {
-                    document.querySelector("#logradouro_socio_".concat(_this3.id)).disabled = false;
-                  }
 
                   _this3.setUfSocio(dadosEndereco.uf);
 
@@ -1142,7 +1130,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
-      this.$v.$touch(); // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
+      this.$v.$touch();
     },
     removeSocio: function removeSocio() {
       this.$emit("remove", this.id);
@@ -1870,6 +1858,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -1882,10 +1871,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Socio: _Socio_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
-    return {
-      socio_count: 0 // validSocioElement: true,
-
-    };
+    return {};
   },
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])), {}, {
     validSocioElement: function validSocioElement() {
@@ -2024,8 +2010,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this3.setLogradouroRepresentante("");
 
-                  document.querySelector("#logradouro_representante").disabled = false;
-
                   _this3.setUfRepresentante("");
 
                   document.querySelector("#uf_representante").disabled = false;
@@ -2045,8 +2029,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   if (dadosEndereco.localidade != "") document.querySelector("#cidade_representante").disabled = true;
 
                   _this3.setLogradouroRepresentante(dadosEndereco.logradouro);
-
-                  if (dadosEndereco.logradouro != "") document.querySelector("#logradouro_representante").disabled = true;
 
                   _this3.setUfRepresentante(dadosEndereco.uf);
 
@@ -2102,7 +2084,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     addSocioElement: function addSocioElement() {
       this.solicitacao.socios.push({
-        id: this.socio_count++,
+        id: this.solicitacao.socio_count++,
         valid: false,
         nome: "",
         cpf: "",
@@ -2120,13 +2102,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         logradouro: "",
         numero: "",
         complemento: ""
-      }); // this.validSocioElement = this.validSocio();
+      });
     },
     removeSocioElement: function removeSocioElement(id) {
       var index = this.solicitacao.socios.findIndex(function (s) {
         return s.id === id;
       });
-      this.solicitacao.socios.splice(index, 1); // this.validSocioElement = this.validSocio();
+      this.solicitacao.socios.splice(index, 1);
     },
     validSocio: function validSocio() {
       var index = this.solicitacao.socios.findIndex(function (s) {
@@ -3288,7 +3270,7 @@ var render = function() {
                 },
                 domProps: { value: _vm.$v.socio.cpf.$model },
                 on: {
-                  input: function($event) {
+                  blur: function($event) {
                     return _vm.setCpfSocio($event.target.value)
                   }
                 }
@@ -3302,9 +3284,17 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.$v.socio.cpf.$dirty && _vm.$v.socio.cpf.isRepeatedCPF
+          _vm.$v.socio.cpf.$dirty && _vm.$v.socio.cpf.invalid
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        CPF já está na lista.\n      ")
+                _vm._v("\n        CPF inválido.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.socio.cpf.$dirty && _vm.$v.socio.cpf.repeated
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v(
+                  "\n        Este CPF já é pertence a outro sócio.\n      "
+                )
               ])
             : _vm._e()
         ]
@@ -4087,7 +4077,7 @@ var render = function() {
                 _c(
                   "label",
                   { attrs: { for: "tipo_logradouro_socio_" + _vm.socio.id } },
-                  [_vm._v("Tipo de Logradouro")]
+                  [_vm._v("\n          Tipo de Logradouro\n        ")]
                 )
               ]
             ),
@@ -4393,7 +4383,7 @@ var render = function() {
             "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition",
           on: { click: _vm.salvarSocio }
         },
-        [_vm._v("\n      Salvar Sócio\n    ")]
+        [_vm._v("\n      Confirmar Sócio\n    ")]
       )
     ])
   ])
@@ -5908,10 +5898,159 @@ var render = function() {
                   !_vm.$v.solicitacao.email_representante.email)
                   ? _c("div", { staticClass: "text-red-600" }, [
                       _vm._v(
-                        "\n              E-mail válido é obrigatório\n            "
+                        "\n              E-mail válido é obrigatório.\n            "
                       )
                     ])
                   : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c("div", { staticClass: "flex flex-col" }, [
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mt-3" },
+                    [
+                      _c("input", {
+                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                        attrs: {
+                          type: "checkbox",
+                          name: "politicamente_exposto"
+                        }
+                      }),
+                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                        _vm._v("Pessoa Politicamente Exposta")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                          },
+                          [
+                            _c(
+                              "label",
+                              { attrs: { for: "cargo_politicamente_exposto" } },
+                              [_vm._v("Cargo")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white my-2 p-1 border border-gray-200 rounded"
+                          },
+                          [
+                            _c("input", {
+                              staticClass:
+                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              attrs: {
+                                id: "cargo_politicamente_exposto",
+                                type: "text"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c("div", { staticClass: "flex flex-col" }, [
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mt-3" },
+                    [
+                      _c("input", {
+                        staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                        attrs: {
+                          type: "checkbox",
+                          name: "parente_politicamente_exposto"
+                        }
+                      }),
+                      _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                        _vm._v("Parente Politicamente Exposta")
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { attrs: { for: "cargo_parente_politicamente_exposto" } },
+                      [_vm._v("Cargo")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                  },
+                  [
+                    _c("input", {
+                      staticClass:
+                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                      attrs: {
+                        id: "cargo_parente_politicamente_exposto",
+                        type: "text"
+                      }
+                    })
+                  ]
+                )
               ]
             )
           ])
@@ -5934,7 +6073,11 @@ var render = function() {
           _vm._l(this.solicitacao.socios, function(socio) {
             return _c("socio", {
               key: socio.id,
-              attrs: { id: socio.id, validSocioElement: _vm.validSocioElement },
+              attrs: {
+                id: socio.id,
+                socio: socio,
+                validSocioElement: _vm.validSocioElement
+              },
               on: {
                 remove: _vm.removeSocioElement,
                 "update:validSocioElement": function($event) {

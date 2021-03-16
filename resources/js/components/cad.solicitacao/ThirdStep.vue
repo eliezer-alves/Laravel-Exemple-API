@@ -561,10 +561,10 @@
                     !$v.solicitacao.email_representante.email)
                 "
               >
-                E-mail válido é obrigatório
+                E-mail válido é obrigatório.
               </div>
             </div>
-            <!-- <div
+            <div
               class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div class="flex flex-col">
@@ -596,8 +596,8 @@
                   </div>
                 </div>
               </div>
-            </div> -->
-            <!-- <div
+            </div>
+            <div
               class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div class="flex flex-col">
@@ -611,8 +611,8 @@
                   >
                 </label>
               </div>
-            </div> -->
-            <!-- <div
+            </div>
+            <div
               class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
@@ -627,7 +627,7 @@
                   type="text"
                 />
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -640,6 +640,7 @@
           v-for="socio in this.solicitacao.socios"
           :id="socio.id"
           :key="socio.id"
+          :socio="socio"
           @remove="removeSocioElement"
           :validSocioElement.sync="validSocioElement"
         />
@@ -698,10 +699,7 @@ import { validaCPF } from "../../helper.js";
 export default {
   components: { Solicitacao, Socio },
   data() {
-    return {
-      socio_count: 0,
-      // validSocioElement: true,
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
@@ -793,7 +791,6 @@ export default {
         document.querySelector("#cidade_representante").disabled = false;
 
         this.setLogradouroRepresentante("");
-        document.querySelector("#logradouro_representante").disabled = false;
 
         this.setUfRepresentante("");
         document.querySelector("#uf_representante").disabled = false;
@@ -811,8 +808,6 @@ export default {
           document.querySelector("#cidade_representante").disabled = true;
 
         this.setLogradouroRepresentante(dadosEndereco.logradouro);
-        if (dadosEndereco.logradouro != "")
-          document.querySelector("#logradouro_representante").disabled = true;
 
         this.setUfRepresentante(dadosEndereco.uf);
         if (dadosEndereco.uf != "")
@@ -858,7 +853,7 @@ export default {
     },
     addSocioElement() {
       this.solicitacao.socios.push({
-        id: this.socio_count++,
+        id: this.solicitacao.socio_count++,
         valid: false,
         nome: "",
         cpf: "",
@@ -877,12 +872,10 @@ export default {
         numero: "",
         complemento: "",
       });
-      // this.validSocioElement = this.validSocio();
     },
     removeSocioElement(id) {
       const index = this.solicitacao.socios.findIndex((s) => s.id === id);
       this.solicitacao.socios.splice(index, 1);
-      // this.validSocioElement = this.validSocio();
     },
     validSocio() {
       const index = this.solicitacao.socios.findIndex((s) => s.valid === false);

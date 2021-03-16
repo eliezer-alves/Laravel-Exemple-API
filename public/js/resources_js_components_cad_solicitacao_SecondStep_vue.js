@@ -1355,7 +1355,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.solicitacao.doc_element++
+        id: this.solicitacao.doc_count++
       });
     },
     removeDocElement: function removeDocElement(id) {

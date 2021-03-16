@@ -721,7 +721,7 @@ export default {
       this.solicitacao.docs.push({
         file: "",
         valid: false,
-        id: this.solicitacao.doc_element++,
+        id: this.solicitacao.doc_count++,
       });
     },
     removeDocElement(id) {

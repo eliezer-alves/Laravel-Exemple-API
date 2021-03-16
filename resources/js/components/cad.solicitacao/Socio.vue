@@ -43,7 +43,7 @@
             placeholder="###.###.###-##"
             v-mask="'###.###.###-##'"
             :value="$v.socio.cpf.$model"
-            @input="setCpfSocio($event.target.value)"
+            @blur="setCpfSocio($event.target.value)"
           />
         </div>
         <div
@@ -54,9 +54,15 @@
         </div>
         <div
           class="text-red-600"
-          v-if="$v.socio.cpf.$dirty && $v.socio.cpf.isRepeatedCPF"
+          v-if="$v.socio.cpf.$dirty && $v.socio.cpf.invalid"
         >
-          CPF já está na lista.
+          CPF inválido.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.cpf.$dirty && $v.socio.cpf.repeated"
+        >
+          Este CPF já é pertence a outro sócio.
         </div>
       </div>
       <div
@@ -347,9 +353,9 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
         >
-          <label :for="'tipo_logradouro_socio_' + socio.id"
-            >Tipo de Logradouro</label
-          >
+          <label :for="'tipo_logradouro_socio_' + socio.id">
+            Tipo de Logradouro
+          </label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
           <select
@@ -456,7 +462,7 @@
         @click="salvarSocio"
         class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
       >
-        Salvar Sócio
+        Confirmar Sócio
       </button>
     </div>
   </div>
@@ -478,7 +484,7 @@ export default {
     };
   },
   async mounted() {
-    this.$store.commit("GET_ERRORS", {
+    this.$store.commit("ERRORS", {
       invalid: this.$v.$invalid,
     });
     await this.$store.dispatch("fetchDominios");
@@ -546,25 +552,20 @@ export default {
       this.$v.socio.nome.$touch();
     },
     setCpfSocio(value) {
-      let arrayCPF = document.querySelectorAll(".cpf");
-      this.$v.socio.cpf.isRepeatedCPF = false;
-      for (let i = 0; i < arrayCPF.length - 1; i++) {
-        if (arrayCPF[i].value == value) {
-          this.$v.socio.cpf.isRepeatedCPF = true;
-          break;
-        }
-      }
+      value = value.replace(/[^\d]+/g, "");
 
-      if (this.$v.socio.cpf.isRepeatedCPF) {
-        this.socio.cpf = value;
-      } else {
-        value = value.replace(/[^\d]+/g, "");
-        let isInvalid = validaCPF(value);
-        if (isInvalid) {
-          this.socio.cpf = null;
-        } else this.socio.cpf = value;
-      }
+      this.$v.socio.cpf.repeated = this.verificaCpfRepetido(value);
+      this.$v.socio.cpf.invalid = validaCPF(value);
+
+      this.$v.socio.cpf.$model = value;
       this.$v.socio.cpf.$touch();
+    },
+    verificaCpfRepetido(cpf) {
+      if (this.solicitacao.cpf_representante === cpf) return true;
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.cpf === cpf
+      );
+      return index >= 0 ? true : false;
     },
     setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -582,7 +583,6 @@ export default {
         document.querySelector(`#cidade_socio_${this.id}`).disabled = false;
 
         this.setLogradouroSocio("");
-        document.querySelector(`#logradouro_socio_${this.id}`).disabled = false;
 
         this.setUfSocio("");
         document.querySelector(`#uf_socio_${this.id}`).disabled = false;
@@ -607,15 +607,6 @@ export default {
         }
 
         this.setLogradouroSocio(dadosEndereco.logradouro);
-        if (dadosEndereco.logradouro != "") {
-          document.querySelector(
-            `#logradouro_socio_${this.id}`
-          ).disabled = true;
-        } else {
-          document.querySelector(
-            `#logradouro_socio_${this.id}`
-          ).disabled = false;
-        }
 
         this.setUfSocio(dadosEndereco.uf);
         if (dadosEndereco.uf != "") {
@@ -671,7 +662,6 @@ export default {
         }
       }
       this.$v.$touch();
-      // this.$store.commit("GET_ERRORS", { invalid: this.$v.$invalid });
     },
     removeSocio() {
       this.$emit("remove", this.id);
