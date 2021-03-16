@@ -1,5 +1,6 @@
 require("./bootstrap");
 import "tailwindcss/tailwind.css";
+import "animate.css"
 import Vue from "vue";
 
 

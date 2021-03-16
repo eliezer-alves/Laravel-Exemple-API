@@ -8,13 +8,6 @@
       />
 
       <form @submit="login(cliente)" class="mt-2 mx-auto w-72">
-        <div class="flex justify-center">
-          <span
-            class="px-1 text-sm font-semibold text-yellow-200 w-full text-center"
-            v-if="errors.error == 'invalid_grant'"
-            >Usuário/Senha inválida</span
-          >
-        </div>
         <div class="mt-1 text-sm">
           <input
             type="text"
@@ -47,12 +40,6 @@
           @click.prevent="login(cliente)"
         >
           Entrar
-        </button>
-        <button
-          class="block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md"
-          @click.prevent="cadastroSucessoModal"
-        >
-          Modal
         </button>
         <p class="mt-2 text-center text-md font-light text-white">
           Não tem uma conta?
@@ -96,34 +83,30 @@ export default {
     },
     async login(cliente) {
       if (!this.validateFields(cliente))
-        return this.$store.commit("ERRORS", {
-          error: "Usuário/Senha vazio",
+        return this.$swal({
+          title: "Usuário/Senha vazios.",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1500,
         });
 
       const response = await this.$store.dispatch("login", { ...cliente });
       if (response) return this.$router.push("home");
-      console.log(this.errors);
+      this.$swal({
+        title: "Usuario/Senha inválidos.",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     cadastroSucessoModal() {
       if (this.successPopUp)
         this.$swal({
           title: "Cliente cadastrado com sucesso.",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
         });
-      this.$swal({
-        title: "Cliente cadastrado com sucesso.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
     },
   },
 };

@@ -81,19 +81,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["successPopUp"],
@@ -132,8 +119,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   break;
                 }
 
-                return _context.abrupt("return", _this.$store.commit("ERRORS", {
-                  error: "Usuário/Senha vazio"
+                return _context.abrupt("return", _this.$swal({
+                  title: "Usuário/Senha vazios.",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
                 }));
 
               case 2:
@@ -151,7 +141,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context.abrupt("return", _this.$router.push("home"));
 
               case 7:
-                console.log(_this.errors);
+                _this.$swal({
+                  title: "Usuario/Senha inválidos.",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
 
               case 8:
               case "end":
@@ -164,21 +159,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     cadastroSucessoModal: function cadastroSucessoModal() {
       if (this.successPopUp) this.$swal({
         title: "Cliente cadastrado com sucesso.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown"
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp"
-        }
-      });
-      this.$swal({
-        title: "Cliente cadastrado com sucesso.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown"
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp"
-        }
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
       });
     }
   }
@@ -361,19 +344,6 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "flex justify-center" }, [
-            _vm.errors.error == "invalid_grant"
-              ? _c(
-                  "span",
-                  {
-                    staticClass:
-                      "px-1 text-sm font-semibold text-yellow-200 w-full text-center"
-                  },
-                  [_vm._v("Usuário/Senha inválida")]
-                )
-              : _vm._e()
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "mt-1 text-sm" }, [
             _c("input", {
               directives: [
@@ -468,21 +438,6 @@ var render = function() {
               }
             },
             [_vm._v("\n        Entrar\n      ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.cadastroSucessoModal($event)
-                }
-              }
-            },
-            [_vm._v("\n        Modal\n      ")]
           ),
           _vm._v(" "),
           _c(
