@@ -898,6 +898,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -960,7 +972,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.email
       },
       telefone: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+        minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(10)
       },
       cep: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
@@ -1015,8 +1028,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     setTelefoneSocio: function setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
+      this.$v.socio.telefone.repeated = this.verificaTelefoneRepetido(value);
       this.socio.telefone = value;
       this.$v.socio.telefone.$touch();
+    },
+    verificaTelefoneRepetido: function verificaTelefoneRepetido(telefone) {
+      if (this.solicitacao.celular_representante === telefone) return true;
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.telefone === telefone;
+      });
+      return index >= 0 ? true : false;
     },
     setEmailSocio: function setEmailSocio(value) {
       this.$v.socio.email.repeated = this.verificaEmailRepetido(value);
@@ -3855,6 +3876,20 @@ var render = function() {
           _vm.$v.socio.telefone.$dirty && !_vm.$v.socio.telefone.required
             ? _c("div", { staticClass: "text-red-600" }, [
                 _vm._v("\n        Telefone é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.socio.telefone.$dirty && _vm.$v.socio.telefone.repeated
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v(
+                  "\n        Este telefone já é pertence a outro sócio.\n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.socio.telefone.$dirty && !_vm.$v.socio.telefone.minLength
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Celular/Telefone Inválido\n      ")
               ])
             : _vm._e()
         ]

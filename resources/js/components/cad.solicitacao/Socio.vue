@@ -239,6 +239,18 @@
         >
           Telefone é obrigatório.
         </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.telefone.$dirty && $v.socio.telefone.repeated"
+        >
+          Este telefone já é pertence a outro sócio.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.telefone.$dirty && !$v.socio.telefone.minLength"
+        >
+          Celular/Telefone Inválido
+        </div>
       </div>
     </div>
     <div
@@ -525,6 +537,7 @@ export default {
       },
       telefone: {
         required,
+        minLength: minLength(10),
       },
       cep: {
         required,
@@ -579,8 +592,17 @@ export default {
     },
     setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
+
+      this.$v.socio.telefone.repeated = this.verificaTelefoneRepetido(value);
       this.socio.telefone = value;
       this.$v.socio.telefone.$touch();
+    },
+    verificaTelefoneRepetido(telefone) {
+      if (this.solicitacao.celular_representante === telefone) return true;
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.telefone === telefone
+      );
+      return index >= 0 ? true : false;
     },
     setEmailSocio(value) {
       this.$v.socio.email.repeated = this.verificaEmailRepetido(value);
