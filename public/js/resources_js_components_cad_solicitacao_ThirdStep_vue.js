@@ -1176,6 +1176,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             timer: 1500
           }); // console.log(this.solicitacao.socios[index]);
         }
+      } else {
+        this.$swal({
+          title: "Preencha todos os campos do sócio.",
+          icon: "warning",
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
 
       this.$v.$touch();
@@ -2076,9 +2083,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this3.setComplementoRepresentante("");
 
-                  _this3.cep_representante = null;
+                  _this3.$v.solicitacao.cep_representante.$model = null;
 
-                  _this3.$v.cep_representante.$touch();
+                  _this3.$v.solicitacao.cep_representante.$touch();
                 } else {
                   _this3.setBairroRepresentante(dadosEndereco.bairro);
 
@@ -2096,7 +2103,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this3.setComplementoRepresentante(dadosEndereco.complemento);
 
-                  _this3.solicitacao.cep_representante = value;
+                  _this3.$v.solicitacao.cep_representante.$model = value;
 
                   _this3.$v.solicitacao.cep_representante.$touch();
                 }
@@ -6231,7 +6238,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                     },
                     [
                       _c("div", { staticClass: "flex flex-col" }, [
@@ -6248,7 +6255,7 @@ var render = function() {
                               }
                             }),
                             _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                              _vm._v("Parente Politicamente Exposta")
+                              _vm._v("Parente Politicamente Exposto")
                             ])
                           ]
                         )

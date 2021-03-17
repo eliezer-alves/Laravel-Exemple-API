@@ -607,7 +607,7 @@
                 </div>
               </div>
               <div
-                class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               >
                 <div class="flex flex-col">
                   <label class="inline-flex items-center mt-3">
@@ -616,7 +616,7 @@
                       class="form-checkbox h-5 w-5 text-gray-600 ml-2"
                       name="parente_politicamente_exposto"
                     /><span class="ml-2 text-gray-700"
-                      >Parente Politicamente Exposta</span
+                      >Parente Politicamente Exposto</span
                     >
                   </label>
                 </div>
@@ -808,8 +808,8 @@ export default {
         document.querySelector("#uf_representante").disabled = false;
         this.setComplementoRepresentante("");
 
-        this.cep_representante = null;
-        this.$v.cep_representante.$touch();
+        this.$v.solicitacao.cep_representante.$model = null;
+        this.$v.solicitacao.cep_representante.$touch();
       } else {
         this.setBairroRepresentante(dadosEndereco.bairro);
         if (dadosEndereco.bairro != "")
@@ -826,7 +826,7 @@ export default {
           document.querySelector("#uf_representante").disabled = true;
 
         this.setComplementoRepresentante(dadosEndereco.complemento);
-        this.solicitacao.cep_representante = value;
+        this.$v.solicitacao.cep_representante.$model = value;
         this.$v.solicitacao.cep_representante.$touch();
       }
     },

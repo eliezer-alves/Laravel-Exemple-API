@@ -710,6 +710,13 @@ export default {
           });
           // console.log(this.solicitacao.socios[index]);
         }
+      } else {
+        this.$swal({
+          title: "Preencha todos os campos do sócio.",
+          icon: "warning",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
       this.$v.$touch();
     },
