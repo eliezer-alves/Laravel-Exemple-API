@@ -1926,6 +1926,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2024,7 +2052,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       email_representante: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
         email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.email
-      }
+      },
+      representante_politicamente_exposto: {},
+      representante_politicamente_exposto_cargo: {},
+      parente_representante_politicamente_exposto: {},
+      parente_representante_politicamente_exposto_cargo: {}
     }
   },
   methods: {
@@ -6163,15 +6195,86 @@ var render = function() {
                           { staticClass: "inline-flex items-center mt-3" },
                           [
                             _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.$v.solicitacao
+                                      .representante_politicamente_exposto
+                                      .$model,
+                                  expression:
+                                    "\n                      $v.solicitacao.representante_politicamente_exposto\n                        .$model\n                    "
+                                }
+                              ],
                               staticClass:
                                 "form-checkbox h-5 w-5 text-gray-600 ml-2",
                               attrs: {
-                                type: "checkbox",
-                                name: "politicamente_exposto"
+                                id: "representante_politicamente_exposto",
+                                name: "representante_politicamente_exposto",
+                                type: "checkbox"
+                              },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.$v.solicitacao
+                                    .representante_politicamente_exposto.$model
+                                )
+                                  ? _vm._i(
+                                      _vm.$v.solicitacao
+                                        .representante_politicamente_exposto
+                                        .$model,
+                                      null
+                                    ) > -1
+                                  : _vm.$v.solicitacao
+                                      .representante_politicamente_exposto
+                                      .$model
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a =
+                                      _vm.$v.solicitacao
+                                        .representante_politicamente_exposto
+                                        .$model,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.$v.solicitacao
+                                            .representante_politicamente_exposto,
+                                          "$model",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.$v.solicitacao
+                                            .representante_politicamente_exposto,
+                                          "$model",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.$v.solicitacao
+                                        .representante_politicamente_exposto,
+                                      "$model",
+                                      $$c
+                                    )
+                                  }
+                                }
                               }
                             }),
+                            _vm._v(" "),
                             _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                              _vm._v("Pessoa Politicamente Exposta")
+                              _vm._v(
+                                "\n                    Pessoa Politicamente Exposta\n                  "
+                              )
                             ])
                           ]
                         )
@@ -6202,10 +6305,15 @@ var render = function() {
                                     "label",
                                     {
                                       attrs: {
-                                        for: "cargo_politicamente_exposto"
+                                        for:
+                                          "representante_politicamente_exposto_cargo"
                                       }
                                     },
-                                    [_vm._v("Cargo")]
+                                    [
+                                      _vm._v(
+                                        "\n                      Cargo\n                    "
+                                      )
+                                    ]
                                   )
                                 ]
                               ),
@@ -6218,11 +6326,45 @@ var render = function() {
                                 },
                                 [
                                   _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.$v.solicitacao
+                                            .representante_politicamente_exposto_cargo
+                                            .$model,
+                                        expression:
+                                          "\n                        $v.solicitacao\n                          .representante_politicamente_exposto_cargo.$model\n                      "
+                                      }
+                                    ],
                                     staticClass:
                                       "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                                     attrs: {
-                                      id: "cargo_politicamente_exposto",
+                                      id:
+                                        "representante_politicamente_exposto_cargo",
+                                      name:
+                                        "representante_politicamente_exposto_cargo",
                                       type: "text"
+                                    },
+                                    domProps: {
+                                      value:
+                                        _vm.$v.solicitacao
+                                          .representante_politicamente_exposto_cargo
+                                          .$model
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.$v.solicitacao
+                                            .representante_politicamente_exposto_cargo,
+                                          "$model",
+                                          $event.target.value
+                                        )
+                                      }
                                     }
                                   })
                                 ]
@@ -6247,15 +6389,89 @@ var render = function() {
                           { staticClass: "inline-flex items-center mt-3" },
                           [
                             _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value:
+                                    _vm.$v.solicitacao
+                                      .parente_representante_politicamente_exposto
+                                      .$model,
+                                  expression:
+                                    "\n                      $v.solicitacao\n                        .parente_representante_politicamente_exposto.$model\n                    "
+                                }
+                              ],
                               staticClass:
                                 "form-checkbox h-5 w-5 text-gray-600 ml-2",
                               attrs: {
-                                type: "checkbox",
-                                name: "parente_politicamente_exposto"
+                                id:
+                                  "parente_representante_politicamente_exposto",
+                                name:
+                                  "parente_representante_politicamente_exposto",
+                                type: "checkbox"
+                              },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.$v.solicitacao
+                                    .parente_representante_politicamente_exposto
+                                    .$model
+                                )
+                                  ? _vm._i(
+                                      _vm.$v.solicitacao
+                                        .parente_representante_politicamente_exposto
+                                        .$model,
+                                      null
+                                    ) > -1
+                                  : _vm.$v.solicitacao
+                                      .parente_representante_politicamente_exposto
+                                      .$model
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a =
+                                      _vm.$v.solicitacao
+                                        .parente_representante_politicamente_exposto
+                                        .$model,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.$v.solicitacao
+                                            .parente_representante_politicamente_exposto,
+                                          "$model",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.$v.solicitacao
+                                            .parente_representante_politicamente_exposto,
+                                          "$model",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.$v.solicitacao
+                                        .parente_representante_politicamente_exposto,
+                                      "$model",
+                                      $$c
+                                    )
+                                  }
+                                }
                               }
                             }),
+                            _vm._v(" "),
                             _c("span", { staticClass: "ml-2 text-gray-700" }, [
-                              _vm._v("Parente Politicamente Exposto")
+                              _vm._v(
+                                "\n                    Parente Politicamente Exposto\n                  "
+                              )
                             ])
                           ]
                         )
@@ -6281,7 +6497,8 @@ var render = function() {
                             "label",
                             {
                               attrs: {
-                                for: "cargo_parente_politicamente_exposto"
+                                for:
+                                  "parente_representante_politicamente_exposto_cargo"
                               }
                             },
                             [_vm._v("Cargo")]
@@ -6297,11 +6514,45 @@ var render = function() {
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.$v.solicitacao
+                                    .parente_representante_politicamente_exposto_cargo
+                                    .$model,
+                                expression:
+                                  "\n                    $v.solicitacao\n                      .parente_representante_politicamente_exposto_cargo\n                      .$model\n                  "
+                              }
+                            ],
                             staticClass:
                               "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                             attrs: {
-                              id: "cargo_parente_politicamente_exposto",
+                              id:
+                                "parente_representante_politicamente_exposto_cargo",
+                              name:
+                                "parente_representante_politicamente_exposto_cargo",
                               type: "text"
+                            },
+                            domProps: {
+                              value:
+                                _vm.$v.solicitacao
+                                  .parente_representante_politicamente_exposto_cargo
+                                  .$model
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.$v.solicitacao
+                                    .parente_representante_politicamente_exposto_cargo,
+                                  "$model",
+                                  $event.target.value
+                                )
+                              }
                             }
                           })
                         ]
