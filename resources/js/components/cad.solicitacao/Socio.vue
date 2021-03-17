@@ -110,8 +110,8 @@
             :id="'numero_rg_socio_' + socio.id"
             :name="'numero_rg_socio_' + socio.id"
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-            type="text"
-            v-model="$v.socio.numero_rg.$model"
+            type="number"
+            v-model.number="$v.socio.numero_rg.$model"
           />
         </div>
         <div
@@ -230,7 +230,7 @@
             type="text"
             v-mask="['(##) ####-####', '(##) #####-####']"
             :value="$v.socio.telefone.$model"
-            @input="setTelefoneSocio($event.target.value)"
+            @blur="setTelefoneSocio($event.target.value)"
           />
         </div>
         <div
@@ -249,7 +249,7 @@
           class="text-red-600"
           v-if="$v.socio.telefone.$dirty && !$v.socio.telefone.minLength"
         >
-          Celular/Telefone Inválido
+          Celular/Telefone tem o mínimo de 10 caracteres.
         </div>
       </div>
     </div>
@@ -594,7 +594,7 @@ export default {
       value = value.replace(/[^\d]+/g, "");
 
       this.$v.socio.telefone.repeated = this.verificaTelefoneRepetido(value);
-      this.socio.telefone = value;
+      this.$v.socio.telefone.$model = value;
       this.$v.socio.telefone.$touch();
     },
     verificaTelefoneRepetido(telefone) {
@@ -703,6 +703,7 @@ export default {
           this.solicitacao.socios[index] = this.socio;
           this.$emit("update:validSocioElement", !this.$v.$invalid);
           this.$swal({
+            title: "Sócio adicionado.",
             icon: "success",
             showConfirmButton: false,
             timer: 1500,

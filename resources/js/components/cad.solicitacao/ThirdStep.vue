@@ -541,7 +541,7 @@
                     !$v.solicitacao.celular_representante.minLength
                   "
                 >
-                  Celular/Telefone Inválido
+                  Celular/Telefone tem o mínimo de 10 caracteres.
                 </div>
               </div>
               <div

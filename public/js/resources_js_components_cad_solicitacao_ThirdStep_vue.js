@@ -1029,7 +1029,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setTelefoneSocio: function setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
       this.$v.socio.telefone.repeated = this.verificaTelefoneRepetido(value);
-      this.socio.telefone = value;
+      this.$v.socio.telefone.$model = value;
       this.$v.socio.telefone.$touch();
     },
     verificaTelefoneRepetido: function verificaTelefoneRepetido(telefone) {
@@ -1170,6 +1170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.solicitacao.socios[index] = this.socio;
           this.$emit("update:validSocioElement", !this.$v.$invalid);
           this.$swal({
+            title: "Sócio adicionado.",
             icon: "success",
             showConfirmButton: false,
             timer: 1500
@@ -3548,9 +3549,10 @@ var render = function() {
                 directives: [
                   {
                     name: "model",
-                    rawName: "v-model",
+                    rawName: "v-model.number",
                     value: _vm.$v.socio.numero_rg.$model,
-                    expression: "$v.socio.numero_rg.$model"
+                    expression: "$v.socio.numero_rg.$model",
+                    modifiers: { number: true }
                   }
                 ],
                 staticClass:
@@ -3558,7 +3560,7 @@ var render = function() {
                 attrs: {
                   id: "numero_rg_socio_" + _vm.socio.id,
                   name: "numero_rg_socio_" + _vm.socio.id,
-                  type: "text"
+                  type: "number"
                 },
                 domProps: { value: _vm.$v.socio.numero_rg.$model },
                 on: {
@@ -3569,8 +3571,11 @@ var render = function() {
                     _vm.$set(
                       _vm.$v.socio.numero_rg,
                       "$model",
-                      $event.target.value
+                      _vm._n($event.target.value)
                     )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
                   }
                 }
               })
@@ -3865,7 +3870,7 @@ var render = function() {
                 },
                 domProps: { value: _vm.$v.socio.telefone.$model },
                 on: {
-                  input: function($event) {
+                  blur: function($event) {
                     return _vm.setTelefoneSocio($event.target.value)
                   }
                 }
@@ -3889,7 +3894,9 @@ var render = function() {
           _vm._v(" "),
           _vm.$v.socio.telefone.$dirty && !_vm.$v.socio.telefone.minLength
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        Celular/Telefone Inválido\n      ")
+                _vm._v(
+                  "\n        Celular/Telefone tem o mínimo de 10 caracteres.\n      "
+                )
               ])
             : _vm._e()
         ]
@@ -6050,7 +6057,7 @@ var render = function() {
                       !_vm.$v.solicitacao.celular_representante.minLength
                         ? _c("div", { staticClass: "text-red-600" }, [
                             _vm._v(
-                              "\n                Celular/Telefone Inválido\n              "
+                              "\n                Celular/Telefone tem o mínimo de 10 caracteres.\n              "
                             )
                           ])
                         : _vm._e()
