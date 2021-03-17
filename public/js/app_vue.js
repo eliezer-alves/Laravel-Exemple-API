@@ -2188,7 +2188,8 @@ var actions = {
 
                 return res;
               })["catch"](function (err) {
-                console.log('error', Object.assign({}, err)); // commit('ERRORS', err.response.data.errors)
+                // console.log('error', Object.assign({}, err));
+                if (err.response.data.errors) commit('ERRORS', err.response.data.errors);
               }));
 
             case 2:
@@ -2368,8 +2369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var state = {
   showModal: false,
-  errors: {// invalid_socio: []
-  },
+  errors: {},
   atividades: [],
   dominios: {},
   clienteDefault: {

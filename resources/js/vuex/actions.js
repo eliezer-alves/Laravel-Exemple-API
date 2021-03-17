@@ -57,7 +57,6 @@ let actions = {
             })
     },
     async createCliente({ commit }, cliente) {
-        // console.log(cliente);
         return axios.post(`${API_URL}/api/cliente`, cliente)
             .then(res => {
                 if (res.status === 201) {
@@ -66,8 +65,9 @@ let actions = {
                 }
                 return res;
             }).catch(err => {
-                console.log('error', Object.assign({}, err));
-                // commit('ERRORS', err.response.data.errors)
+                // console.log('error', Object.assign({}, err));
+                if (err.response.data.errors)
+                    commit('ERRORS', err.response.data.errors)
             })
     },
     async getViaCep({ }, cep) {

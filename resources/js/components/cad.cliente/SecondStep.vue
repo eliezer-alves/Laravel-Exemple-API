@@ -1,139 +1,157 @@
 <template>
-  <cadastro-cliente>
-    <div class="py-1">
-      <span class="px-1 text-sm font-bold text-white">Celular</span>
-      <input
-        id="celular"
-        name="celular"
-        placeholder="(00) 00000-0000"
-        type="text"
-        class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-mask="['(##) ####-####', '(##) #####-####']"
-        :value="$v.cliente.celular.$model"
-        @input="setCelular($event.target.value)"
-      />
-      <div
-        class="text-red-600"
-        v-if="$v.cliente.celular.$dirty && !$v.cliente.celular.required"
-      >
-        Telefone é obrigatório.
+  <transition name="fade">
+    <cadastro-cliente>
+      <div class="py-1">
+        <span class="px-1 text-sm font-bold text-white">Celular</span>
+        <input
+          id="celular"
+          name="celular"
+          placeholder="(00) 00000-0000"
+          type="text"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-mask="['(##) ####-####', '(##) #####-####']"
+          :value="$v.cliente.celular.$model"
+          @input="setCelular($event.target.value)"
+        />
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.celular.$dirty && !$v.cliente.celular.required"
+        >
+          Telefone é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.celular.$dirty && !$v.cliente.celular.minLength"
+        >
+          Telefone inválido
+        </div>
       </div>
-      <div
-        class="text-red-600"
-        v-if="$v.cliente.celular.$dirty && !$v.cliente.celular.minLength"
-      >
-        Telefone inválido
+      <div class="py-1">
+        <span class="px-1 text-sm font-bold text-white">E-mail</span>
+        <input
+          id="email"
+          name="email"
+          placeholder="mail@mail.com"
+          type="text"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-model.trim="$v.cliente.email.$model"
+        />
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.email.$dirty && !$v.cliente.email.required"
+        >
+          E-mail é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.email.$dirty && !$v.cliente.email.email"
+        >
+          E-mail inválido.
+        </div>
       </div>
-    </div>
-    <div class="py-1">
-      <span class="px-1 text-sm font-bold text-white">E-mail</span>
-      <input
-        id="email"
-        name="email"
-        placeholder="mail@mail.com"
-        type="text"
-        class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model.trim="$v.cliente.email.$model"
-      />
-      <div
-        class="text-red-600"
-        v-if="$v.cliente.email.$dirty && !$v.cliente.email.required"
-      >
-        E-mail é obrigatório.
+      <div class="py-1">
+        <span class="px-1 text-sm font-bold text-white">Confirmar E-mail</span>
+        <input
+          id="email_confirmation"
+          name="email_confirmation"
+          placeholder="mail@mail.com"
+          type="text"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-model="$v.cliente.email_confirmation.$model"
+        />
+        <div
+          class="text-red-600"
+          v-if="
+            $v.cliente.email_confirmation.$dirty &&
+            !$v.cliente.email_confirmation.required
+          "
+        >
+          E-mail é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="
+            $v.cliente.email_confirmation.$dirty &&
+            !$v.cliente.email_confirmation.email
+          "
+        >
+          E-mail inválido.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="
+            $v.cliente.email_confirmation.$dirty &&
+            !$v.cliente.email_confirmation.sameAsEmail
+          "
+        >
+          E-mails devem ser idênticos
+        </div>
       </div>
-      <div
-        class="text-red-600"
-        v-if="$v.cliente.email.$dirty && !$v.cliente.email.email"
-      >
-        E-mail inválido.
-      </div>
-    </div>
-    <div class="py-1">
-      <span class="px-1 text-sm font-bold text-white">Confirmar E-mail</span>
-      <input
-        id="email_confirmation"
-        name="email_confirmation"
-        placeholder="mail@mail.com"
-        type="text"
-        class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="$v.cliente.email_confirmation.$model"
-      />
-      <div
-        class="text-red-600"
-        v-if="
-          $v.cliente.email_confirmation.$dirty &&
-          !$v.cliente.email_confirmation.required
-        "
-      >
-        E-mail é obrigatório.
-      </div>
-      <div
-        class="text-red-600"
-        v-if="
-          $v.cliente.email_confirmation.$dirty &&
-          !$v.cliente.email_confirmation.email
-        "
-      >
-        E-mail inválido.
-      </div>
-      <div
-        class="text-red-600"
-        v-if="
-          $v.cliente.email_confirmation.$dirty &&
-          !$v.cliente.email_confirmation.sameAsEmail
-        "
-      >
-        E-mails devem ser idênticos
-      </div>
-    </div>
-    <div class="py-1">
-      <span class="px-1 text-sm font-bold text-white">Senha</span>
-      <input
-        id="senha"
-        name="senha"
-        type="password"
-        class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="$v.cliente.senha.$model"
-      />
+      <div class="py-1">
+        <span class="px-1 text-sm font-bold text-white">Senha</span>
+        <input
+          id="senha"
+          name="senha"
+          type="password"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-model="$v.cliente.senha.$model"
+        />
 
-      <div
-        class="text-red-600"
-        v-if="$v.cliente.senha.$dirty && !$v.cliente.senha.required"
-      >
-        Senha é obrigatório.
+        <div
+          class="text-red-600"
+          v-if="$v.cliente.senha.$dirty && !$v.cliente.senha.required"
+        >
+          Senha é obrigatório.
+        </div>
       </div>
-    </div>
-    <div class="py-1">
-      <span class="px-1 text-sm font-bold text-white">Confirmar Senha</span>
-      <input
-        id="senha_confirmation"
-        name="senha_confirmation"
-        type="password"
-        class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-        v-model="$v.cliente.senha_confirmation.$model"
-      />
-      <div
-        class="text-red-600"
-        v-if="
-          $v.cliente.senha_confirmation.$dirty &&
-          !$v.cliente.senha_confirmation.required
-        "
-      >
-        Senha é obrigatório.
-      </div>
-      <div
-        class="text-red-600"
-        v-if="
-          $v.cliente.senha_confirmation.$dirty &&
-          !$v.cliente.senha_confirmation.sameAsSenha
-        "
-      >
-        Senhas devem ser idênticas.
-      </div>
+      <div class="py-1">
+        <span class="px-1 text-sm font-bold text-white">Confirmar Senha</span>
+        <input
+          id="senha_confirmation"
+          name="senha_confirmation"
+          type="password"
+          class="text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+          v-model="$v.cliente.senha_confirmation.$model"
+        />
+        <div
+          class="text-red-600"
+          v-if="
+            $v.cliente.senha_confirmation.$dirty &&
+            !$v.cliente.senha_confirmation.required
+          "
+        >
+          Senha é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="
+            $v.cliente.senha_confirmation.$dirty &&
+            !$v.cliente.senha_confirmation.sameAsSenha
+          "
+        >
+          Senhas devem ser idênticas.
+        </div>
 
-      <div class="flex justify-between">
-        <router-link :to="{ name: 'cadastro-cliente' }">
+        <div class="flex justify-between">
+          <router-link :to="{ name: 'cadastro-cliente' }">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="font-bold text-white hover:text-teal-600 w-12"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 16l-4-4m0 0l4-4m-4 4h18"
+              />
+            </svg>
+          </router-link>
+
           <svg
+            @click="validateFields"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -144,29 +162,13 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M7 16l-4-4m0 0l4-4m-4 4h18"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
             />
           </svg>
-        </router-link>
-
-        <svg
-          @click="validateFields"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          class="font-bold text-white hover:text-teal-600 w-12"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          />
-        </svg>
+        </div>
       </div>
-    </div>
-  </cadastro-cliente>
+    </cadastro-cliente>
+  </transition>
 </template>
 <script>
 import CadastroCliente from "../CadastroCliente.vue";
@@ -212,5 +214,13 @@ export default {
   background-image: url("/images/texturaBackgroundAgil.png");
   background-color: #30615f;
   background-size: 900px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, 
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

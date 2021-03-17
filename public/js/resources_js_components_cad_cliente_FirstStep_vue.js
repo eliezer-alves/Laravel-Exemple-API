@@ -53,6 +53,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -136,6 +138,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -673,7 +680,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, \r\n.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1009,7 +1016,30 @@ var render = function() {
         "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
     },
     [
-      _vm._m(0),
+      _c("router-link", { attrs: { to: { name: "login" } } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
+          },
+          [
+            _c("img", {
+              staticClass: "w-72",
+              attrs: { src: "/images/logoAgilVertical.png", alt: "" }
+            }),
+            _vm._v(" "),
+            _c(
+              "h1",
+              {
+                staticClass:
+                  "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
+              },
+              [_vm._v("\n        Capital de Giro\n      ")]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -1022,7 +1052,7 @@ var render = function() {
             "h1",
             {
               staticClass:
-                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-white to-white hover:bg-gradient-to-l hover:from-yellow-300  hover:to-teal-600"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-white to-white hover:bg-gradient-to-l hover:from-yellow-300 hover:to-teal-600"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -1056,35 +1086,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
-      },
-      [
-        _c("img", {
-          staticClass: "w-72",
-          attrs: { src: "/images/logoAgilVertical.png", alt: "" }
-        }),
-        _vm._v(" "),
-        _c(
-          "h1",
-          {
-            staticClass:
-              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
-          },
-          [_vm._v("\n      Capital de Giro\n    ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1107,267 +1109,281 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", [
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("CNPJ")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "mask",
-            rawName: "v-mask",
-            value: "##.###.###/####-##",
-            expression: "'##.###.###/####-##'"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "cnpj",
-          name: "cnpj",
-          placeholder: "##.###.###/####-##",
-          type: "text"
-        },
-        domProps: { value: _vm.$v.cliente.cnpj.$model },
-        on: {
-          input: function($event) {
-            return _vm.setCnpj($event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.cnpj.$dirty && !_vm.$v.cliente.cnpj.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      CNPJ é obrigatório.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.cnpj.$dirty && !_vm.$v.cliente.cnpj.valid
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      CNPJ inválido.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Insc. Estadual")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "mask",
-            rawName: "v-mask",
-            value: "##.###.####-#",
-            expression: "'##.###.####-#'"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "inscricao_estadual",
-          name: "inscricao_estadual",
-          placeholder: "##.###.####-#",
-          type: "text"
-        },
-        domProps: { value: _vm.$v.cliente.inscricao_estadual.$model },
-        on: {
-          input: function($event) {
-            return _vm.setInscricaoEstadual($event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.inscricao_estadual.$dirty &&
-      !_vm.$v.cliente.inscricao_estadual.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Inscrição Estadual é obrigatório.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Atividade Comercial")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.$v.cliente.id_atividade_comercial.$model,
-              expression: "$v.cliente.id_atividade_comercial.$model"
-            }
-          ],
-          staticClass:
-            "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-          attrs: {
-            id: "id_atividade_comercial",
-            name: "id_atividade_comercial"
-          },
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.$set(
-                _vm.$v.cliente.id_atividade_comercial,
-                "$model",
-                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-              )
-            }
-          }
-        },
-        [
-          _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+  return _c(
+    "transition",
+    { attrs: { name: "fade" } },
+    [
+      _c("cadastro-cliente", [
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("CNPJ")
+          ]),
           _vm._v(" "),
-          _vm._l(_vm.atividades, function(atividade) {
-            return _c(
-              "option",
+          _c("input", {
+            directives: [
               {
-                key: atividade.id_atividade_comercial,
-                domProps: { value: atividade.id_atividade_comercial }
-              },
-              [_vm._v("\n        " + _vm._s(atividade.descricao) + "\n      ")]
-            )
-          })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _vm.$v.cliente.id_atividade_comercial.$dirty &&
-      !_vm.$v.cliente.id_atividade_comercial.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Atividade Comercial é obrigatório.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Nome Fantasia")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model.trim",
-            value: _vm.$v.cliente.nome_fantasia.$model,
-            expression: "$v.cliente.nome_fantasia.$model",
-            modifiers: { trim: true }
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: { id: "nome_fantasia", name: "nome_fantasia", type: "text" },
-        domProps: { value: _vm.$v.cliente.nome_fantasia.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.$v.cliente.nome_fantasia,
-              "$model",
-              $event.target.value.trim()
-            )
-          },
-          blur: function($event) {
-            return _vm.$forceUpdate()
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.nome_fantasia.$dirty &&
-      !_vm.$v.cliente.nome_fantasia.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Nome Fantasia é obrigatório.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Razão Social")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model.trim",
-            value: _vm.$v.cliente.razao_social.$model,
-            expression: "$v.cliente.razao_social.$model",
-            modifiers: { trim: true }
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: { id: "razao_social", name: "razao_social", type: "text" },
-        domProps: { value: _vm.$v.cliente.razao_social.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.$v.cliente.razao_social,
-              "$model",
-              $event.target.value.trim()
-            )
-          },
-          blur: function($event) {
-            return _vm.$forceUpdate()
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.razao_social.$dirty &&
-      !_vm.$v.cliente.razao_social.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Razão Social é obrigatório.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "flex justify-end" }, [
-      _c(
-        "svg",
-        {
-          staticClass: "text-gray-200 hover:text-teal-600 w-12 cursor-pointer",
-          attrs: {
-            xmlns: "http://www.w3.org/2000/svg",
-            fill: "none",
-            viewBox: "0 0 24 24",
-            stroke: "currentColor"
-          },
-          on: { click: _vm.validateFields }
-        },
-        [
-          _c("path", {
+                name: "mask",
+                rawName: "v-mask",
+                value: "##.###.###/####-##",
+                expression: "'##.###.###/####-##'"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
             attrs: {
-              "stroke-linecap": "round",
-              "stroke-linejoin": "round",
-              "stroke-width": "2",
-              d: "M17 8l4 4m0 0l-4 4m4-4H3"
+              id: "cnpj",
+              name: "cnpj",
+              placeholder: "##.###.###/####-##",
+              type: "text"
+            },
+            domProps: { value: _vm.$v.cliente.cnpj.$model },
+            on: {
+              input: function($event) {
+                return _vm.setCnpj($event.target.value)
+              }
             }
-          })
-        ]
-      )
-    ])
-  ])
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.cnpj.$dirty && !_vm.$v.cliente.cnpj.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        CNPJ é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.cnpj.$dirty && !_vm.$v.cliente.cnpj.valid
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        CNPJ inválido.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Insc. Estadual")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "mask",
+                rawName: "v-mask",
+                value: "##.###.####-#",
+                expression: "'##.###.####-#'"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: {
+              id: "inscricao_estadual",
+              name: "inscricao_estadual",
+              placeholder: "##.###.####-#",
+              type: "text"
+            },
+            domProps: { value: _vm.$v.cliente.inscricao_estadual.$model },
+            on: {
+              input: function($event) {
+                return _vm.setInscricaoEstadual($event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.inscricao_estadual.$dirty &&
+          !_vm.$v.cliente.inscricao_estadual.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Inscrição Estadual é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Atividade Comercial")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.$v.cliente.id_atividade_comercial.$model,
+                  expression: "$v.cliente.id_atividade_comercial.$model"
+                }
+              ],
+              staticClass:
+                "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+              attrs: {
+                id: "id_atividade_comercial",
+                name: "id_atividade_comercial"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.$v.cliente.id_atividade_comercial,
+                    "$model",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+              _vm._v(" "),
+              _vm._l(_vm.atividades, function(atividade) {
+                return _c(
+                  "option",
+                  {
+                    key: atividade.id_atividade_comercial,
+                    domProps: { value: atividade.id_atividade_comercial }
+                  },
+                  [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(atividade.descricao) +
+                        "\n        "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm.$v.cliente.id_atividade_comercial.$dirty &&
+          !_vm.$v.cliente.id_atividade_comercial.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Atividade Comercial é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Nome Fantasia")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.trim",
+                value: _vm.$v.cliente.nome_fantasia.$model,
+                expression: "$v.cliente.nome_fantasia.$model",
+                modifiers: { trim: true }
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "nome_fantasia", name: "nome_fantasia", type: "text" },
+            domProps: { value: _vm.$v.cliente.nome_fantasia.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.nome_fantasia,
+                  "$model",
+                  $event.target.value.trim()
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.nome_fantasia.$dirty &&
+          !_vm.$v.cliente.nome_fantasia.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Nome Fantasia é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Razão Social")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.trim",
+                value: _vm.$v.cliente.razao_social.$model,
+                expression: "$v.cliente.razao_social.$model",
+                modifiers: { trim: true }
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "razao_social", name: "razao_social", type: "text" },
+            domProps: { value: _vm.$v.cliente.razao_social.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.razao_social,
+                  "$model",
+                  $event.target.value.trim()
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.razao_social.$dirty &&
+          !_vm.$v.cliente.razao_social.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Razão Social é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex justify-end" }, [
+          _c(
+            "svg",
+            {
+              staticClass:
+                "text-gray-200 hover:text-teal-600 w-12 cursor-pointer",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor"
+              },
+              on: { click: _vm.validateFields }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "2",
+                  d: "M17 8l4 4m0 0l-4 4m4-4H3"
+                }
+              })
+            ]
+          )
+        ])
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -53,6 +53,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -512,6 +514,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -604,7 +608,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, \r\n.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -940,7 +944,30 @@ var render = function() {
         "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
     },
     [
-      _vm._m(0),
+      _c("router-link", { attrs: { to: { name: "login" } } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
+          },
+          [
+            _c("img", {
+              staticClass: "w-72",
+              attrs: { src: "/images/logoAgilVertical.png", alt: "" }
+            }),
+            _vm._v(" "),
+            _c(
+              "h1",
+              {
+                staticClass:
+                  "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
+              },
+              [_vm._v("\n        Capital de Giro\n      ")]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -953,7 +980,7 @@ var render = function() {
             "h1",
             {
               staticClass:
-                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-white to-white hover:bg-gradient-to-l hover:from-yellow-300  hover:to-teal-600"
+                "mt-4 text-center lg:text-3xl text-2xl text-gradient bg-gradient-to-r from-white to-white hover:bg-gradient-to-l hover:from-yellow-300 hover:to-teal-600"
             },
             [_vm._v("\n      Formulário de Cadastro\n    ")]
           ),
@@ -987,35 +1014,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
-      },
-      [
-        _c("img", {
-          staticClass: "w-72",
-          attrs: { src: "/images/logoAgilVertical.png", alt: "" }
-        }),
-        _vm._v(" "),
-        _c(
-          "h1",
-          {
-            staticClass:
-              "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
-          },
-          [_vm._v("\n      Capital de Giro\n    ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1414,301 +1413,317 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("cadastro-cliente", [
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Celular")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "mask",
-            rawName: "v-mask",
-            value: ["(##) ####-####", "(##) #####-####"],
-            expression: "['(##) ####-####', '(##) #####-####']"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "celular",
-          name: "celular",
-          placeholder: "(00) 00000-0000",
-          type: "text"
-        },
-        domProps: { value: _vm.$v.cliente.celular.$model },
-        on: {
-          input: function($event) {
-            return _vm.setCelular($event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.celular.$dirty && !_vm.$v.cliente.celular.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Telefone é obrigatório.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.celular.$dirty && !_vm.$v.cliente.celular.minLength
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Telefone inválido\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("E-mail")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model.trim",
-            value: _vm.$v.cliente.email.$model,
-            expression: "$v.cliente.email.$model",
-            modifiers: { trim: true }
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "email",
-          name: "email",
-          placeholder: "mail@mail.com",
-          type: "text"
-        },
-        domProps: { value: _vm.$v.cliente.email.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.$v.cliente.email, "$model", $event.target.value.trim())
-          },
-          blur: function($event) {
-            return _vm.$forceUpdate()
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.email.$dirty && !_vm.$v.cliente.email.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      E-mail é obrigatório.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.email.$dirty && !_vm.$v.cliente.email.email
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      E-mail inválido.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Confirmar E-mail")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.$v.cliente.email_confirmation.$model,
-            expression: "$v.cliente.email_confirmation.$model"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "email_confirmation",
-          name: "email_confirmation",
-          placeholder: "mail@mail.com",
-          type: "text"
-        },
-        domProps: { value: _vm.$v.cliente.email_confirmation.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.$v.cliente.email_confirmation,
-              "$model",
-              $event.target.value
-            )
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.email_confirmation.$dirty &&
-      !_vm.$v.cliente.email_confirmation.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      E-mail é obrigatório.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.email_confirmation.$dirty &&
-      !_vm.$v.cliente.email_confirmation.email
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      E-mail inválido.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.email_confirmation.$dirty &&
-      !_vm.$v.cliente.email_confirmation.sameAsEmail
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      E-mails devem ser idênticos\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Senha")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.$v.cliente.senha.$model,
-            expression: "$v.cliente.senha.$model"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: { id: "senha", name: "senha", type: "password" },
-        domProps: { value: _vm.$v.cliente.senha.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.$v.cliente.senha, "$model", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.senha.$dirty && !_vm.$v.cliente.senha.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Senha é obrigatório.\n    ")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "py-1" }, [
-      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-        _vm._v("Confirmar Senha")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.$v.cliente.senha_confirmation.$model,
-            expression: "$v.cliente.senha_confirmation.$model"
-          }
-        ],
-        staticClass:
-          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-        attrs: {
-          id: "senha_confirmation",
-          name: "senha_confirmation",
-          type: "password"
-        },
-        domProps: { value: _vm.$v.cliente.senha_confirmation.$model },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(
-              _vm.$v.cliente.senha_confirmation,
-              "$model",
-              $event.target.value
-            )
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm.$v.cliente.senha_confirmation.$dirty &&
-      !_vm.$v.cliente.senha_confirmation.required
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Senha é obrigatório.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$v.cliente.senha_confirmation.$dirty &&
-      !_vm.$v.cliente.senha_confirmation.sameAsSenha
-        ? _c("div", { staticClass: "text-red-600" }, [
-            _vm._v("\n      Senhas devem ser idênticas.\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "flex justify-between" },
-        [
-          _c("router-link", { attrs: { to: { name: "cadastro-cliente" } } }, [
-            _c(
-              "svg",
-              {
-                staticClass: "font-bold text-white hover:text-teal-600 w-12",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  fill: "none",
-                  viewBox: "0 0 24 24",
-                  stroke: "currentColor"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    "stroke-width": "2",
-                    d: "M7 16l-4-4m0 0l4-4m-4 4h18"
-                  }
-                })
-              ]
-            )
+  return _c(
+    "transition",
+    { attrs: { name: "fade" } },
+    [
+      _c("cadastro-cliente", [
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Celular")
           ]),
           _vm._v(" "),
-          _c(
-            "svg",
-            {
-              staticClass: "font-bold text-white hover:text-teal-600 w-12",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                fill: "none",
-                viewBox: "0 0 24 24",
-                stroke: "currentColor"
-              },
-              on: { click: _vm.validateFields }
+          _c("input", {
+            directives: [
+              {
+                name: "mask",
+                rawName: "v-mask",
+                value: ["(##) ####-####", "(##) #####-####"],
+                expression: "['(##) ####-####', '(##) #####-####']"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: {
+              id: "celular",
+              name: "celular",
+              placeholder: "(00) 00000-0000",
+              type: "text"
             },
-            [
-              _c("path", {
-                attrs: {
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
-                  "stroke-width": "2",
-                  d: "M17 8l4 4m0 0l-4 4m4-4H3"
+            domProps: { value: _vm.$v.cliente.celular.$model },
+            on: {
+              input: function($event) {
+                return _vm.setCelular($event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.celular.$dirty && !_vm.$v.cliente.celular.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Telefone é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.celular.$dirty && !_vm.$v.cliente.celular.minLength
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Telefone inválido\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("E-mail")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.trim",
+                value: _vm.$v.cliente.email.$model,
+                expression: "$v.cliente.email.$model",
+                modifiers: { trim: true }
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: {
+              id: "email",
+              name: "email",
+              placeholder: "mail@mail.com",
+              type: "text"
+            },
+            domProps: { value: _vm.$v.cliente.email.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              })
-            ]
+                _vm.$set(
+                  _vm.$v.cliente.email,
+                  "$model",
+                  $event.target.value.trim()
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.email.$dirty && !_vm.$v.cliente.email.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mail é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.email.$dirty && !_vm.$v.cliente.email.email
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mail inválido.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Confirmar E-mail")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$v.cliente.email_confirmation.$model,
+                expression: "$v.cliente.email_confirmation.$model"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: {
+              id: "email_confirmation",
+              name: "email_confirmation",
+              placeholder: "mail@mail.com",
+              type: "text"
+            },
+            domProps: { value: _vm.$v.cliente.email_confirmation.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.email_confirmation,
+                  "$model",
+                  $event.target.value
+                )
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.email_confirmation.$dirty &&
+          !_vm.$v.cliente.email_confirmation.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mail é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.email_confirmation.$dirty &&
+          !_vm.$v.cliente.email_confirmation.email
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mail inválido.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.email_confirmation.$dirty &&
+          !_vm.$v.cliente.email_confirmation.sameAsEmail
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        E-mails devem ser idênticos\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Senha")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$v.cliente.senha.$model,
+                expression: "$v.cliente.senha.$model"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "senha", name: "senha", type: "password" },
+            domProps: { value: _vm.$v.cliente.senha.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.$v.cliente.senha, "$model", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.senha.$dirty && !_vm.$v.cliente.senha.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Senha é obrigatório.\n      ")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-1" }, [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Confirmar Senha")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$v.cliente.senha_confirmation.$model,
+                expression: "$v.cliente.senha_confirmation.$model"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: {
+              id: "senha_confirmation",
+              name: "senha_confirmation",
+              type: "password"
+            },
+            domProps: { value: _vm.$v.cliente.senha_confirmation.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.senha_confirmation,
+                  "$model",
+                  $event.target.value
+                )
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.senha_confirmation.$dirty &&
+          !_vm.$v.cliente.senha_confirmation.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Senha é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.cliente.senha_confirmation.$dirty &&
+          !_vm.$v.cliente.senha_confirmation.sameAsSenha
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Senhas devem ser idênticas.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex justify-between" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: "cadastro-cliente" } } },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass:
+                        "font-bold text-white hover:text-teal-600 w-12",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d: "M7 16l-4-4m0 0l4-4m-4 4h18"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "svg",
+                {
+                  staticClass: "font-bold text-white hover:text-teal-600 w-12",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor"
+                  },
+                  on: { click: _vm.validateFields }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "stroke-linecap": "round",
+                      "stroke-linejoin": "round",
+                      "stroke-width": "2",
+                      d: "M17 8l4 4m0 0l-4 4m4-4H3"
+                    }
+                  })
+                ]
+              )
+            ],
+            1
           )
-        ],
-        1
-      )
-    ])
-  ])
+        ])
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
