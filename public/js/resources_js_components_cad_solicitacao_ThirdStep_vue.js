@@ -1954,6 +1954,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -6577,25 +6579,30 @@ var render = function() {
                 [_vm._v("\n          Sócios\n        ")]
               ),
               _vm._v(" "),
-              _vm._l(this.solicitacao.socios, function(socio) {
-                return _c("socio", {
-                  key: socio.id,
-                  attrs: {
-                    id: socio.id,
-                    socio: socio,
-                    validSocioElement: _vm.validSocioElement
-                  },
-                  on: {
-                    remove: _vm.removeSocioElement,
-                    "update:validSocioElement": function($event) {
-                      _vm.validSocioElement = $event
+              _c(
+                "transition",
+                { attrs: { name: "fade" } },
+                _vm._l(this.solicitacao.socios, function(socio) {
+                  return _c("socio", {
+                    key: socio.id,
+                    attrs: {
+                      id: socio.id,
+                      socio: socio,
+                      validSocioElement: _vm.validSocioElement
                     },
-                    "update:valid-socio-element": function($event) {
-                      _vm.validSocioElement = $event
+                    on: {
+                      remove: _vm.removeSocioElement,
+                      "update:validSocioElement": function($event) {
+                        _vm.validSocioElement = $event
+                      },
+                      "update:valid-socio-element": function($event) {
+                        _vm.validSocioElement = $event
+                      }
                     }
-                  }
-                })
-              }),
+                  })
+                }),
+                1
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
                 _c(
@@ -6611,7 +6618,7 @@ var render = function() {
                 )
               ])
             ],
-            2
+            1
           ),
           _vm._v(" "),
           _c(

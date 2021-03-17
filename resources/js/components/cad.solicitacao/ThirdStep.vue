@@ -675,14 +675,16 @@
           >
             Sócios
           </div>
-          <socio
-            v-for="socio in this.solicitacao.socios"
-            :id="socio.id"
-            :key="socio.id"
-            :socio="socio"
-            @remove="removeSocioElement"
-            :validSocioElement.sync="validSocioElement"
-          />
+          <transition name="fade">
+            <socio
+              v-for="socio in this.solicitacao.socios"
+              :id="socio.id"
+              :key="socio.id"
+              :socio="socio"
+              @remove="removeSocioElement"
+              :validSocioElement.sync="validSocioElement"
+            />
+          </transition>
           <div class="flex flex-row-reverse my-2">
             <button
               :disabled="!validSocioElement"
