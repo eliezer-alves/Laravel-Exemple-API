@@ -889,6 +889,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -947,7 +956,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
       },
       email: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.email
       },
       telefone: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
@@ -1007,6 +1017,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       value = value.replace(/[^\d]+/g, "");
       this.socio.telefone = value;
       this.$v.socio.telefone.$touch();
+    },
+    setEmailSocio: function setEmailSocio(value) {
+      this.$v.socio.email.repeated = this.verificaEmailRepetido(value);
+      this.$v.socio.email.$model = value;
+      this.$v.socio.email.$touch();
+    },
+    verificaEmailRepetido: function verificaEmailRepetido(email) {
+      if (this.solicitacao.email_representante === email) return true;
+      var index = this.solicitacao.socios.findIndex(function (socio) {
+        return socio.email === email;
+      });
+      return index >= 0 ? true : false;
     },
     setCepSocio: function setCepSocio(value) {
       var _this3 = this;
@@ -3744,14 +3766,6 @@ var render = function() {
             { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
             [
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.$v.socio.email.$model,
-                    expression: "$v.socio.email.$model"
-                  }
-                ],
                 staticClass:
                   "p-1 px-2 appearance-none outline-none w-full text-gray-800",
                 attrs: {
@@ -3760,22 +3774,27 @@ var render = function() {
                   type: "text",
                   placeholder: "mail@brasilcard.net"
                 },
-                domProps: { value: _vm.$v.socio.email.$model },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.$v.socio.email, "$model", $event.target.value)
+                  blur: function($event) {
+                    return _vm.setEmailSocio($event.target.value)
                   }
                 }
               })
             ]
           ),
           _vm._v(" "),
-          _vm.$v.socio.email.$dirty && !_vm.$v.socio.email.required
+          _vm.$v.socio.email.$dirty &&
+          (!_vm.$v.socio.email.required || !_vm.$v.socio.email.email)
             ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        E-mail é obrigatório.\n      ")
+                _vm._v("\n        E-mail válido é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.socio.email.$dirty && _vm.$v.socio.email.repeated
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v(
+                  "\n        Este e-mail já é pertence a outro sócio.\n      "
+                )
               ])
             : _vm._e()
         ]

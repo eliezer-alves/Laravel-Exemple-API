@@ -195,14 +195,23 @@
             class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             type="text"
             placeholder="mail@brasilcard.net"
-            v-model="$v.socio.email.$model"
+            @blur="setEmailSocio($event.target.value)"
           />
         </div>
         <div
           class="text-red-600"
-          v-if="$v.socio.email.$dirty && !$v.socio.email.required"
+          v-if="
+            $v.socio.email.$dirty &&
+            (!$v.socio.email.required || !$v.socio.email.email)
+          "
         >
-          E-mail é obrigatório.
+          E-mail válido é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.email.$dirty && $v.socio.email.repeated"
+        >
+          Este e-mail já é pertence a outro sócio.
         </div>
       </div>
       <div
@@ -512,6 +521,7 @@ export default {
       },
       email: {
         required,
+        email,
       },
       telefone: {
         required,
@@ -571,6 +581,18 @@ export default {
       value = value.replace(/[^\d]+/g, "");
       this.socio.telefone = value;
       this.$v.socio.telefone.$touch();
+    },
+    setEmailSocio(value) {
+      this.$v.socio.email.repeated = this.verificaEmailRepetido(value);
+      this.$v.socio.email.$model = value;
+      this.$v.socio.email.$touch();
+    },
+    verificaEmailRepetido(email) {
+      if (this.solicitacao.email_representante === email) return true;
+      const index = this.solicitacao.socios.findIndex(
+        (socio) => socio.email === email
+      );
+      return index >= 0 ? true : false;
     },
     async setCepSocio(value) {
       value = value.replace(/[^\d]+/g, "");
