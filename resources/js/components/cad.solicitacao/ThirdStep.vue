@@ -675,7 +675,7 @@
           >
             Sócios
           </div>
-          <transition name="fade">
+          <transition-group name="component-fade" tag="socio">
             <socio
               v-for="socio in this.solicitacao.socios"
               :id="socio.id"
@@ -684,7 +684,7 @@
               @remove="removeSocioElement"
               :validSocioElement.sync="validSocioElement"
             />
-          </transition>
+          </transition-group>
           <div class="flex flex-row-reverse my-2">
             <button
               :disabled="!validSocioElement"
@@ -943,7 +943,16 @@ export default {
 .fade-leave-active {
   transition: opacity 0.5s;
 }
+
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.7s;
+}
+
+.component-fade-enter, .component-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>

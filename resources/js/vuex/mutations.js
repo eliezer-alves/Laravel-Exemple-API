@@ -28,9 +28,7 @@ let mutations = {
         state.atividades.splice(index, 1)
     },
     SET_EMPTY_CLIENTE(state) {
-        state.cliente.forEach( function(prop) {
-            prop = '';
-        });
+        Object.assign(state.cliente, state.clienteDefault)
     },
     SET_DOC_FILES(state, payload) {
         state.solicitacao.docs.push(payload);

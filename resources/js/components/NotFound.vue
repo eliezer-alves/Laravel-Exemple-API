@@ -11,11 +11,11 @@
           Desculpe, não encontramos esta página.
         </p>
         <p class="mb-8">Retorne para nossa página principal.</p>
-        <router-link :to="{ name: 'home' }">
+        <router-link :to="{ name: 'login' }">
           <button
             class="px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
           >
-            Retornar para Home
+            Retornar para o login
           </button>
         </router-link>
       </div>

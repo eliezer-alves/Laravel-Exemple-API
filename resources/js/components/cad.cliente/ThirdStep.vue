@@ -284,7 +284,7 @@ export default {
         if (dadosEndereco.uf != "") {
           document.querySelector("#uf").disabled = true;
         }
-        console.log(dadosEndereco);
+        // console.log(dadosEndereco);
 
         this.setComplemento(dadosEndereco.complemento);
 

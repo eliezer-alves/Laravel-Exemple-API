@@ -705,9 +705,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   if (dadosEndereco.uf != "") {
                     document.querySelector("#uf").disabled = true;
-                  }
+                  } // console.log(dadosEndereco);
 
-                  console.log(dadosEndereco);
 
                   _this3.setComplemento(dadosEndereco.complemento);
 

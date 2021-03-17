@@ -6,7 +6,7 @@
         <router-link :to="{ name: 'home' }">
           <img
             src="https://randomuser.me/api/portraits/women/40.jpg"
-            class="rounded-full w-10 mb-3 mx-auto"
+            class="rounded-full lg:w-10 md:w-10 w-8 mb-3 mx-auto"
           />
         </router-link>
         <div class="mt-10">
@@ -15,7 +15,7 @@
               <a href="#">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@
               <a href="#">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 mx-auto text-gray-300 hover:text-green-500"
+                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 mx-auto text-gray-300 hover:text-green-500"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -50,7 +50,7 @@
               <a href="#">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -66,7 +66,7 @@
               <a href="#">
                 <span>
                   <svg
-                    class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-green-500"
+                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,10 +91,10 @@
         </div>
       </div>
       <div class="mb-4">
-        <a href="#">
+        <router-link :to="{ name: 'login' }">
           <span>
             <svg
-              class="fill-current h-5 w-5 text-gray-300 mx-auto hover:text-red-500"
+              class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-red-500"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
               />
             </svg>
           </span>
-        </a>
+        </router-link>
       </div>
     </nav>
     <div class="px-16 py-4 text-gray-700 bg-gray-300 w-screen">
@@ -121,9 +121,7 @@
 export default {
   created: function () {},
   data: () => {
-    return {
-      
-    };
+    return {};
   },
 };
 </script>

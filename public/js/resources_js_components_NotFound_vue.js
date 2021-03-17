@@ -162,14 +162,14 @@ var render = function() {
                 _vm._v("Retorne para nossa página principal.")
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: { name: "home" } } }, [
+              _c("router-link", { attrs: { to: { name: "login" } } }, [
                 _c(
                   "button",
                   {
                     staticClass:
                       "px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-green bg-green-600 active:bg-green-600 hover:bg-green-700"
                   },
-                  [_vm._v("\n          Retornar para Home\n        ")]
+                  [_vm._v("\n          Retornar para o login\n        ")]
                 )
               ])
             ],
