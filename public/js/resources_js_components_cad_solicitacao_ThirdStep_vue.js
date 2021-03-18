@@ -914,6 +914,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'socio',
   props: ["id"],
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
@@ -1956,6 +1957,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1968,7 +2011,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Socio: _Socio_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
-    return {};
+    return {
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        precision: 2
+      }
+    };
   },
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["dominios", "solicitacao", "errors"])), (0,vuex_map_fields__WEBPACK_IMPORTED_MODULE_3__.mapFields)(["solicitacao", "errors"])), {}, {
     validSocioElement: function validSocioElement() {
@@ -2017,6 +2067,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       profissao_representante: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      renda_mensal_representante: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minValue)(100)
       },
       estado_civil_representante: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
@@ -2083,6 +2137,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee2);
       }))();
+    },
+    setRendaMensalRepresentante: function setRendaMensalRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.solicitacao.renda_mensal_representante.$model = value;
+      this.$v.solicitacao.renda_mensal_representante.$touch();
     },
     setCepRepresentante: function setCepRepresentante(value) {
       var _this3 = this;
@@ -4945,101 +5004,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                    },
-                    [
-                      _c("label", { attrs: { for: "sexo_representante" } }, [
-                        _vm._v("Sexo")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white my-2 p-1 border border-gray-200 rounded"
-                    },
-                    [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$v.solicitacao.sexo_representante.$model,
-                              expression:
-                                "$v.solicitacao.sexo_representante.$model"
-                            }
-                          ],
-                          staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
-                          attrs: {
-                            id: "sexo_representante",
-                            name: "sexo_representante"
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$v.solicitacao.sexo_representante,
-                                "$model",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("--")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: "M" } }, [
-                            _vm._v("Masculino")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { domProps: { value: "F" } }, [
-                            _vm._v("Feminino")
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.$v.solicitacao.sexo_representante.$dirty &&
-                  !_vm.$v.solicitacao.sexo_representante.required
-                    ? _c("div", { staticClass: "text-red-600" }, [
-                        _vm._v(
-                          "\n              Sexo é obrigatório\n            "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
@@ -5051,8 +5016,8 @@ var render = function() {
                     [
                       _c(
                         "label",
-                        { attrs: { for: "profissao_representante" } },
-                        [_vm._v("Profissão")]
+                        { attrs: { for: "nome_mae_representante" } },
+                        [_vm._v("Nome da Mãe")]
                       )
                     ]
                   ),
@@ -5064,78 +5029,49 @@ var render = function() {
                         "bg-white my-2 p-1 border border-gray-200 rounded"
                     },
                     [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$v.solicitacao.profissao_representante
-                                  .$model,
-                              expression:
-                                "$v.solicitacao.profissao_representante.$model"
-                            }
-                          ],
-                          staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
-                          attrs: {
-                            id: "profissao_representante",
-                            name: "profissao_representante"
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$v.solicitacao.profissao_representante,
-                                "$model",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value:
+                              _vm.$v.solicitacao.nome_mae_representante.$model,
+                            expression:
+                              "$v.solicitacao.nome_mae_representante.$model",
+                            modifiers: { trim: true }
                           }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("--")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.dominios.profissao, function(profissoes) {
-                            return _c(
-                              "option",
-                              {
-                                key: profissoes.codigo,
-                                domProps: { value: profissoes.codigo }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  " +
-                                    _vm._s(profissoes.descricao) +
-                                    "\n                "
-                                )
-                              ]
-                            )
-                          })
                         ],
-                        2
-                      )
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: { id: "nome_mae_representante", type: "text" },
+                        domProps: {
+                          value:
+                            _vm.$v.solicitacao.nome_mae_representante.$model
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.nome_mae_representante,
+                              "$model",
+                              $event.target.value.trim()
+                            )
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      })
                     ]
                   ),
                   _vm._v(" "),
-                  _vm.$v.solicitacao.profissao_representante.$dirty &&
-                  !_vm.$v.solicitacao.profissao_representante.required
+                  _vm.$v.solicitacao.nome_mae_representante.$dirty &&
+                  !_vm.$v.solicitacao.nome_mae_representante.required
                     ? _c("div", { staticClass: "text-red-600" }, [
                         _vm._v(
-                          "\n              Profissão é obrigatória\n            "
+                          "\n              Nome da Mãe é obrigatório\n            "
                         )
                       ])
                     : _vm._e()
@@ -5146,7 +5082,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
@@ -5255,7 +5191,101 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "sexo_representante" } }, [
+                        _vm._v("Sexo")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.$v.solicitacao.sexo_representante.$model,
+                              expression:
+                                "$v.solicitacao.sexo_representante.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: {
+                            id: "sexo_representante",
+                            name: "sexo_representante"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.sexo_representante,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: "M" } }, [
+                            _vm._v("Masculino")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: "F" } }, [
+                            _vm._v("Feminino")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.sexo_representante.$dirty &&
+                  !_vm.$v.solicitacao.sexo_representante.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Sexo é obrigatório\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
@@ -5267,8 +5297,8 @@ var render = function() {
                     [
                       _c(
                         "label",
-                        { attrs: { for: "nome_mae_representante" } },
-                        [_vm._v("Nome da Mãe")]
+                        { attrs: { for: "profissao_representante" } },
+                        [_vm._v("Profissão")]
                       )
                     ]
                   ),
@@ -5280,49 +5310,162 @@ var render = function() {
                         "bg-white my-2 p-1 border border-gray-200 rounded"
                     },
                     [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.$v.solicitacao.profissao_representante
+                                  .$model,
+                              expression:
+                                "$v.solicitacao.profissao_representante.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: {
+                            id: "profissao_representante",
+                            name: "profissao_representante"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.profissao_representante,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.dominios.profissao, function(profissoes) {
+                            return _c(
+                              "option",
+                              {
+                                key: profissoes.codigo,
+                                domProps: { value: profissoes.codigo }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(profissoes.descricao) +
+                                    "\n                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.profissao_representante.$dirty &&
+                  !_vm.$v.solicitacao.profissao_representante.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Profissão é obrigatória\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c(
+                        "label",
+                        { attrs: { for: "renda_mensal_representante" } },
+                        [_vm._v("Rendimento Mensal")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                    },
+                    [
                       _c("input", {
                         directives: [
                           {
-                            name: "model",
-                            rawName: "v-model.trim",
-                            value:
-                              _vm.$v.solicitacao.nome_mae_representante.$model,
-                            expression:
-                              "$v.solicitacao.nome_mae_representante.$model",
-                            modifiers: { trim: true }
+                            name: "money",
+                            rawName: "v-money",
+                            value: _vm.money,
+                            expression: "money"
                           }
                         ],
                         staticClass:
                           "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                        attrs: { id: "nome_mae_representante", type: "text" },
+                        attrs: {
+                          id: "renda_mensal_representante",
+                          type: "text"
+                        },
                         domProps: {
                           value:
-                            _vm.$v.solicitacao.nome_mae_representante.$model
+                            _vm.$v.solicitacao.renda_mensal_representante.$model
                         },
                         on: {
                           input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.$v.solicitacao.nome_mae_representante,
-                              "$model",
-                              $event.target.value.trim()
+                            return _vm.setRendaMensalRepresentante(
+                              $event.target.value
                             )
-                          },
-                          blur: function($event) {
-                            return _vm.$forceUpdate()
                           }
                         }
                       })
                     ]
                   ),
                   _vm._v(" "),
-                  _vm.$v.solicitacao.nome_mae_representante.$dirty &&
-                  !_vm.$v.solicitacao.nome_mae_representante.required
+                  _vm.$v.solicitacao.renda_mensal_representante.$dirty &&
+                  !_vm.$v.solicitacao.renda_mensal_representante.required
                     ? _c("div", { staticClass: "text-red-600" }, [
                         _vm._v(
-                          "\n              Nome da Mãe é obrigatório\n            "
+                          "\n              Rendimento Mensal é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.renda_mensal_representante.$dirty &&
+                  !_vm.$v.solicitacao.renda_mensal_representante.minValue
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Valor mínimo de R$\n              " +
+                            _vm._s(
+                              _vm.$v.solicitacao.renda_mensal_representante
+                                .$params.minValue.min / 100
+                            ) +
+                            ",00.\n            "
                         )
                       ])
                     : _vm._e()
@@ -6586,7 +6729,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "transition-group",
-                { attrs: { name: "component-fade", tag: "socio" } },
+                { attrs: { name: "component-fade", tag: "div" } },
                 _vm._l(this.solicitacao.socios, function(socio) {
                   return _c("socio", {
                     key: socio.id,

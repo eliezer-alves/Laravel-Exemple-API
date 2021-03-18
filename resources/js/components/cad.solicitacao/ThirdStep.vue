@@ -135,74 +135,34 @@
                 RG é obrigatório
               </div>
             </div>
-
             <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="sexo_representante">Sexo</label>
+                <label for="nome_mae_representante">Nome da Mãe</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <select
-                  id="sexo_representante"
-                  name="sexo_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
-                  v-model="$v.solicitacao.sexo_representante.$model"
-                >
-                  <option value="">--</option>
-                  <option :value="'M'">Masculino</option>
-                  <option :value="'F'">Feminino</option>
-                </select>
+                <input
+                  id="nome_mae_representante"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-model.trim="$v.solicitacao.nome_mae_representante.$model"
+                />
               </div>
               <div
                 class="text-red-600"
                 v-if="
-                  $v.solicitacao.sexo_representante.$dirty &&
-                  !$v.solicitacao.sexo_representante.required
+                  $v.solicitacao.nome_mae_representante.$dirty &&
+                  !$v.solicitacao.nome_mae_representante.required
                 "
               >
-                Sexo é obrigatório
+                Nome da Mãe é obrigatório
               </div>
             </div>
             <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="profissao_representante">Profissão</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <select
-                  id="profissao_representante"
-                  name="profissao_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
-                  v-model="$v.solicitacao.profissao_representante.$model"
-                >
-                  <option value="">--</option>
-                  <option
-                    v-for="profissoes in dominios.profissao"
-                    :key="profissoes.codigo"
-                    :value="profissoes.codigo"
-                  >
-                    {{ profissoes.descricao }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.profissao_representante.$dirty &&
-                  !$v.solicitacao.profissao_representante.required
-                "
-              >
-                Profissão é obrigatória
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -237,29 +197,113 @@
               </div>
             </div>
             <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="nome_mae_representante">Nome da Mãe</label>
+                <label for="sexo_representante">Sexo</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <select
+                  id="sexo_representante"
+                  name="sexo_representante"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="$v.solicitacao.sexo_representante.$model"
+                >
+                  <option value="">--</option>
+                  <option :value="'M'">Masculino</option>
+                  <option :value="'F'">Feminino</option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.sexo_representante.$dirty &&
+                  !$v.solicitacao.sexo_representante.required
+                "
+              >
+                Sexo é obrigatório
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="profissao_representante">Profissão</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <select
+                  id="profissao_representante"
+                  name="profissao_representante"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="$v.solicitacao.profissao_representante.$model"
+                >
+                  <option value="">--</option>
+                  <option
+                    v-for="profissoes in dominios.profissao"
+                    :key="profissoes.codigo"
+                    :value="profissoes.codigo"
+                  >
+                    {{ profissoes.descricao }}
+                  </option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.profissao_representante.$dirty &&
+                  !$v.solicitacao.profissao_representante.required
+                "
+              >
+                Profissão é obrigatória
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="renda_mensal_representante"
+                  >Rendimento Mensal</label
+                >
+              </div>
+              <div
+                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
+              >
                 <input
-                  id="nome_mae_representante"
+                  id="renda_mensal_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                   type="text"
-                  v-model.trim="$v.solicitacao.nome_mae_representante.$model"
+                  v-money="money"
+                  :value="$v.solicitacao.renda_mensal_representante.$model"
+                  @input="setRendaMensalRepresentante($event.target.value)"
                 />
               </div>
               <div
                 class="text-red-600"
                 v-if="
-                  $v.solicitacao.nome_mae_representante.$dirty &&
-                  !$v.solicitacao.nome_mae_representante.required
+                  $v.solicitacao.renda_mensal_representante.$dirty &&
+                  !$v.solicitacao.renda_mensal_representante.required
                 "
               >
-                Nome da Mãe é obrigatório
+                Rendimento Mensal é obrigatório.
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.renda_mensal_representante.$dirty &&
+                  !$v.solicitacao.renda_mensal_representante.minValue
+                "
+              >
+                Valor mínimo de R$
+                {{
+                  $v.solicitacao.renda_mensal_representante.$params.minValue
+                    .min / 100
+                }},00.
               </div>
             </div>
           </div>
@@ -368,7 +412,6 @@
                   Cidade é obrigatória
                 </div>
               </div>
-
               <div
                 class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               >
@@ -395,7 +438,6 @@
                   Bairro é obrigatório
                 </div>
               </div>
-
               <div
                 class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
               >
@@ -675,7 +717,7 @@
           >
             Sócios
           </div>
-          <transition-group name="component-fade" tag="socio">
+          <transition-group name="component-fade" tag="div">
             <socio
               v-for="socio in this.solicitacao.socios"
               :id="socio.id"
@@ -735,13 +777,20 @@ import Socio from "./Socio.vue";
 import { mapGetters } from "vuex";
 import { mapFields } from "vuex-map-fields";
 
-import { required, minLength, email } from "vuelidate/lib/validators";
+import { required, minLength, minValue, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
   components: { Solicitacao, Socio },
   data() {
-    return {};
+    return {
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        precision: 2,
+      },
+    };
   },
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
@@ -757,61 +806,25 @@ export default {
   },
   validations: {
     solicitacao: {
-      nome_representante: {
-        required,
-      },
-      cpf_representante: {
-        required,
-      },
-      uf_rg_representante: {
-        required,
-      },
-      rg_representante: {
-        required,
-      },
-      sexo_representante: {
-        required,
-      },
-      profissao_representante: {
-        required,
-      },
-      estado_civil_representante: {
-        required,
-      },
-      nome_mae_representante: {
-        required,
-      },
-      id_tipo_logradouro_representante: {
-        required,
-      },
-      logradouro_representante: {
-        required,
-      },
-      numero_representante: {
-        required,
-      },
+      nome_representante: { required },
+      cpf_representante: { required },
+      uf_rg_representante: { required },
+      rg_representante: { required },
+      sexo_representante: { required },
+      profissao_representante: { required },
+      renda_mensal_representante: { required, minValue: minValue(100) },
+      estado_civil_representante: { required },
+      nome_mae_representante: { required },
+      id_tipo_logradouro_representante: { required },
+      logradouro_representante: { required },
+      numero_representante: { required },
       complemento_representante: {},
-      cep_representante: {
-        required,
-        minLength: minLength(8),
-      },
-      bairro_representante: {
-        required,
-      },
-      cidade_representante: {
-        required,
-      },
-      uf_representante: {
-        required,
-      },
-      celular_representante: {
-        required,
-        minLength: minLength(10),
-      },
-      email_representante: {
-        required,
-        email,
-      },
+      cep_representante: { required, minLength: minLength(8) },
+      bairro_representante: { required },
+      cidade_representante: { required },
+      uf_representante: { required },
+      celular_representante: { required, minLength: minLength(10) },
+      email_representante: { required, email },
       representante_politicamente_exposto: {},
       representante_politicamente_exposto_cargo: {},
       parente_representante_politicamente_exposto: {},
@@ -824,6 +837,11 @@ export default {
       this.$v.solicitacao.cpf_representante.invalid = validaCPF(value);
       this.solicitacao.cpf_representante = value;
       this.$v.solicitacao.cpf_representante.$touch();
+    },
+    setRendaMensalRepresentante(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.solicitacao.renda_mensal_representante.$model = value;
+      this.$v.solicitacao.renda_mensal_representante.$touch();
     },
     async setCepRepresentante(value) {
       value = value.replace(/[^\d]+/g, "");

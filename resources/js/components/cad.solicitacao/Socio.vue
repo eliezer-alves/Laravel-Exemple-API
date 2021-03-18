@@ -495,6 +495,7 @@ import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
+  name: 'socio',
   props: ["id"],
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
