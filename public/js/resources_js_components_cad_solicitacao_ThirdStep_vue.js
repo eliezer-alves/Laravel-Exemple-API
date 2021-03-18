@@ -910,15 +910,176 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'socio',
+  name: "socio",
   props: ["id"],
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(["dominios", "solicitacao", "errors"])),
   data: function data() {
     return {
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        precision: 2
+      },
       socio: {}
     };
   },
@@ -934,11 +1095,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 invalid: _this.$v.$invalid
               });
 
-              _context.next = 3;
-              return _this.$store.dispatch("fetchDominios");
-
-            case 3:
               _this.socio = _this.getSocio();
+              _context.next = 4;
+              return _this.$store.dispatch("fetchDominios");
 
             case 4:
             case "end":
@@ -968,6 +1127,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       estado_civil: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
       },
+      profissao: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
+      },
+      renda_mensal: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+        minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minValue)(100)
+      },
       email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
         email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.email
@@ -994,10 +1160,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       logradouro: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
       },
-      complemento: {},
       numero: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
-      }
+      },
+      complemento: {},
+      politicamente_exposto: {},
+      politicamente_exposto_cargo: {},
+      parente_politicamente_exposto: {},
+      parente_politicamente_exposto_cargo: {}
     }
   },
   methods: {
@@ -1026,6 +1196,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return socio.cpf === cpf;
       });
       return index >= 0 ? true : false;
+    },
+    setRendaMensal: function setRendaMensal(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.socio.renda_mensal.$model = value;
+      this.$v.socio.renda_mensal.$touch();
     },
     setTelefoneSocio: function setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -2252,6 +2427,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         numero_rg: "",
         sexo: "",
         estado_civil: "",
+        profissao: "",
+        renda_mensal: 100,
         email: "",
         telefone: "",
         cep: "",
@@ -2261,7 +2438,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         tipo_logradouro: "",
         logradouro: "",
         numero: "",
-        complemento: ""
+        complemento: "",
+        politicamente_exposto: '',
+        politicamente_exposto_cargo: '',
+        parente_politicamente_exposto: '',
+        parente_politicamente_exposto_cargo: ''
       });
     },
     removeSocioElement: function removeSocioElement(id) {
@@ -3886,6 +4067,174 @@ var render = function() {
                 "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             },
             [
+              _c("label", { attrs: { for: "profissao" + _vm.socio.id } }, [
+                _vm._v("Profissão")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bg-white my-2 p-1 border border-gray-200 rounded" },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.profissao.$model,
+                      expression: "$v.socio.profissao.$model"
+                    }
+                  ],
+                  staticClass: "p-1 px-2 outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "profissao" + _vm.socio.id,
+                    name: "profissao" + _vm.socio.id
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.$v.socio.profissao,
+                        "$model",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.dominios.profissao, function(profissoes) {
+                    return _c(
+                      "option",
+                      {
+                        key: profissoes.codigo,
+                        domProps: { value: profissoes.codigo }
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(profissoes.descricao) +
+                            "\n          "
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.socio.profissao.$dirty && !_vm.$v.socio.profissao.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Profissão é obrigatória\n      ")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
+              _c("label", { attrs: { for: "renda_mensal" + _vm.socio.id } }, [
+                _vm._v("Rendimento Mensal")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white my-2 p-1 flex border border-gray-200 rounded"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "money",
+                    rawName: "v-money",
+                    value: _vm.money,
+                    expression: "money"
+                  }
+                ],
+                staticClass:
+                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                attrs: {
+                  id: "renda_mensal" + _vm.socio.id,
+                  name: "renda_mensal" + _vm.socio.id,
+                  type: "text"
+                },
+                domProps: { value: _vm.$v.socio.renda_mensal.$model },
+                on: {
+                  input: function($event) {
+                    return _vm.setRendaMensal($event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.$v.socio.renda_mensal.$dirty &&
+          !_vm.$v.socio.renda_mensal.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Rendimento Mensal é obrigatório.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.$v.socio.renda_mensal.$dirty &&
+          !_vm.$v.socio.renda_mensal.minValue
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v(
+                  "\n        Valor mínimo de R$\n        " +
+                    _vm._s(
+                      _vm.$v.socio.renda_mensal.$params.minValue.min / 100
+                    ) +
+                    ",00.\n      "
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            },
+            [
               _c("label", { attrs: { for: "email_socio_" + _vm.socio.id } }, [
                 _vm._v("E-mail")
               ])
@@ -4612,6 +4961,285 @@ var render = function() {
               ]
             )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _c("div", { staticClass: "flex flex-col" }, [
+              _c("label", { staticClass: "inline-flex items-center mt-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.politicamente_exposto.$model,
+                      expression:
+                        "\n              $v.socio.politicamente_exposto.$model\n            "
+                    }
+                  ],
+                  staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                  attrs: {
+                    id: "politicamente_exposto",
+                    name: "politicamente_exposto",
+                    type: "checkbox"
+                  },
+                  domProps: {
+                    checked: Array.isArray(
+                      _vm.$v.socio.politicamente_exposto.$model
+                    )
+                      ? _vm._i(
+                          _vm.$v.socio.politicamente_exposto.$model,
+                          null
+                        ) > -1
+                      : _vm.$v.socio.politicamente_exposto.$model
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.$v.socio.politicamente_exposto.$model,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.$v.socio.politicamente_exposto,
+                              "$model",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.$v.socio.politicamente_exposto,
+                              "$model",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(
+                          _vm.$v.socio.politicamente_exposto,
+                          "$model",
+                          $$c
+                        )
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                  _vm._v(
+                    "\n            Pessoa Politicamente Exposta\n          "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white my-2 p-1 border border-gray-200 rounded"
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.$v.socio.politicamente_exposto_cargo.$model,
+                              expression:
+                                "\n                $v.socio.politicamente_exposto_cargo\n                  .$model\n              "
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          attrs: {
+                            id: "politicamente_exposto_cargo",
+                            name: "politicamente_exposto_cargo",
+                            type: "text"
+                          },
+                          domProps: {
+                            value:
+                              _vm.$v.socio.politicamente_exposto_cargo.$model
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.$v.socio.politicamente_exposto_cargo,
+                                "$model",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _c("div", { staticClass: "flex flex-col" }, [
+              _c("label", { staticClass: "inline-flex items-center mt-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.$v.socio.parente_politicamente_exposto.$model,
+                      expression:
+                        "\n              $v.socio.parente_politicamente_exposto\n                .$model\n            "
+                    }
+                  ],
+                  staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
+                  attrs: {
+                    id: "parente_politicamente_exposto",
+                    name: "parente_politicamente_exposto",
+                    type: "checkbox"
+                  },
+                  domProps: {
+                    checked: Array.isArray(
+                      _vm.$v.socio.parente_politicamente_exposto.$model
+                    )
+                      ? _vm._i(
+                          _vm.$v.socio.parente_politicamente_exposto.$model,
+                          null
+                        ) > -1
+                      : _vm.$v.socio.parente_politicamente_exposto.$model
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a =
+                          _vm.$v.socio.parente_politicamente_exposto.$model,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.$v.socio.parente_politicamente_exposto,
+                              "$model",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.$v.socio.parente_politicamente_exposto,
+                              "$model",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(
+                          _vm.$v.socio.parente_politicamente_exposto,
+                          "$model",
+                          $$c
+                        )
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "ml-2 text-gray-700" }, [
+                  _vm._v(
+                    "\n            Parente Politicamente Exposto\n          "
+                  )
+                ])
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.$v.socio.parente_politicamente_exposto_cargo.$model,
+                      expression:
+                        "\n            $v.socio.parente_politicamente_exposto_cargo\n              .$model\n          "
+                    }
+                  ],
+                  staticClass:
+                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                  attrs: {
+                    id: "parente_politicamente_exposto_cargo",
+                    name: "parente_politicamente_exposto_cargo",
+                    type: "text"
+                  },
+                  domProps: {
+                    value:
+                      _vm.$v.socio.parente_politicamente_exposto_cargo.$model
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.$v.socio.parente_politicamente_exposto_cargo,
+                        "$model",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]
+            )
+          ]
         )
       ]
     ),
@@ -4639,7 +5267,42 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [
+        _c("label", { attrs: { for: "politicamente_exposto_cargo" } }, [
+          _vm._v("\n              Cargo\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+      },
+      [
+        _c("label", { attrs: { for: "parente_politicamente_exposto_cargo" } }, [
+          _vm._v("Cargo")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

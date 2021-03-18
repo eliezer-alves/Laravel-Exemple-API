@@ -186,6 +186,71 @@
         <div
           class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
         >
+          <label :for="'profissao' + socio.id">Profissão</label>
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <select
+            :id="'profissao' + socio.id"
+            :name="'profissao' + socio.id"
+            class="p-1 px-2 outline-none w-full text-gray-800"
+            v-model="$v.socio.profissao.$model"
+          >
+            <option value="">--</option>
+            <option
+              v-for="profissoes in dominios.profissao"
+              :key="profissoes.codigo"
+              :value="profissoes.codigo"
+            >
+              {{ profissoes.descricao }}
+            </option>
+          </select>
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.profissao.$dirty && !$v.socio.profissao.required"
+        >
+          Profissão é obrigatória
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label :for="'renda_mensal' + socio.id">Rendimento Mensal</label>
+        </div>
+        <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+          <input
+            :id="'renda_mensal' + socio.id"
+            :name="'renda_mensal' + socio.id"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            v-money="money"
+            :value="$v.socio.renda_mensal.$model"
+            @input="setRendaMensal($event.target.value)"
+          />
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.renda_mensal.$dirty && !$v.socio.renda_mensal.required"
+        >
+          Rendimento Mensal é obrigatório.
+        </div>
+        <div
+          class="text-red-600"
+          v-if="$v.socio.renda_mensal.$dirty && !$v.socio.renda_mensal.minValue"
+        >
+          Valor mínimo de R$
+          {{ $v.socio.renda_mensal.$params.minValue.min / 100 }},00.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
           <label :for="'email_socio_' + socio.id">E-mail</label>
         </div>
         <div class="bg-white my-2 p-1 border border-gray-200 rounded">
@@ -471,6 +536,96 @@
           />
         </div>
       </div>
+      <div
+        class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div class="flex flex-col">
+          <label class="inline-flex items-center mt-3">
+            <input
+              id="politicamente_exposto"
+              name="politicamente_exposto"
+              type="checkbox"
+              class="form-checkbox h-5 w-5 text-gray-600 ml-2"
+              v-model="
+                $v.socio.politicamente_exposto.$model
+              "
+            />
+            <span class="ml-2 text-gray-700">
+              Pessoa Politicamente Exposta
+            </span>
+          </label>
+        </div>
+        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
+          <div
+            class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="politicamente_exposto_cargo">
+                Cargo
+              </label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="politicamente_exposto_cargo"
+                name="politicamente_exposto_cargo"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                type="text"
+                v-model="
+                  $v.socio.politicamente_exposto_cargo
+                    .$model
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div class="flex flex-col">
+          <label class="inline-flex items-center mt-3">
+            <input
+              id="parente_politicamente_exposto"
+              name="parente_politicamente_exposto"
+              type="checkbox"
+              class="form-checkbox h-5 w-5 text-gray-600 ml-2"
+              v-model="
+                $v.socio.parente_politicamente_exposto
+                  .$model
+              "
+            />
+            <span class="ml-2 text-gray-700">
+              Parente Politicamente Exposto
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div
+        class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+      >
+        <div
+          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+        >
+          <label for="parente_politicamente_exposto_cargo"
+            >Cargo</label
+          >
+        </div>
+        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+          <input
+            id="parente_politicamente_exposto_cargo"
+            name="parente_politicamente_exposto_cargo"
+            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            type="text"
+            v-model="
+              $v.socio.parente_politicamente_exposto_cargo
+                .$model
+            "
+          />
+        </div>
+      </div>
     </div>
     <div class="flex flex-row-reverse my-2">
       <button
@@ -495,13 +650,19 @@ import { required, minValue, minLength, email } from "vuelidate/lib/validators";
 import { validaCPF } from "../../helper.js";
 
 export default {
-  name: 'socio',
+  name: "socio",
   props: ["id"],
   computed: {
     ...mapGetters(["dominios", "solicitacao", "errors"]),
   },
   data() {
     return {
+      money: {
+        decimal: ",",
+        thousands: ".",
+        prefix: "R$ ",
+        precision: 2,
+      },
       socio: {},
     };
   },
@@ -509,59 +670,33 @@ export default {
     this.$store.commit("ERRORS", {
       invalid: this.$v.$invalid,
     });
-    await this.$store.dispatch("fetchDominios");
     this.socio = this.getSocio();
+    await this.$store.dispatch("fetchDominios");
   },
   validations: {
     socio: {
-      nome: {
-        required,
-      },
-      cpf: {
-        required,
-      },
-      uf_rg: {
-        required,
-      },
-      numero_rg: {
-        required,
-      },
-      sexo: {
-        required,
-      },
-      estado_civil: {
-        required,
-      },
-      email: {
-        required,
-        email,
-      },
-      telefone: {
-        required,
-        minLength: minLength(10),
-      },
-      cep: {
-        required,
-      },
-      uf: {
-        required,
-      },
-      cidade: {
-        required,
-      },
-      bairro: {
-        required,
-      },
-      tipo_logradouro: {
-        required,
-      },
-      logradouro: {
-        required,
-      },
+      nome: { required },
+      cpf: { required },
+      uf_rg: { required },
+      numero_rg: { required },
+      sexo: { required },
+      estado_civil: { required },
+      profissao: { required },
+      renda_mensal: { required, minValue: minValue(100) },
+      email: { required, email },
+      telefone: { required, minLength: minLength(10) },
+      cep: { required },
+      uf: { required },
+      cidade: { required },
+      bairro: { required },
+      tipo_logradouro: { required },
+      logradouro: { required },
+      numero: { required },
       complemento: {},
-      numero: {
-        required,
-      },
+      politicamente_exposto: {},
+      politicamente_exposto_cargo: {},
+      parente_politicamente_exposto: {},
+      parente_politicamente_exposto_cargo: {},
     },
   },
   methods: {
@@ -590,6 +725,11 @@ export default {
         (socio) => socio.cpf === cpf
       );
       return index >= 0 ? true : false;
+    },
+    setRendaMensal(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.$v.socio.renda_mensal.$model = value;
+      this.$v.socio.renda_mensal.$touch();
     },
     setTelefoneSocio(value) {
       value = value.replace(/[^\d]+/g, "");

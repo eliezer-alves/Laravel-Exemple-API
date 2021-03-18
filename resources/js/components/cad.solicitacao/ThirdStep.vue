@@ -925,6 +925,8 @@ export default {
         numero_rg: "",
         sexo: "",
         estado_civil: "",
+        profissao: "",
+        renda_mensal: 100,
         email: "",
         telefone: "",
         cep: "",
@@ -935,6 +937,10 @@ export default {
         logradouro: "",
         numero: "",
         complemento: "",
+        politicamente_exposto: '',
+        politicamente_exposto_cargo: '',
+        parente_politicamente_exposto: '',
+        parente_politicamente_exposto_cargo: '',
       });
     },
     removeSocioElement(id) {
