@@ -2174,6 +2174,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2439,10 +2451,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         logradouro: "",
         numero: "",
         complemento: "",
-        politicamente_exposto: '',
-        politicamente_exposto_cargo: '',
-        parente_politicamente_exposto: '',
-        parente_politicamente_exposto_cargo: ''
+        politicamente_exposto: "",
+        politicamente_exposto_cargo: "",
+        parente_politicamente_exposto: "",
+        parente_politicamente_exposto_cargo: ""
       });
     },
     removeSocioElement: function removeSocioElement(id) {
@@ -2586,7 +2598,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\n.component-fade-enter-active,\r\n.component-fade-leave-active {\r\n  transition: opacity 0.7s;\n}\n.component-fade-enter, .component-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity .5s ease;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\n.component-fade-enter-active,\r\n.component-fade-leave-active {\r\n  transition: opacity 0.7s;\n}\n.component-fade-enter, .component-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6719,18 +6731,21 @@ var render = function() {
                             directives: [
                               {
                                 name: "model",
-                                rawName: "v-model.trim",
+                                rawName: "v-model.number",
                                 value:
                                   _vm.$v.solicitacao.numero_representante
                                     .$model,
                                 expression:
                                   "$v.solicitacao.numero_representante.$model",
-                                modifiers: { trim: true }
+                                modifiers: { number: true }
                               }
                             ],
                             staticClass:
                               "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                            attrs: { id: "numero_representante" },
+                            attrs: {
+                              id: "numero_representante",
+                              type: "number"
+                            },
                             domProps: {
                               value:
                                 _vm.$v.solicitacao.numero_representante.$model
@@ -6743,7 +6758,7 @@ var render = function() {
                                 _vm.$set(
                                   _vm.$v.solicitacao.numero_representante,
                                   "$model",
-                                  $event.target.value.trim()
+                                  _vm._n($event.target.value)
                                 )
                               },
                               blur: function($event) {
@@ -7093,100 +7108,101 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                                },
-                                [
-                                  _c(
-                                    "label",
-                                    {
-                                      attrs: {
-                                        for:
-                                          "representante_politicamente_exposto_cargo"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                      Cargo\n                    "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "bg-white my-2 p-1 border border-gray-200 rounded"
-                                },
-                                [
-                                  _c("input", {
-                                    directives: [
+                      _c("transition", { attrs: { name: "fade" } }, [
+                        _vm.$v.solicitacao.representante_politicamente_exposto
+                          .$model
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                                  },
+                                  [
+                                    _c(
+                                      "label",
                                       {
-                                        name: "model",
-                                        rawName: "v-model",
+                                        attrs: {
+                                          for:
+                                            "representante_politicamente_exposto_cargo"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                      Cargo\n                    "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "bg-white my-2 p-1 border border-gray-200 rounded"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model.trim",
+                                          value:
+                                            _vm.$v.solicitacao
+                                              .representante_politicamente_exposto_cargo
+                                              .$model,
+                                          expression:
+                                            "\n                        $v.solicitacao\n                          .representante_politicamente_exposto_cargo.$model\n                      ",
+                                          modifiers: { trim: true }
+                                        }
+                                      ],
+                                      staticClass:
+                                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                      attrs: {
+                                        id:
+                                          "representante_politicamente_exposto_cargo",
+                                        name:
+                                          "representante_politicamente_exposto_cargo",
+                                        type: "text"
+                                      },
+                                      domProps: {
                                         value:
                                           _vm.$v.solicitacao
                                             .representante_politicamente_exposto_cargo
-                                            .$model,
-                                        expression:
-                                          "\n                        $v.solicitacao\n                          .representante_politicamente_exposto_cargo.$model\n                      "
-                                      }
-                                    ],
-                                    staticClass:
-                                      "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                                    attrs: {
-                                      id:
-                                        "representante_politicamente_exposto_cargo",
-                                      name:
-                                        "representante_politicamente_exposto_cargo",
-                                      type: "text"
-                                    },
-                                    domProps: {
-                                      value:
-                                        _vm.$v.solicitacao
-                                          .representante_politicamente_exposto_cargo
-                                          .$model
-                                    },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+                                            .$model
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.$v.solicitacao
+                                              .representante_politicamente_exposto_cargo,
+                                            "$model",
+                                            $event.target.value.trim()
+                                          )
+                                        },
+                                        blur: function($event) {
+                                          return _vm.$forceUpdate()
                                         }
-                                        _vm.$set(
-                                          _vm.$v.solicitacao
-                                            .representante_politicamente_exposto_cargo,
-                                          "$model",
-                                          $event.target.value
-                                        )
                                       }
-                                    }
-                                  })
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
@@ -7292,87 +7308,97 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                        },
-                        [
-                          _c(
-                            "label",
-                            {
-                              attrs: {
-                                for:
-                                  "parente_representante_politicamente_exposto_cargo"
-                              }
-                            },
-                            [_vm._v("Cargo")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white my-2 p-1 border border-gray-200 rounded"
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value:
-                                  _vm.$v.solicitacao
-                                    .parente_representante_politicamente_exposto_cargo
-                                    .$model,
-                                expression:
-                                  "\n                    $v.solicitacao\n                      .parente_representante_politicamente_exposto_cargo\n                      .$model\n                  "
-                              }
-                            ],
+                  _c("transition", { attrs: { name: "fade" } }, [
+                    _vm.$v.solicitacao
+                      .parente_representante_politicamente_exposto.$model
+                      ? _c(
+                          "div",
+                          {
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                            attrs: {
-                              id:
-                                "parente_representante_politicamente_exposto_cargo",
-                              name:
-                                "parente_representante_politicamente_exposto_cargo",
-                              type: "text"
-                            },
-                            domProps: {
-                              value:
-                                _vm.$v.solicitacao
-                                  .parente_representante_politicamente_exposto_cargo
-                                  .$model
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.$v.solicitacao
-                                    .parente_representante_politicamente_exposto_cargo,
-                                  "$model",
-                                  $event.target.value
+                              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                              },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    attrs: {
+                                      for:
+                                        "parente_representante_politicamente_exposto_cargo"
+                                    }
+                                  },
+                                  [_vm._v("Cargo")]
                                 )
-                              }
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "bg-white my-2 p-1 border border-gray-200 rounded"
+                              },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model.trim",
+                                      value:
+                                        _vm.$v.solicitacao
+                                          .parente_representante_politicamente_exposto_cargo
+                                          .$model,
+                                      expression:
+                                        "\n                      $v.solicitacao\n                        .parente_representante_politicamente_exposto_cargo\n                        .$model\n                    ",
+                                      modifiers: { trim: true }
+                                    }
+                                  ],
+                                  staticClass:
+                                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                  attrs: {
+                                    id:
+                                      "parente_representante_politicamente_exposto_cargo",
+                                    name:
+                                      "parente_representante_politicamente_exposto_cargo",
+                                    type: "text"
+                                  },
+                                  domProps: {
+                                    value:
+                                      _vm.$v.solicitacao
+                                        .parente_representante_politicamente_exposto_cargo
+                                        .$model
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.$v.solicitacao
+                                          .parente_representante_politicamente_exposto_cargo,
+                                        "$model",
+                                        $event.target.value.trim()
+                                      )
+                                    },
+                                    blur: function($event) {
+                                      return _vm.$forceUpdate()
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
               )
             ])
           ]),

@@ -27,7 +27,7 @@
                   <input
                     id="tac"
                     name="tac"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-40"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70"
                     :value="$v.solicitacao.tac.$model"
                     v-money="money"
                     @input="setTac($event.target.value)"

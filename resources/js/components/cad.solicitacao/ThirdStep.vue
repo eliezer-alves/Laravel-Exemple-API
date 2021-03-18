@@ -517,7 +517,8 @@
                   <input
                     id="numero_representante"
                     class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                    v-model.trim="$v.solicitacao.numero_representante.$model"
+                    type="number"
+                    v-model.number="$v.solicitacao.numero_representante.$model"
                   />
                 </div>
                 <div
@@ -633,8 +634,12 @@
                     </span>
                   </label>
                 </div>
-                <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
+
+                <transition name="fade">
                   <div
+                    v-if="
+                      $v.solicitacao.representante_politicamente_exposto.$model
+                    "
                     class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                   >
                     <div
@@ -652,14 +657,14 @@
                         name="representante_politicamente_exposto_cargo"
                         class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                         type="text"
-                        v-model="
+                        v-model.trim="
                           $v.solicitacao
                             .representante_politicamente_exposto_cargo.$model
                         "
                       />
                     </div>
                   </div>
-                </div>
+                </transition>
               </div>
               <div
                 class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
@@ -683,30 +688,37 @@
                 </div>
               </div>
 
-              <div
-                class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-              >
+              <transition name="fade">
                 <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                  v-if="
+                    $v.solicitacao.parente_representante_politicamente_exposto
+                      .$model
+                  "
+                  class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 >
-                  <label for="parente_representante_politicamente_exposto_cargo"
-                    >Cargo</label
+                  <div
+                    class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                   >
+                    <label
+                      for="parente_representante_politicamente_exposto_cargo"
+                      >Cargo</label
+                    >
+                  </div>
+                  <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                    <input
+                      id="parente_representante_politicamente_exposto_cargo"
+                      name="parente_representante_politicamente_exposto_cargo"
+                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                      type="text"
+                      v-model.trim="
+                        $v.solicitacao
+                          .parente_representante_politicamente_exposto_cargo
+                          .$model
+                      "
+                    />
+                  </div>
                 </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="parente_representante_politicamente_exposto_cargo"
-                    name="parente_representante_politicamente_exposto_cargo"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                    type="text"
-                    v-model="
-                      $v.solicitacao
-                        .parente_representante_politicamente_exposto_cargo
-                        .$model
-                    "
-                  />
-                </div>
-              </div>
+              </transition>
             </div>
           </div>
         </div>
@@ -937,10 +949,10 @@ export default {
         logradouro: "",
         numero: "",
         complemento: "",
-        politicamente_exposto: '',
-        politicamente_exposto_cargo: '',
-        parente_politicamente_exposto: '',
-        parente_politicamente_exposto_cargo: '',
+        politicamente_exposto: "",
+        politicamente_exposto_cargo: "",
+        parente_politicamente_exposto: "",
+        parente_politicamente_exposto_cargo: "",
       });
     },
     removeSocioElement(id) {
@@ -965,7 +977,7 @@ export default {
 <style>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity .5s ease;
 }
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {

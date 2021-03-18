@@ -1735,7 +1735,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-40",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70",
                                 attrs: { id: "tac", name: "tac", disabled: "" },
                                 domProps: {
                                   value: _vm.$v.solicitacao.tac.$model
