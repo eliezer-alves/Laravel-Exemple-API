@@ -15,7 +15,7 @@
               <a href="#">
                 <span>
                   <svg
-                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500"
+                    class="fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 sm:h-5 sm:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@
         </router-link>
       </div>
     </nav>
-    <div class="px-16 py-4 text-gray-700 bg-gray-300 w-screen">
+    <div class="px-16 py-4 text-gray-700 bg-gray-300 w-screen ">
       <slot></slot>
     </div>
   </div>

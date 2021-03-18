@@ -1097,7 +1097,7 @@ var render = function() {
                         "svg",
                         {
                           staticClass:
-                            "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500",
+                            "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 sm:h-5 sm:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500",
                           attrs: {
                             viewBox: "0 0 24 24",
                             fill: "none",
@@ -1256,7 +1256,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen " },
       [_vm._t("default")],
       2
     )
@@ -1666,532 +1666,538 @@ var render = function() {
     { attrs: { name: "fade" } },
     [
       _c("solicitacao", [
-        _c("div", { staticClass: "p-4 h-screen" }, [
-          _c("div", { staticClass: "my-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
-              },
-              [_vm._v("\n          Dados da Simulação\n        ")]
-            ),
+        _c(
+          "div",
+          { staticClass: "p-4 xl:h-screen lg:h-screen md:h-screen h-full" },
+          [
+            _c("div", { staticClass: "my-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
+                },
+                [_vm._v("\n          Dados da Simulação\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex lg:flex-row md:flex-row flex-col" },
+                [
+                  _c("img", {
+                    staticClass: "mx-auto lg:w-72 w-44 my-5",
+                    attrs: {
+                      src: "/images/undraw_Success_factors_re_ce93.svg",
+                      alt: "Simulacao"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "primeiro_vencimento" } },
+                                [_vm._v("TAC")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "money",
+                                    rawName: "v-money",
+                                    value: _vm.money,
+                                    expression: "money"
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-40",
+                                attrs: { id: "tac", name: "tac", disabled: "" },
+                                domProps: {
+                                  value: _vm.$v.solicitacao.tac.$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.setTac($event.target.value)
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "primeiro_vencimento" } },
+                                [_vm._v("Taxa de Juros")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "money",
+                                    rawName: "v-money",
+                                    value: _vm.money,
+                                    expression: "money"
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70",
+                                attrs: {
+                                  id: "taxa_juros",
+                                  name: "taxa_juros",
+                                  disabled: ""
+                                },
+                                domProps: {
+                                  value: _vm.$v.solicitacao.taxa_juros.$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.setTaxaJuros($event.target.value)
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "valor_solicitado" } },
+                                [_vm._v("Valor Solicitado")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "money",
+                                    rawName: "v-money",
+                                    value: _vm.money,
+                                    expression: "money"
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input",
+                                attrs: {
+                                  id: "valor_solicitado",
+                                  name: "valor_solicitado",
+                                  placeholder: "Nome da Empresa"
+                                },
+                                domProps: {
+                                  value:
+                                    _vm.$v.solicitacao.valor_solicitado.$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.setValorSolicitado(
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.valor_solicitado.$dirty &&
+                          !_vm.$v.solicitacao.valor_solicitado.required
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Valor obrigatório\n              "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.valor_solicitado.$dirty &&
+                          !_vm.$v.solicitacao.valor_solicitado.minValue
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Valor mínimo de R$" +
+                                    _vm._s(
+                                      _vm.$v.solicitacao.valor_solicitado
+                                        .$params.minValue.min / 100
+                                    ) +
+                                    ",00\n              "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c("label", { attrs: { for: "parcelas" } }, [
+                                _vm._v("Parcelas")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model.number",
+                                    value: _vm.$v.solicitacao.parcelas.$model,
+                                    expression:
+                                      "$v.solicitacao.parcelas.$model",
+                                    modifiers: { number: true }
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                attrs: {
+                                  id: "parcelas",
+                                  name: "parcelas",
+                                  type: "number"
+                                },
+                                domProps: {
+                                  value: _vm.$v.solicitacao.parcelas.$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.$v.solicitacao.parcelas,
+                                      "$model",
+                                      _vm._n($event.target.value)
+                                    )
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$forceUpdate()
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.parcelas.$dirty &&
+                          !_vm.$v.solicitacao.parcelas.required
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Parcela(s) obrigatória\n              "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.parcelas.$dirty &&
+                          !_vm.$v.solicitacao.parcelas.between
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Parcelas entre\n                " +
+                                    _vm._s(
+                                      _vm.$v.solicitacao.parcelas.$params
+                                        .between.min
+                                    ) +
+                                    " e\n                " +
+                                    _vm._s(
+                                      _vm.$v.solicitacao.parcelas.$params
+                                        .between.max
+                                    ) +
+                                    "\n              "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "data_geracao_proposta" } },
+                                [_vm._v("Data da Geração")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.$v.solicitacao.data_geracao_proposta
+                                        .$model,
+                                    expression:
+                                      "$v.solicitacao.data_geracao_proposta.$model"
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                attrs: {
+                                  id: "data_geracao_proposta",
+                                  name: "data_geracao_proposta",
+                                  type: "date"
+                                },
+                                domProps: {
+                                  value:
+                                    _vm.$v.solicitacao.data_geracao_proposta
+                                      .$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.$v.solicitacao.data_geracao_proposta,
+                                      "$model",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.data_geracao_proposta.$dirty &&
+                          !_vm.$v.solicitacao.data_geracao_proposta.required
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Data obrigatória\n              "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                            },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "primeiro_vencimento" } },
+                                [_vm._v("1º Vencimento")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "bg-white my-2 p-1 border border-gray-200 rounded"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.$v.solicitacao.primeiro_vencimento
+                                        .$model,
+                                    expression:
+                                      "$v.solicitacao.primeiro_vencimento.$model"
+                                  }
+                                ],
+                                staticClass:
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                attrs: {
+                                  id: "primeiro_vencimento",
+                                  name: "primeiro_vencimento",
+                                  type: "date"
+                                },
+                                domProps: {
+                                  value:
+                                    _vm.$v.solicitacao.primeiro_vencimento
+                                      .$model
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.$v.solicitacao.primeiro_vencimento,
+                                      "$model",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.$v.solicitacao.primeiro_vencimento.$dirty &&
+                          !_vm.$v.solicitacao.primeiro_vencimento.required
+                            ? _c("div", { staticClass: "text-red-600" }, [
+                                _vm._v(
+                                  "\n                Data obrigatória\n              "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "flex lg:flex-row md:flex-row flex-col" },
+              { staticClass: "flex p-2 mt-4" },
               [
-                _c("img", {
-                  staticClass: "mx-auto lg:w-72 w-44 my-5",
-                  attrs: {
-                    src: "/images/undraw_Success_factors_re_ce93.svg",
-                    alt: "Simulacao"
-                  }
-                }),
+                _c("router-link", { attrs: { to: { name: "home" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+                    },
+                    [_vm._v("\n            Finalizar\n          ")]
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "primeiro_vencimento" } },
-                              [_vm._v("TAC")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "money",
-                                  rawName: "v-money",
-                                  value: _vm.money,
-                                  expression: "money"
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-40",
-                              attrs: { id: "tac", name: "tac", disabled: "" },
-                              domProps: {
-                                value: _vm.$v.solicitacao.tac.$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  return _vm.setTac($event.target.value)
-                                }
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "primeiro_vencimento" } },
-                              [_vm._v("Taxa de Juros")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "money",
-                                  rawName: "v-money",
-                                  value: _vm.money,
-                                  expression: "money"
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70",
-                              attrs: {
-                                id: "taxa_juros",
-                                name: "taxa_juros",
-                                disabled: ""
-                              },
-                              domProps: {
-                                value: _vm.$v.solicitacao.taxa_juros.$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  return _vm.setTaxaJuros($event.target.value)
-                                }
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "valor_solicitado" } },
-                              [_vm._v("Valor Solicitado")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "money",
-                                  rawName: "v-money",
-                                  value: _vm.money,
-                                  expression: "money"
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input",
-                              attrs: {
-                                id: "valor_solicitado",
-                                name: "valor_solicitado",
-                                placeholder: "Nome da Empresa"
-                              },
-                              domProps: {
-                                value:
-                                  _vm.$v.solicitacao.valor_solicitado.$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  return _vm.setValorSolicitado(
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.valor_solicitado.$dirty &&
-                        !_vm.$v.solicitacao.valor_solicitado.required
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Valor obrigatório\n              "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.valor_solicitado.$dirty &&
-                        !_vm.$v.solicitacao.valor_solicitado.minValue
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Valor mínimo de R$" +
-                                  _vm._s(
-                                    _vm.$v.solicitacao.valor_solicitado.$params
-                                      .minValue.min / 100
-                                  ) +
-                                  ",00\n              "
-                              )
-                            ])
-                          : _vm._e()
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c("label", { attrs: { for: "parcelas" } }, [
-                              _vm._v("Parcelas")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model.number",
-                                  value: _vm.$v.solicitacao.parcelas.$model,
-                                  expression: "$v.solicitacao.parcelas.$model",
-                                  modifiers: { number: true }
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                              attrs: {
-                                id: "parcelas",
-                                name: "parcelas",
-                                type: "number"
-                              },
-                              domProps: {
-                                value: _vm.$v.solicitacao.parcelas.$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.$v.solicitacao.parcelas,
-                                    "$model",
-                                    _vm._n($event.target.value)
-                                  )
-                                },
-                                blur: function($event) {
-                                  return _vm.$forceUpdate()
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.parcelas.$dirty &&
-                        !_vm.$v.solicitacao.parcelas.required
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Parcela(s) obrigatória\n              "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.parcelas.$dirty &&
-                        !_vm.$v.solicitacao.parcelas.between
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Parcelas entre\n                " +
-                                  _vm._s(
-                                    _vm.$v.solicitacao.parcelas.$params.between
-                                      .min
-                                  ) +
-                                  " e\n                " +
-                                  _vm._s(
-                                    _vm.$v.solicitacao.parcelas.$params.between
-                                      .max
-                                  ) +
-                                  "\n              "
-                              )
-                            ])
-                          : _vm._e()
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "data_geracao_proposta" } },
-                              [_vm._v("Data da Geração")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.$v.solicitacao.data_geracao_proposta
-                                      .$model,
-                                  expression:
-                                    "$v.solicitacao.data_geracao_proposta.$model"
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                              attrs: {
-                                id: "data_geracao_proposta",
-                                name: "data_geracao_proposta",
-                                type: "date"
-                              },
-                              domProps: {
-                                value:
-                                  _vm.$v.solicitacao.data_geracao_proposta
-                                    .$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.$v.solicitacao.data_geracao_proposta,
-                                    "$model",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.data_geracao_proposta.$dirty &&
-                        !_vm.$v.solicitacao.data_geracao_proposta.required
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Data obrigatória\n              "
-                              )
-                            ])
-                          : _vm._e()
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                          },
-                          [
-                            _c(
-                              "label",
-                              { attrs: { for: "primeiro_vencimento" } },
-                              [_vm._v("1º Vencimento")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "bg-white my-2 p-1 border border-gray-200 rounded"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.$v.solicitacao.primeiro_vencimento
-                                      .$model,
-                                  expression:
-                                    "$v.solicitacao.primeiro_vencimento.$model"
-                                }
-                              ],
-                              staticClass:
-                                "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                              attrs: {
-                                id: "primeiro_vencimento",
-                                name: "primeiro_vencimento",
-                                type: "date"
-                              },
-                              domProps: {
-                                value:
-                                  _vm.$v.solicitacao.primeiro_vencimento.$model
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.$v.solicitacao.primeiro_vencimento,
-                                    "$model",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm.$v.solicitacao.primeiro_vencimento.$dirty &&
-                        !_vm.$v.solicitacao.primeiro_vencimento.required
-                          ? _c("div", { staticClass: "text-red-600" }, [
-                              _vm._v(
-                                "\n                Data obrigatória\n              "
-                              )
-                            ])
-                          : _vm._e()
-                      ]
-                    )
-                  ]
-                )
-              ]
+                _c("div", { staticClass: "flex-auto flex flex-row-reverse" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
+                      class: { "opacity-70": _vm.$v.$invalid },
+                      on: { click: _vm.validateFields }
+                    },
+                    [_vm._v("\n            Avançar\n          ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+                    },
+                    [_vm._v("\n            Simular\n          ")]
+                  )
+                ])
+              ],
+              1
             )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex p-2 mt-4" },
-            [
-              _c("router-link", { attrs: { to: { name: "home" } } }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-                  },
-                  [_vm._v("\n            Finalizar\n          ")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex-auto flex flex-row-reverse" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition",
-                    class: { "opacity-70": _vm.$v.$invalid },
-                    on: { click: _vm.validateFields }
-                  },
-                  [_vm._v("\n            Avançar\n          ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-                  },
-                  [_vm._v("\n            Simular\n          ")]
-                )
-              ])
-            ],
-            1
-          )
-        ])
+          ]
+        )
       ])
     ],
     1

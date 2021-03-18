@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <solicitacao>
-      <div class="p-4 h-screen">
+      <div class="p-4 xl:h-screen lg:h-screen md:h-screen h-full">
         <div class="my-2">
           <div
             class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"

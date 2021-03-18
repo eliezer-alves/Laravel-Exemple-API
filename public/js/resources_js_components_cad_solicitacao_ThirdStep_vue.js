@@ -2774,7 +2774,7 @@ var render = function() {
                         "svg",
                         {
                           staticClass:
-                            "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500",
+                            "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 sm:h-5 sm:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-green-500",
                           attrs: {
                             viewBox: "0 0 24 24",
                             fill: "none",
@@ -2933,7 +2933,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen" },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen " },
       [_vm._t("default")],
       2
     )
