@@ -81,8 +81,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["successPopUp"],
@@ -188,7 +186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, \r\n.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -328,142 +326,140 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "fade" } }, [
-    _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6" }, [
-      _c("div", { staticClass: "py-2 rounded-xl" }, [
-        _c("img", {
-          staticClass: "mx-auto lg:w-72 w-44",
-          attrs: { src: "/images/logoAgilVertical.png", alt: "Workflow" }
-        }),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            staticClass: "mt-2 mx-auto w-72",
-            on: {
-              submit: function($event) {
-                return _vm.login(_vm.cliente)
-              }
+  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6" }, [
+    _c("div", { staticClass: "py-2 rounded-xl" }, [
+      _c("img", {
+        staticClass: "mx-auto lg:w-72 w-44",
+        attrs: { src: "/images/logoAgilVertical.png", alt: "Workflow" }
+      }),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "mt-2 mx-auto w-72",
+          on: {
+            submit: function($event) {
+              return _vm.login(_vm.cliente)
             }
-          },
-          [
-            _c("div", { staticClass: "mt-1 text-sm" }, [
+          }
+        },
+        [
+          _c("div", { staticClass: "mt-1 text-sm" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.cliente.username,
+                  expression: "cliente.username"
+                },
+                {
+                  name: "mask",
+                  rawName: "v-mask",
+                  value: "##.###.###/####-##",
+                  expression: "'##.###.###/####-##'"
+                }
+              ],
+              staticClass:
+                "rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none",
+              attrs: {
+                type: "text",
+                autofocus: "",
+                id: "cnpj",
+                placeholder: "CNPJ"
+              },
+              domProps: { value: _vm.cliente.username },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.cliente, "username", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-1 text-sm" },
+            [
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.cliente.username,
-                    expression: "cliente.username"
-                  },
-                  {
-                    name: "mask",
-                    rawName: "v-mask",
-                    value: "##.###.###/####-##",
-                    expression: "'##.###.###/####-##'"
+                    value: _vm.cliente.password,
+                    expression: "cliente.password"
                   }
                 ],
                 staticClass:
                   "rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none",
                 attrs: {
-                  type: "text",
-                  autofocus: "",
-                  id: "cnpj",
-                  placeholder: "CNPJ"
+                  type: "password",
+                  id: "password",
+                  placeholder: "Senha"
                 },
-                domProps: { value: _vm.cliente.username },
+                domProps: { value: _vm.cliente.password },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.cliente, "username", $event.target.value)
+                    _vm.$set(_vm.cliente, "password", $event.target.value)
                   }
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "mt-1 text-sm" },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.cliente.password,
-                      expression: "cliente.password"
-                    }
-                  ],
-                  staticClass:
-                    "rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none",
-                  attrs: {
-                    type: "password",
-                    id: "password",
-                    placeholder: "Senha"
+              }),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "redefinir-senha" } }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex justify-end text-xs my-3 text-blue-200 hover:underline"
                   },
-                  domProps: { value: _vm.cliente.password },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.cliente, "password", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: "redefinir-senha" } }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex justify-end text-xs my-3 text-blue-200 hover:underline"
-                    },
-                    [_c("p", [_vm._v("Esqueceu a senha?")])]
-                  )
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass:
-                  "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.login(_vm.cliente)
-                  }
+                  [_c("p", [_vm._v("Esqueceu a senha?")])]
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full text-center text-green-900 text-lg font-bold bg-gradient-to-r from-green-600 to-yellow-300 hover:bg-gradient-to-l hover:from-yellow-300 hover:to-green-600 p-3 rounded-md",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.login(_vm.cliente)
                 }
-              },
-              [_vm._v("\n          Entrar\n        ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "mt-2 text-center text-md font-light text-white" },
-              [
-                _vm._v("\n          Não tem uma conta?\n          "),
-                _c("router-link", { attrs: { to: "cadastro-cliente" } }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "font-light text-md text-green-400 hover:text-green-600"
-                    },
-                    [_vm._v("\n              Criar\n            ")]
-                  )
-                ])
-              ],
-              1
-            )
-          ]
-        )
-      ])
+              }
+            },
+            [_vm._v("\n        Entrar\n      ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "mt-2 text-center text-md font-light text-white" },
+            [
+              _vm._v("\n        Não tem uma conta?\n        "),
+              _c("router-link", { attrs: { to: "cadastro-cliente" } }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "font-light text-md text-green-400 hover:text-green-600"
+                  },
+                  [_vm._v("\n            Criar\n          ")]
+                )
+              ])
+            ],
+            1
+          )
+        ]
+      )
     ])
   ])
 }
