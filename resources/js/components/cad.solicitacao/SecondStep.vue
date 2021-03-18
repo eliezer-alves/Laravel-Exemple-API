@@ -132,7 +132,151 @@
               </div>
             </div>
             <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="agente">Agente</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="agente"
+                  name="agente"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  placeholder="Agente"
+                  v-model.trim="$v.solicitacao.agente.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.agente.$dirty &&
+                  !$v.solicitacao.agente.required
+                "
+              >
+                Agente é obrigatório.
+              </div>
+            </div>
+            <div
+              class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="cosif">Classificação COSIF</label>
+              </div>
+              <div
+                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
+              >
+                <select
+                  id="cosif"
+                  name="cosif"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="$v.solicitacao.cosif.$model"
+                >
+                  <option value="1" selected>Opção 1</option>
+                  <option value="2" selected>Opção 2</option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.cosif.$dirty && !$v.solicitacao.cosif.required
+                "
+              >
+                COSIF é obrigatório.
+              </div>
+            </div>
+            <div
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="capital_social">Capital Social</label>
+              </div>
+              <div
+                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
+              >
+                <input
+                  id="capital_social"
+                  name="capital_social"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-money="money"
+                  :value="$v.solicitacao.capital_social.$model"
+                  @input="setCapitalSocial($event.target.value)"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.capital_social.$dirty &&
+                  !$v.solicitacao.capital_social.required
+                "
+              >
+                Capital Social é obrigatório.
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.capital_social.$dirty &&
+                  !$v.solicitacao.capital_social.minValue
+                "
+              >
+                Valor mínimo de R$
+                {{
+                  $v.solicitacao.capital_social.$params.minValue.min / 100
+                }},00.
+              </div>
+            </div>
+            <div
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="faturamento_anual">Faturamento Anual</label>
+              </div>
+              <div
+                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
+              >
+                <input
+                  id="faturamento_anual"
+                  name="faturamento_anual"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  type="text"
+                  v-money="money"
+                  :value="$v.solicitacao.faturamento_anual.$model"
+                  @input="setFaturamentoAnual($event.target.value)"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.faturamento_anual.$dirty &&
+                  !$v.solicitacao.faturamento_anual.required
+                "
+              >
+                Faturamento Anual é obrigatório.
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.faturamento_anual.$dirty &&
+                  !$v.solicitacao.faturamento_anual.minValue
+                "
+              >
+                Valor mínimo de R$
+                {{
+                  $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
+                }},00.
+              </div>
+            </div>
+            <div
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -171,6 +315,37 @@
                 {{
                   $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
                 }},00.
+              </div>
+            </div>
+            <div
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="porte">Porte</label>
+              </div>
+              <div
+                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
+              >
+                <select
+                  id="porte"
+                  name="porte"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="$v.solicitacao.porte.$model"
+                >
+                  <option value="" selected>--</option>
+                  <option value="0">Opção 1</option>
+                  <option value="1">Opção 2</option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.porte.$dirty && !$v.solicitacao.porte.required
+                "
+              >
+                Porte é obrigatório.
               </div>
             </div>
             <div
@@ -460,7 +635,7 @@
               </div>
             </div>
             <div
-              class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -475,6 +650,36 @@
                   type="text"
                   v-model="$v.solicitacao.complemento.$model"
                 />
+              </div>
+            </div>
+            <div
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="tipo_imovel">Tipo de Imóvel</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <select
+                  id="tipo_imovel"
+                  name="tipo_imovel"
+                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  v-model="$v.solicitacao.tipo_imovel.$model"
+                >
+                  <option value="">--</option>
+                  <option value="1">Casa</option>
+                  <option value="2">Apartamento</option>
+                </select>
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.tipo_imovel.$dirty &&
+                  !$v.solicitacao.tipo_imovel.required
+                "
+              >
+                Tipo de Imóvel é obrigatório.
               </div>
             </div>
             <div
@@ -516,7 +721,7 @@
               </div>
             </div>
             <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -643,6 +848,11 @@ export default {
       cnpj: { required },
       nome_fantasia: { required },
       inscricao_estadual: { required },
+      agente: { required },
+      cosif: { required },
+      porte: { required },
+      faturamento_anual: { required, minValue: minValue(100) },
+      capital_social: { required, minValue: minValue(100) },
       rendimento_mensal: { required, minValue: minValue(100) },
       id_atividade_comercial: { required },
       tipo_empresa: { required },
@@ -654,6 +864,7 @@ export default {
       logradouro: { required },
       numero: { required },
       complemento: {},
+      tipo_imovel: { required },
       telefone: { required, minLength: minLength(10) },
       email: { required, email },
     },
@@ -669,6 +880,17 @@ export default {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.inscricao_estadual = value;
       this.$v.solicitacao.inscricao_estadual.$touch();
+    },
+    setCapitalSocial(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.capital_social = value;
+      this.$v.solicitacao.capital_social.$touch();
+    },
+
+    setFaturamentoAnual(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.rendimento_anual = value;
+      this.$v.solicitacao.rendimento_anual.$touch();
     },
     setRendimentoMensal(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -741,7 +963,6 @@ export default {
       this.solicitacao.telefone = value;
       this.$v.solicitacao.telefone.$touch();
     },
-
     addDocElement() {
       this.solicitacao.docs.push({
         file: "",
@@ -753,7 +974,6 @@ export default {
       const index = this.solicitacao.docs.findIndex((f) => f.id === id);
       this.solicitacao.docs.splice(index, 1);
     },
-
     validateFields() {
       if (!this.$v.$invalid) {
         this.$router.push("solicitacao-3");

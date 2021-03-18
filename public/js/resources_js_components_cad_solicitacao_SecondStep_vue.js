@@ -1156,6 +1156,211 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1223,6 +1428,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       inscricao_estadual: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
       },
+      agente: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      cosif: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      porte: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
+      faturamento_anual: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minValue)(100)
+      },
+      capital_social: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+        minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minValue)(100)
+      },
       rendimento_mensal: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
         minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minValue)(100)
@@ -1255,6 +1477,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
       },
       complemento: {},
+      tipo_imovel: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      },
       telefone: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
         minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(10)
@@ -1276,6 +1501,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.inscricao_estadual = value;
       this.$v.solicitacao.inscricao_estadual.$touch();
+    },
+    setCapitalSocial: function setCapitalSocial(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.capital_social = value;
+      this.$v.solicitacao.capital_social.$touch();
+    },
+    setFaturamentoAnual: function setFaturamentoAnual(value) {
+      value = value.replace(/[^\d]+/g, "");
+      this.solicitacao.rendimento_anual = value;
+      this.$v.solicitacao.rendimento_anual.$touch();
     },
     setRendimentoMensal: function setRendimentoMensal(value) {
       value = value.replace(/[^\d]+/g, "");
@@ -2944,7 +3179,332 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "agente" } }, [
+                        _vm._v("Agente")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.$v.solicitacao.agente.$model,
+                            expression: "$v.solicitacao.agente.$model",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "agente",
+                          name: "agente",
+                          type: "text",
+                          placeholder: "Agente"
+                        },
+                        domProps: { value: _vm.$v.solicitacao.agente.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.solicitacao.agente,
+                              "$model",
+                              $event.target.value.trim()
+                            )
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.agente.$dirty &&
+                  !_vm.$v.solicitacao.agente.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Agente é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "cosif" } }, [
+                        _vm._v("Classificação COSIF")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.$v.solicitacao.cosif.$model,
+                              expression: "$v.solicitacao.cosif.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: { id: "cosif", name: "cosif" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.cosif,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { value: "1", selected: "" } },
+                            [_vm._v("Opção 1")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "2", selected: "" } },
+                            [_vm._v("Opção 2")]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.cosif.$dirty &&
+                  !_vm.$v.solicitacao.cosif.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              COSIF é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "capital_social" } }, [
+                        _vm._v("Capital Social")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "money",
+                            rawName: "v-money",
+                            value: _vm.money,
+                            expression: "money"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "capital_social",
+                          name: "capital_social",
+                          type: "text"
+                        },
+                        domProps: {
+                          value: _vm.$v.solicitacao.capital_social.$model
+                        },
+                        on: {
+                          input: function($event) {
+                            return _vm.setCapitalSocial($event.target.value)
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.capital_social.$dirty &&
+                  !_vm.$v.solicitacao.capital_social.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Capital Social é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.capital_social.$dirty &&
+                  !_vm.$v.solicitacao.capital_social.minValue
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Valor mínimo de R$\n              " +
+                            _vm._s(
+                              _vm.$v.solicitacao.capital_social.$params.minValue
+                                .min / 100
+                            ) +
+                            ",00.\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "faturamento_anual" } }, [
+                        _vm._v("Faturamento Anual")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "money",
+                            rawName: "v-money",
+                            value: _vm.money,
+                            expression: "money"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "faturamento_anual",
+                          name: "faturamento_anual",
+                          type: "text"
+                        },
+                        domProps: {
+                          value: _vm.$v.solicitacao.faturamento_anual.$model
+                        },
+                        on: {
+                          input: function($event) {
+                            return _vm.setFaturamentoAnual($event.target.value)
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.faturamento_anual.$dirty &&
+                  !_vm.$v.solicitacao.faturamento_anual.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Faturamento Anual é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.faturamento_anual.$dirty &&
+                  !_vm.$v.solicitacao.faturamento_anual.minValue
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Valor mínimo de R$\n              " +
+                            _vm._s(
+                              _vm.$v.solicitacao.rendimento_mensal.$params
+                                .minValue.min / 100
+                            ) +
+                            ",00.\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
@@ -3010,6 +3570,95 @@ var render = function() {
                                 .minValue.min / 100
                             ) +
                             ",00.\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "porte" } }, [
+                        _vm._v("Porte")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 flex border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.$v.solicitacao.porte.$model,
+                              expression: "$v.solicitacao.porte.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: { id: "porte", name: "porte" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.porte,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "", selected: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Opção 1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("Opção 2")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.porte.$dirty &&
+                  !_vm.$v.solicitacao.porte.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Porte é obrigatório.\n            "
                         )
                       ])
                     : _vm._e()
@@ -3776,7 +4425,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
@@ -3833,6 +4482,95 @@ var render = function() {
                       })
                     ]
                   )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c("label", { attrs: { for: "tipo_imovel" } }, [
+                        _vm._v("Tipo de Imóvel")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.$v.solicitacao.tipo_imovel.$model,
+                              expression: "$v.solicitacao.tipo_imovel.$model"
+                            }
+                          ],
+                          staticClass:
+                            "p-1 px-2 outline-none w-full text-gray-800",
+                          attrs: { id: "tipo_imovel", name: "tipo_imovel" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$v.solicitacao.tipo_imovel,
+                                "$model",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("Casa")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Apartamento")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.solicitacao.tipo_imovel.$dirty &&
+                  !_vm.$v.solicitacao.tipo_imovel.required
+                    ? _c("div", { staticClass: "text-red-600" }, [
+                        _vm._v(
+                          "\n              Tipo de Imóvel é obrigatório.\n            "
+                        )
+                      ])
+                    : _vm._e()
                 ]
               ),
               _vm._v(" "),
@@ -3911,7 +4649,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
                   _c(
