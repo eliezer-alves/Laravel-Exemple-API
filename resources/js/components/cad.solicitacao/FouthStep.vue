@@ -13,6 +13,15 @@
             <div
               class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >
+              <img
+                class="mx-auto lg:w-40 w-20 mt-5"
+                src="/images/undraw_transfer_money_rywa.svg"
+                alt="Simulacao"
+              />
+            </div>
+            <div
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1 self-center"
+            >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
@@ -29,7 +38,7 @@
               </div>
             </div>
             <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1 self-center"
             >
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
@@ -46,6 +55,7 @@
                 />
               </div>
             </div>
+
             <div
               class="lg:col-span-8 md:col-span-8 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
             >

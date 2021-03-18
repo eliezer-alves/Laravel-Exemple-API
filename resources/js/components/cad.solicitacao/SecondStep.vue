@@ -889,8 +889,8 @@ export default {
 
     setFaturamentoAnual(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.rendimento_anual = value;
-      this.$v.solicitacao.rendimento_anual.$touch();
+      this.solicitacao.faturamento_anual = value;
+      this.$v.solicitacao.faturamento_anual.$touch();
     },
     setRendimentoMensal(value) {
       value = value.replace(/[^\d]+/g, "");

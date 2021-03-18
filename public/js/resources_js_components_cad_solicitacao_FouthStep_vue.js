@@ -664,6 +664,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1755,6 +1765,23 @@ var render = function() {
                     "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
                 },
                 [
+                  _c("img", {
+                    staticClass: "mx-auto lg:w-40 w-20 mt-5",
+                    attrs: {
+                      src: "/images/undraw_transfer_money_rywa.svg",
+                      alt: "Simulacao"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1 self-center"
+                },
+                [
                   _c(
                     "div",
                     {
@@ -1798,7 +1825,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    "lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1 self-center"
                 },
                 [
                   _c(

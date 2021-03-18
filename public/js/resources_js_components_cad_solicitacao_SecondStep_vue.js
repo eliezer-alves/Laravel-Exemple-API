@@ -1509,8 +1509,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     setFaturamentoAnual: function setFaturamentoAnual(value) {
       value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.rendimento_anual = value;
-      this.$v.solicitacao.rendimento_anual.$touch();
+      this.solicitacao.faturamento_anual = value;
+      this.$v.solicitacao.faturamento_anual.$touch();
     },
     setRendimentoMensal: function setRendimentoMensal(value) {
       value = value.replace(/[^\d]+/g, "");
