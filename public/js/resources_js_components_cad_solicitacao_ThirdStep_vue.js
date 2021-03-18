@@ -1055,16 +1055,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2581,6 +2571,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.form {\r\n  background-color: #00b4
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s ease;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/ThirdStep.vue?vue&type=style&index=0&lang=css& ***!
@@ -2632,6 +2646,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socio.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -2758,15 +2802,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=40e12600& */ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=template&id=40e12600&");
 /* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Socio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Socio.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.render,
   _Socio_vue_vue_type_template_id_40e12600___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -2898,6 +2944,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Solicitacao_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Solicitacao.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Solicitacao.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Socio.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/cad.solicitacao/Socio.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -4979,7 +5038,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1 mb-1"
           },
           [
             _c("div", { staticClass: "flex flex-col" }, [
@@ -4990,8 +5049,7 @@ var render = function() {
                       name: "model",
                       rawName: "v-model",
                       value: _vm.$v.socio.politicamente_exposto.$model,
-                      expression:
-                        "\n              $v.socio.politicamente_exposto.$model\n            "
+                      expression: "$v.socio.politicamente_exposto.$model"
                     }
                   ],
                   staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
@@ -5052,78 +5110,88 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                  },
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "bg-white my-2 p-1 border border-gray-200 rounded"
-                      },
-                      [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$v.socio.politicamente_exposto_cargo.$model,
-                              expression:
-                                "\n                $v.socio.politicamente_exposto_cargo\n                  .$model\n              "
-                            }
-                          ],
+            _c("transition", { attrs: { name: "fade" } }, [
+              _vm.$v.socio.politicamente_exposto.$model
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
                           staticClass:
-                            "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                          attrs: {
-                            id: "politicamente_exposto_cargo",
-                            name: "politicamente_exposto_cargo",
-                            type: "text"
-                          },
-                          domProps: {
-                            value:
-                              _vm.$v.socio.politicamente_exposto_cargo.$model
-                          },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                            "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                        },
+                        [
+                          _c(
+                            "label",
+                            { attrs: { for: "politicamente_exposto_cargo" } },
+                            [_vm._v(" Cargo ")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "bg-white my-2 p-1 border border-gray-200 rounded"
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.$v.socio.politicamente_exposto_cargo
+                                    .$model,
+                                expression:
+                                  "$v.socio.politicamente_exposto_cargo.$model"
                               }
-                              _vm.$set(
-                                _vm.$v.socio.politicamente_exposto_cargo,
-                                "$model",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass:
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                            attrs: {
+                              id: "politicamente_exposto_cargo",
+                              name: "politicamente_exposto_cargo",
+                              type: "text"
+                            },
+                            domProps: {
+                              value:
+                                _vm.$v.socio.politicamente_exposto_cargo.$model
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.$v.socio.politicamente_exposto_cargo,
+                                  "$model",
+                                  $event.target.value
+                                )
+                              }
                             }
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
+          ],
+          1
         ),
         _vm._v(" "),
         _c(
           "div",
           {
             staticClass:
-              "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1 mb-1"
           },
           [
             _c("div", { staticClass: "flex flex-col" }, [
@@ -5135,7 +5203,7 @@ var render = function() {
                       rawName: "v-model",
                       value: _vm.$v.socio.parente_politicamente_exposto.$model,
                       expression:
-                        "\n              $v.socio.parente_politicamente_exposto\n                .$model\n            "
+                        "$v.socio.parente_politicamente_exposto.$model"
                     }
                   ],
                   staticClass: "form-checkbox h-5 w-5 text-gray-600 ml-2",
@@ -5199,61 +5267,84 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-          },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "bg-white my-2 p-1 border border-gray-200 rounded"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.$v.socio.parente_politicamente_exposto_cargo.$model,
-                      expression:
-                        "\n            $v.socio.parente_politicamente_exposto_cargo\n              .$model\n          "
-                    }
-                  ],
+        _c("transition", { attrs: { name: "fade" } }, [
+          _vm.$v.socio.parente_politicamente_exposto.$model
+            ? _c(
+                "div",
+                {
                   staticClass:
-                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                  attrs: {
-                    id: "parente_politicamente_exposto_cargo",
-                    name: "parente_politicamente_exposto_cargo",
-                    type: "text"
-                  },
-                  domProps: {
-                    value:
-                      _vm.$v.socio.parente_politicamente_exposto_cargo.$model
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.$v.socio.parente_politicamente_exposto_cargo,
-                        "$model",
-                        $event.target.value
+                    "lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          attrs: { for: "parente_politicamente_exposto_cargo" }
+                        },
+                        [_vm._v("Cargo")]
                       )
-                    }
-                  }
-                })
-              ]
-            )
-          ]
-        )
-      ]
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-white my-2 p-1 border border-gray-200 rounded"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.$v.socio.parente_politicamente_exposto_cargo
+                                .$model,
+                            expression:
+                              "$v.socio.parente_politicamente_exposto_cargo.$model"
+                          }
+                        ],
+                        staticClass:
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                        attrs: {
+                          id: "parente_politicamente_exposto_cargo",
+                          name: "parente_politicamente_exposto_cargo",
+                          type: "text"
+                        },
+                        domProps: {
+                          value:
+                            _vm.$v.socio.parente_politicamente_exposto_cargo
+                              .$model
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.socio.parente_politicamente_exposto_cargo,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            : _vm._e()
+        ])
+      ],
+      1
     ),
     _vm._v(" "),
     _c("div", { staticClass: "flex flex-row-reverse my-2" }, [
@@ -5279,42 +5370,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [
-        _c("label", { attrs: { for: "politicamente_exposto_cargo" } }, [
-          _vm._v("\n              Cargo\n            ")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-      },
-      [
-        _c("label", { attrs: { for: "parente_politicamente_exposto_cargo" } }, [
-          _vm._v("Cargo")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5639,14 +5695,16 @@ var render = function() {
                         directives: [
                           {
                             name: "model",
-                            rawName: "v-model",
+                            rawName: "v-model.number",
                             value: _vm.$v.solicitacao.rg_representante.$model,
-                            expression: "$v.solicitacao.rg_representante.$model"
+                            expression:
+                              "$v.solicitacao.rg_representante.$model",
+                            modifiers: { number: true }
                           }
                         ],
                         staticClass:
                           "p-1 px-2 appearance-none outline-none w-full text-gray-800",
-                        attrs: { id: "rg_representante", type: "text" },
+                        attrs: { id: "rg_representante", type: "number" },
                         domProps: {
                           value: _vm.$v.solicitacao.rg_representante.$model
                         },
@@ -5658,8 +5716,11 @@ var render = function() {
                             _vm.$set(
                               _vm.$v.solicitacao.rg_representante,
                               "$model",
-                              $event.target.value
+                              _vm._n($event.target.value)
                             )
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
                           }
                         }
                       })

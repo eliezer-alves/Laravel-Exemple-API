@@ -1128,14 +1128,14 @@ var render = function() {
         "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
     },
     [
-      _c("router-link", { attrs: { to: { name: "login" } } }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
-          },
-          [
+      _c(
+        "div",
+        {
+          staticClass:
+            "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
+        },
+        [
+          _c("router-link", { attrs: { to: { name: "login" } } }, [
             _c("img", {
               staticClass: "w-72",
               attrs: { src: "/images/logoAgilVertical.png", alt: "" }
@@ -1149,9 +1149,10 @@ var render = function() {
               },
               [_vm._v("\n        Capital de Giro\n      ")]
             )
-          ]
-        )
-      ]),
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",

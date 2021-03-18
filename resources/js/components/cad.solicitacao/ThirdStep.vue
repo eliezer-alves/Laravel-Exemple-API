@@ -121,8 +121,8 @@
                 <input
                   id="rg_representante"
                   class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                  type="text"
-                  v-model="$v.solicitacao.rg_representante.$model"
+                  type="number"
+                  v-model.number="$v.solicitacao.rg_representante.$model"
                 />
               </div>
               <div

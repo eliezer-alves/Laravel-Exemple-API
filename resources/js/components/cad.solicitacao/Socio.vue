@@ -537,7 +537,7 @@
         </div>
       </div>
       <div
-        class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1 mb-1"
       >
         <div class="flex flex-col">
           <label class="inline-flex items-center mt-3">
@@ -546,25 +546,23 @@
               name="politicamente_exposto"
               type="checkbox"
               class="form-checkbox h-5 w-5 text-gray-600 ml-2"
-              v-model="
-                $v.socio.politicamente_exposto.$model
-              "
+              v-model="$v.socio.politicamente_exposto.$model"
             />
             <span class="ml-2 text-gray-700">
               Pessoa Politicamente Exposta
             </span>
           </label>
         </div>
-        <div class="grid lg:grid-cols-12 md:grid-cols-12 grid-flow-col">
+
+        <transition name="fade">
           <div
+            v-if="$v.socio.politicamente_exposto.$model"
             class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
             <div
               class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <label for="politicamente_exposto_cargo">
-                Cargo
-              </label>
+              <label for="politicamente_exposto_cargo"> Cargo </label>
             </div>
             <div class="bg-white my-2 p-1 border border-gray-200 rounded">
               <input
@@ -572,17 +570,14 @@
                 name="politicamente_exposto_cargo"
                 class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                 type="text"
-                v-model="
-                  $v.socio.politicamente_exposto_cargo
-                    .$model
-                "
+                v-model="$v.socio.politicamente_exposto_cargo.$model"
               />
             </div>
           </div>
-        </div>
+        </transition>
       </div>
       <div
-        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+        class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1 mb-1"
       >
         <div class="flex flex-col">
           <label class="inline-flex items-center mt-3">
@@ -591,10 +586,7 @@
               name="parente_politicamente_exposto"
               type="checkbox"
               class="form-checkbox h-5 w-5 text-gray-600 ml-2"
-              v-model="
-                $v.socio.parente_politicamente_exposto
-                  .$model
-              "
+              v-model="$v.socio.parente_politicamente_exposto.$model"
             />
             <span class="ml-2 text-gray-700">
               Parente Politicamente Exposto
@@ -603,29 +595,27 @@
         </div>
       </div>
 
-      <div
-        class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-      >
+      <transition name="fade">
         <div
-          class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+          v-if="$v.socio.parente_politicamente_exposto.$model"
+          class="lg:col-span-12 md:col-span-12 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
         >
-          <label for="parente_politicamente_exposto_cargo"
-            >Cargo</label
+          <div
+            class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
           >
+            <label for="parente_politicamente_exposto_cargo">Cargo</label>
+          </div>
+          <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+            <input
+              id="parente_politicamente_exposto_cargo"
+              name="parente_politicamente_exposto_cargo"
+              class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+              type="text"
+              v-model="$v.socio.parente_politicamente_exposto_cargo.$model"
+            />
+          </div>
         </div>
-        <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-          <input
-            id="parente_politicamente_exposto_cargo"
-            name="parente_politicamente_exposto_cargo"
-            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-            type="text"
-            v-model="
-              $v.socio.parente_politicamente_exposto_cargo
-                .$model
-            "
-          />
-        </div>
-      </div>
+      </transition>
     </div>
     <div class="flex flex-row-reverse my-2">
       <button
@@ -869,4 +859,12 @@ export default {
 </script>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
