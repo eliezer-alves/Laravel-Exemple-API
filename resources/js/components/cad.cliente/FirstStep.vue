@@ -1,5 +1,4 @@
 <template>
-  <transition name="fade">
     <cadastro-cliente>
       <div class="py-1">
         <span class="px-1 text-sm font-bold text-white">CNPJ</span>
@@ -132,7 +131,7 @@
         </svg>
       </div>
     </cadastro-cliente>
-  </transition>
+  
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -193,12 +192,6 @@ export default {
   background-color: #30615f;
   background-size: 900px;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, 
-.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+
+
 </style>

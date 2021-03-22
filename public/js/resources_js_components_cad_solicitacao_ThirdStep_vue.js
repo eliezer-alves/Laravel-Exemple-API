@@ -5449,7 +5449,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "nome_representante",
                           placeholder: "Nome do Representante"
@@ -5524,7 +5524,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "cpf_representante",
                           placeholder: "###.###.###-##",
@@ -5601,7 +5601,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "uf_rg_representante",
                             name: "uf_rg_representante"
@@ -5703,7 +5703,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: { id: "rg_representante", type: "number" },
                         domProps: {
                           value: _vm.$v.solicitacao.rg_representante.$model
@@ -5778,7 +5778,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: { id: "nome_mae_representante", type: "text" },
                         domProps: {
                           value:
@@ -5858,7 +5858,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "estado_civil_representante",
                             name: "estado_civil_representante"
@@ -5964,7 +5964,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "sexo_representante",
                             name: "sexo_representante"
@@ -6061,7 +6061,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "profissao_representante",
                             name: "profissao_representante"
@@ -6163,7 +6163,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "renda_mensal_representante",
                           type: "text"
@@ -6260,7 +6260,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "cep_representante" },
                             domProps: {
                               value: _vm.$v.solicitacao.cep_representante.$model
@@ -6337,7 +6337,7 @@ var render = function() {
                                 }
                               ],
                               staticClass:
-                                "p-1 px-2 outline-none w-full text-gray-800",
+                                "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                               attrs: {
                                 id: "uf_representante",
                                 name: "uf_representante"
@@ -6444,7 +6444,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "cidade_representante", type: "text" },
                             domProps: {
                               value:
@@ -6523,7 +6523,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "bairro_representante", type: "text" },
                             domProps: {
                               value:
@@ -6605,7 +6605,7 @@ var render = function() {
                                 }
                               ],
                               staticClass:
-                                "p-1 px-2 outline-none w-full text-gray-800",
+                                "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                               attrs: {
                                 id: "id_tipo_logradouro_representante",
                                 name: "id_tipo_logradouro_representante"
@@ -6719,7 +6719,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: {
                               id: "logradouro_representante",
                               type: "text"
@@ -6802,7 +6802,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: {
                               id: "numero_representante",
                               type: "number"
@@ -6884,7 +6884,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: {
                               id: "complemento_representante",
                               type: "text"
@@ -6955,7 +6955,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "celular_representante" },
                             domProps: {
                               value:
@@ -7034,7 +7034,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "email_representante", type: "email" },
                             domProps: {
                               value:
@@ -7225,7 +7225,7 @@ var render = function() {
                                         }
                                       ],
                                       staticClass:
-                                        "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                        "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                                       attrs: {
                                         id:
                                           "representante_politicamente_exposto_cargo",
@@ -7421,7 +7421,7 @@ var render = function() {
                                     }
                                   ],
                                   staticClass:
-                                    "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                    "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                                   attrs: {
                                     id:
                                       "parente_representante_politicamente_exposto_cargo",
@@ -7530,7 +7530,7 @@ var render = function() {
                     staticClass:
                       "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
                   },
-                  [_vm._v("\n            Finalizar\n          ")]
+                  [_vm._v("\n            Cancelar\n          ")]
                 )
               ]),
               _vm._v(" "),

@@ -2925,7 +2925,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "razao_social",
                           type: "text",
@@ -2997,7 +2997,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "cnpj",
                           name: "cnpj",
@@ -3069,7 +3069,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "nome_fantasia",
                           name: "nome_fantasia",
@@ -3146,7 +3146,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "inscricao_estadual",
                           name: "inscricao_estadual",
@@ -3213,7 +3213,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "agente",
                           name: "agente",
@@ -3290,7 +3290,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: { id: "cosif", name: "cosif" },
                           on: {
                             change: function($event) {
@@ -3377,7 +3377,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "capital_social",
                           name: "capital_social",
@@ -3457,7 +3457,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "faturamento_anual",
                           name: "faturamento_anual",
@@ -3537,7 +3537,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: { id: "rendimento_mensal", type: "text" },
                         domProps: {
                           value: _vm.$v.solicitacao.rendimento_mensal.$model
@@ -3615,7 +3615,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: { id: "porte", name: "porte" },
                           on: {
                             change: function($event) {
@@ -3703,7 +3703,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "id_atividade_comercial",
                             name: "id_atividade_comercial"
@@ -3807,7 +3807,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: { id: "tipo_empresa", name: "tipo_empresa" },
                           on: {
                             change: function($event) {
@@ -3907,7 +3907,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "cep",
                           name: "cep",
@@ -3970,7 +3970,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: { id: "uf", name: "uf" },
                           on: {
                             change: function($event) {
@@ -4067,7 +4067,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "cidade",
                           name: "cidade",
@@ -4139,7 +4139,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "bairro",
                           name: "bairro",
@@ -4214,7 +4214,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: {
                             id: "tipo_logradouro",
                             name: "tipo_logradouro"
@@ -4318,7 +4318,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "logradouro",
                           name: "logradouro",
@@ -4391,7 +4391,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: { id: "numero", name: "numero", type: "number" },
                         domProps: { value: _vm.$v.solicitacao.numero.$model },
                         on: {
@@ -4458,7 +4458,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "complemento",
                           name: "complemento",
@@ -4524,7 +4524,7 @@ var render = function() {
                             }
                           ],
                           staticClass:
-                            "p-1 px-2 outline-none w-full text-gray-800",
+                            "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                           attrs: { id: "tipo_imovel", name: "tipo_imovel" },
                           on: {
                             change: function($event) {
@@ -4611,7 +4611,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: {
                           id: "telefone",
                           name: "telefone",
@@ -4682,7 +4682,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                         attrs: { id: "email", name: "email", type: "email" },
                         domProps: { value: _vm.$v.solicitacao.email.$model },
                         on: {
@@ -4761,7 +4761,7 @@ var render = function() {
                 staticClass:
                   "text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
               },
-              [_vm._v("\n          Finalizar\n        ")]
+              [_vm._v("\n          Cancelar\n        ")]
             ),
             _vm._v(" "),
             _c(

@@ -27,7 +27,7 @@
                   <input
                     id="tac"
                     name="tac"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
                     :value="$v.solicitacao.tac.$model"
                     v-money="money"
                     @input="setTac($event.target.value)"
@@ -47,7 +47,7 @@
                   <input
                     id="taxa_juros"
                     name="taxa_juros"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
                     :value="$v.solicitacao.taxa_juros.$model"
                     v-money="money"
                     @input="setTaxaJuros($event.target.value)"
@@ -68,7 +68,7 @@
                     id="valor_solicitado"
                     name="valor_solicitado"
                     placeholder="Nome da Empresa"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white form__input"
                     :value="$v.solicitacao.valor_solicitado.$model"
                     v-money="money"
                     @input="setValorSolicitado($event.target.value)"
@@ -107,7 +107,7 @@
                   <input
                     id="parcelas"
                     name="parcelas"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="number"
                     v-model.number="$v.solicitacao.parcelas.$model"
                   />
@@ -145,7 +145,7 @@
                   <input
                     id="data_geracao_proposta"
                     name="data_geracao_proposta"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
                     type="date"
                     v-model="$v.solicitacao.data_geracao_proposta.$model"
                   />
@@ -172,7 +172,7 @@
                   <input
                     id="primeiro_vencimento"
                     name="primeiro_vencimento"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
                     type="date"
                     v-model="$v.solicitacao.primeiro_vencimento.$model"
                   />
@@ -195,7 +195,7 @@
             <button
               class="text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
             >
-              Finalizar
+              Cancelar
             </button>
           </router-link>
           <div class="flex-auto flex flex-row-reverse">

@@ -55,6 +55,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -546,8 +550,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 
@@ -792,7 +794,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\n.fade-enter-active,\r\n.fade-leave-active {\r\n  transition: opacity 0.5s;\n}\n.fade-enter, \r\n.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\r\n  opacity: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.login {\r\n  -webkit-font-smoothing: antialiased;\r\n  background-image: url(\"/images/texturaBackgroundAgil.png\");\r\n  background-color: #30615f;\r\n  background-size: 900px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1125,27 +1127,24 @@ var render = function() {
     "div",
     {
       staticClass:
-        "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 py-5 xl:w-7/12 lg:w-7/12 md:w-7/12 w-11/12 mx-auto mt-20"
+        "grid lg:grid-cols-3 grid-cols-1 px-2 py-5 mx-auto lg:mt-20 mt-10 xl:w-9/12 "
     },
     [
       _c(
         "div",
-        {
-          staticClass:
-            "lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"
-        },
+        { staticClass: "lg:mt-32 lg:ml-32 mx-auto my-2 col-span-1" },
         [
           _c("router-link", { attrs: { to: { name: "login" } } }, [
             _c("img", {
-              staticClass: "w-72",
-              attrs: { src: "/images/logoAgilVertical.png", alt: "" }
+              staticClass: "xl:w-full lg:w-full md:w-72 w-56",
+              attrs: { src: "/images/logoAgilVertical.png", alt: "agil" }
             }),
             _vm._v(" "),
             _c(
               "h1",
               {
                 staticClass:
-                  "mt-4 lg:text-3xl md:text-lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
+                  "mt-4 lg:text-3xl md:text-2lg text-center text-3xl text-gradient bg-gradient-to-r from-gray-300 via-white to-gray-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-teal-600"
               },
               [_vm._v("\n        Capital de Giro\n      ")]
             )
@@ -1158,7 +1157,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "xl:w-7/12 lg:w-7/12 md:w-7/12 w-9/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-40 shadow-md rounded-md pt-1 pb-3"
+            "xl:w-7/12 lg:w-7/12 md:w-7/12 mx-auto lg:mt-12 md:mt-12 sm:mt-12 m2-2 lg:col-span-2 md:col-span-2 px-5 bg-white bg-opacity-40 shadow-md rounded-md pt-1 pb-3"
         },
         [
           _c(
@@ -1598,467 +1597,449 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "transition",
-    { attrs: { name: "fade" } },
-    [
-      _c("cadastro-cliente", [
-        _c("div", { staticClass: "py-1" }, [
-          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-            _vm._v("CEP")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "mask",
-                rawName: "v-mask",
-                value: "#####-###",
-                expression: "'#####-###'"
-              }
-            ],
-            staticClass:
-              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-            attrs: {
-              id: "cep",
-              name: "cep",
-              placeholder: "37750-000",
-              type: "text"
-            },
-            domProps: { value: _vm.$v.cliente.cep.$model },
-            on: {
-              blur: function($event) {
-                return _vm.setCepCliente($event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _vm.$v.cliente.cep.$dirty && !_vm.$v.cliente.cep.required
-            ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        CEP Inválido.\n      ")
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1" }, [
-          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-            _vm._v("UF")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
+  return _c("cadastro-cliente", [
+    _c("div", { staticClass: "py-1" }, [
+      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+        _vm._v("CEP")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "mask",
+            rawName: "v-mask",
+            value: "#####-###",
+            expression: "'#####-###'"
+          }
+        ],
+        staticClass:
+          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+        attrs: {
+          id: "cep",
+          name: "cep",
+          placeholder: "37750-000",
+          type: "text"
+        },
+        domProps: { value: _vm.$v.cliente.cep.$model },
+        on: {
+          blur: function($event) {
+            return _vm.setCepCliente($event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.$v.cliente.cep.$dirty && !_vm.$v.cliente.cep.required
+        ? _c("div", { staticClass: "text-red-600" }, [
+            _vm._v("\n      CEP Inválido.\n    ")
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1" }, [
+      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+        _vm._v("UF")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
             {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.$v.cliente.uf.$model,
-                  expression: "$v.cliente.uf.$model"
-                }
-              ],
-              staticClass:
-                "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-              attrs: { id: "uf", name: "uf" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.$v.cliente.uf,
-                    "$model",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
-              _vm._v(" "),
-              _vm._l(_vm.dominios.uf, function(uf) {
-                return _c(
-                  "option",
-                  { key: uf.codigo, domProps: { value: uf.codigo } },
-                  [_vm._v("\n          " + _vm._s(uf.descricao) + "\n        ")]
-                )
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _vm.$v.cliente.uf.$dirty && !_vm.$v.cliente.uf.required
-            ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        UF Inválida.\n      ")
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1" }, [
-          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-            _vm._v("Cidade")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.$v.cliente.cidade.$model,
-                expression: "$v.cliente.cidade.$model"
-              }
-            ],
-            staticClass:
-              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-            attrs: { id: "cidade", name: "cidade", type: "text" },
-            domProps: { value: _vm.$v.cliente.cidade.$model },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.$v.cliente.cidade, "$model", $event.target.value)
-              }
+              name: "model",
+              rawName: "v-model",
+              value: _vm.$v.cliente.uf.$model,
+              expression: "$v.cliente.uf.$model"
             }
-          }),
-          _vm._v(" "),
-          _vm.$v.cliente.cidade.$dirty && !_vm.$v.cliente.cidade.required
-            ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        Cidade Inválida.\n      ")
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1" }, [
-          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-            _vm._v("Bairro")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.$v.cliente.bairro.$model,
-                expression: "$v.cliente.bairro.$model"
-              }
-            ],
-            staticClass:
-              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-            attrs: { id: "bairro", name: "bairro", type: "text" },
-            domProps: { value: _vm.$v.cliente.bairro.$model },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.$v.cliente.bairro, "$model", $event.target.value)
-              }
+          ],
+          staticClass:
+            "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+          attrs: { id: "uf", name: "uf" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.$v.cliente.uf,
+                "$model",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
             }
-          }),
+          }
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
           _vm._v(" "),
-          _vm.$v.cliente.bairro.$dirty && !_vm.$v.cliente.bairro.required
-            ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        Bairro Inválido.\n      ")
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1" }, [
-          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-            _vm._v("Tipo de Logradouro")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
+          _vm._l(_vm.dominios.uf, function(uf) {
+            return _c(
+              "option",
+              { key: uf.codigo, domProps: { value: uf.codigo } },
+              [_vm._v("\n        " + _vm._s(uf.descricao) + "\n      ")]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm.$v.cliente.uf.$dirty && !_vm.$v.cliente.uf.required
+        ? _c("div", { staticClass: "text-red-600" }, [
+            _vm._v("\n      UF Inválida.\n    ")
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1" }, [
+      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+        _vm._v("Cidade")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.$v.cliente.cidade.$model,
+            expression: "$v.cliente.cidade.$model"
+          }
+        ],
+        staticClass:
+          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+        attrs: { id: "cidade", name: "cidade", type: "text" },
+        domProps: { value: _vm.$v.cliente.cidade.$model },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.$v.cliente.cidade, "$model", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.$v.cliente.cidade.$dirty && !_vm.$v.cliente.cidade.required
+        ? _c("div", { staticClass: "text-red-600" }, [
+            _vm._v("\n      Cidade Inválida.\n    ")
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1" }, [
+      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+        _vm._v("Bairro")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.$v.cliente.bairro.$model,
+            expression: "$v.cliente.bairro.$model"
+          }
+        ],
+        staticClass:
+          "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+        attrs: { id: "bairro", name: "bairro", type: "text" },
+        domProps: { value: _vm.$v.cliente.bairro.$model },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.$v.cliente.bairro, "$model", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.$v.cliente.bairro.$dirty && !_vm.$v.cliente.bairro.required
+        ? _c("div", { staticClass: "text-red-600" }, [
+            _vm._v("\n      Bairro Inválido.\n    ")
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1" }, [
+      _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+        _vm._v("Tipo de Logradouro")
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
             {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.$v.cliente.id_tipo_logradouro.$model,
-                  expression: "$v.cliente.id_tipo_logradouro.$model"
-                }
-              ],
-              staticClass:
-                "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-              attrs: { id: "id_tipo_logradouro", name: "id_tipo_logradouro" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.$v.cliente.id_tipo_logradouro,
-                    "$model",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
-              _vm._v(" "),
-              _vm._l(_vm.dominios.tipoLogradouro, function(tipo_logradouro) {
-                return _c(
-                  "option",
-                  {
-                    key: tipo_logradouro.id_tipo_logradouro,
-                    domProps: { value: tipo_logradouro.id_tipo_logradouro }
-                  },
-                  [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(tipo_logradouro.descricao) +
-                        "\n        "
-                    )
-                  ]
-                )
-              })
-            ],
-            2
-          ),
+              name: "model",
+              rawName: "v-model",
+              value: _vm.$v.cliente.id_tipo_logradouro.$model,
+              expression: "$v.cliente.id_tipo_logradouro.$model"
+            }
+          ],
+          staticClass:
+            "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+          attrs: { id: "id_tipo_logradouro", name: "id_tipo_logradouro" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.$v.cliente.id_tipo_logradouro,
+                "$model",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("--")]),
           _vm._v(" "),
-          _vm.$v.cliente.id_tipo_logradouro.$dirty &&
-          !_vm.$v.cliente.id_tipo_logradouro.required
-            ? _c("div", { staticClass: "text-red-600" }, [
-                _vm._v("\n        Tipo de Logradouro Inválido.\n      ")
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1 flex" }, [
-          _c(
-            "div",
-            { staticClass: "flex-col w-full mr-1" },
-            [
-              _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-                _vm._v("Logradouro")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model.trim",
-                    value: _vm.$v.cliente.logradouro.$model,
-                    expression: "$v.cliente.logradouro.$model",
-                    modifiers: { trim: true }
-                  }
-                ],
-                staticClass:
-                  "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                attrs: { id: "logradouro", name: "logradouro", type: "text" },
-                domProps: { value: _vm.$v.cliente.logradouro.$model },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.$v.cliente.logradouro,
-                      "$model",
-                      $event.target.value.trim()
-                    )
-                  },
-                  blur: function($event) {
-                    return _vm.$forceUpdate()
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.$v.cliente.logradouro.$dirty &&
-              !_vm.$v.cliente.logradouro.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n          Logradouro Inválido.\n        ")
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._l(_vm.errors.logradouro, function(logradouro) {
-                return _c(
-                  "span",
-                  {
-                    key: logradouro,
-                    staticClass: "px-1 text-sm font-semibold text-red-600"
-                  },
-                  [_vm._v(_vm._s(logradouro))]
-                )
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex-col" },
-            [
-              _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-                _vm._v("Número")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.$v.cliente.numero.$model,
-                    expression: "$v.cliente.numero.$model"
-                  }
-                ],
-                staticClass:
-                  "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                attrs: { id: "numero", name: "numero", type: "number" },
-                domProps: { value: _vm.$v.cliente.numero.$model },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.$v.cliente.numero,
-                      "$model",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.$v.cliente.numero.$dirty && !_vm.$v.cliente.numero.required
-                ? _c("div", { staticClass: "text-red-600" }, [
-                    _vm._v("\n          Número Inválido.\n        ")
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._l(_vm.errors.numero, function(numero) {
-                return _c(
-                  "span",
-                  {
-                    key: numero,
-                    staticClass: "px-1 text-sm font-semibold text-red-600"
-                  },
-                  [_vm._v(_vm._s(numero))]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-1 flex" }, [
-          _c(
-            "div",
-            { staticClass: "flex-col w-full mr-1" },
-            [
-              _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
-                _vm._v("Complemento")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.$v.cliente.complemento.$model,
-                    expression: "$v.cliente.complemento.$model"
-                  }
-                ],
-                staticClass:
-                  "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
-                attrs: { id: "complemento", name: "complemento", type: "text" },
-                domProps: { value: _vm.$v.cliente.complemento.$model },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.$v.cliente.complemento,
-                      "$model",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.errors.complemento, function(complemento) {
-                return _c(
-                  "span",
-                  {
-                    key: complemento,
-                    staticClass: "px-1 text-sm font-semibold text-red-600"
-                  },
-                  [_vm._v(_vm._s(complemento))]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex justify-between" },
-          [
-            _c(
-              "router-link",
-              { attrs: { to: { name: "cadastro-cliente-2" } } },
+          _vm._l(_vm.dominios.tipoLogradouro, function(tipo_logradouro) {
+            return _c(
+              "option",
+              {
+                key: tipo_logradouro.id_tipo_logradouro,
+                domProps: { value: tipo_logradouro.id_tipo_logradouro }
+              },
               [
-                _c(
-                  "svg",
-                  {
-                    staticClass:
-                      "font-bold text-white hover:text-teal-600 w-12",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      fill: "none",
-                      viewBox: "0 0 24 24",
-                      stroke: "currentColor"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                        "stroke-width": "2",
-                        d: "M7 16l-4-4m0 0l4-4m-4 4h18"
-                      }
-                    })
-                  ]
+                _vm._v(
+                  "\n        " + _vm._s(tipo_logradouro.descricao) + "\n      "
                 )
               ]
             )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _vm.$v.cliente.id_tipo_logradouro.$dirty &&
+      !_vm.$v.cliente.id_tipo_logradouro.required
+        ? _c("div", { staticClass: "text-red-600" }, [
+            _vm._v("\n      Tipo de Logradouro Inválido.\n    ")
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1 flex" }, [
+      _c(
+        "div",
+        { staticClass: "flex-col w-full mr-1" },
+        [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Logradouro")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.trim",
+                value: _vm.$v.cliente.logradouro.$model,
+                expression: "$v.cliente.logradouro.$model",
+                modifiers: { trim: true }
+              }
+            ],
             staticClass:
-              "my-2 w-full text-center text-white text-lg font-bold bg-teal-600 hover:bg-teal-800 p-3 rounded-md",
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "logradouro", name: "logradouro", type: "text" },
+            domProps: { value: _vm.$v.cliente.logradouro.$model },
             on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.validateFields($event)
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.logradouro,
+                  "$model",
+                  $event.target.value.trim()
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
               }
             }
-          },
-          [_vm._v("\n      Cadastrar\n    ")]
-        )
-      ])
-    ],
-    1
-  )
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.logradouro.$dirty &&
+          !_vm.$v.cliente.logradouro.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Logradouro Inválido.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.errors.logradouro, function(logradouro) {
+            return _c(
+              "span",
+              {
+                key: logradouro,
+                staticClass: "px-1 text-sm font-semibold text-red-600"
+              },
+              [_vm._v(_vm._s(logradouro))]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex-col" },
+        [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Número")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$v.cliente.numero.$model,
+                expression: "$v.cliente.numero.$model"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "numero", name: "numero", type: "number" },
+            domProps: { value: _vm.$v.cliente.numero.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.$v.cliente.numero, "$model", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.$v.cliente.numero.$dirty && !_vm.$v.cliente.numero.required
+            ? _c("div", { staticClass: "text-red-600" }, [
+                _vm._v("\n        Número Inválido.\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.errors.numero, function(numero) {
+            return _c(
+              "span",
+              {
+                key: numero,
+                staticClass: "px-1 text-sm font-semibold text-red-600"
+              },
+              [_vm._v(_vm._s(numero))]
+            )
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-1 flex" }, [
+      _c(
+        "div",
+        { staticClass: "flex-col w-full mr-1" },
+        [
+          _c("span", { staticClass: "px-1 text-sm font-bold text-white" }, [
+            _vm._v("Complemento")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$v.cliente.complemento.$model,
+                expression: "$v.cliente.complemento.$model"
+              }
+            ],
+            staticClass:
+              "text-md block px-3 py-1 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none",
+            attrs: { id: "complemento", name: "complemento", type: "text" },
+            domProps: { value: _vm.$v.cliente.complemento.$model },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$v.cliente.complemento,
+                  "$model",
+                  $event.target.value
+                )
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.errors.complemento, function(complemento) {
+            return _c(
+              "span",
+              {
+                key: complemento,
+                staticClass: "px-1 text-sm font-semibold text-red-600"
+              },
+              [_vm._v(_vm._s(complemento))]
+            )
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "flex justify-between" },
+      [
+        _c("router-link", { attrs: { to: { name: "cadastro-cliente-2" } } }, [
+          _c(
+            "svg",
+            {
+              staticClass: "font-bold text-white hover:text-teal-600 w-12",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "2",
+                  d: "M7 16l-4-4m0 0l4-4m-4 4h18"
+                }
+              })
+            ]
+          )
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass:
+          "my-2 w-full text-center text-white text-lg font-bold bg-teal-600 hover:bg-teal-800 p-3 rounded-md",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.validateFields($event)
+          }
+        }
+      },
+      [_vm._v("\n    Cadastrar\n  ")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

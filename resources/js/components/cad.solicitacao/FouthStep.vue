@@ -16,7 +16,7 @@
               <img
                 class="mx-auto lg:w-40 w-20 mt-5"
                 src="/images/undraw_transfer_money_rywa.svg"
-                alt="Simulacao"
+                alt="Dinheiro"
               />
             </div>
             <div
@@ -30,7 +30,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="valor_solicitado"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white opacity-70"
                   v-money="money"
                   :value="solicitacao.valor_solicitado"
                   disabled
@@ -48,7 +48,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="parcelas"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white opacity-70"
                   type="text"
                   :value="solicitacao.parcelas"
                   disabled
@@ -68,7 +68,7 @@
                 <select
                   id="banco"
                   name="banco"
-                  class="p-1 px-2 outline-none w-full text-gray-800 capitalize"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white capitalize"
                   v-model="$v.solicitacao.banco.$model"
                 >
                   <option value="">--</option>
@@ -103,7 +103,7 @@
                 <select
                   id="forma_liberacao"
                   name="forma_liberacao"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.forma_liberacao.$model"
                 >
                   <option value="">--</option>
@@ -133,7 +133,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="agencia"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'####'"
                   v-model="$v.solicitacao.agencia.$model"
                 />
@@ -159,7 +159,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="digito_agencia"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'####'"
                   v-model="$v.solicitacao.digito_agencia.$model"
                 />
@@ -185,7 +185,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="conta"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'############'"
                   v-model="$v.solicitacao.conta.$model"
                 />
@@ -210,7 +210,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="digito_conta"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'####'"
                   v-model="$v.solicitacao.digito_conta.$model"
                 />

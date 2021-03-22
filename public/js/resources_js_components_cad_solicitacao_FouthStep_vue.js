@@ -1775,7 +1775,7 @@ var render = function() {
                         staticClass: "mx-auto lg:w-40 w-20 mt-5",
                         attrs: {
                           src: "/images/undraw_transfer_money_rywa.svg",
-                          alt: "Simulacao"
+                          alt: "Dinheiro"
                         }
                       })
                     ]
@@ -1818,7 +1818,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white opacity-70",
                             attrs: { id: "valor_solicitado", disabled: "" },
                             domProps: {
                               value: _vm.solicitacao.valor_solicitado
@@ -1858,7 +1858,7 @@ var render = function() {
                         [
                           _c("input", {
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 opacity-70",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white opacity-70",
                             attrs: {
                               id: "parcelas",
                               type: "text",
@@ -1910,7 +1910,7 @@ var render = function() {
                                 }
                               ],
                               staticClass:
-                                "p-1 px-2 outline-none w-full text-gray-800 capitalize",
+                                "p-1 px-2 outline-none w-full text-gray-800 bg-white capitalize",
                               attrs: { id: "banco", name: "banco" },
                               on: {
                                 change: function($event) {
@@ -2013,7 +2013,7 @@ var render = function() {
                                 }
                               ],
                               staticClass:
-                                "p-1 px-2 outline-none w-full text-gray-800",
+                                "p-1 px-2 outline-none w-full text-gray-800 bg-white",
                               attrs: {
                                 id: "forma_liberacao",
                                 name: "forma_liberacao"
@@ -2114,7 +2114,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "agencia" },
                             domProps: {
                               value: _vm.$v.solicitacao.agencia.$model
@@ -2190,7 +2190,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "digito_agencia" },
                             domProps: {
                               value: _vm.$v.solicitacao.digito_agencia.$model
@@ -2265,7 +2265,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "conta" },
                             domProps: {
                               value: _vm.$v.solicitacao.conta.$model
@@ -2340,7 +2340,7 @@ var render = function() {
                               }
                             ],
                             staticClass:
-                              "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                              "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                             attrs: { id: "digito_conta" },
                             domProps: {
                               value: _vm.$v.solicitacao.digito_conta.$model

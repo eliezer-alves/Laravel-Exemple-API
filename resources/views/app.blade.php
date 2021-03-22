@@ -18,7 +18,7 @@
     <div id="app">
         <router-view></router-view>
     </div>
-    
+
     <script src="{{ mix('js/app_vue.js') }}"></script>
 
 </body>

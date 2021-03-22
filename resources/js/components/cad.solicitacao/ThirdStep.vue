@@ -22,7 +22,7 @@
                 <input
                   id="nome_representante"
                   placeholder="Nome do Representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-model.trim="$v.solicitacao.nome_representante.$model"
                 />
               </div>
@@ -48,7 +48,7 @@
                 <input
                   id="cpf_representante"
                   placeholder="###.###.###-##"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 cpf"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-mask="'###.###.###-##'"
                   :value="$v.solicitacao.cpf_representante.$model"
@@ -86,7 +86,7 @@
                 <select
                   id="uf_rg_representante"
                   name="uf_rg_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.uf_rg_representante.$model"
                 >
                   <option value="">--</option>
@@ -120,7 +120,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="rg_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="number"
                   v-model.number="$v.solicitacao.rg_representante.$model"
                 />
@@ -146,7 +146,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="nome_mae_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-model.trim="$v.solicitacao.nome_mae_representante.$model"
                 />
@@ -173,7 +173,7 @@
                 <select
                   id="estado_civil_representante"
                   name="estado_civil_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.estado_civil_representante.$model"
                 >
                   <option value="">--</option>
@@ -208,7 +208,7 @@
                 <select
                   id="sexo_representante"
                   name="sexo_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.sexo_representante.$model"
                 >
                   <option value="">--</option>
@@ -238,7 +238,7 @@
                 <select
                   id="profissao_representante"
                   name="profissao_representante"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.profissao_representante.$model"
                 >
                   <option value="">--</option>
@@ -276,7 +276,7 @@
               >
                 <input
                   id="renda_mensal_representante"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-money="money"
                   :value="$v.solicitacao.renda_mensal_representante.$model"
@@ -326,7 +326,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="cep_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     v-mask="'#####-###'"
                     :value="$v.solicitacao.cep_representante.$model"
                     @blur="setCepRepresentante($event.target.value)"
@@ -363,7 +363,7 @@
                   <select
                     id="uf_representante"
                     name="uf_representante"
-                    class="p-1 px-2 outline-none w-full text-gray-800"
+                    class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                     v-model="$v.solicitacao.uf_representante.$model"
                   >
                     <option value="">--</option>
@@ -397,7 +397,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="cidade_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="text"
                     v-model.trim="$v.solicitacao.cidade_representante.$model"
                   />
@@ -423,7 +423,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="bairro_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="text"
                     v-model.trim="$v.solicitacao.bairro_representante.$model"
                   />
@@ -452,7 +452,7 @@
                   <select
                     id="id_tipo_logradouro_representante"
                     name="id_tipo_logradouro_representante"
-                    class="p-1 px-2 outline-none w-full text-gray-800"
+                    class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                     v-model="
                       $v.solicitacao.id_tipo_logradouro_representante.$model
                     "
@@ -488,7 +488,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="logradouro_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="text"
                     v-model.trim="
                       $v.solicitacao.logradouro_representante.$model
@@ -516,7 +516,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="numero_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="number"
                     v-model.number="$v.solicitacao.numero_representante.$model"
                   />
@@ -542,7 +542,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="complemento_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="text"
                     v-model.trim="
                       $v.solicitacao.complemento_representante.$model
@@ -562,7 +562,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="celular_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     v-mask="['(##) ####-####', '(##) #####-####']"
                     :value="$v.solicitacao.celular_representante.$model"
                     @input="setCelularRepresentante($event.target.value)"
@@ -598,7 +598,7 @@
                 <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                   <input
                     id="email_representante"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                     type="email"
                     v-model.trim="$v.solicitacao.email_representante.$model"
                   />
@@ -655,7 +655,7 @@
                       <input
                         id="representante_politicamente_exposto_cargo"
                         name="representante_politicamente_exposto_cargo"
-                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                         type="text"
                         v-model.trim="
                           $v.solicitacao
@@ -708,7 +708,7 @@
                     <input
                       id="parente_representante_politicamente_exposto_cargo"
                       name="parente_representante_politicamente_exposto_cargo"
-                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                      class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                       type="text"
                       v-model.trim="
                         $v.solicitacao
@@ -756,7 +756,7 @@
             <button
               class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
             >
-              Finalizar
+              Cancelar
             </button>
           </router-link>
           <div class="flex-auto flex flex-row-reverse">

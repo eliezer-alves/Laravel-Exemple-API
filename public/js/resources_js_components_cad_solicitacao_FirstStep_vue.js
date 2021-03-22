@@ -1735,7 +1735,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70",
                                 attrs: { id: "tac", name: "tac", disabled: "" },
                                 domProps: {
                                   value: _vm.$v.solicitacao.tac.$model
@@ -1790,7 +1790,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 disabled:opacity-70",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70",
                                 attrs: {
                                   id: "taxa_juros",
                                   name: "taxa_juros",
@@ -1849,7 +1849,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 form__input",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white form__input",
                                 attrs: {
                                   id: "valor_solicitado",
                                   name: "valor_solicitado",
@@ -1934,7 +1934,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white",
                                 attrs: {
                                   id: "parcelas",
                                   name: "parcelas",
@@ -2034,7 +2034,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white",
                                 attrs: {
                                   id: "data_geracao_proposta",
                                   name: "data_geracao_proposta",
@@ -2114,7 +2114,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass:
-                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800",
+                                  "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white",
                                 attrs: {
                                   id: "primeiro_vencimento",
                                   name: "primeiro_vencimento",
@@ -2168,7 +2168,7 @@ var render = function() {
                       staticClass:
                         "text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
                     },
-                    [_vm._v("\n            Finalizar\n          ")]
+                    [_vm._v("\n            Cancelar\n          ")]
                   )
                 ]),
                 _vm._v(" "),

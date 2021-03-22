@@ -1975,8 +1975,7 @@ params.append('client_secret', "qGjf1EzTzzSLVBMqRfc0L2MwNuczr9MEh1ZpFtME");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var API_URL = "http://127.0.0.1:8000"; //MIX_VIA_CEP=viacep.com.br/ws
-
+var API_URL = "http://127.0.0.1:8000";
 var VIA_CEP = "https://viacep.com.br/ws";
 
 

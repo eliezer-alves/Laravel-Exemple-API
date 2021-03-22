@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+ 
     <cadastro-cliente>
       <div class="py-1">
         <span class="px-1 text-sm font-bold text-white">Celular</span>
@@ -168,7 +168,7 @@
         </div>
       </div>
     </cadastro-cliente>
-  </transition>
+  
 </template>
 <script>
 import CadastroCliente from "../CadastroCliente.vue";

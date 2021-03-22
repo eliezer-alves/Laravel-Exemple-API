@@ -20,7 +20,7 @@
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
                   id="razao_social"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="Razão Social"
                   v-model.trim="$v.solicitacao.razao_social.$model"
@@ -51,7 +51,7 @@
                   id="cnpj"
                   name="cnpj"
                   placeholder="##.###.###/####-##"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'##.###.###/####-##'"
                   :value="$v.solicitacao.cnpj.$model"
                   @input="setCnpj($event.target.value)"
@@ -84,7 +84,7 @@
                 <input
                   id="nome_fantasia"
                   name="nome_fantasia"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="Nome Fantasia"
                   v-model.trim="$v.solicitacao.nome_fantasia.$model"
@@ -115,7 +115,7 @@
                   id="inscricao_estadual"
                   name="inscricao_estadual"
                   placeholder="##.###.####-#"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   v-mask="'##.###.####-#'"
                   :value="$v.solicitacao.inscricao_estadual.$model"
                   @input="setInscricaoEstadual($event.target.value)"
@@ -143,7 +143,7 @@
                 <input
                   id="agente"
                   name="agente"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="Agente"
                   v-model.trim="$v.solicitacao.agente.$model"
@@ -173,7 +173,7 @@
                 <select
                   id="cosif"
                   name="cosif"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.cosif.$model"
                 >
                   <option value="1" selected>Opção 1</option>
@@ -203,7 +203,7 @@
                 <input
                   id="capital_social"
                   name="capital_social"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-money="money"
                   :value="$v.solicitacao.capital_social.$model"
@@ -246,7 +246,7 @@
                 <input
                   id="faturamento_anual"
                   name="faturamento_anual"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-money="money"
                   :value="$v.solicitacao.faturamento_anual.$model"
@@ -288,7 +288,7 @@
               >
                 <input
                   id="rendimento_mensal"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-money="money"
                   :value="$v.solicitacao.rendimento_mensal.$model"
@@ -331,7 +331,7 @@
                 <select
                   id="porte"
                   name="porte"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.porte.$model"
                 >
                   <option value="" selected>--</option>
@@ -362,7 +362,7 @@
                 <select
                   id="id_atividade_comercial"
                   name="id_atividade_comercial"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.id_atividade_comercial.$model"
                 >
                   <option value="" selected>--</option>
@@ -399,7 +399,7 @@
                 <select
                   id="tipo_empresa"
                   name="tipo_empresa"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.tipo_empresa.$model"
                 >
                   <option value="" selected>--</option>
@@ -440,7 +440,7 @@
                 <input
                   id="cep"
                   name="cep"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="#####-###"
                   v-mask="'#####-###'"
@@ -469,7 +469,7 @@
                 <select
                   id="uf"
                   name="uf"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.uf.$model"
                 >
                   <option value="">--</option>
@@ -501,7 +501,7 @@
                 <input
                   id="cidade"
                   name="cidade"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="Cidade"
                   v-model="$v.solicitacao.cidade.$model"
@@ -529,7 +529,7 @@
                 <input
                   id="bairro"
                   name="bairro"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   placeholder="Bairro"
                   v-model="$v.solicitacao.bairro.$model"
@@ -557,7 +557,7 @@
                 <select
                   id="tipo_logradouro"
                   name="tipo_logradouro"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.tipo_logradouro.$model"
                 >
                   <option value="">--</option>
@@ -592,7 +592,7 @@
                 <input
                   id="logradouro"
                   name="logradouro"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-model="$v.solicitacao.logradouro.$model"
                 />
@@ -619,7 +619,7 @@
                 <input
                   id="numero"
                   name="numero"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="number"
                   v-model="$v.solicitacao.numero.$model"
                 />
@@ -646,7 +646,7 @@
                 <input
                   id="complemento"
                   name="complemento"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-model="$v.solicitacao.complemento.$model"
                 />
@@ -664,7 +664,7 @@
                 <select
                   id="tipo_imovel"
                   name="tipo_imovel"
-                  class="p-1 px-2 outline-none w-full text-gray-800"
+                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
                   v-model="$v.solicitacao.tipo_imovel.$model"
                 >
                   <option value="">--</option>
@@ -694,7 +694,7 @@
                 <input
                   id="telefone"
                   name="telefone"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="text"
                   v-mask="['(##) ####-####', '(##) #####-####']"
                   :value="$v.solicitacao.telefone.$model"
@@ -732,7 +732,7 @@
                 <input
                   id="email"
                   name="email"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
                   type="email"
                   v-model="$v.solicitacao.email.$model"
                 />
@@ -782,7 +782,7 @@
           <button
             class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
           >
-            Finalizar
+            Cancelar
           </button>
           <div class="flex-auto flex flex-row-reverse">
             <button
