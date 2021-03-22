@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:w-4/12 md:6/12 w-10/12 mx-auto my-6">
+  <div class="lg:w-4/12 md:6/12 w-10/12 mx-auto mt-36">
     <div class="py-2 rounded-xl">
       <img
         class="mx-auto lg:w-72 w-44"

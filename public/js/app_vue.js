@@ -1970,8 +1970,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var params = new URLSearchParams();
 params.append('grant_type', "password");
-params.append('client_id', "1");
-params.append('client_secret', "Vac7AjHAiJD87Oh2je9fIfIwqWsXQtHBbDZCl89m");
+params.append('client_id', "2");
+params.append('client_secret', "qGjf1EzTzzSLVBMqRfc0L2MwNuczr9MEh1ZpFtME");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
@@ -2116,7 +2116,6 @@ var actions = {
 
             case 3:
               cliente.username = _context.sent;
-              // console.log(cliente.username);
               _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('username', cliente.username);
               _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('password', cliente.password);
               _context.next = 8;

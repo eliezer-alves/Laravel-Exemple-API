@@ -1,7 +1,7 @@
 <template>
   <!-- component -->
   <div
-    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 w-11/12 py-5 mx-auto"
+    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 py-5 xl:w-7/12 lg:w-7/12 md:w-7/12 w-11/12 mx-auto mt-20"
   >
     <div
       class="lg:mt-32 md:mt-32 sm:mt-10 mt-10 lg:ml-32 md:ml-32 mx-auto my-2 col-span-1"

@@ -30,6 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MotivoFinalizacaoSeeder::class);
         $this->call(StatusDocumentoPropostaSeeder::class);
         $this->call(AtividadeComercialSeeder::class);
-        // $this->call(ClientSicredSeeder::class);
+        $this->call(ClientSicredSeeder::class);
     }
 }

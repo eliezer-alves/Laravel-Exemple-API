@@ -326,7 +326,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto my-6" }, [
+  return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto mt-36" }, [
     _c("div", { staticClass: "py-2 rounded-xl" }, [
       _c("img", {
         staticClass: "mx-auto lg:w-72 w-44",
