@@ -3,7 +3,9 @@ import { updateField } from 'vuex-map-fields';
 let mutations = {
     updateField,
     LOGIN(state, payload) {
-
+        state.usuario.cnpj = payload.cnpj;
+        state.usuario.senha = payload.senha;
+        
     },
     SHOW_MODAL(state, payload) {
         state.showModal = payload;

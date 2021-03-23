@@ -129,11 +129,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {},
   data: function data() {
     return {};
+  },
+  methods: {
+    logOut: function logOut() {
+      localStorage.removeItem("access_token");
+      this.$router.push("login");
+    }
   }
 });
 
@@ -2189,52 +2194,46 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "mb-4" },
-          [
-            _c("router-link", { attrs: { to: { name: "login" } } }, [
-              _c("span", [
-                _c(
-                  "svg",
-                  {
-                    staticClass:
-                      "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-red-500",
-                    attrs: {
-                      viewBox: "0 0 24 24",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M13 4.00894C13.0002 3.45665 12.5527 3.00876 12.0004 3.00854C11.4481 3.00833 11.0002 3.45587 11 4.00815L10.9968 12.0116C10.9966 12.5639 11.4442 13.0118 11.9965 13.012C12.5487 13.0122 12.9966 12.5647 12.9968 12.0124L13 4.00894Z",
-                        fill: "currentColor"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M4 12.9917C4 10.7826 4.89541 8.7826 6.34308 7.33488L7.7573 8.7491C6.67155 9.83488 6 11.3349 6 12.9917C6 16.3054 8.68629 18.9917 12 18.9917C15.3137 18.9917 18 16.3054 18 12.9917C18 11.3348 17.3284 9.83482 16.2426 8.74903L17.6568 7.33481C19.1046 8.78253 20 10.7825 20 12.9917C20 17.41 16.4183 20.9917 12 20.9917C7.58172 20.9917 4 17.41 4 12.9917Z",
-                        fill: "currentColor"
-                      }
-                    })
-                  ]
-                )
-              ])
-            ])
-          ],
-          1
-        )
+        _c("div", { staticClass: "mb-4" }, [
+          _c("span", [
+            _c(
+              "svg",
+              {
+                staticClass:
+                  "fill-current lg:h-5 lg:w-5 md:h-5 md:w-5 h-4 w-4 text-gray-300 mx-auto hover:text-red-500",
+                attrs: {
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  xmlns: "http://www.w3.org/2000/svg"
+                },
+                on: { click: _vm.logOut }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M13 4.00894C13.0002 3.45665 12.5527 3.00876 12.0004 3.00854C11.4481 3.00833 11.0002 3.45587 11 4.00815L10.9968 12.0116C10.9966 12.5639 11.4442 13.0118 11.9965 13.012C12.5487 13.0122 12.9966 12.5647 12.9968 12.0124L13 4.00894Z",
+                    fill: "currentColor"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M4 12.9917C4 10.7826 4.89541 8.7826 6.34308 7.33488L7.7573 8.7491C6.67155 9.83488 6 11.3349 6 12.9917C6 16.3054 8.68629 18.9917 12 18.9917C15.3137 18.9917 18 16.3054 18 12.9917C18 11.3348 17.3284 9.83482 16.2426 8.74903L17.6568 7.33481C19.1046 8.78253 20 10.7825 20 12.9917C20 17.41 16.4183 20.9917 12 20.9917C7.58172 20.9917 4 17.41 4 12.9917Z",
+                    fill: "currentColor"
+                  }
+                })
+              ]
+            )
+          ])
+        ])
       ]
     ),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen " },
+      { staticClass: "px-16 py-4 text-gray-700 bg-gray-300 w-screen" },
       [_vm._t("default")],
       2
     )

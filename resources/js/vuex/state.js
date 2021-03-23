@@ -4,6 +4,7 @@ let state = {
     errors: {
 
     },
+    usuario: { cnpj: '', senha: '' },
     atividades: [],
     dominios: {},
     clienteDefault: {

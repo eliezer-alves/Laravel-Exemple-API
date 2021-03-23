@@ -87,8 +87,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       cliente: {
-        username: "",
-        password: ""
+        cnpj: "",
+        senha: ""
       }
     };
   },
@@ -101,8 +101,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(["errors"])),
   methods: {
     validateFields: function validateFields(cliente) {
-      if (!cliente.username) return false;
-      if (!cliente.password) return false;
+      if (!cliente.cnpj) return false;
+      if (!cliente.senha) return false;
       return true;
     },
     login: function login(cliente) {
@@ -329,7 +329,7 @@ var render = function() {
   return _c("div", { staticClass: "lg:w-4/12 md:6/12 w-10/12 mx-auto mt-36" }, [
     _c("div", { staticClass: "py-2 rounded-xl" }, [
       _c("img", {
-        staticClass: "mx-auto lg:w-72 w-44",
+        staticClass: "mx-auto w-72",
         attrs: { src: "/images/logoAgilVertical.png", alt: "Workflow" }
       }),
       _vm._v(" "),
@@ -350,8 +350,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.cliente.username,
-                  expression: "cliente.username"
+                  value: _vm.cliente.cnpj,
+                  expression: "cliente.cnpj"
                 },
                 {
                   name: "mask",
@@ -368,13 +368,13 @@ var render = function() {
                 id: "cnpj",
                 placeholder: "CNPJ"
               },
-              domProps: { value: _vm.cliente.username },
+              domProps: { value: _vm.cliente.cnpj },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.cliente, "username", $event.target.value)
+                  _vm.$set(_vm.cliente, "cnpj", $event.target.value)
                 }
               }
             })
@@ -389,8 +389,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.cliente.password,
-                    expression: "cliente.password"
+                    value: _vm.cliente.senha,
+                    expression: "cliente.senha"
                   }
                 ],
                 staticClass:
@@ -400,13 +400,13 @@ var render = function() {
                   id: "password",
                   placeholder: "Senha"
                 },
-                domProps: { value: _vm.cliente.password },
+                domProps: { value: _vm.cliente.senha },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.cliente, "password", $event.target.value)
+                    _vm.$set(_vm.cliente, "senha", $event.target.value)
                   }
                 }
               }),

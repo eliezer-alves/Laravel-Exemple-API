@@ -13,6 +13,19 @@ const router = new VueRouter({
     routes: require("./routes.js"),
 });
 
+router.beforeEach((to, from, next) => {
+    // redirect to login page if not logged in and trying to access a restricted page
+    const publicPages = ['/app/login', '/app/cadastro-cliente', '/app/cadastro-cliente-2', '/app/cadastro-cliente-3'];
+    const authRequired = !publicPages.includes(to.path);
+    const accessToken = localStorage.getItem('access_token');
+
+    if (authRequired && !accessToken) {
+        return next('/app/login');
+    }
+
+    next();
+})
+
 //VUEX
 import Vuex from "vuex";
 Vue.use(Vuex);

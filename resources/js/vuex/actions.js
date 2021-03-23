@@ -4,17 +4,22 @@ import { API_URL, header, params, VIA_CEP } from '../config/api'
 let actions = {
     async login({ commit }, cliente) {
 
-        cliente.username = await cliente.username.replace(/[^\d]+/g, '');
-        params.append('username', cliente.username);
-        params.append('password', cliente.password);
+        cliente.cnpj = await cliente.cnpj.replace(/[^\d]+/g, '');
+        params.append('username', cliente.cnpj);
+        params.append('password', cliente.senha);
 
         return await axios.post(`${API_URL}/oauth/token`, params, header)
             .then(res => {
-                if (res.status === 200)
-                    // commit('CREATE_CLIENTE', cliente)
+                if (res.data.access_token){
+                    localStorage.setItem("access_token", res.data.access_token);
+                    commit('LOGIN', cliente);
+                    console.log(res);
                     return res;
+                }
+                console.log(res);
             }).catch(err => {
-                commit('ERRORS', err.response.data)
+                commit('ERRORS', err.response.data);
+                console.log(err);
                 // console.log(err.response.data.error);
                 // console.log('error', Object.assign({}, err));
 

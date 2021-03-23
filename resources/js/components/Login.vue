@@ -2,7 +2,7 @@
   <div class="lg:w-4/12 md:6/12 w-10/12 mx-auto mt-36">
     <div class="py-2 rounded-xl">
       <img
-        class="mx-auto lg:w-72 w-44"
+        class="mx-auto w-72"
         src="/images/logoAgilVertical.png"
         alt="Workflow"
       />
@@ -15,7 +15,7 @@
             id="cnpj"
             class="rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none"
             placeholder="CNPJ"
-            v-model="cliente.username"
+            v-model="cliente.cnpj"
             v-mask="'##.###.###/####-##'"
           />
         </div>
@@ -25,7 +25,7 @@
             id="password"
             class="rounded-sm px-4 py-3 mt-3 w-full bg-white border-2 border-gray-300 placeholder-gray-400 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-green-600 focus:outline-none"
             placeholder="Senha"
-            v-model="cliente.password"
+            v-model="cliente.senha"
           />
           <router-link to="redefinir-senha">
             <div
@@ -61,8 +61,8 @@ export default {
   data() {
     return {
       cliente: {
-        username: "",
-        password: "",
+        cnpj: "",
+        senha: "",
       },
     };
   },
@@ -77,8 +77,8 @@ export default {
   },
   methods: {
     validateFields(cliente) {
-      if (!cliente.username) return false;
-      if (!cliente.password) return false;
+      if (!cliente.cnpj) return false;
+      if (!cliente.senha) return false;
       return true;
     },
     async login(cliente) {

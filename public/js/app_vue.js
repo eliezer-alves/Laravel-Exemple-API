@@ -1880,6 +1880,18 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.use(vue_router__WEBPACK_IMPORTED_MODULE
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   mode: 'history',
   routes: __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js")
+});
+router.beforeEach(function (to, from, next) {
+  // redirect to login page if not logged in and trying to access a restricted page
+  var publicPages = ['/app/login', '/app/cadastro-cliente', '/app/cadastro-cliente-2', '/app/cadastro-cliente-3'];
+  var authRequired = !publicPages.includes(to.path);
+  var accessToken = localStorage.getItem('access_token');
+
+  if (authRequired && !accessToken) {
+    return next('/app/login');
+  }
+
+  next();
 }); //VUEX
 
 
@@ -2111,18 +2123,25 @@ var actions = {
             case 0:
               commit = _ref.commit;
               _context.next = 3;
-              return cliente.username.replace(/[^\d]+/g, '');
+              return cliente.cnpj.replace(/[^\d]+/g, '');
 
             case 3:
-              cliente.username = _context.sent;
-              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('username', cliente.username);
-              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('password', cliente.password);
+              cliente.cnpj = _context.sent;
+              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('username', cliente.cnpj);
+              _config_api__WEBPACK_IMPORTED_MODULE_2__.params.append('password', cliente.senha);
               _context.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_2__.params, _config_api__WEBPACK_IMPORTED_MODULE_2__.header).then(function (res) {
-                if (res.status === 200) // commit('CREATE_CLIENTE', cliente)
+                if (res.data.access_token) {
+                  localStorage.setItem("access_token", res.data.access_token);
+                  commit('LOGIN', cliente);
+                  console.log(res);
                   return res;
+                }
+
+                console.log(res);
               })["catch"](function (err) {
-                commit('ERRORS', err.response.data); // console.log(err.response.data.error);
+                commit('ERRORS', err.response.data);
+                console.log(err); // console.log(err.response.data.error);
                 // console.log('error', Object.assign({}, err));
               });
 
@@ -2292,7 +2311,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var mutations = {
   updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
-  LOGIN: function LOGIN(state, payload) {},
+  LOGIN: function LOGIN(state, payload) {
+    state.usuario.cnpj = payload.cnpj;
+    state.usuario.senha = payload.senha;
+  },
   SHOW_MODAL: function SHOW_MODAL(state, payload) {
     state.showModal = payload;
   },
@@ -2368,6 +2390,10 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   showModal: false,
   errors: {},
+  usuario: {
+    cnpj: '',
+    senha: ''
+  },
   atividades: [],
   dominios: {},
   clienteDefault: {
