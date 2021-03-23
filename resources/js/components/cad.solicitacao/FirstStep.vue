@@ -18,7 +18,7 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="primeiro_vencimento">TAC</label>
+                <label for="tac">TAC</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input
@@ -38,7 +38,7 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="primeiro_vencimento">Taxa de Juros</label>
+                <label for="taxa_juros">Taxa de Juros</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
                 <input

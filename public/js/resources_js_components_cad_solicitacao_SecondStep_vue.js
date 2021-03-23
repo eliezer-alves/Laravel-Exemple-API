@@ -3646,7 +3646,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
                 },
                 [
                   _c("label", { attrs: { for: "tipo_empresa" } }, [
@@ -4029,7 +4029,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
                 },
                 [
                   _c("label", { attrs: { for: "tipo_logradouro" } }, [
@@ -4324,7 +4324,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+                    "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3 truncate"
                 },
                 [
                   _c("label", { attrs: { for: "tipo_imovel" } }, [

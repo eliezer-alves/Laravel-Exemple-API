@@ -1626,11 +1626,7 @@ var render = function() {
                       staticClass:
                         "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                     },
-                    [
-                      _c("label", { attrs: { for: "primeiro_vencimento" } }, [
-                        _vm._v("TAC")
-                      ])
-                    ]
+                    [_c("label", { attrs: { for: "tac" } }, [_vm._v("TAC")])]
                   ),
                   _vm._v(" "),
                   _c(
@@ -1678,7 +1674,7 @@ var render = function() {
                         "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
                     },
                     [
-                      _c("label", { attrs: { for: "primeiro_vencimento" } }, [
+                      _c("label", { attrs: { for: "taxa_juros" } }, [
                         _vm._v("Taxa de Juros")
                       ])
                     ]
