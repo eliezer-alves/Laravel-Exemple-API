@@ -10,17 +10,14 @@ let actions = {
 
         return await axios.post(`${API_URL}/oauth/token`, params, header)
             .then(res => {
-                if (res.data.access_token){
-                    localStorage.setItem("access_token", res.data.access_token);
+                if (res.data.access_token) {
+                    commit('UPDATE_TOKEN_DATA', res.data);
                     commit('LOGIN', cliente);
-                    console.log(res);
                     return res;
                 }
-                console.log(res);
             }).catch(err => {
-                commit('ERRORS', err.response.data);
-                console.log(err);
-                // console.log(err.response.data.error);
+                if (err.response.data)
+                    commit('ERRORS', err.response.data);
                 // console.log('error', Object.assign({}, err));
 
             })

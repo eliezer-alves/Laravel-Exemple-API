@@ -503,6 +503,9 @@ __webpack_require__.r(__webpack_exports__);
   beforeCreate: function beforeCreate() {
     document.body.className = "home";
   },
+  created: function created() {
+    axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+  },
   mounted: function mounted() {
     this.cadastroPropostaModal();
   },
@@ -656,7 +659,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     logOut: function logOut() {
-      localStorage.removeItem("access_token");
+      this.$store.commit("DELETE_TOKEN_DATA");
       this.$router.push("login");
     }
   }

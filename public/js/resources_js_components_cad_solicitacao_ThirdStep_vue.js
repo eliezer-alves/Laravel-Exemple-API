@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     logOut: function logOut() {
-      localStorage.removeItem("access_token");
+      this.$store.commit("DELETE_TOKEN_DATA");
       this.$router.push("login");
     }
   }

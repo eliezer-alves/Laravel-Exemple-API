@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     logOut: function () {
-      localStorage.removeItem("access_token");
+      this.$store.commit("DELETE_TOKEN_DATA");
       this.$router.push("login");
     },
   },

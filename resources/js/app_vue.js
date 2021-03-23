@@ -18,7 +18,6 @@ router.beforeEach((to, from, next) => {
     const publicPages = ['/app/login', '/app/cadastro-cliente', '/app/cadastro-cliente-2', '/app/cadastro-cliente-3'];
     const authRequired = !publicPages.includes(to.path);
     const accessToken = localStorage.getItem('access_token');
-
     if (authRequired && !accessToken) {
         return next('/app/login');
     }

@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "date-fns": "^2.19.0",
         "v-money": "^0.8.1",
         "vue-spinner": "^1.0.4",
         "vue-sweetalert2": "^4.2.0",

@@ -2132,17 +2132,12 @@ var actions = {
               _context.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_config_api__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/oauth/token"), _config_api__WEBPACK_IMPORTED_MODULE_2__.params, _config_api__WEBPACK_IMPORTED_MODULE_2__.header).then(function (res) {
                 if (res.data.access_token) {
-                  localStorage.setItem("access_token", res.data.access_token);
+                  commit('UPDATE_TOKEN_DATA', res.data);
                   commit('LOGIN', cliente);
-                  console.log(res);
                   return res;
                 }
-
-                console.log(res);
               })["catch"](function (err) {
-                commit('ERRORS', err.response.data);
-                console.log(err); // console.log(err.response.data.error);
-                // console.log('error', Object.assign({}, err));
+                if (err.response.data) commit('ERRORS', err.response.data); // console.log('error', Object.assign({}, err));
               });
 
             case 8:
@@ -2302,6 +2297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+/* harmony import */ var date_fns_addSeconds__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/addSeconds */ "./node_modules/date-fns/addSeconds/index.js");
+/* harmony import */ var date_fns_addSeconds__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(date_fns_addSeconds__WEBPACK_IMPORTED_MODULE_1__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2309,11 +2306,26 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
 var mutations = {
   updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_0__.updateField,
   LOGIN: function LOGIN(state, payload) {
     state.usuario.cnpj = payload.cnpj;
     state.usuario.senha = payload.senha;
+  },
+  UPDATE_TOKEN_DATA: function UPDATE_TOKEN_DATA(state, payload) {
+    localStorage.setItem("access_token", payload.access_token || payload.accessToken); //sometimes tokens are in snake case and other times they are in camelcase :/
+
+    state.accessToken = localStorage.getItem("access_token");
+    var tokensExpiry = date_fns_addSeconds__WEBPACK_IMPORTED_MODULE_1___default()(new Date(), payload.expires_in || payload.expiresIn);
+    state.tokensExpiry = tokensExpiry;
+    localStorage.setItem("tokens_expiry", tokensExpiry);
+  },
+  DELETE_TOKEN_DATA: function DELETE_TOKEN_DATA(state) {
+    state.accessToken = '';
+    localStorage.removeItem("access_token");
+    state.tokensExpiry = '';
+    localStorage.removeItem("tokens_expiry");
   },
   SHOW_MODAL: function SHOW_MODAL(state, payload) {
     state.showModal = payload;
@@ -2707,6 +2719,244 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/_lib/requiredArgs/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/_lib/requiredArgs/index.js ***!
+  \**********************************************************/
+/***/ ((module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = requiredArgs;
+
+function requiredArgs(required, args) {
+  if (args.length < required) {
+    throw new TypeError(required + ' argument' + (required > 1 ? 's' : '') + ' required, but only ' + args.length + ' present');
+  }
+}
+
+module.exports = exports.default;
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/_lib/toInteger/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/_lib/toInteger/index.js ***!
+  \*******************************************************/
+/***/ ((module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = toInteger;
+
+function toInteger(dirtyNumber) {
+  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
+    return NaN;
+  }
+
+  var number = Number(dirtyNumber);
+
+  if (isNaN(number)) {
+    return number;
+  }
+
+  return number < 0 ? Math.ceil(number) : Math.floor(number);
+}
+
+module.exports = exports.default;
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/addMilliseconds/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/addMilliseconds/index.js ***!
+  \********************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = addMilliseconds;
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/_lib/toInteger/index.js"));
+
+var _index2 = _interopRequireDefault(__webpack_require__(/*! ../toDate/index.js */ "./node_modules/date-fns/toDate/index.js"));
+
+var _index3 = _interopRequireDefault(__webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/_lib/requiredArgs/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @name addMilliseconds
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} the new date with the milliseconds added
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * const result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+function addMilliseconds(dirtyDate, dirtyAmount) {
+  (0, _index3.default)(2, arguments);
+  var timestamp = (0, _index2.default)(dirtyDate).getTime();
+  var amount = (0, _index.default)(dirtyAmount);
+  return new Date(timestamp + amount);
+}
+
+module.exports = exports.default;
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/addSeconds/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/addSeconds/index.js ***!
+  \***************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = addSeconds;
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/_lib/toInteger/index.js"));
+
+var _index2 = _interopRequireDefault(__webpack_require__(/*! ../addMilliseconds/index.js */ "./node_modules/date-fns/addMilliseconds/index.js"));
+
+var _index3 = _interopRequireDefault(__webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/_lib/requiredArgs/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @name addSeconds
+ * @category Second Helpers
+ * @summary Add the specified number of seconds to the given date.
+ *
+ * @description
+ * Add the specified number of seconds to the given date.
+ *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} the new date with the seconds added
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Add 30 seconds to 10 July 2014 12:45:00:
+ * const result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * //=> Thu Jul 10 2014 12:45:30
+ */
+function addSeconds(dirtyDate, dirtyAmount) {
+  (0, _index3.default)(2, arguments);
+  var amount = (0, _index.default)(dirtyAmount);
+  return (0, _index2.default)(dirtyDate, amount * 1000);
+}
+
+module.exports = exports.default;
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/toDate/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/date-fns/toDate/index.js ***!
+  \***********************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = toDate;
+
+var _index = _interopRequireDefault(__webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/_lib/requiredArgs/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @name toDate
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If the argument is none of the above, the function returns Invalid Date.
+ *
+ * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
+ *
+ * @param {Date|Number} argument - the value to convert
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // Clone the date:
+ * const result = toDate(new Date(2014, 1, 11, 11, 30, 30))
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert the timestamp to date:
+ * const result = toDate(1392098430000)
+ * //=> Tue Feb 11 2014 11:30:30
+ */
+function toDate(argument) {
+  (0, _index.default)(1, arguments);
+  var argStr = Object.prototype.toString.call(argument); // Clone the date
+
+  if (argument instanceof Date || typeof argument === 'object' && argStr === '[object Date]') {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime());
+  } else if (typeof argument === 'number' || argStr === '[object Number]') {
+    return new Date(argument);
+  } else {
+    if ((typeof argument === 'string' || argStr === '[object String]') && typeof console !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn("Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"); // eslint-disable-next-line no-console
+
+      console.warn(new Error().stack);
+    }
+
+    return new Date(NaN);
+  }
+}
+
+module.exports = exports.default;
 
 /***/ }),
 

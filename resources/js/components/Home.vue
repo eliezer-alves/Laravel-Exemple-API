@@ -490,6 +490,10 @@ export default {
   beforeCreate: function () {
     document.body.className = "home";
   },
+  created() {
+    axios.defaults.headers.common["Authorization"] =
+      "Bearer " + localStorage.getItem("access_token");
+  },
   mounted() {
     this.cadastroPropostaModal();
   },

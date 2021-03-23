@@ -1,11 +1,27 @@
 import { updateField } from 'vuex-map-fields';
+import addSeconds from "date-fns/addSeconds";
+
 
 let mutations = {
     updateField,
     LOGIN(state, payload) {
         state.usuario.cnpj = payload.cnpj;
         state.usuario.senha = payload.senha;
-        
+    },
+    UPDATE_TOKEN_DATA(state, payload) {
+        localStorage.setItem("access_token", payload.access_token || payload.accessToken); //sometimes tokens are in snake case and other times they are in camelcase :/
+        state.accessToken = localStorage.getItem("access_token");
+
+        const tokensExpiry = addSeconds(new Date(), payload.expires_in || payload.expiresIn);
+        state.tokensExpiry = tokensExpiry;
+        localStorage.setItem("tokens_expiry", tokensExpiry);
+    },
+    DELETE_TOKEN_DATA(state) {
+        state.accessToken = ''
+        localStorage.removeItem("access_token");
+
+        state.tokensExpiry = '';
+        localStorage.removeItem("tokens_expiry");
     },
     SHOW_MODAL(state, payload) {
         state.showModal = payload;
