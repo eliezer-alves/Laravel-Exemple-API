@@ -1,810 +1,774 @@
 <template>
-  <transition name="fade">
-    <solicitacao>
-      <div class="p-4">
-        <div class="my-2">
-          <div
-            class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
-          >
-            Dados da Empresa
-          </div>
-          <div class="grid lg:grid-cols-12 md:grid-cols-12">
-            <div
-              class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="razao_social">Razão Social</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="razao_social"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="Razão Social"
-                  v-model.trim="$v.solicitacao.razao_social.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.razao_social.$dirty &&
-                  !$v.solicitacao.razao_social.required
-                "
-              >
-                Razão social é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cnpj">CNPJ</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <input
-                  id="cnpj"
-                  name="cnpj"
-                  placeholder="##.###.###/####-##"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  v-mask="'##.###.###/####-##'"
-                  :value="$v.solicitacao.cnpj.$model"
-                  @input="setCnpj($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.required
-                "
-              >
-                CNPJ é obrigatório.
-              </div>
-              <div
-                class="text-red-600"
-                v-if="$v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.valid"
-              >
-                CNPJ inválido.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="nome_fantasia">Nome Fantasia</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="nome_fantasia"
-                  name="nome_fantasia"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="Nome Fantasia"
-                  v-model.trim="$v.solicitacao.nome_fantasia.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.nome_fantasia.$dirty &&
-                  !$v.solicitacao.nome_fantasia.required
-                "
-              >
-                Nome Fantasia é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="inscricao_estadual">Inscrição Estadual</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <input
-                  id="inscricao_estadual"
-                  name="inscricao_estadual"
-                  placeholder="##.###.####-#"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  v-mask="'##.###.####-#'"
-                  :value="$v.solicitacao.inscricao_estadual.$model"
-                  @input="setInscricaoEstadual($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.inscricao_estadual.$dirty &&
-                  !$v.solicitacao.inscricao_estadual.required
-                "
-              >
-                Inscrição Estadual é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="agente">Agente</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="agente"
-                  name="agente"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="Agente"
-                  v-model.trim="$v.solicitacao.agente.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.agente.$dirty &&
-                  !$v.solicitacao.agente.required
-                "
-              >
-                Agente é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cosif">Classificação COSIF</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <select
-                  id="cosif"
-                  name="cosif"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.cosif.$model"
-                >
-                  <option value="1" selected>Opção 1</option>
-                  <option value="2" selected>Opção 2</option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.cosif.$dirty && !$v.solicitacao.cosif.required
-                "
-              >
-                COSIF é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="capital_social">Capital Social</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <input
-                  id="capital_social"
-                  name="capital_social"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-money="money"
-                  :value="$v.solicitacao.capital_social.$model"
-                  @input="setCapitalSocial($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.capital_social.$dirty &&
-                  !$v.solicitacao.capital_social.required
-                "
-              >
-                Capital Social é obrigatório.
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.capital_social.$dirty &&
-                  !$v.solicitacao.capital_social.minValue
-                "
-              >
-                Valor mínimo de R$
-                {{
-                  $v.solicitacao.capital_social.$params.minValue.min / 100
-                }},00.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="faturamento_anual">Faturamento Anual</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <input
-                  id="faturamento_anual"
-                  name="faturamento_anual"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-money="money"
-                  :value="$v.solicitacao.faturamento_anual.$model"
-                  @input="setFaturamentoAnual($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.faturamento_anual.$dirty &&
-                  !$v.solicitacao.faturamento_anual.required
-                "
-              >
-                Faturamento Anual é obrigatório.
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.faturamento_anual.$dirty &&
-                  !$v.solicitacao.faturamento_anual.minValue
-                "
-              >
-                Valor mínimo de R$
-                {{
-                  $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
-                }},00.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="rendimento_mensal">Rendimento Mensal</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <input
-                  id="rendimento_mensal"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-money="money"
-                  :value="$v.solicitacao.rendimento_mensal.$model"
-                  @input="setRendimentoMensal($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.rendimento_mensal.$dirty &&
-                  !$v.solicitacao.rendimento_mensal.required
-                "
-              >
-                Rendimento Mensal é obrigatório.
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.rendimento_mensal.$dirty &&
-                  !$v.solicitacao.rendimento_mensal.minValue
-                "
-              >
-                Valor mínimo de R$
-                {{
-                  $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
-                }},00.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="porte">Porte</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <select
-                  id="porte"
-                  name="porte"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.porte.$model"
-                >
-                  <option value="" selected>--</option>
-                  <option value="0">Opção 1</option>
-                  <option value="1">Opção 2</option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.porte.$dirty && !$v.solicitacao.porte.required
-                "
-              >
-                Porte é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label>Atividade Comercial</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <select
-                  id="id_atividade_comercial"
-                  name="id_atividade_comercial"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.id_atividade_comercial.$model"
-                >
-                  <option value="" selected>--</option>
-                  <option
-                    v-for="atividade in atividades"
-                    :key="atividade.id_atividade_comercial"
-                    :value="atividade.id_atividade_comercial"
-                  >
-                    {{ atividade.descricao }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.id_atividade_comercial.$dirty &&
-                  !$v.solicitacao.id_atividade_comercial.required
-                "
-              >
-                Atividade Comercial é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="tipo_empresa">Tipo de Empresa</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <select
-                  id="tipo_empresa"
-                  name="tipo_empresa"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.tipo_empresa.$model"
-                >
-                  <option value="" selected>--</option>
-                  <option value="0">PJ Sociedade</option>
-                  <option value="1">PJ Individual</option>
-                  <option value="2">Pessoa Física</option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.tipo_empresa.$dirty &&
-                  !$v.solicitacao.tipo_empresa.required
-                "
-              >
-                Tipo de Empresa é obrigatório.
-              </div>
-            </div>
-          </div>
+  <solicitacao>
+    <div class="p-4">
+      <div class="my-2">
+        <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
+          Dados da Empresa
         </div>
-
-        <div class="my-2">
+        <div class="grid lg:grid-cols-12 md:grid-cols-12">
           <div
-            class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
+            class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
-            Endereço / Contato
-          </div>
-          <div class="grid lg:grid-cols-12 md:grid-cols-12">
             <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cep">CEP</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="cep"
-                  name="cep"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="#####-###"
-                  v-mask="'#####-###'"
-                  :value="$v.solicitacao.cep.$model"
-                  @blur="setCep($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="$v.solicitacao.cep.$dirty && !$v.solicitacao.cep.required"
-              >
-                CEP é obrigatório.
-              </div>
+              <label for="razao_social">Razão Social</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="razao_social"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="Razão Social"
+                v-model.trim="$v.solicitacao.razao_social.$model"
+              />
             </div>
             <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.razao_social.$dirty &&
+                !$v.solicitacao.razao_social.required
+              "
             >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="uf">UF</label>
-              </div>
-              <div
-                class="bg-white my-2 p-1 flex border border-gray-200 rounded"
-              >
-                <select
-                  id="uf"
-                  name="uf"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.uf.$model"
-                >
-                  <option value="">--</option>
-                  <option
-                    v-for="uf in dominios.uf"
-                    :key="uf.codigo"
-                    :value="uf.codigo"
-                  >
-                    {{ uf.descricao }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="$v.solicitacao.uf.$dirty && !$v.solicitacao.uf.required"
-              >
-                UF é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="cidade">Cidade</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="cidade"
-                  name="cidade"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="Cidade"
-                  v-model="$v.solicitacao.cidade.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.cidade.$dirty &&
-                  !$v.solicitacao.cidade.required
-                "
-              >
-                Cidade é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="bairro">Bairro</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="bairro"
-                  name="bairro"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  placeholder="Bairro"
-                  v-model="$v.solicitacao.bairro.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.bairro.$dirty &&
-                  !$v.solicitacao.bairro.required
-                "
-              >
-                Bairro é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="tipo_logradouro">Tipo de Logradouro</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <select
-                  id="tipo_logradouro"
-                  name="tipo_logradouro"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.tipo_logradouro.$model"
-                >
-                  <option value="">--</option>
-                  <option
-                    v-for="tipo_logradouro in dominios.tipoLogradouro"
-                    :key="tipo_logradouro.id_tipo_logradouro"
-                    :value="tipo_logradouro.id_tipo_logradouro"
-                  >
-                    {{ tipo_logradouro.descricao }}
-                  </option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.tipo_logradouro.$dirty &&
-                  !$v.solicitacao.tipo_logradouro.required
-                "
-              >
-                Tipo de Logradouro é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="logradouro">Logradouro</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="logradouro"
-                  name="logradouro"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-model="$v.solicitacao.logradouro.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.logradouro.$dirty &&
-                  !$v.solicitacao.logradouro.required
-                "
-              >
-                Logradouro é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="numero">Número</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="numero"
-                  name="numero"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="number"
-                  v-model="$v.solicitacao.numero.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.numero.$dirty &&
-                  !$v.solicitacao.numero.required
-                "
-              >
-                Número é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="complemento">Complemento</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="complemento"
-                  name="complemento"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-model="$v.solicitacao.complemento.$model"
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="tipo_imovel">Tipo de Imóvel</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <select
-                  id="tipo_imovel"
-                  name="tipo_imovel"
-                  class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
-                  v-model="$v.solicitacao.tipo_imovel.$model"
-                >
-                  <option value="">--</option>
-                  <option value="1">Casa</option>
-                  <option value="2">Apartamento</option>
-                </select>
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.tipo_imovel.$dirty &&
-                  !$v.solicitacao.tipo_imovel.required
-                "
-              >
-                Tipo de Imóvel é obrigatório.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="telefone">Telefone</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="telefone"
-                  name="telefone"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="text"
-                  v-mask="['(##) ####-####', '(##) #####-####']"
-                  :value="$v.solicitacao.telefone.$model"
-                  @input="setTelefone($event.target.value)"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.telefone.$dirty &&
-                  !$v.solicitacao.telefone.required
-                "
-              >
-                Telefone é obrigatório.
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.telefone.$dirty &&
-                  !$v.solicitacao.telefone.minLength
-                "
-              >
-                Tamanho válido.
-              </div>
-            </div>
-            <div
-              class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="email">E-mail</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="email"
-                  name="email"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                  type="email"
-                  v-model="$v.solicitacao.email.$model"
-                />
-              </div>
-              <div
-                class="text-red-600"
-                v-if="
-                  $v.solicitacao.email.$dirty && !$v.solicitacao.email.required
-                "
-              >
-                E-mail é obrigatório.
-              </div>
+              Razão social é obrigatório.
             </div>
           </div>
-        </div>
-
-        <div class="my-2">
           <div
-            class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm"
+            class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
-            Arquivos do Contrato Social
-          </div>
-
-          <component
-            class="flex justify-between"
-            v-for="doc in this.solicitacao.docs"
-            :is="'contrato-upload'"
-            :id="doc.id"
-            :key="doc.id"
-            :fileName="doc.file.name"
-            @remove="removeDocElement"
-          />
-
-          <div class="flex flex-row-reverse my-5">
-            <button
-              @click="addDocElement"
-              :disabled="!this.validDocElement"
-              :class="{ 'opacity-50': !this.validDocElement }"
-              class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              Novo Documento
-            </button>
+              <label for="cnpj">CNPJ</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <input
+                id="cnpj"
+                name="cnpj"
+                placeholder="##.###.###/####-##"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                v-mask="'##.###.###/####-##'"
+                :value="$v.solicitacao.cnpj.$model"
+                @input="setCnpj($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.required"
+            >
+              CNPJ é obrigatório.
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.cnpj.$dirty && !$v.solicitacao.cnpj.valid"
+            >
+              CNPJ inválido.
+            </div>
           </div>
-        </div>
-
-        <div class="flex p-2 mt-5">
-          <button
-            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+          <div
+            class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
           >
-            Cancelar
-          </button>
-          <div class="flex-auto flex flex-row-reverse">
-            <button
-              @click="validateFields"
-              :class="{ 'opacity-40': $v.$invalid }"
-              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
             >
-              Avançar
-            </button>
-
-            <router-link :to="{ name: 'solicitacao' }">
-              <button
-                class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+              <label for="nome_fantasia">Nome Fantasia</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="nome_fantasia"
+                name="nome_fantasia"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="Nome Fantasia"
+                v-model.trim="$v.solicitacao.nome_fantasia.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.nome_fantasia.$dirty &&
+                !$v.solicitacao.nome_fantasia.required
+              "
+            >
+              Nome Fantasia é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="inscricao_estadual">Inscrição Estadual</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <input
+                id="inscricao_estadual"
+                name="inscricao_estadual"
+                placeholder="##.###.####-#"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                v-mask="'##.###.####-#'"
+                :value="$v.solicitacao.inscricao_estadual.$model"
+                @input="setInscricaoEstadual($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.inscricao_estadual.$dirty &&
+                !$v.solicitacao.inscricao_estadual.required
+              "
+            >
+              Inscrição Estadual é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-7 md:col-span-7 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="agente">Agente</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="agente"
+                name="agente"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="Agente"
+                v-model.trim="$v.solicitacao.agente.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.agente.$dirty && !$v.solicitacao.agente.required
+              "
+            >
+              Agente é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-5 md:col-span-5 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="cosif">Classificação COSIF</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <select
+                id="cosif"
+                name="cosif"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.cosif.$model"
               >
-                Retornar
-              </button>
-            </router-link>
+                <option value="1" selected>Opção 1</option>
+                <option value="2" selected>Opção 2</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.cosif.$dirty && !$v.solicitacao.cosif.required
+              "
+            >
+              COSIF é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="capital_social">Capital Social</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <input
+                id="capital_social"
+                name="capital_social"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-money="money"
+                :value="$v.solicitacao.capital_social.$model"
+                @input="setCapitalSocial($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.capital_social.$dirty &&
+                !$v.solicitacao.capital_social.required
+              "
+            >
+              Capital Social é obrigatório.
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.capital_social.$dirty &&
+                !$v.solicitacao.capital_social.minValue
+              "
+            >
+              Valor mínimo de R$
+              {{ $v.solicitacao.capital_social.$params.minValue.min / 100 }},00.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="faturamento_anual">Faturamento Anual</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <input
+                id="faturamento_anual"
+                name="faturamento_anual"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-money="money"
+                :value="$v.solicitacao.faturamento_anual.$model"
+                @input="setFaturamentoAnual($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.faturamento_anual.$dirty &&
+                !$v.solicitacao.faturamento_anual.required
+              "
+            >
+              Faturamento Anual é obrigatório.
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.faturamento_anual.$dirty &&
+                !$v.solicitacao.faturamento_anual.minValue
+              "
+            >
+              Valor mínimo de R$
+              {{
+                $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
+              }},00.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="rendimento_mensal">Rendimento Mensal</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <input
+                id="rendimento_mensal"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-money="money"
+                :value="$v.solicitacao.rendimento_mensal.$model"
+                @input="setRendimentoMensal($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.rendimento_mensal.$dirty &&
+                !$v.solicitacao.rendimento_mensal.required
+              "
+            >
+              Rendimento Mensal é obrigatório.
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.rendimento_mensal.$dirty &&
+                !$v.solicitacao.rendimento_mensal.minValue
+              "
+            >
+              Valor mínimo de R$
+              {{
+                $v.solicitacao.rendimento_mensal.$params.minValue.min / 100
+              }},00.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="porte">Porte</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <select
+                id="porte"
+                name="porte"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.porte.$model"
+              >
+                <option value="" selected>--</option>
+                <option value="0">Opção 1</option>
+                <option value="1">Opção 2</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.porte.$dirty && !$v.solicitacao.porte.required
+              "
+            >
+              Porte é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label>Atividade Comercial</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <select
+                id="id_atividade_comercial"
+                name="id_atividade_comercial"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.id_atividade_comercial.$model"
+              >
+                <option value="" selected>--</option>
+                <option
+                  v-for="atividade in atividades"
+                  :key="atividade.id_atividade_comercial"
+                  :value="atividade.id_atividade_comercial"
+                >
+                  {{ atividade.descricao }}
+                </option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.id_atividade_comercial.$dirty &&
+                !$v.solicitacao.id_atividade_comercial.required
+              "
+            >
+              Atividade Comercial é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="tipo_empresa">Tipo de Empresa</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <select
+                id="tipo_empresa"
+                name="tipo_empresa"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.tipo_empresa.$model"
+              >
+                <option value="" selected>--</option>
+                <option value="0">PJ Sociedade</option>
+                <option value="1">PJ Individual</option>
+                <option value="2">Pessoa Física</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.tipo_empresa.$dirty &&
+                !$v.solicitacao.tipo_empresa.required
+              "
+            >
+              Tipo de Empresa é obrigatório.
+            </div>
           </div>
         </div>
       </div>
-    </solicitacao>
-  </transition>
+
+      <div class="my-2">
+        <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
+          Endereço / Contato
+        </div>
+        <div class="grid lg:grid-cols-12 md:grid-cols-12">
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="cep">CEP</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="cep"
+                name="cep"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="#####-###"
+                v-mask="'#####-###'"
+                :value="$v.solicitacao.cep.$model"
+                @blur="setCep($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.cep.$dirty && !$v.solicitacao.cep.required"
+            >
+              CEP é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="uf">UF</label>
+            </div>
+            <div class="bg-white my-2 p-1 flex border border-gray-200 rounded">
+              <select
+                id="uf"
+                name="uf"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.uf.$model"
+              >
+                <option value="">--</option>
+                <option
+                  v-for="uf in dominios.uf"
+                  :key="uf.codigo"
+                  :value="uf.codigo"
+                >
+                  {{ uf.descricao }}
+                </option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="$v.solicitacao.uf.$dirty && !$v.solicitacao.uf.required"
+            >
+              UF é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="cidade">Cidade</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="cidade"
+                name="cidade"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="Cidade"
+                v-model="$v.solicitacao.cidade.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.cidade.$dirty && !$v.solicitacao.cidade.required
+              "
+            >
+              Cidade é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="bairro">Bairro</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="bairro"
+                name="bairro"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                placeholder="Bairro"
+                v-model="$v.solicitacao.bairro.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.bairro.$dirty && !$v.solicitacao.bairro.required
+              "
+            >
+              Bairro é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="tipo_logradouro">Tipo de Logradouro</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <select
+                id="tipo_logradouro"
+                name="tipo_logradouro"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.tipo_logradouro.$model"
+              >
+                <option value="">--</option>
+                <option
+                  v-for="tipo_logradouro in dominios.tipoLogradouro"
+                  :key="tipo_logradouro.id_tipo_logradouro"
+                  :value="tipo_logradouro.id_tipo_logradouro"
+                >
+                  {{ tipo_logradouro.descricao }}
+                </option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.tipo_logradouro.$dirty &&
+                !$v.solicitacao.tipo_logradouro.required
+              "
+            >
+              Tipo de Logradouro é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-4 md:col-span-4 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="logradouro">Logradouro</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="logradouro"
+                name="logradouro"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-model="$v.solicitacao.logradouro.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.logradouro.$dirty &&
+                !$v.solicitacao.logradouro.required
+              "
+            >
+              Logradouro é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-2 md:col-span-2 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="numero">Número</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="numero"
+                name="numero"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="number"
+                v-model="$v.solicitacao.numero.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.numero.$dirty && !$v.solicitacao.numero.required
+              "
+            >
+              Número é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="complemento">Complemento</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="complemento"
+                name="complemento"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-model="$v.solicitacao.complemento.$model"
+              />
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="tipo_imovel">Tipo de Imóvel</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <select
+                id="tipo_imovel"
+                name="tipo_imovel"
+                class="p-1 px-2 outline-none w-full text-gray-800 bg-white"
+                v-model="$v.solicitacao.tipo_imovel.$model"
+              >
+                <option value="">--</option>
+                <option value="1">Casa</option>
+                <option value="2">Apartamento</option>
+              </select>
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.tipo_imovel.$dirty &&
+                !$v.solicitacao.tipo_imovel.required
+              "
+            >
+              Tipo de Imóvel é obrigatório.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="telefone">Telefone</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="telefone"
+                name="telefone"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="text"
+                v-mask="['(##) ####-####', '(##) #####-####']"
+                :value="$v.solicitacao.telefone.$model"
+                @input="setTelefone($event.target.value)"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.telefone.$dirty &&
+                !$v.solicitacao.telefone.required
+              "
+            >
+              Telefone é obrigatório.
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.telefone.$dirty &&
+                !$v.solicitacao.telefone.minLength
+              "
+            >
+              Tamanho válido.
+            </div>
+          </div>
+          <div
+            class="lg:col-span-3 md:col-span-3 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+          >
+            <div
+              class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+            >
+              <label for="email">E-mail</label>
+            </div>
+            <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+              <input
+                id="email"
+                name="email"
+                class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                type="email"
+                v-model="$v.solicitacao.email.$model"
+              />
+            </div>
+            <div
+              class="text-red-600"
+              v-if="
+                $v.solicitacao.email.$dirty && !$v.solicitacao.email.required
+              "
+            >
+              E-mail é obrigatório.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-2">
+        <div class="w-full bg-teal-700 text-lg text-white pl-3 py-2 rounded-sm">
+          Arquivos do Contrato Social
+        </div>
+
+        <component
+          class="flex justify-between"
+          v-for="doc in this.solicitacao.docs"
+          :is="'contrato-upload'"
+          :id="doc.id"
+          :key="doc.id"
+          :fileName="doc.file.name"
+          @remove="removeDocElement"
+        />
+
+        <div class="flex flex-row-reverse my-5">
+          <button
+            @click="addDocElement"
+            :disabled="!this.validDocElement"
+            :class="{ 'opacity-50': !this.validDocElement }"
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 mx-1 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+          >
+            Novo Documento
+          </button>
+        </div>
+      </div>
+
+      <div class="flex p-2 mt-5">
+        <button
+          class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+        >
+          Cancelar
+        </button>
+        <div class="flex-auto flex flex-row-reverse">
+          <button
+            @click="validateFields"
+            :class="{ 'opacity-40': $v.$invalid }"
+            class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+          >
+            Avançar
+          </button>
+
+          <router-link :to="{ name: 'solicitacao' }">
+            <button
+              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+            >
+              Retornar
+            </button>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </solicitacao>
 </template>
 
 <script>
@@ -985,11 +949,5 @@ export default {
 </script>
 
 <style>
-fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+
 </style>

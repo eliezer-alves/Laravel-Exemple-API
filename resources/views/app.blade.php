@@ -15,8 +15,23 @@
 </head>
 
 <body class="antialiased bg-gray-300">
+    <style>
+        .scale-enter-active,
+        .scale-leave-active {
+            transition: all 0.5s ease;
+        }
+
+
+        .scale-enter-from,
+        .scale-leave-to {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+    </style>
     <div id="app">
-        <router-view></router-view>
+        <!-- <transition name="scale"> -->
+            <router-view></router-view>
+        <!-- </transition> -->
     </div>
 
     <script src="{{ mix('js/app_vue.js') }}"></script>

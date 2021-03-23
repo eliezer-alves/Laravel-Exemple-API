@@ -1,222 +1,218 @@
 <template>
-  <transition name="fade">
-    <solicitacao>
-      <div class="p-4 xl:h-screen lg:h-screen md:h-screen h-full">
-        <div class="my-2">
-          <div
-            class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm"
-          >
-            Dados da Simulação
-          </div>
-          <div class="flex lg:flex-row md:flex-row flex-col">
-            <img
-              class="mx-auto lg:w-72 w-44 my-5"
-              src="/images/undraw_Success_factors_re_ce93.svg"
-              alt="Simulacao"
-            />
-            <div class="grid lg:grid-cols-12 md:grid-cols-12">
+  <solicitacao>
+    <div class="p-4 xl:h-screen lg:h-screen md:h-screen h-full">
+      <div class="my-2">
+        <div class="w-full bg-teal-700 text-lg text-white pl-1 py-2 rounded-sm">
+          Dados da Simulação
+        </div>
+        <div class="flex lg:flex-row md:flex-row flex-col">
+          <img
+            class="mx-auto lg:w-72 w-44 my-5"
+            src="/images/undraw_Success_factors_re_ce93.svg"
+            alt="Simulacao"
+          />
+          <div class="grid lg:grid-cols-12 md:grid-cols-12">
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="primeiro_vencimento">TAC</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="tac"
-                    name="tac"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
-                    :value="$v.solicitacao.tac.$model"
-                    v-money="money"
-                    @input="setTac($event.target.value)"
-                    disabled
-                  />
-                </div>
+                <label for="primeiro_vencimento">TAC</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="tac"
+                  name="tac"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
+                  :value="$v.solicitacao.tac.$model"
+                  v-money="money"
+                  @input="setTac($event.target.value)"
+                  disabled
+                />
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="primeiro_vencimento">Taxa de Juros</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="taxa_juros"
+                  name="taxa_juros"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
+                  :value="$v.solicitacao.taxa_juros.$model"
+                  v-money="money"
+                  @input="setTaxaJuros($event.target.value)"
+                  disabled
+                />
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="valor_solicitado">Valor Solicitado</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="valor_solicitado"
+                  name="valor_solicitado"
+                  placeholder="Nome da Empresa"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white form__input"
+                  :value="$v.solicitacao.valor_solicitado.$model"
+                  v-money="money"
+                  @input="setValorSolicitado($event.target.value)"
+                />
               </div>
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.valor_solicitado.$dirty &&
+                  !$v.solicitacao.valor_solicitado.required
+                "
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="primeiro_vencimento">Taxa de Juros</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="taxa_juros"
-                    name="taxa_juros"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
-                    :value="$v.solicitacao.taxa_juros.$model"
-                    v-money="money"
-                    @input="setTaxaJuros($event.target.value)"
-                    disabled
-                  />
-                </div>
+                Valor obrigatório
               </div>
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.valor_solicitado.$dirty &&
+                  !$v.solicitacao.valor_solicitado.minValue
+                "
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="valor_solicitado">Valor Solicitado</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="valor_solicitado"
-                    name="valor_solicitado"
-                    placeholder="Nome da Empresa"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white form__input"
-                    :value="$v.solicitacao.valor_solicitado.$model"
-                    v-money="money"
-                    @input="setValorSolicitado($event.target.value)"
-                  />
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.valor_solicitado.$dirty &&
-                    !$v.solicitacao.valor_solicitado.required
-                  "
-                >
-                  Valor obrigatório
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.valor_solicitado.$dirty &&
-                    !$v.solicitacao.valor_solicitado.minValue
-                  "
-                >
-                  Valor mínimo de R${{
-                    $v.solicitacao.valor_solicitado.$params.minValue.min / 100
-                  }},00
-                </div>
+                Valor mínimo de R${{
+                  $v.solicitacao.valor_solicitado.$params.minValue.min / 100
+                }},00
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="parcelas">Parcelas</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="parcelas"
+                  name="parcelas"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
+                  type="number"
+                  v-model.number="$v.solicitacao.parcelas.$model"
+                />
               </div>
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.parcelas.$dirty &&
+                  !$v.solicitacao.parcelas.required
+                "
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="parcelas">Parcelas</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="parcelas"
-                    name="parcelas"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white"
-                    type="number"
-                    v-model.number="$v.solicitacao.parcelas.$model"
-                  />
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.parcelas.$dirty &&
-                    !$v.solicitacao.parcelas.required
-                  "
-                >
-                  Parcela(s) obrigatória
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.parcelas.$dirty &&
-                    !$v.solicitacao.parcelas.between
-                  "
-                >
-                  Parcelas entre
-                  {{ $v.solicitacao.parcelas.$params.between.min }} e
-                  {{ $v.solicitacao.parcelas.$params.between.max }}
-                </div>
+                Parcela(s) obrigatória
               </div>
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.parcelas.$dirty &&
+                  !$v.solicitacao.parcelas.between
+                "
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="data_geracao_proposta">Data da Geração</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="data_geracao_proposta"
-                    name="data_geracao_proposta"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
-                    type="date"
-                    v-model="$v.solicitacao.data_geracao_proposta.$model"
-                  />
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.data_geracao_proposta.$dirty &&
-                    !$v.solicitacao.data_geracao_proposta.required
-                  "
-                >
-                  Data obrigatória
-                </div>
+                Parcelas entre
+                {{ $v.solicitacao.parcelas.$params.between.min }} e
+                {{ $v.solicitacao.parcelas.$params.between.max }}
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="data_geracao_proposta">Data da Geração</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="data_geracao_proposta"
+                  name="data_geracao_proposta"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
+                  type="date"
+                  v-model="$v.solicitacao.data_geracao_proposta.$model"
+                />
               </div>
               <div
-                class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.data_geracao_proposta.$dirty &&
+                  !$v.solicitacao.data_geracao_proposta.required
+                "
               >
-                <div
-                  class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                >
-                  <label for="primeiro_vencimento">1º Vencimento</label>
-                </div>
-                <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                  <input
-                    id="primeiro_vencimento"
-                    name="primeiro_vencimento"
-                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
-                    type="date"
-                    v-model="$v.solicitacao.primeiro_vencimento.$model"
-                  />
-                </div>
-                <div
-                  class="text-red-600"
-                  v-if="
-                    $v.solicitacao.primeiro_vencimento.$dirty &&
-                    !$v.solicitacao.primeiro_vencimento.required
-                  "
-                >
-                  Data obrigatória
-                </div>
+                Data obrigatória
+              </div>
+            </div>
+            <div
+              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
+            >
+              <div
+                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
+              >
+                <label for="primeiro_vencimento">1º Vencimento</label>
+              </div>
+              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
+                <input
+                  id="primeiro_vencimento"
+                  name="primeiro_vencimento"
+                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white bg-white"
+                  type="date"
+                  v-model="$v.solicitacao.primeiro_vencimento.$model"
+                />
+              </div>
+              <div
+                class="text-red-600"
+                v-if="
+                  $v.solicitacao.primeiro_vencimento.$dirty &&
+                  !$v.solicitacao.primeiro_vencimento.required
+                "
+              >
+                Data obrigatória
               </div>
             </div>
           </div>
         </div>
-        <div class="flex p-2 mt-4">
-          <router-link :to="{ name: 'home' }">
-            <button
-              class="text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
-            >
-              Cancelar
-            </button>
-          </router-link>
-          <div class="flex-auto flex flex-row-reverse">
-            <button
-              @click="validateFields"
-              :class="{ 'opacity-70': $v.$invalid }"
-              class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
-            >
-              Avançar
-            </button>
+      </div>
+      <div class="flex p-2 mt-4">
+        <router-link :to="{ name: 'home' }">
+          <button
+            class="text-base hover:scale-110 focus:outline-none flex justify-center mx-2 px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-300 bg-gray-100 text-gray-700 border duration-200 ease-in-out border-gray-600 transition"
+          >
+            Cancelar
+          </button>
+        </router-link>
+        <div class="flex-auto flex flex-row-reverse">
+          <button
+            @click="validateFields"
+            :class="{ 'opacity-70': $v.$invalid }"
+            class="text-base ml-2 hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600 bg-teal-600 text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+          >
+            Avançar
+          </button>
 
-            <button
-              class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
-            >
-              Simular
-            </button>
-          </div>
+          <button
+            class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-200 bg-teal-100 text-teal-700 border duration-200 ease-in-out border-teal-600 transition"
+          >
+            Simular
+          </button>
         </div>
       </div>
-    </solicitacao>
-  </transition>
+    </div>
+  </solicitacao>
 </template>
 
 <script>
@@ -290,11 +286,4 @@ export default {
 </script>
 
 <style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 </style>

@@ -2049,7 +2049,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "mt-3 text-center w-full text-white text-lg font-bold bg-gray-500 p-2 rounded-md"
+                    "text-base focus:outline-none mt-2 px-4 py-2 rounded font-bold cursor-pointer w-full hover:bg-teal-700 bg-teal-600 text-white border duration-200 ease-in-out border-teal-600 transition"
                 },
                 [_vm._v("\n          Nova solicitacao\n        ")]
               )
