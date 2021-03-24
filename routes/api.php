@@ -43,7 +43,7 @@ Route::namespace('atividade_comercial')->group(function () {
 });
 
 Route::middleware('auth:api')->namespace('simulacao')->group(function () {
-	Route::post('/simulacao', [SimulacaoController::class, 'store']);
+	Route::post('/simulacao', [SimulacaoController::class, 'novaSimulacao']);
 	Route::get('/simulacao/{id_simulacao}', [SimulacaoController::class, 'show']);
 });
 
