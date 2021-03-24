@@ -18,46 +18,6 @@
               <div
                 class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
               >
-                <label for="tac">TAC</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="tac"
-                  name="tac"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
-                  :value="$v.solicitacao.tac.$model"
-                  v-money="money"
-                  @input="setTac($event.target.value)"
-                  disabled
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
-                <label for="taxa_juros">Taxa de Juros</label>
-              </div>
-              <div class="bg-white my-2 p-1 border border-gray-200 rounded">
-                <input
-                  id="taxa_juros"
-                  name="taxa_juros"
-                  class="p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70"
-                  :value="$v.solicitacao.taxa_juros.$model"
-                  v-money="money"
-                  @input="setTaxaJuros($event.target.value)"
-                  disabled
-                />
-              </div>
-            </div>
-            <div
-              class="lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-            >
-              <div
-                class="font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-              >
                 <label for="valor_solicitado">Valor Solicitado</label>
               </div>
               <div class="bg-white my-2 p-1 border border-gray-200 rounded">
@@ -241,8 +201,6 @@ export default {
   },
   validations: {
     solicitacao: {
-      tac: {},
-      taxa_juros: {},
       valor_solicitado: {
         required,
         minValue: minValue(1000000),
@@ -264,16 +222,6 @@ export default {
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.valor_solicitado = value;
       this.$v.solicitacao.valor_solicitado.$touch();
-    },
-    setTac(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.tac = value;
-      this.$v.solicitacao.tac.$touch();
-    },
-    setTaxaJuros(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.taxa_juros = value;
-      this.$v.solicitacao.taxa_juros.$touch();
     },
     validateFields() {
       if (!this.$v.$invalid) {

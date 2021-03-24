@@ -48,8 +48,6 @@ let state = {
         complemento: '',
     },
     solicitacaoDefault: {
-        tac: 5000,
-        taxa_juros: 1199,
         valor_solicitado: 1000000,
         parcelas: 1,
         data_geracao_proposta: '',
@@ -105,8 +103,6 @@ let state = {
         digito_conta: "",
     },
     solicitacao: {
-        tac: 5000,
-        taxa_juros: 1199,
         valor_solicitado: 1000000,
         parcelas: 1,
         data_geracao_proposta: '',

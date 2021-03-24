@@ -594,46 +594,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -655,8 +615,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   validations: {
     solicitacao: {
-      tac: {},
-      taxa_juros: {},
       valor_solicitado: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
         minValue: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minValue)(1000000)
@@ -678,16 +636,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       value = value.replace(/[^\d]+/g, "");
       this.solicitacao.valor_solicitado = value;
       this.$v.solicitacao.valor_solicitado.$touch();
-    },
-    setTac: function setTac(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.tac = value;
-      this.$v.solicitacao.tac.$touch();
-    },
-    setTaxaJuros: function setTaxaJuros(value) {
-      value = value.replace(/[^\d]+/g, "");
-      this.solicitacao.taxa_juros = value;
-      this.$v.solicitacao.taxa_juros.$touch();
     },
     validateFields: function validateFields() {
       if (!this.$v.$invalid) {
@@ -1612,110 +1560,6 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "grid lg:grid-cols-12 md:grid-cols-12" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                    },
-                    [_c("label", { attrs: { for: "tac" } }, [_vm._v("TAC")])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white my-2 p-1 border border-gray-200 rounded"
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "money",
-                            rawName: "v-money",
-                            value: _vm.money,
-                            expression: "money"
-                          }
-                        ],
-                        staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70",
-                        attrs: { id: "tac", name: "tac", disabled: "" },
-                        domProps: { value: _vm.$v.solicitacao.tac.$model },
-                        on: {
-                          input: function($event) {
-                            return _vm.setTac($event.target.value)
-                          }
-                        }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "lg:col-span-6 md:col-span-6 col-span-full lg:mr-2 md:mr-2 sm:mr-1"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "font-bold text-gray-600 text-xs leading-8 uppercase h-6 mx-2 mt-3"
-                    },
-                    [
-                      _c("label", { attrs: { for: "taxa_juros" } }, [
-                        _vm._v("Taxa de Juros")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white my-2 p-1 border border-gray-200 rounded"
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "money",
-                            rawName: "v-money",
-                            value: _vm.money,
-                            expression: "money"
-                          }
-                        ],
-                        staticClass:
-                          "p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-white disabled:opacity-70",
-                        attrs: {
-                          id: "taxa_juros",
-                          name: "taxa_juros",
-                          disabled: ""
-                        },
-                        domProps: {
-                          value: _vm.$v.solicitacao.taxa_juros.$model
-                        },
-                        on: {
-                          input: function($event) {
-                            return _vm.setTaxaJuros($event.target.value)
-                          }
-                        }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
               _c(
                 "div",
                 {
