@@ -7,8 +7,9 @@ use App\Repositories\Contracts\{
 	AtividadeComercialRepositoryInterface,
 	ClienteRepositoryInterface,
 	ClientSicredRepositoryInterface,
-	TipoLogradouroRepositoryInterface,
+	ConfiguracaoRepositoryInterface,
 	ModeloSicredRepositoryInterface,
+	TipoLogradouroRepositoryInterface,
 	UserRepositoryInterface
 };
 use App\Repositories\Eloquent\{
@@ -16,8 +17,9 @@ use App\Repositories\Eloquent\{
 	AtividadeComercialRepository,
 	ClienteRepository,
 	ClientSicredRepository,
-	TipoLogradouroRepository,
+	ConfiguracaoRepository,
 	ModeloSicredRepository,
+	TipoLogradouroRepository,
 	UserRepository
 };
 
@@ -53,13 +55,18 @@ class RepositoryServiceProvider extends ServiceProvider
 		);
 
 		$this->app->bind(
-			TipoLogradouroRepositoryInterface::class,
-			TipoLogradouroRepository::class
+			ConfiguracaoRepositoryInterface::class,
+			ConfiguracaoRepository::class
 		);
 
 		$this->app->bind(
 			ModeloSicredRepositoryInterface::class,
 			ModeloSicredRepository::class
+		);
+
+		$this->app->bind(
+			TipoLogradouroRepositoryInterface::class,
+			TipoLogradouroRepository::class
 		);
 
 		$this->app->bind(
