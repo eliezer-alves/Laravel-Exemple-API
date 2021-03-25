@@ -22,10 +22,10 @@ class ClientSicredFactory extends Factory
     public function definition()
     {
         return [
-            'environment' => 'hml',
+            'environment' => 'hml2',
             'grant_type' => 'password',
             'username' => 'master',
-            'password' => 'MASTER123',
+            'password' => 'MASTER1234',
             'client_id' => 'sicred-client',
             'client_secret' => '49e8a585-3785-42ca-b4da-a10b6300776f',
             'scope' => 'sicred.usuario offline_access',

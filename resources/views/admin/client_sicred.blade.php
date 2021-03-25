@@ -1,11 +1,36 @@
 @extends('admin.index')
 
 @section('content')
+<style>
+    [x-cloak] {
+        display: none;
+    }
 
+    .duration-300 {
+        transition-duration: 300ms;
+    }
+
+    .ease-in {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .ease-out {
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .scale-90 {
+        transform: scale(.9);
+    }
+
+    .scale-100 {
+        transform: scale(1);
+    }
+</style>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col">
+<div class="flex flex-col" x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full btn_edit_client_sicred my-2" @click="showModal = true" value="" onclick="createClientSicred()">Cadastrar</button>
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -40,8 +65,8 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-
-                        @foreach ($clients as $client)
+                        <?= '<script>const clients = ' . json_encode($clients) . '</script>' ?>
+                        @foreach ($clients as $key => $client)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 {{ $client['environment'] }}
@@ -65,7 +90,7 @@
                                 {{ $client['scope'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full btn_edit_client_sicred" @click="showModal = true" onclick="editClientSicred(this.value)" value="{{$key}}">Editar</button>
                             </td>
                         </tr>
                         @endforeach
@@ -76,6 +101,9 @@
             </div>
         </div>
     </div>
+    @include('admin.modal_client_sicred_edit')
+
 </div>
+
 
 @endsection
