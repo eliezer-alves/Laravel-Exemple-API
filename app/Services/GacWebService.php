@@ -68,13 +68,6 @@ class GacWebService
         }
     }
 
-    public function teste()
-    {
-        return $this->request(['Acao' => 'GETLOJISTABYCNPJ']);
-        // return [$this->dbServer, $this->token, $this->useSSL, $this->certSSL, $this->baseUrl];
-        return $this->configuracao;
-    }
-
     private function ExecutaCurlJson($urlDoServico, $tipoRequest, $post = null, $headerExtras = array(), $baseUrl = null, $token = null, $webservice = 'ws') 
     {
         $this->baseUrl = $baseUrl ?: $this->baseUrl;
@@ -116,7 +109,7 @@ class GacWebService
         $this->errors = curl_error($curl);
         $this->statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        echo($this->result);die;
+
         if(!empty($this->errors)){
             error_log('Erro ao consumir webservice: ' . $this->errors);
         }

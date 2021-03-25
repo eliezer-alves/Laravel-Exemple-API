@@ -13,6 +13,16 @@ class ClienteRepository extends AbstractRepository implements ClienteRepositoryI
 		parent::__construct($model);
 	}
 
+	public function findByCnpj($cnpj)
+	{
+		return $this->firstWhere('cnpj', $cnpj);
+	}
+
+	public function findByCpf($cpf)
+	{
+		return $this->firstWhere('cpf', $cpf);
+	}
+
 	public function create($data)
 	{
 		$cliente = $this->model->create($data);
