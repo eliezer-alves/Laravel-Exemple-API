@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Services\GacWebService;
-use App\Entities\ClienteAtendimentoEntity;
 use App\Repositories\Contracts\{
     ClienteRepositoryInterface,
+    PessoaAssinaturaRepositoryInterface,
     UserRepositoryInterface
 };
 
@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\Hash;
 class ClienteService
 {
     protected $clienteRepository;
+    protected $pessoaAssinaturaRepository;
     protected $userRepository;
     protected $gacWebService;
-    protected $clienteAtendimentoEntity;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, UserRepositoryInterface $userRepository, GacWebService $gacWebService, ClienteAtendimentoEntity $clienteAtendimentoEntity)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, UserRepositoryInterface $userRepository, GacWebService $gacWebService)
     {
         $this->clienteRepository = $clienteRepository;
+        $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
         $this->userRepository = $userRepository;
         $this->gacWebService = $gacWebService;
         $this->gacWebService->hydrator_bolt();
-        $this->clienteAtendimentoEntity = $clienteAtendimentoEntity;
     }
 
     public function all()
@@ -74,13 +74,27 @@ class ClienteService
 
     public function findByCnpj($cnpj)
     {
-        $cliente_postgres = $this->clienteRepository->findByCnpj($cnpj);
-        $cliente = (array)($cliente_postgres ?: $this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0]);
-        return $this->clienteRepository->fill($cliente);
-    }
+        $dadosLojista = (array)(
+            !empty($this->clienteRepository->findByCnpj($cnpj))
+            ? $this->clienteRepository->findByCnpj($cnpj)->toArray()
+            : ($this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0] ?? NULL)
+        );
+        
+        $dadosRepresentante = (array)(
+            !empty($this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj))
+            ? $this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj)->toArray()
+            : ($this->gacWebService->request(['acao' => 'GETLOSOCIOBYCNPJ', 'cnpj' => $cnpj])[0] ?? NULL)
+        );
 
-    private function makeClienteBolt($dadosBolt)
-    {
+        $lojista = $this->clienteRepository->fill($dadosLojista);
+        $representante = $this->pessoaAssinaturaRepository->fill($dadosRepresentante);
 
+        // $representante = $this->clienteRepository->fill($cliente);
+
+
+        return [
+            'lojista' => $lojista,
+            'representante' => $representante
+        ];
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Repositories\Contracts;
 
-class PessoaAssinaturaRepositoryInterface implements AbstractRepositoryInterface
+use App\Repositories\Contracts\AbstractRepositoryInterface;
+
+interface PessoaAssinaturaRepositoryInterface extends AbstractRepositoryInterface
 {
+    public function findRepresentanteByCnpj(int $cnpj);
 }
