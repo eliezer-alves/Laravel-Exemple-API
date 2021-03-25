@@ -74,20 +74,9 @@ class ClienteService
 
     public function findByCnpj($cnpj)
     {
-       $cliente_postgres = $this->clienteRepository->findByCnpj($cnpj);
-
-        $cliente = $cliente_postgres ?: $this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj]);
-
-        // return new $this->clienteAtendimentoEntity;
-
-
-
-        $cliente_bolt = $this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj]);
-        // return ['oixx'];
-        // $cliente = $this->clienteRepository->create($cliente_bolt);
-        return $cliente_bolt;
-        // $cliente = $this->clienteRepository->make($cliente_bolt);
-        // return $cliente;
+        $cliente_postgres = $this->clienteRepository->findByCnpj($cnpj);
+        $cliente = (array)($cliente_postgres ?: $this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0]);
+        return $this->clienteRepository->fill($cliente);
     }
 
     private function makeClienteBolt($dadosBolt)

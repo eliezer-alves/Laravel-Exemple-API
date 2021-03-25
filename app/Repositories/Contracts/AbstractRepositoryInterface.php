@@ -3,6 +3,8 @@ namespace App\Repositories\Contracts;
 
 interface AbstractRepositoryInterface
 {
+	public function fill(array $data);
+
 	public function all();
 
 	public function findOrFail(int $id);
