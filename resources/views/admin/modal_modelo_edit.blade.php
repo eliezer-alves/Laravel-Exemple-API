@@ -80,6 +80,7 @@
     }
 
     function createModeloSicred() {
+        clearModalForm();
         document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Cadastrar';
     }
 

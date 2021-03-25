@@ -78,7 +78,8 @@
   }
 
   function createClientSicred() {
-    document.querySelector('.btn_salvar_client_sicred').innerHTML = 'Cadastrar'
+    clearModalForm();
+    document.querySelector('.btn_salvar_client_sicred').innerHTML = 'Cadastrar';
   }
 
   function clearModalForm() {
