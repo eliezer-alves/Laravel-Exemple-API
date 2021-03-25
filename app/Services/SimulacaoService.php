@@ -13,7 +13,7 @@ class SimulacaoService
 		$this->apiSicred = $apiSicred;
 	}
 
-	public function store($request)
+	public function novaSimulacao($request)
 	{
 		return $this->apiSicred->novaSimulacao($request);
 	}

@@ -71,4 +71,15 @@ class ClienteController extends Controller
     {
         return $this->clienteService->delete($idCliente);
     }
+
+    /**
+     * Customer search by cnpj for service.
+     *
+     * @param  string  $cnpj
+     * @return \Illuminate\Http\Response
+     */
+    public function findByCnpj($cnpj)
+    {
+        return $this->clienteService->findByCnpj($cnpj);
+    }
 }

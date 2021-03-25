@@ -21,9 +21,9 @@ class SimulacaoController extends Controller
      * @param  \Illuminate\Http\SimulacaoRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SimulacaoRequest $request)
+    public function novaSimulacao(SimulacaoRequest $request)
     {
-        return $this->simulacaoService->store($request->all());
+        return $this->simulacaoService->novaSimulacao($request->all());
     }
 
     /**

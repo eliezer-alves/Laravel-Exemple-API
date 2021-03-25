@@ -4,11 +4,12 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AtividadeComercialController;
-use App\Http\Controllers\SimulacaoController;
-use App\Http\Controllers\PropostaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DominiosController;
+use App\Http\Controllers\PropostaController;
+use App\Http\Controllers\SimulacaoController;
+use App\Http\Controllers\TesteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::post('/cliente', [ClienteController::class, 'store']);
 Route::middleware('auth:api')->namespace('cliente')->group(function () {
 	Route::get('/cliente', [ClienteController::class, 'index']);
 	Route::get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
+	Route::get('/cliente/busca/{cnpj}', [ClienteController::class, 'findByCnpj']);
 	Route::put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
 	Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
@@ -43,7 +45,7 @@ Route::namespace('atividade_comercial')->group(function () {
 });
 
 Route::middleware('auth:api')->namespace('simulacao')->group(function () {
-	Route::post('/simulacao', [SimulacaoController::class, 'store']);
+	Route::post('/simulacao', [SimulacaoController::class, 'novaSimulacao']);
 	Route::get('/simulacao/{id_simulacao}', [SimulacaoController::class, 'show']);
 });
 
@@ -54,3 +56,5 @@ Route::middleware('auth:api')->namespace('proposta')->group(function () {
 });
 
 Route::get('/dominios', [DominiosController::class, '__invoke']);
+
+Route::get('/teste', [TesteController::class, 'teste']);
