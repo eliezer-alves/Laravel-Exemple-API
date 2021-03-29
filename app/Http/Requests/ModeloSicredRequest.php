@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NovoModeloSicredRequest extends FormRequest
+class ModeloSicredRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +32,6 @@ class NovoModeloSicredRequest extends FormRequest
             'produto' => ['required', 'string'],
             'plano' => ['required', 'string'],
             'taxa' => ['required', 'numeric'],
-            'id_client_sicred' => ['required', 'string'],
         ];
     }
 
@@ -67,9 +66,6 @@ class NovoModeloSicredRequest extends FormRequest
 
             'taxa.required' => 'Campo taxa obrigatório',
             'taxa.numeric' => 'Campo taxa é do tipo numérico.',
-
-            'id_client_sicred.required' => 'Campo id_client_sicred obrigatório',
-            'id_client_sicred.string' => 'Campo id_client_sicred é do tipo texto.',
         ];
     }
 }

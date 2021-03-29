@@ -26,7 +26,7 @@
         transform: scale(1);
     }
 </style>
-<div class="flex flex-col" x-data="handleModal({{ $errors }})" @keydown.escape="close()" x-cloak>
+<div class="flex flex-col" x-data="handleModals({{ $errors }})" @keydown.escape="close()" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="flex flex-row-reverse"><button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="openStore()" value="">Cadastrar</button></div>
@@ -61,6 +61,10 @@
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -94,6 +98,9 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($modelo) }})">Editar</button>
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openDelete({{ $modelo['id_modelo_sicred'] }})">Excluir</button>
+                            </td>
                         </tr>
                         @endforeach
 
@@ -102,33 +109,40 @@
             </div>
         </div>
     </div>
-    @include('admin.modal_modelo_edit')
+    @include('admin.modals.modelo_sicred_edit_modal')
+    @include('admin.modals.modelo_sicred_delete_modal')
 </div>
 
 <script>
-    function handleModal(errors)
+    function handleModals(errors)
     {
         return {
             showValidationErrors: (!!errors && Object.keys(errors).length > 0),
-            showModal: (!!errors && Object.keys(errors).length > 0),
-            actionForm: '@php echo route('admin.modelo-sicred.store') @endphp',
+            showEditModal: (!!errors && Object.keys(errors).length > 0),
+            showDeleteModal: false,
+            actionEditForm: '#',
+            actionDeleteForm: '#',
             openStore() {
-                this.showModal = true;
-                this.actionForm = '@php echo route('admin.modelo-sicred.store') @endphp';
+                this.showEditModal = true;
+                this.actionEditForm = '@php echo route('admin.modelo-sicred.store') @endphp';
                 prepareFormCreate();
             },
             openUpdate(data) {
-                console.log(data);
-                this.showModal = true;
+                this.showEditModal = true;
                 this.showValidationErrors = false;
-                this.actionForm = '@php echo route('admin.modelo-sicred.update', '') @endphp' + '/' + data.id_modelo_sicred;
+                this.actionEditForm = '@php echo route('admin.modelo-sicred.update', '') @endphp' + '/' + data.id_modelo_sicred;
                 prepareFormUpdate(data)
             },
+            openDelete(id) {
+                this.showDeleteModal = true;
+                this.actionDeleteForm = '@php echo route('admin.modelo-sicred.destroy', '') @endphp' + '/' + id;
+            },
             close() {
-                this.showModal = false;
+                this.showEditModal = false;
+                this.showDeleteModal = false;
             },
             isOpen() {
-                return this.showModal === true;
+                return this.showEditModal === true;
             },
         };
     }
@@ -136,7 +150,7 @@
     function prepareFormCreate()
     {
         if(document.querySelector('#id_modelo_sicred').value.length > 0){
-            document.querySelector("#form_modelo_sicred").reset();
+            document.querySelector("#form_eidt_modelo_sicred").reset();
         }
         document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Cadastrar';
     }

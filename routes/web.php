@@ -21,10 +21,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->namespace('admin')->group(function () {
-    Route::get('/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
-    Route::post('/modelo-sicred', [ModeloSicredController::class, 'store'])->name('admin.modelo-sicred.store');
-    Route::post('/modelo-sicred/{id}', [ModeloSicredController::class, 'update'])->name('admin.modelo-sicred.update');
+Route::middleware(['auth'])->prefix('admin/')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
+
+    Route::namespace('modelo-sicred')->group(function () {
+        Route::get('/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
+        Route::post('/modelo-sicred', [ModeloSicredController::class, 'store'])->name('admin.modelo-sicred.store');
+        Route::post('/modelo-sicred/{id}', [ModeloSicredController::class, 'update'])->name('admin.modelo-sicred.update');
+        Route::get('/modelo-sicred/{id}', [ModeloSicredController::class, 'destroy'])->name('admin.modelo-sicred.destroy');
+    });
+
     Route::get('/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
 });
 
@@ -33,10 +41,5 @@ Route::get('/solicitacao', function () {
 });
 
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

@@ -1,7 +1,7 @@
-<form id="form_modelo_sicred" x-ref="form" :action="actionForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
+<form id="form_eidt_modelo_sicred" x-ref="form_eidt_modelo_sicred" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
-    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showModal }">
+    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEditModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showEditModal }">
         <!--Dialog-->
         <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" @click.away="close()" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 

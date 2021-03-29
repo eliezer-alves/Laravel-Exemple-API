@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ModeloSicredService;
 
-use App\Http\Requests\NovoModeloSicredRequest;
+use App\Http\Requests\ModeloSicredRequest;
 use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
@@ -27,24 +27,15 @@ class ModeloSicredController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NovoModeloSicredRequest $request)
+    public function store(ModeloSicredRequest $request)
     {
-        dd($request->all());
+        $this->modeloSicredService->create($request);
+        return redirect()->route('admin.modelo-sicred');
     }
 
     /**
@@ -59,36 +50,27 @@ class ModeloSicredController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request\ModeloSicredRequest  $request
+     * @param  int  $idModeloSicred
+     * @return redirect()
      */
-    public function update(Request $request, $id)
+    public function update(ModeloSicredRequest $request, $idModeloSicred)
     {
-        dd($id);
+        $this->modeloSicredService->update($request, $idModeloSicred);
+        return redirect()->route('admin.modelo-sicred');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $idModeloSicred
+     * @return redirect()
      */
-    public function destroy($id)
+    public function destroy($idModeloSicred)
     {
-        //
+        $this->modeloSicredService->delete($idModeloSicred);
+        return redirect()->route('admin.modelo-sicred');
     }
 }
