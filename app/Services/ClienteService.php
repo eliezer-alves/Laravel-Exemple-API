@@ -79,7 +79,6 @@ class ClienteService
             ? $this->clienteRepository->findByCnpj($cnpj)->toArray()
             : ($this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0] ?? NULL)
         );
-        
         $dadosRepresentante = (array)(
             !empty($this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj))
             ? $this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj)->toArray()

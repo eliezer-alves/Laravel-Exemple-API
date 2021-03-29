@@ -1,6 +1,4 @@
 <section class="flex flex-wrap p-4 h-full items-center">
-
-
   <!--Overlay-->
   <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showModal }">
     <!--Dialog-->

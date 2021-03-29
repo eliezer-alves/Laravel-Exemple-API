@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ModeloSicredService;
 
+use App\Http\Requests\NovoModeloSicredRequest;
 use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
@@ -22,7 +23,6 @@ class ModeloSicredController extends Controller
     public function index()
     {
         $dados['modelos'] = $this->modeloSicredService->all();
-
         return view('admin.modelo_sicred', $dados);
     }
 
@@ -42,9 +42,9 @@ class ModeloSicredController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NovoModeloSicredRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -78,7 +78,7 @@ class ModeloSicredController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id);
     }
 
     /**

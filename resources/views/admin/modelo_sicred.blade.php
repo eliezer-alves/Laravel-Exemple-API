@@ -26,11 +26,10 @@
         transform: scale(1);
     }
 </style>
-<?= '<script>const clients = ' . json_encode($modelos) . '</script>' ?>
-<div class="flex flex-col" x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
+<div class="flex flex-col" x-data="handleModal({{ $errors }})" @keydown.escape="close()" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="flex flex-row-reverse"><button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="showModal = true" value="" onclick="createModeloSicred()">Cadastrar</button></div>
+            <div class="flex flex-row-reverse"><button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="openStore()" value="">Cadastrar</button></div>
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -93,7 +92,7 @@
                                 {{ $modelo['taxa'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="showModal = true" onclick="editModeloSicred( {{$key}} )">Editar</button>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($modelo) }})">Editar</button>
                             </td>
                         </tr>
                         @endforeach
@@ -106,6 +105,56 @@
     @include('admin.modal_modelo_edit')
 </div>
 
+<script>
+    function handleModal(errors)
+    {
+        return {
+            showValidationErrors: (!!errors && Object.keys(errors).length > 0),
+            showModal: (!!errors && Object.keys(errors).length > 0),
+            actionForm: '@php echo route('admin.modelo-sicred.store') @endphp',
+            openStore() {
+                this.showModal = true;
+                this.actionForm = '@php echo route('admin.modelo-sicred.store') @endphp';
+                prepareFormCreate();
+            },
+            openUpdate(data) {
+                console.log(data);
+                this.showModal = true;
+                this.showValidationErrors = false;
+                this.actionForm = '@php echo route('admin.modelo-sicred.update', '') @endphp' + '/' + data.id_modelo_sicred;
+                prepareFormUpdate(data)
+            },
+            close() {
+                this.showModal = false;
+            },
+            isOpen() {
+                return this.showModal === true;
+            },
+        };
+    }
+
+    function prepareFormCreate()
+    {
+        if(document.querySelector('#id_modelo_sicred').value.length > 0){
+            document.querySelector("#form_modelo_sicred").reset();
+        }
+        document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Cadastrar';
+    }
+
+    function prepareFormUpdate(data)
+    {
+        document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Salvar';
+        document.querySelector('#id_modelo_sicred').value = data.id_modelo_sicred
+        document.querySelector('#modelo').value = data.modelo
+        document.querySelector('#empresa').value = data.empresa
+        document.querySelector('#agencia').value = data.agencia
+        document.querySelector('#loja').value = data.loja
+        document.querySelector('#lojista').value = data.lojista
+        document.querySelector('#produto').value = data.produto
+        document.querySelector('#plano').value = data.plano
+        document.querySelector('#taxa').value = data.taxa
+    }
+</script>
 
 
 @endsection

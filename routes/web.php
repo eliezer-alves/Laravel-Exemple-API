@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->namespace('admin')->group(function () {
     Route::get('/modelo-sicred', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
+    Route::post('/modelo-sicred', [ModeloSicredController::class, 'store'])->name('admin.modelo-sicred.store');
+    Route::post('/modelo-sicred/{id}', [ModeloSicredController::class, 'update'])->name('admin.modelo-sicred.update');
     Route::get('/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
 });
 
