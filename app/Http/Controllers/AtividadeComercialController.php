@@ -7,11 +7,9 @@ use App\Services\AtividadeComercialService;
 
 class AtividadeComercialController extends Controller
 {
-    protected $service;
-
     public function __construct(AtividadeComercialService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
     /**

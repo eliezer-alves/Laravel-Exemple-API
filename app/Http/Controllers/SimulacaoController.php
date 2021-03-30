@@ -8,11 +8,10 @@ use App\Services\SimulacaoService;
 
 class SimulacaoController extends Controller
 {
-    protected $service;
 
     public function __construct(SimulacaoService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
     /**

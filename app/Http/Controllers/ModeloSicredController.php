@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
 {
-    protected $service;
-    protected $route;
+    private $route;
 
     public function __construct(ModeloSicredService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
         $this->route = 'admin.modelo-sicred';
     }
 

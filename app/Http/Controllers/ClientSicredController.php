@@ -8,12 +8,11 @@ use App\Http\Requests\ClientSicredRequest;
 
 class ClientSicredController extends Controller
 {
-    protected $serviceLayer;
-    protected $route;
+    private $route;
 
     public function __construct(ClientSicredService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
         $this->route = 'admin.client-sicred';
     }
 

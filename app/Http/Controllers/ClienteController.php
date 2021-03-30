@@ -8,11 +8,9 @@ use App\Services\ClienteService;
 
 class ClienteController extends Controller
 {
-    protected $service;
-
-    public function __construct(ClienteService $clienteService)
+    public function __construct(ClienteService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
 

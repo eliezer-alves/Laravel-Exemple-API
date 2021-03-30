@@ -32,7 +32,7 @@ class UpdateClienteRequest extends FormRequest
             'celular' => ['string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'email' => ['string', 'email', 'confirmed'],
             'senha' => ['string', 'between:6,12', 'confirmed'],
-            'cep' => ['string', 'regex:/^[0-9]+$/u', 'size:7'],
+            'cep' => ['string', 'regex:/^[0-9]+$/u', 'size:8'],
             'uf' => ['string', 'size:2', new Uf],
             'cidade' => ['string'],
             'bairro' => ['string'],
