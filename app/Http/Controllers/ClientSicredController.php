@@ -35,7 +35,7 @@ class ClientSicredController extends Controller
      */
     public function store(ClientSicredRequest $request)
     {
-        $this->service->create($request);
+        $this->service->create($request->all());
         return redirect()->route($this->route);
     }
 
@@ -48,7 +48,7 @@ class ClientSicredController extends Controller
      */
     public function update(ClientSicredRequest $request, $idModeloSicred)
     {
-        $this->service->update($request, $idModeloSicred);
+        $this->service->update($request->all(), $idModeloSicred);
         return redirect()->route($this->route);
     }
 

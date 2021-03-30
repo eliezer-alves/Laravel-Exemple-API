@@ -3,21 +3,46 @@
 namespace App\Services;
 
 use App\Services\Contracts\ApiSicredServiceInterface;
+use App\Services\{
+    ClienteService
+};
 
 class PropostaService
 {
-    protected $apiSicred;
+    private $apiSicred;
+    private $clienteService;
 
-    public function __construct(ApiSicredServiceInterface $apiSicred)
+    public function __construct(ApiSicredServiceInterface $apiSicred, ClienteService $clienteService)
     {
         $this->apiSicred = $apiSicred;
+        $this->clienteService = $clienteService;
     }
 
-    public function novaProposta($request)
+    /**
+     * Service Layer - Creates a new Agile Proposal from the data in a request
+     *
+     * @param  array  $attributes
+     * @return json  $dataProposta
+     */
+    public function novaProposta($attributes)
     {
-        return $this->apiSicred->novaProposta($request);
+        $attributesProposta = $attributes['proposta'];
+        $attributesCliente = $attributes['cliente'];
+        $attributesSocios = $attributes['socios'];
+
+        $cliente = $this->clienteService->create($attributesCliente);
+        return $cliente;
+
+        // return $this->apiSicred->novaProposta($attributes);
     }
 
+
+    /**
+     * Service Layer - Fetch data from a proposal at Sicred
+     *
+     * @param  int  $numeroProposta
+     * @return json  $dataProposta
+     */
     public function exibeProposta($numeroProposta)
     {
         return $this->apiSicred->exibeProposta($numeroProposta);

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Contracts;
 
 interface ClienteRepositoryInterface
@@ -8,5 +9,5 @@ interface ClienteRepositoryInterface
 
     public function findByCpf(int $cnpj);
 
+    public function createWithUser(array $data);
 }
-

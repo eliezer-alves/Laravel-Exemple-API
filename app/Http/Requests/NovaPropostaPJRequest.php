@@ -49,7 +49,7 @@ class NovaPropostaPJRequest extends FormRequest
             'cliente.cidade' => ['required', 'string'],
             'cliente.bairro' => ['required', 'string'],
             'cliente.logradouro' => ['required', 'string'],
-            'cliente.complemento' => [],
+            'cliente.complemento' => ['string', 'nullable'],
             'cliente.numero' => ['required', 'numeric'],
             'cliente.id_tipo_logradouro' => ['required', 'numeric'],
 
@@ -67,9 +67,13 @@ class NovaPropostaPJRequest extends FormRequest
             'socios.0.bairro' => ['required', 'string'],
             'socios.0.logradouro' => ['required', 'string'],
             'socios.0.id_tipo_logradouro' => ['required', 'numeric'],
-            'socios.0.complemento' => [],
+            'socios.0.complemento' => ['string', 'nullable'],
             'socios.0.numero' => ['required', 'numeric'],
             'socios.0.renda_mensal' => ['required', 'numeric'],
+            'socios.0.politicamente_exposto' => ['boolean'],
+            'socios.0.parente_politicamente_exposto' => ['boolean'],
+            'socios.0.cargo_politico' => ['string', 'nullable'],
+            'socios.0.cargo_parente_politico' => ['string', 'nullable'],
         ];
     }
 
@@ -78,10 +82,8 @@ class NovaPropostaPJRequest extends FormRequest
      *
      * @return array
      */
-    // public function messages()
-    // {
-    //     return [
-
-    //     ];
-    // }
+    public function messages()
+    {
+        return [];
+    }
 }

@@ -13,11 +13,23 @@ class SimulacaoService
         $this->apiSicred = $apiSicred;
     }
 
-    public function novaSimulacao($request)
+    /**
+     * Service Layer - Make a proposal simulation at Sicredi
+     *
+     * @param  array  $attributes
+     * @return json  $dataProposta
+     */
+    public function novaSimulacao($attributes)
     {
-        return $this->apiSicred->novaSimulacao($request);
+        return $this->apiSicred->novaSimulacao($attributes);
     }
 
+    /**
+     * Service Layer - Get data from a proposal simulation at Sicredi
+     *
+     * @param  int  $idSimulacao
+     * @return json  $dataProposta
+     */
     public function show($idSimulacao)
     {
         return $this->apiSicred->exibeSimulacao($idSimulacao);

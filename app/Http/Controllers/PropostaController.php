@@ -22,7 +22,6 @@ class PropostaController extends Controller
      */
     public function novaProposta(NovaPropostaPJRequest $request)
     {
-        return $request->all();
         return $this->service->novaProposta($request->all());
     }
 

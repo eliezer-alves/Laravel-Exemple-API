@@ -16,6 +16,12 @@ class DominiosService
         $this->tipoLogradouroRepository = $tipoLogradouroRepository;
     }
 
+
+    /**
+     * Service Layer - Get Sicred Domains (varied information)
+     *
+     * @return array $dominios
+     */
     public function dominios()
     {
         $dominios = [];

@@ -36,7 +36,7 @@ class ModeloSicredController extends Controller
      */
     public function store(ModeloSicredRequest $request)
     {
-        $this->service->create($request);
+        $this->service->create($request->all());
         return redirect()->route($this->route);
     }
 
@@ -49,7 +49,7 @@ class ModeloSicredController extends Controller
      */
     public function update(ModeloSicredRequest $request, $idModeloSicred)
     {
-        $this->service->update($request, $idModeloSicred);
+        $this->service->update($request->all(), $idModeloSicred);
         return redirect()->route($this->route);
     }
 

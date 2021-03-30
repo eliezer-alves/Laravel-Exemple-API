@@ -33,7 +33,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        return $this->service->create($request);
+        return $this->service->createWithUser($request->all());
     }
 
     /**
@@ -56,7 +56,7 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, $idCliente)
     {
-        return $this->service->update($request, $idCliente);
+        return $this->service->update($request->all(), $idCliente);
     }
 
     /**
