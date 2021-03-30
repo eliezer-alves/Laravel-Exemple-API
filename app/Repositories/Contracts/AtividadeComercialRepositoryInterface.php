@@ -2,6 +2,6 @@
 
 namespace App\Repositories\Contracts;
 
-interface AtividadeComercialRepositoryInterface
+interface AtividadeComercialRepositoryInterface  extends AbstractRepositoryInterface
 {
 }

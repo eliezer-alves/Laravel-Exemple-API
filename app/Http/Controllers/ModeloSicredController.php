@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
 {
-    protected $service;
-    protected $route;
+    private $route;
 
     public function __construct(ModeloSicredService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
         $this->route = 'admin.modelo-sicred';
     }
 
@@ -37,7 +36,7 @@ class ModeloSicredController extends Controller
      */
     public function store(ModeloSicredRequest $request)
     {
-        $this->service->create($request);
+        $this->service->create($request->all());
         return redirect()->route($this->route);
     }
 
@@ -50,7 +49,7 @@ class ModeloSicredController extends Controller
      */
     public function update(ModeloSicredRequest $request, $idModeloSicred)
     {
-        $this->service->update($request, $idModeloSicred);
+        $this->service->update($request->all(), $idModeloSicred);
         return redirect()->route($this->route);
     }
 

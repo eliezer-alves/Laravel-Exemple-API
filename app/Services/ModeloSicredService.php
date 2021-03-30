@@ -13,8 +13,9 @@ class ModeloSicredService
         $this->modeloSicredRepository = $modeloSicredRepository;
     }
 
+
     /**
-     * Get a listing of the resource.
+     * Service Layer - Get a listing of the resource.
      *
      * @return ModeloSicredRepository  $modeloSicred
      */
@@ -23,31 +24,34 @@ class ModeloSicredService
         return $this->modeloSicredRepository->all()->toArray();
     }
 
+
     /**
-     * Create the model in the database.
+     * Service Layer - Create the model in the database.
      *
      * @param  array  $attributes
      * @return ModeloSicredRepository  $modeloSicred
      */
-    public function create($request)
+    public function create($attributes)
     {
-        return $this->modeloSicredRepository->create($request->all());
+        return $this->modeloSicredRepository->create($attributes);
     }
 
+
     /**
-     * Create the model in the database.
+     * Service Layer - Update the model in the database.
      *
      * @param  array  $attributes
      * @param  int  $idModeloSicred
      * @return ModeloSicredRepository  $modeloSicred
      */
-    public function update($request, $idModeloSicred)
+    public function update($attributes, $idModeloSicred)
     {
-        return $this->modeloSicredRepository->update($request->all(), $idModeloSicred);
+        return $this->modeloSicredRepository->update($attributes, $idModeloSicred);
     }
 
+
     /**
-     * Delete the model in the database.
+     * Service Layer - Delete the model in the database.
      *
      * @param  int  $idModeloSicred
      * @return ModeloSicredRepository  $modeloSicred

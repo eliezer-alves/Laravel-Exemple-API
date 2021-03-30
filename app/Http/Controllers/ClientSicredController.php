@@ -8,12 +8,11 @@ use App\Http\Requests\ClientSicredRequest;
 
 class ClientSicredController extends Controller
 {
-    protected $serviceLayer;
-    protected $route;
+    private $route;
 
     public function __construct(ClientSicredService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
         $this->route = 'admin.client-sicred';
     }
 
@@ -36,7 +35,7 @@ class ClientSicredController extends Controller
      */
     public function store(ClientSicredRequest $request)
     {
-        $this->service->create($request);
+        $this->service->create($request->all());
         return redirect()->route($this->route);
     }
 
@@ -49,7 +48,7 @@ class ClientSicredController extends Controller
      */
     public function update(ClientSicredRequest $request, $idModeloSicred)
     {
-        $this->service->update($request, $idModeloSicred);
+        $this->service->update($request->all(), $idModeloSicred);
         return redirect()->route($this->route);
     }
 

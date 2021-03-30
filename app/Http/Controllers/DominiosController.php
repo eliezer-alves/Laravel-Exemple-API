@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class DominiosController extends Controller
 {
-    protected $service;
 
     public function __construct(DominiosService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
     /**

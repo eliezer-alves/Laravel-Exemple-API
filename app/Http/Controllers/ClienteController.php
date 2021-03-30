@@ -8,11 +8,9 @@ use App\Services\ClienteService;
 
 class ClienteController extends Controller
 {
-    protected $service;
-
-    public function __construct(ClienteService $clienteService)
+    public function __construct(ClienteService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
 
@@ -35,7 +33,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        return $this->service->create($request);
+        return $this->service->createWithUser($request->all());
     }
 
     /**
@@ -58,7 +56,7 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, $idCliente)
     {
-        return $this->service->update($request, $idCliente);
+        return $this->service->update($request->all(), $idCliente);
     }
 
     /**

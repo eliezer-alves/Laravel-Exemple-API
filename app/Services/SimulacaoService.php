@@ -6,20 +6,32 @@ use App\Services\Contracts\ApiSicredServiceInterface;
 
 class SimulacaoService
 {
-	protected $apiSicred;
+    protected $apiSicred;
 
-	public function __construct(ApiSicredServiceInterface $apiSicred)
-	{
-		$this->apiSicred = $apiSicred;
-	}
+    public function __construct(ApiSicredServiceInterface $apiSicred)
+    {
+        $this->apiSicred = $apiSicred;
+    }
 
-	public function novaSimulacao($request)
-	{
-		return $this->apiSicred->novaSimulacao($request);
-	}
+    /**
+     * Service Layer - Make a proposal simulation at Sicredi
+     *
+     * @param  array  $attributes
+     * @return json  $dataProposta
+     */
+    public function novaSimulacao($attributes)
+    {
+        return $this->apiSicred->novaSimulacao($attributes);
+    }
 
-	public function show($idSimulacao)
-	{
-		return $this->apiSicred->exibeSimulacao($idSimulacao);
-	}
+    /**
+     * Service Layer - Get data from a proposal simulation at Sicredi
+     *
+     * @param  int  $idSimulacao
+     * @return json  $dataProposta
+     */
+    public function show($idSimulacao)
+    {
+        return $this->apiSicred->exibeSimulacao($idSimulacao);
+    }
 }
