@@ -30,10 +30,9 @@ class PropostaService
         $attributesCliente = $attributes['cliente'];
         $attributesSocios = $attributes['socios'];
 
-        $cliente = $this->clienteService->create($attributesCliente);
-        return $cliente;
-
-        // return $this->apiSicred->novaProposta($attributes);
+        // $cliente = $this->clienteService->create($attributesCliente);
+        $numeroProposta = $this->apiSicred->novaProposta($attributesProposta['idSimulacao']);
+        return  $this->apiSicred->vincularClienteProposta($attributesCliente, $numeroProposta);
     }
 
 

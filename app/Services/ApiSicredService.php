@@ -89,26 +89,80 @@ class ApiSicredService implements ApiSicredServiceInterface
     }
 
     /**
-     * Request detailed data for a proposal at Sicred.
+     * Create a new proposal at Sicred.
      *
-     * @return Illuminate\Support\Facades\Http
+     * @param int $idSimulacao
+     * @return int $numeroProposta
      */
-    public function novaProposta($request)
+    public function novaProposta($idSimulacao)
     {
-        $this->novaSessao();
         $url = $this->urls->base_url . $this->urls->proposta_url;
         $body = [
-            'empresa' => '01',
-            'idSimulacao' => $request['idSimulacao']
+            'empresa' => $this->empresa,
+            'idSimulacao' => $idSimulacao
         ];
 
         $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
-        return response($response->body(), $response->status());
+        $numeroProposta = json_decode($response->body())->numeroProposta;
+
+        return $numeroProposta;
     }
+
+
+    /**
+     * Links a customer to the proposal at Sicred
+     *
+     * @param array $attributes
+     * @param int $numeroProposta
+     * @return int $numeroProposta
+     */
+    public function vincularClienteProposta($attributes, $numeroProposta)
+    {
+        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta";
+        $body = [
+            'cnpj' => $attributes['cnpj'],
+            'razaoSocial' => $attributes['razao_social'],
+            'fundacao' => $attributes['data_fundacao'],
+            // 'cosif' => $attributes['cosif'],
+            'inscricaoEstadual' => $attributes['inscricao_estadual'],
+            // 'capitalSocial'=> $attributes['capitalSocial'],
+            // 'numeroFuncionarios'=> $attributes['numeroFuncionarios'],
+            // 'anoFaturamento'=> $attributes['anoFaturamento'],
+            // 'valorFaturamentoAnual'=> $attributes['valorFaturamentoAnual'],
+            // 'porte'=> $attributes['porte'],
+            'email' => $attributes['email'],
+            'cepResidencial' => $attributes['cep'],
+            'enderecoResidencial' => $attributes['logradouro'],
+            'numeroResidencial' => $attributes['numero'],
+            'complementoResidencial' => $attributes['complemento'],
+            'bairroResidencial' => $attributes['bairro'],
+            'cidadeResidencial' => $attributes['cidade'],
+            'ufResidencial' => $attributes['uf']
+            // 'codigoExterno'=> $attributes['codigoExterno'],
+            // 'dataInclusao'=> $attributes['dataInclusao'],
+        ];
+
+        $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
+        return $response;
+    }
+
+
+    /**
+     * Links bank details to a proposal at Sicred
+     *
+     * @param array $attributes
+     * @return int $numeroProposta
+     */
+    public function vincularLibercoesProposta($idSimulacao)
+    {
+        return 0;
+    }
+
 
     /**
      * Request detailed data for a proposal at Sicred.
      *
+     * @param int $numeroProposta
      * @return Illuminate\Support\Facades\Http
      */
     public function exibeProposta($numeroProposta)
@@ -116,7 +170,6 @@ class ApiSicredService implements ApiSicredServiceInterface
         $url = $this->urls->base_url . $this->urls->proposta_url . '/' . $this->empresa . '/' . $numeroProposta;
 
         $response = Http::withToken(Session::get('accessToken'))->get($url);
-        dd($response);
         return response($response->body(), $response->status());
     }
 
