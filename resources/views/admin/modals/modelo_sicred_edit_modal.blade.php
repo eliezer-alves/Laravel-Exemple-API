@@ -1,4 +1,4 @@
-<form id="form_eidt_modelo_sicred" x-ref="form_eidt_modelo_sicred" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
+<form x-ref="form_modelo" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
     <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEditModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showEditModal }">
@@ -18,12 +18,12 @@
             <!-- content -->
             <div class="my-1 text-sm" hidden="">
                 <label for="id_registro" class="block text-black">ID Registro <span class="text-indigo-500">*</span></label>
-                <input type="text" id="id_registro" name="id_registro" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="" />                
+                <input type="text" id="id_registro" name="id_registro" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="" x-ref="id_registro" />
             </div>
 
             <div class="my-5 text-sm">
                 <label for="modelo" class="block text-black">Modelo <span class="text-indigo-500">*</span></label>
-                <input type="text" id="modelo" name="modelo" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('modelo') }}" />
+                <input type="text" id="modelo" name="modelo" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('modelo') }}" x-ref="modelo" />
                 @error('modelo')
                 <template class="mb-2" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
@@ -33,7 +33,7 @@
 
             <div class="my-5 text-sm">
                 <label for="empresa" class="block text-black">Empresa <span class="text-indigo-500">*</span></label>
-                <input type="text" id="empresa" name="empresa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('empresa') }}" />
+                <input type="text" id="empresa" name="empresa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('empresa') }}" x-ref="empresa" />
                 @error('empresa')
                 <template class="mb-2" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
@@ -44,7 +44,7 @@
             <div class="my-5 grid grid-cols-2">
                 <div class="text-sm col-span-1 mr-2">
                     <label for="agencia" class="block text-black">Agência <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="agencia" name="agencia" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('agencia') }}" />
+                    <input type="text" id="agencia" name="agencia" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('agencia') }}" x-ref="agencia" />
                     @error('agencia')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
@@ -54,7 +54,7 @@
 
                 <div class="text-sm col-span-1">
                     <label for="loja" class="block text-black">Loja <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="loja" name="loja" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('loja') }}" />
+                    <input type="text" id="loja" name="loja" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('loja') }}" x-ref="loja" />
                     @error('loja')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
@@ -65,7 +65,7 @@
 
             <div class="my-5 text-sm">
                 <label for="lojista" class="block text-black">Lojista <span class="text-indigo-500">*</span></label>
-                <input type="text" id="lojista" name="lojista" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('lojista') }}" />
+                <input type="text" id="lojista" name="lojista" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('lojista') }}" x-ref="lojista" />
                 @error('lojista')
                 <template class="mb-2 text-red-600" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
@@ -75,7 +75,7 @@
 
             <div class="my-5 text-sm">
                 <label for="produto" class="block text-black">Produto <span class="text-indigo-500">*</span></label>
-                <input type="text" id="produto" name="produto" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('produto') }}" />
+                <input type="text" id="produto" name="produto" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('produto') }}" x-ref="produto" />
                 @error('produto')
                 <template class="mb-2 text-red-600" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
@@ -86,17 +86,17 @@
             <div class="my-5 grid grid-cols-2">
                 <div class="text-sm col-span-1 mr-2">
                     <label for="plano" class="block text-black">Plano <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="plano" name="plano" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('plano') }}" />
+                    <input type="text" id="plano" name="plano" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('plano') }}" x-ref="plano" />
                     @error('plano')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
                     </template>
                     @enderror
-                </div> 
+                </div>
 
                 <div class="text-sm col-span-1">
                     <label for="taxa" class="block text-black">Taxa <span class="text-indigo-500">*</span></label>
-                    <input type="number" id="taxa" name="taxa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" step="0.01" value="{{ old('taxa') }}" />
+                    <input type="number" id="taxa" name="taxa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" step="0.01" value="{{ old('taxa') }}" x-ref="taxa" />
                     @error('taxa')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
@@ -107,7 +107,7 @@
 
             <!--Footer-->
             <div class="flex justify-end pt-2 ml-2">
-                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit">Salvar</button>
+                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit" x-ref="btnSalvar">Salvar</button>
                 <button class="modal-close px-4  bg-transparent p-3 rounded-lg  text-indigo-600 hover:text-indigo-400" @click.prevent="close()">Cancelar</button>
             </div>
         </div>

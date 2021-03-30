@@ -116,8 +116,7 @@
 </div>
 
 <script>
-    function handleModals(errors)
-    {
+    function handleModals(errors) {
         return {
             showValidationErrors: (!!errors && Object.keys(errors).length > 0),
             showEditModal: (!!errors && Object.keys(errors).length > 0),
@@ -126,18 +125,18 @@
             actionDeleteForm: '#',
             openStore() {
                 this.showEditModal = true;
-                this.actionEditForm = '@php echo route('admin.modelo-sicred.store') @endphp';
-                prepareFormCreate();
+                this.actionEditForm = `@php echo route('admin.modelo-sicred.store') @endphp`;
+                this.clearForm();
             },
             openUpdate(data) {
                 this.showEditModal = true;
                 this.showValidationErrors = false;
-                this.actionEditForm = '@php echo route('admin.modelo-sicred.update', '') @endphp' + '/' + data.id_modelo_sicred;
-                prepareFormUpdate(data)
+                this.actionEditForm = `@php echo route('admin.modelo-sicred.update', '') @endphp/${data.id_modelo_sicred}`;
+                this.setDataUpdate(data);
             },
             openDelete(id) {
                 this.showDeleteModal = true;
-                this.actionDeleteForm = '@php echo route('admin.modelo-sicred.destroy', '') @endphp' + '/' + id;
+                this.actionDeleteForm = `@php echo route('admin.modelo-sicred.destroy', '') @endphp/${id}`;
             },
             close() {
                 this.showEditModal = false;
@@ -146,29 +145,21 @@
             isOpen() {
                 return this.showEditModal === true;
             },
+            clearForm() {
+                this.$refs.form_modelo.reset(); 
+            },
+            setDataUpdate(data) {
+                this.$refs.id_registro.value = data.id_registro
+                this.$refs.modelo.value = data.modelo
+                this.$refs.empresa.value = data.empresa
+                this.$refs.agencia.value = data.agencia
+                this.$refs.loja.value = data.loja
+                this.$refs.lojista.value = data.lojista
+                this.$refs.produto.value = data.produto
+                this.$refs.plano.value = data.plano
+                this.$refs.taxa.value = data.taxa
+            }
         };
-    }
-
-    function prepareFormCreate()
-    {
-        if(document.querySelector('#id_registro').value.length > 0){
-            document.querySelector("#form_eidt_modelo_sicred").reset();
-        }
-        document.querySelector('#btn_modal_salvar').innerHTML = 'Cadastrar';
-    }
-
-    function prepareFormUpdate(data)
-    {
-        document.querySelector('#btn_modal_salvar').innerHTML = 'Salvar';
-        document.querySelector('#id_registro').value = data.id_modelo_sicred
-        document.querySelector('#modelo').value = data.modelo
-        document.querySelector('#empresa').value = data.empresa
-        document.querySelector('#agencia').value = data.agencia
-        document.querySelector('#loja').value = data.loja
-        document.querySelector('#lojista').value = data.lojista
-        document.querySelector('#produto').value = data.produto
-        document.querySelector('#plano').value = data.plano
-        document.querySelector('#taxa').value = data.taxa
     }
 </script>
 

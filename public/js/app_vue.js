@@ -1983,7 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
 var params = new URLSearchParams();
 params.append('grant_type', "password");
 params.append('client_id', "2");
-params.append('client_secret', "qGjf1EzTzzSLVBMqRfc0L2MwNuczr9MEh1ZpFtME");
+params.append('client_secret', "5kRU4R2MnQam9biRfJtGGAlQwbM83aOfOu99W9IN");
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
