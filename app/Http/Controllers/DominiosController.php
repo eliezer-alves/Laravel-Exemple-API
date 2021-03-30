@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class DominiosController extends Controller
 {
-    protected $dominiosService;
+    protected $service;
 
-    public function __construct(DominiosService $dominiosService)
+    public function __construct(DominiosService $service)
     {
-        $this->dominiosService = $dominiosService;
+        $this->service = $service;
     }
 
     /**
@@ -22,6 +22,6 @@ class DominiosController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $this->dominiosService->dominios();
+        return $this->service->dominios();
     }
 }

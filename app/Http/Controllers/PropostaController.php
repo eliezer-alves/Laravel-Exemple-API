@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class PropostaController extends Controller
 {
-    protected $propostaService;
+    protected $service;
 
-    public function __construct(PropostaService $propostaService)
+    public function __construct(PropostaService $service)
     {
-        $this->propostaService = $propostaService;
+        $this->service = $service;
     }
 
     /**
@@ -24,7 +24,7 @@ class PropostaController extends Controller
      */
     public function novaProposta(NovaPropostaRequest $request)
     {
-        return $this->propostaService->novaProposta($request->all());
+        return $this->service->novaProposta($request->all());
     }
 
     /**
@@ -35,7 +35,7 @@ class PropostaController extends Controller
      */
     public function exibeProposta($numeroProposta)
     {
-        return $this->propostaService->exibeProposta($numeroProposta);
+        return $this->service->exibeProposta($numeroProposta);
     }
 
     /**

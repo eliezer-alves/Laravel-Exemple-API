@@ -7,11 +7,11 @@ use App\Services\AtividadeComercialService;
 
 class AtividadeComercialController extends Controller
 {
-    protected $atividadeComercialService;
+    protected $service;
 
-    public function __construct(AtividadeComercialService $atividadeComercialService)
+    public function __construct(AtividadeComercialService $service)
     {
-        $this->atividadeComercialService = $atividadeComercialService;
+        $this->service = $service;
     }
 
     /**
@@ -21,7 +21,7 @@ class AtividadeComercialController extends Controller
      */
     public function index()
     {
-        return $this->atividadeComercialService->all();
+        return $this->service->all();
         // return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
     }
 
@@ -39,7 +39,7 @@ class AtividadeComercialController extends Controller
 
         $request = _normalizeRequest($request->all());
 
-        return $this->atividadeComercialService->create($request);
+        return $this->service->create($request);
     }
 
     /**
@@ -50,7 +50,7 @@ class AtividadeComercialController extends Controller
      */
     public function show($idAtividadeComercial)
     {
-        return $this->atividadeComercialService->findOrFail($idAtividadeComercial);
+        return $this->service->findOrFail($idAtividadeComercial);
     }
 
     /**
@@ -66,7 +66,7 @@ class AtividadeComercialController extends Controller
             'descricao' => ['string', 'between:1,120']
         ]);
 
-        return $this->atividadeComercialService->update($request->all(), $idAtividadeComercial);
+        return $this->service->update($request->all(), $idAtividadeComercial);
     }
 
     /**
@@ -77,6 +77,6 @@ class AtividadeComercialController extends Controller
      */
     public function destroy($idAtividadeComercial)
     {
-        return $this->atividadeComercialService->delete($idAtividadeComercial);
+        return $this->service->delete($idAtividadeComercial);
     }
 }

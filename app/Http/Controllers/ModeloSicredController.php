@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 
 class ModeloSicredController extends Controller
 {
-    protected $modeloSicredService;
+    protected $service;
+    protected $route;
 
-    public function __construct(ModeloSicredService $modeloSicredService)
+    public function __construct(ModeloSicredService $service)
     {
-        $this->modeloSicredService = $modeloSicredService;
+        $this->service = $service;
+        $this->route = 'admin.modelo-sicred';
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +25,7 @@ class ModeloSicredController extends Controller
      */
     public function index()
     {
-        $dados['modelos'] = $this->modeloSicredService->all();
+        $dados['modelos'] = $this->service->all();
         return view('admin.modelo_sicred', $dados);
     }
 
@@ -34,19 +37,8 @@ class ModeloSicredController extends Controller
      */
     public function store(ModeloSicredRequest $request)
     {
-        $this->modeloSicredService->create($request);
-        return redirect()->route('admin.modelo-sicred');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $this->service->create($request);
+        return redirect()->route($this->route);
     }
 
     /**
@@ -58,8 +50,8 @@ class ModeloSicredController extends Controller
      */
     public function update(ModeloSicredRequest $request, $idModeloSicred)
     {
-        $this->modeloSicredService->update($request, $idModeloSicred);
-        return redirect()->route('admin.modelo-sicred');
+        $this->service->update($request, $idModeloSicred);
+        return redirect()->route($this->route);
     }
 
     /**
@@ -70,7 +62,7 @@ class ModeloSicredController extends Controller
      */
     public function destroy($idModeloSicred)
     {
-        $this->modeloSicredService->delete($idModeloSicred);
-        return redirect()->route('admin.modelo-sicred');
+        $this->service->delete($idModeloSicred);
+        return redirect()->route($this->route);
     }
 }

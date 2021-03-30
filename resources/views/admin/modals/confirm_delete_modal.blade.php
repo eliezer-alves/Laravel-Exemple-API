@@ -1,4 +1,4 @@
-<form id="form_delete_modelo_sicred" x-ref="form_delete_modelo_sicred" :action="actionDeleteForm" method="GET" class="flex flex-wrap p-4 h-full items-center">
+<form id="form_delete" x-ref="form_delete" :action="actionDeleteForm" method="GET" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
     <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showDeleteModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showDeleteModal }">

@@ -27,10 +27,12 @@
     }
 </style>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col" x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
+<div class="flex flex-col" x-data="handleModals({{ $errors }})" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full btn_edit_client_sicred my-2" @click="showModal = true" value="" onclick="createClientSicred()">Cadastrar</button>
+            <div class="flex flex-row-reverse">
+                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full my-2" @click="openStore()" value="">Cadastrar</button>
+            </div>
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -62,10 +64,13 @@
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <?= '<script>const clients = ' . json_encode($clients) . '</script>' ?>
                         @foreach ($clients as $key => $client)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -90,7 +95,10 @@
                                 {{ $client['scope'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full btn_edit_client_sicred" @click="showModal = true" onclick="editClientSicred(this.value)" value="{{$key}}">Editar</button>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($client) }})">Editar</button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openDelete({{ $client['id_client_sicred'] }})">Excluir</button>
                             </td>
                         </tr>
                         @endforeach
@@ -101,9 +109,68 @@
             </div>
         </div>
     </div>
-    @include('admin.modal_client_sicred_edit')
-
+    @include('admin.modals.client_sicred_edit_modal')
+    @include('admin.modals.confirm_delete_modal')
 </div>
+
+<script>
+    function handleModals(errors)
+    {
+        console.log(errors);
+        return {
+            showValidationErrors: (!!errors && Object.keys(errors).length > 0),
+            showEditModal: (!!errors && Object.keys(errors).length > 0),
+            showDeleteModal: false,
+            actionEditForm: "#",
+            actionDeleteForm: "#",
+            openStore() {
+                this.showEditModal = true;
+                this.actionEditForm = '@php echo route('admin.client-sicred.store') @endphp';
+                prepareFormCreate();
+            },
+            openUpdate(data) {
+                // console.log(data);
+                this.showEditModal = true;
+                this.showValidationErrors = false;
+                this.actionEditForm = '@php echo route('admin.client-sicred.update', '') @endphp' + '/' + data.id_client_sicred;
+                prepareFormUpdate(data)
+            },
+            openDelete(id) {
+                this.showDeleteModal = true;
+                this.actionDeleteForm = '@php echo route('admin.client-sicred.destroy', '') @endphp' + '/' + id;
+            },
+            close() {
+                this.showEditModal = false;
+                this.showDeleteModal = false;
+            },
+            isOpen() {
+                return this.showEditModal === true;
+            },
+        };
+    }
+
+    function prepareFormCreate()
+    {
+        if(document.querySelector('#id_registro').value.length > 0){
+            document.querySelector("#form_eidt_modelo_sicred").reset();
+        }
+        document.querySelector('#btn_modal_salvar').innerHTML = 'Cadastrar';
+    }
+
+    function prepareFormUpdate(data)
+    {
+        document.querySelector('#btn_modal_salvar').innerHTML = 'Salvar'
+        document.querySelector('#id_registro').value = data.id_client_sicred
+        document.querySelector('#environment').value = data.environment;
+        document.querySelector('#grant_type').value = data.grant_type;
+        document.querySelector('#username').value = data.username;
+        document.querySelector('#password').value = data.password;
+        document.querySelector('#client_id').value = data.client_id;
+        document.querySelector('#client_secret').value = data.client_secret;
+        document.querySelector('#scope').value = data.scope;
+    }
+</script>
+
 
 
 @endsection

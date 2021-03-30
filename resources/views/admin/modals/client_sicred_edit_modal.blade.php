@@ -1,4 +1,4 @@
-<form id="form_eidt_modelo_sicred" x-ref="form_eidt_modelo_sicred" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
+<form id="form_eidt_client_sicred" x-ref="form_eidt_client_sicred" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
     <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEditModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showEditModal }">
@@ -22,9 +22,9 @@
             </div>
 
             <div class="my-5 text-sm">
-                <label for="modelo" class="block text-black">Modelo <span class="text-indigo-500">*</span></label>
-                <input type="text" id="modelo" name="modelo" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('modelo') }}" />
-                @error('modelo')
+                <label for="environment" class="block text-black">Environment <span class="text-indigo-500">*</span></label>
+                <input type="text" id="environment" name="environment" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('environment') }}" />
+                @error('environment')
                 <template class="mb-2" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
                 </template>
@@ -32,9 +32,9 @@
             </div>
 
             <div class="my-5 text-sm">
-                <label for="empresa" class="block text-black">Empresa <span class="text-indigo-500">*</span></label>
-                <input type="text" id="empresa" name="empresa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('empresa') }}" />
-                @error('empresa')
+                <label for="grant_type" class="block text-black">Grant Type <span class="text-indigo-500">*</span></label>
+                <input type="text" id="grant_type" name="grant_type" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('grant_type') }}" />
+                @error('grant_type')
                 <template class="mb-2" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
                 </template>
@@ -43,9 +43,9 @@
 
             <div class="my-5 grid grid-cols-2">
                 <div class="text-sm col-span-1 mr-2">
-                    <label for="agencia" class="block text-black">Agência <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="agencia" name="agencia" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('agencia') }}" />
-                    @error('agencia')
+                    <label for="username" class="block text-black">Username <span class="text-indigo-500">*</span></label>
+                    <input type="text" id="username" name="username" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('username') }}" />
+                    @error('username')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
                     </template>
@@ -53,9 +53,9 @@
                 </div>
 
                 <div class="text-sm col-span-1">
-                    <label for="loja" class="block text-black">Loja <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="loja" name="loja" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('loja') }}" />
-                    @error('loja')
+                    <label for="password" class="block text-black">Password <span class="text-indigo-500">*</span></label>
+                    <input type="text" id="password" name="password" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('password') }}" />
+                    @error('password')
                     <template class="mb-2" x-if="showValidationErrors">
                         <div class="text-red-600">{{ $message }}</div>
                     </template>
@@ -64,9 +64,9 @@
             </div>
 
             <div class="my-5 text-sm">
-                <label for="lojista" class="block text-black">Lojista <span class="text-indigo-500">*</span></label>
-                <input type="text" id="lojista" name="lojista" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('lojista') }}" />
-                @error('lojista')
+                <label for="client_id" class="block text-black">Client Id <span class="text-indigo-500">*</span></label>
+                <input type="text" id="client_id" name="client_id" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('client_id') }}" />
+                @error('client_id')
                 <template class="mb-2 text-red-600" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
                 </template>
@@ -74,35 +74,23 @@
             </div>
 
             <div class="my-5 text-sm">
-                <label for="produto" class="block text-black">Produto <span class="text-indigo-500">*</span></label>
-                <input type="text" id="produto" name="produto" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('produto') }}" />
-                @error('produto')
+                <label for="client_secret" class="block text-black">Client Secret <span class="text-indigo-500">*</span></label>
+                <input type="text" id="client_secret" name="client_secret" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('client_secret') }}" />
+                @error('client_secret')
                 <template class="mb-2 text-red-600" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
                 </template>
                 @enderror
             </div>
 
-            <div class="my-5 grid grid-cols-2">
-                <div class="text-sm col-span-1 mr-2">
-                    <label for="plano" class="block text-black">Plano <span class="text-indigo-500">*</span></label>
-                    <input type="text" id="plano" name="plano" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('plano') }}" />
-                    @error('plano')
-                    <template class="mb-2" x-if="showValidationErrors">
-                        <div class="text-red-600">{{ $message }}</div>
-                    </template>
-                    @enderror
-                </div> 
-
-                <div class="text-sm col-span-1">
-                    <label for="taxa" class="block text-black">Taxa <span class="text-indigo-500">*</span></label>
-                    <input type="number" id="taxa" name="taxa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" step="0.01" value="{{ old('taxa') }}" />
-                    @error('taxa')
-                    <template class="mb-2" x-if="showValidationErrors">
-                        <div class="text-red-600">{{ $message }}</div>
-                    </template>
-                    @enderror
-                </div>
+            <div class="my-5 text-sm">
+                <label for="scope" class="block text-black">Scope <span class="text-indigo-500">*</span></label>
+                <input type="text" id="scope" name="scope" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('scope') }}" />
+                @error('scope')
+                <template class="mb-2 text-red-600" x-if="showValidationErrors">
+                    <div class="text-red-600">{{ $message }}</div>
+                </template>
+                @enderror
             </div>
 
             <!--Footer-->

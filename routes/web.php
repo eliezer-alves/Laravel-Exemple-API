@@ -33,7 +33,12 @@ Route::middleware(['auth'])->prefix('admin/')->group(function () {
         Route::get('/modelo-sicred/{id}', [ModeloSicredController::class, 'destroy'])->name('admin.modelo-sicred.destroy');
     });
 
-    Route::get('/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
+    Route::namespace('client-sicred')->group(function () {
+        Route::get('/client-sicred', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
+        Route::post('/client-sicred', [ClientSicredController::class, 'store'])->name('admin.client-sicred.store');
+        Route::post('/client-sicred/{id}', [ClientSicredController::class, 'update'])->name('admin.client-sicred.update');
+        Route::get('/client-sicred/{id}', [ClientSicredController::class, 'destroy'])->name('admin.client-sicred.destroy');
+    });
 });
 
 Route::get('/solicitacao', function () {

@@ -8,11 +8,11 @@ use App\Services\ClienteService;
 
 class ClienteController extends Controller
 {
-    protected $clienteService;
+    protected $service;
 
     public function __construct(ClienteService $clienteService)
     {
-        $this->clienteService = $clienteService;
+        $this->service = $service;
     }
 
 
@@ -24,7 +24,7 @@ class ClienteController extends Controller
 
     public function index()
     {
-        return $this->clienteService->all();
+        return $this->service->all();
     }
 
     /**
@@ -35,7 +35,7 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        return $this->clienteService->create($request);
+        return $this->service->create($request);
     }
 
     /**
@@ -46,7 +46,7 @@ class ClienteController extends Controller
      */
     public function show($idCliente)
     {
-        return $this->clienteService->findOrFail($idCliente);
+        return $this->service->findOrFail($idCliente);
     }
 
     /**
@@ -58,7 +58,7 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, $idCliente)
     {
-        return $this->clienteService->update($request, $idCliente);
+        return $this->service->update($request, $idCliente);
     }
 
     /**
@@ -69,7 +69,7 @@ class ClienteController extends Controller
      */
     public function destroy($idCliente)
     {
-        return $this->clienteService->delete($idCliente);
+        return $this->service->delete($idCliente);
     }
 
     /**
@@ -80,6 +80,6 @@ class ClienteController extends Controller
      */
     public function findByCnpj($cnpj)
     {
-        return $this->clienteService->findByCnpj($cnpj);
+        return $this->service->findByCnpj($cnpj);
     }
 }

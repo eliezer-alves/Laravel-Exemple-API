@@ -8,11 +8,11 @@ use App\Services\SimulacaoService;
 
 class SimulacaoController extends Controller
 {
-    protected $simulacaoService;
+    protected $service;
 
-    public function __construct(SimulacaoService $simulacaoService)
+    public function __construct(SimulacaoService $service)
     {
-        $this->simulacaoService = $simulacaoService;
+        $this->service = $service;
     }
 
     /**
@@ -23,7 +23,7 @@ class SimulacaoController extends Controller
      */
     public function novaSimulacao(SimulacaoRequest $request)
     {
-        return $this->simulacaoService->novaSimulacao($request->all());
+        return $this->service->novaSimulacao($request->all());
     }
 
     /**
@@ -34,6 +34,6 @@ class SimulacaoController extends Controller
      */
     public function show($idSimulacao)
     {
-        return $this->simulacaoService->show($idSimulacao);
+        return $this->service->show($idSimulacao);
     }
 }

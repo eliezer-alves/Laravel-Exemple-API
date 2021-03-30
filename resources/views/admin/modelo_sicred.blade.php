@@ -26,10 +26,12 @@
         transform: scale(1);
     }
 </style>
-<div class="flex flex-col" x-data="handleModals({{ $errors }})" @keydown.escape="close()" x-cloak>
+<div class="flex flex-col" x-data="handleModals({{ $errors }})" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="flex flex-row-reverse"><button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="openStore()" value="">Cadastrar</button></div>
+            <div class="flex flex-row-reverse">
+                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="openStore()" value="">Cadastrar</button>
+            </div>
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -110,7 +112,7 @@
         </div>
     </div>
     @include('admin.modals.modelo_sicred_edit_modal')
-    @include('admin.modals.modelo_sicred_delete_modal')
+    @include('admin.modals.confirm_delete_modal')
 </div>
 
 <script>
@@ -149,16 +151,16 @@
 
     function prepareFormCreate()
     {
-        if(document.querySelector('#id_modelo_sicred').value.length > 0){
+        if(document.querySelector('#id_registro').value.length > 0){
             document.querySelector("#form_eidt_modelo_sicred").reset();
         }
-        document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Cadastrar';
+        document.querySelector('#btn_modal_salvar').innerHTML = 'Cadastrar';
     }
 
     function prepareFormUpdate(data)
     {
-        document.querySelector('#btn_salvar_modelo_sicred').innerHTML = 'Salvar';
-        document.querySelector('#id_modelo_sicred').value = data.id_modelo_sicred
+        document.querySelector('#btn_modal_salvar').innerHTML = 'Salvar';
+        document.querySelector('#id_registro').value = data.id_modelo_sicred
         document.querySelector('#modelo').value = data.modelo
         document.querySelector('#empresa').value = data.empresa
         document.querySelector('#agencia').value = data.agencia
