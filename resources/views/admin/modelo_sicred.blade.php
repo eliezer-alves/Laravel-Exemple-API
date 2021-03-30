@@ -127,6 +127,7 @@
                 this.showEditModal = true;
                 this.actionEditForm = `@php echo route('admin.modelo-sicred.store') @endphp`;
                 this.clearForm();
+                this.$refs.bnt_salvar.innerText = 'Cadastrar';
             },
             openUpdate(data) {
                 this.showEditModal = true;
@@ -146,18 +147,19 @@
                 return this.showEditModal === true;
             },
             clearForm() {
-                this.$refs.form_modelo.reset(); 
+                this.$refs.form_modelo.reset();
             },
             setDataUpdate(data) {
-                this.$refs.id_registro.value = data.id_registro
-                this.$refs.modelo.value = data.modelo
-                this.$refs.empresa.value = data.empresa
-                this.$refs.agencia.value = data.agencia
-                this.$refs.loja.value = data.loja
-                this.$refs.lojista.value = data.lojista
-                this.$refs.produto.value = data.produto
-                this.$refs.plano.value = data.plano
-                this.$refs.taxa.value = data.taxa
+                this.$refs.bnt_salvar.innerText = 'Editar';
+                this.$refs.id_registro.value = data.id_registro;
+                this.$refs.modelo.value = data.modelo;
+                this.$refs.empresa.value = data.empresa;
+                this.$refs.agencia.value = data.agencia;
+                this.$refs.loja.value = data.loja;
+                this.$refs.lojista.value = data.lojista;
+                this.$refs.produto.value = data.produto;
+                this.$refs.plano.value = data.plano;
+                this.$refs.taxa.value = data.taxa;
             }
         };
     }

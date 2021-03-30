@@ -107,7 +107,7 @@
 
             <!--Footer-->
             <div class="flex justify-end pt-2 ml-2">
-                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit" x-ref="btnSalvar">Salvar</button>
+                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit" x-ref="bnt_salvar">Salvar</button>
                 <button class="modal-close px-4  bg-transparent p-3 rounded-lg  text-indigo-600 hover:text-indigo-400" @click.prevent="close()">Cancelar</button>
             </div>
         </div>

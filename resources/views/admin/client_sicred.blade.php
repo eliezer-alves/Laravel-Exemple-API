@@ -95,7 +95,7 @@
                                 {{ $client['scope'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($client) }})">Editar</button>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($client) }})" x-ref="btn">Editar</button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openDelete({{ $client['id_client_sicred'] }})">Excluir</button>
@@ -114,9 +114,7 @@
 </div>
 
 <script>
-    function handleModals(errors)
-    {
-        console.log(errors);
+    function handleModals(errors) {
         return {
             showValidationErrors: (!!errors && Object.keys(errors).length > 0),
             showEditModal: (!!errors && Object.keys(errors).length > 0),
@@ -125,19 +123,19 @@
             actionDeleteForm: "#",
             openStore() {
                 this.showEditModal = true;
-                this.actionEditForm = '@php echo route('admin.client-sicred.store') @endphp';
-                prepareFormCreate();
+                this.actionEditForm = `@php echo route('admin.client-sicred.store') @endphp`;
+                this.clearForm();
+                this.$refs.bnt_salvar.innerText = 'Cadastrar';
             },
             openUpdate(data) {
-                // console.log(data);
                 this.showEditModal = true;
                 this.showValidationErrors = false;
-                this.actionEditForm = '@php echo route('admin.client-sicred.update', '') @endphp' + '/' + data.id_client_sicred;
-                prepareFormUpdate(data)
+                this.actionEditForm = `@php echo route('admin.client-sicred.update', '') @endphp/${data.id_client_sicred}`;
+                this.setDataUpdate(data);
             },
             openDelete(id) {
                 this.showDeleteModal = true;
-                this.actionDeleteForm = '@php echo route('admin.client-sicred.destroy', '') @endphp' + '/' + id;
+                this.actionDeleteForm = `@php echo route('admin.client-sicred.destroy', '') @endphp/${id}`;
             },
             close() {
                 this.showEditModal = false;
@@ -146,28 +144,21 @@
             isOpen() {
                 return this.showEditModal === true;
             },
+            clearForm() {
+                this.$refs.form_client.reset();
+            },
+            setDataUpdate(data) {
+                this.$refs.bnt_salvar.innerText = 'Editar';
+                this.$refs.id_registro.value = data.id_registro;
+                this.$refs.environment.value = data.environment;
+                this.$refs.grant_type.value = data.grant_type;
+                this.$refs.username.value = data.username;
+                this.$refs.password.value = data.password;
+                this.$refs.client_id.value = data.client_id;
+                this.$refs.client_secret.value = data.client_secret;
+                this.$refs.scope.value = data.scope;
+            }
         };
-    }
-
-    function prepareFormCreate()
-    {
-        if(document.querySelector('#id_registro').value.length > 0){
-            document.querySelector("#form_eidt_modelo_sicred").reset();
-        }
-        document.querySelector('#btn_modal_salvar').innerHTML = 'Cadastrar';
-    }
-
-    function prepareFormUpdate(data)
-    {
-        document.querySelector('#btn_modal_salvar').innerHTML = 'Salvar'
-        document.querySelector('#id_registro').value = data.id_client_sicred
-        document.querySelector('#environment').value = data.environment;
-        document.querySelector('#grant_type').value = data.grant_type;
-        document.querySelector('#username').value = data.username;
-        document.querySelector('#password').value = data.password;
-        document.querySelector('#client_id').value = data.client_id;
-        document.querySelector('#client_secret').value = data.client_secret;
-        document.querySelector('#scope').value = data.scope;
     }
 </script>
 
