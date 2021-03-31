@@ -32,7 +32,7 @@ class StoreClienteRequest extends FormRequest
             'celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
-            'cep' => ['required', 'string', 'regex:/^[0-9]+$/u'],
+            'cep' => ['required', 'string', 'regex:/^[0-9]+$/u', 'size:8'],
             'uf' => ['required', 'string', 'size:2', new Uf],
             'cidade' => ['required', 'string'],
             'bairro' => ['required', 'string'],

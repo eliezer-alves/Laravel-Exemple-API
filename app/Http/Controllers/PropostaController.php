@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NovaPropostaRequest;
+use App\Http\Requests\NovaPropostaPJRequest;
 use App\Services\PropostaService;
 
 use Illuminate\Http\Request;
 
 class PropostaController extends Controller
 {
-    protected $service;
-
     public function __construct(PropostaService $service)
     {
-        $this->service = $service;
+        parent::__construct($service);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\NovaPropostaPJRequest;
      * @return \Illuminate\Http\Response
      */
-    public function novaProposta(NovaPropostaRequest $request)
+    public function novaProposta(NovaPropostaPJRequest $request)
     {
         return $this->service->novaProposta($request->all());
     }
