@@ -37,7 +37,7 @@ class NovaPropostaPJRequest extends FormRequest
             'proposta.tipo_conta' => ['required'],
             'proposta.quantidade_parcela' => ['required', 'numeric'],
 
-            'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u', 'cnpj'],
+            'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
             'cliente.nome_fantasia' => ['required', 'string'],
             'cliente.razao_social' => ['required', 'string'],
             'cliente.inscricao_estadual' => ['required', 'numeric'],

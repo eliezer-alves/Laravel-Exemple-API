@@ -11,16 +11,20 @@ use Illuminate\Support\Facades\Http;
 
 class ApiSicredService implements ApiSicredServiceInterface
 {
+    protected $numeroMaximoTentativasRequest;
     protected $clientSicredRepository;
     protected $modeloSicredRepository;
-    protected $environment = 'hml';
-    protected $modelo = 'capital-de-giro';
+    protected $environment;
+    protected $modelo;
     protected $urls;
-
-    protected $empresa = '01';
+    protected $empresa;
 
     public function __construct(ClientSicredRepositoryInterface $clientSicredRepository, ModeloSicredRepositoryInterface $modeloSicredRepository)
     {
+        $this->numeroMaximoTentativasRequest = 3;
+        $this->environment = 'hml';
+        $this->modelo = 'pessoa-fisica-1';
+        $this->empresa = '01';
         $this->clientSicredRepository = $clientSicredRepository->findEnvironment($this->environment);
         $this->modeloSicredRepository = $modeloSicredRepository->findModelo($this->modelo);
         $this->urls = $this->clientSicredRepository->urls;
@@ -96,14 +100,23 @@ class ApiSicredService implements ApiSicredServiceInterface
      */
     public function novaProposta($idSimulacao)
     {
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $numeroProposta = false;
         $url = $this->urls->base_url . $this->urls->proposta_url;
         $body = [
             'empresa' => $this->empresa,
             'idSimulacao' => $idSimulacao
         ];
 
-        $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
-        $numeroProposta = json_decode($response->body())->numeroProposta;
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() == 200) {
+            $numeroProposta = json_decode($response->body())->numeroProposta;
+        }
 
         return $numeroProposta;
     }
@@ -118,12 +131,15 @@ class ApiSicredService implements ApiSicredServiceInterface
      */
     public function vincularClienteProposta($attributes, $numeroProposta)
     {
-        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta";
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta/cliente";
+
         $body = [
             'cnpj' => $attributes['cnpj'],
             'razaoSocial' => $attributes['razao_social'],
             'fundacao' => $attributes['data_fundacao'],
-            // 'cosif' => $attributes['cosif'],
+            'cosif' => $this->modeloSicredRepository->cosif,
             'inscricaoEstadual' => $attributes['inscricao_estadual'],
             // 'capitalSocial'=> $attributes['capitalSocial'],
             // 'numeroFuncionarios'=> $attributes['numeroFuncionarios'],
@@ -138,11 +154,28 @@ class ApiSicredService implements ApiSicredServiceInterface
             'bairroResidencial' => $attributes['bairro'],
             'cidadeResidencial' => $attributes['cidade'],
             'ufResidencial' => $attributes['uf']
-            // 'codigoExterno'=> $attributes['codigoExterno'],
-            // 'dataInclusao'=> $attributes['dataInclusao'],
+            // 'codigoExterno'=> $attributes['codigoExterno']
         ];
 
-        $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
+        // $body = [
+        //     'cpf' => $attributes['cnpj'],
+        //     'nomeCliente' => $attributes['nome_fantasia'],
+        //     'rendaMensalAtividade' => 1000, //$attributes['rendaMensalAtividade'],
+        //     'cosif' => $this->modeloSicredRepository->cosif,
+        //     'sexo' => 'F',
+        //     'dataNascimento' => $attributes['data_fundacao'],
+        //     'nomeMae' => $attributes['nome_fantasia']
+        // ];
+
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->post($url, $body);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() == 200) {
+            return json_decode($response->body());
+        }
+
         return $response;
     }
 
@@ -150,12 +183,37 @@ class ApiSicredService implements ApiSicredServiceInterface
     /**
      * Links bank details to a proposal at Sicred
      *
-     * @param array $attributes
+     * @param array $attributesProposta
+     * @param array $attributesCliente
      * @return int $numeroProposta
      */
-    public function vincularLibercoesProposta($idSimulacao)
+    public function vincularLibercoesProposta($attributesProposta, $attributesCliente, $numeroProposta)
     {
-        return 0;
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta/liberacao";
+        $body = [
+            'nomeBeneficiario' => $attributesCliente['nome_fantasia'],
+            'cpf' => $attributesCliente['cnpj'],
+            'formaLiberacao' => $attributesProposta['forma_liberacao'],
+            'valorLiberacao' => $attributesProposta['valor_solicitado'],
+            'bancoLiberacao' => $attributesProposta['banco_liberacao'],
+            'agenciaLiberacao' => $attributesProposta['agencia_liberacao'],
+            'contaLiberacao' => $attributesProposta['conta_liberacao'],
+            'tipoConta' => $attributesProposta['tipo_conta'],
+            'direcionamento' => "N",
+        ];
+
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->post($url, [$body]);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() == 200) {
+            return json_decode($response->body());
+        }
+
+        return $response;
     }
 
 
@@ -167,10 +225,41 @@ class ApiSicredService implements ApiSicredServiceInterface
      */
     public function exibeProposta($numeroProposta)
     {
+        $numeroTentativasRequest = 0;
+        $response = null;
         $url = $this->urls->base_url . $this->urls->proposta_url . '/' . $this->empresa . '/' . $numeroProposta;
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->get($url);
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        $response = Http::withToken(Session::get('accessToken'))->get($url);
-        return response($response->body(), $response->status());
+        if ($response->status() == 200) {
+            return  json_decode($response->body());
+        }
+
+        return $response;
+    }
+
+
+    /**
+     * Request bank details for a proposal at Sicred.
+     *
+     * @param int $numeroProposta
+     * @return Illuminate\Support\Facades\Http
+     */
+    public function exibeLiberacoesProposta($numeroProposta)
+    {
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = $this->urls->base_url . $this->urls->proposta_url . '/' . $this->empresa . "/$numeroProposta/liberacao";
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->get($url);
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() == 200) {
+            return  json_decode($response->body())[0];
+        }
+
+        return $response;
     }
 
     /**

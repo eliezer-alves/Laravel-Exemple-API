@@ -52,6 +52,9 @@
                                 Lojista
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Cosif
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Produto
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -87,6 +90,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $modelo['lojista'] }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {{ $modelo['cosif'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $modelo['produto'] }}
@@ -157,6 +163,7 @@
                 this.$refs.agencia.value = data.agencia;
                 this.$refs.loja.value = data.loja;
                 this.$refs.lojista.value = data.lojista;
+                this.$refs.cosif.value = data.cosif;
                 this.$refs.produto.value = data.produto;
                 this.$refs.plano.value = data.plano;
                 this.$refs.taxa.value = data.taxa;

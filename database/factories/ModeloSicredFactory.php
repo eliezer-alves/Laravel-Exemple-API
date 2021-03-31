@@ -27,6 +27,7 @@ class ModeloSicredFactory extends Factory
             'agencia' => '0001',
             'loja' => '0001',
             'lojista' => '000001',
+            'cosif' => '43000',
             'produto' => '000078',
             'plano' => '0050',
             'taxa' => 9.99

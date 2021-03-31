@@ -29,13 +29,14 @@ class ModeloSicredRequest extends FormRequest
             'agencia' => ['required', 'string'],
             'loja' => ['required', 'string'],
             'lojista' => ['required', 'string'],
+            'cosif' => ['required', 'string'],
             'produto' => ['required', 'string'],
             'plano' => ['required', 'string'],
             'taxa' => ['required', 'numeric'],
         ];
     }
 
-        /**
+    /**
      * Get the error messages validation rules that apply to the request.
      *
      * @return array
@@ -57,6 +58,9 @@ class ModeloSicredRequest extends FormRequest
 
             'lojista.required' => 'Campo lojista obrigatório',
             'lojista.string' => 'Campo lojista é do tipo texto.',
+
+            'cosif.required' => 'Campo cosif obrigatório',
+            'cosif.string' => 'Campo cosif é do tipo texto.',
 
             'produto.required' => 'Campo produto obrigatório',
             'produto.string' => 'Campo produto é do tipo texto.',

@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected $service;
-    public function __construct($service)
+    public function __construct($service = null)
     {
         $this->service = $service;
     }

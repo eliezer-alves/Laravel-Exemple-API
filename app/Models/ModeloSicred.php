@@ -21,6 +21,7 @@ class ModeloSicred extends Model
         'loja',
         'lojista',
         'produto',
+        'cosif',
         'plano',
         'taxa',
         'id_client_sicred'

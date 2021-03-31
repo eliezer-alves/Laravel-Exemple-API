@@ -21,6 +21,7 @@ class CreateCadModeloSicredTable extends Migration
             $table->string('agencia');
             $table->string('loja');
             $table->string('lojista');
+            $table->string('cosif');
             $table->string('produto');
             $table->string('plano');
             $table->decimal('taxa', 8, 2)

@@ -14,7 +14,11 @@ interface ApiSicredServiceInterface
 
     public function vincularClienteProposta(array $attributes, int $numeroProposta);
 
+    public function vincularLibercoesProposta(array $attributesProposta, array $attributesCliente, int $numeroProposta);
+
     public function exibeProposta(int $numeroProposta);
+
+    public function exibeLiberacoesProposta(int $numeroProposta);
 
     public function ufDominio();
 

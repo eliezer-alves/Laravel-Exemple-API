@@ -31,18 +31,19 @@
                 @enderror
             </div>
 
-            <div class="my-5 text-sm">
-                <label for="empresa" class="block text-black">Empresa <span class="text-indigo-500">*</span></label>
-                <input type="text" id="empresa" name="empresa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('empresa') }}" x-ref="empresa" />
-                @error('empresa')
-                <template class="mb-2" x-if="showValidationErrors">
-                    <div class="text-red-600">{{ $message }}</div>
-                </template>
-                @enderror
-            </div>
 
             <div class="my-5 grid grid-cols-2">
-                <div class="text-sm col-span-1 mr-2">
+                <div class="text-sm col-span-1 mr-1">
+                    <label for="empresa" class="block text-black">Empresa <span class="text-indigo-500">*</span></label>
+                    <input type="text" id="empresa" name="empresa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('empresa') }}" x-ref="empresa" />
+                    @error('empresa')
+                    <template class="mb-2" x-if="showValidationErrors">
+                        <div class="text-red-600">{{ $message }}</div>
+                    </template>
+                    @enderror
+                </div>
+
+                <div class="text-sm col-span-1 ml-1">
                     <label for="agencia" class="block text-black">Agência <span class="text-indigo-500">*</span></label>
                     <input type="text" id="agencia" name="agencia" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('agencia') }}" x-ref="agencia" />
                     @error('agencia')
@@ -51,8 +52,10 @@
                     </template>
                     @enderror
                 </div>
+            </div>
 
-                <div class="text-sm col-span-1">
+            <div class="my-5 grid grid-cols-2">
+                <div class="text-sm col-span-1 mr-1">
                     <label for="loja" class="block text-black">Loja <span class="text-indigo-500">*</span></label>
                     <input type="text" id="loja" name="loja" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('loja') }}" x-ref="loja" />
                     @error('loja')
@@ -61,12 +64,22 @@
                     </template>
                     @enderror
                 </div>
+
+                <div class="text-sm col-span-1 ml-1">
+                    <label for="lojista" class="block text-black">Lojista <span class="text-indigo-500">*</span></label>
+                    <input type="text" id="lojista" name="lojista" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('lojista') }}" x-ref="lojista" />
+                    @error('lojista')
+                    <template class="mb-2 text-red-600" x-if="showValidationErrors">
+                        <div class="text-red-600">{{ $message }}</div>
+                    </template>
+                    @enderror
+                </div>
             </div>
 
             <div class="my-5 text-sm">
-                <label for="lojista" class="block text-black">Lojista <span class="text-indigo-500">*</span></label>
-                <input type="text" id="lojista" name="lojista" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('lojista') }}" x-ref="lojista" />
-                @error('lojista')
+                <label for="cosif" class="block text-black">Cosif <span class="text-indigo-500">*</span></label>
+                <input type="text" id="cosif" name="cosif" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('cosif') }}" x-ref="cosif" />
+                @error('cosif')
                 <template class="mb-2 text-red-600" x-if="showValidationErrors">
                     <div class="text-red-600">{{ $message }}</div>
                 </template>
@@ -84,7 +97,7 @@
             </div>
 
             <div class="my-5 grid grid-cols-2">
-                <div class="text-sm col-span-1 mr-2">
+                <div class="text-sm col-span-1 mr-1">
                     <label for="plano" class="block text-black">Plano <span class="text-indigo-500">*</span></label>
                     <input type="text" id="plano" name="plano" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('plano') }}" x-ref="plano" />
                     @error('plano')
@@ -94,7 +107,7 @@
                     @enderror
                 </div>
 
-                <div class="text-sm col-span-1">
+                <div class="text-sm col-span-1 ml-1">
                     <label for="taxa" class="block text-black">Taxa <span class="text-indigo-500">*</span></label>
                     <input type="number" id="taxa" name="taxa" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" step="0.01" value="{{ old('taxa') }}" x-ref="taxa" />
                     @error('taxa')
