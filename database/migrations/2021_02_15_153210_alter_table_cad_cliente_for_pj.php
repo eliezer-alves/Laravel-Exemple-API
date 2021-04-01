@@ -33,7 +33,6 @@ class AlterTableCadClienteForPj extends Migration
                 ->constrained('cad_atividade_comercial', 'id_atividade_comercial');
 
             $table->timestamp('data_fundacao', $precision = 0)->nullable();
-
         });
     }
 
@@ -45,7 +44,7 @@ class AlterTableCadClienteForPj extends Migration
     public function down()
     {
         Schema::table('cad_cliente', function (Blueprint $table) {
-            
+
             $table->dropColumn('cnpj');
             $table->dropColumn('inscricao_estadual');
             $table->dropColumn('nome_fantasia');
