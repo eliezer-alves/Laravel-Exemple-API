@@ -26,6 +26,7 @@ class AlterColumnsNullableTrueFromCadCliente extends Migration
     /**
      * Reverse the migrations.
      *
+     * @warning Para essa ação provavelmente naõ vai ser possível executar seu método down, pos se houver algum registro com algum desses campos null a migration vai falhar!
      * @return void
      */
     public function down()

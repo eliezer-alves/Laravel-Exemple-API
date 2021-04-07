@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableCadClienteForPj extends Migration
+class AlterTableCadClienteForPj2 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,41 +14,16 @@ class AlterTableCadClienteForPj extends Migration
     public function up()
     {
         Schema::table('cad_cliente', function (Blueprint $table) {
-            $table->string('cnpj')
-                ->nullable()
-                ->unique();
-
-            $table->string('inscricao_estadual')
-                ->nullable();
-
-            $table->string('nome_fantasia')
-                ->nullable();
-
-            $table->string('razao_social')
-                ->nullable();
-
-            $table->foreignId('id_atividade_comercial')
-                ->nullable()
-                ->unsigned()
-                ->constrained('cad_atividade_comercial', 'id_atividade_comercial');
-
-            $table->timestamp('data_fundacao', $precision = 0)->nullable();
-
             $table->string('tipo_empresa')
                 ->nullable();
-
             $table->string('porte')
                 ->nullable();
-
             $table->float('rendimento_mensal')
                 ->nullable();
-
             $table->float('faturamento_anual')
                 ->nullable();
-
             $table->float('capital_social')
                 ->nullable();
-
             $table->integer('ano_faturamento')
                 ->nullable();
         });
@@ -62,12 +37,6 @@ class AlterTableCadClienteForPj extends Migration
     public function down()
     {
         Schema::table('cad_cliente', function (Blueprint $table) {
-            $table->dropColumn('cnpj');
-            $table->dropColumn('inscricao_estadual');
-            $table->dropColumn('nome_fantasia');
-            $table->dropColumn('razao_social');
-            $table->dropColumn('id_atividade_comercial');
-            $table->dropColumn('data_fundacao');
             $table->dropColumn('tipo_empresa');
             $table->dropColumn('porte');
             $table->dropColumn('rendimento_mensal');

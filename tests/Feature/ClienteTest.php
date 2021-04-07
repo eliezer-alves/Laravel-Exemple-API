@@ -13,7 +13,7 @@ class ClienteTest extends TestCase
     /** @test */
     public function check_if_cliente_columns_is_correct()
     {
-        $expected =[ 
+        $expected = [
             'nome',
             'cpf',
             'rg',
@@ -27,7 +27,6 @@ class ClienteTest extends TestCase
             'inscricao_estadual',
             'nome_fantasia',
             'razao_social',
-            'ramo_atividade',
             'cep',
             'cidade',
             'uf',
@@ -37,10 +36,15 @@ class ClienteTest extends TestCase
             'bairro',
             'id_tipo_logradouro',
             'id_atividade_comercial',
-            'id_forma_inclusao',
+            'tipo_empresa',
+            'porte',
+            'rendimento_mensal',
+            'faturamento_anual',
+            'capital_social',
+            'ano_faturamento',
             'createdAt',
             'updatedAt',
-            'deletedAt'
+            'deletedAt',
         ];
 
         $cliente = new Cliente;
