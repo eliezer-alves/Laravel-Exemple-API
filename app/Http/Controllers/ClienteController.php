@@ -71,13 +71,13 @@ class ClienteController extends Controller
     }
 
     /**
-     * Customer search by cnpj for service.
+     * Find PJ client for CNPJ for attendance.
      *
      * @param  string  $cnpj
      * @return \Illuminate\Http\Response
      */
-    public function findByCnpj($cnpj)
+    public function findByCnpjForAttendance($cnpj)
     {
-        return $this->service->findByCnpj($cnpj);
+        return $this->service->findByCnpjForAttendance($cnpj);
     }
 }

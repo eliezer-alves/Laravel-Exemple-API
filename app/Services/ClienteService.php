@@ -118,6 +118,16 @@ class ClienteService
         return $this->clienteRepository->delete($idCliente);
     }
 
+    /**
+     * Service Layer - Find PJ client for CNPJ in the database.
+     *
+     * @param  int  $cnpj
+     * @return App\Repositories\Contracts\ClienteRepositoryInterface
+     */
+    public function findByCnpj($cnpj)
+    {
+        return $this->clienteRepository->findByCnpj($cnpj);
+    }
 
     /**
      * Service Layer - Find PJ client for CNPJ in Ágil's database, in case there is no search in Bolt's database.
@@ -125,7 +135,7 @@ class ClienteService
      * @param  int  $cnpj
      * @return array [App\Repositories\Contracts\ClienteRepositoryInterface, App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface]
      */
-    public function findByCnpj($cnpj)
+    public function findByCnpjForAttendance($cnpj)
     {
         $dadosLojista = (array)(!empty($this->clienteRepository->findByCnpj($cnpj))
             ? $this->clienteRepository->findByCnpj($cnpj)->toArray()

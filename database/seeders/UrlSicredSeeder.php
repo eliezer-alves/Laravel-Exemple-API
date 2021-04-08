@@ -22,7 +22,7 @@ class UrlSicredSeeder extends Seeder
             $objUrlSicred = UrlSicred::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
-            DB::rolback();
+            DB::rollback();
         }
     }
 }
