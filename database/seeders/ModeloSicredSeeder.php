@@ -22,7 +22,7 @@ class ModeloSicredSeeder extends Seeder
             $objModeloSicred = ModeloSicred::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rolback();
         }
     }
 }

@@ -48,8 +48,6 @@ class PropostaService
         $this->attributesFormCliente = $attributes['cliente'];
         $this->attributesFormSocios = $attributes['socios'];
         $this->numeroProposta = $this->apiSicred->novaProposta($this->attributesFormProposta['idSimulacao']);
-
-        $this->cliente = $this->clienteService->findByCnpj($this->attributesFormCliente['cnpj']);
         $this->cliente = $this->clienteService->create($this->attributesFormCliente);
         // dd($this->cliente);
 

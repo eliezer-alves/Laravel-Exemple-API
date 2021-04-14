@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\AtividadeComercial;
+USE App\Models\AtividadeComercial;
 
 use Illuminate\Database\Seeder;
 
@@ -16,9 +16,9 @@ class AtividadeComercialSeeder extends Seeder
     public function run()
     {
         foreach ($this->listaAtividadeComercial as $atividade) {
-            $r = AtividadeComercial::create([
-                'descricao' => $atividade
-            ]);
+        	$r = AtividadeComercial::create([
+        		'descricao' => $atividade
+        	]);
         }
     }
 }

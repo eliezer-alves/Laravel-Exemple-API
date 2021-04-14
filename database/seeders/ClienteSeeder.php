@@ -22,7 +22,7 @@ class ClienteSeeder extends Seeder
             $objCliente = Cliente::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
-            DB::rollback();
+            DB::rolback();
         }
     }
 }
