@@ -151,7 +151,7 @@ class ClienteService
      * @param  int  $cnpj
      * @return array [App\Repositories\Contracts\ClienteRepositoryInterface, App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface]
      */
-    public function findByCnpj($cnpj)
+    public function findByCnpjForAtendence($cnpj)
     {
         $dadosLojista = (array)(!empty($this->clienteRepository->findByCnpj($cnpj))
             ? $this->clienteRepository->findByCnpj($cnpj)->toArray()

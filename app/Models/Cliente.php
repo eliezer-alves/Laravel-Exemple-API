@@ -91,7 +91,7 @@ class Cliente extends Model
 
     public function propostas()
     {
-        return $this->hasMany(Proposta::class);
+        return $this->hasMany(Proposta::class, 'id_cliente', 'id_cliente');
     }
 
     public function atividadeComercial()

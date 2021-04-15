@@ -208,10 +208,6 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() == 200) {
-            return json_decode($response->body());
-        }
-
         return $response;
     }
 
@@ -222,7 +218,7 @@ class ApiSicredService implements ApiSicredServiceInterface
      * @param int $numeroProposta
      * @return Illuminate\Support\Facades\Http
      */
-    public function exibeProposta($numeroProposta)
+    public function dadosProposta($numeroProposta)
     {
         $numeroTentativasRequest = 0;
         $response = null;
@@ -236,7 +232,7 @@ class ApiSicredService implements ApiSicredServiceInterface
             return  json_decode($response->body());
         }
 
-        return $response;
+        return false;
     }
 
 

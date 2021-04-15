@@ -17,17 +17,20 @@ class PropostaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @author Eliezer Alves
+     *
      * @param  App\Http\Requests\NovaPropostaPJRequest;
      * @return \Illuminate\Http\Response
      */
     public function novaProposta(NovaPropostaPJRequest $request)
     {
-        // dd($request->all());
         return $this->service->novaProposta($request->all());
     }
 
     /**
      * Display the specified resource.
+     *
+     * @author Eliezer Alves
      *
      * @param  int  $numeroProposta
      * @return \Illuminate\Http\Response
@@ -40,6 +43,8 @@ class PropostaController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @author Eliezer Alves
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -51,6 +56,8 @@ class PropostaController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @author Eliezer Alves
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

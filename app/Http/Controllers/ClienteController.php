@@ -78,6 +78,6 @@ class ClienteController extends Controller
      */
     public function findByCnpj($cnpj)
     {
-        return $this->service->findByCnpj($cnpj);
+        return $this->service->findByCnpjForAtendence($cnpj);
     }
 }

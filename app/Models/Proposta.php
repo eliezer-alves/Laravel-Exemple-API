@@ -110,7 +110,12 @@ class Proposta extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
+    }
+
+    public function socios()
+    {
+        return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta');
     }
 
     public function solicitacao()

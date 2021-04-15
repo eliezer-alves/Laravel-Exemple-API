@@ -77,4 +77,9 @@ class PessoaAssinatura extends Model
         'uf_documento_identidade' => null,
         'tipo_documento_identidade' => null
     ];
+
+    public function proposta()
+    {
+        return $this->belongsTo(Proposta::class, 'id_porposta', 'id_proposta');
+    }
 }

@@ -68,7 +68,6 @@ class PropostaService
         |
         | Generating a proposal in Sicred with the idSimulacao informed in the form.
         */
-        $this->numeroProposta = $this->apiSicred->novaProposta($this->attributesFormProposta['idSimulacao']);
 
 
         /*
@@ -94,9 +93,9 @@ class PropostaService
         | Normalizing the necessary attributes to create a new proposal and
         | creating a new proposal in Ágil's database.
         */
-        $attributesPropostaAgil = $this->normalizaParametrosPropostaAgil();
-        $propostaAgil = $this->propostaRepository->fill($attributesPropostaAgil);
-        $propostaAgil->save();
+        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta();
+        $proposta = $this->propostaRepository->fill($attributesProposta);
+        $proposta->save();
 
 
         /*
@@ -106,40 +105,67 @@ class PropostaService
         |
         | Saving the Legal Representative and the company's partners
         */
-        $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $propostaAgil->id_proposta);
+        $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
+        $proposta->cliente;
+        $proposta->socios;
 
-        return $propostaAgil;
+        dd($this->vincularPropostaSicred($proposta->id_proposta));
+
+        return $proposta;
     }
+
+
+    /**
+     * Service Layer - Create a proposal on sicred from an Agil proposal
+     *
+     * @author Eliezer Alves
+     *
+     * @param  int  $idProposta
+     * @return int  $numeroProposta
+     */
+    public function vincularPropostaSicred($idProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        // return $proposta->valor_solicitado;
+        $this->numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
+
+        $this->vincularClienteSicred($proposta);
+        $this->vincularLiberacoesSicred($proposta);
+
+        return $this->apiSicred->dadosProposta($this->numeroProposta);
+    }
+
 
     /**
      * Service Layer - Links customer data to a Sicred proposal
      *
      * @author Eliezer Alves
      *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @return App\Services\Contracts\ApiSicredServiceInterface
      */
-    private function vincularClienteSicred()
+    private function vincularClienteSicred($proposta)
     {
         $attributes = [
-            'cnpj' => $this->attributesFormCliente['cnpj'],
-            'razaoSocial' => $this->attributesFormCliente['razao_social'],
-            'fundacao' => $this->attributesFormCliente['data_fundacao'],
-            'inscricaoEstadual' => $this->attributesFormCliente['inscricao_estadual'],
-            'capitalSocial' => $this->attributesFormCliente['capital_social'],
-            // 'numeroFuncionarios'=> $this->attributesFormCliente['numeroFuncionarios'],
-            'anoFaturamento' => $this->attributesFormCliente['ano_faturamento'],
-            'valorFaturamentoAnual' => $this->attributesFormCliente['faturamento_anual'],
-            'porte' => $this->attributesFormCliente['porte'],
-            'email' => $this->attributesFormCliente['email'],
-            'cepResidencial' => $this->attributesFormCliente['cep'],
-            'enderecoResidencial' => $this->attributesFormCliente['logradouro'],
-            'numeroResidencial' => $this->attributesFormCliente['numero'],
-            'complementoResidencial' => $this->attributesFormCliente['complemento'],
-            'bairroResidencial' => $this->attributesFormCliente['bairro'],
-            'cidadeResidencial' => $this->attributesFormCliente['cidade'],
-            'ufResidencial' => $this->attributesFormCliente['uf']
-            // 'codigoExterno'=> $this->attributesFormCliente['codigoExterno']
+            'cnpj' => $proposta->cliente->cnpj,
+            'razaoSocial' => $proposta->cliente->razao_social,
+            'fundacao' => $proposta->cliente->data_fundacao,
+            'inscricaoEstadual' => $proposta->cliente->inscricao_estadual,
+            'capitalSocial' => $proposta->cliente->capital_social,
+            'anoFaturamento' => $proposta->cliente->ano_faturamento,
+            'valorFaturamentoAnual' => $proposta->cliente->faturamento_anual,
+            'porte' => $proposta->cliente->porte,
+            'email' => $proposta->cliente->email,
+            'cepResidencial' => $proposta->cliente->cep,
+            'enderecoResidencial' => $proposta->cliente->logradouro,
+            'numeroResidencial' => $proposta->cliente->numero,
+            'complementoResidencial' => $proposta->cliente->complemento,
+            'bairroResidencial' => $proposta->cliente->bairro,
+            'cidadeResidencial' => $proposta->cliente->cidade,
+            'ufResidencial' => $proposta->cliente->uf
         ];
+
+        return $attributes;
         return $this->apiSicred->vincularClienteProposta($attributes, $this->numeroProposta);
     }
 
@@ -148,19 +174,20 @@ class PropostaService
      *
      * @author Eliezer Alves
      *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @return App\Services\Contracts\ApiSicredServiceInterface
      */
-    private function vincularLiberacoesSicred()
+    private function vincularLiberacoesSicred($proposta)
     {
         $attributes = [
-            'nomeBeneficiario' => $this->attributesFormCliente['nome_fantasia'],
-            'cnpj' => $this->attributesFormCliente['cnpj'],
-            'formaLiberacao' => $this->attributesFormProposta['forma_liberacao'],
-            'valorLiberacao' => $this->attributesFormProposta['valor_solicitado'],
-            'bancoLiberacao' => $this->attributesFormProposta['banco_liberacao'],
-            'agenciaLiberacao' => $this->attributesFormProposta['agencia_liberacao'],
-            'contaLiberacao' => $this->attributesFormProposta['conta_liberacao'],
-            'tipoConta' => $this->attributesFormProposta['tipo_conta'],
+            'nomeBeneficiario' => $proposta->cliente->nome_fantasia,
+            'cnpj' => $proposta->cliente->cnpj,
+            'formaLiberacao' => $proposta->forma_liberacao,
+            'valorLiberacao' => (float)$proposta->valor_solicitado,
+            'bancoLiberacao' => $proposta->banco_liberacao,
+            'agenciaLiberacao' => $proposta->agencia_liberacao,
+            'contaLiberacao' => $proposta->conta_liberacao,
+            'tipoConta' => $proposta->tipo_conta,
             'direcionamento' => "N",
         ];
 
@@ -203,13 +230,12 @@ class PropostaService
      *
      * @return array $dataProposta
      */
-    private function normalizaParametrosPropostaAgil()
+    private function normalizaParametrosFormularioNovaProposta()
     {
         return [
-            'contrato' => $this->numeroProposta,
-            'id_cliente' => $this->cliente['id_cliente'] ?? 1,
-            'renda' => $this->cliente['rendimento_mensal'] ?? 0,
+            'id_cliente' => $this->cliente['id_cliente'],
             'id_simulacao' => $this->attributesFormProposta['idSimulacao'],
+            'renda' => $this->cliente['rendimento_mensal'] ?? 0,
             'data_solicitacao_proposta' => date('Y-m-d H:i:s'),
             'forma_liberacao' => $this->attributesFormProposta['forma_liberacao'],
             'valor_liberacao' => $this->attributesFormProposta['valor_solicitado'],
@@ -219,9 +245,9 @@ class PropostaService
             'conta_liberacao' => $this->attributesFormProposta['conta_liberacao'],
             'digito_conta_liberacao' => $this->attributesFormProposta['digito_conta_liberacao'],
             'tipo_conta' => $this->attributesFormProposta['tipo_conta'],
-            'id_status_administrativo' => 1,
             'valor_solicitado' => $this->attributesFormProposta['valor_solicitado'],
             'quantidade_parcela' => $this->attributesFormProposta['quantidade_parcela'],
+            'id_status_administrativo' => 1,
             'id_forma_inclusao' => 7,
         ];
     }
