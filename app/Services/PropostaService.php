@@ -103,15 +103,25 @@ class PropostaService
         | Legal Representative / Partners
         |--------------------------------------------------------------------------
         |
-        | Saving the Legal Representative and the company's partners
+        | Saving the Legal Representative and the company's partners.
         */
         $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
         $proposta->cliente;
         $proposta->socios;
 
-        dd($this->vincularPropostaSicred($proposta->id_proposta));
 
-        return $proposta;
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Sicred
+        |--------------------------------------------------------------------------
+        |
+        | Creating a proposal at Sicredi from Agil's proposal and updating Agil's
+        | proposal based on data from Sicred's proposal.
+        */
+        $vincularPropostaSicred = $this->vincularPropostaSicred($proposta->id_proposta);
+        $propostaSicred = $this->getDadosPropostaSicred($this->numeroProposta);
+
+        return $propostaSicred;
     }
 
 
@@ -121,7 +131,7 @@ class PropostaService
      * @author Eliezer Alves
      *
      * @param  int  $idProposta
-     * @return int  $numeroProposta
+     * @return int $numeroProposta
      */
     public function vincularPropostaSicred($idProposta)
     {
@@ -129,10 +139,12 @@ class PropostaService
         // return $proposta->valor_solicitado;
         $this->numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
 
-        $this->vincularClienteSicred($proposta);
-        $this->vincularLiberacoesSicred($proposta);
+        if (!$this->vincularClienteSicred($proposta))
+            return false;
+        if (!$this->vincularLiberacoesSicred($proposta))
+            return false;
 
-        return $this->apiSicred->dadosProposta($this->numeroProposta);
+        return true;
     }
 
 
@@ -165,7 +177,6 @@ class PropostaService
             'ufResidencial' => $proposta->cliente->uf
         ];
 
-        return $attributes;
         return $this->apiSicred->vincularClienteProposta($attributes, $this->numeroProposta);
     }
 
@@ -205,7 +216,7 @@ class PropostaService
      */
     public function getDadosPropostaSicred($numeroProposta)
     {
-        return (array)$this->apiSicred->exibeProposta($numeroProposta);
+        return (array)$this->apiSicred->dadosProposta($numeroProposta);
     }
 
 
