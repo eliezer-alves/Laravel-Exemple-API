@@ -12,6 +12,7 @@ use App\Services\Contracts\{
 };
 use App\Services\{
     ClienteService,
+    KeysInterfaceService,
     PessoaAssinaturaService
 };
 
@@ -20,6 +21,7 @@ class PropostaService
     private $propostaRepository;
     private $apiSicred;
     private $clienteService;
+    private $keysInterfaceService;
     private $pessoAssinaturaService;
 
     private $attributesFormProposta;
@@ -28,123 +30,13 @@ class PropostaService
     private $numeroProposta;
     private $cliente;
 
-    public function __construct(PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, PessoaAssinaturaService $pessoAssinaturaService)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
     {
         $this->propostaRepository = $propostaRepository;
         $this->apiSicred = $apiSicred;
         $this->clienteService = $clienteService;
+        $this->keysInterfaceService = $keysInterfaceService;
         $this->pessoAssinaturaService = $pessoAssinaturaService;
-    }
-
-    /**
-     * Service Layer - Creates a new Agile Proposal from the data in a request
-     *
-     * @author Eliezer Alves
-     *
-     * @param  array  $attributes
-     * @return json  $dataProposta
-     */
-    public function novaProposta($attributes)
-    {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Class attributes
-        |--------------------------------------------------------------------------
-        |
-        | Normalizing the requisition data and instantiating the class attributes
-        | that will be used in the process of creating a new Agile proposal.
-        */
-
-        $this->attributesFormProposta = $attributes['proposta'];
-        $this->attributesFormCliente = $attributes['cliente'];
-        $this->attributesFormSocios = $attributes['socios'];
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Sicred
-        |--------------------------------------------------------------------------
-        |
-        | Generating a proposal in Sicred with the idSimulacao informed in the form.
-        */
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Client
-        |--------------------------------------------------------------------------
-        |
-        | With the form data, the Client class is instantiated based on the CNPJ,
-        | then the attributes are updated based on the form data, then the record
-        | is saved in the database. That way, if there is already a record it is
-        | updated, otherwise a new record is created.
-        */
-        $this->cliente = $this->clienteService->findByCnpj($this->attributesFormCliente['cnpj']);
-        $this->cliente->fill($this->attributesFormCliente);
-        $this->cliente->save();
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Ágil
-        |--------------------------------------------------------------------------
-        |
-        | Normalizing the necessary attributes to create a new proposal and
-        | creating a new proposal in Ágil's database.
-        */
-        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta();
-        $proposta = $this->propostaRepository->fill($attributesProposta);
-        $proposta->save();
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Legal Representative / Partners
-        |--------------------------------------------------------------------------
-        |
-        | Saving the Legal Representative and the company's partners.
-        */
-        $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
-        $proposta->cliente;
-        $proposta->socios;
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Sicred
-        |--------------------------------------------------------------------------
-        |
-        | Creating a proposal at Sicredi from Agil's proposal and updating Agil's
-        | proposal based on data from Sicred's proposal.
-        */
-        $vincularPropostaSicred = $this->vincularPropostaSicred($proposta->id_proposta);
-        $propostaSicred = $this->getDadosPropostaSicred($this->numeroProposta);
-
-        return $propostaSicred;
-    }
-
-
-    /**
-     * Service Layer - Create a proposal on sicred from an Agil proposal
-     *
-     * @author Eliezer Alves
-     *
-     * @param  int  $idProposta
-     * @return int $numeroProposta
-     */
-    public function vincularPropostaSicred($idProposta)
-    {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        // return $proposta->valor_solicitado;
-        $this->numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
-
-        if (!$this->vincularClienteSicred($proposta))
-            return false;
-        if (!$this->vincularLiberacoesSicred($proposta))
-            return false;
-
-        return true;
     }
 
 
@@ -179,6 +71,7 @@ class PropostaService
 
         return $this->apiSicred->vincularClienteProposta($attributes, $this->numeroProposta);
     }
+
 
     /**
      * Service Layer - Links bank details to a proposal at Sicred
@@ -261,5 +154,151 @@ class PropostaService
             'id_status_administrativo' => 1,
             'id_forma_inclusao' => 7,
         ];
+    }
+
+
+    /**
+     * Service Layer - Creates a new Agile Proposal from the data in a request
+     *
+     * @author Eliezer Alves
+     *
+     * @param  array  $attributes
+     * @return json  $dataProposta
+     */
+    public function novaProposta($attributes)
+    {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Class attributes
+        |--------------------------------------------------------------------------
+        |
+        | Normalizing the requisition data and instantiating the class attributes
+        | that will be used in the process of creating a new Agile proposal.
+        */
+
+        $this->attributesFormProposta = $attributes['proposta'];
+        $this->attributesFormCliente = $attributes['cliente'];
+        $this->attributesFormSocios = $attributes['socios'];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Sicred
+        |--------------------------------------------------------------------------
+        |
+        | Generating a proposal in Sicred with the idSimulacao informed in the form.
+        */
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Client
+        |--------------------------------------------------------------------------
+        |
+        | With the form data, the Client class is instantiated based on the CNPJ,
+        | then the attributes are updated based on the form data, then the record
+        | is saved in the database. That way, if there is already a record it is
+        | updated, otherwise a new record is created.
+        */
+        $this->cliente = $this->clienteService->findByCnpj($this->attributesFormCliente['cnpj']);
+        $this->cliente->fill($this->attributesFormCliente);
+        $this->cliente->save();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Ágil
+        |--------------------------------------------------------------------------
+        |
+        | Normalizing the necessary attributes to create a new proposal and
+        | creating a new proposal in Ágil's database.
+        */
+        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta();
+        $proposta = $this->propostaRepository->fill($attributesProposta);
+        $proposta->save();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Legal Representative / Partners
+        |--------------------------------------------------------------------------
+        |
+        | Saving the Legal Representative and the company's partners.
+        */
+        $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
+        $proposta->cliente;
+        $proposta->socios;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Sicred
+        |--------------------------------------------------------------------------
+        |
+        | Creating a proposal at Sicredi from Agil's proposal
+        */
+        $vincularPropostaSicred = $this->vincularPropostaSicred($proposta->id_proposta);
+        $propostaSicred = $this->getDadosPropostaSicred($this->numeroProposta);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Agile Proposal / Sicred Proposal
+        |--------------------------------------------------------------------------
+        |
+        | Updating Agil's proposal based on data from Sicred's proposal.
+        */
+        $alinharPropostaAgilComSicred = $this->alinharPropostaAgilComSicred($proposta->id_proposta, $this->numeroProposta);
+
+        return $propostaSicred;
+    }
+
+
+    /**
+     * Service Layer - Create a proposal on sicred from an Agil proposal
+     *
+     * @author Eliezer Alves
+     *
+     * @param  int  $idProposta
+     * @return int $numeroProposta
+     */
+    public function vincularPropostaSicred($idProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $this->numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
+
+        if (!$this->vincularClienteSicred($proposta))
+            return false;
+        if (!$this->vincularLiberacoesSicred($proposta))
+            return false;
+
+        return true;
+    }
+
+
+    /**
+     * Service Layer - Updates the Agile Proposal (internal proposal) with the Proposal data at Sicred
+     *
+     * @author Eliezer Alves
+     *
+     * @param  int  $idProposta
+     * @param  int  $numeroProposta
+     *
+     * @return bool
+     */
+    public function alinharPropostaAgilComSicred($idProposta, $numeroProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
+
+        $attributes = $this->keysInterfaceService->hydrator($propostaSicred, $this->keysInterfaceService->alinharPropostaAgilComSicred());
+        dd($attributes);
+
+        if (!$this->vincularClienteSicred($proposta))
+            return false;
+        if (!$this->vincularLiberacoesSicred($proposta))
+            return false;
+
+        return true;
     }
 }
