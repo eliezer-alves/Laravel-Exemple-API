@@ -14,6 +14,64 @@ namespace App\Services;
 class KeysInterfaceService
 {
     /**
+     * Standardization of fields from the form to the proposal table columns
+     *
+     * @author Eliezer Alves
+     * @since 19/04/2021
+     *
+     * @return array
+     */
+    public function atributosFormularioNovaProposta()
+    {
+        return [
+            [
+                'inputKey' => 'id_simulacao',
+                'sourceKey' => 'idSimulacao'
+            ],
+            [
+                'inputKey' => 'forma_liberacao',
+                'sourceKey' => 'forma_liberacao'
+            ],
+            [
+                'inputKey' => 'valor_solicitado',
+                'sourceKey' => 'valor_solicitado'
+            ],
+            [
+                'inputKey' => 'banco_liberacao',
+                'sourceKey' => 'banco_liberacao'
+            ],
+            [
+                'inputKey' => 'agencia_liberacao',
+                'sourceKey' => 'agencia_liberacao'
+            ],
+            [
+                'inputKey' => 'digito_agencia_liberacao',
+                'sourceKey' => 'digito_agencia_liberacao'
+            ],
+            [
+                'inputKey' => 'conta_liberacao',
+                'sourceKey' => 'conta_liberacao'
+            ],
+            [
+                'inputKey' => 'digito_conta_liberacao',
+                'sourceKey' => 'digito_conta_liberacao'
+            ],
+            [
+                'inputKey' => 'tipo_conta',
+                'sourceKey' => 'tipo_conta'
+            ],
+            [
+                'inputKey' => 'valor_solicitado',
+                'sourceKey' => 'valor_solicitado'
+            ],
+            [
+                'inputKey' => 'quantidade_parcela',
+                'sourceKey' => 'quantidade_parcela'
+            ],
+        ];
+    }
+
+    /**
      * Key relationship of the Agil proposal with the Sicred Proposal
      * to align the Agil Proposal with the Sicred Proposal data
      *

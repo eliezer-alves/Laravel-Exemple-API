@@ -12,6 +12,7 @@ use App\Repositories\Contracts\{
 use Illuminate\Support\Facades\Hash;
 
 /**
+ * Service Layer - Class responsible for managing Agile Customers
  *
  * @author Eliezer Alves
  * @since 03/2021

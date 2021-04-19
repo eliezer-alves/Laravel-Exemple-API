@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\ClientSicredRepositoryInterface;
 
 /**
- *
+ * Service Layer - Class responsible for managing the Sicred access client
  * @author Eliezer Alves
  * @since 03/2021
  *

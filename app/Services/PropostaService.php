@@ -26,19 +26,26 @@ use App\Services\{
 class PropostaService
 {
     private $propostaRepository;
+    private $clienteRepository;
     private $apiSicred;
     private $clienteService;
     private $keysInterfaceService;
     private $pessoAssinaturaService;
     private $cliente;
+    private $formaInclusaoCaliban;
+    private $statusNaoAssinado;
 
-    public function __construct(PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
     {
+        $this->clienteRepository = $clienteRepository;
         $this->propostaRepository = $propostaRepository;
         $this->apiSicred = $apiSicred;
         $this->clienteService = $clienteService;
         $this->keysInterfaceService = $keysInterfaceService;
         $this->pessoAssinaturaService = $pessoAssinaturaService;
+
+        $this->formaInclusaoCaliban = 7;
+        $this->statusNaoAssinado = 1;
     }
 
 
@@ -136,29 +143,19 @@ class PropostaService
      *
      * @author Eliezer Alves
      *
-     * @param array $attributes
+     * @param array $formAttributes
      * @return array $dataProposta
      */
-    private function normalizaParametrosFormularioNovaProposta($attributes)
+    private function normalizaParametrosFormularioNovaProposta($formAttributes)
     {
-        return [
-            'id_cliente' => $this->cliente['id_cliente'],
-            'id_simulacao' => $attributes['idSimulacao'],
-            'renda' => $this->cliente['rendimento_mensal'] ?? 0,
-            'data_solicitacao_proposta' => date('Y-m-d H:i:s'),
-            'forma_liberacao' => $attributes['forma_liberacao'],
-            'valor_liberacao' => $attributes['valor_solicitado'],
-            'banco_liberacao' => $attributes['banco_liberacao'],
-            'agencia_liberacao' => $attributes['agencia_liberacao'],
-            'digito_agencia_liberacao' => $attributes['digito_agencia_liberacao'],
-            'conta_liberacao' => $attributes['conta_liberacao'],
-            'digito_conta_liberacao' => $attributes['digito_conta_liberacao'],
-            'tipo_conta' => $attributes['tipo_conta'],
-            'valor_solicitado' => $attributes['valor_solicitado'],
-            'quantidade_parcela' => $attributes['quantidade_parcela'],
-            'id_status_administrativo' => 1,
-            'id_forma_inclusao' => 7,
-        ];
+        $attributes = $this->keysInterfaceService->hydrator($formAttributes, $this->keysInterfaceService->atributosFormularioNovaProposta());
+        $attributes['id_cliente'] = $this->cliente['id_cliente'];
+        $attributes['renda'] = $this->cliente['rendimento_mensal'] ?? 0;
+        $attributes['data_solicitacao_proposta'] = date('Y-m-d H:i:s');
+        $attributes['id_status_administrativo'] = $this->statusNaoAssinado;
+        $attributes['id_forma_inclusao'] = $this->formaInclusaoCaliban;
+
+        return $attributes;
     }
 
 
@@ -185,7 +182,6 @@ class PropostaService
         $attributesFormCliente = $attributes['cliente'];
         $attributesFormSocios = $attributes['socios'];
 
-
         /*
         |--------------------------------------------------------------------------
         | Client
@@ -196,7 +192,7 @@ class PropostaService
         | is saved in the database. That way, if there is already a record it is
         | updated, otherwise a new record is created.
         */
-        $this->cliente = $this->clienteService->findByCnpj($attributesFormCliente['cnpj']);
+        $this->cliente = $this->clienteRepository->findByCnpj($attributesFormCliente['cnpj']) ??  $this->clienteRepository->fill([]);
         $this->cliente->fill($attributesFormCliente);
         $this->cliente->save();
 

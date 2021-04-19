@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-interface ClienteRepositoryInterface
+interface ClienteRepositoryInterface extends AbstractRepositoryInterface
 {
 
     public function findByCnpj(int $cnpj);

@@ -10,6 +10,7 @@ use Session;
 use Illuminate\Support\Facades\Http;
 
 /**
+ * Service Layer - Class responsible for managing requests for Sicred's API
  *
  * @author Eliezer Alves
  * @since 03/2021

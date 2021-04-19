@@ -6,6 +6,7 @@ use App\Services\Contracts\ApiSicredServiceInterface;
 use App\Repositories\Contracts\TipoLogradouroRepositoryInterface;
 
 /**
+ * Service Layer - Class responsible for managing the Sicred API access domains
  *
  * @author Eliezer Alves
  * @since 03/2021

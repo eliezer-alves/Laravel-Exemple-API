@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\AtividadeComercialRepositoryInterface;
 
 /**
+ * Service Layer - Class responsible for managing business activities of PJ clients
  *
  * @author Eliezer Alves
  * @since 03/2021
