@@ -7,6 +7,12 @@ use App\Services\PropostaService;
 
 use Illuminate\Http\Request;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 19/04/2021
+ *
+ */
 class PropostaController extends Controller
 {
     public function __construct(PropostaService $service)

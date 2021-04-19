@@ -5,6 +5,12 @@ namespace App\Services;
 use App\Services\Contracts\ApiSicredServiceInterface;
 use App\Repositories\Contracts\TipoLogradouroRepositoryInterface;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class DominiosService
 {
     protected $apiSicred;

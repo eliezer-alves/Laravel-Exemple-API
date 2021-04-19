@@ -6,6 +6,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SimulacaoRequest;
 use App\Services\SimulacaoService;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class SimulacaoController extends Controller
 {
 

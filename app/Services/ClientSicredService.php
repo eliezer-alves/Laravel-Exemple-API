@@ -4,6 +4,12 @@ namespace App\Services;
 
 use App\Repositories\Contracts\ClientSicredRepositoryInterface;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ClientSicredService
 {
     protected $clientSicredRepository;

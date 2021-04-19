@@ -4,6 +4,13 @@ namespace App\Services;
 
 use App\Services\Contracts\ApiSicredServiceInterface;
 
+/**
+ * Service Layer - Class responsible for managing the loan simulations
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class SimulacaoService
 {
     protected $apiSicred;

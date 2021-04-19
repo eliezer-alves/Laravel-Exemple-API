@@ -16,6 +16,13 @@ use App\Services\{
     PessoaAssinaturaService
 };
 
+/**
+ * Service Layer - Class responsible for managing the loan proposals
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class PropostaService
 {
     private $propostaRepository;

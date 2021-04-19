@@ -6,6 +6,12 @@ use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Services\ClienteService;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ClienteController extends Controller
 {
     public function __construct(ClienteService $service)

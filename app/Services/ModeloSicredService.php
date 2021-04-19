@@ -4,6 +4,13 @@ namespace App\Services;
 
 use App\Repositories\Contracts\ModeloSicredRepositoryInterface;
 
+/**
+ * Service Layer - Class responsible for managing Sicred's proposal models
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ModeloSicredService
 {
     protected $modeloSicredRepository;

@@ -4,6 +4,12 @@ namespace App\Services;
 
 use App\Repositories\Contracts\AtividadeComercialRepositoryInterface;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class AtividadeComercialService
 {
     protected $repository;

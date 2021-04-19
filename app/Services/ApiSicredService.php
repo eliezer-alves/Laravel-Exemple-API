@@ -9,6 +9,12 @@ use App\Services\Contracts\ApiSicredServiceInterface;
 use Session;
 use Illuminate\Support\Facades\Http;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ApiSicredService implements ApiSicredServiceInterface
 {
     private $numeroMaximoTentativasRequest;

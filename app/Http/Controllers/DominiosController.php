@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Services\DominiosService;
 use Illuminate\Http\Request;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class DominiosController extends Controller
 {
 

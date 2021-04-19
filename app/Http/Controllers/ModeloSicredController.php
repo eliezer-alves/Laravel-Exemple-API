@@ -7,6 +7,12 @@ use App\Services\ModeloSicredService;
 use App\Http\Requests\ModeloSicredRequest;
 use Illuminate\Http\Request;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ModeloSicredController extends Controller
 {
     private $route;

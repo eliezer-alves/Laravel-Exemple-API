@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\AtividadeComercialService;
 
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class AtividadeComercialController extends Controller
 {
     public function __construct(AtividadeComercialService $service)

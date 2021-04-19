@@ -4,6 +4,15 @@ namespace App\Services;
 
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
 
+/**
+ * Service Layer - Class responsible for managing people
+ * related to the contract signing process:
+ * client / partners / legal representative
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class PessoaAssinaturaService
 {
     protected $pessoaAssinaturaRepository;

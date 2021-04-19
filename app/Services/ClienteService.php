@@ -11,7 +11,12 @@ use App\Repositories\Contracts\{
 
 use Illuminate\Support\Facades\Hash;
 
-
+/**
+ *
+ * @author Eliezer Alves
+ * @since 03/2021
+ *
+ */
 class ClienteService
 {
     protected $clienteRepository;
