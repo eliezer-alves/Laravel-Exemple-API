@@ -16,6 +16,10 @@ class KeysInterfaceService
     {
         return [
             [
+                'inputKey' => 'contrato',
+                'sourceKey' => 'proposta'
+            ],
+            [
                 'inputKey' => 'data_geracao_proposta',
                 'sourceKey' => 'dataEmissao'
             ],

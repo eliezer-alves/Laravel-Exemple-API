@@ -44,7 +44,7 @@ Route::namespace('atividade_comercial')->group(function () {
     Route::middleware('auth:api')->delete('/atividade_comercial/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
 });
 
-Route::namespace('simulacao')->group(function () {
+Route::middleware('auth:api')->namespace('simulacao')->group(function () {
     Route::post('/simulacao', [SimulacaoController::class, 'novaSimulacao']);
     Route::get('/simulacao/{id_simulacao}', [SimulacaoController::class, 'show']);
 });

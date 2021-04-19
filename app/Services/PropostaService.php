@@ -46,9 +46,10 @@ class PropostaService
      * @author Eliezer Alves
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $numeroProposta
      * @return App\Services\Contracts\ApiSicredServiceInterface
      */
-    private function vincularClienteSicred($proposta)
+    private function vincularClienteSicred($proposta, $numeroProposta)
     {
         $attributes = [
             'cnpj' => $proposta->cliente->cnpj,
@@ -69,7 +70,7 @@ class PropostaService
             'ufResidencial' => $proposta->cliente->uf
         ];
 
-        return $this->apiSicred->vincularClienteProposta($attributes, $this->numeroProposta);
+        return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
 
@@ -79,9 +80,10 @@ class PropostaService
      * @author Eliezer Alves
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $numeroProposta
      * @return App\Services\Contracts\ApiSicredServiceInterface
      */
-    private function vincularLiberacoesSicred($proposta)
+    private function vincularLiberacoesSicred($proposta, $numeroProposta)
     {
         $attributes = [
             'nomeBeneficiario' => $proposta->cliente->nome_fantasia,
@@ -95,7 +97,7 @@ class PropostaService
             'direcionamento' => "N",
         ];
 
-        return $this->apiSicred->vincularLibercoesProposta($attributes, $this->numeroProposta);
+        return $this->apiSicred->vincularLibercoesProposta($attributes, $numeroProposta);
     }
 
 
@@ -176,19 +178,9 @@ class PropostaService
         | Normalizing the requisition data and instantiating the class attributes
         | that will be used in the process of creating a new Agile proposal.
         */
-
         $this->attributesFormProposta = $attributes['proposta'];
         $this->attributesFormCliente = $attributes['cliente'];
         $this->attributesFormSocios = $attributes['socios'];
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Sicred
-        |--------------------------------------------------------------------------
-        |
-        | Generating a proposal in Sicred with the idSimulacao informed in the form.
-        */
 
 
         /*
@@ -215,8 +207,7 @@ class PropostaService
         | creating a new proposal in Ágil's database.
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta();
-        $proposta = $this->propostaRepository->fill($attributesProposta);
-        $proposta->save();
+        $proposta = $this->propostaRepository->create($attributesProposta);
 
 
         /*
@@ -227,8 +218,6 @@ class PropostaService
         | Saving the Legal Representative and the company's partners.
         */
         $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
-        $proposta->cliente;
-        $proposta->socios;
 
 
         /*
@@ -238,8 +227,9 @@ class PropostaService
         |
         | Creating a proposal at Sicredi from Agil's proposal
         */
-        $vincularPropostaSicred = $this->vincularPropostaSicred($proposta->id_proposta);
-        $propostaSicred = $this->getDadosPropostaSicred($this->numeroProposta);
+        $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
+        $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
+
 
         /*
         |--------------------------------------------------------------------------
@@ -248,9 +238,13 @@ class PropostaService
         |
         | Updating Agil's proposal based on data from Sicred's proposal.
         */
-        $alinharPropostaAgilComSicred = $this->alinharPropostaAgilComSicred($proposta->id_proposta, $this->numeroProposta);
+        $alinharPropostaAgilComSicred = $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
 
-        return $propostaSicred;
+        $proposta->refresh();
+        $proposta->cliente;
+        $proposta->socios;
+
+        return $proposta;
     }
 
 
@@ -265,14 +259,14 @@ class PropostaService
     public function vincularPropostaSicred($idProposta)
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
+        $numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
 
-        if (!$this->vincularClienteSicred($proposta))
-            return false;
-        if (!$this->vincularLiberacoesSicred($proposta))
-            return false;
+        if (!$this->vincularClienteSicred($proposta, $numeroProposta))
+            return 0;
+        if (!$this->vincularLiberacoesSicred($proposta, $numeroProposta))
+            return 0;
 
-        return true;
+        return $numeroProposta;
     }
 
 
@@ -292,12 +286,7 @@ class PropostaService
         $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
 
         $attributes = $this->keysInterfaceService->hydrator($propostaSicred, $this->keysInterfaceService->alinharPropostaAgilComSicred());
-        dd($attributes);
-
-        if (!$this->vincularClienteSicred($proposta))
-            return false;
-        if (!$this->vincularLiberacoesSicred($proposta))
-            return false;
+        $proposta->update($attributes);
 
         return true;
     }

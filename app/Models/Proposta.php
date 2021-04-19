@@ -72,35 +72,8 @@ class Proposta extends Model
     ];
 
     protected $attributes = [
-        // 'contrato' => null,
-        // 'id_simulacao' => null,
-        // 'renda' => null,
-        // 'situacao_empregaticia' => null,
-        // 'descricao_empresa' => null,
-        // 'valor_solicitado' => null,
-        // 'nome_beneficiario' => null,
-        // 'cpf_beneficiario' => null,
-        // 'cnpj_beneficiario' => null,
-        // 'forma_liberacao' => null,
-        // 'valor_liberacao' => null,
-        // 'banco_liberacao' => null,
-        // 'agencia_liberacao' => null,
-        // 'digito_agencia_liberacao' => null,
-        // 'conta_liberacao' => null,
-        // 'digito_conta_liberacao' => null,
-        // 'tipo_conta' => null,
-        // 'tipo_documento_identidade' => null,
-        // 'uf_documento_identidade' => null,
-        // 'numero_documento_identidade' => null,
         'politicamente_exposto' => false,
-        // 'cargo_politico' => null,
         'parente_politicamente_exposto' => false,
-        // 'cargo_parente_politico' => null,
-        // 'data_solicitacao_proposta' => null,
-        // 'id_cliente' => null,
-        // 'id_status_administrativo' => null,
-        // 'quantidade_parcela' => null,
-        // 'id_forma_inclusao' => null,
     ];
 
     public function documento()
