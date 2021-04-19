@@ -23,11 +23,6 @@ class PropostaService
     private $clienteService;
     private $keysInterfaceService;
     private $pessoAssinaturaService;
-
-    private $attributesFormProposta;
-    private $attributesFormCliente;
-    private $attributesFormSocios;
-    private $numeroProposta;
     private $cliente;
 
     public function __construct(PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
@@ -134,25 +129,26 @@ class PropostaService
      *
      * @author Eliezer Alves
      *
+     * @param array $attributes
      * @return array $dataProposta
      */
-    private function normalizaParametrosFormularioNovaProposta()
+    private function normalizaParametrosFormularioNovaProposta($attributes)
     {
         return [
             'id_cliente' => $this->cliente['id_cliente'],
-            'id_simulacao' => $this->attributesFormProposta['idSimulacao'],
+            'id_simulacao' => $attributes['idSimulacao'],
             'renda' => $this->cliente['rendimento_mensal'] ?? 0,
             'data_solicitacao_proposta' => date('Y-m-d H:i:s'),
-            'forma_liberacao' => $this->attributesFormProposta['forma_liberacao'],
-            'valor_liberacao' => $this->attributesFormProposta['valor_solicitado'],
-            'banco_liberacao' => $this->attributesFormProposta['banco_liberacao'],
-            'agencia_liberacao' => $this->attributesFormProposta['agencia_liberacao'],
-            'digito_agencia_liberacao' => $this->attributesFormProposta['digito_agencia_liberacao'],
-            'conta_liberacao' => $this->attributesFormProposta['conta_liberacao'],
-            'digito_conta_liberacao' => $this->attributesFormProposta['digito_conta_liberacao'],
-            'tipo_conta' => $this->attributesFormProposta['tipo_conta'],
-            'valor_solicitado' => $this->attributesFormProposta['valor_solicitado'],
-            'quantidade_parcela' => $this->attributesFormProposta['quantidade_parcela'],
+            'forma_liberacao' => $attributes['forma_liberacao'],
+            'valor_liberacao' => $attributes['valor_solicitado'],
+            'banco_liberacao' => $attributes['banco_liberacao'],
+            'agencia_liberacao' => $attributes['agencia_liberacao'],
+            'digito_agencia_liberacao' => $attributes['digito_agencia_liberacao'],
+            'conta_liberacao' => $attributes['conta_liberacao'],
+            'digito_conta_liberacao' => $attributes['digito_conta_liberacao'],
+            'tipo_conta' => $attributes['tipo_conta'],
+            'valor_solicitado' => $attributes['valor_solicitado'],
+            'quantidade_parcela' => $attributes['quantidade_parcela'],
             'id_status_administrativo' => 1,
             'id_forma_inclusao' => 7,
         ];
@@ -178,9 +174,9 @@ class PropostaService
         | Normalizing the requisition data and instantiating the class attributes
         | that will be used in the process of creating a new Agile proposal.
         */
-        $this->attributesFormProposta = $attributes['proposta'];
-        $this->attributesFormCliente = $attributes['cliente'];
-        $this->attributesFormSocios = $attributes['socios'];
+        $attributesFormProposta = $attributes['proposta'];
+        $attributesFormCliente = $attributes['cliente'];
+        $attributesFormSocios = $attributes['socios'];
 
 
         /*
@@ -193,8 +189,8 @@ class PropostaService
         | is saved in the database. That way, if there is already a record it is
         | updated, otherwise a new record is created.
         */
-        $this->cliente = $this->clienteService->findByCnpj($this->attributesFormCliente['cnpj']);
-        $this->cliente->fill($this->attributesFormCliente);
+        $this->cliente = $this->clienteService->findByCnpj($attributesFormCliente['cnpj']);
+        $this->cliente->fill($attributesFormCliente);
         $this->cliente->save();
 
 
@@ -206,7 +202,7 @@ class PropostaService
         | Normalizing the necessary attributes to create a new proposal and
         | creating a new proposal in Ágil's database.
         */
-        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta();
+        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
         $proposta = $this->propostaRepository->create($attributesProposta);
 
 
@@ -217,7 +213,7 @@ class PropostaService
         |
         | Saving the Legal Representative and the company's partners.
         */
-        $socios = $this->pessoAssinaturaService->createMany($this->attributesFormSocios, $proposta->id_proposta);
+        $socios = $this->pessoAssinaturaService->createMany($attributesFormSocios, $proposta->id_proposta);
 
 
         /*
