@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests\SimulacaoRequest;
 use App\Services\SimulacaoService;
 
@@ -26,7 +26,7 @@ class SimulacaoController extends Controller
      * @param  \Illuminate\Http\SimulacaoRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function novaSimulacao(SimulacaoRequest $request)
+    public function novaSimulacao(Request $request)
     {
         return $this->service->novaSimulacao($request->all());
     }

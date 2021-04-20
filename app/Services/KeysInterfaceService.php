@@ -16,7 +16,6 @@ class KeysInterfaceService
     /**
      * Standardization of fields from the form to the proposal table columns
      *
-     * @author Eliezer Alves
      * @since 19/04/2021
      *
      * @return array
@@ -75,7 +74,6 @@ class KeysInterfaceService
      * Key relationship of the Agil proposal with the Sicred Proposal
      * to align the Agil Proposal with the Sicred Proposal data
      *
-     * @author Eliezer Alves
      * @since 19/04/2021
      *
      * @return array
@@ -149,7 +147,6 @@ class KeysInterfaceService
     /**
      * Generic method to hydrate an array with a source array through a key relationship
      *
-     * @author Eliezer Alves
      * @since 19/04/2021
      *
      * @param array $sourceArray

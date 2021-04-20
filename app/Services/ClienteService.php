@@ -37,8 +37,6 @@ class ClienteService
     /**
      * Service Layer - Get a listing of the resource.
      *
-     * @author Eliezer Alves
-     *
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
      */
     public function all()
@@ -49,8 +47,6 @@ class ClienteService
 
     /**
      * Service Layer - Create the model in the database.
-     *
-     * @author Eliezer Alves
      *
      * @param  array  $attributes
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
@@ -63,8 +59,6 @@ class ClienteService
 
     /**
      * Service Layer - Create a new customer in the database and a user for this customer.
-     *
-     * @author Eliezer Alves
      *
      * @param  array  $attributes
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
@@ -95,8 +89,6 @@ class ClienteService
     /**
      * Service Layer - Find the model in the database.
      *
-     * @author Eliezer Alves
-     *
      * @param  int  $idCliente
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
      */
@@ -108,8 +100,6 @@ class ClienteService
 
     /**
      * Service Layer - Update the model in the database.
-     *
-     * @author Eliezer Alves
      *
      * @param  array  $attributes
      * @param  int  $idCliente
@@ -126,8 +116,6 @@ class ClienteService
     /**
      * Service Layer - Delete the model in the database.
      *
-     * @author Eliezer Alves
-     *
      * @param  int  $idCliente
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
      */
@@ -139,8 +127,6 @@ class ClienteService
     /**
      * Service Layer - Find PJ client for CNPJ in the database.
      *
-     * @author Eliezer Alves
-     *
      * @param  int  $cnpj
      * @return App\Repositories\Contracts\ClienteRepositoryInterface
      */
@@ -151,8 +137,6 @@ class ClienteService
 
     /**
      * Service Layer - Find PJ client for CNPJ in Ágil's database, in case there is no search in Bolt's database.
-     *
-     * @author Eliezer Alves
      *
      * @param  int  $cnpj
      * @return array [App\Repositories\Contracts\ClienteRepositoryInterface, App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface]

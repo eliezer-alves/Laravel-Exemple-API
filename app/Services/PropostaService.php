@@ -52,7 +52,6 @@ class PropostaService
     /**
      * Service Layer - Links customer data to a Sicred proposal
      *
-     * @author Eliezer Alves
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @param  int $numeroProposta
@@ -86,7 +85,6 @@ class PropostaService
     /**
      * Service Layer - Links bank details to a proposal at Sicred
      *
-     * @author Eliezer Alves
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @param  int $numeroProposta
@@ -113,7 +111,6 @@ class PropostaService
     /**
      * Service Layer - Get data from a proposal at Sicred
      *
-     * @author Eliezer Alves
      *
      * @param  int  $numeroProposta
      * @return array  $dataProposta
@@ -127,7 +124,6 @@ class PropostaService
     /**
      * Service Layer - Get bank details from a proposal at Sicred
      *
-     * @author Eliezer Alves
      *
      * @param  int  $numeroProposta
      * @return array  $dataProposta
@@ -141,7 +137,6 @@ class PropostaService
     /**
      * Normalizes parameters for registering a proposal at Agil
      *
-     * @author Eliezer Alves
      *
      * @param array $formAttributes
      * @return array $dataProposta
@@ -162,7 +157,6 @@ class PropostaService
     /**
      * Service Layer - Creates a new Agile Proposal from the data in a request
      *
-     * @author Eliezer Alves
      *
      * @param  array  $attributes
      * @return json  $dataProposta
@@ -250,7 +244,6 @@ class PropostaService
     /**
      * Service Layer - Create a proposal on sicred from an Agil proposal
      *
-     * @author Eliezer Alves
      *
      * @param  int  $idProposta
      * @return int $numeroProposta
@@ -272,7 +265,6 @@ class PropostaService
     /**
      * Service Layer - Updates the Agile Proposal (internal proposal) with the Proposal data at Sicred
      *
-     * @author Eliezer Alves
      *
      * @param  int  $idProposta
      * @param  int  $numeroProposta

@@ -6,6 +6,7 @@ use App\Repositories\Contracts\ClientSicredRepositoryInterface;
 use App\Repositories\Contracts\ModeloSicredRepositoryInterface;
 use App\Services\Contracts\ApiSicredServiceInterface;
 
+use App\Exceptions\FailedResquestSicred;
 use Session;
 use Illuminate\Support\Facades\Http;
 
@@ -109,11 +110,13 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() != 200) {
-            if (empty($response->body()) || $response->body() != null || true) {
-                return response(["message" => "Foram feitas " . $numeroTentativasRequest . " requisições porém nenhuma com sucesso! Tente novamente!"], $response->status());
-            }
-            return response($response->body(), $response->status());
+        if ($response->status() != 200 || true) {
+            // if (empty($response->body()) || $response->body() != null || true) {
+            //     return response(["message" => "Foram feitas " . $numeroTentativasRequest . " requisições porém nenhuma com sucesso! Tente novamente!"], $response->status());
+            // }
+            // return response($response->body(), $response->status());
+
+            throw new FailedResquestSicred($response);
         }
 
         return response($response->body(), $response->status());
