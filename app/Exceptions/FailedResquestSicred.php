@@ -16,9 +16,10 @@ class FailedResquestSicred extends Exception
 {
     private $response;
 
-    public function __construct($response)
+    public function __construct($response, $message = 'Houveram problemas na integração com a Sicred.')
     {
         $this->response = $response;
+        $this->message = $message;
     }
 
     /**
@@ -30,19 +31,21 @@ class FailedResquestSicred extends Exception
      */
     private function errorsResponse($responseBody)
     {
-        $errors = [];
-        if ($responseBody) {
+        $errors = null;
+        if (isset($responseBody)) {
             foreach ($responseBody as $error) {
-                if ($error->field) {
+                if (is_string($error)) {
+                    $errors[] = $error ?? '';
+                } else if (isset($error->field)) {
                     $error->field = strtolower($error->field);
-                    $errors[$error->field][] = $error->message;
-                } else if ($error->message) {
-                    $errors[] = $error->message;
+                    $errors[$error->field][] = $error->message ?? '';
+                } else if (isset($error->message)) {
+                    $errors[] = $error->message ?? '';
                 }
             }
         }
 
-        return $errors;
+        return $errors ?? ['Nenhuma menssagem de erro especificada.'];
     }
 
     public function report()
@@ -53,7 +56,7 @@ class FailedResquestSicred extends Exception
     {
         $responseBody = json_decode($this->response->body()) ?? [];
         $data = [
-            'message' => 'Sicred - Os dados fornecidos são inválidos.',
+            'message' => $this->message,
             'errors' => $this->errorsResponse($responseBody)
         ];
 

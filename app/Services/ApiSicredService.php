@@ -57,10 +57,14 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() == 200) {
-            Session::put('accessToken', $response['access_token']);
-            Session::put('refreshToken', $response['refresh_token']);
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response, 'Houve um problema ao criar uma nova sessão na Sicred');
         }
+
+
+        Session::put('accessToken', $response['access_token']);
+        Session::put('refreshToken', $response['refresh_token']);
+
 
         return response($response->body(), $response->status());
     }
@@ -72,6 +76,8 @@ class ApiSicredService implements ApiSicredServiceInterface
      */
     public function renovaSessao()
     {
+        $this->novaSessao();
+        return;
         $numeroTentativasRequest = 0;
         $response = null;
         $url = $this->urls->base_url . $this->urls->athentication_url;
@@ -110,12 +116,7 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() != 200 || true) {
-            // if (empty($response->body()) || $response->body() != null || true) {
-            //     return response(["message" => "Foram feitas " . $numeroTentativasRequest . " requisições porém nenhuma com sucesso! Tente novamente!"], $response->status());
-            // }
-            // return response($response->body(), $response->status());
-
+        if ($response->status() != 200) {
             throw new FailedResquestSicred($response);
         }
 
@@ -138,6 +139,10 @@ class ApiSicredService implements ApiSicredServiceInterface
             $response = Http::withToken(Session::get('accessToken'))->get($url);
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
 
         return response($response->body(), $response->status());
     }
@@ -165,9 +170,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() == 200) {
-            $numeroProposta = json_decode($response->body())->numeroProposta;
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
         }
+
+        $numeroProposta = json_decode($response->body())->numeroProposta;
 
         return $numeroProposta;
     }
@@ -192,11 +199,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() == 200) {
-            return json_decode($response->body());
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
         }
 
-        return $response;
+        return json_decode($response->body());
     }
 
 
@@ -218,7 +225,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        return $response;
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
+
+        return json_decode($response->body());
     }
 
 
@@ -238,11 +249,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() == 200) {
-            return  json_decode($response->body());
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
         }
 
-        return false;
+        return json_decode($response->body());
     }
 
 
@@ -263,11 +274,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && ($numeroTentativasRequest <= $this->numeroMaximoTentativasRequest));
 
-        if ($response->status() == 200) {
-            return  json_decode($response->body())[0];
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
         }
 
-        return $response;
+        return json_decode($response->body());
     }
 
 
@@ -287,7 +298,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
+
+        return json_decode($response->body());
     }
 
 
@@ -307,7 +322,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
+
+        return json_decode($response->body());
     }
 
 
@@ -327,7 +346,11 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
+
+        return json_decode($response->body());
     }
 
 
@@ -347,6 +370,10 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        return $response->json();
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response);
+        }
+
+        return json_decode($response->body());
     }
 }

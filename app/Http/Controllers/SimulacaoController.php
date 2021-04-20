@@ -26,7 +26,7 @@ class SimulacaoController extends Controller
      * @param  \Illuminate\Http\SimulacaoRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function novaSimulacao(Request $request)
+    public function novaSimulacao(SimulacaoRequest $request)
     {
         return $this->service->novaSimulacao($request->all());
     }
