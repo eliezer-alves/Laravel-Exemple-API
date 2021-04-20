@@ -30,7 +30,7 @@ Route::post('/cliente', [ClienteController::class, 'store']);
 Route::middleware('auth:api')->namespace('cliente')->group(function () {
     Route::get('/cliente', [ClienteController::class, 'index']);
     Route::get('/cliente/{id_cliente}', [ClienteController::class, 'show']);
-    Route::get('/cliente/busca/{cnpj}', [ClienteController::class, 'findByCnpj']);
+    Route::get('/cliente-busca/{cnpj}', [ClienteController::class, 'findByCnpj']);
     Route::put('/cliente/{id_cliente}', [ClienteController::class, 'update']);
     Route::delete('/cliente/{id_cliente}', [ClienteController::class, 'destroy']);
 });
