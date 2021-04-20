@@ -30,6 +30,7 @@ class StoreClienteRequest extends FormRequest
             'nome_fantasia' => ['required', 'string'],
             'razao_social' => ['required', 'string'],
             'celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
+            'telefone' => ['string', 'regex:/^[0-9]+$/u', 'between:10,11', 'nullable'],
             'email' => ['required', 'string', 'email', 'confirmed'],
             'senha' => ['required', 'string', 'between:6,12', 'confirmed'],
             'cep' => ['required', 'string', 'regex:/^[0-9]+$/u', 'size:8'],
@@ -68,6 +69,9 @@ class StoreClienteRequest extends FormRequest
             'celular.required' => 'O campo celular é obrigatório.',
             'celular.string' => 'O campo celular é do tipo texto.',
             'celular.between' => 'O campo celular está com formato inválido.',
+
+            'telefone.string' => 'O campo telefone é do tipo texto.',
+            'telefone.between' => 'O campo telefone está com formato inválido.',
 
             'email.required' => 'O campo email é obrigatório.',
             'email.string' => 'O campo email é do tipo texto.',

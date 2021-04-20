@@ -17,6 +17,9 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->string('estado_civil')
                 ->nullable();
 
+            $table->string('telefone')
+                ->nullable();
+
             $table->string('numero_documento_identidade')
                 ->nullable();
 
@@ -37,6 +40,7 @@ class AlterTablePessoaAssinaturaForPj extends Migration
     {
         Schema::table('cad_pessoa_assinatura', function (Blueprint $table) {
             $table->dropColumn('estado_civil');
+            $table->dropColumn('telefone');
             $table->dropColumn('numero_documento_identidade');
             $table->dropColumn('uf_documento_identidade');
             $table->dropColumn('tipo_documento_identidade');
