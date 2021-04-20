@@ -25,7 +25,7 @@ class KeysInterfaceService
         return [
             [
                 'inputKey' => 'id_simulacao',
-                'sourceKey' => 'idSimulacao'
+                'sourceKey' => 'id_simulacao'
             ],
             [
                 'inputKey' => 'forma_liberacao',
@@ -62,10 +62,6 @@ class KeysInterfaceService
             [
                 'inputKey' => 'valor_solicitado',
                 'sourceKey' => 'valor_solicitado'
-            ],
-            [
-                'inputKey' => 'quantidade_parcela',
-                'sourceKey' => 'quantidade_parcela'
             ],
         ];
     }

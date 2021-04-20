@@ -78,6 +78,8 @@ class PropostaService
             'ufResidencial' => $proposta->cliente->uf
         ];
 
+        return;
+
         return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
@@ -253,10 +255,8 @@ class PropostaService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
 
-        if (!$this->vincularClienteSicred($proposta, $numeroProposta))
-            return 0;
-        if (!$this->vincularLiberacoesSicred($proposta, $numeroProposta))
-            return 0;
+        $this->vincularClienteSicred($proposta, $numeroProposta);
+        $this->vincularLiberacoesSicred($proposta, $numeroProposta);
 
         return $numeroProposta;
     }

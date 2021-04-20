@@ -25,7 +25,7 @@ class NovaPropostaPJRequest extends FormRequest
     public function rules()
     {
         return [
-            'proposta.idSimulacao' => ['required', 'numeric'],
+            'proposta.id_simulacao' => ['required', 'numeric'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],
             'proposta.forma_liberacao' => ['required', 'string'],
@@ -35,7 +35,6 @@ class NovaPropostaPJRequest extends FormRequest
             'proposta.conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:6'],
             'proposta.digito_conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
             'proposta.tipo_conta' => ['required', 'max:1'],
-            'proposta.quantidade_parcela' => ['required', 'numeric', 'max:36'],
 
             'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
             'cliente.nome_fantasia' => ['required', 'string'],
