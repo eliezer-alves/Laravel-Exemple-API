@@ -63,6 +63,10 @@ class KeysInterfaceService
                 'inputKey' => 'valor_solicitado',
                 'sourceKey' => 'valor_solicitado'
             ],
+            [
+                'inputKey' => 'id_usuario',
+                'sourceKey' => 'id_usuario'
+            ],
         ];
     }
 

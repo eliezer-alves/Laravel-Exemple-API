@@ -17,6 +17,7 @@ class Proposta extends Model
     protected $fillable = [
         'contrato',
         'id_simulacao',
+        'id_usuario',
         'estado_civil',
         'renda',
         'situacao_empregaticia',

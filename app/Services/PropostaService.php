@@ -49,8 +49,8 @@ class PropostaService
         $this->keysInterfaceService = $keysInterfaceService;
         $this->pessoAssinaturaService = $pessoAssinaturaService;
 
-        $this->formaInclusaoCaliban = 7;
-        $this->statusNaoAssinado = 1;
+        $this->formaInclusaoCaliban = 2;
+        $this->statusNaoAssinado = 0;
     }
 
 
@@ -194,11 +194,12 @@ class PropostaService
     {
         $attributes = $this->keysInterfaceService->hydrator($formAttributes, $this->keysInterfaceService->atributosFormularioNovaProposta());
         $attributes['id_cliente'] = $this->cliente['id_cliente'];
+        $attributes['cnpj_beneficiario'] = $this->cliente['cnpj'] ?? null;
+        $attributes['nome_beneficiario'] = $this->cliente['nome_fantasia'] ?? null;
         $attributes['renda'] = $this->cliente['rendimento_mensal'] ?? 0;
         $attributes['data_solicitacao_proposta'] = date('Y-m-d H:i:s');
         $attributes['id_status_administrativo'] = $this->statusNaoAssinado;
         $attributes['id_forma_inclusao'] = $this->formaInclusaoCaliban;
-
         return $attributes;
     }
 
