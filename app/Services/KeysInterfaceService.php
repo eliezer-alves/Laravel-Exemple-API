@@ -141,6 +141,32 @@ class KeysInterfaceService
     }
 
     /**
+     * Key list of Sicred's installment registration keys
+     * with Ágil's installment table keys
+     *
+     * @since 22/04/2021
+     *
+     * @return array
+     */
+    public function alinharParcelaPropostaAgilComSicred()
+    {
+        return [
+            [
+                'inputKey' => 'numero_parcela',
+                'sourceKey' => 'codigoParcela'
+            ],
+            [
+                'inputKey' => 'vencimento',
+                'sourceKey' => 'dataVencimento'
+            ],
+            [
+                'inputKey' => 'valor',
+                'sourceKey' => 'valorPmt'
+            ],
+        ];
+    }
+
+    /**
      * Generic method to hydrate an array with a source array through a key relationship
      *
      * @since 19/04/2021
@@ -154,7 +180,7 @@ class KeysInterfaceService
     {
         $resultArray = [];
         foreach ($keysInterface as $interface) {
-            $resultArray[$interface['inputKey']] = $sourceArray[$interface['sourceKey']];
+            $resultArray[$interface['inputKey']] = $sourceArray[$interface['sourceKey']] ?? null;
         }
 
         return $resultArray;

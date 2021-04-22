@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\{
     ClienteRepositoryInterface,
     PropostaRepositoryInterface,
+    PropostaParcelaRepositoryInterface,
 };
 
 use App\Services\Contracts\{
@@ -25,8 +26,10 @@ use App\Services\{
  */
 class PropostaService
 {
-    private $propostaRepository;
     private $clienteRepository;
+    private $propostaRepository;
+    private $propostaParcelaRepository;
+
     private $apiSicred;
     private $clienteService;
     private $keysInterfaceService;
@@ -35,10 +38,12 @@ class PropostaService
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, PropostaRepositoryInterface $propostaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
     {
         $this->clienteRepository = $clienteRepository;
         $this->propostaRepository = $propostaRepository;
+        $this->propostaParcelaRepository = $propostaParcelaRepository;
+
         $this->apiSicred = $apiSicred;
         $this->clienteService = $clienteService;
         $this->keysInterfaceService = $keysInterfaceService;
@@ -46,6 +51,32 @@ class PropostaService
 
         $this->formaInclusaoCaliban = 7;
         $this->statusNaoAssinado = 1;
+    }
+
+
+    /**
+     * Service Layer - Get data from a proposal at Sicred
+     *
+     *
+     * @param  int  $numeroProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosPropostaSicred($numeroProposta)
+    {
+        return (array)$this->apiSicred->dadosProposta($numeroProposta);
+    }
+
+
+    /**
+     * Service Layer - Get bank details from a proposal at Sicred
+     *
+     *
+     * @param  int  $numeroProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosLiberacoesPropostaSicred($numeroProposta)
+    {
+        return (array)$this->apiSicred->exibeLiberacoesProposta($numeroProposta);
     }
 
 
@@ -111,28 +142,44 @@ class PropostaService
 
 
     /**
-     * Service Layer - Get data from a proposal at Sicred
+     * Service Layer - Method responsible for saving the parcels of the Sicred
+     * proposal on the basis of Agile
      *
      *
-     * @param  int  $numeroProposta
-     * @return array  $dataProposta
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  array $parcelasPropostaSicred
+     * @param  int $idProposta
+     * @return App\Services\Contracts\ApiSicredServiceInterface
      */
-    public function getDadosPropostaSicred($numeroProposta)
+    private function salvarParcelsPropostaSicred($parcelasPropostaSicred, $idProposta)
     {
-        return (array)$this->apiSicred->dadosProposta($numeroProposta);
-    }
+        /*
+        |--------------------------------------------------------------------------
+        | Attributes
+        |--------------------------------------------------------------------------
+        |
+        | Normalizing the array of attributes to save the plots. In this case it
+        | will be an array with several plots, which will be saved independently
+        | in the Repository.
+        */
 
+        $attributesParcelas = [];
+        foreach ($parcelasPropostaSicred as $parcelaSicred) {
+            $attributesParcela = $this->keysInterfaceService->hydrator((array)$parcelaSicred, $this->keysInterfaceService->alinharParcelaPropostaAgilComSicred());
+            $attributesParcela['id_proposta'] = $idProposta;
+            array_push($attributesParcelas, $attributesParcela);
+        }
 
-    /**
-     * Service Layer - Get bank details from a proposal at Sicred
-     *
-     *
-     * @param  int  $numeroProposta
-     * @return array  $dataProposta
-     */
-    public function getDadosLiberacoesPropostaSicred($numeroProposta)
-    {
-        return (array)$this->apiSicred->exibeLiberacoesProposta($numeroProposta);
+        /*
+        |--------------------------------------------------------------------------
+        | Saving
+        |--------------------------------------------------------------------------
+        |
+        | Saving the parcels through the ProposalParcelaRepository that will
+        | return to the list of saved records.
+        */
+
+        return $this->propostaParcelaRepository->createMany($attributesParcelas) ?? [];
     }
 
 
@@ -155,6 +202,46 @@ class PropostaService
         return $attributes;
     }
 
+    /**
+     * Service Layer - Create a proposal on sicred from an Agil proposal
+     *
+     *
+     * @param  int  $idProposta
+     * @return int $numeroProposta
+     */
+    public function vincularPropostaSicred($idProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
+
+        $this->vincularClienteSicred($proposta, $numeroProposta);
+        $this->vincularLiberacoesSicred($proposta, $numeroProposta);
+
+        return $numeroProposta;
+    }
+
+
+    /**
+     * Service Layer - Updates the Agile Proposal (internal proposal) with the Proposal data at Sicred
+     *
+     *
+     * @param  int  $idProposta
+     * @param  int  $numeroProposta
+     *
+     * @return bool
+     */
+    public function alinharPropostaAgilComSicred($idProposta, $numeroProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
+
+        $attributes = $this->keysInterfaceService->hydrator($propostaSicred, $this->keysInterfaceService->alinharPropostaAgilComSicred());
+        $proposta->update($attributes);
+
+        $this->salvarParcelsPropostaSicred($propostaSicred['parcelas'] ?? [], $proposta->id_proposta);
+
+        return true;
+    }
 
     /**
      * Service Layer - Creates a new Agile Proposal from the data in a request
@@ -236,49 +323,10 @@ class PropostaService
         $alinharPropostaAgilComSicred = $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
 
         $proposta->refresh();
+        $proposta->parcelas;
         $proposta->cliente;
         $proposta->socios;
 
         return $proposta;
-    }
-
-
-    /**
-     * Service Layer - Create a proposal on sicred from an Agil proposal
-     *
-     *
-     * @param  int  $idProposta
-     * @return int $numeroProposta
-     */
-    public function vincularPropostaSicred($idProposta)
-    {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $numeroProposta = $this->apiSicred->novaProposta($proposta->id_simulacao);
-
-        $this->vincularClienteSicred($proposta, $numeroProposta);
-        $this->vincularLiberacoesSicred($proposta, $numeroProposta);
-
-        return $numeroProposta;
-    }
-
-
-    /**
-     * Service Layer - Updates the Agile Proposal (internal proposal) with the Proposal data at Sicred
-     *
-     *
-     * @param  int  $idProposta
-     * @param  int  $numeroProposta
-     *
-     * @return bool
-     */
-    public function alinharPropostaAgilComSicred($idProposta, $numeroProposta)
-    {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
-
-        $attributes = $this->keysInterfaceService->hydrator($propostaSicred, $this->keysInterfaceService->alinharPropostaAgilComSicred());
-        $proposta->update($attributes);
-
-        return true;
     }
 }

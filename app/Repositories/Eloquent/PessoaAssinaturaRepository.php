@@ -12,7 +12,8 @@ class PessoaAssinaturaRepository extends AbstractRepository implements PessoaAss
         parent::__construct($model);
     }
 
-    public function findRepresentanteByCnpj($cnpj){
+    public function findRepresentanteByCnpj($cnpj)
+    {
         return $this->firstWhere('cnpj', $cnpj);
     }
 }

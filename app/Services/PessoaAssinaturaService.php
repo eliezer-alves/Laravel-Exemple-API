@@ -50,16 +50,15 @@ class PessoaAssinaturaService
      *
      * @param  array  $attributes
      * @param  int  $idProposta
-     * @return App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface
+     * @return App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface[]
      */
     public function createMany($attributes, $idProposta)
     {
-        $arrayPessoaAssinatura = [];
-        foreach ($attributes as $socio) {
-            $socio['id_proposta'] = $idProposta;
-            array_push($arrayPessoaAssinatura, $this->create($socio));
+        foreach ($attributes as $key => $socio) {
+            $attributes[$key]['id_proposta'] = $idProposta;
         }
-        return $arrayPessoaAssinatura;
+
+        return $this->pessoaAssinaturaRepository->createMany($attributes);
     }
 
 

@@ -91,6 +91,11 @@ class Proposta extends Model
         return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta');
     }
 
+    public function parcelaS()
+    {
+        return $this->hasMany(PropostaParcela::class, 'id_proposta', 'id_proposta');
+    }
+
     public function solicitacao()
     {
         return $this->belongsTo(Solicitacao::class, 'id_proposta');
