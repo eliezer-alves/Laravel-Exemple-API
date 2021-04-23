@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Contracts\{
     ClienteRepositoryInterface,
+    PessoaAssinaturaRepositoryInterface,
     PropostaRepositoryInterface,
     PropostaParcelaRepositoryInterface,
 };
@@ -12,9 +13,7 @@ use App\Services\Contracts\{
     ApiSicredServiceInterface
 };
 use App\Services\{
-    ClienteService,
     KeysInterfaceService,
-    PessoaAssinaturaService
 };
 
 /**
@@ -27,27 +26,26 @@ use App\Services\{
 class PropostaService
 {
     private $clienteRepository;
+    private $pessoaAssinaturaRepository;
     private $propostaRepository;
     private $propostaParcelaRepository;
 
     private $apiSicred;
-    private $clienteService;
     private $keysInterfaceService;
     private $pessoAssinaturaService;
     private $cliente;
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, ClienteService $clienteService, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
     {
         $this->clienteRepository = $clienteRepository;
+        $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
         $this->propostaRepository = $propostaRepository;
         $this->propostaParcelaRepository = $propostaParcelaRepository;
 
         $this->apiSicred = $apiSicred;
-        $this->clienteService = $clienteService;
         $this->keysInterfaceService = $keysInterfaceService;
-        $this->pessoAssinaturaService = $pessoAssinaturaService;
 
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;
@@ -57,6 +55,7 @@ class PropostaService
     /**
      * Service Layer - Get data from a proposal at Sicred
      *
+     * @since 23/04/2021
      *
      * @param  int  $numeroProposta
      * @return array  $dataProposta
@@ -70,6 +69,7 @@ class PropostaService
     /**
      * Service Layer - Get bank details from a proposal at Sicred
      *
+     * @since 23/04/2021
      *
      * @param  int  $numeroProposta
      * @return array  $dataProposta
@@ -83,6 +83,7 @@ class PropostaService
     /**
      * Service Layer - Links customer data to a Sicred proposal
      *
+     * @since 23/04/2021
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @param  int $numeroProposta
@@ -118,6 +119,7 @@ class PropostaService
     /**
      * Service Layer - Links bank details to a proposal at Sicred
      *
+     * @since 23/04/2021
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @param  int $numeroProposta
@@ -145,6 +147,7 @@ class PropostaService
      * Service Layer - Method responsible for saving the parcels of the Sicred
      * proposal on the basis of Agile
      *
+     * @since 23/04/2021
      *
      * @param  App\Repositories\Contracts\PropostaRepositoryInterface
      * @param  array $parcelasPropostaSicred
@@ -186,6 +189,7 @@ class PropostaService
     /**
      * Normalizes parameters for registering a proposal at Agil
      *
+     * @since 23/04/2021
      *
      * @param array $formAttributes
      * @return array $dataProposta
@@ -204,10 +208,34 @@ class PropostaService
     }
 
     /**
+     * Normalizes parameters for registering a proposal at Agil
+     *
+     * @since 23/04/2021
+     *
+     * @param array $formAttributesSocios
+     * @param int $idProposta
+     * @return array $dataProposta
+     */
+    private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $idProposta)
+    {
+        $clienteAssinatura = $this->cliente->toArray();
+        $clienteAssinatura['tipo_pessoa_assinatura'] = 0;
+        $attributes = $formAttributesSocios;
+        $attributes[] = $clienteAssinatura;
+
+        foreach ($attributes as $key => $attribute) {
+            $attributes[$key]['id_proposta'] = $idProposta;
+        }
+
+        return $attributes;
+    }
+
+    /**
      * Service Layer - Create a proposal on sicred from an Agil proposal
      *
+     * @since 23/04/2021
      *
-     * @param  int  $idProposta
+     * @param int $idProposta
      * @return int $numeroProposta
      */
     public function vincularPropostaSicred($idProposta)
@@ -225,10 +253,10 @@ class PropostaService
     /**
      * Service Layer - Updates the Agile Proposal (internal proposal) with the Proposal data at Sicred
      *
+     * @since 23/04/2021
      *
      * @param  int  $idProposta
      * @param  int  $numeroProposta
-     *
      * @return bool
      */
     public function alinharPropostaAgilComSicred($idProposta, $numeroProposta)
@@ -247,6 +275,7 @@ class PropostaService
     /**
      * Service Layer - Creates a new Agile Proposal from the data in a request
      *
+     * @since 23/04/2021
      *
      * @param  array  $attributes
      * @return json  $dataProposta
@@ -300,7 +329,8 @@ class PropostaService
         |
         | Saving the Legal Representative and the company's partners.
         */
-        $socios = $this->pessoAssinaturaService->createMany($attributesFormSocios, $proposta->id_proposta);
+        $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $proposta->id_proposta);
+        $this->pessoaAssinaturaRepository->createMany($attributesPessoaAssinatura);
 
 
         /*
@@ -311,7 +341,7 @@ class PropostaService
         | Creating a proposal at Sicredi from Agil's proposal
         */
         $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
-        $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
+        $this->getDadosPropostaSicred($numeroProposta);
 
 
         /*
@@ -321,11 +351,12 @@ class PropostaService
         |
         | Updating Agil's proposal based on data from Sicred's proposal.
         */
-        $alinharPropostaAgilComSicred = $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+        $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
 
         $proposta->refresh();
         $proposta->parcelas;
-        $proposta->cliente;
+        $proposta->clienteAssinatura;
+        $proposta->representante;
         $proposta->socios;
 
         return $proposta;

@@ -50,7 +50,17 @@ class PessoaAssinatura extends Model
         'estado_civil',
         'numero_documento_identidade',
         'uf_documento_identidade',
-        'tipo_documento_identidade'
+        'tipo_documento_identidade',
+        'inscricao_estadual',
+        'nome_fantasia',
+        'razao_social',
+        'id_atividade_comercial',
+        'tipo_empresa',
+        'porte',
+        'rendimento_mensal',
+        'faturamento_anual',
+        'capital_social',
+        'ano_faturamento',
     ];
 
     protected $attributes = [

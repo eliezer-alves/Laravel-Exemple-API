@@ -2,9 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PdfService;
+
 use Illuminate\Http\Request;
 
+
+/**
+ * Class to manage the generation of PDF files
+ *
+ * @author Eliezer Alves
+ * @since 23/2021
+ *
+ */
 class PdfController extends Controller
 {
-    //
+    public function __construct(PdfService $service)
+    {
+        parent::__construct($service);
+    }
+
+
+    /**
+     * Displays pdf of PJ client contracts
+     *
+     * @param int $idProposta
+     * @return \Illuminate\View\View
+     */
+    public function contratoPj($idProposta)
+    {
+        // dd($this->service->contratoPj($idProposta));
+
+        return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
+    }
 }

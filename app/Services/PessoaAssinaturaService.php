@@ -49,15 +49,10 @@ class PessoaAssinaturaService
      * Service Layer - Create Many the model in the database.
      *
      * @param  array  $attributes
-     * @param  int  $idProposta
      * @return App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface[]
      */
-    public function createMany($attributes, $idProposta)
+    public function createMany($attributes)
     {
-        foreach ($attributes as $key => $socio) {
-            $attributes[$key]['id_proposta'] = $idProposta;
-        }
-
         return $this->pessoaAssinaturaRepository->createMany($attributes);
     }
 

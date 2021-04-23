@@ -87,18 +87,24 @@ class Proposta extends Model
         return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
     }
 
+    public function clienteAssinatura()
+    {
+        return $this->hasOne(PessoaAssinatura::class, 'id_proposta', 'id_proposta')->where('tipo_pessoa_assinatura', 0);
+    }
+
+    public function representante()
+    {
+        return $this->hasOne(PessoaAssinatura::class, 'id_proposta', 'id_proposta')->where('tipo_pessoa_assinatura', 1);
+    }
+
     public function socios()
     {
-        return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta');
+        return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')->where('tipo_pessoa_assinatura', 2);
     }
 
-    public function parcelaS()
+
+    public function parcelas()
     {
         return $this->hasMany(PropostaParcela::class, 'id_proposta', 'id_proposta');
-    }
-
-    public function solicitacao()
-    {
-        return $this->belongsTo(Solicitacao::class, 'id_proposta');
     }
 }

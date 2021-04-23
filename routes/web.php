@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\ModeloSicredController;
 use App\Http\Controllers\ClientSicredController;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\ModeloSicredController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,10 @@ Route::middleware(['auth'])->prefix('admin/')->group(function () {
 
 Route::get('/solicitacao', function () {
     return view('solicitacao.index');
+});
+
+Route::prefix('pdf')->group(function () {
+    Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj']);
 });
 
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
