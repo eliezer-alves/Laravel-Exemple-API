@@ -1980,15 +1980,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "API_URL": () => (/* binding */ API_URL),
 /* harmony export */   "VIA_CEP": () => (/* binding */ VIA_CEP)
 /* harmony export */ });
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 var params = new URLSearchParams();
-params.append('grant_type', "password");
-params.append('client_id', "2");
-params.append('client_secret', "5kRU4R2MnQam9biRfJtGGAlQwbM83aOfOu99W9IN");
+params.append('grant_type', process.env.MIX_GRANT_TYPE);
+params.append('client_id', process.env.MIX_CLIENT_ID);
+params.append('client_secret', process.env.MIX_CLIENT_SECRET);
 var header = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var API_URL = "http://127.0.0.1:8000";
-var VIA_CEP = "https://viacep.com.br/ws";
+var API_URL = process.env.MIX_API_URL;
+var VIA_CEP = process.env.MIX_VIA_CEP;
 
 
 /***/ }),

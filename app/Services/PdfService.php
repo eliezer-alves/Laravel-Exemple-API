@@ -4,8 +4,6 @@ namespace App\Services;
 
 use App\Repositories\Eloquent\PropostaRepository;
 
-use Pdf;
-
 class PdfService
 {
     protected $propostaRepository;
