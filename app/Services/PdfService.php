@@ -26,7 +26,13 @@ class PdfService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
+        $proposta = $proposta->toArray();
 
-        return $proposta->toArray();
+        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
+
+        $proposta['mes_geracao_proposta'] = strftime('%B', strtotime($proposta['data_geracao_proposta']));
+
+        return $proposta;
     }
 }

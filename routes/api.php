@@ -56,7 +56,7 @@ Route::middleware('auth:api')->namespace('proposta')->group(function () {
     Route::get('/simulacao/cliente', [PropostaController::class, 'novaProposta']);
 });
 
-Route::middleware('auth:api')->prefix('pdf')->group(function () {
+Route::prefix('pdf')->group(function () {
     Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj']);
 });
 
