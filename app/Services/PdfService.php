@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Repositories\Eloquent\PropostaRepository;
 
+use Pdf;
+
 class PdfService
 {
     protected $propostaRepository;
@@ -26,6 +28,7 @@ class PdfService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
+
         return $proposta->toArray();
     }
 }

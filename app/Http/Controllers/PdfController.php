@@ -7,6 +7,8 @@ use App\Services\PdfService;
 use Illuminate\Http\Request;
 
 
+use PDF;
+
 /**
  * Class to manage the generation of PDF files
  *
@@ -31,6 +33,9 @@ class PdfController extends Controller
     public function contratoPj($idProposta)
     {
         // dd($this->service->contratoPj($idProposta));
+        $pdf = PDF::loadView('pdf.ccb-pj', $this->service->contratoPj($idProposta));
+
+        return $pdf->setPaper('a4')->stream('teste.pdf', $this->service->contratoPj($idProposta));
 
         return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
     }
