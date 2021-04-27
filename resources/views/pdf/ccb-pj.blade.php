@@ -90,7 +90,7 @@
         </tr>
     </table>
 
-    <table style="width: 100%;" cellpadding="4">
+    <table style="width: 100%;page-break-inside:avoid;" cellpadding="4"  nobr="true">
         <thead>
             <tr>
                 <th></th>
@@ -212,38 +212,6 @@
                     <h4><?= $representante['celular'] ?></h4>
                 </td>
             </tr>
-            <tr align="left">
-                <td class="border grey" valign="center" colspan="12"><h2>QUALIFICAÇÃO DOS AVALISTAS:</h2>
-                </td>
-            </tr>
-
-            <?php
-            $table = '';
-            foreach ($socios as $socio) {
-                $table = '' .
-                '<tr>
-                    <td colspan="6" align="left" valign="top"><h3>Nome:</h3><h4>' . $socio['nome'] . '</h4></td>
-                    <td colspan="4" align="left" valign="top"><h3>CPF:</h3><h4>' . $socio['cpf'] . '</h4></td>
-                    <td colspan="2" align="left" valign="top"><h3>Sexo:</h3><h4>' . $socio['sexo'] . '</h4></td>
-                </tr>
-                <tr>
-                    <td colspan="6" align="left" valign="top"><h3>E-mail:</h3><h4>' . $socio['email'] . '</h4></td>
-                    <td colspan="4" align="left" valign="top"><h3>RG n.º:</h3><h4>' . $socio['numero_documento_identidade'] . '</h4></td>
-                    <td colspan="2" align="left" valign="top"><h3>Estado Civil:</h3><h4>' . $socio['estado_civil'] . '</h4></td>
-                </tr>
-                <tr>
-                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['logradouro'] . '</h4></td>
-                    <td colspan="4" align="left" valign="top"><h3>Bairro:</h3><h4>' . $socio['bairro'] . '</h4></td>
-                    <td colspan="2" align="left" valign="top"><h3>UF:</h3><h4>' . $socio['uf'] . '</h4></td>
-                </tr>
-                <tr>
-                    <td colspan="6" align="left" valign="top"><h3>Cidade:</h3><h4>' . $socio['cidade'] . '</h4></td>
-                    <td colspan="3" align="left" valign="top"><h3>CEP:</h3><h4>' . $socio['cep'] . '</h4></td>
-                    <td colspan="3" align="left" valign="top"><h3>Celular:</h3><h4>' . $socio['celular'] . '</h4></td>
-                </tr>';
-                echo $table;
-            }
-            ?>
 
             <tr align="left">
                 <td class="border grey" valign="center" colspan="12"><h2>QUADRO II ESPECIFICAÇÕES DO CRÉDITO:</h2>
@@ -324,6 +292,62 @@
                     </h3>
                 </td>
             </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="width: 100%;page-break-inside:avoid;" cellpadding="4" nobr="true">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="left">
+                <td class="border grey" valign="center" colspan="12"><h2>QUALIFICAÇÃO DOS AVALISTAS:</h2></td>
+            </tr>
+            <?php
+            $table = '';
+            foreach ($socios as $socio) {
+                $table = '' .
+                    '<tr>
+                    <td colspan="6" align="left" valign="top"><h3>Nome:</h3><h4>' . $socio['nome'] . '</h4></td>
+                    <td colspan="4" align="left" valign="top"><h3>CPF:</h3><h4>' . $socio['cpf'] . '</h4></td>
+                    <td colspan="2" align="left" valign="top"><h3>Sexo:</h3><h4>' . $socio['sexo'] . '</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="left" valign="top"><h3>E-mail:</h3><h4>' . $socio['email'] . '</h4></td>
+                    <td colspan="4" align="left" valign="top"><h3>RG n.º:</h3><h4>' . $socio['numero_documento_identidade'] . '</h4></td>
+                    <td colspan="2" align="left" valign="top"><h3>Estado Civil:</h3><h4>' . $socio['estado_civil'] . '</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['logradouro'] . '</h4></td>
+                    <td colspan="4" align="left" valign="top"><h3>Bairro:</h3><h4>' . $socio['bairro'] . '</h4></td>
+                    <td colspan="2" align="left" valign="top"><h3>UF:</h3><h4>' . $socio['uf'] . '</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="left" valign="top"><h3>Cidade:</h3><h4>' . $socio['cidade'] . '</h4></td>
+                    <td colspan="3" align="left" valign="top"><h3>CEP:</h3><h4>' . $socio['cep'] . '</h4></td>
+                    <td colspan="3" align="left" valign="top"><h3>Celular:</h3><h4>' . $socio['celular'] . '</h4></td>
+                </tr>';
+                echo $table;
+            }
+            ?>
         </tbody>
     </table>
 
