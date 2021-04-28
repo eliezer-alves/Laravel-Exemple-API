@@ -32,7 +32,7 @@ class NovaPropostaPJRequest extends FormRequest
             'proposta.banco_liberacao' => ['required', 'string'],
             'proposta.agencia_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:4'],
             'proposta.digito_agencia_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
-            'proposta.conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:6'],
+            'proposta.conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'min:6'],
             'proposta.digito_conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
             'proposta.tipo_conta' => ['required', 'max:1'],
 

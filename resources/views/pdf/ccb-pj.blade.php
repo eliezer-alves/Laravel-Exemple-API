@@ -1,3 +1,7 @@
+<?php
+setlocale(LC_MONETARY, 'it_IT');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -231,18 +235,18 @@
             </tr>
             <tr>
                 <td colspan="4" align="left" valign="top"><h3>1. Valor Empréstimo:</h3>
-                    <h4><?= $valor_liquido_credito ?></h4>
+                    <h4>R$ <?= number_format($valor_liquido_credito, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>2. Valor IOF:</h3>
-                    <h4><?= $valor_iof ?></h4>
+                    <h4>R$ <?= number_format($valor_iof, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>3- Tarifa de Cadastro:</h3>
-                    <h4><?= $tac ?></h4>
+                    <h4>R$ <?= number_format($tac, 2, ',', '.') ?></h4>
                 </td>
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>4. (1+2+3) Valor Financiado:</h3>
-                    <h4><?= $valor_financiado_total ?></h4>
+                    <h4>R$ <?= number_format($valor_financiado_total, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="6" align="left" valign="top"><h3>5. Saldo Devedor Refinanciamento:</h3>
                     <h4><?= 0 ?></h4>
@@ -250,10 +254,10 @@
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>6. (4-2-3-5-14) Valor Líquido do Crédito:</h3>
-                    <h4><?= $valor_liquido_credito ?></h4>
+                    <h4>R$ <?= number_format($valor_liquido_credito, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="3" align="left" valign="top"><h3>7. Valor da Parcela:</h3>
-                    <h4><?= $valor_parcela ?></h4>
+                    <h4>R$ <?= number_format($valor_parcela, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="3" align="left" valign="top"><h3>8. Quantidade de Parcelas:</h3>
                     <h4><?= $quantidade_parcela ?></h4>
@@ -261,18 +265,18 @@
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>9. Vencimento da 1ª Parcela:</h3>
-                    <h4><?= $parcelas[0]['vencimento'] ?></h4>
+                    <h4><?= date('d/m/Y', strtotime($parcelas[0]['vencimento'])) ?? '-' ?></h4>
                 </td>
                 <td colspan="6" align="left" valign="top"><h3>10. Taxa de Juros:</h3>
-                    <h4><?= $taxa_juros_mes ?>% ao mês <?= $taxa_juros_ano ?>% ao ano</h4>
+                    <h4><?= round($taxa_juros_mes, 2) ?>% ao mês <?= round($taxa_juros_ano, 2) ?>% ao ano</h4>
                 </td>
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>11. Vencimento da Última Parcela:</h3>
-                    <h4><?= end($parcelas)['vencimento'] ?></h4>
+                    <h4><?= date('d/m/Y', strtotime(end($parcelas)['vencimento'])) ?? '-' ?></h4>
                 </td>
                 <td colspan="6" align="left" valign="top"><h3>12. Custo Efetivo Total – CET:</h3>
-                    <h4><?= $cet_mes ?>% ao mês <?= $cet_ano ?>% ao ano</h4>
+                    <h4><?= round($cet_mes, 2) ?>% ao mês <?= round($cet_ano, 2) ?>% ao ano</h4>
                 </td>
             </tr>
             <tr>
@@ -280,7 +284,7 @@
                     <h4>(<?= $form_pg ?? 0 == 1 ? 'X' : ' ' ?>)Débito em Conta (<?= $form_pg ?? 0 == 2 ? 'X' : ' ' ?>)Boleto Bancário (<?= $form_pg ?? 0 == 3 ? 'X' : ' ' ?>)Cheque</h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>14. Valor do Seguro:</h3>
-                    <h4><?= $valor_seguro ?></h4>
+                    <h4>R$ <?= number_format($valor_seguro, 2, ',', '.') ?></h4>
                 </td>
             </tr>
             <tr>
@@ -518,7 +522,7 @@
             </tr>
         </thead>
         <tr align="center" valign="center">
-            <td width="5%"><img width="20px"></td>
+            <td width="5%">&#x2705;</td>
             <td align="left" width="95%">
                 INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA PLATAFORMA ON LINE ÁGIL – VIA (CAMPO EDITÁVEL DA FONTE DE CAPTAÇÃO (Telefone ou via sistema on line do lojista))
             </td>
@@ -548,5 +552,3 @@
 </body>
 
 </html>
-
-<!--style="page-break-before: always;"-->
