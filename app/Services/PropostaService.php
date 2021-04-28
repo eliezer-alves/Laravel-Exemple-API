@@ -32,12 +32,11 @@ class PropostaService
 
     private $apiSicred;
     private $keysInterfaceService;
-    private $pessoAssinaturaService;
     private $cliente;
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, PessoaAssinaturaService $pessoAssinaturaService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService)
     {
         $this->clienteRepository = $clienteRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
