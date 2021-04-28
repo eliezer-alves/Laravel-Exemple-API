@@ -53,7 +53,7 @@ Route::prefix('pdf')->group(function () {
 
 Route::prefix('assinatura')->group(function () {
     Route::get('/contrato-pj/aceite-1/{id_proposta}', [AssinaturaContratoController::class, 'aceite1'])->name('assinatura.contrato-pj-1.show');
-    Route::get('/contrato-pj/aceite-1/{id_proposta}', [AssinaturaContratoController::class, 'aceite2']);
+    Route::get('/contrato-pj/aceite-2/{id_proposta}', [AssinaturaContratoController::class, 'aceite2']);
 });
 
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');

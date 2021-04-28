@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AssinaturaContratoService;
+
 /**
  * Class responsible for managing the
  * signing of Ágil contracts
@@ -12,8 +14,9 @@ namespace App\Http\Controllers;
  */
 class AssinaturaContratoController extends Controller
 {
-    public function __construct()
+    public function __construct(AssinaturaContratoService $service)
     {
+        parent::__construct($service);
     }
 
     /**
@@ -22,11 +25,12 @@ class AssinaturaContratoController extends Controller
      * @since 28/04/2021
      *
      * @param  int  $idProposta
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function aceite1($idProposta)
     {
-        dd($idProposta);
+        $dadosProposta = $this->service->dadosProposta($idProposta);
+        return view('assinatura-contrato.pj.c_1', $dadosProposta);
     }
 
     /**
@@ -39,6 +43,6 @@ class AssinaturaContratoController extends Controller
      */
     public function aceite2()
     {
-
+        echo "ao";
     }
 }

@@ -105,7 +105,7 @@ setlocale(LC_MONETARY, 'it_IT');
         </tr>
     </table>
 
-    <table class="withBorder" style="width: 100%;page-break-inside:avoid;" cellpadding="4"  nobr="true">
+    <table class="withBorder" cellpadding="4"  nobr="true">
         <thead>
             <tr>
                 <th></th>

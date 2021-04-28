@@ -17,7 +17,7 @@ class PdfService
      * Service Layer - Displays pdf of PJ client contracts
      *
      * @param int $idProposta
-     * @return \Illuminate\View\View
+     * @return array $proposta;
      */
     public function contratoPj($idProposta)
     {
