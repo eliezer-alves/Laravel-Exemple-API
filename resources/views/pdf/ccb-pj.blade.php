@@ -522,7 +522,7 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
         </thead>
         <tr align="center" valign="center">
-            <td width="5%"><img width="20px"></td>
+            <td width="5%">&#x2705;</td>
             <td align="left" width="95%">
                 INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA PLATAFORMA ON LINE ÁGIL – VIA (CAMPO EDITÁVEL DA FONTE DE CAPTAÇÃO (Telefone ou via sistema on line do lojista))
             </td>
@@ -552,5 +552,3 @@ setlocale(LC_MONETARY, 'it_IT');
 </body>
 
 </html>
-
-<!--style="page-break-before: always;"-->

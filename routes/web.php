@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientSicredController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\ModeloSicredController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\AssinaturaContratoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +48,12 @@ Route::get('/solicitacao', function () {
 });
 
 Route::prefix('pdf')->group(function () {
-    Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj']);
+    Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj'])->name('pdf.contrato-pj.show');
+});
+
+Route::prefix('assinatura')->group(function () {
+    Route::get('/contrato-pj/aceite-1/{id_proposta}', [AssinaturaContratoController::class, 'aceite1'])->name('assinatura.contrato-pj-1.show');
+    Route::get('/contrato-pj/aceite-1/{id_proposta}', [AssinaturaContratoController::class, 'aceite2']);
 });
 
 Route::get('app/{any?}', [AppController::class, 'index'])->where('any', '.*');
