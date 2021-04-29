@@ -21,4 +21,10 @@ mix.js('resources/js/app_blade.js', 'public/js').postCss('resources/css/app_blad
     require('autoprefixer'),
 ]);
 
+mix.postCss('resources/css/admin_blade.css', 'public/css', [
+    // require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+]);
+
 mix.disableNotifications();

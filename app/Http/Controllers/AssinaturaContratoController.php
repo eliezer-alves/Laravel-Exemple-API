@@ -38,11 +38,12 @@ class AssinaturaContratoController extends Controller
      *
      * @since 28/04/2021
      *
-     * @param  string  $hash
-     * @return \Illuminate\Http\Response
+     * @param  string $hash
+     * @return \Illuminate\View\View
      */
-    public function aceite2()
+    public function aceite2($idProposta)
     {
-        echo "ao";
+        $dadosProposta = $this->service->dadosProposta($idProposta);
+        return view('assinatura-contrato.pj.c_2', $dadosProposta);
     }
 }

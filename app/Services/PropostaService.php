@@ -244,7 +244,6 @@ class PropostaService
 
         $this->vincularClienteSicred($proposta, $numeroProposta);
         $this->vincularLiberacoesSicred($proposta, $numeroProposta);
-
         return $numeroProposta;
     }
 
