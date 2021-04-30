@@ -167,11 +167,11 @@
             <div class="max-h-2/12 w-full bg-white text-orange-700 p-4 rounded-b-lg rounded-t-md flex justify-between items-center text-xs sm:text-base">
                 <div>
                     <p class="font-bold pb-2">Assinatura:</p>
-                    <input @click="setShowNextButton()" type="checkbox" class="form-checkbox" id="check1">
-                    <label class="ml-2" for="check1">Confirmo e aceito os termos do contrato</label>
+                    <input x-ref="check" @click="setShowNextButton()" type="checkbox" class="form-checkbox cursor-pointer" id="check">
+                    <label class="ml-2 cursor-pointer" for="check">Confirmo e aceito os termos do contrato</label>
                 </div>
                 <template x-if="showNextButton">
-                    <a class="btn h-4/5 bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded" href="{{ route('assinatura.contrato-pj-2.show', ($id_proposta ?? 0)) }}">
+                    <a x-model class="btn h-4/5 bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded" href="{{ route($linkAssinatura, ($id_proposta ?? 0)) }}">
                         Próximo
                     </a>
                 </template>
@@ -182,13 +182,10 @@
     <script src="{{ mix('js/app_blade.js') }}"></script>
     <script>
         function handle() {
-            console.log('oi');
             return {
                 showNextButton: false,
                 setShowNextButton() {
-                    // this.showNextButton = !this.showNextButton;
-                    this.showNextButton = !this.showNextButton;
-                    console.log(this.showNextButton);
+                    this.showNextButton = this.$refs.check.checked;
                 },
             }
         }

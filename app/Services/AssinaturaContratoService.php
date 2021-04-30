@@ -48,7 +48,6 @@ class AssinaturaContratoService
         date_default_timezone_set('America/Sao_Paulo');
 
         $proposta['mes_geracao_proposta'] = strftime('%B', strtotime($proposta['data_geracao_proposta']));
-        $proposta['successMessages'][] = 'Parbéns, você está muito próximo do seu dinheiro!';
 
         return $proposta;
     }
