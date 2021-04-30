@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Proposta;
 use App\Repositories\Eloquent\PropostaRepository;
 
 /**
@@ -31,7 +32,12 @@ class AssinaturaContratoService
      */
     public function dadosProposta($idProposta)
     {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $proposta = $this->propostaRepository->find($idProposta);
+        if(!$proposta){
+            $proposta['warningMessages'][] = 'Proposta não Encontratda!';
+            return $proposta;
+        }
+
         $proposta->parcelas;
         $proposta->clienteAssinatura;
         $proposta->representante;
@@ -42,6 +48,7 @@ class AssinaturaContratoService
         date_default_timezone_set('America/Sao_Paulo');
 
         $proposta['mes_geracao_proposta'] = strftime('%B', strtotime($proposta['data_geracao_proposta']));
+        $proposta['successMessages'][] = 'Parbéns, você está muito próximo do seu dinheiro!';
 
         return $proposta;
     }

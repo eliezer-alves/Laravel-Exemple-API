@@ -29,8 +29,8 @@ class AssinaturaContratoController extends Controller
      */
     public function aceite1($idProposta)
     {
-        $dadosProposta = $this->service->dadosProposta($idProposta);
-        return view('assinatura-contrato.pj.c_1', $dadosProposta);
+        $data = $this->service->dadosProposta($idProposta);
+        return view('assinatura-contrato.pj.c_1', $data);
     }
 
     /**
@@ -43,7 +43,7 @@ class AssinaturaContratoController extends Controller
      */
     public function aceite2($idProposta)
     {
-        $dadosProposta = $this->service->dadosProposta($idProposta);
-        return view('assinatura-contrato.pj.c_2', $dadosProposta);
+        $data = $this->service->dadosProposta($idProposta);
+        return view('assinatura-contrato.pj.c_2', $data);
     }
 }

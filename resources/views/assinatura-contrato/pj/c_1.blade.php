@@ -1,6 +1,7 @@
 @extends('assinatura-contrato.index')
 @section('content')
 
+@if(isset($contrato))
 <table align="center">
     <thead>
         <tr>
@@ -245,4 +246,6 @@
         ?>
     </tbody>
 </table>
+@endif
+
 @endsection

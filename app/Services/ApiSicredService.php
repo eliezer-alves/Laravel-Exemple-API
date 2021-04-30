@@ -170,7 +170,7 @@ class ApiSicredService implements ApiSicredServiceInterface
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
-        if ($response->status() != 200 or true) {
+        if ($response->status() != 200) {
             throw new FailedResquestSicred($response, 'Proposta - Impossibilidado de gerar uma nova proposta.');
         }
 
