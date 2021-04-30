@@ -140,9 +140,27 @@
     </style>
 <head>
 <body class="bg-agil bg-1/2 bg-teal-700">
-    <div class="h-screen flex justify-center items-center p-5">
-        <div class="max-h-11/12 p-1 xsm:p-4 sm:p-6 md:p-6 lg:p-6 bg-white w-full xsm:w-full sm:w-10/12 md:w-8/12 lg:w-1/2 shadow-sm rounded-lg  overflow-y-scroll no-scrollbar">
-            @yield('content')
+
+    <div class="h-screen flex flex-col justify-center items-center p-1">
+        <div class="max-h-11/12 p-5 rounded-lg bg-gray-100 w-full sm:w-10/12 md:w-8/12 lg:x-8/12 xl:w-6/12">
+            <div class="max-h-1/12 w-full bg-yellow-300 border-l-4 border-yellow-600 text-orange-700 p-4 rounded-t-lg rounded-b-md text-xs sm:text-base"  role="alert">
+                <p class="font-bold">Be Warned</p>
+                <p>Something not ideal might be happening.</p>
+            </div>
+
+            <div class="my-4 max-h-3/4 p-4 sm:p-6 md:px-6 lg:px-14 bg-white w-full shadow-sm rounded-md  overflow-y-scroll no-scrollbar">
+                @yield('content')
+            </div>
+
+            <div class="max-h-2/12 w-full bg-white text-orange-700 p-4 rounded-b-lg rounded-t-md flex justify-between items-center text-xs sm:text-base">
+                <div>
+                    <p class="font-bold pb-2">Assinatura:</p>
+                    <p>&#x2705; Confirmo que li os termos e aceito.</p>
+                </div>
+                <button class="h-4/5 bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded">
+                    Próximo
+                </button>
+            </div>
         </div>
     </div>
     <!-- <script src="{{ mix('js/app_vue.js') }}"></script> -->
