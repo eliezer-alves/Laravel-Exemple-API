@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Proposta;
 use App\Repositories\Eloquent\PropostaRepository;
 
 /**
@@ -31,7 +32,12 @@ class AssinaturaContratoService
      */
     public function dadosProposta($idProposta)
     {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $proposta = $this->propostaRepository->find($idProposta);
+        if(!$proposta){
+            $proposta['warningMessages'][] = 'Proposta não Encontratda!';
+            return $proposta;
+        }
+
         $proposta->parcelas;
         $proposta->clienteAssinatura;
         $proposta->representante;
