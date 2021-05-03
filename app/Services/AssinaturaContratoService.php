@@ -87,4 +87,17 @@ class AssinaturaContratoService
 
         return $proposta;
     }
+
+    /**
+     * Service Layer - List pending signatures of PJ contract
+     *
+     * @since 03/05/2021
+     *
+     * @param int $idProposta
+     * @return array $proposta;
+     */
+    public function assinaturasPendentes($idProposta)
+    {
+        return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+    }
 }

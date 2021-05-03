@@ -101,6 +101,12 @@ class AssinaturaContratoController extends Controller
     {
         if($this->service->aceite2($idPessoaAssinatura, request()->ip())){
             // return redirect(route('pdf.contrato-pj.show', $idProposta));
+            $assinaturasPendentes = $this->service->assinaturasPendentes($idProposta);
+            foreach($assinaturasPendentes as $assinatura)
+            {
+                $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']}";
+            }
+
             $data['successAlerts'][] = 'Parabéns, contrato assinado!';
             $data['pdfContrato'] = 'http://192.168.0.29/agil_externo/46616/public/printer/proposta/237055/dac31ad4c2fa82cd3b05a07ed16fe930';
             return view('assinatura-contrato.pj.c_2', $data);

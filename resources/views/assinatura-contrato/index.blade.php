@@ -143,13 +143,6 @@
 
     <div class="h-screen flex flex-col justify-center items-center p-1" x-data="handle()">
         <div class="max-h-11/12 p-5 flex flex-col justify-center rounded-lg bg-gray-100 w-full sm:w-10/12 md:w-8/12 lg:x-8/12 xl:w-6/12">
-            @foreach ($warningAlerts ?? [] as $alert)
-                <div class="w-full mb-1 bg-yellow-300 flex items-center border-l-4 border-yellow-600 text-yellow-900 p-4 rounded-t-lg rounded-b-md text-xs sm:text-base"  role="alert">
-                    <p class="font-bold mr-2">Atenção:</p>
-                    <p>{{ $alert }}</p>
-                </div>
-            @endforeach
-
             @foreach ($successAlerts ?? [] as $alert)
                 <div class="w-full mb-1 bg-green-200 flex items-center border-l-4 border-green-600 text-green-800 p-4 rounded-t-lg rounded-b-md text-xs sm:text-base"  role="alert">
                     <p class="font-bold mr-2">Sucesso:</p>
@@ -157,7 +150,15 @@
                 </div>
             @endforeach
 
-            @if(isset($contrato))
+
+            @foreach ($warningAlerts ?? [] as $alert)
+                <div class="w-full mb-1 bg-yellow-300 flex items-center border-l-4 border-yellow-600 text-yellow-900 p-4 rounded-t-lg rounded-b-md text-xs sm:text-base"  role="alert">
+                    <p class="font-bold mr-2">Atenção:</p>
+                    <p>{{ $alert }}</p>
+                </div>
+            @endforeach
+
+             @if(isset($contrato))
             <div class="my-4 p-4 sm:p-6 md:px-6 lg:px-14 bg-white w-full shadow-sm rounded-md overflow-y-scroll no-scrollbar">
                 @yield('content')
             </div>

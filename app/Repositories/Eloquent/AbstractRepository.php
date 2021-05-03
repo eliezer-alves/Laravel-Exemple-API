@@ -33,6 +33,16 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
         return $this->model->findOrFail($id);
     }
 
+    public function where(string $column, $value)
+    {
+        return $this->model->where($column, $value);
+    }
+
+    public function whereIn(string $column, $arrayValues)
+    {
+        return $this->model->whereI($column, $arrayValues);
+    }
+
     public function firstWhere(string $column, $value)
     {
         return $this->model->firstWhere($column, $value);
