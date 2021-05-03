@@ -11,4 +11,9 @@ class PropostaRepository extends AbstractRepository implements PropostaRepositor
     {
         parent::__construct($model);
     }
+
+    public function findByNumero($numeroProposta)
+    {
+        return $this->firstWhere('contrato', $numeroProposta);
+    }
 }

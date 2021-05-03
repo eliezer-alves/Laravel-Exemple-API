@@ -50,6 +50,24 @@ class PropostaService
         $this->statusNaoAssinado = 0;
     }
 
+    /**
+     * Service Layer - Get data from a proposal at Agil
+     *
+     * @since 03/05/2021
+     *
+     * @param  int  $numeroProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosProposta($numeroProposta)
+    {
+        $proposta = $this->propostaRepository->findByNumero($numeroProposta);
+        $proposta->parcelas;
+        $proposta->clienteAssinatura;
+        $proposta->representante;
+        $proposta->socios;
+        return $proposta->toArray();
+    }
+
 
     /**
      * Service Layer - Get data from a proposal at Sicred

@@ -41,9 +41,9 @@ class PropostaController extends Controller
      * @param  int  $numeroProposta
      * @return \Illuminate\Http\Response
      */
-    public function exibeProposta($numeroProposta)
+    public function dadosProposta($numeroProposta)
     {
-        return $this->service->exibeProposta($numeroProposta);
+        return $this->service->getDadosProposta($numeroProposta);
     }
 
     /**

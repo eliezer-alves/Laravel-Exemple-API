@@ -52,7 +52,7 @@ Route::middleware('auth:api')->namespace('simulacao')->group(function () {
 
 Route::middleware('auth:api')->namespace('proposta')->group(function () {
     Route::post('/proposta', [PropostaController::class, 'novaProposta']);
-    Route::get('/proposta/{numero_proposta}', [PropostaController::class, 'exibeProposta']);
+    Route::get('/proposta/{numero_proposta}', [PropostaController::class, 'dadosProposta']);
     Route::get('/simulacao/cliente', [PropostaController::class, 'novaProposta']);
 });
 

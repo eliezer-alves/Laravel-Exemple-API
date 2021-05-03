@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Proposta;
 use App\Repositories\Eloquent\PropostaRepository;
+use App\Repositories\Eloquent\PessoaAssinaturaRepository;
 
 /**
  * Service Layer - Class responsible for managing
@@ -16,11 +17,46 @@ use App\Repositories\Eloquent\PropostaRepository;
 class AssinaturaContratoService
 {
     protected $propostaRepository;
+    protected $pessoaAssinaturaRepository;
 
-    public function __construct(PropostaRepository $propostaRepository)
+    public function __construct(PropostaRepository $propostaRepository, PessoaAssinaturaRepository $pessoaAssinaturaRepository)
     {
         $this->propostaRepository = $propostaRepository;
+        $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
     }
+
+    /**
+     * Service Layer - The first part of the contract is effective
+     *
+     * @since 03/05/2021
+     *
+     * @param int $idPessoaAssinatura
+     * @param int $ipCliente
+     */
+    public function aceite1($idPessoaAssinatura, $ipCliente)
+    {
+        $assinatura = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        $assinatura->data_aceite_1 = date('Y-m-d H:i:s');
+        $assinatura->ip_cliente = $ipCliente;
+        return $assinatura->save();
+    }
+
+    /**
+     * Service Layer - Signature of the second part of the contract.
+     *
+     * @since 03/05/2021
+     *
+     * @param int $idPessoaAssinatura
+     * @param int $ipCliente
+     */
+    public function aceite2($idPessoaAssinatura, $ipCliente)
+    {
+        $assinatura = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        $assinatura->data_aceite_2 = date('Y-m-d H:i:s');
+        $assinatura->ip_cliente = $ipCliente;
+        return $assinatura->save();
+    }
+
 
     /**
      * Service Layer - Displays pdf of PJ client contracts
@@ -34,7 +70,7 @@ class AssinaturaContratoService
     {
         $proposta = $this->propostaRepository->find($idProposta);
         if(!$proposta){
-            $proposta['warningMessages'][] = 'Proposta não Encontratda!';
+            $proposta['warningAlerts'][] = 'Proposta não Encontratda!';
             return $proposta;
         }
 
