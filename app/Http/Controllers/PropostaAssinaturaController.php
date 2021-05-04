@@ -36,11 +36,11 @@ class PropostaAssinaturaController extends Controller
      * @param  array  $successAlerts
      * @return \Illuminate\View\View
      */
-    public function showAceite1($idProposta, $idPessoaAssinatura, $warningAlerts = null, $successAlerts = null)
+    public function showAceite1($idProposta, $idPessoaAssinatura, $warningAlerts = [])
     {
-        $data = $this->service->dadosProposta($idProposta);
-        $data['successAlerts'] = $warningAlerts ? null : array_merge($data['successAlerts'] ?? [], ($successAlerts ?? ['Parabéns, você está muito próximo do seu dinheiro!']));
-        $data['warningAlerts'] = array_merge($data['warningAlerts'] ?? [], $warningAlerts ?? []);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
+        $data['warningAlerts'] = $warningAlerts;
 
         $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-1';
@@ -59,7 +59,7 @@ class PropostaAssinaturaController extends Controller
      */
     public function aceite1($idProposta, $idPessoaAssinatura)
     {
-        if($this->service->aceite1($idPessoaAssinatura, request()->ip())){
+        if($this->service->aceite1($idProposta, $idPessoaAssinatura, request()->ip())){
             return redirect(route('assinatura.contrato-pj-2.show', [$idProposta, $idPessoaAssinatura]));
         }
 
@@ -77,11 +77,12 @@ class PropostaAssinaturaController extends Controller
      * @param  array  $successAlerts
      * @return \Illuminate\View\View
      */
-    public function showAceite2($idProposta, $idPessoaAssinatura, $warningAlerts = null, $successAlerts = null)
+    public function showAceite2($idProposta, $idPessoaAssinatura, $warningAlerts = [])
     {
-        $data = $this->service->dadosProposta($idProposta);
-        $data['successAlerts'] = $warningAlerts ? null : array_merge($data['successAlerts'] ?? [], ($successAlerts ?? ['Agora só falta 1 aceite!']));
-        $data['warningAlerts'] = array_merge($data['warningAlerts'] ?? [], $warningAlerts ?? []);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
+        $data['warningAlerts'] = $warningAlerts;
+
         $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-2';
 
@@ -99,7 +100,7 @@ class PropostaAssinaturaController extends Controller
      */
     public function aceite2($idProposta, $idPessoaAssinatura)
     {
-        if(!$this->service->aceite2($idPessoaAssinatura, request()->ip()))
+        if(!$this->service->aceite2($idProposta, $idPessoaAssinatura, request()->ip()))
             return $this->showAceite2($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
 
         $assinaturasPendentes = $this->service->assinaturasPendentes($idProposta);

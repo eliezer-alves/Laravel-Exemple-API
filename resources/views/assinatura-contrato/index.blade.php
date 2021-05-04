@@ -178,7 +178,7 @@
             </div>
             @endif
 
-            @if($pdfContrato)
+            @if(isset($pdfContrato)&&$pdfContrato)
                 @yield('content-pdf-contrato')
             @endif
         </div>

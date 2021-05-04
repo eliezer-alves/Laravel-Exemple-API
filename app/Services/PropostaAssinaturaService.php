@@ -30,14 +30,17 @@ class PropostaAssinaturaService
      *
      * @since 03/05/2021
      *
+     * @param int $idProposta
      * @param int $idPessoaAssinatura
      * @param int $ipCliente
      */
-    public function aceite1($idPessoaAssinatura, $ipCliente)
+    public function aceite1($idProposta, $idPessoaAssinatura, $ipCliente)
     {
-        $assinatura = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        $assinatura = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+            ->findOrFail($idPessoaAssinatura);
         $assinatura->data_aceite_1 = date('Y-m-d H:i:s');
         $assinatura->ip_cliente = $ipCliente;
+
         return $assinatura->save();
     }
 
@@ -46,14 +49,17 @@ class PropostaAssinaturaService
      *
      * @since 03/05/2021
      *
+     * @param int $idProposta
      * @param int $idPessoaAssinatura
      * @param int $ipCliente
      */
-    public function aceite2($idPessoaAssinatura, $ipCliente)
+    public function aceite2($idProposta, $idPessoaAssinatura, $ipCliente)
     {
-        $assinatura = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        $assinatura = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+            ->findOrFail($idPessoaAssinatura);
         $assinatura->data_aceite_2 = date('Y-m-d H:i:s');
         $assinatura->ip_cliente = $ipCliente;
+
         return $assinatura->save();
     }
 
@@ -83,15 +89,14 @@ class PropostaAssinaturaService
      * @since 28/04/2021
      *
      * @param int $idProposta
+     * @param int $idPessoaAssinatura
      * @return array $proposta;
      */
-    public function dadosProposta($idProposta)
+    public function dadosProposta($idProposta, $idPessoaAssinatura)
     {
-        $proposta = $this->propostaRepository->find($idProposta);
-        if(!$proposta){
-            $proposta['warningAlerts'][] = 'Proposta não Encontratda!';
-            return $proposta;
-        }
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+            ->findOrFail($idPessoaAssinatura);
 
         $proposta->parcelas;
         $proposta->clienteAssinatura;
