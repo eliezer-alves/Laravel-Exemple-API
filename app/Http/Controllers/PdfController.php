@@ -34,11 +34,11 @@ class PdfController extends Controller
         $dadosProposta = $this->service->contratoPj($idProposta);
         // return view('pdf.ccb-pj', $dadosProposta);
 
-        PDF::SetTitle('Hello World');
+        PDF::SetTitle($dadosProposta['contrato']);
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
 
-        PDF::Output('hello_world.pdf');
+        PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
         return;
 
         return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);

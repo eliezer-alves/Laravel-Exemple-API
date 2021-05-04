@@ -131,7 +131,17 @@ class PropostaAssinaturaService
     public function dadosContrato($idProposta)
     {
         $data = [];
+        if(!$this->propostaRepository->find($idProposta)){
+            return [
+                'warningAlerts' => [
+                    'Proposta não encontrada'
+                ],
+                'pdfContrato' => false
+            ];
+        }
+
         $assinaturasPendentes = $this->assinaturasPendentes($idProposta);
+
         foreach($assinaturasPendentes as $assinatura)
         {
             $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']} {$assinatura['id_pessoa_assinatura']}";
