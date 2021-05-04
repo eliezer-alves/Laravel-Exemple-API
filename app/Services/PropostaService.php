@@ -242,6 +242,7 @@ class PropostaService
 
         foreach ($attributes as $key => $attribute) {
             $attributes[$key]['id_proposta'] = $idProposta;
+            $attributes[$key]['token'] = md5(date('Y-m-d H:i:s').$idProposta.bcrypt($idProposta));
         }
 
         return $attributes;

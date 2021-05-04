@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Route;
 
-use App\Services\AssinaturaContratoService;
+use App\Services\PropostaAssinaturaService;
 use GrahamCampbell\ResultType\Success;
 
 /**
@@ -15,11 +15,11 @@ use GrahamCampbell\ResultType\Success;
  * @since 28/04/2021
  *
  */
-class AssinaturaContratoController extends Controller
+class PropostaAssinaturaController extends Controller
 {
     private $defaultWarningAlert;
 
-    public function __construct(AssinaturaContratoService $service)
+    public function __construct(PropostaAssinaturaService $service)
     {
         parent::__construct($service);
         $this->defaultWarningAlert = 'Houve um problema ao registrar a sua assinatura! Tente novamente!';
@@ -36,11 +36,11 @@ class AssinaturaContratoController extends Controller
      * @param  array  $successAlerts
      * @return \Illuminate\View\View
      */
-    public function showAceite1($idProposta, $idPessoaAssinatura, $warningAlerts = null, $successAlerts = null)
+    public function showAceite1($idProposta, $idPessoaAssinatura, $warningAlerts = [])
     {
-        $data = $this->service->dadosProposta($idProposta);
-        $data['successAlerts'] = $warningAlerts ? null : array_merge($data['successAlerts'] ?? [], ($successAlerts ?? ['Parabéns, você está muito próximo do seu dinheiro!']));
-        $data['warningAlerts'] = array_merge($data['warningAlerts'] ?? [], $warningAlerts ?? []);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
+        $data['warningAlerts'] = $warningAlerts;
 
         $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-1';
@@ -59,7 +59,7 @@ class AssinaturaContratoController extends Controller
      */
     public function aceite1($idProposta, $idPessoaAssinatura)
     {
-        if($this->service->aceite1($idPessoaAssinatura, request()->ip())){
+        if($this->service->aceite1($idProposta, $idPessoaAssinatura, request()->ip())){
             return redirect(route('assinatura.contrato-pj-2.show', [$idProposta, $idPessoaAssinatura]));
         }
 
@@ -77,11 +77,12 @@ class AssinaturaContratoController extends Controller
      * @param  array  $successAlerts
      * @return \Illuminate\View\View
      */
-    public function showAceite2($idProposta, $idPessoaAssinatura, $warningAlerts = null, $successAlerts = null)
+    public function showAceite2($idProposta, $idPessoaAssinatura, $warningAlerts = [])
     {
-        $data = $this->service->dadosProposta($idProposta);
-        $data['successAlerts'] = $warningAlerts ? null : array_merge($data['successAlerts'] ?? [], ($successAlerts ?? ['Agora só falta 1 aceite!']));
-        $data['warningAlerts'] = array_merge($data['warningAlerts'] ?? [], $warningAlerts ?? []);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
+        $data['warningAlerts'] = $warningAlerts;
+
         $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-2';
 
@@ -99,19 +100,31 @@ class AssinaturaContratoController extends Controller
      */
     public function aceite2($idProposta, $idPessoaAssinatura)
     {
-        if($this->service->aceite2($idPessoaAssinatura, request()->ip())){
-            // return redirect(route('pdf.contrato-pj.show', $idProposta));
-            $assinaturasPendentes = $this->service->assinaturasPendentes($idProposta);
-            foreach($assinaturasPendentes as $assinatura)
-            {
-                $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']}";
-            }
+        if(!$this->service->aceite2($idProposta, $idPessoaAssinatura, request()->ip()))
+            return $this->showAceite2($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
 
-            $data['successAlerts'][] = 'Parabéns, contrato assinado!';
-            $data['pdfContrato'] = 'http://192.168.0.29/agil_externo/46616/public/printer/proposta/237055/dac31ad4c2fa82cd3b05a07ed16fe930';
-            return view('assinatura-contrato.pj.c_2', $data);
+        $assinaturasPendentes = $this->service->assinaturasPendentes($idProposta);
+
+        if(empty($assinaturasPendentes))
+        {
+            $this->service->registraAssinaturaPropostaPj($idProposta);
         }
 
-        return $this->showAceite2($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
+        return redirect(route('assinatura.contrato-pj.show', $idProposta));
+    }
+
+
+    /**
+     * Displays the signed contract
+     *
+     * @since 04/05/2021
+     *
+     * @param  int  $idProposta
+     * @return \Illuminate\View\View
+     */
+    public function showContrato($idProposta)
+    {
+        $data = $this->service->dadosContrato($idProposta);
+        return view('assinatura-contrato.contrato', $data);
     }
 }

@@ -178,8 +178,8 @@
             </div>
             @endif
 
-            @if(isset($pdfContrato))
-            <iframe src="{{ $pdfContrato }}" class="h-screen my-4 p-4 sm:p-6 md:px-6 lg:px-14 bg-white w-full shadow-sm rounded-md overflow-y-scroll no-scrollbar"></iframe>
+            @if(isset($pdfContrato)&&$pdfContrato)
+                @yield('content-pdf-contrato')
             @endif
         </div>
     </div>

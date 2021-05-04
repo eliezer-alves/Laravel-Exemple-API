@@ -8,7 +8,15 @@ interface AbstractRepositoryInterface
 
     public function all();
 
+    public function find(int $id);
+
     public function findOrFail(int $id);
+
+    public function where(string $column, $value);
+
+    public function firstWhere(string $column, $value);
+
+    public function whereIn(string $column, array $arrayValues);
 
     public function create(array $data);
 

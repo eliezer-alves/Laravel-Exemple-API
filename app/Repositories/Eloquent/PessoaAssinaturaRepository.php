@@ -21,6 +21,11 @@ class PessoaAssinaturaRepository extends AbstractRepository implements PessoaAss
     {
         return $this->where('id_proposta', $idProposta)
             ->whereIn('tipo_pessoa_assinatura', [1,2])
-            ->where('data_aceite_1', null)->get()->toArray() ?? [];
+            ->where(function ($query) {
+                $query->where('data_aceite_1', '=', null)
+                      ->orWhere('data_aceite_2', '=', null);
+            })
+            ->get()
+            ->toArray() ?? [];
     }
 }
