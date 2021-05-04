@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Proposta;
-use App\Repositories\Eloquent\PropostaRepository;
-use App\Repositories\Eloquent\PessoaAssinaturaRepository;
+use App\Repositories\Contracts\PropostaRepositoryInterface;
+use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
 
 /**
  * Service Layer - Class responsible for managing
@@ -14,12 +14,12 @@ use App\Repositories\Eloquent\PessoaAssinaturaRepository;
  * @since 28/04/2021
  *
  */
-class AssinaturaContratoService
+class PropostaAssinaturaService
 {
     protected $propostaRepository;
     protected $pessoaAssinaturaRepository;
 
-    public function __construct(PropostaRepository $propostaRepository, PessoaAssinaturaRepository $pessoaAssinaturaRepository)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository)
     {
         $this->propostaRepository = $propostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
@@ -55,6 +55,25 @@ class AssinaturaContratoService
         $assinatura->data_aceite_2 = date('Y-m-d H:i:s');
         $assinatura->ip_cliente = $ipCliente;
         return $assinatura->save();
+    }
+
+    /**
+     * Service Layer - Full proposal signature.
+     *
+     * @since 04/05/2021
+     *
+     * @param int $idProposta
+     */
+    public function registraAssinaturaPropostaPj($idProposta)
+    {
+        $proposta = $this->propostaRepository->find($idProposta);
+        $proposta->representante;
+
+        $string = $proposta->representante->celular . $proposta->representante->token . $proposta->data_solicitacao_proposta . $proposta->representante->ip_cliente;
+        $proposta->data_aceite_1 = date('Y-m-d H:i:s');
+        $proposta->data_aceite_2 = date('Y-m-d H:i:s');
+        $proposta->hash_assinatura_ccb = md5($string);
+        return $proposta->save();
     }
 
 
@@ -99,5 +118,26 @@ class AssinaturaContratoService
     public function assinaturasPendentes($idProposta)
     {
         return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+    }
+
+    /**
+     * Service Layer - Get necessary data to display the contract after signing
+     *
+     * @since 04/05/2021
+     *
+     * @param int $idProposta
+     * @return array $data;
+     */
+    public function dadosContrato($idProposta)
+    {
+        $data = [];
+        $assinaturasPendentes = $this->assinaturasPendentes($idProposta);
+        foreach($assinaturasPendentes as $assinatura)
+        {
+            $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']} {$assinatura['id_pessoa_assinatura']}";
+        }
+        $data['pdfContrato'] = route('pdf.contrato-pj.show', $idProposta);
+
+        return $data;
     }
 }

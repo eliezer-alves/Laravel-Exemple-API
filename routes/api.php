@@ -57,7 +57,7 @@ Route::middleware('auth:api')->namespace('proposta')->group(function () {
 });
 
 Route::prefix('pdf')->group(function () {
-    Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj']);
+    Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj'])->name('pdf.contrato-pj.show');
 });
 
 Route::get('/dominios', [DominiosController::class, '__invoke']);
