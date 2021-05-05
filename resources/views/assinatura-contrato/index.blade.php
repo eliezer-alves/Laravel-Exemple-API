@@ -171,7 +171,7 @@
                 </div>
 
                 <template x-if="showNextButton">
-                    <a class="btn h-4/5 bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded" href="{{ route($linkAssinatura, [($id_proposta ?? 0), ($id_pessoa_assinatura ?? 0)]) }}">
+                    <a class="btn h-4/5 bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded" href="{{ route($linkAssinatura, ($hash ?? 0)) }}">
                         Próximo
                     </a>
                 </template>

@@ -4,13 +4,16 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AtividadeComercialController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\DominiosController;
-use App\Http\Controllers\PdfController;
-use App\Http\Controllers\PropostaController;
-use App\Http\Controllers\SimulacaoController;
-use App\Http\Controllers\TesteController;
+use App\Http\Controllers\{
+    AtividadeComercialController,
+    ClienteController,
+    DominiosController,
+    PdfController,
+    PropostaAssinaturaController,
+    PropostaController,
+    SimulacaoController,
+    TesteController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +63,16 @@ Route::prefix('pdf')->group(function () {
     Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj'])
     ->where('id_proposta', '[0-9]+')
     ->name('pdf.contrato-pj.show');
+});
+
+Route::prefix('assinatura')->group(function () {
+    Route::get('/link/contrato-pj/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'linkAssinatura'])
+        ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
+        ->name('assinatura.link.contrato-pj');
+
+    Route::get('/link/contrato-pj/{id_proposta}', [PropostaAssinaturaController::class, 'linkContratoAssinado'])
+        ->where(['id_proposta' => '[0-9]+'])
+        ->name('assinatura.link.contrato-pj-assinado');
 });
 
 Route::get('/dominios', [DominiosController::class, '__invoke']);

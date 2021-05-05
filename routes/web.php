@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\AppController;
-use App\Http\Controllers\ClientSicredController;
 use Illuminate\Support\Facades\Http;
-use App\Http\Controllers\ModeloSicredController;
-use App\Http\Controllers\PdfController;
-use App\Http\Controllers\PropostaAssinaturaController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\{
+    AppController,
+    ClientSicredController,
+    ModeloSicredController,
+    PropostaAssinaturaController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -52,24 +54,20 @@ Route::get('/solicitacao', function () {
 // });
 
 Route::prefix('assinatura')->group(function () {
-    Route::get('/contrato-pj/contrato/{id_proposta}', [PropostaAssinaturaController::class, 'showContrato'])
-        ->where('id_proposta', '[0-9]+')
+    Route::get('/contrato-pj/contrato/{hash}', [PropostaAssinaturaController::class, 'showContrato'])
         ->name('assinatura.contrato-pj.show');
 
-    Route::get('/contrato-pj/show-aceite-1/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'showAceite1'])
+    Route::get('/contrato-pj/show-aceite-1/{hash}', [PropostaAssinaturaController::class, 'showAceite1'])
         ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
         ->name('assinatura.contrato-pj-1.show');
 
-    Route::get('/contrato-pj/aceite-1/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'aceite1'])
-        ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
+    Route::get('/contrato-pj/aceite-1/{hash}', [PropostaAssinaturaController::class, 'aceite1'])
         ->name('assinatura.contrato-pj-1');
 
-    Route::get('/contrato-pj/show-aceite-2/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'showAceite2'])
-        ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
+    Route::get('/contrato-pj/show-aceite-2/{hash}', [PropostaAssinaturaController::class, 'showAceite2'])
         ->name('assinatura.contrato-pj-2.show');
 
-    Route::get('/contrato-pj/aceite-2/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'aceite2'])
-        ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
+    Route::get('/contrato-pj/aceite-2/{hash}', [PropostaAssinaturaController::class, 'aceite2'])
         ->name('assinatura.contrato-pj-2');
 });
 
