@@ -32,9 +32,23 @@ class PropostaAssinaturaController extends Controller
      * @param int $idPessoaAssinatura
      * @return \Illuminate\Http\Response
      */
-    public function linkAssinatura($idProposta)
+    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return route('assinatura.contrato-pj.show', Crypt::encryptString($idProposta));
+        $this->service->enviaLinkAssinatura($idProposta, $idPessoaAssinatura);
+    }
+
+    /**
+     * Returns proposal signature link
+     *
+     * @since 05/05/2021
+     *
+     * @param int $idProposta
+     * @param int $idPessoaAssinatura
+     * @return \Illuminate\Http\Response
+     */
+    public function linkAssinatura($idProposta, $idPessoaAssinatura)
+    {
+        return $this->service->linkAssinatura($idProposta, $idPessoaAssinatura);
     }
 
     /**
@@ -47,7 +61,7 @@ class PropostaAssinaturaController extends Controller
      */
     public function linkContratoAssinado($idProposta)
     {
-        return route('assinatura.contrato-pj.show', Crypt::encryptString($idProposta));
+        return $this->service->linkContratoAssinado($idProposta);
     }
 
     /**

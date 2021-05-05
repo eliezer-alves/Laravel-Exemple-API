@@ -5,6 +5,10 @@ namespace App\Services;
 use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
+use App\Mail\LinkPropostaAssinatura;
+use Illuminate\Support\Facades\Mail;
+
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * Service Layer - Class responsible for managing
@@ -23,6 +27,49 @@ class PropostaAssinaturaService
     {
         $this->propostaRepository = $propostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
+    }
+
+    /**
+     * Service Layer - Returns proposal signature link
+     *
+     * @since 05/05/2021
+     *
+     * @param int $idProposta
+     * @param int $idPessoaAssinatura
+     * @return string route
+     */
+    public function linkAssinatura($idProposta, $idPessoaAssinatura)
+    {
+        return route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta.'-'.$idPessoaAssinatura));
+    }
+
+    /**
+     * Service Layer - Returns proposal signature link
+     *
+     * @since 05/05/2021
+     *
+     * @param int $idProposta
+     * @return \Illuminate\Http\Response
+     */
+    public function linkContratoAssinado($idProposta)
+    {
+        return route('assinatura.contrato-pj.show', Crypt::encryptString($idProposta));
+    }
+
+    /**
+     * Service Layer - Send email with the contract
+     * signature link to the customer
+     *
+     * @since 05/05/2021
+     *
+     * @param int $idProposta
+     * @param int $idPessoaAssinatura
+     * @return \Illuminate\Http\Response
+     */
+    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura)
+    {
+        $link = $this->linkAssinatura($idProposta, $idPessoaAssinatura);
+        Mail::to('eliezeralves@brasilcard.net')->send(new LinkPropostaAssinatura());
     }
 
     /**
