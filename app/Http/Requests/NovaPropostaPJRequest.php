@@ -35,6 +35,7 @@ class NovaPropostaPJRequest extends FormRequest
             'proposta.conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'min:6'],
             'proposta.digito_conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
             'proposta.tipo_conta' => ['required', 'max:1'],
+            'proposta.atd_protocolo' => ['required'],
 
             'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
             'cliente.nome_fantasia' => ['required', 'string'],

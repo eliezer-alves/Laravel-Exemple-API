@@ -59,7 +59,7 @@ class PropostaAssinaturaService
             ->findOrFail($idPessoaAssinatura);
         $assinatura->data_aceite_2 = date('Y-m-d H:i:s');
         $assinatura->ip_cliente = $ipCliente;
-
+        $assinatura->hash_assinatura = _hashAssinatura($idProposta, $idPessoaAssinatura, $ipCliente);
         return $assinatura->save();
     }
 
@@ -78,7 +78,7 @@ class PropostaAssinaturaService
         $string = $proposta->representante->celular . $proposta->representante->token . $proposta->data_solicitacao_proposta . $proposta->representante->ip_cliente;
         $proposta->data_aceite_1 = date('Y-m-d H:i:s');
         $proposta->data_aceite_2 = date('Y-m-d H:i:s');
-        $proposta->hash_assinatura_ccb = md5($string);
+        $proposta->hash_assinatura_ccb = _hashAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->ip_cliente);
         return $proposta->save();
     }
 

@@ -69,7 +69,8 @@ class Proposta extends Model
         'taxa_juros_mes',
         'id_forma_inclusao',
         'valor_total_a_pagar',
-        'valor_limite_liberado_bcard'
+        'valor_limite_liberado_bcard',
+        'atd_protocolo'
     ];
 
     protected $attributes = [
@@ -100,6 +101,14 @@ class Proposta extends Model
     public function socios()
     {
         return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')->where('tipo_pessoa_assinatura', 2);
+    }
+
+    public function assinaturas()
+    {
+        return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')
+            ->whereNotNull('data_aceite_1')
+            ->whereNotNull('data_aceite_2')
+            ->whereNotNull('hash_assinatura');
     }
 
 

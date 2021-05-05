@@ -64,6 +64,10 @@ class KeysInterfaceService
                 'sourceKey' => 'valor_solicitado'
             ],
             [
+                'inputKey' => 'atd_protocolo',
+                'sourceKey' => 'atd_protocolo'
+            ],
+            [
                 'inputKey' => 'id_usuario',
                 'sourceKey' => 'id_usuario'
             ],

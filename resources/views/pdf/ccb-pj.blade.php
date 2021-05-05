@@ -500,21 +500,12 @@ setlocale(LC_MONETARY, 'it_IT');
         <span style="float: right">Monte Belo / MG, <?= date('d', strtotime($data_geracao_proposta)) . ' de ' . $mes_geracao_proposta . ' de ' . date('Y', strtotime($data_geracao_proposta)) ?></span>
     </div>
 
-    <br>
-    <br>
-
-
     <div style="align-items: center;display: inline;">
-        <h2>EMITENTE</h2><br>
-        <h3><u><?= $cliente_assinatura['razao_social'] ?></u></h3>
+        <h2>EMITENTE</h2>
+        <h4><span style="color: white;">_______________</span><?= $cliente_assinatura['razao_social'] ?></h4>
     </div>
 
-    <br>
-    <div>
-        <h2>ASSINATURAS</h2>
-    </div>
-
-    <table style="font-size: 10px;">
+    <table style="font-size: 8px;" cellpadding="2">
         <thead>
             <tr>
                 <th></th>
@@ -522,13 +513,54 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
         </thead>
         <tr align="center" valign="center">
-            <td width="5%">&#x2705;</td>
-            <td align="left" width="95%">
-                INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA PLATAFORMA ON LINE ÁGIL – VIA (CAMPO EDITÁVEL DA FONTE DE CAPTAÇÃO (Telefone ou via sistema on line do lojista))
+            <td align="left"><div><h2>ASSINATURAS</h2></div></td>
+        </tr>
+        <tr align="center" valign="center">
+            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td width="95%" align="left">INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> – PROTOCOLO DE LIGAÇÃO NÚMERO - <?=strtoupper($id_proposta)?></td>
+        </tr>
+        <tr align="center" valign="center">
+            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td align="left" width="95%">APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85 , assinou. E-mail: credito@agil.com.br  - IP : 172.31.40.92 Hash: <?=strtoupper('1be95baf66cc80c3f7317e3eeb41a1875eb4db69')?></td>
+        </tr>
+
+        @if(!empty($assinaturas))
+        <tr align="center" valign="center">
+            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td align="left" width="95%">ACEITE:
+                @foreach ($assinaturas as $assinatura)
+                    {{ $assinatura['nome'] }} ,
+                @endforeach
+
+                @if(sizeof($assinaturas)>1)
+                    ACEITARAM
+                @else
+                    ACEITOU
+                @endif
+                A PROPOSTA VIA PLATAFORMA ÁGIL
             </td>
         </tr>
+        @endif
     </table>
-    <table style="font-size: 10px;">
+    <table style="font-size: 8px;" cellpadding="2">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach ($assinaturas as $assinatura)
+        <tr align="center" valign="center">
+            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td align="left" width="95%">ASSINATURA: {{ strtoupper($assinatura['nome'] ?? '-') }} - VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> PROTOCOLO NÚMERO – {{ strtoupper($atd_protocolo ?? '-') }}, ASSINOU EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, CPF: {{ $assinatura['cpf'] }}, CELULAR: {{ $assinatura['celular'] }}, E-MAIL: {{ $assinatura['email'] }} - IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</td>
+        </tr>
+        <tr align="center" valign="center">
+            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td align="left" width="95%">EMISSÃO CCB: {{ strtoupper($assinatura['nome'] ?? '-') }}, CONFIRMOU A EMISSÃO DA CCB EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, ATRAVÉS DO IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</td>
+        </tr>
+        @endforeach
+    </table>
+    <table style="font-size: 8px;" cellpadding="2">
         <thead>
             <tr>
                 <th></th>
@@ -536,18 +568,14 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
         </thead>
         <tr align="center" valign="center">
-            <td width="5%"><img width="20px"></td>
-            <td align="left" width="95%">
-                APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85 , assinou. E-mail: credito@agil.com.br - IP :
-                <?php
-                if (isset($retorno->IP_Servidor)) {
-                    echo $retorno->IP_Servidor;
-                } else echo " – ";
-                ?> Hash: pendente
-            </td>
+                <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+                <td align="left" width="95%">TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?></td>
+            </tr>
+            <tr align="center" valign="center">
+                <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
+            <td align="left" width="95%">TESTEMUNHA 2 – CÉLIO ALVES DE OLIVEIRA JÚNIOR – 069.584.136-01, junior@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('0b8c402e24e3d93208892acb90da9e26675ac567')?></td>
         </tr>
     </table>
-
 
 </body>
 

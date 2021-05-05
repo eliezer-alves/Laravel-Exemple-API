@@ -26,6 +26,7 @@ class PdfService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
+        $proposta->assinaturas;
         $proposta = $proposta->toArray();
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');

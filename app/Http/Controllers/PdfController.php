@@ -32,8 +32,8 @@ class PdfController extends Controller
     public function contratoPj($idProposta)
     {
         $dadosProposta = $this->service->contratoPj($idProposta);
+        // dd($dadosProposta);
         // return view('pdf.ccb-pj', $dadosProposta);
-
         PDF::SetTitle($dadosProposta['contrato']);
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
