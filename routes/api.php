@@ -74,8 +74,7 @@ Route::prefix('assinatura')->group(function () {
         ->where(['id_proposta' => '[0-9]+'])
         ->name('assinatura.link.contrato-pj-assinado');
 
-    Route::get('/envia-email/contrato-pj/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'enviaLinkAssinatura'])
-        ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
+    Route::post('/envia-email/contrato-pj', [PropostaAssinaturaController::class, 'enviaLinkAssinatura'])
         ->name('assinatura.envia-email.contrato-pj');
 });
 

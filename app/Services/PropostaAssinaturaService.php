@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
-use App\Mail\LinkPropostaAssinatura;
+use App\Mail\LinkPropostaAssinaturaMail;
 use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Support\Facades\Crypt;
@@ -62,14 +62,13 @@ class PropostaAssinaturaService
      *
      * @since 05/05/2021
      *
-     * @param int $idProposta
-     * @param int $idPessoaAssinatura
+     * @param array $request
      * @return \Illuminate\Http\Response
      */
-    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura)
+    public function enviaLinkAssinatura($request)
     {
-        $link = $this->linkAssinatura($idProposta, $idPessoaAssinatura);
-        Mail::to('eliezeralves@brasilcard.net')->send(new LinkPropostaAssinatura());
+        $link = $this->linkAssinatura($request['idProposta'], $request['idPessoaAssinatura']);
+        Mail::to($request['destinatario'])->send(new LinkPropostaAssinaturaMail($link));
     }
 
     /**

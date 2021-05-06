@@ -7,20 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class LinkPropostaAssinatura extends Mailable
+class LinkPropostaAssinaturaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $link;
+    private $linkAssinatura;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link = '')
+    public function __construct($linkAssinatura)
     {
-        $this->link = $link;
+        $this->linkAssinatura = $linkAssinatura;
     }
 
     /**
@@ -30,6 +30,9 @@ class LinkPropostaAssinatura extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.link-assinatura');
+        return $this->view('emails.link-assinatura')
+            ->with([
+                'linkAssinatura' => $this->linkAssinatura
+            ]);
     }
 }

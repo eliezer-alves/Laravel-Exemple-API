@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\PropostaAssinaturaService;
+use App\Http\Requests\EmailAssinaturaRequest;
 use Illuminate\Support\Facades\Crypt;
 
 /**
@@ -28,13 +29,12 @@ class PropostaAssinaturaController extends Controller
      *
      * @since 05/05/2021
      *
-     * @param int $idProposta
-     * @param int $idPessoaAssinatura
+     * @param App\Http\Requests\EmailAssinaturaRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura)
+    public function enviaLinkAssinatura(EmailAssinaturaRequest $request)
     {
-        $this->service->enviaLinkAssinatura($idProposta, $idPessoaAssinatura);
+        $this->service->enviaLinkAssinatura($request->all());
     }
 
     /**
