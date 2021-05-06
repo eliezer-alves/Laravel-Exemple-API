@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\PdfService;
 use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use PDF;
 
 
@@ -24,22 +25,31 @@ class PdfController extends Controller
 
 
     /**
-     * Displays pdf of PJ client contracts
+     * Returns the pdf link of the specified contract
      *
      * @param int $idProposta
      * @return \Illuminate\View\View
      */
-    public function contratoPj($idProposta)
+    public function linkContratoPj($idProposta)
     {
+        return route('pdf.contrato-pj.show', Crypt::encryptString($idProposta));
+    }
+
+    /**
+     * Displays pdf of PJ client contracts
+     *
+     * @param int $hash
+     * @return \Illuminate\View\View
+     */
+    public function contratoPj($hash)
+    {
+        $idProposta = Crypt::decryptString($hash);
         $dadosProposta = $this->service->contratoPj($idProposta);
-        // dd($dadosProposta);
-        // return view('pdf.ccb-pj', $dadosProposta);
+
         PDF::SetTitle($dadosProposta['contrato']);
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
-
         PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
-        return;
 
         return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
     }

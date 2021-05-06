@@ -178,7 +178,7 @@ class PropostaAssinaturaController extends Controller
     public function showContrato($hash)
     {
         $idProposta = Crypt::decryptString($hash);
-        $data = $this->service->dadosContrato($idProposta);
+        $data = $this->service->dadosViewContratoAssinado($idProposta);
         return view('assinatura-contrato.contrato', $data);
     }
 }

@@ -179,7 +179,7 @@ class PropostaAssinaturaService
      * @param int $idProposta
      * @return array $data;
      */
-    public function dadosContrato($idProposta)
+    public function dadosViewContratoAssinado($idProposta)
     {
         $data = [];
         if(!$this->propostaRepository->find($idProposta)){
@@ -197,7 +197,7 @@ class PropostaAssinaturaService
         {
             $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']} {$assinatura['id_pessoa_assinatura']}";
         }
-        $data['pdfContrato'] = route('pdf.contrato-pj.show', $idProposta);
+        $data['pdfContrato'] = route('pdf.contrato-pj.show', Crypt::encryptString($idProposta));
 
         return $data;
     }
