@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\FailedAction;
 use App\Services\PdfService;
 use Doctrine\DBAL\Schema\View;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 
 
@@ -43,7 +46,12 @@ class PdfController extends Controller
      */
     public function contratoPj($hash)
     {
-        $idProposta = Crypt::decryptString($hash);
+        try {
+            $idProposta = Crypt::decryptString($hash);
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
         $dadosProposta = $this->service->contratoPj($idProposta);
 
         PDF::SetTitle($dadosProposta['contrato']);
