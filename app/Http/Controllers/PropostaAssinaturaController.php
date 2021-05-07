@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\PropostaAssinaturaService;
+use App\Http\Requests\EmailAssinaturaRequest;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 
 /**
@@ -28,13 +30,12 @@ class PropostaAssinaturaController extends Controller
      *
      * @since 05/05/2021
      *
-     * @param int $idProposta
-     * @param int $idPessoaAssinatura
+     * @param App\Http\Requests\EmailAssinaturaRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura)
+    public function enviaLinkAssinatura(EmailAssinaturaRequest $request)
     {
-        $this->service->enviaLinkAssinatura($idProposta, $idPessoaAssinatura);
+        $this->service->enviaLinkAssinatura($request->all());
     }
 
     /**
@@ -76,7 +77,12 @@ class PropostaAssinaturaController extends Controller
      */
     public function showAceite1($hash, $warningAlerts = [])
     {
-        $arrayParams = explode('-', Crypt::decryptString($hash));
+        try {
+            $arrayParams = explode('-', Crypt::decryptString($hash));
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
 
@@ -101,7 +107,12 @@ class PropostaAssinaturaController extends Controller
      */
     public function aceite1($hash)
     {
-        $arrayParams = explode('-', Crypt::decryptString($hash));
+        try {
+            $arrayParams = explode('-', Crypt::decryptString($hash));
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
         if($this->service->aceite1($idProposta, $idPessoaAssinatura, request()->ip())){
@@ -123,7 +134,12 @@ class PropostaAssinaturaController extends Controller
      */
     public function showAceite2($hash, $warningAlerts = [])
     {
-        $arrayParams = explode('-', Crypt::decryptString($hash));
+        try {
+            $arrayParams = explode('-', Crypt::decryptString($hash));
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
 
@@ -149,7 +165,12 @@ class PropostaAssinaturaController extends Controller
      */
     public function aceite2($hash)
     {
-        $arrayParams = explode('-', Crypt::decryptString($hash));
+        try {
+            $arrayParams = explode('-', Crypt::decryptString($hash));
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
 
@@ -177,8 +198,13 @@ class PropostaAssinaturaController extends Controller
      */
     public function showContrato($hash)
     {
-        $idProposta = Crypt::decryptString($hash);
-        $data = $this->service->dadosContrato($idProposta);
+        try {
+            $idProposta = Crypt::decryptString($hash);
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $data = $this->service->dadosViewContratoAssinado($idProposta);
         return view('assinatura-contrato.contrato', $data);
     }
 }
