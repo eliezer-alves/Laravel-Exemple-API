@@ -89,10 +89,10 @@ class KeysInterfaceService
                 'inputKey' => 'contrato',
                 'sourceKey' => 'proposta'
             ],
-            [
-                'inputKey' => 'data_geracao_proposta',
-                'sourceKey' => 'dataEmissao'
-            ],
+            // [
+            //     'inputKey' => 'data_geracao_proposta',
+            //     'sourceKey' => 'dataEmissao'
+            // ],
             [
                 'inputKey' => 'quantidade_parcela',
                 'sourceKey' => 'prazo'

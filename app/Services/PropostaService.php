@@ -282,6 +282,7 @@ class PropostaService
         $propostaSicred = $this->getDadosPropostaSicred($numeroProposta);
 
         $attributes = $this->keysInterfaceService->hydrator($propostaSicred, $this->keysInterfaceService->alinharPropostaAgilComSicred());
+        $attribute['data_geracao_proposta'] = date('Y-m-d H:i:s');
         $proposta->update($attributes);
 
         $this->salvarParcelsPropostaSicred($propostaSicred['parcelas'] ?? [], $proposta->id_proposta);
