@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\FailedAction;
 use App\Services\PdfService;
-use Doctrine\DBAL\Schema\View;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use PDF;
 
 
@@ -35,6 +32,7 @@ class PdfController extends Controller
      */
     public function linkContratoPj($idProposta)
     {
+        Log::channel('teste')->info('Renovando Token Sicred');
         return route('pdf.contrato-pj.show', Crypt::encryptString($idProposta));
     }
 

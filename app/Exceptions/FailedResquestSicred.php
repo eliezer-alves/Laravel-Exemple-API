@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Exception - Class responsible for managing excess requests for sicred
@@ -59,6 +60,8 @@ class FailedResquestSicred extends Exception
             'message' => $this->message,
             'errors' => $this->errorsResponse($responseBody)
         ];
+
+        Log::channel('sicred')->warning($this->message, $data);
 
         return response($data, $this->response->status());
     }

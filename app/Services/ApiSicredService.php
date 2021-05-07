@@ -9,6 +9,7 @@ use App\Services\Contracts\ApiSicredServiceInterface;
 use App\Exceptions\FailedResquestSicred;
 use Session;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Service Layer - Class responsible for managing requests for Sicred's API
@@ -58,6 +59,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
+            Log::channel('sicred')->critical('Sessão Sicred - Houve um problema ao criar uma nova sessão.', $response->json());
             throw new FailedResquestSicred($response, 'Sessão Sicred - Houve um problema ao criar uma nova sessão.');
         }
 
