@@ -44,8 +44,6 @@ setlocale(LC_MONETARY, 'it_IT');
             line-height: 14px;
         }
 
-
-
         .withBorder td {
             border: 0.3rem solid black;
         }
@@ -63,14 +61,6 @@ setlocale(LC_MONETARY, 'it_IT');
 
         .border {
             border: 1px solid black;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
         }
 
         .pagenum:before {
@@ -504,78 +494,41 @@ setlocale(LC_MONETARY, 'it_IT');
         <h2>EMITENTE</h2>
         <h4><span style="color: white;">_______________</span><?= $cliente_assinatura['razao_social'] ?></h4>
     </div>
-
-    <table style="font-size: 8px;" cellpadding="2">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tr align="center" valign="center">
-            <td align="left"><div><h2>ASSINATURAS</h2></div></td>
-        </tr>
-        <tr align="center" valign="center">
-            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td width="95%" align="left">INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> – PROTOCOLO DE LIGAÇÃO NÚMERO - <?=strtoupper($id_proposta)?></td>
-        </tr>
-        <tr align="center" valign="center">
-            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td align="left" width="95%">APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85 , assinou. E-mail: credito@agil.com.br  - IP : 172.31.40.92 Hash: <?=strtoupper('1be95baf66cc80c3f7317e3eeb41a1875eb4db69')?></td>
-        </tr>
-
+    
+    
+        <h2>ASSINATURAS</h2>
+        <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> – PROTOCOLO DE LIGAÇÃO NÚMERO - <?=strtoupper($id_proposta)?></p>
+        <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85, assinou. E-mail: credito@agil.com.br  - IP : 172.31.40.92 Hash: <?=strtoupper('1be95baf66cc80c3f7317e3eeb41a1875eb4db69')?></p>
+            
         @if(!empty($assinaturas))
-        <tr align="center" valign="center">
-            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td align="left" width="95%">ACEITE:
-                @foreach ($assinaturas as $assinatura)
-                    {{ $assinatura['nome'] }} ,
-                @endforeach
+        <p style="font-size: 9px; line-height: 18px;">
+            <img width="15px" height="15px" src="images/check.png">
+            &nbsp; 
+            ACEITE:
+            @foreach ($assinaturas as $assinatura)
+                {{ $assinatura['nome'] }} ,
+            @endforeach
 
-                @if(sizeof($assinaturas)>1)
-                    ACEITARAM
-                @else
-                    ACEITOU
-                @endif
-                A PROPOSTA VIA PLATAFORMA ÁGIL
-            </td>
-        </tr>
+            @if(sizeof($assinaturas)>1)
+                ACEITARAM
+            @else
+                ACEITOU
+            @endif
+            A PROPOSTA VIA PLATAFORMA ÁGIL
+        </p>
         @endif
-    </table>
-    <table style="font-size: 8px;" cellpadding="2">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        @foreach ($assinaturas as $assinatura)
-        <tr align="center" valign="center">
-            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td align="left" width="95%">ASSINATURA: {{ strtoupper($assinatura['nome'] ?? '-') }} - VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> PROTOCOLO NÚMERO – {{ strtoupper($atd_protocolo ?? '-') }}, ASSINOU EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, CPF: {{ $assinatura['cpf'] }}, CELULAR: {{ $assinatura['celular'] }}, E-MAIL: {{ $assinatura['email'] }} - IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</td>
-        </tr>
-        <tr align="center" valign="center">
-            <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td align="left" width="95%">EMISSÃO CCB: {{ strtoupper($assinatura['nome'] ?? '-') }}, CONFIRMOU A EMISSÃO DA CCB EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, ATRAVÉS DO IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</td>
-        </tr>
-        @endforeach
-    </table>
-    <table style="font-size: 8px;" cellpadding="2">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tr align="center" valign="center">
-                <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-                <td align="left" width="95%">TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?></td>
-            </tr>
-            <tr align="center" valign="center">
-                <td width="5%"><img width="15px" height="15px" src="images/check.png"></td>
-            <td align="left" width="95%">TESTEMUNHA 2 – CÉLIO ALVES DE OLIVEIRA JÚNIOR – 069.584.136-01, junior@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('0b8c402e24e3d93208892acb90da9e26675ac567')?></td>
-        </tr>
-    </table>
+  
+    <p style="font-size: 9px; line-height: 18px;">
+         <img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?>
+    </p>
+    <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?></p>
+
+    <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 2 – CÉLIO ALVES DE OLIVEIRA JÚNIOR – 069.584.136-01, junior@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('0b8c402e24e3d93208892acb90da9e26675ac567')?></p>
+
+    <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; ASSINATURA: {{ strtoupper($assinatura['nome'] ?? '-') }} - VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> PROTOCOLO NÚMERO – {{ strtoupper($atd_protocolo ?? '-') }}, ASSINOU EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, CPF: {{ $assinatura['cpf'] }}, CELULAR: {{ $assinatura['celular'] }}, E-MAIL: {{ $assinatura['email'] }} - IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</p>
+
+    <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; EMISSÃO CCB: {{ strtoupper($assinatura['nome'] ?? '-') }}, CONFIRMOU A EMISSÃO DA CCB EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'])) }}, ATRAVÉS DO IP: {{ $assinatura['ip_cliente'] }} - HASH: {{ $assinatura['hash_assinatura'] }}</p>
+
 
 </body>
 
