@@ -145,10 +145,10 @@ class PropostaService
     private function vincularLiberacoesSicred($proposta, $numeroProposta)
     {
         $attributes = [
-            '_nomeBeneficiario' => $proposta->cliente->nome_fantasia,
-            '_cnpj' => $proposta->cliente->cnpj,
-            '_formaLiberacao' => $proposta->forma_liberacao,
-            '_valorLiberacao' => (float)$proposta->valor_solicitado,
+            'nomeBeneficiario' => $proposta->cliente->nome_fantasia,
+            'cnpj' => $proposta->cliente->cnpj,
+            'formaLiberacao' => $proposta->forma_liberacao,
+            'valorLiberacao' => (float)$proposta->valor_solicitado,
             'bancoLiberacao' => $proposta->banco_liberacao,
             'agenciaLiberacao' => $proposta->agencia_liberacao,
             'contaLiberacao' => $proposta->conta_liberacao,

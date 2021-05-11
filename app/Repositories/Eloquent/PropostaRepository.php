@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Exceptions\FailedAction;
 use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 
@@ -14,6 +15,10 @@ class PropostaRepository extends AbstractRepository implements PropostaRepositor
 
     public function findByNumero($numeroProposta)
     {
-        return $this->firstWhere('contrato', $numeroProposta);
+        $proposta = $this->where('contrato', $numeroProposta)->first();
+        if($proposta)
+            return $proposta;
+
+        throw new FailedAction('Proposta não encontrada.', 404);
     }
 }

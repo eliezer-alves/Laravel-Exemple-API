@@ -105,6 +105,12 @@ return [
             'path' => storage_path('logs/sicred.log'),
             'level' => 'debug'
         ],
+
+        'failedActions' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/filed_actions.log'),
+            'level' => 'debug'
+        ],
     ],
 
 ];

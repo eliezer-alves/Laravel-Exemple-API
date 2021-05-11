@@ -3,12 +3,16 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class FailedAction extends Exception
 {
-    public function __construct($message = '')
+    private $statusCode;
+
+    public function __construct($message = '', $statusCode = 400)
     {
         $this->message = $message;
+        $this->statusCode = $statusCode;
     }
 
     public function report()
@@ -17,6 +21,7 @@ class FailedAction extends Exception
 
     public function render()
     {
-        return response(['error' => $this->message], 400);
+        Log::channel('failedActions')->warning($this->message, ['status' => $this->statusCode]);
+        return response(['error' => $this->message], $this->statusCode);
     }
 }
