@@ -13,7 +13,7 @@ class CreateArquivoPropostaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cad_arquivo_prosta', function (Blueprint $table) {
+        Schema::create('cad_arquivo_proposta', function (Blueprint $table) {
             $table->id('id_arquivo_proposta');
             $table->string('link', 254);
             $table->foreignId('id_proposta')
@@ -31,6 +31,6 @@ class CreateArquivoPropostaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrato_social');
+        Schema::dropIfExists('cad_arquivo_proposta');
     }
 }

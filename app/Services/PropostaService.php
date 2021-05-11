@@ -68,6 +68,8 @@ class PropostaService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
+        $proposta->arquivos;
+
         return $proposta->toArray();
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Exceptions\FailedAction;
 use App\Repositories\Contracts\ArquivoPropostaRepositoryInterface;
+use App\Repositories\Contracts\PropostaRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -15,10 +17,12 @@ use Illuminate\Support\Facades\Storage;
 class ArquivoPropostaService
 {
     protected $arquivoPropostaRepository;
+    protected $ropostaRepository;
 
-    public function __construct(ArquivoPropostaRepositoryInterface $arquivoPropostaRepository)
+    public function __construct(ArquivoPropostaRepositoryInterface $arquivoPropostaRepository, PropostaRepositoryInterface $propostaRepository)
     {
         $this->arquivoPropostaRepository = $arquivoPropostaRepository;
+        $this->propostaRepository = $propostaRepository;
     }
 
     /**
@@ -30,14 +34,18 @@ class ArquivoPropostaService
      */
     public function createMany($request, $idProposta)
     {
-        $array_links = [];
+        $attributes = [];
         foreach($request as $file){
-            $path = $file->store('arquivos-proposta', 's3');
-            Storage::disk('s3')->put("arquivos-proposta", $path, 'public');
-            $link_file = Storage::disk('s3')->url($path);
-            array_push($array_links, $link_file);
+            try {
+                $path = $file->store('arquivos-proposta', 's3');
+                Storage::disk('s3')->put("arquivos-proposta", $path, 'public');
+                $link = Storage::disk('s3')->url($path);
+                array_push($attributes, ['id_proposta' => $idProposta,'link' => $link]);
+            } catch(FailedAction $e) {
+                dd($e);
+            }
         }
 
-        return $array_links;
+        return $this->arquivoPropostaRepository->createMany($attributes);
     }
 }
