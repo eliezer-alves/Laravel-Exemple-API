@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\PropostaAssinaturaService;
 use App\Http\Requests\EmailAssinaturaRequest;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Crypt;
 
 /**
@@ -26,7 +27,7 @@ class PropostaAssinaturaController extends Controller
     }
 
     /**
-     * Returns proposal signature link
+     * sends the contract signature link to a partner / representative
      *
      * @since 05/05/2021
      *
@@ -36,6 +37,22 @@ class PropostaAssinaturaController extends Controller
     public function enviaLinkAssinatura(EmailAssinaturaRequest $request)
     {
         $this->service->enviaLinkAssinatura($request->all());
+    }
+
+    /**
+     * Sends the contract signature link to all partners / representatives
+     *
+     * @since 11/05/2021
+     *
+     * @param int $idProposta
+     * @return \Illuminate\Http\Response
+     */
+    public function enviaTodosLinkAssinatura(HttpRequest $request)
+    {
+        $request->validate([
+            'id_proposta' => ['required', 'regex:/^[0-9]+$/u']
+        ]);
+        $this->service->enviaTodosLinkAssinatura($request->id_proposta);
     }
 
     /**

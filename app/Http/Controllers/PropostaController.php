@@ -6,6 +6,7 @@ use App\Http\Requests\NovaPropostaPJRequest;
 use App\Services\PropostaService;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  *

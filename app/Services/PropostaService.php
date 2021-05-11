@@ -16,6 +16,9 @@ use App\Services\{
     KeysInterfaceService,
 };
 
+
+use Illuminate\Support\Facades\Storage;
+
 /**
  * Service Layer - Class responsible for managing the loan proposals
  *
@@ -95,7 +98,6 @@ class PropostaService
     {
         return (array)$this->apiSicred->exibeLiberacoesProposta($numeroProposta);
     }
-
 
     /**
      * Service Layer - Links customer data to a Sicred proposal

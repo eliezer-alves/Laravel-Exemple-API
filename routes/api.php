@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
+    ArquivoPropostaController,
     AtividadeComercialController,
     ClienteController,
     DominiosController,
@@ -61,6 +62,11 @@ Route::middleware('auth:api')->namespace('proposta')->group(function () {
     Route::get('/simulacao/cliente', [PropostaController::class, 'novaProposta']);
 });
 
+Route::middleware('auth:api')->prefix('arquivo-proposta')->group(function () {
+    Route::post('/upload/{id_proposta}', [ArquivoPropostaController::class, 'createMany'])
+        ->where(['id_proposta' => '[0-9]+']);
+});
+
 Route::prefix('pdf')->group(function () {
     Route::get('/contrato-pj/{hash}', [PdfController::class, 'contratoPj'])
         ->name('pdf.contrato-pj.show');
@@ -71,6 +77,7 @@ Route::prefix('pdf')->group(function () {
 });
 
 Route::prefix('assinatura')->group(function () {
+
     Route::get('/link/contrato-pj/{id_proposta}/{id_pessoa_assinatura}', [PropostaAssinaturaController::class, 'linkAssinatura'])
         ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
         ->name('assinatura.link.contrato-pj');
@@ -78,9 +85,15 @@ Route::prefix('assinatura')->group(function () {
     Route::get('/link/contrato-pj/{id_proposta}', [PropostaAssinaturaController::class, 'linkContratoAssinado'])
         ->where(['id_proposta' => '[0-9]+'])
         ->name('assinatura.link.contrato-pj-assinado');
+});
 
-    Route::post('/envia-email/contrato-pj', [PropostaAssinaturaController::class, 'enviaLinkAssinatura'])
-        ->name('assinatura.envia-email.contrato-pj');
+Route::middleware('auth:api')->prefix('send-mail')->group(function () {
+    Route::post('/contrato-pj/link-assinatura', [PropostaAssinaturaController::class, 'enviaLinkAssinatura'])
+        ->name('send-mail.contrato-pj.assinatura');
+
+    Route::post('/contrato-pj/link-assinatura/all', [PropostaAssinaturaController::class, 'enviaTodosLinkAssinatura'])
+        ->name('send-mail.contrato-pj.link-assinatura.todos');
+
 });
 
 Route::get('/dominios', [DominiosController::class, '__invoke']);

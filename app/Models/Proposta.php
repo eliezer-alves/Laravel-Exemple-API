@@ -111,6 +111,11 @@ class Proposta extends Model
             ->whereNotNull('hash_assinatura');
     }
 
+    public function arquivos()
+    {
+        return $this->hasMany(ArquivoProposta::class, 'id_proposta', 'id_proposta');
+    }
+
 
     public function parcelas()
     {

@@ -57,8 +57,8 @@ class PropostaAssinaturaService
     }
 
     /**
-     * Service Layer - Send email with the contract
-     * signature link to the customer
+     * Service Layer - Sends the contract signature link
+     * to a partner / representative
      *
      * @since 05/05/2021
      *
@@ -69,6 +69,22 @@ class PropostaAssinaturaService
     {
         $link = $this->linkAssinatura($request['idProposta'], $request['idPessoaAssinatura']);
         Mail::to($request['destinatario'])->send(new LinkPropostaAssinaturaMail($link));
+    }
+
+    /**
+     * Service Layer - Sends the contract signature link
+     * to all partners / representatives
+     *
+     * @since 11/05/2021
+     *
+     * @param int $idProposta
+     * @return \Illuminate\Http\Response
+     */
+    public function enviaTodosLinkAssinatura($idProposta)
+    {
+        $proposta = $this->propostaRepository->find($idProposta);
+        $proposta->toArray();
+        dd($proposta);
     }
 
     /**
