@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateArquivoPropostaTable extends Migration
@@ -14,7 +15,8 @@ class CreateArquivoPropostaTable extends Migration
     public function up()
     {
         Schema::create('cad_arquivo_proposta', function (Blueprint $table) {
-            $table->id('id_arquivo_proposta');
+            $table->uuid('id_arquivo_proposta')
+                ->default(DB::raw('gen_random_uuid()'));
             $table->string('link', 254);
             $table->foreignId('id_proposta')
                 ->nullable()

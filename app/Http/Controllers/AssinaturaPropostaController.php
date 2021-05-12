@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PropostaAssinaturaService;
+use App\Services\AssinaturaPropostaService;
 use App\Http\Requests\EmailAssinaturaRequest;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request as HttpRequest;
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Crypt;
  * @since 28/04/2021
  *
  */
-class PropostaAssinaturaController extends Controller
+class AssinaturaPropostaController extends Controller
 {
     private $defaultWarningAlert;
 
-    public function __construct(PropostaAssinaturaService $service)
+    public function __construct(AssinaturaPropostaService $service)
     {
         parent::__construct($service);
         $this->defaultWarningAlert = 'Houve um problema ao registrar a sua assinatura! Tente novamente!';

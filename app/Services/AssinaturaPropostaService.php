@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Crypt;
  * @since 28/04/2021
  *
  */
-class PropostaAssinaturaService
+class AssinaturaPropostaService
 {
     protected $propostaRepository;
     protected $pessoaAssinaturaRepository;

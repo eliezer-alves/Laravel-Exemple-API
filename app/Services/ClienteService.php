@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Cliente;
 use App\Services\GacWebService;
 use App\Repositories\Contracts\{
     ClienteRepositoryInterface,
@@ -65,7 +66,8 @@ class ClienteService
      */
     public function createWithUser($attributes)
     {
-        $attributes = _normalizeRequest($attributes);
+        $hidden = ['email', 'email_confirmation', 'senha', 'senha_confirmation'];
+        $attributes = _normalizeRequest($attributes, $hidden);
         $attributes['senha'] = Hash::make($attributes['senha']);
 
         $cliente = $this->clienteRepository->createWithUser($attributes);
@@ -107,7 +109,8 @@ class ClienteService
      */
     public function update($attributes, $idCliente)
     {
-        $attributes = _normalizeRequest($attributes);
+        $hidden = ['email', 'email_confirmation', 'senha', 'senha_confirmation'];
+        $attributes = _normalizeRequest($attributes, $hidden);
 
         return $this->clienteRepository->update($attributes, $idCliente);
     }
