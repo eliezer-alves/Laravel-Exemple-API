@@ -3,17 +3,20 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
 class DbException extends Exception
 {
     private $statusCode;
     private $exception;
+    private $model;
 
-    public function __construct($message = '', Exception $exception, $statusCode = 500)
+    public function __construct($message = '', Exception $exception, Model $model, $statusCode = 500)
     {
         $this->message = $message;
         $this->exception = $exception;
+        $this->model = $model;
         $this->statusCode = $statusCode;
     }
 
@@ -23,7 +26,13 @@ class DbException extends Exception
 
     public function render()
     {
-        Log::channel('dbExceptions')->warning($this->message, ['status' => $this->statusCode, 'error' => $this->exception->getMessage()]);
+        $content = [
+            'status' => $this->statusCode,
+            'table' => $this->model->getTable(),
+            'error' => $this->exception->getMessage()
+        ];
+
+        Log::channel('dbExceptions')->warning($this->message, $content);
         return response(['error' => $this->message], $this->statusCode);
     }
 }

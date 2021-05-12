@@ -63,7 +63,7 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
             $entity = $this->model->create($data);
             return $entity;
         } catch(Exception $e) {
-            throw new DbException('Impossibilitado de salvar o registro!', $e);
+            throw new DbException('Impossibilitado de salvar o registro em ' . $this->model->getTable() . '.', $e, $this->model);
         }
     }
 
