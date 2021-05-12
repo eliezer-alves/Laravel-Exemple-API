@@ -22,12 +22,12 @@ class PropostaRepository extends AbstractRepository implements PropostaRepositor
         throw new FailedAction('Proposta não encontrada.', 404);
     }
 
-    public function find($idProposta)
-    {
-        $proposta = $this->find($idProposta);
-        if($proposta)
-            return $proposta;
+    // public function find($idProposta)
+    // {
+    //     $proposta = $this->model->__constructfind($idProposta);
+    //     if($proposta)
+    //         return $proposta;
 
-        throw new FailedAction('Proposta não encontrada.', 404);
-    }
+    //     throw new FailedAction('Proposta não encontrada.', 404);
+    // }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Exceptions\DbException;
+use App\Exceptions\FailedAction;
 use App\Repositories\Contracts\AbstractRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,12 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 
     public function findOrFail($id)
     {
-        return $this->model->findOrFail($id);
+        // return $this->model->findOrFail($id);
+        $entity = $this->model->find($id);
+        if($entity)
+            return $entity;
+
+        throw new FailedAction('Registro não encontrado em ' . $this->model->getTable() . '.', 404);
     }
 
     public function where(string $column, $value)

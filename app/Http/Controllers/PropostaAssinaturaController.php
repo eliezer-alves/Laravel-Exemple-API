@@ -36,7 +36,7 @@ class PropostaAssinaturaController extends Controller
      */
     public function enviaLinkAssinatura(EmailAssinaturaRequest $request)
     {
-        $this->service->enviaLinkAssinatura($request->all());
+        $this->service->enviaLinkAssinatura($request['idProposta'], $request['idPessoaAssinatura'], $request['emailDestinatario']);
     }
 
     /**

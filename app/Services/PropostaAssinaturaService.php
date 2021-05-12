@@ -62,13 +62,14 @@ class PropostaAssinaturaService
      *
      * @since 05/05/2021
      *
-     * @param array $request
+     * @param int idProposta
+     * @param int idPessoaAssinatura
      * @return \Illuminate\Http\Response
      */
-    public function enviaLinkAssinatura($request)
+    public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura, $emailDestinatario)
     {
-        $link = $this->linkAssinatura($request['idProposta'], $request['idPessoaAssinatura']);
-        Mail::to($request['destinatario'])->send(new LinkPropostaAssinaturaMail($link));
+        $link = $this->linkAssinatura($idProposta, $idPessoaAssinatura);
+        Mail::to($emailDestinatario)->send(new LinkPropostaAssinaturaMail($link));
     }
 
     /**
@@ -82,9 +83,12 @@ class PropostaAssinaturaService
      */
     public function enviaTodosLinkAssinatura($idProposta)
     {
-        $proposta = $this->propostaRepository->find($idProposta);
-        $proposta->toArray();
-        dd($proposta);
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $this->enviaLinkAssinatura($idProposta, $proposta->clienteAssinatura->id_pessoa_assinatura, $proposta->clienteAssinatura->email);
+        $this->enviaLinkAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->email);
+        foreach($proposta->socios as $socio){
+            $this->enviaLinkAssinatura($idProposta, $socio->id_pessoa_assinatura, $socio->email);
+        }
     }
 
     /**

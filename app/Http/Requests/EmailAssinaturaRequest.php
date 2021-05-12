@@ -26,7 +26,7 @@ class EmailAssinaturaRequest extends FormRequest
         return [
             'idProposta' => ['required', 'regex:/^[0-9]+$/u'],
             'idPessoaAssinatura' => ['required', 'regex:/^[0-9]+$/u'],
-            'destinatario' => ['required', 'email'],
+            'emailDestinatario' => ['required', 'email'],
         ];
     }
 }
