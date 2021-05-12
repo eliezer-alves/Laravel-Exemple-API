@@ -160,6 +160,7 @@ class PropostaService
             'direcionamento' => "N",
         ];
 
+        return;
         return $this->apiSicred->vincularLibercoesProposta($attributes, $numeroProposta);
     }
 
@@ -245,6 +246,7 @@ class PropostaService
         $attributes[] = $clienteAssinatura;
 
         foreach ($attributes as $key => $attribute) {
+            $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento']);
             $attributes[$key]['id_proposta'] = $idProposta;
             $attributes[$key]['token'] = md5(date('Y-m-d H:i:s').$idProposta.bcrypt($idProposta));
         }
@@ -328,7 +330,7 @@ class PropostaService
         | updated, otherwise a new record is created.
         */
         $this->cliente = $this->clienteRepository->findByCnpj($attributesFormCliente['cnpj']) ??  $this->clienteRepository->fill([]);
-        $this->cliente->fill($attributesFormCliente);
+        $this->cliente->fill(_normalizeRequest($attributesFormCliente, ['email']));
         $this->cliente->save();
 
 
