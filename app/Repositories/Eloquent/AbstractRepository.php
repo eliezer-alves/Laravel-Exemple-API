@@ -2,7 +2,10 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Exceptions\DbException;
 use App\Repositories\Contracts\AbstractRepositoryInterface;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 abstract class AbstractRepository implements AbstractRepositoryInterface
 {
@@ -56,8 +59,12 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 
     public function create($data)
     {
-        $entity = $this->model->create($data);
-        return $entity;
+        try {
+            $entity = $this->model->create($data);
+            return $entity;
+        } catch(Exception $e) {
+            throw new DbException('Impossibilitado de salvar o registro!', $e);
+        }
     }
 
     public function createMany($attributesAllRegisters)

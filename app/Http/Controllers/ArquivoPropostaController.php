@@ -21,7 +21,7 @@ class ArquivoPropostaController extends Controller
     }
 
     /**
-     * Upload the company's social contract files
+     * Save the files related to the proposal
      *
      * @since 11/05/2021
      *

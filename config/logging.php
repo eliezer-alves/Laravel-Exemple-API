@@ -111,6 +111,18 @@ return [
             'path' => storage_path('logs/filed_actions.log'),
             'level' => 'debug'
         ],
+
+        'dbExceptions' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/db_exceptions.log'),
+            'level' => 'debug'
+        ],
+
+        's3' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/s3.log'),
+            'level' => 'debug'
+        ],
     ],
 
 ];
