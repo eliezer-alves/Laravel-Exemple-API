@@ -30,9 +30,4 @@ class ClientSicred extends Model
     {
         return $this->hasOne(UrlSicred::class, 'id_client_sicred');
     }
-
-    public function modeloSicred()
-    {
-        return $this->hasMany(ModeloSicred::class, 'id_client_sicred');
-    }
 }

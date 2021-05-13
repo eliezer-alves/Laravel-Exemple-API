@@ -14,7 +14,8 @@ use App\Repositories\Contracts\{
     PropostaRepositoryInterface,
     PropostaParcelaRepositoryInterface,
     TipoLogradouroRepositoryInterface,
-    UserRepositoryInterface
+    UserRepositoryInterface,
+    UrlSicredRepositoryInterface
 };
 use App\Repositories\Eloquent\{
     AbstractRepository,
@@ -28,7 +29,8 @@ use App\Repositories\Eloquent\{
     PropostaRepository,
     PropostaParcelaRepository,
     TipoLogradouroRepository,
-    UserRepository
+    UserRepository,
+    UrlSicredRepository
 };
 
 use Illuminate\Support\ServiceProvider;
@@ -100,6 +102,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             UserRepositoryInterface::class,
             UserRepository::class
+        );
+
+        $this->app->bind(
+            UrlSicredRepositoryInterface::class,
+            UrlSicredRepository::class
         );
     }
 

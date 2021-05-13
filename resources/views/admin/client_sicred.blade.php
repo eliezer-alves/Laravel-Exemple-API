@@ -1,31 +1,6 @@
 @extends('admin.index')
 
 @section('content')
-<style>
-    [x-cloak] {
-        display: none;
-    }
-
-    .duration-300 {
-        transition-duration: 300ms;
-    }
-
-    .ease-in {
-        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-    }
-
-    .ease-out {
-        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    }
-
-    .scale-90 {
-        transform: scale(.9);
-    }
-
-    .scale-100 {
-        transform: scale(1);
-    }
-</style>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col" x-data="handleModals({{ $errors }})" x-cloak>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
