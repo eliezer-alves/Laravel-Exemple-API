@@ -70,7 +70,7 @@
                                 {{ $client['scope'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($client) }})" x-ref="btn">Editar</button>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($client) }}, {{ $client['id_client_sicred'] }})" x-ref="btn">Editar</button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openDelete({{ $client['id_client_sicred'] }})">Excluir</button>
@@ -102,10 +102,10 @@
                 this.clearForm();
                 this.$refs.bnt_salvar.innerText = 'Cadastrar';
             },
-            openUpdate(data) {
+            openUpdate(data, id) {
                 this.showEditModal = true;
                 this.showValidationErrors = false;
-                this.actionEditForm = `@php echo route('admin.client-sicred.update', '') @endphp/${data.id_client_sicred}`;
+                this.actionEditForm = `@php echo route('admin.client-sicred.update', '') @endphp/${id}`;
                 this.setDataUpdate(data);
             },
             openDelete(id) {
@@ -124,7 +124,6 @@
             },
             setDataUpdate(data) {
                 this.$refs.bnt_salvar.innerText = 'Editar';
-                this.$refs.id_registro.value = data.id_registro;
                 this.$refs.environment.value = data.environment;
                 this.$refs.grant_type.value = data.grant_type;
                 this.$refs.username.value = data.username;

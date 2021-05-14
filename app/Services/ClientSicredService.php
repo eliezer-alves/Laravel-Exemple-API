@@ -37,9 +37,9 @@ class ClientSicredService
      * @param  array  $attributes
      * @return ClientSicredRepository  $modeloSicred
      */
-    public function create($data)
+    public function create($attributes)
     {
-        return $this->clientSicredRepository->create($data);
+        return $this->clientSicredRepository->create($attributes);
     }
 
 
@@ -50,9 +50,9 @@ class ClientSicredService
      * @param  int  $idClientSicred
      * @return ModeloSicredRepository  $modeloSicred
      */
-    public function update($data, $idClientSicred)
+    public function update($attributes, $idClientSicred)
     {
-        return $this->clientSicredRepository->update($data, $idClientSicred);
+        return $this->clientSicredRepository->update($attributes, $idClientSicred);
     }
 
 

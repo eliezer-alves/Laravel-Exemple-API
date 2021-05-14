@@ -46,20 +46,16 @@ Route::middleware(['auth'])->prefix('admin/')->group(function () {
     });
 
     Route::prefix('url-sicred')->group(function () {
-        Route::get('/', [ClientSicredController::class, 'index'])->name('admin.client-sicred');
-        Route::post('/', [ClientSicredController::class, 'store'])->name('admin.client-sicred.store');
-        Route::post('/{id}', [ClientSicredController::class, 'update'])->name('admin.client-sicred.update');
-        Route::get('/{id}', [ClientSicredController::class, 'destroy'])->name('admin.client-sicred.destroy');
+        Route::get('/', [UrlSicredController::class, 'index'])->name('admin.url-sicred');
+        Route::post('/', [UrlSicredController::class, 'store'])->name('admin.url-sicred.store');
+        Route::post('/{id}', [UrlSicredController::class, 'update'])->name('admin.url-sicred.update');
+        Route::get('/{id}', [UrlSicredController::class, 'destroy'])->name('admin.url-sicred.destroy');
     });
 });
 
 Route::get('/solicitacao', function () {
     return view('solicitacao.index');
 });
-
-// Route::prefix('pdf')->group(function () {
-//     Route::get('/contrato-pj/{id_proposta}', [PdfController::class, 'contratoPj'])->name('pdf.contrato-pj.show');
-// });
 
 Route::prefix('assinatura')->group(function () {
     Route::get('/contrato-pj/contrato/{hash}', [PropostaAssinaturaController::class, 'showContrato'])

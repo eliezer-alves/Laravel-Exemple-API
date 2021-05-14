@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UrlSicredRequest;
 use App\Services\UrlSicredService;
 use Illuminate\Http\Request;
 
 /**
- * Class responsible for managing Sicred's access clients
+ * Class responsible for managing Sicred's urls
  *
  * @author Eliezer Alves
  * @since 13/05/2021
  */
 class UrlSicredController extends Controller
 {
+    private $route;
+
     public function __construct(UrlSicredService $service)
     {
         parent::__construct($service);
+        $this->route = 'admin.url-sicred';
     }
 
     /**
@@ -25,17 +29,8 @@ class UrlSicredController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $data['urls'] = $this->service->all();
+        return view('admin.url_sicred', $data);
     }
 
     /**
@@ -44,9 +39,10 @@ class UrlSicredController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UrlSicredRequest $request)
     {
-        //
+        $this->service->create($request->all());
+        return redirect()->route($this->route);
     }
 
     /**
@@ -61,36 +57,27 @@ class UrlSicredController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idUrlSicred)
     {
-        //
+        $this->service->update($request->all(), $idUrlSicred);
+        return redirect()->route($this->route);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idUrlSicred
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idUrlSicred)
     {
-        //
+        $this->service->delete($idUrlSicred);
+        return redirect()->route($this->route);
     }
 }

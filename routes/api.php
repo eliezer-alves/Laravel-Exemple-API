@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    ArquivoPropostaController,
     AtividadeComercialController,
     AssinaturaPropostaController,
     ClienteController,
+    DocumentoPropostaController,
     DominiosController,
     PdfController,
     PropostaController,
@@ -30,10 +30,12 @@ Route::post('/cliente', [ClienteController::class, 'store']);
 Route::middleware('auth:api')->prefix('cliente')->group(function () {
     Route::get('/', [ClienteController::class, 'index']);
     Route::get('/{id_cliente}', [ClienteController::class, 'show']);
-    Route::get('/{cnpj}', [ClienteController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
+
     Route::put('/{id_cliente}', [ClienteController::class, 'update']);
     Route::delete('/{id_cliente}', [ClienteController::class, 'destroy']);
 });
+
+Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [ClienteController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
 
 Route::middleware('auth:api')->prefix('atividade_comercial')->group(function () {
     Route::get('/', [AtividadeComercialController::class, 'index']);
@@ -55,7 +57,7 @@ Route::middleware('auth:api')->prefix('proposta')->group(function () {
 });
 
 Route::middleware('auth:api')->prefix('arquivo-proposta')->group(function () {
-    Route::post('/upload/{id_proposta}', [ArquivoPropostaController::class, 'createMany'])
+    Route::post('/upload/{id_proposta}', [DocumentoPropostaController::class, 'createMany'])
         ->where(['id_proposta' => '[0-9]+']);
 });
 

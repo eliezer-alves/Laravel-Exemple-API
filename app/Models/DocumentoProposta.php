@@ -22,7 +22,7 @@ class DocumentoProposta extends Model
 
     public function proposta()
     {
-        return $this->hasOne(Proposta::class, 'id_proposta');
+        return $this->belongsTo(Proposta::class, 'id_porposta', 'id_proposta');
     }
 
     public function status()

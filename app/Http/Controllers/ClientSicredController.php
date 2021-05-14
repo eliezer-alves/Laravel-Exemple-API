@@ -11,7 +11,6 @@ use App\Http\Requests\ClientSicredRequest;
  *
  * @author Eliezer Alves
  * @since 03/2021
- *
  */
 class ClientSicredController extends Controller
 {
