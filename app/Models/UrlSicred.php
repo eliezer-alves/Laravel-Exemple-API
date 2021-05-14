@@ -14,18 +14,12 @@ class UrlSicred extends Model
     protected $primaryKey = 'id_url_sicred';
 
     protected $fillable = [
-        'base_url',
-        'athentication_url',
-        'simulacao_url',
-        'proposta_url',
-        'proposta_v2_url',
-        'contrato_url',
-        'dominios_url',
-        'id_client_sicred'
+        'servico',
+        'url'
     ];
 
-    public function clientSicred()
+    public function modelos()
     {
-        return $this->belongsTo(ClientSicred::class, 'id_client_sicred');
+        return $this->belongsToMany(ModeloSicred::class, 'cad_url_modelo_sicred', 'id_url_sicred', 'id_modelo_sicred');
     }
 }

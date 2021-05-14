@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\ModeloSicred;
-
+use App\Models\UrlSicred;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +19,7 @@ class ModeloSicredSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            $objModeloSicred = ModeloSicred::Factory()->create();
+            $modeloSicred = ModeloSicred::Factory()->create();
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

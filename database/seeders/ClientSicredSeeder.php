@@ -21,12 +21,7 @@ class ClientSicredSeeder extends Seeder
         try {
             DB::beginTransaction();
             $objClientSicred = ClientSicred::Factory()->make();
-            $objUrlSicred = UrlSicred::Factory()->make();
-
             $clientSicred = ClientSicred::create($objClientSicred->toArray());
-            $objUrlSicred->id_client_sicred = $clientSicred->id_client_sicred;
-            $urlSicred = UrlSicred::create($objUrlSicred->toArray());
-
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

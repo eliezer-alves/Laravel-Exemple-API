@@ -78,9 +78,9 @@ class Proposta extends Model
         'parente_politicamente_exposto' => false,
     ];
 
-    public function documento()
+    public function documentos()
     {
-        return $this->belongsTo(DocumentoProposta::class, 'id_proposta', 'id_proposta');
+        return $this->hasMany(DocumentoProposta::class, 'id_proposta', 'id_proposta');
     }
 
     public function cliente()
@@ -109,11 +109,6 @@ class Proposta extends Model
             ->whereNotNull('data_aceite_1')
             ->whereNotNull('data_aceite_2')
             ->whereNotNull('hash_assinatura');
-    }
-
-    public function arquivos()
-    {
-        return $this->hasMany(ArquivoProposta::class, 'id_proposta', 'id_proposta');
     }
 
 

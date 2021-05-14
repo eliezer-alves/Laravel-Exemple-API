@@ -1,7 +1,7 @@
-<form id="form_delete" x-ref="form_delete" :action="actionDeleteForm" method="GET" class="flex flex-wrap p-4 h-full items-center">
+<form x-show="showDeleteModal" id="form_delete" x-ref="form_delete" :action="actionDeleteForm" method="GET" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
-    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showDeleteModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showDeleteModal }">
+    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showDeleteModal }">
         <!--Dialog-->
         <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" @click.away="close()" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 

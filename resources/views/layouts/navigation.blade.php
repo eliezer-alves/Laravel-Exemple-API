@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('admin.client-sicred')" :active="request()->routeIs('admin.client-sicred')">
                         {{ __('Clients Sicred') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.url-sicred')" :active="request()->routeIs('admin.url-sicred')">
+                        {{ __('Url Sicred') }}
+                    </x-nav-link>
                 </div>
             </div>
 

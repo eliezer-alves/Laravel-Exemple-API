@@ -27,8 +27,8 @@ class ModeloSicred extends Model
         'id_client_sicred'
     ];
 
-    public function clientSicred()
+    public function urls()
     {
-        return $this->belongsTo(ClientSicred::class, 'id_client_sicred');
+        return $this->belongsToMany(UrlSicred::class, 'cad_url_modelo_sicred', 'id_modelo_sicred', 'id_url_sicred');
     }
 }

@@ -33,6 +33,10 @@ class DbException extends Exception
         ];
 
         Log::channel('dbExceptions')->warning($this->message, $content);
-        return response(['error' => $this->message], $this->statusCode);
+
+        if(request()->header('content-type') == "application/json")
+            return response(['error' => $this->message], $this->statusCode);
+
+            abort($this->statusCode, $this->message);
     }
 }

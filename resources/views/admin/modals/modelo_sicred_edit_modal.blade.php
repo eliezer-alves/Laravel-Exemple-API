@@ -1,7 +1,7 @@
-<form x-ref="form_modelo" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
+<form x-show="showEditModal" x-ref="form_modelo" :action="actionEditForm" method="POST" class="flex flex-wrap p-4 h-full items-center">
     @csrf
     <!--Overlay-->
-    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEditModal" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showEditModal }">
+    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showEditModal }">
         <!--Dialog-->
         <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" @click.away="close()" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
@@ -16,11 +16,6 @@
             </div>
 
             <!-- content -->
-            <div class="my-1 text-sm" hidden="">
-                <label for="id_registro" class="block text-black">ID Registro <span class="text-indigo-500">*</span></label>
-                <input type="text" id="id_registro" name="id_registro" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="" x-ref="id_registro" />
-            </div>
-
             <div class="my-5 text-sm">
                 <label for="modelo" class="block text-black">Modelo <span class="text-indigo-500">*</span></label>
                 <input type="text" id="modelo" name="modelo" class="rounded-lg px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" value="{{ old('modelo') }}" x-ref="modelo" />

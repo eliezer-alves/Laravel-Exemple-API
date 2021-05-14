@@ -7,10 +7,10 @@ use App\Services\ClientSicredService;
 use App\Http\Requests\ClientSicredRequest;
 
 /**
+ * Class responsible for managing Sicred's access clients
  *
  * @author Eliezer Alves
  * @since 03/2021
- *
  */
 class ClientSicredController extends Controller
 {
