@@ -63,4 +63,17 @@ class DocumentoPropostaService
         }
         return $this->documentoPropostaRepository->createMany($attributes);
     }
+
+    /**
+     * Save files related to the proposal by the proposal number
+     *
+     * @since 17/05/2021
+     *
+     * @param  Illuminate\Http\Request
+     */
+    public function createManyByNumero($request, $numeroProposta)
+    {
+        $idProposta = $this->propostaRepository->findByNumero($numeroProposta)->id_proposta;
+        return $this->createMany($request, $idProposta);
+    }
 }

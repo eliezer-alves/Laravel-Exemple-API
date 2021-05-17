@@ -56,9 +56,12 @@ Route::middleware('auth:api')->prefix('proposta')->group(function () {
         ->where(['numero_proposta' => '[0-9]+']);
 });
 
-Route::middleware('auth:api')->prefix('arquivo-proposta')->group(function () {
+Route::middleware('auth:api')->prefix('documento-proposta')->group(function () {
     Route::post('/upload/{id_proposta}', [DocumentoPropostaController::class, 'createMany'])
         ->where(['id_proposta' => '[0-9]+']);
+
+    Route::post('/upload-por-proposta/{numero_proposta}', [DocumentoPropostaController::class, 'createManyByNumero'])
+        ->where(['numero_proposta' => '[0-9]+']);
 });
 
 Route::prefix('pdf')->group(function () {
