@@ -41,6 +41,10 @@ class UrlSicredSeeder extends Seeder
             'url' =>'/contratos/api/v2/contrato',
         ],
         [
+            'servico' => 'cliente',
+            'url' =>'/cliente/pj',
+        ],
+        [
             'servico' => 'dominios',
             'url' => '/dominios/api',
         ]

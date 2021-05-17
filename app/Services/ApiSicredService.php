@@ -41,6 +41,11 @@ class ApiSicredService implements ApiSicredServiceInterface
         $this->renovaSessao();
     }
 
+    private function urlServico($servico)
+    {
+        return $this->urls->firstWhere('servico', $servico)->url ?? '';
+    }
+
 
     /**
      * Requests a new access token at Sicred.
@@ -50,7 +55,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->athentication_url;
+        $url = $this->urlServico('base_url') . $this->urlServico('athentication_url');
 
         do {
             $response = Http::asForm()->post($url, $this->clientSicredRepository->toArray());
@@ -81,7 +86,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         return;
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->athentication_url;
+        $url = $this->urlServico('base_url') . $this->urlServico('athentication_url');
         $form = $this->clientSicredRepository->toArray();
         $form['grant_type'] = 'refresh_token';
         $form['refresh_token'] = Session::get('refreshToken') ? Session::get('refreshToken') : '';
@@ -109,7 +114,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->simulacao_url . '/simular';
+        $url = $this->urlServico('base_url') . $this->urlServico('simulacao_url') . '/simular';
         $form = array_merge($this->modeloSicredRepository->toArray(), $request);
 
         do {
@@ -134,7 +139,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->simulacao_url . '/' . $this->empresa . '/' . $idSimulacao . '/detalhe';
+        $url = $this->urlServico('base_url') . $this->urlServico('simulacao_url') . '/' . $this->empresa . '/' . $idSimulacao . '/detalhe';
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -160,7 +165,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         $numeroTentativasRequest = 0;
         $response = null;
         $numeroProposta = false;
-        $url = $this->urls->base_url . $this->urls->proposta_url;
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_url');
         $body = [
             'empresa' => $this->empresa,
             'idSimulacao' => $idSimulacao
@@ -191,8 +196,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta/cliente";
-
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_v2_url') . "/$this->empresa/$numeroProposta" . $this->urlServico('cliente');
         $attributes['cosif'] = $this->modeloSicredRepository->cosif;
 
         do {
@@ -219,7 +223,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->proposta_url . "/$this->empresa/$numeroProposta/liberacao";
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_url') . "/$this->empresa/$numeroProposta/liberacao";
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->post($url, [$attributes]);
@@ -244,7 +248,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->proposta_url . '/' . $this->empresa . '/' . $numeroProposta;
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_url') . '/' . $this->empresa . '/' . $numeroProposta;
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
             $numeroTentativasRequest++;
@@ -268,7 +272,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->proposta_url . '/' . $this->empresa . "/$numeroProposta/liberacao";
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_url') . '/' . $this->empresa . "/$numeroProposta/liberacao";
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -292,7 +296,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->dominios_url . '/uf';
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/uf';
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -316,7 +320,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->dominios_url . '/EstadoCivil/' . $this->empresa;
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/EstadoCivil/' . $this->empresa;
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -340,7 +344,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . $this->urls->dominios_url . '/profissao/' . $this->empresa;
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/profissao/' . $this->empresa;
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -364,7 +368,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urls->base_url . '/registroboletoapi/api/Banco';
+        $url = $this->urlServico('base_url') . '/registroboletoapi/api/Banco';
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);

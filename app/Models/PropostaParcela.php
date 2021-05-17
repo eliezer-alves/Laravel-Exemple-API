@@ -11,8 +11,6 @@ class PropostaParcela extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'cad_proposta_parcela';
     protected $primaryKey =  'id_proposta_parcela';
 

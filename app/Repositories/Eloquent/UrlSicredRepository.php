@@ -11,4 +11,9 @@ class UrlSicredRepository extends AbstractRepository implements UrlSicredReposit
     {
         parent::__construct($model);
     }
+
+    public function servico($servico)
+    {
+        return $this->firstWhere('servico', $servico);
+    }
 }
