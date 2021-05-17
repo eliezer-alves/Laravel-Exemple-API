@@ -45,6 +45,9 @@
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Delete</span>
                             </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -79,6 +82,9 @@
                                 {{ $modelo['taxa'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUrlModeloSicred({{ $modelo['id_modelo_sicred'] }})">URL's</button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($modelo) }}, {{ $modelo['id_modelo_sicred'] }})">Editar</button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -94,6 +100,7 @@
     </div>
     @include('admin.modals.modelo_sicred_edit_modal')
     @include('admin.modals.confirm_delete_modal')
+    @include('admin.modals.url_modelo_sicred_modal')
 </div>
 
 <script>
@@ -102,6 +109,7 @@
             showValidationErrors: (!!errors && Object.keys(errors).length > 0),
             showEditModal: (!!errors && Object.keys(errors).length > 0),
             showDeleteModal: false,
+            showUrlModeloSicredModal: false,
             actionEditForm: '#',
             actionDeleteForm: '#',
             openStore() {
@@ -123,12 +131,16 @@
             close() {
                 this.showEditModal = false;
                 this.showDeleteModal = false;
+                this.showUrlModeloSicredModal = false;
             },
             isOpen() {
                 return this.showEditModal === true;
             },
             clearForm() {
                 this.$refs.form_modelo.reset();
+            },
+            openUrlModeloSicred(id) {
+                this.showUrlModeloSicredModal = true;
             },
             setDataUpdate(data) {
                 this.$refs.bnt_salvar.innerText = 'Editar';

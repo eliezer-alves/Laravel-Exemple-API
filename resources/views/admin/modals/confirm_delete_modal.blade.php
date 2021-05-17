@@ -22,7 +22,7 @@
 
             <!--Footer-->
             <div class="flex justify-end pt-2 ml-2">
-                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_excluir_modelo_sicred" type="submit">Excluir</button>
+                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white hover:bg-indigo-700 mr-2" id="btn_excluir_modelo_sicred" type="submit">Excluir</button>
                 <button class="modal-close px-4  bg-transparent p-3 rounded-lg  text-indigo-600 hover:text-indigo-400" @click.prevent="close()">Cancelar</button>
             </div>
         </div>

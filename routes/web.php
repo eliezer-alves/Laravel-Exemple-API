@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     AppController,
     ClientSicredController,
     ModeloSicredController,
-    PropostaAssinaturaController,
+    AssinaturaPropostaController,
     UrlSicredController
 };
 
@@ -58,20 +58,20 @@ Route::get('/solicitacao', function () {
 });
 
 Route::prefix('assinatura')->group(function () {
-    Route::get('/contrato-pj/contrato/{hash}', [PropostaAssinaturaController::class, 'showContrato'])
+    Route::get('/contrato-pj/contrato/{hash}', [AssinaturaPropostaController::class, 'showContrato'])
         ->name('assinatura.contrato-pj.show');
 
-    Route::get('/contrato-pj/show-aceite-1/{hash}', [PropostaAssinaturaController::class, 'showAceite1'])
+    Route::get('/contrato-pj/show-aceite-1/{hash}', [AssinaturaPropostaController::class, 'showAceite1'])
         ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
         ->name('assinatura.contrato-pj-1.show');
 
-    Route::get('/contrato-pj/aceite-1/{hash}', [PropostaAssinaturaController::class, 'aceite1'])
+    Route::get('/contrato-pj/aceite-1/{hash}', [AssinaturaPropostaController::class, 'aceite1'])
         ->name('assinatura.contrato-pj-1');
 
-    Route::get('/contrato-pj/show-aceite-2/{hash}', [PropostaAssinaturaController::class, 'showAceite2'])
+    Route::get('/contrato-pj/show-aceite-2/{hash}', [AssinaturaPropostaController::class, 'showAceite2'])
         ->name('assinatura.contrato-pj-2.show');
 
-    Route::get('/contrato-pj/aceite-2/{hash}', [PropostaAssinaturaController::class, 'aceite2'])
+    Route::get('/contrato-pj/aceite-2/{hash}', [AssinaturaPropostaController::class, 'aceite2'])
         ->name('assinatura.contrato-pj-2');
 });
 

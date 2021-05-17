@@ -75,6 +75,126 @@ class KeysInterfaceService
     }
 
     /**
+     * List of keys and values ​​between the form and the request
+     * to Sicred in the process of linking the client
+     *
+     * @since 17/05/2021
+     *
+     * @return array
+     */
+    public function clienteAgilSicred()
+    {
+        return [
+            [
+                'inputKey' => 'cnpj',
+                'sourceKey' => 'cnpj'
+            ],
+            [
+                'inputKey' => 'razaoSocial',
+                'sourceKey' => 'razao_social'
+            ],
+            [
+                'inputKey' => 'dataFundacao',
+                'sourceKey' => 'data_fundacao'
+            ],
+            [
+                'inputKey' => 'inscricaoEstadual',
+                'sourceKey' => 'inscricao_estadual'
+            ],
+            [
+                'inputKey' => 'capitalSocial',
+                'sourceKey' => 'capital_social'
+            ],
+            [
+                'inputKey' => 'anoFaturamento',
+                'sourceKey' => 'ano_faturamento'
+            ],
+            [
+                'inputKey' => 'valorFaturamentoAnual',
+                'sourceKey' => 'faturamento_anual'
+            ],
+            [
+                'inputKey' => 'porte',
+                'sourceKey' => 'porte'
+            ],
+            [
+                'inputKey' => 'email',
+                'sourceKey' => 'email'
+            ],
+            [
+                'inputKey' => 'cepResidencial',
+                'sourceKey' => 'cep'
+            ],
+            [
+                'inputKey' => 'enderecoResidencial',
+                'sourceKey' => 'logradouro'
+            ],
+            [
+                'inputKey' => 'numeroResidencial',
+                'sourceKey' => 'numero'
+            ],
+            [
+                'inputKey' => 'complementoResidencial',
+                'sourceKey' => 'complemento'
+            ],
+            [
+                'inputKey' => 'bairroResidencial',
+                'sourceKey' => 'bairro'
+            ],
+            [
+                'inputKey' => 'cidadeResidencial',
+                'sourceKey' => 'cidade'
+            ],
+            [
+                'inputKey' => 'ufResidencial',
+                'sourceKey' => 'uf'
+            ],
+        ];
+    }
+
+    /**
+     * List of keys and values ​​between the form and the request
+     * to Sicred in the process of linking the client
+     *
+     * @since 17/05/2021
+     *
+     * @return array
+     */
+    public function liberacoesAgilSicred()
+    {
+        return [
+            [
+                'inputKey' => 'cnpj',
+                'sourceKey' => 'cnpj_beneficiario'
+            ],
+            [
+                'inputKey' => 'formaLiberacao',
+                'sourceKey' => 'forma_liberacao'
+            ],
+            [
+                'inputKey' => 'valorLiberacao',
+                'sourceKey' => 'valor_solicitado'
+            ],
+            [
+                'inputKey' => 'bancoLiberacao',
+                'sourceKey' => 'banco_liberacao'
+            ],
+            [
+                'inputKey' => 'agenciaLiberacao',
+                'sourceKey' => 'agencia_liberacao'
+            ],
+            [
+                'inputKey' => 'contaLiberacao',
+                'sourceKey' => 'conta_liberacao'
+            ],
+            [
+                'inputKey' => 'tipoConta',
+                'sourceKey' => 'tipo_conta'
+            ],
+        ];
+    }
+
+    /**
      * Key relationship of the Agil proposal with the Sicred Proposal
      * to align the Agil Proposal with the Sicred Proposal data
      *
@@ -179,16 +299,21 @@ class KeysInterfaceService
      *
      * @since 19/04/2021
      *
-     * @param array $sourceArray
-     * @param array $keysInterface
+     * @param array $sourceArray - Array containing the data that will be used to hydrate the return arry
+     * @param array $keysInterface - Interface array of the data of the source array (containing the data) and the array that will be returned (array generated in the hydration process)
+     * @param bool $reverse - Parameter that inverts the order between $ sourceArray and $ keysInterface, thus reversing the method's behavior.
      *
      * @return array
      */
-    public function hydrator($sourceArray, $keysInterface)
+    public function hydrator($sourceArray, $keysInterface, $reverse = false)
     {
         $resultArray = [];
         foreach ($keysInterface as $interface) {
-            $resultArray[$interface['inputKey']] = $sourceArray[$interface['sourceKey']] ?? null;
+            if(!$reverse){
+                $resultArray[$interface['inputKey']] = $sourceArray[$interface['sourceKey']] ?? null;
+            }else{
+                $resultArray[$interface['sourceKey']] = $sourceArray[$interface['inputKey']] ?? null;
+            }
         }
 
         return $resultArray;

@@ -16,9 +16,6 @@ use App\Services\{
     KeysInterfaceService,
 };
 
-
-use Illuminate\Support\Facades\Storage;
-
 /**
  * Service Layer - Class responsible for managing the loan proposals
  *
@@ -68,7 +65,7 @@ class PropostaService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
-        $proposta->arquivos;
+        $proposta->documentos;
 
         return $proposta->toArray();
     }
@@ -112,27 +109,7 @@ class PropostaService
      */
     private function vincularClienteSicred($proposta, $numeroProposta)
     {
-        $attributes = [
-            'cnpj' => $proposta->cliente->cnpj,
-            'razaoSocial' => $proposta->cliente->razao_social,
-            'fundacao' => $proposta->cliente->data_fundacao,
-            'inscricaoEstadual' => $proposta->cliente->inscricao_estadual,
-            'capitalSocial' => $proposta->cliente->capital_social,
-            'anoFaturamento' => $proposta->cliente->ano_faturamento,
-            'valorFaturamentoAnual' => $proposta->cliente->faturamento_anual,
-            'porte' => $proposta->cliente->porte,
-            'email' => $proposta->cliente->email,
-            'cepResidencial' => $proposta->cliente->cep,
-            'enderecoResidencial' => $proposta->cliente->logradouro,
-            'numeroResidencial' => $proposta->cliente->numero,
-            'complementoResidencial' => $proposta->cliente->complemento,
-            'bairroResidencial' => $proposta->cliente->bairro,
-            'cidadeResidencial' => $proposta->cliente->cidade,
-            'ufResidencial' => $proposta->cliente->uf
-        ];
-
-        return;
-
+        $attributes = $this->keysInterfaceService->hydrator($proposta->cliente, $this->keysInterfaceService->clienteAgilSicred());
         return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
@@ -148,19 +125,10 @@ class PropostaService
      */
     private function vincularLiberacoesSicred($proposta, $numeroProposta)
     {
-        $attributes = [
-            'nomeBeneficiario' => $proposta->cliente->nome_fantasia,
-            'cnpj' => $proposta->cliente->cnpj,
-            'formaLiberacao' => $proposta->forma_liberacao,
-            'valorLiberacao' => (float)$proposta->valor_solicitado,
-            'bancoLiberacao' => $proposta->banco_liberacao,
-            'agenciaLiberacao' => $proposta->agencia_liberacao,
-            'contaLiberacao' => $proposta->conta_liberacao,
-            'tipoConta' => $proposta->tipo_conta,
-            'direcionamento' => "N",
-        ];
+        $attributes = $this->keysInterfaceService->hydrator($proposta, $this->keysInterfaceService->liberacoesAgilSicred());
+        $attributes['nomeBeneficiario'] = $proposta->cliente->nome_fantasia;
+        $attributes['direcionamento'] = "N";
 
-        return;
         return $this->apiSicred->vincularLibercoesProposta($attributes, $numeroProposta);
     }
 
