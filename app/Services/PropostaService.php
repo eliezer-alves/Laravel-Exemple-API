@@ -16,9 +16,6 @@ use App\Services\{
     KeysInterfaceService,
 };
 
-
-use Illuminate\Support\Facades\Storage;
-
 /**
  * Service Layer - Class responsible for managing the loan proposals
  *
