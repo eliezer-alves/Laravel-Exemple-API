@@ -37,6 +37,6 @@ class DbException extends Exception
         if(request()->header('content-type') == "application/json")
             return response(['error' => $this->message], $this->statusCode);
 
-            abort($this->statusCode, $this->message);
+        abort($this->statusCode, $this->message);
     }
 }

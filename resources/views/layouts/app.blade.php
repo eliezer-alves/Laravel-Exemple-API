@@ -17,8 +17,8 @@
         <script src="{{ asset('js/app_blade.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="h-screen bg-gray-100">
-            <div class="h-2/12">
+        <div class="min-h-screen bg-gray-100">
+            <div>
                 @include('layouts.navigation')
 
                 <!-- Page Heading -->
@@ -30,7 +30,7 @@
             </div>
 
             <!-- Page Content -->
-            <main class="h-10/12">
+            <main>
                 {{ $slot }}
             </main>
         </div>

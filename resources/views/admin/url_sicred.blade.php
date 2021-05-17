@@ -1,16 +1,16 @@
 @extends('admin.index')
 
 @section('content')
-<div class="h-full" x-data="handleModals({{ $errors }})" x-cloak>
-    <div class="h-full my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="h-full align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="h-2/12 flex flex-row-reverse items-center">
+<div class="flex flex-col" x-data="handleModals({{ $errors }})" x-cloak>
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="flex flex-row-reverse">
                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full mb-4" @click="openStore()" value="">Cadastrar</button>
             </div>
-            <div class="h-11/12 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="h-full flex flex-col min-w-full divide-y divide-gray-200">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
-                        <tr class="flex w-full">
+                        <tr>
                             <th scope="col" class="w-4/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Serviço
                             </th>
@@ -26,7 +26,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="flex flex-col overflow-y-scroll scrollbar-eli bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200">
 
                         @foreach ($urls as $key => $url)
                         <tr class="h-full">
