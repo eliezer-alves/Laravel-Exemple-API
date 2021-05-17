@@ -33,12 +33,11 @@ class ApiSicredService implements ApiSicredServiceInterface
         $this->numeroMaximoTentativasRequest = 3;
         $this->environment = 'hml';
         $this->modelo = 'capital-de-giro';
-        // $this->modelo = 'pessoa-fisica-1';
         $this->empresa = '01';
 
         $this->clientSicredRepository = $clientSicredRepository->findEnvironment($this->environment);
         $this->modeloSicredRepository = $modeloSicredRepository->findModelo($this->modelo);
-        $this->urls = $this->clientSicredRepository->urls;
+        $this->urls = $this->modeloSicredRepository->urls;
         $this->renovaSessao();
     }
 

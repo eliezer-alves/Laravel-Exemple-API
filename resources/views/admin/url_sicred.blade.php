@@ -11,17 +11,17 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th scope="col" class="w-4/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Serviço
                             </th>
-                            <th scope="col" class="w-6/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 URL
                             </th>
-                            <th scope="col" class="w-1/12 px-6 py-3">
+                            <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
                             </th>
-                            <th scope="col" class="w-1/12 px-6 py-3">
+                            <th scope="col" class="px-6 py-3">
                                 <span class="sr-only">Delete</span>
                             </th>
                         </tr>
@@ -30,16 +30,16 @@
 
                         @foreach ($urls as $key => $url)
                         <tr class="h-full">
-                            <td class="w-4/12 px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $url['servico'] }}
                             </td>
-                            <td class="w-6/12 px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $url['url'] }}
                             </td>
-                            <td class="w-1/12 px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($url) }}, {{ $url['id_url_sicred'] }})">Editar</button>
                             </td>
-                            <td class="w-1/12 px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openDelete({{ $url['id_url_sicred'] }})">Excluir</button>
                             </td>
                         </tr>
