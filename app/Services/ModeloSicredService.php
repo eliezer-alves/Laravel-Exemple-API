@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\ModeloSicredRepositoryInterface;
+use App\Repositories\Contracts\UrlSicredRepositoryInterface;
 
 /**
  * Service Layer - Class responsible for managing Sicred's proposal models
@@ -14,10 +15,12 @@ use App\Repositories\Contracts\ModeloSicredRepositoryInterface;
 class ModeloSicredService
 {
     protected $modeloSicredRepository;
+    protected $urlSicredRepository;
 
-    public function __construct(ModeloSicredRepositoryInterface $modeloSicredRepository)
+    public function __construct(ModeloSicredRepositoryInterface $modeloSicredRepository, UrlSicredRepositoryInterface $urlSicredRepository)
     {
         $this->modeloSicredRepository = $modeloSicredRepository;
+        $this->urlSicredRepository = $urlSicredRepository;
     }
 
 
@@ -31,6 +34,26 @@ class ModeloSicredService
         return $this->modeloSicredRepository->all()->toArray();
     }
 
+    /**
+     * Service Layer - Get all data needed to display the view index.
+     *
+     * @return ModeloSicredRepository  $modeloSicred
+     */
+    public function dataIndex()
+    {
+        $modelos = $this->modeloSicredRepository->all();
+        foreach($modelos as $modelo){
+            $modelo->urls;
+        }
+        $modelos->toArray();
+
+        $urls = $this->urlSicredRepository->all()->toArray();
+
+        return [
+            'modelos' => $modelos->toArray() ?? [],
+            'urls' => $urls ?? []
+        ];
+    }
 
     /**
      * Service Layer - Create the model in the database.

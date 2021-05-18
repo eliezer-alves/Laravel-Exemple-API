@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\ModeloSicredService;
 
 use App\Http\Requests\ModeloSicredRequest;
-use Illuminate\Http\Request;
 
 /**
  *
@@ -30,8 +29,8 @@ class ModeloSicredController extends Controller
      */
     public function index()
     {
-        $dados['modelos'] = $this->service->all();
-        return view('admin.modelo_sicred', $dados);
+        $data = $this->service->dataIndex();
+        return view('admin.modelo_sicred', $data);
     }
 
     /**

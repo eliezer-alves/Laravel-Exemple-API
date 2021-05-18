@@ -82,7 +82,7 @@
                                 {{ $modelo['taxa'] }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUrlModeloSicred({{ $modelo['id_modelo_sicred'] }})">URL's</button>
+                                <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUrlModeloSicred({{ json_encode($modelo['urls']) }})">URL's</button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button type="button" class="bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full" @click="openUpdate({{ json_encode($modelo) }}, {{ $modelo['id_modelo_sicred'] }})">Editar</button>
@@ -139,7 +139,10 @@
             clearForm() {
                 this.$refs.form_modelo.reset();
             },
-            openUrlModeloSicred(id) {
+            openUrlModeloSicred(urlsModelo) {
+                urlsModelo.forEach((url) => {
+                    document.getElementById("toggle_"+url.id_url_sicred).checked = true;
+                });
                 this.showUrlModeloSicredModal = true;
             },
             setDataUpdate(data) {
