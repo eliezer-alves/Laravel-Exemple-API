@@ -20,6 +20,7 @@ class ModeloSicredSeeder extends Seeder
         try {
             DB::beginTransaction();
             $modeloSicred = ModeloSicred::Factory()->create();
+            $modeloSicred->urls()->attach(UrlSicred::all());
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

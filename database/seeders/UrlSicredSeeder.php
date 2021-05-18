@@ -62,10 +62,6 @@ class UrlSicredSeeder extends Seeder
             {
                 UrlSicred::create($urlSicred);
             }
-            foreach(UrlSicred::all() as $urlSicred){
-                $modelos = ModeloSicred::all();
-                $urlSicred->modelos()->attach($modelos);
-            }
             DB::commit();
         } catch (Exception $e) {
             DB::rolback();

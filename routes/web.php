@@ -35,6 +35,7 @@ Route::middleware(['auth'])->prefix('admin/')->group(function () {
         Route::get('/', [ModeloSicredController::class, 'index'])->name('admin.modelo-sicred');
         Route::post('/', [ModeloSicredController::class, 'store'])->name('admin.modelo-sicred.store');
         Route::post('/{id}', [ModeloSicredController::class, 'update'])->name('admin.modelo-sicred.update');
+        Route::post('/url/{id}', [ModeloSicredController::class, 'bindUrl'])->name('admin.modelo-sicred-url.update');
         Route::get('/{id}', [ModeloSicredController::class, 'destroy'])->name('admin.modelo-sicred.destroy');
     });
 

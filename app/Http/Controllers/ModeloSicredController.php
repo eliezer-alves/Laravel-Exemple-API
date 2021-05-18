@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ModeloSicredService;
 
 use App\Http\Requests\ModeloSicredRequest;
+use Illuminate\Http\Request;
 
 /**
  *
@@ -55,6 +56,19 @@ class ModeloSicredController extends Controller
     public function update(ModeloSicredRequest $request, $idModeloSicred)
     {
         $this->service->update($request->all(), $idModeloSicred);
+        return redirect()->route($this->route);
+    }
+
+    /**
+     * Bind urls to the model.
+     *
+     * @param  \Illuminate\Http\Request\ModeloSicredRequest  $request
+     * @param  int  $idModeloSicred
+     * @return redirect()
+     */
+    public function bindUrl(Request $request, $idModeloSicred)
+    {
+        $this->service->bindUrl($request->all(), $idModeloSicred);
         return redirect()->route($this->route);
     }
 
