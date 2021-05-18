@@ -20,7 +20,7 @@
 
                 @foreach ($urls as $url)
                 <!-- Toggle -->
-                <div class="toggleButton flex items-center w-full my-4">
+                <div class="toggleButton flex flex-col justify-items-start w-full my-4">
                     <label for="toggle_{{ $url['id_url_sicred'] }}" class="flex items-center cursor-pointer">
                         <!-- toggle -->
                         <div class="relative">
@@ -32,10 +32,11 @@
                         <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
                         </div>
                         <!-- label -->
-                        <div class="ml-3 text-gray-700 font-medium">
+                        <div class="ml-3 text-gray-700 font-semibold">
                         {{ $url["servico"] }}
                         </div>
-                    </label>
+                    </label>                    
+                    <span class="mt-3 text-gray-500 font-light">{{ $url["url"] }}</span>
                 </div>
                 @endforeach
 
