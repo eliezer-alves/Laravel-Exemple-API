@@ -46,6 +46,7 @@ class Proposta extends Model
         'id_cliente',
         'id_acesso_bio',
         'id_status_administrativo',
+        'id_status_analise_proposta',
         'cidade_geo',
         'estado_geo',
         'dados_completos_geo',
@@ -111,9 +112,13 @@ class Proposta extends Model
             ->whereNotNull('hash_assinatura');
     }
 
-
     public function parcelas()
     {
         return $this->hasMany(PropostaParcela::class, 'id_proposta', 'id_proposta');
+    }
+
+    public function statusAnalise()
+    {
+        return $this->belongsTo(StatusAnaliseProposta::class, 'id_status_analise_proposta', 'id_status_analise_proposta');
     }
 }

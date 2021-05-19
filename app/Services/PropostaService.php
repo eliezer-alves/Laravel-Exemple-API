@@ -55,10 +55,32 @@ class PropostaService
      *
      * @since 03/05/2021
      *
+     * @param  int  $idProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosProposta($idProposta)
+    {
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $proposta->parcelas;
+        $proposta->clienteAssinatura;
+        $proposta->representante;
+        $proposta->socios;
+        $proposta->documentos;
+        $proposta->statusAnalise;
+
+        return $proposta->toArray();
+    }
+
+    /**
+     * Service Layer - Get data from a proposal at Agil
+     * by number of the proposal
+     *
+     * @since 19/05/2021
+     *
      * @param  int  $numeroProposta
      * @return array  $dataProposta
      */
-    public function getDadosProposta($numeroProposta)
+    public function getDadosPropostaPorNumero($numeroProposta)
     {
         $proposta = $this->propostaRepository->findByNumero($numeroProposta);
         $proposta->parcelas;
@@ -66,6 +88,7 @@ class PropostaService
         $proposta->representante;
         $proposta->socios;
         $proposta->documentos;
+        $proposta->statusAnalise;
 
         return $proposta->toArray();
     }
@@ -350,6 +373,7 @@ class PropostaService
         $proposta->clienteAssinatura;
         $proposta->representante;
         $proposta->socios;
+        $proposta->statusAnalise;
 
         return $proposta;
     }

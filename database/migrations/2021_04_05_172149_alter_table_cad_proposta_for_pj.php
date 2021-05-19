@@ -23,6 +23,11 @@ class AlterTableCadPropostaForPj extends Migration
             $table->string('estado_civil')
                 ->nullable()
                 ->change();
+
+            $table->foreignId('id_status_analise_proposta')
+                ->nullable()
+                ->default(1)
+                ->constrained('cad_status_analise_proposta', 'id_status_analise_proposta');
         });
     }
 
@@ -37,6 +42,7 @@ class AlterTableCadPropostaForPj extends Migration
             // $table->string('estado_civil')->nullable(false)->change();
             $table->dropColumn('cnpj_beneficiario');
             $table->dropColumn('id_simulacao');
+            $table->dropColumn('id_status_analise_proposta');
         });
     }
 }

@@ -52,7 +52,10 @@ Route::middleware('auth:api')->prefix('simulacao')->group(function () {
 
 Route::middleware('auth:api')->prefix('proposta')->group(function () {
     Route::post('/', [PropostaController::class, 'novaProposta']);
-    Route::get('/{numero_proposta}', [PropostaController::class, 'dadosProposta'])
+    Route::get('/{id_proposta}', [PropostaController::class, 'dadosProposta'])
+        ->where(['id_proposta' => '[0-9]+']);
+
+    Route::get('/numero/{numero_proposta}', [PropostaController::class, 'dadosPropostaPorNumero'])
         ->where(['numero_proposta' => '[0-9]+']);
 });
 

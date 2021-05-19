@@ -38,12 +38,25 @@ class PropostaController extends Controller
      *
      * @author Eliezer Alves
      *
+     * @param  int  $idProposta
+     * @return \Illuminate\Http\Response
+     */
+    public function dadosProposta($idProposta)
+    {
+        return $this->service->getDadosProposta($idProposta);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @author Eliezer Alves
+     *
      * @param  int  $numeroProposta
      * @return \Illuminate\Http\Response
      */
-    public function dadosProposta($numeroProposta)
+    public function dadosPropostaPorNumero($numeroProposta)
     {
-        return $this->service->getDadosProposta($numeroProposta);
+        return $this->service->getDadosPropostaPorNumero($numeroProposta);
     }
 
     /**
