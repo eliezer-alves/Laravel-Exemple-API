@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app_blade.css') }}">
-        <link rel="stylesheet" href="{{ mix('css/admin_blade.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/admin_blade.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app_blade.js') }}" defer></script>
