@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\PdfService;
+use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
@@ -50,6 +51,29 @@ class PdfController extends Controller
             abort(404);
         }
 
+        $dadosProposta = $this->service->contratoPj($idProposta);
+
+        PDF::SetTitle($dadosProposta['contrato']);
+        PDF::AddPage();
+        PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
+        PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
+
+        return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
+    }
+
+    /**
+     * Displays pdf of PJ client contracts
+     *
+     * @param int $hash
+     * @return \Illuminate\View\View
+     */
+    public function contratoPjInterno($hash)
+    {
+        try {
+            $idProposta = base64_decode(str_replace('_', '=',$hash));
+        } catch (Exception $e) {
+            abort(404);
+        }
         $dadosProposta = $this->service->contratoPj($idProposta);
 
         PDF::SetTitle($dadosProposta['contrato']);

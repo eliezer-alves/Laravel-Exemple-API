@@ -65,10 +65,13 @@ Route::middleware('auth:api')->prefix('documento-proposta')->group(function () {
 });
 
 Route::prefix('pdf')->group(function () {
+    Route::get('/contrato-pj-interno/{hash}', [PdfController::class, 'contratoPjInterno'])
+        ->name('pdf.contrato-pj-interno.show');
+
     Route::get('/contrato-pj/{hash}', [PdfController::class, 'contratoPj'])
         ->name('pdf.contrato-pj.show');
 
-        Route::get('link/contrato-pj/{id_proposta}', [PdfController::class, 'linkContratoPj'])
+    Route::get('link/contrato-pj/{id_proposta}', [PdfController::class, 'linkContratoPj'])
         ->where('id_proposta', '[0-9]+')
         ->name('link.pdf.contrato-pj');
 });
