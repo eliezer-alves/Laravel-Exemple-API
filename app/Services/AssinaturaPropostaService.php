@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Exceptions\MailException;
 use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
 use App\Mail\LinkPropostaAssinaturaMail;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Support\Facades\Crypt;
@@ -69,7 +71,11 @@ class AssinaturaPropostaService
     public function enviaLinkAssinatura($idProposta, $idPessoaAssinatura, $emailDestinatario)
     {
         $link = $this->linkAssinatura($idProposta, $idPessoaAssinatura);
-        Mail::to($emailDestinatario)->send(new LinkPropostaAssinaturaMail($link));
+        try {
+            Mail::to($emailDestinatario)->send(new LinkPropostaAssinaturaMail($link));
+        } catch(Exception $e) {
+            throw new MailException('Problema ao enviar e-mail para ' .$emailDestinatario . '', $e);
+        }
     }
 
     /**

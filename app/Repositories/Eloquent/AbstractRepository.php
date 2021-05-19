@@ -49,7 +49,7 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 
     public function whereIn(string $column, $arrayValues)
     {
-        return $this->model->whereI($column, $arrayValues);
+        return $this->model->whereIn($column, $arrayValues);
     }
 
     public function orWhere(string $column, string $operador, $value)

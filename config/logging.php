@@ -118,6 +118,12 @@ return [
             'level' => 'debug'
         ],
 
+        'mailExceptions' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/mail_exceptions.log'),
+            'level' => 'debug'
+        ],
+
         's3' => [
             'driver' => 'single',
             'path' => storage_path('logs/s3.log'),

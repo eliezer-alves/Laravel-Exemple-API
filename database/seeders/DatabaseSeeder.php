@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusDocumentoPropostaSeeder::class);
         $this->call(AtividadeComercialSeeder::class);
         $this->call(ClientSicredSeeder::class);
+        $this->call(UrlSicredSeeder::class);
         $this->call(ModeloSicredSeeder::class);
     }
 }

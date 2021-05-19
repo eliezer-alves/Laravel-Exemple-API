@@ -78,6 +78,26 @@ class ModeloSicredService
     {
         return $this->modeloSicredRepository->update($attributes, $idModeloSicred);
     }
+    
+    /**
+     * Service Layer - Bind urls to the model
+     *
+     * @since 18/05/2021
+     *
+     * @param  array  $attributes
+     * @param  int  $idUrlSicred
+     * @return \App\Models\UrlSicred
+     */
+    public function bindUrl($attributes, $idModeloSicred)
+    {
+        $modeloSicred = $this->modeloSicredRepository->find($idModeloSicred);
+        $urls = $this->urlSicredRepository->whereIn('id_url_sicred', $attributes['url'])->get();
+        $modeloSicred->urls()->detach();
+        $modeloSicred->urls()->attach($urls);
+        
+        return $this->modeloSicredRepository->update($attributes, $idModeloSicred);
+    }
+
 
 
     /**
