@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="{{ mix('css/admin_blade.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin_blade.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
         @media (min-width: 100px){
