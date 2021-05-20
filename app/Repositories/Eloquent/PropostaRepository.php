@@ -15,7 +15,7 @@ class PropostaRepository extends AbstractRepository implements PropostaRepositor
 
     public function findByNumero($numeroProposta)
     {
-        $proposta = $this->where('contrato', $numeroProposta)->first();
+        $proposta = $this->where('contrato', $numeroProposta)->orderBy('data_geracao_proposta', 'desc')->first();
         if($proposta)
             return $proposta;
 
