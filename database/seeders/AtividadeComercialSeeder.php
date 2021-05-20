@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-USE App\Models\AtividadeComercial;
+use App\Models\AtividadeComercial;
 
 use Illuminate\Database\Seeder;
 

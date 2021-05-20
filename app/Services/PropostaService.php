@@ -62,7 +62,7 @@ class PropostaService
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $proposta->parcelas;
-        $proposta->clienteAssinatura;
+        $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;
         $proposta->documentos;
@@ -84,7 +84,7 @@ class PropostaService
     {
         $proposta = $this->propostaRepository->findByNumero($numeroProposta);
         $proposta->parcelas;
-        $proposta->clienteAssinatura;
+        $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;
         $proposta->documentos;
@@ -370,7 +370,7 @@ class PropostaService
 
         $proposta->refresh();
         $proposta->parcelas;
-        $proposta->clienteAssinatura;
+        $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;
         $proposta->statusAnalise;

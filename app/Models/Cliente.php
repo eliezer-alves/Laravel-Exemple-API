@@ -44,7 +44,7 @@ class Cliente extends Model
         'id_tipo_logradouro',
         'id_atividade_comercial',
         'tipo_empresa',
-        'porte',
+        'id_porte_empresa',
         'rendimento_mensal',
         'faturamento_anual',
         'capital_social',
@@ -79,7 +79,7 @@ class Cliente extends Model
         'id_tipo_logradouro' => null,
         'id_atividade_comercial' => null,
         'tipo_empresa' => null,
-        'porte' => null,
+        'id_porte_empresa' => null,
         'rendimento_mensal' => null,
         'faturamento_anual' => null,
         'capital_social' => null,
@@ -99,5 +99,10 @@ class Cliente extends Model
     public function atividadeComercial()
     {
         return $this->belongsTo(AtividadeComercial::class, 'id_atividade_comercial');
+    }
+
+    public function porte()
+    {
+        return $this->belongsTo(PorteEmpresa::class, 'id_porte_empresa');
     }
 }

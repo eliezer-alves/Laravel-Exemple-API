@@ -56,7 +56,7 @@ class NovaPropostaPJRequest extends FormRequest
             'cliente.id_tipo_logradouro' => ['required', 'numeric'],
 
             'cliente.tipo_empresa' => ['required', 'string'],
-            'cliente.porte' => ['required', 'string'],
+            'cliente.id_porte_empresa' => ['required', 'numeric'],
             'cliente.rendimento_mensal' => ['required', 'numeric', 'max:100000000'],
             'cliente.faturamento_anual' => ['required', 'numeric', 'max:100000000'],
             'cliente.capital_social' => ['required', 'numeric', 'max:100000000'],

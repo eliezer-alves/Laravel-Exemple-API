@@ -13,11 +13,11 @@ use App\Repositories\Contracts\AtividadeComercialRepositoryInterface;
  */
 class AtividadeComercialService
 {
-    protected $repository;
+    protected $atividadeComercialRepository;
 
-    public function __construct(AtividadeComercialRepositoryInterface $repository)
+    public function __construct(AtividadeComercialRepositoryInterface $atividadeComercialRepository)
     {
-        $this->repository = $repository;
+        $this->atividadeComercialRepository = $atividadeComercialRepository;
     }
 
 
@@ -28,7 +28,7 @@ class AtividadeComercialService
      */
     public function all()
     {
-        return $this->repository->all();
+        return $this->atividadeComercialRepository->all();
     }
 
 
@@ -40,7 +40,7 @@ class AtividadeComercialService
      */
     public function create($request)
     {
-        return $this->repository->create($request);
+        return $this->atividadeComercialRepository->create($request);
     }
 
 
@@ -51,7 +51,7 @@ class AtividadeComercialService
      */
     public function findOrFail($idAtividadeComercial)
     {
-        return $this->repository->findOrFail($idAtividadeComercial);
+        return $this->atividadeComercialRepository->findOrFail($idAtividadeComercial);
     }
 
 
@@ -64,7 +64,7 @@ class AtividadeComercialService
      */
     public function update($data, $idAtividadeComercial)
     {
-        return $this->repository->update($data, $idAtividadeComercial);
+        return $this->atividadeComercialRepository->update($data, $idAtividadeComercial);
     }
 
 
@@ -76,6 +76,6 @@ class AtividadeComercialService
      */
     public function delete($idAtividadeComercial)
     {
-        return $this->repository->delete($idAtividadeComercial);
+        return $this->atividadeComercialRepository->delete($idAtividadeComercial);
     }
 }

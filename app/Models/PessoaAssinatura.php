@@ -56,7 +56,7 @@ class PessoaAssinatura extends Model
         'razao_social',
         'id_atividade_comercial',
         'tipo_empresa',
-        'porte',
+        'id_porte_empresa',
         'rendimento_mensal',
         'faturamento_anual',
         'capital_social',
@@ -93,5 +93,10 @@ class PessoaAssinatura extends Model
     public function proposta()
     {
         return $this->belongsTo(Proposta::class, 'id_porposta', 'id_proposta');
+    }
+
+    public function porte()
+    {
+        return $this->belongsTo(PorteEmpresa::class, 'id_porte_empresa');
     }
 }

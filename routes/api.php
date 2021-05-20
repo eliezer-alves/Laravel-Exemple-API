@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     DocumentoPropostaController,
     DominiosController,
     PdfController,
+    PorteEmpresaController,
     PropostaController,
     SimulacaoController,
     TesteController,
@@ -37,12 +38,20 @@ Route::middleware('auth:api')->prefix('cliente')->group(function () {
 
 Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [ClienteController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
 
-Route::middleware('auth:api')->prefix('atividade_comercial')->group(function () {
+Route::middleware('auth:api')->prefix('atividade-comercial')->group(function () {
     Route::get('/', [AtividadeComercialController::class, 'index']);
     Route::get('/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
     Route::post('/', [AtividadeComercialController::class, 'store']);
     Route::put('/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);
     Route::delete('/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
+});
+
+Route::middleware('auth:api')->prefix('porte-empresa')->group(function () {
+    Route::get('/', [PorteEmpresaController::class, 'index']);
+    Route::get('/{id_porte_empresa}', [PorteEmpresaController::class, 'show']);
+    Route::post('/', [PorteEmpresaController::class, 'store']);
+    Route::put('/{id_porte_empresa}', [PorteEmpresaController::class, 'update']);
+    Route::delete('/{id_porte_empresa}', [PorteEmpresaController::class, 'destroy']);
 });
 
 Route::middleware('auth:api')->prefix('simulacao')->group(function () {
