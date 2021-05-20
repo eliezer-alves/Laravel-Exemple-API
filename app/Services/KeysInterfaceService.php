@@ -68,6 +68,10 @@ class KeysInterfaceService
                 'sourceKey' => 'atd_protocolo'
             ],
             [
+                'inputKey' => 'atd_celular',
+                'sourceKey' => 'atd_celular'
+            ],
+            [
                 'inputKey' => 'id_usuario',
                 'sourceKey' => 'id_usuario'
             ],

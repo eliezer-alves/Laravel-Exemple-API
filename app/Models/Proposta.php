@@ -71,7 +71,8 @@ class Proposta extends Model
         'id_forma_inclusao',
         'valor_total_a_pagar',
         'valor_limite_liberado_bcard',
-        'atd_protocolo'
+        'atd_protocolo',
+        'atd_celular'
     ];
 
     protected $attributes = [
