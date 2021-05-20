@@ -146,44 +146,5 @@
     <h2>EMITENTE</h2><br>
     <h3><u><?= $cliente_assinatura['razao_social'] ?></u></h3>
 </div>
-
-<br>
-<div>
-    <h2>ASSINATURAS</h2>
-</div>
-
-<table style="font-size: 10px;">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr align="center" valign="center">
-        <td width="5%">&#x2705;</td>
-        <td align="left" width="95%">
-            INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA PLATAFORMA ON LINE ÁGIL – VIA (CAMPO EDITÁVEL DA FONTE DE CAPTAÇÃO (Telefone ou via sistema on line do lojista))
-        </td>
-    </tr>
-</table>
-<table style="font-size: 10px;">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr align="center" valign="center">
-        <td width="5%"><img width="20px"></td>
-        <td align="left" width="95%">
-            APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85 , assinou. E-mail: credito@agil.com.br - IP :
-            <?php
-            if (isset($retorno->IP_Servidor)) {
-                echo $retorno->IP_Servidor;
-            } else echo " – ";
-            ?> Hash: pendente
-        </td>
-    </tr>
-</table>
 @endif
 @endsection
