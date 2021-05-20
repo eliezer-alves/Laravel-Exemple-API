@@ -183,7 +183,7 @@
             @endif
         </div>
     </div>
-    <script src="{{ mix('js/app_blade.js') }}"></script>
+    <script src="{{ asset('js/app_blade.js') }}"></script>
     <script>
         function handle() {
             return {
