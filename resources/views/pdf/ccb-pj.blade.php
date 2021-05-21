@@ -518,17 +518,15 @@ setlocale(LC_MONETARY, 'it_IT');
         </p>
         @endif
 
-    <p style="font-size: 9px; line-height: 18px;">
-         <img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?>
-    </p>
     <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 1 – DIEGO LUIZ TEIXEIRA – 016.296.656-30, diego@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('9f86741be6a3b6a70ae4c94e0b1b84c8ab4c1403')?></p>
 
     <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; TESTEMUNHA 2 – CÉLIO ALVES DE OLIVEIRA JÚNIOR – 069.584.136-01, junior@agil.com.br – IP: 172.31.40.92 - HASH: <?=strtoupper('0b8c402e24e3d93208892acb90da9e26675ac567')?></p>
 
+    @foreach ($assinaturas as $assinatura)
     <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; ASSINATURA: {{ strtoupper($assinatura['nome'] ?? '-') }} - VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> PROTOCOLO NÚMERO – {{ strtoupper($atd_protocolo ?? '-') }}, ASSINOU EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'] ?? '')) }}, CPF: {{ $assinatura['cpf'] ?? '-' }}, CELULAR: {{ $assinatura['celular'] ?? '-' }}, E-MAIL: {{ $assinatura['email'] ?? '-' }} - IP: {{ $assinatura['ip_cliente'] ?? '-' }} - HASH: {{ $assinatura['hash_assinatura'] ?? '-' }}</p>
 
     <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; EMISSÃO CCB: {{ strtoupper($assinatura['nome'] ?? '-') }}, CONFIRMOU A EMISSÃO DA CCB EM {{ date('d/m/Y H:i:s', strtotime($assinatura['data_aceite_2'] ?? '-')) }}, ATRAVÉS DO IP: {{ $assinatura['ip_cliente'] ?? '-' }} - HASH: {{ $assinatura['hash_assinatura'] ?? '-' }}</p>
-
+    @endforeach
 
 </body>
 

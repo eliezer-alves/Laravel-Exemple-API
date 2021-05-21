@@ -151,6 +151,7 @@ class AssinaturaPropostaService
         $proposta->data_aceite_1 = date('Y-m-d H:i:s');
         $proposta->data_aceite_2 = date('Y-m-d H:i:s');
         $proposta->hash_assinatura_ccb = _hashAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->ip_cliente);
+        $proposta->id_status_administrativo = 2;
         return $proposta->save();
     }
 
