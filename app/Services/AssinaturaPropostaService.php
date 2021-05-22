@@ -42,7 +42,7 @@ class AssinaturaPropostaService
      */
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta.'-'.$idPessoaAssinatura));
+        return ['link' => route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta . '-' . $idPessoaAssinatura))];
     }
 
     /**
@@ -73,8 +73,8 @@ class AssinaturaPropostaService
         $link = $this->linkAssinatura($idProposta, $idPessoaAssinatura);
         try {
             Mail::to($emailDestinatario)->send(new LinkPropostaAssinaturaMail($link));
-        } catch(Exception $e) {
-            throw new MailException('Problema ao enviar e-mail para ' .$emailDestinatario . '', $e);
+        } catch (Exception $e) {
+            throw new MailException('Problema ao enviar e-mail para ' . $emailDestinatario . '', $e);
         }
     }
 
@@ -92,7 +92,7 @@ class AssinaturaPropostaService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $this->enviaLinkAssinatura($idProposta, $proposta->clienteAssinatura->id_pessoa_assinatura, $proposta->clienteAssinatura->email);
         $this->enviaLinkAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->email);
-        foreach($proposta->socios as $socio){
+        foreach ($proposta->socios as $socio) {
             $this->enviaLinkAssinatura($idProposta, $socio->id_pessoa_assinatura, $socio->email);
         }
     }
@@ -209,7 +209,7 @@ class AssinaturaPropostaService
     public function dadosViewContratoAssinado($idProposta)
     {
         $data = [];
-        if(!$this->propostaRepository->find($idProposta)){
+        if (!$this->propostaRepository->find($idProposta)) {
             return [
                 'warningAlerts' => [
                     'Proposta não encontrada'
@@ -220,8 +220,7 @@ class AssinaturaPropostaService
 
         $assinaturasPendentes = $this->assinaturasPendentes($idProposta);
 
-        foreach($assinaturasPendentes as $assinatura)
-        {
+        foreach ($assinaturasPendentes as $assinatura) {
             $data['warningAlerts'][] = "Assinatura Pendente: {$assinatura['nome']} {$assinatura['id_pessoa_assinatura']}";
         }
         $data['pdfContrato'] = route('pdf.contrato-pj.show', Crypt::encryptString($idProposta));
