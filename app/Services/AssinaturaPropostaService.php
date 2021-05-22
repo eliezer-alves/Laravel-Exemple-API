@@ -42,7 +42,7 @@ class AssinaturaPropostaService
      */
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return ['link' => route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta . '-' . $idPessoaAssinatura))];
+        return route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta . '-' . $idPessoaAssinatura));
     }
 
     /**

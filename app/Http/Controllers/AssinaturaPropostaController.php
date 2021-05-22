@@ -66,7 +66,7 @@ class AssinaturaPropostaController extends Controller
      */
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return $this->service->linkAssinatura($idProposta, $idPessoaAssinatura);
+        return ['link' => $this->service->linkAssinatura($idProposta, $idPessoaAssinatura)];
     }
 
     /**
