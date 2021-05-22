@@ -92,11 +92,16 @@ class PessoaAssinatura extends Model
 
     public function proposta()
     {
-        return $this->belongsTo(Proposta::class, 'id_porposta', 'id_proposta');
+        return $this->belongsTo(Proposta::class, 'id_proposta', 'id_proposta');
     }
 
     public function porte()
     {
         return $this->belongsTo(PorteEmpresa::class, 'id_porte_empresa');
+    }
+
+    public function atividadeComercial()
+    {
+        return $this->belongsTo(AtividadeComercial::class, 'id_atividade_comercial');
     }
 }

@@ -63,6 +63,7 @@ class PropostaService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $proposta->parcelas;
         $proposta->clienteAssinatura->porte;
+        $proposta->clienteAssinatura->atividadeComercial;
         $proposta->representante;
         $proposta->socios;
         $proposta->documentos;
@@ -152,7 +153,7 @@ class PropostaService
         $attributes['nomeBeneficiario'] = $proposta->cliente->nome_fantasia;
         $attributes['direcionamento'] = "N";
 
-        return $this->apiSicred->vincularLibercoesProposta($attributes, $numeroProposta);
+        return $this->apiSicred->vincularLiberacoesProposta($attributes, $numeroProposta);
     }
 
 
@@ -334,7 +335,7 @@ class PropostaService
         | creating a new proposal in Ágil's database.
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
-        $proposta = $this->propostaRepository->create(_normalizeRequest($attributesProposta));
+        $proposta = $this->propostaRepository->create(_normalizeRequest($attributesProposta, ['valor_solicitado']));
 
 
         /*

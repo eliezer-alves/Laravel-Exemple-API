@@ -219,7 +219,7 @@ class ApiSicredService implements ApiSicredServiceInterface
      * @param array $attributesCliente
      * @return int $numeroProposta
      */
-    public function vincularLibercoesProposta($attributes, $numeroProposta)
+    public function vincularLiberacoesProposta($attributes, $numeroProposta)
     {
         $numeroTentativasRequest = 0;
         $response = null;
