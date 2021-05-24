@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
+    AnalisePropostaController,
     AtividadeComercialController,
     AssinaturaPropostaController,
     ClienteController,
@@ -66,6 +67,13 @@ Route::middleware('auth:api')->prefix('proposta')->group(function () {
 
     Route::get('/numero/{numero_proposta}', [PropostaController::class, 'dadosPropostaPorNumero'])
         ->where(['numero_proposta' => '[0-9]+']);
+});
+
+Route::group([
+    'middleware' => ['auth:api'],
+    'prefix' => 'analise-proposta',
+], function () {
+    Route::post('/atualizar-proposta', [AnalisePropostaController::class, 'alterarDadosProposta']);
 });
 
 Route::middleware('auth:api')->prefix('documento-proposta')->group(function () {

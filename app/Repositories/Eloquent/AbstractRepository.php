@@ -82,10 +82,26 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
         return $arrayCreated;
     }
 
-    public function update($data, $id)
+    public function updateMany($attributesAllRegisters)
+    {
+        $arrayUpdated = [];
+        foreach ($attributesAllRegisters as $attributes) {
+            try {
+                $entity = $this->findOrFail($attributes[$this->model->getKeyName()]);
+                // unset($attributes[$this->model->getKeyName()]);
+                $entity->update($attributes);
+                array_push($arrayUpdated, $entity);
+            } catch(Exception $e) {
+                throw new DbException('Erro ao atualizar o registro em ' . $this->model->getTable() . '.', $e, $this->model);
+            }
+        }
+        return $arrayUpdated;
+    }
+
+    public function update($attributes, $id)
     {
         $entity = $this->findOrFail($id);
-        $entity->update($data);
+        $entity->update($attributes);
 
         return $entity;
     }

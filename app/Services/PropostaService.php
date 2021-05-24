@@ -230,12 +230,11 @@ class PropostaService
      * @param int $idProposta
      * @return array $dataProposta
      */
-    private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $idProposta)
+    private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $attributesFormCliente, $idProposta)
     {
-        $clienteAssinatura = $this->cliente->toArray();
-        $clienteAssinatura['tipo_pessoa_assinatura'] = 0;
+        $attributesFormCliente['tipo_pessoa_assinatura'] = 0;
         $attributes = $formAttributesSocios;
-        $attributes[] = $clienteAssinatura;
+        $attributes[] = $attributesFormCliente;
 
         foreach ($attributes as $key => $attribute) {
             $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento']);
@@ -345,10 +344,102 @@ class PropostaService
         |
         | Saving the Legal Representative and the company's partners.
         */
-        $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $proposta->id_proposta);
-
-        // dd($attributesFormSocios, $attributesPessoaAssinatura);
+        $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $attributesFormCliente, $proposta->id_proposta);
         $this->pessoaAssinaturaRepository->createMany($attributesPessoaAssinatura);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Sicred
+        |--------------------------------------------------------------------------
+        |
+        | Creating a proposal at Sicredi from Agil's proposal
+        */
+        $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
+        $this->getDadosPropostaSicred($numeroProposta);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Agile Proposal / Sicred Proposal
+        |--------------------------------------------------------------------------
+        |
+        | Updating Agil's proposal based on data from Sicred's proposal.
+        */
+        $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+
+        $proposta->refresh();
+        $proposta->parcelas;
+        $proposta->clienteAssinatura->porte;
+        $proposta->representante;
+        $proposta->socios;
+        $proposta->statusAnalise;
+
+        return $proposta;
+    }
+
+    /**
+     * Service Layer - Change the proposal data and everything related to it.
+     * (Gambiarra, but working here is Foda - in the bad sense.)
+     *
+     * :(
+     *
+     * @since 24/05/2021
+     *
+     * @param  array  $attributes
+     * @return json  $dataProposta
+     */
+    public function alterarDadosProposta($attributes)
+    {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Class attributes
+        |--------------------------------------------------------------------------
+        |
+        | Normalizing the requisition data and instantiating the class attributes
+        | that will be used in the process of creating a new Agile proposal.
+        */
+        $attributesFormProposta = $attributes['proposta'];
+        $attributesFormCliente = $attributes['cliente'];
+        $attributesFormSocios = $attributes['socios'];
+
+        /*
+        |--------------------------------------------------------------------------
+        | Client
+        |--------------------------------------------------------------------------
+        |
+        | With the form data, the Client class is instantiated based on the CNPJ,
+        | then the attributes are updated based on the form data, then the record
+        | is saved in the database. That way, if there is already a record it is
+        | updated, otherwise a new record is created.
+        */
+        $this->cliente = $this->clienteRepository->findByCnpj($attributesFormCliente['cnpj']) ??  $this->clienteRepository->fill([]);
+        $this->cliente->fill(_normalizeRequest($attributesFormCliente, ['email']));
+        $this->cliente->save();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal at Ágil
+        |--------------------------------------------------------------------------
+        |
+        | Normalizing the necessary attributes to create a new proposal and
+        | creating a new proposal in Ágil's database.
+        */
+        $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
+        $proposta = $this->propostaRepository->update(_normalizeRequest($attributesProposta, ['valor_solicitado']), $attributesFormProposta['id_proposta']);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Legal Representative / Partners
+        |--------------------------------------------------------------------------
+        |
+        | Saving the Legal Representative and the company's partners.
+        */
+        $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $attributesFormCliente, $attributesFormProposta['id_proposta']);
+        $this->pessoaAssinaturaRepository->updateMany($attributesPessoaAssinatura);
 
 
         /*
