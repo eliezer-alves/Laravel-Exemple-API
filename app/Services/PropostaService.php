@@ -225,7 +225,7 @@ class PropostaService
         */
 
         foreach ($documentos as $key => $documento) {
-            if($documento['excluir']){
+            if(($documento['excluir'] ?? false)){
 
                 /*
                 | ATTENTION: for this specific situation there is an exception deal because
@@ -237,7 +237,7 @@ class PropostaService
                     $this->documentoPropostaRepository->delete($documento['id_documento_proposta']);
                 } catch (Exception $e) {
                     Log::channel('dbExceptions')->error(
-                        "Houve um problema ao excluir o documento proposta {$documento['id_documento_proposta']}: {$e->getMessage()}",
+                        "Erro ao excluir o documento proposta {$documento['id_documento_proposta']}: {$e->getMessage()}",
                         []
                     );
                 }
@@ -256,7 +256,7 @@ class PropostaService
         | attributes specified in the requisition payload.
         */
 
-        return $this->documentoPropostaRepository->updateMany($documentos);
+        return $this->documentoPropostaRepository->updateMany($documentos, false);
     }
 
 

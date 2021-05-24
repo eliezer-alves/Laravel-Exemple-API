@@ -32,7 +32,7 @@ class DbException extends Exception
             'error' => $this->exception->getMessage()
         ];
 
-        Log::channel('dbExceptions')->warning($this->message, $content);
+        Log::channel('dbExceptions')->error($this->message, $content);
 
         if(request()->header('content-type') == "application/json")
             return response(['error' => $this->message], $this->statusCode);

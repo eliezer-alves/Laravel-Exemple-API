@@ -18,13 +18,24 @@ interface AbstractRepositoryInterface
 
     public function whereIn(string $column, array $arrayValues);
 
-    public function create(array $data);
+    public function create(array $attributes);
 
-    public function createMany(array $data);
+    /**
+     * Method to create multiple entities
+     *
+     *@param  array $entities entity array
+     */
+    public function createMany(array $entities);
 
-    public function updateMany(array $data);
+    /**
+     * Method to update multiple entities
+     *
+     * @param  array $entities entity array
+     * @return bool $throwExceptionInParticularEntity - Boolean value that specifies whether to throw an exception when it occurs in the operation of a particular entity. If disabled, if an exception occurs in the operation of any entity, the exception will be ignored and the program will limit itself to recording a log and will continue to run.
+     */
+    public function updateMany(array $entities, bool $throwExceptionInParticularEntity = true);
 
-    public function update(array $data, int $id);
+    public function update(array $attributes, int $id);
 
     public function delete(int $id);
 }

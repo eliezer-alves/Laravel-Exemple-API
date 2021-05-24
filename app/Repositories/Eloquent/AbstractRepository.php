@@ -7,6 +7,7 @@ use App\Exceptions\FailedAction;
 use App\Repositories\Contracts\AbstractRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 abstract class AbstractRepository implements AbstractRepositoryInterface
 {
@@ -34,12 +35,11 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
 
     public function findOrFail($id)
     {
-        // return $this->model->findOrFail($id);
         $entity = $this->model->find($id);
         if($entity)
             return $entity;
 
-        throw new FailedAction('Registro não encontrado em ' . $this->model->getTable() . '.', 404);
+        throw new FailedAction("Registro não encontrado em {$this->model->getTable()}.", 404);
     }
 
     public function where(string $column, $value)
@@ -69,30 +69,37 @@ abstract class AbstractRepository implements AbstractRepositoryInterface
             $entity = $this->model->create($data);
             return $entity;
         } catch(Exception $e) {
-            throw new DbException('Erro ao salvar o registro em ' . $this->model->getTable() . '.', $e, $this->model);
+            throw new DbException("Erro ao salvar o registro em {$this->model->getTable()}.", $e, $this->model);
         }
     }
 
-    public function createMany($attributesAllRegisters)
+    public function createMany($entities)
     {
         $arrayCreated = [];
-        foreach ($attributesAllRegisters as $attributes) {
+        foreach ($entities as $attributes) {
             array_push($arrayCreated, $this->create($attributes));
         }
         return $arrayCreated;
     }
 
-    public function updateMany($attributesAllRegisters)
+    public function updateMany($entities, $throwExceptionInParticularEntity = true)
     {
         $arrayUpdated = [];
-        foreach ($attributesAllRegisters as $attributes) {
+        foreach ($entities as $attributes) {
             try {
                 $entity = $this->findOrFail($attributes[$this->model->getKeyName()]);
-                // unset($attributes[$this->model->getKeyName()]);
                 $entity->update($attributes);
                 array_push($arrayUpdated, $entity);
             } catch(Exception $e) {
-                throw new DbException('Erro ao atualizar o registro em ' . $this->model->getTable() . '.', $e, $this->model);
+                if(!$throwExceptionInParticularEntity){
+                    Log::channel('dbExceptions')->error(
+                        "Erro ao atualizar o registro proposta {$attributes[$this->model->getKeyName()]}: {$e->getMessage()}",
+                        []
+                    );
+                }
+                else{
+                    throw new DbException("Erro ao atualizar o registro em {$this->model->getTable()}.", $e, $this->model);
+                }
             }
         }
         return $arrayUpdated;
