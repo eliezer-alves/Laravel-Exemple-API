@@ -27,7 +27,9 @@ class SimulacaoRequest extends FormRequest
             'cpf' => ['required', 'regex:/^[0-9]+$/u', 'between:11,14'],
             'dataPrimeiroVencimento' => ['required', 'date'],
             'prazo' => ['required', 'numeric', 'max:36'],
-            'valorSolicitado' => ['required', 'numeric', 'max:1000000']
+            'valorSolicitado' => ['required', 'numeric', 'max:1000000'],
+            'taxa' => ['numeric', 'max:100'],
+            'tac' => ['numeric', 'max:1000000']
         ];
     }
 
