@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Contracts\{
     ClienteRepositoryInterface,
+    DocumentoPropostaRepositoryInterface,
     PessoaAssinaturaRepositoryInterface,
     PropostaRepositoryInterface,
     PropostaParcelaRepositoryInterface,
@@ -15,6 +16,8 @@ use App\Services\Contracts\{
 use App\Services\{
     KeysInterfaceService,
 };
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Service Layer - Class responsible for managing the loan proposals
@@ -26,6 +29,7 @@ use App\Services\{
 class PropostaService
 {
     private $clienteRepository;
+    private $documentoPropostaRepository;
     private $pessoaAssinaturaRepository;
     private $propostaRepository;
     private $propostaParcelaRepository;
@@ -36,9 +40,10 @@ class PropostaService
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService)
     {
         $this->clienteRepository = $clienteRepository;
+        $this->documentoPropostaRepository = $documentoPropostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
         $this->propostaRepository = $propostaRepository;
         $this->propostaParcelaRepository = $propostaParcelaRepository;
@@ -197,6 +202,61 @@ class PropostaService
         */
 
         return $this->propostaParcelaRepository->createMany($attributesParcelas) ?? [];
+    }
+
+
+    /**
+     * Service Layer - Updates or deletes documents related to a proposal
+     *
+     * @since 24/05/2021
+     *
+     * @param  array $documentos
+     * @return array $documentsUpdated
+     */
+    private function atualizarSituacaoDocumentosProposta($documentos)
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | Excluding
+        |--------------------------------------------------------------------------
+        |
+        | Excluding documents specified in the request pyload
+        | by the attribute "excluir"
+        */
+
+        foreach ($documentos as $key => $documento) {
+            if($documento['excluir']){
+
+                /*
+                | ATTENTION: for this specific situation there is an exception deal because
+                | the service cannot stop at that moment even if for some reason it was not
+                | possible to excel a document, and for this case an exception log is recorded
+                */
+
+                try {
+                    $this->documentoPropostaRepository->delete($documento['id_documento_proposta']);
+                } catch (Exception $e) {
+                    Log::channel('dbExceptions')->error(
+                        "Houve um problema ao excluir o documento proposta {$documento['id_documento_proposta']}: {$e->getMessage()}",
+                        []
+                    );
+                }
+
+                unset($documentos[$key]);
+            }
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Updating
+        |--------------------------------------------------------------------------
+        |
+        | Documents that have not been deleted will be updated according to the
+        | attributes specified in the requisition payload.
+        */
+
+        return $this->documentoPropostaRepository->updateMany($documentos);
     }
 
 
@@ -403,6 +463,8 @@ class PropostaService
         $attributesFormProposta = $attributes['proposta'];
         $attributesFormCliente = $attributes['cliente'];
         $attributesFormSocios = $attributes['socios'];
+        $attributesFormDocumentos = $attributes['documentos'];
+
 
         /*
         |--------------------------------------------------------------------------
@@ -436,10 +498,20 @@ class PropostaService
         | Legal Representative / Partners
         |--------------------------------------------------------------------------
         |
-        | Saving the Legal Representative and the company's partners.
+        | Updating the Legal Representative and the company's partners.
         */
         $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $attributesFormCliente, $attributesFormProposta['id_proposta']);
         $this->pessoaAssinaturaRepository->updateMany($attributesPessoaAssinatura);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal Documents
+        |--------------------------------------------------------------------------
+        |
+        | Updating or deleting proposal documents.
+        */
+        $this->atualizarSituacaoDocumentosProposta($attributesFormDocumentos);
 
 
         /*
@@ -467,6 +539,7 @@ class PropostaService
         $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;
+        $proposta->documentos;
         $proposta->statusAnalise;
 
         return $proposta;
