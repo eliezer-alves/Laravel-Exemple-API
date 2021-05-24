@@ -346,6 +346,8 @@ class PropostaService
         | Saving the Legal Representative and the company's partners.
         */
         $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $proposta->id_proposta);
+
+        // dd($attributesFormSocios, $attributesPessoaAssinatura);
         $this->pessoaAssinaturaRepository->createMany($attributesPessoaAssinatura);
 
 

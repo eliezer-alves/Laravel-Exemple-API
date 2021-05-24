@@ -62,6 +62,19 @@ class AlterTablePessoaAssinaturaForPj extends Migration
 
             $table->string('tipo_documento_identidade')
                 ->nullable();
+
+            $table->boolean('politicamente_exposto')
+                ->nullable();
+
+            $table->boolean('parente_politicamente_exposto')
+                ->nullable();
+
+            $table->string('cargo_politico')
+                ->nullable();
+
+            $table->string('cargo_parente_politico')
+                ->nullable();
+
         });
     }
 
@@ -88,6 +101,10 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('numero_documento_identidade');
             $table->dropColumn('uf_documento_identidade');
             $table->dropColumn('tipo_documento_identidade');
+            $table->dropColumn('politicamente_exposto');
+            $table->dropColumn('parente_politicamente_exposto');
+            $table->dropColumn('cargo_politico');
+            $table->dropColumn('cargo_parente_politico');
         });
     }
 }

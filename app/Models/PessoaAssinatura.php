@@ -61,6 +61,10 @@ class PessoaAssinatura extends Model
         'faturamento_anual',
         'capital_social',
         'ano_faturamento',
+        'politicamente_exposto',
+        'cargo_politico',
+        'parente_politicamente_exposto',
+        'cargo_parente_politico',
     ];
 
     protected $attributes = [
@@ -87,7 +91,11 @@ class PessoaAssinatura extends Model
         'estado_civil' => null,
         'numero_documento_identidade' => null,
         'uf_documento_identidade' => null,
-        'tipo_documento_identidade' => null
+        'tipo_documento_identidade' => null,
+        'politicamente_exposto' => false,
+        'cargo_politico' => null,
+        'parente_politicamente_exposto' => false,
+        'cargo_parente_politico' => null
     ];
 
     public function proposta()
