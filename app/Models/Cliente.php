@@ -84,7 +84,6 @@ class Cliente extends Model
         'faturamento_anual' => null,
         'capital_social' => null,
         'ano_faturamento' => null,
-        'id_pessoa_assinatura' => null,
     ];
 
     public function solicitacaoes()
