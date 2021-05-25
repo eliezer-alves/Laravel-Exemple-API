@@ -55,6 +55,7 @@ class NovaPropostaPJRequest extends FormRequest
             'cliente.complemento' => ['string', 'nullable'],
             'cliente.numero' => ['required', 'numeric'],
             'cliente.id_tipo_logradouro' => ['required', 'numeric', 'exists:cad_tipo_logradouro,id_tipo_logradouro'],
+            'cliente.tipo_imovel' => ['required', 'string'],
 
             'cliente.tipo_empresa' => ['required', 'string'],
             'cliente.id_porte_empresa' => ['required', 'numeric', 'exists:cad_porte_empresa,id_porte_empresa'],

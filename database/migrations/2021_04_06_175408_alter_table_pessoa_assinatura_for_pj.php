@@ -75,6 +75,12 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->string('cargo_parente_politico')
                 ->nullable();
 
+            $table->string('nome_mae')
+                ->nullable();
+
+            $table->string('tipo_imovel')
+                ->nullable();
+
         });
     }
 
@@ -105,6 +111,8 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('parente_politicamente_exposto');
             $table->dropColumn('cargo_politico');
             $table->dropColumn('cargo_parente_politico');
+            $table->dropColumn('nome_mae');
+            $table->dropColumn('tipo_imovel');
         });
     }
 }
