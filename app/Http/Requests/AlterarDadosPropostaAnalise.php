@@ -25,7 +25,7 @@ class AlterarDadosPropostaAnalise extends FormRequest
     public function rules()
     {
         return [
-            'proposta.id_proposta' => ['required', 'numeric'],
+            'proposta.id_proposta' => ['required', 'numeric', 'exists:cad_proposta,id_proposta'],
             'proposta.id_simulacao' => ['required', 'numeric'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],
@@ -39,13 +39,13 @@ class AlterarDadosPropostaAnalise extends FormRequest
             'proposta.atd_protocolo' => ['required'],
             'proposta.atd_celular' => ['required'],
 
-            'cliente.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u'],
+            'cliente.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u', 'exists:cad_pessoa_assinatura,id_pessoa_assinatura'],
             'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
             'cliente.nome_fantasia' => ['required', 'string'],
             'cliente.razao_social' => ['required', 'string'],
             'cliente.inscricao_estadual' => ['required', 'regex:/^[0-9]+$/u', 'max:14'],
             'cliente.data_fundacao' => ['required', 'date'],
-            'cliente.id_atividade_comercial' => ['required', 'numeric'],
+            'cliente.id_atividade_comercial' => ['required', 'numeric', 'exists:cad_atividade_comercial,id_atividade_comercial'],
             'cliente.celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'cliente.telefone' => ['string', 'regex:/^[0-9]+$/u', 'between:10,11', 'nullable'],
             'cliente.email' => ['required', 'string', 'email', 'between:0,50'],
@@ -56,16 +56,16 @@ class AlterarDadosPropostaAnalise extends FormRequest
             'cliente.logradouro' => ['required', 'string', 'between:0,50'],
             'cliente.complemento' => ['string', 'nullable'],
             'cliente.numero' => ['required', 'numeric'],
-            'cliente.id_tipo_logradouro' => ['required', 'numeric'],
+            'cliente.id_tipo_logradouro' => ['required', 'numeric', 'exists:cad_tipo_logradouro,id_tipo_logradouro'],
 
             'cliente.tipo_empresa' => ['required', 'string'],
-            'cliente.id_porte_empresa' => ['required', 'numeric'],
+            'cliente.id_porte_empresa' => ['required', 'numeric', 'exists:cad_porte_empresa,id_porte_empresa'],
             'cliente.rendimento_mensal' => ['required', 'numeric', 'max:100000000'],
             'cliente.faturamento_anual' => ['required', 'numeric', 'max:100000000'],
             'cliente.capital_social' => ['required', 'numeric', 'max:100000000'],
             'cliente.ano_faturamento' => ['required', 'regex:/^[0-9]+$/u',  'size:4'],
 
-            'socios.0.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u'],
+            'socios.0.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u', 'exists:cad_pessoa_assinatura,id_pessoa_assinatura'],
             'socios.0.nome' => ['required', 'string'],
             'socios.0.cpf' => ['required', 'regex:/^[0-9]+$/u', 'cpf'],
             'socios.0.data_nascimento' => ['required', 'date'],
@@ -79,7 +79,7 @@ class AlterarDadosPropostaAnalise extends FormRequest
             'socios.0.cidade' => ['required', 'string', 'between:0,50'],
             'socios.0.bairro' => ['required', 'string', 'between:0,50'],
             'socios.0.logradouro' => ['required', 'string', 'between:0,50'],
-            'socios.0.id_tipo_logradouro' => ['required', 'numeric'],
+            'socios.0.id_tipo_logradouro' => ['required', 'numeric', 'exists:cad_tipo_logradouro,id_tipo_logradouro'],
             'socios.0.complemento' => ['string', 'between:0,50', 'nullable'],
             'socios.0.numero' => ['required', 'numeric'],
             'socios.0.renda_mensal' => ['required', 'numeric', 'max:100000000'],

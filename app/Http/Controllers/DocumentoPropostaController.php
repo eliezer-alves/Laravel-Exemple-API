@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\DbException;
+use App\Http\Requests\StoreDocumentoPropostaRequest;
 use App\Services\DocumentoPropostaService;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class DocumentoPropostaController extends Controller
      *
      * @param  Illuminate\Http\Request
      */
-    public function createMany(Request $request)
+    public function createMany(StoreDocumentoPropostaRequest $request)
     {
         return $this->service->createMany($request->all(), $request->id_proposta);
     }
@@ -39,7 +40,7 @@ class DocumentoPropostaController extends Controller
      *
      * @param  Illuminate\Http\Request
      */
-    public function createManyByNumero(Request $request)
+    public function createManyByNumero(StoreDocumentoPropostaRequest $request)
     {
         return $this->service->createManyByNumero($request->all(), $request->numero_proposta);
     }
