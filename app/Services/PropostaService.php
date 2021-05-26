@@ -225,7 +225,7 @@ class PropostaService
         */
 
         foreach ($documentos as $key => $documento) {
-            if(($documento['excluir'] ?? false)){
+            if (($documento['excluir'] ?? false)) {
 
                 /*
                 | ATTENTION: for this specific situation there is an exception deal because
@@ -299,7 +299,7 @@ class PropostaService
         foreach ($attributes as $key => $attribute) {
             $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento']);
             $attributes[$key]['id_proposta'] = $idProposta;
-            $attributes[$key]['token'] = md5(date('Y-m-d H:i:s').$idProposta.bcrypt($idProposta));
+            $attributes[$key]['token'] = md5(date('Y-m-d H:i:s') . $idProposta . bcrypt($idProposta));
         }
 
         return $attributes;
@@ -394,6 +394,7 @@ class PropostaService
         | creating a new proposal in Ágil's database.
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
+
         $proposta = $this->propostaRepository->create(_normalizeRequest($attributesProposta, ['valor_solicitado']));
 
 
@@ -405,6 +406,7 @@ class PropostaService
         | Saving the Legal Representative and the company's partners.
         */
         $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $attributesFormCliente, $proposta->id_proposta);
+        return [$attributesPessoaAssinatura, $attributesFormSocios];
         $this->pessoaAssinaturaRepository->createMany($attributesPessoaAssinatura);
 
 
