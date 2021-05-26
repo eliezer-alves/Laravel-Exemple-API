@@ -35,7 +35,8 @@ class AlterTableCadClienteForPj extends Migration
                 ->unsigned()
                 ->constrained('cad_atividade_comercial', 'id_atividade_comercial');
 
-            $table->timestamp('data_fundacao', $precision = 0)->nullable();
+            $table->timestamp('data_fundacao', $precision = 0)
+                ->nullable();
 
             $table->string('tipo_empresa')
                 ->nullable();

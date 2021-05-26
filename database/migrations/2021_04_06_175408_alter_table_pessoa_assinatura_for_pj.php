@@ -81,6 +81,9 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->string('tipo_imovel')
                 ->nullable();
 
+            $table->timestamp('data_fundacao', $precision = 0)
+                ->nullable();
+
         });
     }
 
@@ -113,6 +116,7 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('cargo_parente_politico');
             $table->dropColumn('nome_mae');
             $table->dropColumn('tipo_imovel');
+            $table->dropColumn('data_fundacao');
         });
     }
 }

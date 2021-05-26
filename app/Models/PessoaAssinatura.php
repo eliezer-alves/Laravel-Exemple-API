@@ -66,7 +66,8 @@ class PessoaAssinatura extends Model
         'parente_politicamente_exposto',
         'cargo_parente_politico',
         'nome_mae',
-        'tipo_imovel'
+        'tipo_imovel',
+        'data_fundacao'
     ];
 
     protected $attributes = [
@@ -99,7 +100,8 @@ class PessoaAssinatura extends Model
         'parente_politicamente_exposto' => false,
         'cargo_parente_politico' => null,
         'nome_mae' => null,
-        'tipo_imovel' => null
+        'tipo_imovel' => null,
+        'data_fundacao' => null,
     ];
 
     public function proposta()
