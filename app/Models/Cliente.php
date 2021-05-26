@@ -105,4 +105,9 @@ class Cliente extends Model
     {
         return $this->belongsTo(PorteEmpresa::class, 'id_porte_empresa');
     }
+
+    public function tipoLogradouro()
+    {
+        return $this->belongsTo(TipoLogradouro::class, 'id_tipo_logradouro');
+    }
 }

@@ -57,8 +57,7 @@ class PdfController extends Controller
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
         PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
-
-        return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
+        exit();
     }
 
     /**
@@ -80,7 +79,6 @@ class PdfController extends Controller
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
         PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
-
-        return view('pdf.ccb-pj', $this->service->contratoPj($idProposta) ?? []);
+        exit();
     }
 }

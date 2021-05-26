@@ -118,4 +118,9 @@ class PessoaAssinatura extends Model
     {
         return $this->belongsTo(AtividadeComercial::class, 'id_atividade_comercial');
     }
+
+    public function tipoLogradouro()
+    {
+        return $this->belongsTo(TipoLogradouro::class, 'id_tipo_logradouro');
+    }
 }
