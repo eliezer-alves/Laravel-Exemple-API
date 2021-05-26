@@ -1,0 +1,56 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Cosif;
+use Exception;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class CosifSeeder extends Seeder
+{
+    private $listaCosifs = [
+        [
+            'cosif' => 4100,
+            'descricao' => 'RURAL'
+        ],
+        [
+            'cosif' => 4200,
+            'descricao' => 'INDUSTRIA'
+        ],
+        [
+            'cosif' => 4300,
+            'descricao' => 'COMERCIO'
+        ],
+        [
+            'cosif' => 4500,
+            'descricao' => 'SERVICOS'
+        ],
+        [
+            'cosif' => 4600,
+            'descricao' => 'PESSOAS FISICAS'
+        ],
+        [
+            'cosif' => 4700,
+            'descricao' => 'HABITACAO'
+        ]
+    ];
+
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        try {
+            DB::beginTransaction();
+            foreach ($this->listaCosifs as $cosif) {
+                Cosif::create($cosif);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rolback();
+        }
+    }
+}

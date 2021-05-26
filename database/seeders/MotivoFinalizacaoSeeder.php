@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\MotivoFinalizacao;
-
+use Exception;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MotivoFinalizacaoSeeder extends Seeder
 {
@@ -16,10 +17,16 @@ class MotivoFinalizacaoSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->listaMotivoFinalizacao as $motivo) {
-            $r = MotivoFinalizacao::create([
-                'descricao' => $motivo
-            ]);
+        try {
+            DB::beginTransaction();
+            foreach ($this->listaMotivoFinalizacao as $motivo) {
+                $r = MotivoFinalizacao::create([
+                    'descricao' => $motivo
+                ]);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rolback();
         }
     }
 }

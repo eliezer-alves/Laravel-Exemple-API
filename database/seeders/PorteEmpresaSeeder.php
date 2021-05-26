@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\PorteEmpresa;
-
+use Exception;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PorteEmpresaSeeder extends Seeder
 {
@@ -16,10 +17,16 @@ class PorteEmpresaSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->listaPortesEmpresa as $porteEmpresa) {
-        	$r = PorteEmpresa::create([
-        		'descricao' => $porteEmpresa
-        	]);
+        try {
+            DB::beginTransaction();
+            foreach ($this->listaPortesEmpresa as $porteEmpresa) {
+                $r = PorteEmpresa::create([
+                    'descricao' => $porteEmpresa
+                ]);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rolback();
         }
     }
 }
