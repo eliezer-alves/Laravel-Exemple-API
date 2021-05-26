@@ -134,7 +134,7 @@ setlocale(LC_MONETARY, 'it_IT');
 
             <tr>
                 <td colspan="8" align="left" valign="top"><h3>Razão Social:</h3>
-                    <h4><?= $cliente_assinatura['   '] ?? '-------' ?></h4>
+                    <h4><?= $cliente_assinatura['razao_social'] ?? '-------' ?></h4>
                 </td>
                 <td colspan="8" align="left" valign="top"><h3>CNPJ:</h3>
                     <h4><?= $cliente_assinatura['cnpj'] ?? '-------' ?></h4>
