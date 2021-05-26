@@ -58,7 +58,7 @@
         </tr>
         <tr>
             <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3>
-                <h4><?= $cliente_assinatura['logradouro'] ?? '-------' ?></h4>
+            <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') ?></h4>
             </td>
             <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                 <h4><?= $cliente_assinatura['bairro'] ?? '-------' ?></h4>
@@ -103,7 +103,7 @@
         </tr>
         <tr>
             <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3>
-                <h4><?= $representante['logradouro'] ?></h4>
+                <h4><?= $representante['tipo_logradouro']['descricao'] . ' ' . $representante['logradouro'] ?></h4>
             </td>
             <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                 <h4><?= $representante['bairro'] ?></h4>
@@ -232,7 +232,7 @@
                 <td colspan="2" align="left" valign="top"><h3>Estado Civil:</h3><h4>' . $socio['estado_civil'] . '</h4></td>
             </tr>
             <tr>
-                <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['logradouro'] . '</h4></td>
+                <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['tipo_logradouro']['descricao'] . ' ' . $socio['logradouro'] . '</h4></td>
                 <td colspan="4" align="left" valign="top"><h3>Bairro:</h3><h4>' . $socio['bairro'] . '</h4></td>
                 <td colspan="2" align="left" valign="top"><h3>UF:</h3><h4>' . $socio['uf'] . '</h4></td>
             </tr>

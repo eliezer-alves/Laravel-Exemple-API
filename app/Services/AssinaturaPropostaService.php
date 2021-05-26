@@ -172,9 +172,11 @@ class AssinaturaPropostaService
             ->findOrFail($idPessoaAssinatura);
 
         $proposta->parcelas;
-        $proposta->clienteAssinatura;
-        $proposta->representante;
-        $proposta->socios;
+        $proposta->clienteAssinatura->tipoLogradouro;
+        $proposta->representante->tipoLogradouro;
+        $proposta->socios->map(function ($socio) {
+            $socio->tipoLogradouro;
+        });
         $proposta = $proposta->toArray();
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
