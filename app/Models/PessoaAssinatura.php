@@ -55,7 +55,7 @@ class PessoaAssinatura extends Model
         'nome_fantasia',
         'razao_social',
         'id_atividade_comercial',
-        'tipo_empresa',
+        'id_tipo_empresa',
         'id_porte_empresa',
         'rendimento_mensal',
         'faturamento_anual',
@@ -129,5 +129,10 @@ class PessoaAssinatura extends Model
     public function cosif()
     {
         return $this->belongsTo(Cosif::class, 'id_cosif');
+    }
+
+    public function tipoEmpresa()
+    {
+        return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
     }
 }

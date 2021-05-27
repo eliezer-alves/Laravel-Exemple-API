@@ -68,6 +68,7 @@ class PropostaService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->cosif;
         $proposta->clienteAssinatura->tipoLogradouro;
@@ -95,6 +96,7 @@ class PropostaService
         $proposta = $this->propostaRepository->findByNumero($numeroProposta);
         $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->cosif;
         $proposta->clienteAssinatura->tipoLogradouro;
@@ -379,7 +381,6 @@ class PropostaService
         $attributesFormCliente = $attributes['cliente'];
         $attributesFormSocios = $attributes['socios'];
 
-
         /*
         |--------------------------------------------------------------------------
         | Client
@@ -442,6 +443,7 @@ class PropostaService
         $proposta->refresh();
         $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->cosif;
         $proposta->clienteAssinatura->tipoLogradouro;
