@@ -197,7 +197,6 @@ class ApiSicredService implements ApiSicredServiceInterface
         $numeroTentativasRequest = 0;
         $response = null;
         $url = $this->urlServico('base_url') . $this->urlServico('proposta_v2_url') . "/$this->empresa/$numeroProposta" . $this->urlServico('cliente');
-        $attributes['cosif'] = $this->modeloSicredRepository->cosif;
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->post($url, $attributes);
