@@ -24,6 +24,7 @@ class PdfService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $proposta->parcelas;
         $proposta->clienteAssinatura->tipoLogradouro;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->representante->tipoLogradouro;
         $proposta->socios->map(function ($socio) {
             $socio->tipoLogradouro;

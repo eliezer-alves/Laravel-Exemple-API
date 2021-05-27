@@ -50,7 +50,7 @@
             <td colspan="4" align="left" valign="top"><h3>I. E. n°:</h3>
                 <h4><?= $cliente_assinatura['inscricao_estadual'] ?? '-------' ?></h4>
             </td>
-            <td colspan="4" align="left" valign="top"><h3>Tipo Empresa:</h3><h4><?= $cliente_assinatura['tipo_empresa'] ?? '-------' ?></h4>
+            <td colspan="4" align="left" valign="top"><h3>Tipo Empresa:</h3><h4><?= $cliente_assinatura['tipo_empresa']['descricao'] ?? '-------' ?></h4>
             </td>
             <td colspan="8" align="left" valign="top"><h3>E-mail:</h3>
                 <h4><?= $cliente_assinatura['email'] ?? '-------' ?></h4>
