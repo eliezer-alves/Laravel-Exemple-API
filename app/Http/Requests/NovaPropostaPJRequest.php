@@ -91,8 +91,7 @@ class NovaPropostaPJRequest extends FormRequest
             'socios.0.estado_civil' => ['required', 'string'],
             'socios.0.numero_documento_identidade' => ['required', 'string', 'max:11'],
             'socios.0.uf_documento_identidade' => ['required', 'string'],
-            'socios.0.tipo_documento_identidade' => ['required', 'string'],
-
+            'socios.0.tipo_documento_identidade' => ['required', 'string']
         ];
     }
 
