@@ -296,7 +296,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/uf';
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios') . '/uf';
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -320,7 +320,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/EstadoCivil/' . $this->empresa;
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios') . '/EstadoCivil/' . $this->empresa;
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
@@ -344,7 +344,7 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $numeroTentativasRequest = 0;
         $response = null;
-        $url = $this->urlServico('base_url') . $this->urlServico('dominios_url') . '/profissao/' . $this->empresa;
+        $url = $this->urlServico('base_url') . $this->urlServico('dominios') . '/profissao/' . $this->empresa;
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->get($url);
