@@ -26,7 +26,8 @@ class MotivoFinalizacaoSeeder extends Seeder
             }
             DB::commit();
         } catch (Exception $e) {
-            DB::rolback();
+            DB::rollback();
+            throw $e;
         }
     }
 }

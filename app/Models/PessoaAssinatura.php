@@ -67,7 +67,8 @@ class PessoaAssinatura extends Model
         'cargo_parente_politico',
         'nome_mae',
         'tipo_imovel',
-        'data_fundacao'
+        'data_fundacao',
+        'id_cosif',
     ];
 
     protected $attributes = [
@@ -102,6 +103,7 @@ class PessoaAssinatura extends Model
         'nome_mae' => null,
         'tipo_imovel' => null,
         'data_fundacao' => null,
+        'id_cosif' => null,
     ];
 
     public function proposta()
@@ -122,5 +124,10 @@ class PessoaAssinatura extends Model
     public function tipoLogradouro()
     {
         return $this->belongsTo(TipoLogradouro::class, 'id_tipo_logradouro');
+    }
+
+    public function cosif()
+    {
+        return $this->belongsTo(Cosif::class, 'id_cosif');
     }
 }

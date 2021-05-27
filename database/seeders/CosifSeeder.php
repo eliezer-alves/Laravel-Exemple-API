@@ -11,27 +11,27 @@ class CosifSeeder extends Seeder
 {
     private $listaCosifs = [
         [
-            'cosif' => 4100,
+            'id_cosif' => 4100,
             'descricao' => 'RURAL'
         ],
         [
-            'cosif' => 4200,
+            'id_cosif' => 4200,
             'descricao' => 'INDUSTRIA'
         ],
         [
-            'cosif' => 4300,
+            'id_cosif' => 4300,
             'descricao' => 'COMERCIO'
         ],
         [
-            'cosif' => 4500,
+            'id_cosif' => 4500,
             'descricao' => 'SERVICOS'
         ],
         [
-            'cosif' => 4600,
+            'id_cosif' => 4600,
             'descricao' => 'PESSOAS FISICAS'
         ],
         [
-            'cosif' => 4700,
+            'id_cosif' => 4700,
             'descricao' => 'HABITACAO'
         ]
     ];
@@ -50,7 +50,8 @@ class CosifSeeder extends Seeder
             }
             DB::commit();
         } catch (Exception $e) {
-            DB::rolback();
+            DB::rollback();
+            throw $e;
         }
     }
 }

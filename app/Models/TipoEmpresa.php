@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Cosif extends Model
+class TipoEmpresa extends Model
 {
     use HasFactory;
 
-    protected $table = 'cad_cosif';
-    protected $primaryKey = 'id_cosif';
+    protected $table = 'cad_tipo_empresa';
+    protected $primaryKey = 'id_tipo_empresa';
 
     protected $fillable = [
         'descricao'

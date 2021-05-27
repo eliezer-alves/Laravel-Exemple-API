@@ -57,6 +57,14 @@ class AlterTableCadClienteForPj extends Migration
 
             $table->integer('ano_faturamento')
                 ->nullable();
+
+            $table->foreignId('id_cosif')
+                ->nullable()
+                ->constrained('cad_cosif', 'id_cosif');
+
+            $table->foreignId('id_tipo_empresa')
+                ->nullable()
+                ->constrained('cad_tipo_empresa', 'id_tipo_empresa');
         });
     }
 
@@ -81,6 +89,8 @@ class AlterTableCadClienteForPj extends Migration
             $table->dropColumn('faturamento_anual');
             $table->dropColumn('capital_social');
             $table->dropColumn('ano_faturamento');
+            $table->dropColumn('id_cosif');
+            $table->dropColumn('id_tipo_empresa');
         });
     }
 }

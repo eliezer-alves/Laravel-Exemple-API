@@ -14,7 +14,7 @@ use App\Http\Controllers\{
     PorteEmpresaController,
     PropostaController,
     SimulacaoController,
-    TesteController,
+    TipoEmpresaController,
 };
 
 /*
@@ -65,6 +65,25 @@ Route::group([
     Route::get('/', [CosifController::class, '__invoke']);
 
 });
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Tipo Empresa
+|--------------------------------------------------------------------------
+*/
+Route::group([
+
+    'middleware' => ['auth:api'],
+    'prefix' => 'tipo-empresa',
+
+], function () {
+
+    Route::get('/', [TipoEmpresaController::class, '__invoke']);
+
+});
+
 
 
 /*

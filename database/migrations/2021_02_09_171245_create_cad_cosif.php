@@ -14,7 +14,7 @@ class CreateCadCosif extends Migration
     public function up()
     {
         Schema::create('cad_cosif', function (Blueprint $table) {
-            $table->integer('cosif')
+            $table->integer('id_cosif')
                 ->unsigned()
                 ->unique();
 

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PorteEmpresaSeeder extends Seeder
 {
-    private $listaPortesEmpresa = ['MICROEMPREENDEDOR IINDIVIDUAL (MEI)', 'MICROEMPRESA (ME)', 'EMPRESA DE PEQUENO PORTE (EPP)', 'EMPRESA DE MEDIO PORTE', 'GRANDE EMPRESA'];
+    private $listaPorteEmpresa = ['MICROEMPREENDEDOR IINDIVIDUAL (MEI)', 'MICROEMPRESA (ME)', 'EMPRESA DE PEQUENO PORTE (EPP)', 'EMPRESA DE MEDIO PORTE', 'GRANDE EMPRESA'];
     /**
      * Run the database seeds.
      *
@@ -19,14 +19,15 @@ class PorteEmpresaSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            foreach ($this->listaPortesEmpresa as $porteEmpresa) {
+            foreach ($this->listaPorteEmpresa as $porteEmpresa) {
                 $r = PorteEmpresa::create([
                     'descricao' => $porteEmpresa
                 ]);
             }
             DB::commit();
         } catch (Exception $e) {
-            DB::rolback();
+            DB::rollback();
+            throw $e;
         }
     }
 }

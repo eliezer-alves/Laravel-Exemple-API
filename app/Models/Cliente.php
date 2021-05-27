@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\AtividadeComercial;
-
 class Cliente extends Model
 {
     use HasFactory;
@@ -49,6 +47,7 @@ class Cliente extends Model
         'faturamento_anual',
         'capital_social',
         'ano_faturamento',
+        'id_cosif',
         'createdAt',
         'updatedAt',
         'deletedAt',
@@ -84,6 +83,7 @@ class Cliente extends Model
         'faturamento_anual' => null,
         'capital_social' => null,
         'ano_faturamento' => null,
+        'id_cosif' => null,
     ];
 
     public function solicitacaoes()
@@ -109,5 +109,10 @@ class Cliente extends Model
     public function tipoLogradouro()
     {
         return $this->belongsTo(TipoLogradouro::class, 'id_tipo_logradouro');
+    }
+
+    public function cosif()
+    {
+        return $this->belongsTo(Cosif::class, 'id_cosif');
     }
 }

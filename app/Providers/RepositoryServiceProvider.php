@@ -15,6 +15,7 @@ use App\Repositories\Contracts\{
     PorteEmpresaRepositoryInterface,
     PropostaRepositoryInterface,
     PropostaParcelaRepositoryInterface,
+    TipoEmpresaRepositoryInterface,
     TipoLogradouroRepositoryInterface,
     UserRepositoryInterface,
     UrlSicredRepositoryInterface
@@ -32,6 +33,7 @@ use App\Repositories\Eloquent\{
     PorteEmpresaRepository,
     PropostaRepository,
     PropostaParcelaRepository,
+    TipoEmpresaRepository,
     TipoLogradouroRepository,
     UserRepository,
     UrlSicredRepository
@@ -106,6 +108,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PropostaParcelaRepositoryInterface::class,
             PropostaParcelaRepository::class
+        );
+
+        $this->app->bind(
+            TipoEmpresaRepositoryInterface::class,
+            TipoEmpresaRepository::class
         );
 
         $this->app->bind(
