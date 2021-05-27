@@ -64,7 +64,7 @@ class ApiSicredService implements ApiSicredServiceInterface
 
         if ($response->status() != 200) {
             Log::channel('sicred')->critical('Sessão Sicred - Houve um problema ao criar uma nova sessão.', $response->json());
-            throw new FailedResquestSicred($response, 'Sessão Sicred - Houve um problema ao criar uma nova sessão.');
+            throw new FailedResquestSicred($response, 'Sessão Sicred - Houve um problema ao criar uma nova sessão.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
 
@@ -123,7 +123,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Simulação - Impossibilidado de gerar uma nova simulação.');
+            throw new FailedResquestSicred($response, 'Simulação - Impossibilidado de gerar uma nova simulação.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return response($response->body(), $response->status());
@@ -147,7 +147,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Simulação - Impossibilidado de resgatar os dados da simulação.');
+            throw new FailedResquestSicred($response, 'Simulação - Impossibilidado de resgatar os dados da simulação.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return response($response->body(), $response->status());
@@ -177,7 +177,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Proposta - Impossibilidado de gerar uma nova proposta.');
+            throw new FailedResquestSicred($response, 'Proposta - Impossibilidado de gerar uma nova proposta.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         $numeroProposta = json_decode($response->body())->numeroProposta;
@@ -205,7 +205,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Cliente Proposta - Impossibilitado de vincular clienta à proposta.');
+            throw new FailedResquestSicred($response, 'Cliente Proposta - Impossibilitado de vincular clienta à proposta.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -231,7 +231,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Liberações Proposta - Impossibilitado de vincular liberações à proposta.');
+            throw new FailedResquestSicred($response, 'Liberações Proposta - Impossibilitado de vincular liberações à proposta.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -255,7 +255,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Proposta - Impossibilitado de resgatar os dados da proposta.');
+            throw new FailedResquestSicred($response, 'Proposta - Impossibilitado de resgatar os dados da proposta.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -280,7 +280,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && ($numeroTentativasRequest <= $this->numeroMaximoTentativasRequest));
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Liberações Proposta - Impossibilitado de resgatar os dados de liberações da proposta.');
+            throw new FailedResquestSicred($response, 'Liberações Proposta - Impossibilitado de resgatar os dados de liberações da proposta.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -304,7 +304,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar uf\'s.');
+            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar uf\'s.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -328,7 +328,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar estados civis.');
+            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar estados civis.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -352,7 +352,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar profissões.');
+            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar profissões.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
@@ -376,7 +376,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar instituições bancárias.');
+            throw new FailedResquestSicred($response, 'Domínios: indisponibilidade de resgatar instituições bancárias.', ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());
