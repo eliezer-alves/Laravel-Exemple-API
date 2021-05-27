@@ -6,6 +6,7 @@ use App\Repositories\Contracts\{
     AbstractRepositoryInterface,
     AtividadeComercialRepositoryInterface,
     DocumentoPropostaRepositoryInterface,
+    CosifRepositoryInterface,
     ClienteRepositoryInterface,
     ClientSicredRepositoryInterface,
     ConfiguracaoRepositoryInterface,
@@ -24,6 +25,7 @@ use App\Repositories\Eloquent\{
     DocumentoPropostaRepository,
     ClienteRepository,
     ClientSicredRepository,
+    CosifRepository,
     ConfiguracaoRepository,
     ModeloSicredRepository,
     PessoaAssinaturaRepository,
@@ -64,6 +66,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ClientSicredRepositoryInterface::class,
             ClientSicredRepository::class
+        );
+
+        $this->app->bind(
+            CosifRepositoryInterface::class,
+            CosifRepository::class
         );
 
         $this->app->bind(

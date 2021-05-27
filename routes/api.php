@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     AtividadeComercialController,
     AssinaturaPropostaController,
     ClienteController,
+    CosifController,
     DocumentoPropostaController,
     DominiosController,
     PdfController,
@@ -35,6 +36,13 @@ Route::middleware('auth:api')->prefix('cliente')->group(function () {
 
     Route::put('/{id_cliente}', [ClienteController::class, 'update']);
     Route::delete('/{id_cliente}', [ClienteController::class, 'destroy']);
+});
+
+Route::group([
+    'middleware' => ['auth:api'],
+    'prefix' => 'cosif',
+], function () {
+    Route::get('/', [CosifController::class, '__invoke']);
 });
 
 Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [ClienteController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
