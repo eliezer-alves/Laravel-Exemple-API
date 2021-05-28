@@ -12,8 +12,8 @@ class ClientSicredRepository extends AbstractRepository implements ClientSicredR
 		parent::__construct($model);
 	}
 
-	public function findEnvironment($everioment)
+	public function findEnvironment($environment)
 	{
-		return $this->firstWhere('environment', $everioment);
+		return $this->firstWhere('environment', $environment);
 	}
 }

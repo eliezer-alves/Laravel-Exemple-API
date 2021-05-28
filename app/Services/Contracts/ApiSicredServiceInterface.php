@@ -6,6 +6,8 @@ interface ApiSicredServiceInterface
 {
     public function novaSessao();
 
+    public function setModeloProposta(string $modelo);
+
     public function novaSimulacao(array $parms);
 
     public function exibeSimulacao(int $idSimulacao);

@@ -16,10 +16,4 @@ class ModeloSicredRepository extends AbstractRepository implements ModeloSicredR
     {
         return $this->firstWhere('modelo', $modelo);
     }
-
-    public function delete($id)
-    {
-        $entity = $this->findOrFail($id);
-        return $entity->delete($id);
-    }
 }

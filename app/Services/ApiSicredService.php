@@ -23,6 +23,8 @@ class ApiSicredService implements ApiSicredServiceInterface
     private $numeroMaximoTentativasRequest;
     private $clientSicredRepository;
     private $modeloSicredRepository;
+    private $clientSicred;
+    private $modeloSicred;
     private $environment;
     private $modelo;
     private $urls;
@@ -32,12 +34,22 @@ class ApiSicredService implements ApiSicredServiceInterface
     {
         $this->numeroMaximoTentativasRequest = 3;
         $this->environment = 'hml';
-        $this->modelo = 'capital-de-giro';
+        $this->modelo = 'capital-de-giro-abaixo';
         $this->empresa = '01';
 
-        $this->clientSicredRepository = $clientSicredRepository->findEnvironment($this->environment);
-        $this->modeloSicredRepository = $modeloSicredRepository->findModelo($this->modelo);
-        $this->urls = $this->modeloSicredRepository->urls;
+        $this->clientSicredRepository = $clientSicredRepository;
+        $this->modeloSicredRepository = $modeloSicredRepository;
+        $this->clientSicred = $this->clientSicredRepository->findEnvironment($this->environment);
+        $this->modeloSicred = $this->modeloSicredRepository->findModelo($this->modelo);
+        $this->urls = $this->modeloSicred->urls;
+        $this->renovaSessao();
+    }
+
+    public function setmodeloProposta($modelo)
+    {
+        $this->modelo = $modelo;
+        $this->modeloSicred = $this->modeloSicredRepository->findModelo($modelo);
+        $this->urls = $this->modeloSicred->urls;
         $this->renovaSessao();
     }
 
@@ -58,7 +70,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         $url = $this->urlServico('base_url') . $this->urlServico('athentication_url');
 
         do {
-            $response = Http::asForm()->post($url, $this->clientSicredRepository->toArray());
+            $response = Http::asForm()->post($url, $this->clientSicred->toArray());
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
@@ -87,12 +99,12 @@ class ApiSicredService implements ApiSicredServiceInterface
         $numeroTentativasRequest = 0;
         $response = null;
         $url = $this->urlServico('base_url') . $this->urlServico('athentication_url');
-        $form = $this->clientSicredRepository->toArray();
+        $form = $this->clientSicred->toArray();
         $form['grant_type'] = 'refresh_token';
         $form['refresh_token'] = Session::get('refreshToken') ? Session::get('refreshToken') : '';
 
         do {
-            $response = Http::asForm()->post($url, $this->clientSicredRepository->toArray());
+            $response = Http::asForm()->post($url, $this->clientSicred->toArray());
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
@@ -115,7 +127,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         $numeroTentativasRequest = 0;
         $response = null;
         $url = $this->urlServico('base_url') . $this->urlServico('simulacao_url') . '/simular';
-        $form = array_merge($this->modeloSicredRepository->toArray(), $request);
+        $form = array_merge($this->modeloSicred->toArray(), $request);
 
         do {
             $response = Http::withToken(Session::get('accessToken'))->post($url, $form);
