@@ -67,10 +67,15 @@ class PropostaService
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $proposta->parcelas;
-        $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->atividadeComercial;
-        $proposta->representante;
-        $proposta->socios;
+        $proposta->clienteAssinatura->tipoEmpresa;
+        $proposta->clienteAssinatura->porte;
+        $proposta->clienteAssinatura->cosif;
+        $proposta->clienteAssinatura->tipoLogradouro;
+        $proposta->representante->tipoLogradouro;
+        $proposta->socios->map(function ($socio) {
+            return $socio->tipoLogradouro;
+        });
         $proposta->documentos;
         $proposta->statusAnalise;
 
@@ -90,9 +95,15 @@ class PropostaService
     {
         $proposta = $this->propostaRepository->findByNumero($numeroProposta);
         $proposta->parcelas;
+        $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
-        $proposta->representante;
-        $proposta->socios;
+        $proposta->clienteAssinatura->cosif;
+        $proposta->clienteAssinatura->tipoLogradouro;
+        $proposta->representante->tipoLogradouro;
+        $proposta->socios->map(function ($socio) {
+            return $socio->tipoLogradouro;
+        });
         $proposta->documentos;
         $proposta->statusAnalise;
 
@@ -431,7 +442,11 @@ class PropostaService
 
         $proposta->refresh();
         $proposta->parcelas;
+        $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
+        $proposta->clienteAssinatura->cosif;
+        $proposta->clienteAssinatura->tipoLogradouro;
         $proposta->representante;
         $proposta->socios;
         $proposta->statusAnalise;

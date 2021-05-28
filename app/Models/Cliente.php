@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\AtividadeComercial;
-
 class Cliente extends Model
 {
     use HasFactory;
@@ -43,12 +41,13 @@ class Cliente extends Model
         'bairro',
         'id_tipo_logradouro',
         'id_atividade_comercial',
-        'tipo_empresa',
+        'id_tipo_empresa',
         'id_porte_empresa',
         'rendimento_mensal',
         'faturamento_anual',
         'capital_social',
         'ano_faturamento',
+        'id_cosif',
         'createdAt',
         'updatedAt',
         'deletedAt',
@@ -78,12 +77,13 @@ class Cliente extends Model
         'bairro' => null,
         'id_tipo_logradouro' => null,
         'id_atividade_comercial' => null,
-        'tipo_empresa' => null,
+        'id_tipo_empresa' => null,
         'id_porte_empresa' => null,
         'rendimento_mensal' => null,
         'faturamento_anual' => null,
         'capital_social' => null,
         'ano_faturamento' => null,
+        'id_cosif' => null,
     ];
 
     public function solicitacaoes()
@@ -104,5 +104,20 @@ class Cliente extends Model
     public function porte()
     {
         return $this->belongsTo(PorteEmpresa::class, 'id_porte_empresa');
+    }
+
+    public function tipoLogradouro()
+    {
+        return $this->belongsTo(TipoLogradouro::class, 'id_tipo_logradouro');
+    }
+
+    public function cosif()
+    {
+        return $this->belongsTo(Cosif::class, 'id_cosif');
+    }
+
+    public function tipoEmpresa()
+    {
+        return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
     }
 }

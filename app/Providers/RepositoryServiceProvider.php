@@ -6,6 +6,7 @@ use App\Repositories\Contracts\{
     AbstractRepositoryInterface,
     AtividadeComercialRepositoryInterface,
     DocumentoPropostaRepositoryInterface,
+    CosifRepositoryInterface,
     ClienteRepositoryInterface,
     ClientSicredRepositoryInterface,
     ConfiguracaoRepositoryInterface,
@@ -14,6 +15,7 @@ use App\Repositories\Contracts\{
     PorteEmpresaRepositoryInterface,
     PropostaRepositoryInterface,
     PropostaParcelaRepositoryInterface,
+    TipoEmpresaRepositoryInterface,
     TipoLogradouroRepositoryInterface,
     UserRepositoryInterface,
     UrlSicredRepositoryInterface
@@ -24,12 +26,14 @@ use App\Repositories\Eloquent\{
     DocumentoPropostaRepository,
     ClienteRepository,
     ClientSicredRepository,
+    CosifRepository,
     ConfiguracaoRepository,
     ModeloSicredRepository,
     PessoaAssinaturaRepository,
     PorteEmpresaRepository,
     PropostaRepository,
     PropostaParcelaRepository,
+    TipoEmpresaRepository,
     TipoLogradouroRepository,
     UserRepository,
     UrlSicredRepository
@@ -67,6 +71,11 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            CosifRepositoryInterface::class,
+            CosifRepository::class
+        );
+
+        $this->app->bind(
             DocumentoPropostaRepositoryInterface::class,
             DocumentoPropostaRepository::class
         );
@@ -99,6 +108,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PropostaParcelaRepositoryInterface::class,
             PropostaParcelaRepository::class
+        );
+
+        $this->app->bind(
+            TipoEmpresaRepositoryInterface::class,
+            TipoEmpresaRepository::class
         );
 
         $this->app->bind(

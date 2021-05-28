@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\StatusSolicitacao;
-
+use Exception;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StatusSolicitacaoSeeder extends Seeder
 {
@@ -16,10 +17,17 @@ class StatusSolicitacaoSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->listaStatusSolicitacao as $status) {
-            $r = StatusSolicitacao::create([
-                'descricao' => $status
-            ]);
+        try {
+            DB::beginTransaction();
+            foreach ($this->listaStatusSolicitacao as $status) {
+                $r = StatusSolicitacao::create([
+                    'descricao' => $status
+                ]);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
         }
     }
 }

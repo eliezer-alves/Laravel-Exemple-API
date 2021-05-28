@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoEmpresa;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Cliente;
-
-class ClienteSeeder extends Seeder
+class TipoEmpresaSeeder extends Seeder
 {
+    private $listaTipoEmpresa = ['PJ SOCIEDADE', 'PJ INDIVIDUAL'];
     /**
      * Run the database seeds.
      *
@@ -19,7 +19,11 @@ class ClienteSeeder extends Seeder
     {
         try {
             DB::beginTransaction();
-            $objCliente = Cliente::Factory()->create();
+            foreach ($this->listaTipoEmpresa as $tipoEmpresa) {
+                $r = TipoEmpresa::create([
+                    'descricao' => $tipoEmpresa
+                ]);
+            }
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();

@@ -84,6 +84,14 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->timestamp('data_fundacao', $precision = 0)
                 ->nullable();
 
+            $table->foreignId('id_cosif')
+                ->nullable()
+                ->constrained('cad_cosif', 'id_cosif');
+
+            $table->foreignId('id_tipo_empresa')
+                ->nullable()
+                ->constrained('cad_tipo_empresa', 'id_tipo_empresa');
+
         });
     }
 
@@ -117,6 +125,8 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('nome_mae');
             $table->dropColumn('tipo_imovel');
             $table->dropColumn('data_fundacao');
+            $table->dropColumn('id_cosif');
+            $table->dropColumn('id_tipo_empresa');
         });
     }
 }

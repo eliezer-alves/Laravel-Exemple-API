@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Log;
 class FailedResquestSicred extends Exception
 {
     private $response;
+    private $content;
 
-    public function __construct($response, $message = 'Houveram problemas na integração com a Sicred.')
+    public function __construct($response, $message = 'Houveram problemas na integração com a Sicred.', $content = [])
     {
         $this->response = $response;
         $this->message = $message;
+        $this->content = $content;
     }
 
     /**
@@ -61,7 +63,7 @@ class FailedResquestSicred extends Exception
             'errors' => $this->errorsResponse($responseBody)
         ];
 
-        Log::channel('sicred')->warning($this->message, $data);
+        Log::channel('sicred')->warning($this->message, array_merge($data, $this->content));
 
         return response($data, $this->response->status());
     }

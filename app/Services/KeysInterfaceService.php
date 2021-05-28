@@ -118,8 +118,8 @@ class KeysInterfaceService
                 'sourceKey' => 'faturamento_anual'
             ],
             [
-                'inputKey' => 'porte',
-                'sourceKey' => 'porte'
+                'inputKey' => 'cosif',
+                'sourceKey' => 'id_cosif'
             ],
             [
                 'inputKey' => 'email',

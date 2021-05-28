@@ -24,7 +24,8 @@ class ClientSicredSeeder extends Seeder
             $clientSicred = ClientSicred::create($objClientSicred->toArray());
             DB::commit();
         } catch (Exception $e) {
-            DB::rolback();
+            DB::rollback();
+            throw $e;
         }
     }
 }
