@@ -217,6 +217,26 @@ class PropostaService
 
 
     /**
+     * Service Layer - Method responsible for excluding as portions
+     * of the proposed proposal on the basis of Agile
+     *
+     * @since 29/05/2021
+     *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $idProposta
+     * @return array $parcelas
+     */
+    private function excluirParcelsPropostaSicred($idProposta)
+    {
+        $parcelas = $this->propostaParcelaRepository->where('id_proposta', $idProposta)->get();
+        $parcelas->map(function ($parcela) {
+            $parcela->delete();
+        });
+        return $parcelas;
+    }
+
+
+    /**
      * Service Layer - Updates or deletes documents related to a proposal
      *
      * @since 24/05/2021
@@ -282,6 +302,7 @@ class PropostaService
     private function normalizaParametrosFormularioNovaProposta($formAttributes)
     {
         $attributes = $this->keysInterfaceService->hydrator($formAttributes, $this->keysInterfaceService->atributosFormularioNovaProposta());
+        $attributes['id_simulacao'] = $formAttributes['id_nova_simulacao'] ?? $formAttributes['id_simulacao'];
         $attributes['id_cliente'] = $this->cliente['id_cliente'];
         $attributes['cnpj_beneficiario'] = $this->cliente['cnpj'] ?? null;
         $attributes['nome_beneficiario'] = $this->cliente['nome_fantasia'] ?? null;
@@ -529,26 +550,39 @@ class PropostaService
         */
         $this->atualizarSituacaoDocumentosProposta($attributesFormDocumentos);
 
+        if($attributesFormProposta['id_nova_simulacao'] ?? false){
+            /*
+            |--------------------------------------------------------------------------
+            | Proposal at Sicred
+            |--------------------------------------------------------------------------
+            |
+            | Creating a proposal at Sicredi from Agil's proposal
+            */
+            $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
+            $this->getDadosPropostaSicred($numeroProposta);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Sicred
-        |--------------------------------------------------------------------------
-        |
-        | Creating a proposal at Sicredi from Agil's proposal
-        */
-        $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
-        $this->getDadosPropostaSicred($numeroProposta);
+
+            /*
+            |--------------------------------------------------------------------------
+            | Exclude proposal installments
+            |--------------------------------------------------------------------------
+            |
+            | Exclude installments from the proposal as new installments for the new
+            | simulation will be saved.
+            */
+            $this->excluirParcelsPropostaSicred($proposta->id_proposta);
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | Agile Proposal / Sicred Proposal
-        |--------------------------------------------------------------------------
-        |
-        | Updating Agil's proposal based on data from Sicred's proposal.
-        */
-        $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+            /*
+            |--------------------------------------------------------------------------
+            | Agile Proposal / Sicred Proposal
+            |--------------------------------------------------------------------------
+            |
+            | Updating Agil's proposal based on data from Sicred's proposal.
+            */
+            $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+
+        }
 
         $proposta->refresh();
         $proposta->parcelas;

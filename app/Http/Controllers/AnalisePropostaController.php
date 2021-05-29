@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AlterarDadosPropostaAnalise;
+use App\Http\Requests\AlterarDadosPropostaAnaliseRequest;
 use App\Services\PropostaService;
 use Illuminate\Http\Request;
 
@@ -27,10 +27,10 @@ class AnalisePropostaController extends Controller
      *
      * @author Eliezer Alves
      *
-     * @param  App\Http\Requests\AlterarDadosPropostaAnalise;
+     * @param  App\Http\Requests\AlterarDadosPropostaAnaliseRequest;
      * @return \Illuminate\Http\Response
      */
-    public function alterarDadosProposta(AlterarDadosPropostaAnalise $request)
+    public function alterarDadosProposta(AlterarDadosPropostaAnaliseRequest $request)
     {
         return $this->service->alterarDadosProposta($request->all());
     }
