@@ -13,9 +13,17 @@ use App\Repositories\Contracts\{
 use App\Services\Contracts\{
     ApiSicredServiceInterface
 };
-use App\Services\{
-    KeysInterfaceService,
+
+use App\Services\KeysInterfaceService;
+
+use App\Services\GacConsultas\{
+    InfomaisService,
+    ScpcService,
+    SpcBrasilService,
+    ConfirmeOnlineService,
 };
+
+
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -40,7 +48,12 @@ class PropostaService
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService)
+    private $infomais;
+    private $scpc;
+    private $spcBrasil;
+    private $confirmeOnline;
+
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
     {
         $this->clienteRepository = $clienteRepository;
         $this->documentoPropostaRepository = $documentoPropostaRepository;
@@ -50,6 +63,11 @@ class PropostaService
 
         $this->apiSicred = $apiSicred;
         $this->keysInterfaceService = $keysInterfaceService;
+
+        $this->infomais = $infomais;
+        $this->scpc = $scpc;
+        $this->spcBrasil = $spcBrasil;
+        $this->confirmeOnline = $confirmeOnline;
 
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;
@@ -108,6 +126,103 @@ class PropostaService
         $proposta->statusAnalise;
 
         return $proposta->toArray();
+    }
+
+    /**
+     * Service Layer - Get proposal data for analysis process
+     *
+     * @since 31/05/2021
+     *
+     * @param  int  $idProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosPropostaAnalise($idProposta)
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | Dadoso da Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Resgatando todos os dados da Proposta para a análise
+        */
+        $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $proposta->clienteAssinatura->atividadeComercial;
+        $proposta->clienteAssinatura->tipoEmpresa;
+        $proposta->clienteAssinatura->porte;
+        $proposta->clienteAssinatura->cosif;
+        $proposta->clienteAssinatura->tipoLogradouro;
+        $proposta->representante->tipoLogradouro;
+        $proposta->socios->map(function ($socio) {
+            return $socio->tipoLogradouro;
+        });
+        $proposta->documentos;
+        $proposta->statusAnalise;
+
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Consultas - Cliente Assinatura
+        |--------------------------------------------------------------------------
+        |
+        | Fazendo Consultas do Cliente Assinatura
+        |   - Confirme Online
+        */
+        $proposta['clienteAssinatura']['confirme_online'] = $this->confirmeOnline->consulta($proposta['clienteAssinatura']['cnpj']);
+
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Consultas - Representante Legal
+        |--------------------------------------------------------------------------
+        |
+        | Fazendo Consultas do Representante Legal
+        |   - Info Mais
+        |   - SCPC
+        |   - SPC Brasil
+        |   - Confirme Online
+        */
+        $proposta['representante']['infomais'] = [
+            'endereco' => $this->infomais->endereco($proposta['representante']['cpf']),
+            'telefone' => $this->infomais->telefone($proposta['representante']['cpf']),
+            'situacao' => $this->infomais->situacao($proposta['representante']['cpf'])
+        ];
+        $proposta['representante']['scpc'] = [
+            'debito' => $this->scpc->debito($proposta['representante']['cpf']),
+            'score' => $this->scpc->score($proposta['representante']['cpf']),
+        ];
+        $proposta['representante']['spc_brasil'] = $this->spcBrasil->consulta($proposta['representante']['cpf']);
+        $proposta['representante']['confirme_online'] = $this->confirmeOnline->consulta($proposta['representante']['cpf']);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Consultas - Sócios
+        |--------------------------------------------------------------------------
+        |
+        | Fazendo Consultas dos Sócios
+        |   - Info Mais
+        |   - SCPC
+        |   - SPC Brasil
+        |   - Confirme Online
+        */
+        foreach ($proposta['socios'] as $key => $socio) {
+            $proposta['socios'][$key]['infomais'] = [
+                'endereco' => $this->infomais->endereco($socio['cpf']),
+                'telefone' => $this->infomais->telefone($socio['cpf']),
+                'situacao' => $this->infomais->situacao($socio['cpf'])
+            ];
+            $proposta['socios'][$key]['scpc'] = [
+                'debito' => $this->scpc->debito($socio['cpf']),
+                'score' => $this->scpc->score($socio['cpf']),
+            ];
+            $proposta['socios'][$key]['spc_brasil'] = $this->spcBrasil->consulta($socio['cpf']);
+            $proposta['socios'][$key]['confirme_online'] = $this->confirmeOnline->consulta($socio['cpf']);
+        }
+
+        return $proposta;
+
     }
 
 
@@ -217,6 +332,26 @@ class PropostaService
 
 
     /**
+     * Service Layer - Method responsible for excluding as portions
+     * of the proposed proposal on the basis of Agile
+     *
+     * @since 29/05/2021
+     *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $idProposta
+     * @return array $parcelas
+     */
+    private function excluirParcelsPropostaSicred($idProposta)
+    {
+        $parcelas = $this->propostaParcelaRepository->where('id_proposta', $idProposta)->get();
+        $parcelas->map(function ($parcela) {
+            $parcela->delete();
+        });
+        return $parcelas;
+    }
+
+
+    /**
      * Service Layer - Updates or deletes documents related to a proposal
      *
      * @since 24/05/2021
@@ -282,6 +417,7 @@ class PropostaService
     private function normalizaParametrosFormularioNovaProposta($formAttributes)
     {
         $attributes = $this->keysInterfaceService->hydrator($formAttributes, $this->keysInterfaceService->atributosFormularioNovaProposta());
+        $attributes['id_simulacao'] = $formAttributes['id_nova_simulacao'] ?? $formAttributes['id_simulacao'];
         $attributes['id_cliente'] = $this->cliente['id_cliente'];
         $attributes['cnpj_beneficiario'] = $this->cliente['cnpj'] ?? null;
         $attributes['nome_beneficiario'] = $this->cliente['nome_fantasia'] ?? null;
@@ -529,26 +665,39 @@ class PropostaService
         */
         $this->atualizarSituacaoDocumentosProposta($attributesFormDocumentos);
 
+        if($attributesFormProposta['id_nova_simulacao'] ?? false){
+            /*
+            |--------------------------------------------------------------------------
+            | Proposal at Sicred
+            |--------------------------------------------------------------------------
+            |
+            | Creating a proposal at Sicredi from Agil's proposal
+            */
+            $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
+            $this->getDadosPropostaSicred($numeroProposta);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Proposal at Sicred
-        |--------------------------------------------------------------------------
-        |
-        | Creating a proposal at Sicredi from Agil's proposal
-        */
-        $numeroProposta = $this->vincularPropostaSicred($proposta->id_proposta);
-        $this->getDadosPropostaSicred($numeroProposta);
+
+            /*
+            |--------------------------------------------------------------------------
+            | Exclude proposal installments
+            |--------------------------------------------------------------------------
+            |
+            | Exclude installments from the proposal as new installments for the new
+            | simulation will be saved.
+            */
+            $this->excluirParcelsPropostaSicred($proposta->id_proposta);
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | Agile Proposal / Sicred Proposal
-        |--------------------------------------------------------------------------
-        |
-        | Updating Agil's proposal based on data from Sicred's proposal.
-        */
-        $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+            /*
+            |--------------------------------------------------------------------------
+            | Agile Proposal / Sicred Proposal
+            |--------------------------------------------------------------------------
+            |
+            | Updating Agil's proposal based on data from Sicred's proposal.
+            */
+            $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
+
+        }
 
         $proposta->refresh();
         $proposta->parcelas;

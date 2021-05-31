@@ -25,6 +25,7 @@ class NovaPropostaPJRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'teste' => ['required'],
             'proposta.id_simulacao' => ['required', 'numeric'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],

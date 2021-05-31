@@ -150,7 +150,7 @@ Route::group([
 */
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
     'prefix' => 'simulacao',
 
 ], function () {
@@ -217,7 +217,11 @@ Route::group([
     'middleware' => ['auth:api'],
     'prefix' => 'analise-proposta',
 ], function () {
+
     Route::post('/atualizar-proposta', [AnalisePropostaController::class, 'alterarDadosProposta']);
+    Route::get('/proposta/{id_proposta}', [AnalisePropostaController::class, 'dadosPropostaAnalise'])
+        ->where(['id_proposta' => '[0-9]+']);;
+
 });
 
 

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\Uf;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlterarDadosPropostaAnalise extends FormRequest
+class AlterarDadosPropostaAnaliseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,6 +26,7 @@ class AlterarDadosPropostaAnalise extends FormRequest
     {
         return [
             'proposta.id_proposta' => ['required', 'numeric', 'exists:cad_proposta,id_proposta'],
+            'proposta.nova_id_simulacao' => ['numeric'],
             'proposta.id_simulacao' => ['required', 'numeric'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],
