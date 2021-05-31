@@ -106,6 +106,12 @@ return [
             'level' => 'debug'
         ],
 
+        'gacConsultas' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/gac_consultas.log'),
+            'level' => 'debug'
+        ],
+
         'failedActions' => [
             'driver' => 'single',
             'path' => storage_path('logs/filed_actions.log'),

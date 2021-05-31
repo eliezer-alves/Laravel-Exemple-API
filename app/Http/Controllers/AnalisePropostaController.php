@@ -30,6 +30,21 @@ class AnalisePropostaController extends Controller
      * @param  App\Http\Requests\AlterarDadosPropostaAnaliseRequest;
      * @return \Illuminate\Http\Response
      */
+    public function dadosPropostaAnalise($idProposta)
+    {
+        return $this->service->getDadosPropostaAnalise($idProposta);
+    }
+
+
+    /**
+     * Updates all information related
+     * to a proposal under review
+     *
+     * @author Eliezer Alves
+     *
+     * @param  App\Http\Requests\AlterarDadosPropostaAnaliseRequest;
+     * @return \Illuminate\Http\Response
+     */
     public function alterarDadosProposta(AlterarDadosPropostaAnaliseRequest $request)
     {
         return $this->service->alterarDadosProposta($request->all());
