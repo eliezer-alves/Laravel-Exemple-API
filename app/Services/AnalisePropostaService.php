@@ -3,55 +3,64 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\{
-    ClienteRepositoryInterface,
-    DocumentoPropostaRepositoryInterface,
-    PessoaAssinaturaRepositoryInterface,
-    PropostaRepositoryInterface,
-    PropostaParcelaRepositoryInterface,
+    AnalisePropostaRepositoryInterface,
+    AnalisePessoaPropostaRepositoryInterface,
 };
-
-use App\Services\Contracts\{
-    ApiSicredServiceInterface
-};
-use App\Services\{
-    KeysInterfaceService,
-};
-use Exception;
-use Illuminate\Support\Facades\Log;
 
 /**
- * Service Layer - Class responsible for managing the loan proposals
+ * Service Layer - Class responsible for managing the proposal analysis process
  *
  * @author Eliezer Alves
- * @since 03/2021
+ * @since 31/05/2021
  *
  */
-class AbalisePropostaService
+class AnalisePropostaService
 {
-    private $clienteRepository;
-    private $documentoPropostaRepository;
-    private $pessoaAssinaturaRepository;
-    private $propostaRepository;
-    private $propostaParcelaRepository;
+    private $analisePropostaRepository;
+    private $analisePessoaPropostaRepository;
 
-    private $apiSicred;
-    private $keysInterfaceService;
-    private $cliente;
-    private $formaInclusaoCaliban;
-    private $statusNaoAssinado;
-
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService)
+    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository)
     {
-        $this->clienteRepository = $clienteRepository;
-        $this->documentoPropostaRepository = $documentoPropostaRepository;
-        $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
-        $this->propostaRepository = $propostaRepository;
-        $this->propostaParcelaRepository = $propostaParcelaRepository;
+        $this->analisePropostaRepository = $analisePropostaRepository;
+        $this->analisePessoaPropostaRepository = $analisePessoaPropostaRepository;
+    }
 
-        $this->apiSicred = $apiSicred;
-        $this->keysInterfaceService = $keysInterfaceService;
+    /**
+     * Service Layer - Method responsible for completing the analysis of the proposal.
+     *
+     * @param  array  $attributes
+     * @param  int  $idProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    public function concluirAnaliseProposta($attributes, $idProposta)
+    {
+        $attributes['id_proposta'] = $idProposta;
+        $analise = $this->analisePropostaRepository->firstWhere('id_proposta', $idProposta) ?? $this->analisePropostaRepository->fill([]);
+        $analise->fill($attributes);
+        $analise->save();
 
-        $this->formaInclusaoCaliban = 2;
-        $this->statusNaoAssinado = 0;
+        $attributes['cliente']['id_analise_proposta'] = $analise->getKey();
+        $attributes['cliente']['id_proposta'] = $idProposta;
+
+        $analiseClienteAssinatura = $this->analisePessoaPropostaRepository->findAnaliseAndPessoa($analise->getKey(), $attributes['cliente']['id_pessoa_assinatura']) ?? $this->analisePessoaPropostaRepository->fill([]);
+        $analiseClienteAssinatura->fill($attributes['cliente']);
+        $analiseClienteAssinatura->save();
+
+        $attributes['representante']['id_analise_proposta'] = $analise->getKey();
+        $attributes['representante']['id_proposta'] = $idProposta;
+
+        $analiseRepresentanteAssinatura = $this->analisePessoaPropostaRepository->findAnaliseAndPessoa($analise->getKey(), $attributes['representante']['id_pessoa_assinatura']) ?? $this->analisePessoaPropostaRepository->fill([]);
+        $analiseRepresentanteAssinatura->fill($attributes['representante']);
+        $analiseRepresentanteAssinatura->save();
+
+        foreach ($attributes['socios'] as $socio) {
+            $socio['id_analise_proposta'] = $analise->getKey();
+            $socio['id_proposta'] = $idProposta;
+            $analiseSocioAssinatura = $this->analisePessoaPropostaRepository->findAnaliseAndPessoa($analise->getKey(), $socio['id_pessoa_assinatura']) ?? $this->analisePessoaPropostaRepository->fill([]);
+            $analiseSocioAssinatura->fill($socio);
+            $analiseSocioAssinatura->save();
+        }
+
+        return $attributes;
     }
 }

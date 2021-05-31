@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\{
     AbstractRepositoryInterface,
+    AnalisePessoaPropostaRepositoryInterface,
+    AnalisePropostaRepositoryInterface,
     AtividadeComercialRepositoryInterface,
     DocumentoPropostaRepositoryInterface,
     CosifRepositoryInterface,
@@ -22,6 +24,8 @@ use App\Repositories\Contracts\{
 };
 use App\Repositories\Eloquent\{
     AbstractRepository,
+    AnalisePessoaPropostaRepository,
+    AnalisePropostaRepository,
     AtividadeComercialRepository,
     DocumentoPropostaRepository,
     ClienteRepository,
@@ -56,13 +60,23 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            ClienteRepositoryInterface::class,
-            ClienteRepository::class
+            AnalisePessoaPropostaRepositoryInterface::class,
+            AnalisePessoaPropostaRepository::class
+        );
+
+        $this->app->bind(
+            AnalisePropostaRepositoryInterface::class,
+            AnalisePropostaRepository::class
         );
 
         $this->app->bind(
             AtividadeComercialRepositoryInterface::class,
             AtividadeComercialRepository::class
+        );
+
+        $this->app->bind(
+            ClienteRepositoryInterface::class,
+            ClienteRepository::class
         );
 
         $this->app->bind(

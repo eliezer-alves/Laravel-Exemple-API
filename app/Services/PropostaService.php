@@ -146,6 +146,7 @@ class PropostaService
         | Resgatando todos os dados da Proposta para a análise
         */
         $proposta = $this->propostaRepository->findOrFail($idProposta);
+        $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
         $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;

@@ -220,7 +220,10 @@ Route::group([
 
     Route::post('/atualizar-proposta', [AnalisePropostaController::class, 'alterarDadosProposta']);
     Route::get('/proposta/{id_proposta}', [AnalisePropostaController::class, 'dadosPropostaAnalise'])
-        ->where(['id_proposta' => '[0-9]+']);;
+        ->where(['id_proposta' => '[0-9]+']);
+
+    Route::post('/concluir/{id_proposta}', [AnalisePropostaController::class, 'concluirAnaliseProposta'])
+        ->where(['id_proposta' => '[0-9]+']);
 
 });
 
