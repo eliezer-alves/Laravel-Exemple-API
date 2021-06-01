@@ -299,6 +299,84 @@ class KeysInterfaceService
     }
 
     /**
+     * List of keys of the registration process an analysis of the proposal
+     *
+     * @since 01/06/2021
+     *
+     * @return array
+     */
+    public function registrarAnaliseProposta()
+    {
+        return [
+            [
+                'inputKey' => 'id_proposta',
+                'sourceKey' => 'id_proposta'
+            ],
+            [
+                'inputKey' => 'id_status_analise_proposta',
+                'sourceKey' => 'id_status_analise_proposta'
+            ],
+            [
+                'inputKey' => 'valor_aprovado',
+                'sourceKey' => 'valor_aprovado'
+            ],
+        ];
+    }
+
+    /**
+     * List of keys to save analysis of the person related to the proposal
+     *
+     * @since 01/06/2021
+     *
+     * @return array
+     */
+    public function registrarAnalisePessoaProposta()
+    {
+        return [
+            [
+                'inputKey' => 'id_pessoa_assinatura',
+                'sourceKey' => 'id_pessoa_assinatura'
+            ],
+            [
+                'inputKey' => 'id_proposta',
+                'sourceKey' => 'id_proposta'
+            ],
+            [
+                'inputKey' => 'id_analise_proposta',
+                'sourceKey' => 'id_analise_proposta'
+            ],
+            [
+                'inputKey' => 'id_info_mais',
+                'sourceKey' => 'id_info_mais'
+            ],
+            [
+                'inputKey' => 'id_scpc',
+                'sourceKey' => 'id_scpc'
+            ],
+            [
+                'inputKey' => 'id_spc_brasil',
+                'sourceKey' => 'id_spc_brasil'
+            ],
+            [
+                'inputKey' => 'id_confirme_online',
+                'sourceKey' => 'id_confirme_online'
+            ],
+            [
+                'inputKey' => 'id_score',
+                'sourceKey' => 'id_score'
+            ],
+            [
+                'inputKey' => 'restricao',
+                'sourceKey' => 'restricao'
+            ],
+            [
+                'inputKey' => 'score',
+                'sourceKey' => 'score'
+            ],
+        ];
+    }
+
+    /**
      * Generic method to hydrate an array with a source array through a key relationship
      *
      * @since 19/04/2021

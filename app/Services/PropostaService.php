@@ -140,7 +140,7 @@ class PropostaService
     {
         /*
         |--------------------------------------------------------------------------
-        | Dadoso da Proposta
+        | Dados da Proposta
         |--------------------------------------------------------------------------
         |
         | Resgatando todos os dados da Proposta para a análise
