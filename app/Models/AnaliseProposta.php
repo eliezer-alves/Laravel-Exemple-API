@@ -23,12 +23,12 @@ class AnaliseProposta extends Model
         'id_confirme_online',
         'id_info_mais',
         'id_score',
-        'data_analise_proposta',
         'id_proposta',
-        'valor_regra_score',
+        // 'valor_regra_score',
         'restricao',
         'score',
-        'classificacao_score'
+        'classificacao_score',
+        'data_analise_proposta'
     ];
 
     public function proposta()

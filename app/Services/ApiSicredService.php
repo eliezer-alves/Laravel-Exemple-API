@@ -128,7 +128,6 @@ class ApiSicredService implements ApiSicredServiceInterface
         $response = null;
         $url = $this->urlServico('base_url') . $this->urlServico('simulacao_url') . '/simular';
         $form = array_merge($this->modeloSicred->toArray(), $request);
-
         do {
             $response = Http::withToken(Session::get('accessToken'))->post($url, $form);
             $numeroTentativasRequest++;

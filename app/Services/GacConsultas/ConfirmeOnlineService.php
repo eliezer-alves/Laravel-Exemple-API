@@ -53,16 +53,4 @@ class ConfirmeOnlineService extends AbstractConsultasService
 
         return $this->request($attributes, '');
     }
-
-    // public function trabalho($cpf_cnpj, $periodo = 1, $motivo = 1)
-    // {
-    //     $attributes = [
-    //         'cpf_cnpj' => $cpf_cnpj,
-    //         'motivo' => $motivo,
-    //         'periodo' => $periodo
-    //     ];
-
-    //     return $this->request($attributes, 'empresa_pagadora');
-    // }
-
 }
