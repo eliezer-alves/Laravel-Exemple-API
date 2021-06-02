@@ -418,7 +418,6 @@ class PropostaService
     private function normalizaParametrosFormularioNovaProposta($formAttributes)
     {
         $attributes = $this->keysInterfaceService->hydrator($formAttributes, $this->keysInterfaceService->atributosFormularioNovaProposta());
-        $attributes['id_simulacao'] = $formAttributes['id_nova_simulacao'] ?? $formAttributes['id_simulacao'];
         $attributes['id_cliente'] = $this->cliente['id_cliente'];
         $attributes['cnpj_beneficiario'] = $this->cliente['cnpj'] ?? null;
         $attributes['nome_beneficiario'] = $this->cliente['nome_fantasia'] ?? null;
@@ -666,7 +665,7 @@ class PropostaService
         */
         $this->atualizarSituacaoDocumentosProposta($attributesFormDocumentos);
 
-        if($attributesFormProposta['id_nova_simulacao'] ?? false){
+        if($attributesFormProposta['id_simulacao'] ?? false){
             /*
             |--------------------------------------------------------------------------
             | Proposal at Sicred

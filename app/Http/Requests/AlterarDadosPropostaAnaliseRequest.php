@@ -27,7 +27,7 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
         return [
             'proposta.id_proposta' => ['required', 'numeric', 'exists:cad_proposta,id_proposta'],
             'proposta.nova_id_simulacao' => ['numeric'],
-            'proposta.id_simulacao' => ['required', 'numeric'],
+            'proposta.id_simulacao' => ['numeric', 'nullable'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],
             'proposta.forma_liberacao' => ['required', 'string'],
