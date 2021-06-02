@@ -27,7 +27,7 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
         return [
             'proposta.id_proposta' => ['required', 'numeric', 'exists:cad_proposta,id_proposta'],
             'proposta.nova_id_simulacao' => ['numeric'],
-            // 'proposta.id_simulacao' => ['required', 'numeric'],
+            'proposta.id_simulacao' => ['numeric', 'nullable'],
             'proposta.valor_solicitado' => ['required', 'numeric', 'max:1000000'],
             'proposta.primeiro_vencimento' => ['required', 'date'],
             'proposta.forma_liberacao' => ['required', 'string'],
@@ -37,8 +37,7 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
             'proposta.conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'min:6'],
             'proposta.digito_conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
             'proposta.tipo_conta' => ['required', 'max:1'],
-            'proposta.atd_protocolo' => ['required'],
-            'proposta.atd_celular' => ['required'],
+
 
             'cliente.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u', 'exists:cad_pessoa_assinatura,id_pessoa_assinatura'],
             'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
