@@ -122,4 +122,14 @@ class Proposta extends Model
     {
         return $this->belongsTo(StatusAnaliseProposta::class, 'id_status_analise_proposta', 'id_status_analise_proposta');
     }
+
+    public function analise()
+    {
+        return $this->hasOne(AnaliseProposta::class, 'id_proposta', 'id_proposta');
+    }
+
+    public function analisePessoaProposta()
+    {
+        return $this->hasMany(AnalisePessoaProposta::class, 'id_proposta', 'id_proposta');
+    }
 }
