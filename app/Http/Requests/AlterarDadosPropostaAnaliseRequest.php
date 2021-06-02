@@ -38,7 +38,6 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
             'proposta.digito_conta_liberacao' => ['required', 'regex:/^[0-9]+$/u', 'max:2'],
             'proposta.tipo_conta' => ['required', 'max:1'],
 
-
             'cliente.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u', 'exists:cad_pessoa_assinatura,id_pessoa_assinatura'],
             'cliente.cnpj' => ['required', 'regex:/^[0-9]+$/u'],
             'cliente.nome_fantasia' => ['required', 'string'],

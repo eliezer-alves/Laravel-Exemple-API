@@ -17,10 +17,11 @@ use App\Services\Contracts\{
 use App\Services\KeysInterfaceService;
 
 use App\Services\GacConsultas\{
+    ConfirmeOnlineService,
+    DebitosService,
     InfomaisService,
     ScpcService,
     SpcBrasilService,
-    ConfirmeOnlineService,
 };
 
 
@@ -48,12 +49,13 @@ class PropostaService
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
 
+    private $confirmeOnline;
+    private $debitos;
     private $infomais;
     private $scpc;
     private $spcBrasil;
-    private $confirmeOnline;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, ConfirmeOnlineService $confirmeOnline, DebitosService $debitos, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
     {
         $this->clienteRepository = $clienteRepository;
         $this->documentoPropostaRepository = $documentoPropostaRepository;
@@ -64,10 +66,11 @@ class PropostaService
         $this->apiSicred = $apiSicred;
         $this->keysInterfaceService = $keysInterfaceService;
 
+        $this->confirmeOnline = $confirmeOnline;
+        $this->debitos = $debitos;
         $this->infomais = $infomais;
         $this->scpc = $scpc;
         $this->spcBrasil = $spcBrasil;
-        $this->confirmeOnline = $confirmeOnline;
 
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;

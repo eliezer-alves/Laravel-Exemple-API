@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     CosifController,
     DocumentoPropostaController,
     DominiosController,
+    ObservacaoProposta,
     PdfController,
     PorteEmpresaController,
     PropostaController,
@@ -134,9 +135,13 @@ Route::group([
 ], function () {
 
     Route::get('/', [PorteEmpresaController::class, 'index']);
-    Route::get('/{id_porte_empresa}', [PorteEmpresaController::class, 'show']);
+    Route::get('/{id_porte_empresa}', [PorteEmpresaController::class, 'show'])
+        ->where(['id_porte_empresa' => '[0-9]+']);
+
     Route::post('/', [PorteEmpresaController::class, 'store']);
-    Route::put('/{id_porte_empresa}', [PorteEmpresaController::class, 'update']);
+    Route::put('/{id_porte_empresa}', [PorteEmpresaController::class, 'update'])
+        ->where(['id_porte_empresa' => '[0-9]+']);
+
     Route::delete('/{id_porte_empresa}', [PorteEmpresaController::class, 'destroy']);
 
 });
@@ -203,6 +208,28 @@ Route::group([
 
     Route::post('/upload-por-proposta/{numero_proposta}', [DocumentoPropostaController::class, 'createManyByNumero'])
         ->where(['numero_proposta' => '[0-9]+']);
+
+});
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Observacao Proposta
+|--------------------------------------------------------------------------
+*/
+Route::group([
+
+    'middleware' => ['auth:api'],
+    'prefix' => 'observacao-proposta',
+
+], function () {
+
+    Route::post('/', [ObservacaoProposta::class, 'store']);
+
+    Route::get('/{id_proposta}', [ObservacaoProposta::class, 'index'])
+        ->where(['id_proposta' => '[0-9]+']);
 
 });
 

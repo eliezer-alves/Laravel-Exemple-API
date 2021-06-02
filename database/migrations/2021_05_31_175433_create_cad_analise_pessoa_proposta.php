@@ -51,6 +51,9 @@ class CreateCadAnalisePessoaProposta extends Migration
             $table->integer('score')
                 ->nullable();
 
+            $table->string('classificacao_score')
+                ->nullable();
+
             $table->timestamps();
         });
     }

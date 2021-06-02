@@ -373,6 +373,10 @@ class KeysInterfaceService
                 'inputKey' => 'score',
                 'sourceKey' => 'score'
             ],
+            [
+                'inputKey' => 'classificacao_score',
+                'sourceKey' => 'classificacao_score'
+            ],
         ];
     }
 

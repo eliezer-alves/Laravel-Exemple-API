@@ -23,7 +23,8 @@ class AnalisePessoaProposta extends Model
         'id_info_mais',
         'id_score',
         'restricao',
-        'score'
+        'score',
+        'classificacao_score',
     ];
 
     public function proposta()

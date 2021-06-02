@@ -132,4 +132,9 @@ class Proposta extends Model
     {
         return $this->hasMany(AnalisePessoaProposta::class, 'id_proposta', 'id_proposta');
     }
+
+    public function observacoes()
+    {
+        return $this->hasMany(ObservacaoProposta::class, 'id_proposta', 'id_proposta');
+    }
 }
