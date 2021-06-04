@@ -75,6 +75,14 @@ class KeysInterfaceService
                 'inputKey' => 'id_usuario',
                 'sourceKey' => 'id_usuario'
             ],
+            [
+                'inputKey' => 'id_status_analise_proposta',
+                'sourceKey' => 'id_status_analise_proposta'
+            ],
+            [
+                'inputKey' => 'motivo_pendente',
+                'sourceKey' => 'motivo_pendente'
+            ],
         ];
     }
 

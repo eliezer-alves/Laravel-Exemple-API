@@ -72,7 +72,8 @@ class Proposta extends Model
         'valor_total_a_pagar',
         'valor_limite_liberado_bcard',
         'atd_protocolo',
-        'atd_celular'
+        'atd_celular',
+        'motivo_pendente'
     ];
 
     protected $attributes = [

@@ -143,6 +143,9 @@ class PropostaService
      */
     public function getDadosPropostaAnalise($idProposta)
     {
+        ini_set('max_execution_time', 3000);
+        ini_set('memory_limit','4096M');
+        
         /*
         |--------------------------------------------------------------------------
         | Dados da Proposta
@@ -676,7 +679,7 @@ class PropostaService
         $attributesFormProposta = $attributes['proposta'];
         $attributesFormCliente = $attributes['cliente'];
         $attributesFormSocios = $attributes['socios'];
-        $attributesFormDocumentos = $attributes['documentos'];
+        $attributesFormDocumentos = $attributes['documentos'] ?? [];
 
 
         /*
@@ -705,6 +708,15 @@ class PropostaService
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
         $proposta = $this->propostaRepository->update(_normalizeRequest($attributesProposta, ['valor_solicitado']), $attributesFormProposta['id_proposta']);
 
+        /*
+        |--------------------------------------------------------------------------
+        | Analise Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Changing proposal review status
+        */
+        $this->propostaRepository->alterarStatusAnalise($attributesFormProposta['id_status_analise_proposta'], $proposta->id_proposta);
+        $analiseProposta = $this->analisePropostaService->registrarAnaliseProposta(['id_status_analise_proposta' => $attributesFormProposta['id_status_analise_proposta']], $proposta->id_proposta);
 
         /*
         |--------------------------------------------------------------------------

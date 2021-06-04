@@ -24,7 +24,7 @@ class AbstractGacConsultaService
         $this->numeroMaximoTentativasRequest = 3;
         $this->baseUrl = 'https://api-consultas-prod.agil.com.br';
         $this->motivo = 1;
-        $this->periodo = 7;
+        $this->periodo = 1;
     }
 
     public function setNumeroMaximoTentativasRequest($numeroMaximoTentativasRequest)
