@@ -2,10 +2,7 @@
 
 namespace App\Services\GacConsultas;
 
-use App\Exceptions\FailedRequestGacConsultas;
-use App\Services\GacConsultas\AbstractConsultasService;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use App\Services\GacConsultas\AbstractGacConsultaService;
 
 /**
  * Service Layer - Class responsible for managing InfoMais queries
@@ -14,43 +11,16 @@ use Illuminate\Support\Facades\Log;
  * @since 31/05/2021
  *
  */
-class SpcBrasilService extends AbstractConsultasService
+class SpcBrasilService extends AbstractGacConsultaService
 {
     public function __construct()
     {
         parent::__construct();
     }
 
-
-    private function request($attributes, $urlServico)
+    public function consulta($cpf)
     {
-        $numeroTentativasRequest = 0;
-        $response = null;
-        $url = "{$this->baseUrl}/{$urlServico}";
-
-        do {
-            $response = Http::get($url, $attributes);
-            $numeroTentativasRequest++;
-        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
-
-        if ($response->status() != 200) {
-            Log::channel('gacConsultas')->critical("SPC Brasil - Erro ao consultar {$urlServico}.", $response->json());
-            // throw new FailedRequestGacConsultas($response, "SPC Brasil - Erro ao consultar {$urlServico}.", ['url_servico' => $url, 'status' => $response->status()]);
-        }
-
-        return json_decode($response->body());
-    }
-
-
-    public function consulta($cpf, $periodo = 1, $motivo = 1)
-    {
-        $attributes = [
-            'cpf' => $cpf,
-            'motivo' => $motivo,
-            'periodo' => $periodo
-        ];
-
-        return $this->request($attributes, 'spc-brasil');
+        return $this->request('/spc-brasil', $cpf);
     }
 
 }

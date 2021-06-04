@@ -2,10 +2,7 @@
 
 namespace App\Services\GacConsultas;
 
-use App\Exceptions\FailedRequestGacConsultas;
-use App\Services\GacConsultas\AbstractConsultasService;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use App\Services\GacConsultas\AbstractGacConsultaService;
 
 /**
  * Service Layer - Class responsible for managing InfoMais queries
@@ -14,66 +11,29 @@ use Illuminate\Support\Facades\Log;
  * @since 31/05/2021
  *
  */
-class InfoMaisService extends AbstractConsultasService
+class InfoMaisService extends AbstractGacConsultaService
 {
     public function __construct()
     {
         parent::__construct();
     }
 
-
-    private function request($attributes, $urlServico)
+    public function endereco($cpf)
     {
-        $numeroTentativasRequest = 0;
-        $response = null;
-        $url = "{$this->baseUrl}/info-mais/{$urlServico}";
-
-        do {
-            $response = Http::get($url, $attributes);
-            $numeroTentativasRequest++;
-        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
-
-        if ($response->status() != 200) {
-            Log::channel('gacConsultas')->critical("Info Mais - Erro ao consultar endereço {$urlServico}.", $response->json());
-            // throw new FailedRequestGacConsultas($response, "Info Mais - Erro ao consultar endereço {$urlServico}.", ['url_servico' => $url, 'status' => $response->status()]);
-        }
-
-        return json_decode($response->body());
+        $this->cpf_cnpj = $cpf;
+        return $this->request('/info-mais/endereco', $cpf);
     }
 
-
-
-    public function endereco($cpf, $periodo = 1, $motivo = 1)
+    public function telefone($cpf)
     {
-        $attributes = [
-            'cpf' => $cpf,
-            'motivo' => $motivo,
-            'periodo' => $periodo
-        ];
-
-        return $this->request($attributes, 'endereco');
+        $this->cpf_cnpj = $cpf;
+        return $this->request('/info-mais/telefone', $cpf);
     }
 
-    public function telefone($cpf, $periodo = 1, $motivo = 1)
+    public function situacao($cpf)
     {
-        $attributes = [
-            'cpf' => $cpf,
-            'motivo' => $motivo,
-            'periodo' => $periodo
-        ];
-
-        return $this->request($attributes, 'telefone');
-    }
-
-    public function situacao($cpf, $periodo = 1, $motivo = 1)
-    {
-        $attributes = [
-            'cpf' => $cpf,
-            'motivo' => $motivo,
-            'periodo' => $periodo
-        ];
-
-        return $this->request($attributes, 'situacao');
+        $this->cpf_cnpj = $cpf;
+        return $this->request('/info-mais/situacao', $cpf);
     }
 
 }
