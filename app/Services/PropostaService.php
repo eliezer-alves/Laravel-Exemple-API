@@ -51,6 +51,7 @@ class PropostaService
     private $cliente;
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
+    private $statusAguardandoAnaliseManual;
 
     private $infomais;
     private $scpc;
@@ -76,6 +77,7 @@ class PropostaService
 
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;
+        $this->statusAguardandoAnaliseManual = 1;
     }
 
     /**
@@ -488,6 +490,7 @@ class PropostaService
         $attributes['renda'] = $this->cliente['rendimento_mensal'] ?? 0;
         $attributes['data_solicitacao_proposta'] = date('Y-m-d H:i:s');
         $attributes['id_status_administrativo'] = $this->statusNaoAssinado;
+        $attributes['id_status_analise_proposta'] = $this->statusAguardandoAnaliseManual;
         $attributes['id_forma_inclusao'] = $this->formaInclusaoCaliban;
         return $attributes;
     }
