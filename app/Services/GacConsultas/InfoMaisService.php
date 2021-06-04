@@ -20,19 +20,16 @@ class InfoMaisService extends AbstractGacConsultaService
 
     public function endereco($cpf)
     {
-        $this->cpf_cnpj = $cpf;
         return $this->request('/info-mais/endereco', $cpf);
     }
 
     public function telefone($cpf)
     {
-        $this->cpf_cnpj = $cpf;
         return $this->request('/info-mais/telefone', $cpf);
     }
 
     public function situacao($cpf)
     {
-        $this->cpf_cnpj = $cpf;
         return $this->request('/info-mais/situacao', $cpf);
     }
 

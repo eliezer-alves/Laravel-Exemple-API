@@ -14,7 +14,10 @@ use App\Services\Contracts\{
     ApiSicredServiceInterface
 };
 
-use App\Services\KeysInterfaceService;
+use App\Services\{
+    AnalisePropostaService,
+    KeysInterfaceService
+};
 
 use App\Services\GacConsultas\{
     InfomaisService,
@@ -43,6 +46,7 @@ class PropostaService
     private $propostaParcelaRepository;
 
     private $apiSicred;
+    private $analisePropostaService;
     private $keysInterfaceService;
     private $cliente;
     private $formaInclusaoCaliban;
@@ -53,7 +57,7 @@ class PropostaService
     private $spcBrasil;
     private $confirmeOnline;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, KeysInterfaceService $keysInterfaceService, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
     {
         $this->clienteRepository = $clienteRepository;
         $this->documentoPropostaRepository = $documentoPropostaRepository;
@@ -62,6 +66,7 @@ class PropostaService
         $this->propostaParcelaRepository = $propostaParcelaRepository;
 
         $this->apiSicred = $apiSicred;
+        $this->analisePropostaService = $analisePropostaService;
         $this->keysInterfaceService = $keysInterfaceService;
 
         $this->infomais = $infomais;
@@ -158,7 +163,9 @@ class PropostaService
         });
         $proposta->documentos;
         $proposta->statusAnalise;
+        // $proposta->toArray();
 
+        $analiseProposta = $this->analisePropostaService->registrarAnaliseProposta([], $proposta->id_proposta);
 
         /*
         |--------------------------------------------------------------------------
@@ -171,6 +178,19 @@ class PropostaService
         $proposta['clienteAssinatura']['confirme_online'] = $this->confirmeOnline->consulta($proposta['clienteAssinatura']['cnpj']);
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | Análise Pessoa Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Registering customer review of the proposal
+        */
+        $analiseClienteProposta = $this->analisePropostaService->registrarAnalisePessoaProposta([
+            'id_proposta' => $proposta->id_proposta,
+            'id_analise_proposta' => $analiseProposta->getKey(),
+            'id_pessoa_assinatura' => $proposta->clienteAssinatura->id_pessoa_assinatura,
+            'id_confirme_online' => $proposta->clienteAssinatura->confirme_online->pessoal->id_confirme_online ?? null
+        ], $proposta->id_proposta);
 
         /*
         |--------------------------------------------------------------------------
@@ -198,6 +218,23 @@ class PropostaService
 
         /*
         |--------------------------------------------------------------------------
+        | Análise Pessoa Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Registering analysis of the legal representative related to the proposal
+        */
+        $analiseRepresentanteProposta = $this->analisePropostaService->registrarAnalisePessoaProposta([
+            'id_proposta' => $proposta->id_proposta,
+            'id_analise_proposta' => $analiseProposta->getKey(),
+            'id_pessoa_assinatura' => $proposta->representante->id_pessoa_assinatura ?? null,
+            'id_infomais' => $proposta->representante->infomais->endereco->id_infomais ?? null,
+            'id_scpc' => $proposta->representante->scpc->debito->id_scpc ?? null,
+            'id_scpc' => $proposta->representante->spc_brasil->id_spc_brasil ?? null,
+            'id_confirme_online' => $proposta->representante->confirme_online->pessoal->id_confirme_online ?? null
+        ]);
+
+        /*
+        |--------------------------------------------------------------------------
         | Consultas - Sócios
         |--------------------------------------------------------------------------
         |
@@ -207,6 +244,7 @@ class PropostaService
         |   - SPC Brasil
         |   - Confirme Online
         */
+        $analiseSociosProposta = [];
         foreach ($proposta['socios'] as $key => $socio) {
             $proposta['socios'][$key]['infomais'] = [
                 'endereco' => $this->infomais->endereco($socio['cpf']),
@@ -219,7 +257,32 @@ class PropostaService
             ];
             $proposta['socios'][$key]['spc_brasil'] = $this->spcBrasil->consulta($socio['cpf']);
             $proposta['socios'][$key]['confirme_online'] = $this->confirmeOnline->consulta($socio['cpf']);
+
+            /*
+            |--------------------------------------------------------------------------
+            | Análise Pessoa Proposta
+            |--------------------------------------------------------------------------
+            |
+            | Registering analysis of the legal representative related to the proposal
+            */
+            $analiseSocioProposta = $this->analisePropostaService->registrarAnalisePessoaProposta([
+                'id_proposta' => $proposta->id_proposta,
+                'id_analise_proposta' => $analiseProposta->getKey(),
+                'id_pessoa_assinatura' => $socio->id_pessoa_assinatura ?? null,
+                'id_infomais' =>  $proposta['socios'][$key]->infomais->endereco->id_infomais ?? null,
+                'id_scpc' =>  $proposta['socios'][$key]->scpc->debito->id_scpc ?? null,
+                'id_scpc' =>  $proposta['socios'][$key]->spc_brasil->id_spc_brasil ?? null,
+                'id_confirme_online' =>  $proposta['socios'][$key]->confirme_online->pessoal->id_confirme_online ?? null
+            ]);
+            array_push($analiseSociosProposta, $analiseSocioProposta);
         }
+
+        $proposta['analise_caliban'] = [
+            'analise_proposta' => $analiseProposta,
+            'analise_cliente_proposta' => $analiseClienteProposta,
+            'analise_representante_proposta' => $analiseRepresentanteProposta,
+            'analise_socios_proposta' => $analiseSociosProposta,
+        ];
 
         return $proposta;
     }

@@ -57,6 +57,32 @@ class AnalisePropostaService
     }
 
     /**
+     * Service Layer - Method responsible for registering proposal analysis.
+     *
+     * @param  array  $attributes
+     * @param  int  $idProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    public function registrarAnaliseProposta($attributes, $idProposta)
+    {
+        $attributtesAnaliseProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnaliseProposta());
+        return $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
+    }
+
+    /**
+     * Service Layer - Method responsible for registering proposal analysis.
+     *
+     * @param  array  $attributes
+     * @param  int  $idProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    public function registrarAnalisePessoaProposta($attributes)
+    {
+        $attributesAnalisePessoaProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnalisePessoaProposta());
+        return $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
+    }
+
+    /**
      * Service Layer - Method responsible for completing the analysis of the proposal.
      *
      * @param  array  $attributes
@@ -82,8 +108,7 @@ class AnalisePropostaService
         |
         | Registering proposal analysis
         */
-        $attributtesAnaliseProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnaliseProposta());
-        $analiseProposta = $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
+        $analiseProposta = $this->registrarAnaliseProposta($attributes, $idProposta);
 
 
         /*
@@ -103,9 +128,7 @@ class AnalisePropostaService
         |
         | Registering customer review of the proposal
         */
-
-        $attributesAnaliseClienteProposta = $this->keysInterfaceService->hydrator($attributes['cliente'], $this->keysInterfaceService->registrarAnalisePessoaProposta());
-        $analiseClienteProposta = $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnaliseClienteProposta);
+        $analiseClienteProposta = $this->registrarAnalisePessoaProposta($attributes['cliente']);
 
 
         /*
@@ -115,9 +138,7 @@ class AnalisePropostaService
         |
         | Registering analysis of the legal representative related to the proposal
         */
-
-        $attributesAnaliseRepresentanteProposta = $this->keysInterfaceService->hydrator($attributes['representante'], $this->keysInterfaceService->registrarAnalisePessoaProposta());
-        $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnaliseRepresentanteProposta);
+        $analiseRepresentanteProposta = $this->registrarAnalisePessoaProposta($attributes['representante']);
 
 
         /*
@@ -129,8 +150,7 @@ class AnalisePropostaService
         */
         $analiseSociosProposta = [];
         foreach ($attributes['socios'] as $socio) {
-            $attributesAnaliseSocioProposta = $this->keysInterfaceService->hydrator($socio, $this->keysInterfaceService->registrarAnalisePessoaProposta());
-            $analiseSocioProposta = $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnaliseSocioProposta);
+            $analiseSocioProposta = $this->registrarAnalisePessoaProposta($socio);
             array_push($analiseSociosProposta, $analiseSocioProposta);
         }
 
