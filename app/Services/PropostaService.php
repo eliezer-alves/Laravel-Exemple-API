@@ -20,7 +20,7 @@ use App\Services\{
 };
 
 use App\Services\GacConsultas\{
-    InfomaisService,
+    InfoMaisService,
     ScpcService,
     SpcBrasilService,
     ConfirmeOnlineService,
@@ -57,7 +57,7 @@ class PropostaService
     private $spcBrasil;
     private $confirmeOnline;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService, InfomaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
     {
         $this->clienteRepository = $clienteRepository;
         $this->documentoPropostaRepository = $documentoPropostaRepository;
