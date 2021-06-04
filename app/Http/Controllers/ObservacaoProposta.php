@@ -24,11 +24,12 @@ class ObservacaoProposta extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $idProposta
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idProposta)
     {
-        return $this->service->all();
+        return $this->service->all($idProposta);
     }
 
     /**

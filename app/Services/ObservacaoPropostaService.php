@@ -24,11 +24,19 @@ class ObservacaoPropostaService
     /**
      * Service Layer - Get a listing of the resource.
      *
+     * @param $idProposta
      * @return App\Repositories\Contracts\ObservacaoPropostaRepositoryInterface
      */
-    public function all()
+    public function all($idProposta)
     {
-        return $this->observacaoPropostaRepository->all();
+        $observacoesProposta =  $this->observacaoPropostaRepository->where('id_proposta', $idProposta)->get();
+        $observacoesProposta->map(function ($observacaoProposta) {
+            $observacaoProposta->usuario;
+            $observacaoProposta['data_observacao'] = date('d/m/Y H:i:s', strtotime($observacaoProposta['created_at']));
+            return $observacaoProposta;
+        });
+
+        return $observacoesProposta;
     }
 
 

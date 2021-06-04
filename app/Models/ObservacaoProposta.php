@@ -18,4 +18,9 @@ class ObservacaoProposta extends Model
         'id_proposta',
         'id_usuario'
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(UsuarioJota::class, 'id_usuario');
+    }
 }
