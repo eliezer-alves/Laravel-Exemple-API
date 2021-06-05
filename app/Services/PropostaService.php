@@ -53,6 +53,7 @@ class PropostaService
     private $formaInclusaoCaliban;
     private $statusNaoAssinado;
     private $statusAguardandoAnaliseManual;
+    private $statusEmAnaliseManual;
 
     private $confirmeOnline;
     private $debito;
@@ -81,6 +82,7 @@ class PropostaService
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;
         $this->statusAguardandoAnaliseManual = 1;
+        $this->statusEmAnaliseManual = 2;
     }
 
     /**
@@ -305,6 +307,20 @@ class PropostaService
             'analise_representante_proposta' => $analiseRepresentanteProposta,
             'analise_socios_proposta' => $analiseSociosProposta,
         ];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Analise Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Changing proposal review status
+        */
+        if($proposta->id_status_analise_proposta == $this->statusAguardandoAnaliseManual){
+            $this->propostaRepository->alterarStatusAnalise($this->statusEmAnaliseManual, $proposta->id_proposta);
+            $proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
+        }
+
 
         return $proposta;
     }
