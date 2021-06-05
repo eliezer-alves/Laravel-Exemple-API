@@ -33,6 +33,35 @@ class AnalisePropostaService
 
 
     /**
+     * Service Layer - Method responsible for classifying a score value
+     *
+     * @param  int $score
+     * @return string $classificacaoScore
+     */
+    public function classificacaoScore($score)
+    {
+        $classificacaoScore = 'SEM INFORMACAO';
+
+        if ($score == ''  || ($score >= 0 && $score <= 1))
+            $classificacaoScore = 'SEM INFORMACAO';
+        else if ($score >= 2 && $score <= 322)
+            $classificacaoScore = 'ALTISSIMO RISCO';
+        else if ($score > 322 && $score <= 365)
+            $classificacaoScore = 'ALTO RISCO';
+        else if ($score > 365 && $score <= 529)
+            $classificacaoScore = 'MEDIO RISCO';
+        else if ($score > 529 && $score <= 747)
+            $classificacaoScore = 'BAIXO RISCO';
+        else if ($score > 747 && $score <= 1000)
+            $classificacaoScore = 'BAIXISSIMO RISCO';
+        else
+            $classificacaoScore = 'SEM INFORMACAO';
+
+        return $classificacaoScore;
+    }
+
+
+    /**
      * Service Layer - Method responsible for standardizing related to the conclusion
      * of the analysis of the proposal
      *
@@ -41,7 +70,7 @@ class AnalisePropostaService
      * @param  int  $idAnaliseProposta
      * @return array $attributes
      */
-    private function nomralizeAttributes($attributes, $idProposta, $idAnaliseProposta)
+    private function normalizeAttributes($attributes, $idProposta, $idAnaliseProposta)
     {
         $attributes['cliente']['id_proposta'] = $idProposta;
         $attributes['cliente']['id_analise_proposta'] = $idAnaliseProposta;
@@ -118,7 +147,7 @@ class AnalisePropostaService
         |
         | Normalizing attributes to continue the process
         */
-        $attributes = $this->nomralizeAttributes($attributes, $idProposta, $analiseProposta->getKey());
+        $attributes = $this->normalizeAttributes($attributes, $idProposta, $analiseProposta->getKey());
 
 
         /*

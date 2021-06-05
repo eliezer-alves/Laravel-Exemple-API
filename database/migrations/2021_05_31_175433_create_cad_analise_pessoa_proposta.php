@@ -45,10 +45,10 @@ class CreateCadAnalisePessoaProposta extends Migration
                 ->nullable()
                 ->unsigned();
 
-            $table->integer('restricao')
+            $table->float('restricao', 8, 2)
                 ->nullable();
 
-            $table->integer('score')
+            $table->float('score', 8, 2)
                 ->nullable();
 
             $table->string('classificacao_score')

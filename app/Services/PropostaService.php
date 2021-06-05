@@ -150,7 +150,7 @@ class PropostaService
     {
         ini_set('max_execution_time', 3000);
         ini_set('memory_limit','4096M');
-        
+
         /*
         |--------------------------------------------------------------------------
         | Dados da Proposta
@@ -210,6 +210,7 @@ class PropostaService
         |   - SCPC
         |   - SPC Brasil
         |   - Confirme Online
+        |   - Débito
         */
         $proposta['representante']['infomais'] = [
             'endereco' => $this->infomais->endereco($proposta['representante']['cpf']),
@@ -223,6 +224,8 @@ class PropostaService
         $proposta['representante']['spc_brasil'] = $this->spcBrasil->consulta($proposta['representante']['cpf']);
         $proposta['representante']['confirme_online'] = $this->confirmeOnline->consulta($proposta['representante']['cpf']);
         $proposta['representante']['debito'] = $this->debito->consulta($proposta['representante']['cpf']);
+        $proposta['representante']['valor_score'] = $proposta->representante->scpc['score']->resultado ?? null;
+        $proposta['representante']['classificacao_score'] = $this->analisePropostaService->classificacaoScore(intval($proposta->representante->scpc['score']->resultado ?? null));
 
 
         /*
@@ -239,7 +242,10 @@ class PropostaService
             'id_infomais' => $proposta->representante->infomais->endereco->id_infomais ?? null,
             'id_scpc' => $proposta->representante->scpc->debito->id_scpc ?? null,
             'id_scpc' => $proposta->representante->spc_brasil->id_spc_brasil ?? null,
-            'id_confirme_online' => $proposta->representante->confirme_online->pessoal->id_confirme_online ?? null
+            'id_confirme_online' => $proposta->representante->confirme_online->pessoal->id_confirme_online ?? null,
+            'restricao' => $proposta->representante->debito->valor_total_debitos ?? null,
+            'score' => $proposta->representante->scpc['score']->resultado ?? null,
+            'classificacao_score' => $proposta->representante->classificacao_score,
         ]);
 
         /*
@@ -252,6 +258,7 @@ class PropostaService
         |   - SCPC
         |   - SPC Brasil
         |   - Confirme Online
+        |   - Débito
         */
         $analiseSociosProposta = [];
         foreach ($proposta['socios'] as $key => $socio) {
@@ -267,6 +274,8 @@ class PropostaService
             $proposta['socios'][$key]['spc_brasil'] = $this->spcBrasil->consulta($socio['cpf']);
             $proposta['socios'][$key]['confirme_online'] = $this->confirmeOnline->consulta($socio['cpf']);
             $proposta['socios'][$key]['debito'] = $this->debito->consulta($socio['cpf']);
+            $proposta['socios'][$key]['valor_score'] = $proposta['socios'][$key]->scpc['score']->resultado ?? null;
+            $proposta['socios'][$key]['classificacao_score'] = $this->analisePropostaService->classificacaoScore(intval($proposta['socios'][$key]->scpc['score']->resultado ?? null));
 
             /*
             |--------------------------------------------------------------------------
@@ -282,7 +291,10 @@ class PropostaService
                 'id_infomais' =>  $proposta['socios'][$key]->infomais->endereco->id_infomais ?? null,
                 'id_scpc' =>  $proposta['socios'][$key]->scpc->debito->id_scpc ?? null,
                 'id_scpc' =>  $proposta['socios'][$key]->spc_brasil->id_spc_brasil ?? null,
-                'id_confirme_online' =>  $proposta['socios'][$key]->confirme_online->pessoal->id_confirme_online ?? null
+                'id_confirme_online' =>  $proposta['socios'][$key]->confirme_online->pessoal->id_confirme_online ?? null,
+                'restricao' => $proposta['socios'][$key]->debito->valor_total_debitos ?? null,
+                'score' => $proposta['socios'][$key]->scpc['score']->resultado ?? null,
+                'classificacao_score' => $proposta['socios'][$key]->classificacao_score,
             ]);
             array_push($analiseSociosProposta, $analiseSocioProposta);
         }
