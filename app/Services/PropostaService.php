@@ -20,10 +20,11 @@ use App\Services\{
 };
 
 use App\Services\GacConsultas\{
+    ConfirmeOnlineService,
+    DebitosService,
     InfoMaisService,
     ScpcService,
     SpcBrasilService,
-    ConfirmeOnlineService,
 };
 
 
@@ -53,12 +54,13 @@ class PropostaService
     private $statusNaoAssinado;
     private $statusAguardandoAnaliseManual;
 
+    private $confirmeOnline;
+    private $debito;
     private $infomais;
     private $scpc;
     private $spcBrasil;
-    private $confirmeOnline;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil, ConfirmeOnlineService $confirmeOnline)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService, ConfirmeOnlineService $confirmeOnline, DebitosService $debito, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
     {
         $this->clienteRepository = $clienteRepository;
         $this->documentoPropostaRepository = $documentoPropostaRepository;
@@ -70,10 +72,11 @@ class PropostaService
         $this->analisePropostaService = $analisePropostaService;
         $this->keysInterfaceService = $keysInterfaceService;
 
+        $this->confirmeOnline = $confirmeOnline;
+        $this->debito = $debito;
         $this->infomais = $infomais;
         $this->scpc = $scpc;
         $this->spcBrasil = $spcBrasil;
-        $this->confirmeOnline = $confirmeOnline;
 
         $this->formaInclusaoCaliban = 2;
         $this->statusNaoAssinado = 0;
@@ -219,6 +222,7 @@ class PropostaService
         ];
         $proposta['representante']['spc_brasil'] = $this->spcBrasil->consulta($proposta['representante']['cpf']);
         $proposta['representante']['confirme_online'] = $this->confirmeOnline->consulta($proposta['representante']['cpf']);
+        $proposta['representante']['debito'] = $this->debito->consulta($proposta['representante']['cpf']);
 
 
         /*
@@ -262,6 +266,7 @@ class PropostaService
             ];
             $proposta['socios'][$key]['spc_brasil'] = $this->spcBrasil->consulta($socio['cpf']);
             $proposta['socios'][$key]['confirme_online'] = $this->confirmeOnline->consulta($socio['cpf']);
+            $proposta['socios'][$key]['debito'] = $this->debito->consulta($socio['cpf']);
 
             /*
             |--------------------------------------------------------------------------
