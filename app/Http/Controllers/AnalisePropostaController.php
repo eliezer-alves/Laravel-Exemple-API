@@ -35,7 +35,7 @@ class AnalisePropostaController extends Controller
      */
     public function dadosPropostaAnalise($idProposta)
     {
-        return $this->propostaService->getDadosPropostaAnalise($idProposta);
+        return $this->service->getDadosPropostaAnalise($idProposta);
     }
 
 
