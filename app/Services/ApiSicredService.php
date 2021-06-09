@@ -247,6 +247,29 @@ class ApiSicredService implements ApiSicredServiceInterface
         return json_decode($response->body());
     }
 
+    /**
+     * Request detailed data for a proposal at Sicred.
+     *
+     * @param int $numeroProposta
+     * @return Illuminate\Support\Facades\Http
+     */
+    public function finalizarProposta($numeroProposta)
+    {
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_url') . '/' . $this->empresa . '/' . $numeroProposta . '/Finalizar';
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->put($url);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response, 'Proposta - Impossibilitado de finalizar proposta.', ['url_servico' => $url, 'status' => $response->status()]);
+        }
+
+        return json_decode($response->body());
+    }
+
 
     /**
      * Request detailed data for a proposal at Sicred.

@@ -272,7 +272,7 @@ class AnalisePropostaService
         */
         if($this->proposta->id_status_analise_proposta == $this->statusAguardandoAnaliseManual){
             $this->propostaRepository->alterarStatusAnalise($this->statusEmAnaliseManual, $this->proposta->id_proposta);
-            $proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
+            $this->proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
         }
 
 

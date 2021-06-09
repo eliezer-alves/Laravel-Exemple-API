@@ -116,24 +116,17 @@ class PessoaAssinatura extends Model
         'tipo_imovel' => null,
         'data_fundacao' => null,
         'id_cosif' => null,
-        'debito' => null,
-        'infomais_endereco' => null,
-        'infomais_situacao' => null,
-        'infomais_telefone' => null,
-        'scpc_debito' => null,
-        'scpc_score' => null,
-        'spc_brasil' => null,
-        'confirme_online' => null,
-        'valor_score' => null,
-        'classificacao_score' => null
+        // 'debito' => null,
+        // 'infomais_endereco' => null,
+        // 'infomais_situacao' => null,
+        // 'infomais_telefone' => null,
+        // 'scpc_debito' => null,
+        // 'scpc_score' => null,
+        // 'spc_brasil' => null,
+        // 'confirme_online' => null,
+        // 'valor_score' => null,
+        // 'classificacao_score' => null
     ];
-
-    private $gacConsulta;
-
-    public function __construct()
-    {
-        $this->gacConsulta = new GacConsultaService;
-    }
 
     public function proposta()
     {
@@ -167,44 +160,51 @@ class PessoaAssinatura extends Model
 
     public function consultarConfirmeOnline()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ConfirmeOnlineService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
-        return $this->attributes['confirme_online'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['confirme_online'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarDebito()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new DebitoService($this->attributes['cpf']);
-        return $this->attributes['debito'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['debito'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarInfomaisEndereco()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisEnderecoService($this->attributes['cpf']);
-        return $this->attributes['infomais_endereco'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['infomais_endereco'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarInfomaisSituacao()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisSituacaoService($this->attributes['cpf']);
-        return $this->attributes['infomais_situacao'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['infomais_situacao'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarInfomaisTelefone()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisTelefoneService($this->attributes['cpf']);
-        return $this->attributes['infomais_telefone'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['infomais_telefone'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarScpcDebito()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcDebitoService($this->attributes['cpf']);
-        return $this->attributes['scpc_debito'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['scpc_debito'] = $gacConsulta->consultar($orgaoConsulta);
     }
 
     public function consultarScpcScore()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcScoreService($this->attributes['cpf']);
-        $this->attributes['scpc_score'] = $this->gacConsulta->consultar($orgaoConsulta);
+        $this->attributes['scpc_score'] = $gacConsulta->consultar($orgaoConsulta);
         $this->attributes['valor_score'] = $this->attributes['scpc_score']->resultado;
         $this->attributes['classificacao_score'] = _classificarScore(intval($this->attributes['scpc_score']->resultado ?? 0));
 
@@ -213,7 +213,8 @@ class PessoaAssinatura extends Model
 
     public function consultarSpcBrasil()
     {
+        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
-        return $this->attributes['spc_brasil'] = $this->gacConsulta->consultar($orgaoConsulta);
+        return $this->attributes['spc_brasil'] = $gacConsulta->consultar($orgaoConsulta);
     }
 }

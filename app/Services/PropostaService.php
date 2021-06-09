@@ -602,6 +602,12 @@ class PropostaService
         }
 
         $proposta->refresh();
+
+        if($attributesFormProposta['id_status_analise_proposta'] == 5)
+        {
+            $this->apiSicred->finalizarProposta($proposta->contrato);
+        }
+
         $proposta->parcelas;
         $proposta->clienteAssinatura->porte;
         $proposta->representante;
