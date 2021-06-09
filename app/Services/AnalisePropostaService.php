@@ -11,10 +11,14 @@ use App\Services\KeysInterfaceService;
 
 use App\Services\GacConsultas\{
     ConfirmeOnlineService,
-    DebitosService,
-    InfoMaisService,
-    ScpcService,
+    DebitoService,
+    InfoMaisEnderecoService,
+    InfoMaisSituacaoService,
+    InfoMaisTelefoneService,
+    ScpcDebitoService,
+    ScpcScoreService,
     SpcBrasilService,
+    GacConsultaService
 };
 
 /**
@@ -30,56 +34,23 @@ class AnalisePropostaService
     private $analisePropostaRepository;
     private $analisePessoaPropostaRepository;
     private $keysInterfaceService;
+    private $gacConsultas;
 
-    private $statusNaoAssinado;
     private $statusAguardandoAnaliseManual;
     private $statusEmAnaliseManual;
 
-    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService, ConfirmeOnlineService $confirmeOnline, DebitosService $debito, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
+    private $proposta;
+
+    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService, GacConsultaService $gacConsultas)//, ConfirmeOnlineService $confirmeOnline, DebitoService $debito, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
     {
         $this->analisePropostaRepository = $analisePropostaRepository;
         $this->analisePessoaPropostaRepository = $analisePessoaPropostaRepository;
         $this->propostaRepository = $propostaRepository;
         $this->keysInterfaceService = $keysInterfaceService;
+        $this->gacConsultas = $gacConsultas;
 
-        $this->confirmeOnline = $confirmeOnline;
-        $this->debito = $debito;
-        $this->infomais = $infomais;
-        $this->scpc = $scpc;
-        $this->spcBrasil = $spcBrasil;
-
-        $this->statusNaoAssinado = 0;
         $this->statusAguardandoAnaliseManual = 1;
         $this->statusEmAnaliseManual = 2;
-    }
-
-
-    /**
-     * Service Layer - Method responsible for classifying a score value
-     *
-     * @param  int $score
-     * @return string $classificacaoScore
-     */
-    public function classificacaoScore($score)
-    {
-        $classificacaoScore = 'SEM INFORMACAO';
-
-        if ($score == ''  || ($score >= 0 && $score <= 1))
-            $classificacaoScore = 'SEM INFORMACAO';
-        else if ($score >= 2 && $score <= 322)
-            $classificacaoScore = 'ALTISSIMO RISCO';
-        else if ($score > 322 && $score <= 365)
-            $classificacaoScore = 'ALTO RISCO';
-        else if ($score > 365 && $score <= 529)
-            $classificacaoScore = 'MEDIO RISCO';
-        else if ($score > 529 && $score <= 747)
-            $classificacaoScore = 'BAIXO RISCO';
-        else if ($score > 747 && $score <= 1000)
-            $classificacaoScore = 'BAIXISSIMO RISCO';
-        else
-            $classificacaoScore = 'SEM INFORMACAO';
-
-        return $classificacaoScore;
     }
 
 
@@ -117,6 +88,7 @@ class AnalisePropostaService
     public function registrarAnaliseProposta($attributes, $idProposta)
     {
         $attributtesAnaliseProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnaliseProposta());
+        $attributtesAnaliseProposta['id_proposta'] = $idProposta;
         return $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
     }
 
@@ -127,14 +99,38 @@ class AnalisePropostaService
      * @param  int  $idProposta
      * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
      */
-    public function registrarAnalisePessoaProposta($attributes)
+    private function registrarAnalisePessoaProposta($attributes)
     {
         $attributesAnalisePessoaProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnalisePessoaProposta());
         return $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
     }
 
+    /**
+     * Service Layer - Method responsible for normalizing the attributes to insert an
+     * analysis of the person related to the proposal.
+     *
+     * @param  object  $pessoaProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    private function attributesRegistrarAnalisePessoaProposta($pessoaProposta)
+    {
+        return [
+            'id_proposta' => $this->proposta->id_proposta,
+            'id_analise_proposta' => $this->proposta->analise->id_analise_proposta,
+            'id_pessoa_assinatura' => $pessoaProposta->id_pessoa_assinatura ?? null,
+            'id_confirme_online' => $pessoaProposta->confirme_online->pessoal->id_confirme_online ?? null,
+            'id_info_mais' => $pessoaProposta->infomais_endereco->id_info_mais ?? null,
+            'id_score' => $pessoaProposta->scpc_score->id_score ?? null,
+            'id_scpc' => $pessoaProposta->scpc_debito->id_scpc ?? null,
+            'id_spc_brasil' => $pessoaProposta->spc_brasil->id_spc_brasil ?? null,
+            'restricao' => $pessoaProposta->debito->valor_total_debitos ?? null,
+            'score' => $pessoaProposta->scpc_score->resultado ?? null,
+            'classificacao_score' => $pessoaProposta->classificacao_score,
+        ];
+    }
 
-        /**
+
+    /**
      * Service Layer - Get proposal data for analysis process
      *
      * @since 31/05/2021
@@ -149,174 +145,139 @@ class AnalisePropostaService
 
         /*
         |--------------------------------------------------------------------------
-        | Dados da Proposta
+        | Proposal Data
         |--------------------------------------------------------------------------
         |
-        | Resgatando todos os dados da Proposta para a análise
+        | Redeeming all Proposal data for analysis
         */
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $proposta->parcelas;
-        $proposta->clienteAssinatura->atividadeComercial;
-        $proposta->clienteAssinatura->tipoEmpresa;
-        $proposta->clienteAssinatura->porte;
-        $proposta->clienteAssinatura->cosif;
-        $proposta->clienteAssinatura->tipoLogradouro;
-        $proposta->representante->tipoLogradouro;
-        $proposta->socios->map(function ($socio) {
+        $this->proposta = $this->propostaRepository->findOrFail($idProposta);
+        $this->proposta->parcelas;
+        $this->proposta->clienteAssinatura->atividadeComercial;
+        $this->proposta->clienteAssinatura->tipoEmpresa;
+        $this->proposta->clienteAssinatura->porte;
+        $this->proposta->clienteAssinatura->cosif;
+        $this->proposta->clienteAssinatura->tipoLogradouro;
+        $this->proposta->representante->tipoLogradouro;
+        $this->proposta->socios->map(function ($socio) {
             return $socio->tipoLogradouro;
         });
-        $proposta->documentos;
-        $proposta->statusAnalise;
-        // $proposta->toArray();
-
-        $analiseProposta = $this->registrarAnaliseProposta([], $proposta->id_proposta);
+        $this->proposta->documentos;
+        $this->proposta->statusAnalise;
 
         /*
         |--------------------------------------------------------------------------
-        | Consultas - Cliente Assinatura
+        | Proposal Analysis
         |--------------------------------------------------------------------------
         |
-        | Fazendo Consultas do Cliente Assinatura
-        |   - Confirme Online
+        | Registering Proposal Analysis
         */
-        $proposta['clienteAssinatura']['confirme_online'] = $this->confirmeOnline->consulta($proposta['clienteAssinatura']['cnpj']);
+        $this->registrarAnaliseProposta([], $this->proposta->id_proposta);
+        $this->proposta->analise;
 
 
         /*
         |--------------------------------------------------------------------------
-        | Análise Pessoa Proposta
+        | Inquiries - Customer Subscription
+        |--------------------------------------------------------------------------
+        |
+        | Making Subscription Customer Inquiries
+        |   - Confirme Online
+        */
+        $this->proposta->clienteAssinatura->consultarConfirmeOnline();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposed Person Analysis
         |--------------------------------------------------------------------------
         |
         | Registering customer review of the proposal
         */
-        $analiseClienteProposta = $this->registrarAnalisePessoaProposta([
-            'id_proposta' => $proposta->id_proposta,
-            'id_analise_proposta' => $analiseProposta->getKey(),
-            'id_pessoa_assinatura' => $proposta->clienteAssinatura->id_pessoa_assinatura,
-            'id_confirme_online' => $proposta->clienteAssinatura->confirme_online->pessoal->id_confirme_online ?? null
-        ], $proposta->id_proposta);
+        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->clienteAssinatura);
+        $this->registrarAnalisePessoaProposta($attributesAnalise);
 
         /*
         |--------------------------------------------------------------------------
-        | Consultas - Representante Legal
+        | Inquiries - Legal Representative
         |--------------------------------------------------------------------------
         |
-        | Fazendo Consultas do Representante Legal
+        | Making inquiries from the Legal Representative
         |   - Info Mais
         |   - SCPC
         |   - SPC Brasil
         |   - Confirme Online
         |   - Débito
         */
-        $proposta['representante']['infomais'] = [
-            'endereco' => $this->infomais->endereco($proposta['representante']['cpf']),
-            'telefone' => $this->infomais->telefone($proposta['representante']['cpf']),
-            'situacao' => $this->infomais->situacao($proposta['representante']['cpf'])
-        ];
-        $proposta['representante']['scpc'] = [
-            'debito' => $this->scpc->debito($proposta['representante']['cpf']),
-            'score' => $this->scpc->score($proposta['representante']['cpf']),
-        ];
-        $proposta['representante']['spc_brasil'] = $this->spcBrasil->consulta($proposta['representante']['cpf']);
-        $proposta['representante']['confirme_online'] = $this->confirmeOnline->consulta($proposta['representante']['cpf']);
-        $proposta['representante']['debito'] = $this->debito->consulta($proposta['representante']['cpf']);
-        $proposta['representante']['valor_score'] = $proposta->representante->scpc['score']->resultado ?? null;
-        $proposta['representante']['classificacao_score'] = $this->classificacaoScore(intval($proposta->representante->scpc['score']->resultado ?? null));
-
+        $this->proposta->representante->consultarConfirmeOnline();
+        $this->proposta->representante->consultarDebito();
+        $this->proposta->representante->consultarInfomaisEndereco();
+        $this->proposta->representante->consultarInfomaisSituacao();
+        $this->proposta->representante->consultarInfomaisTelefone();
+        $this->proposta->representante->consultarScpcDebito();
+        $this->proposta->representante->consultarScpcScore();
+        $this->proposta->representante->consultarSpcBrasil();
+        return $this->proposta->representante;
 
         /*
         |--------------------------------------------------------------------------
-        | Análise Pessoa Proposta
+        | Proposed Person Analysis
         |--------------------------------------------------------------------------
         |
         | Registering analysis of the legal representative related to the proposal
         */
-        $analiseRepresentanteProposta = $this->registrarAnalisePessoaProposta([
-            'id_proposta' => $proposta->id_proposta,
-            'id_analise_proposta' => $analiseProposta->getKey(),
-            'id_pessoa_assinatura' => $proposta->representante->id_pessoa_assinatura ?? null,
-            'id_infomais' => $proposta->representante->infomais->endereco->id_infomais ?? null,
-            'id_scpc' => $proposta->representante->scpc->debito->id_scpc ?? null,
-            'id_scpc' => $proposta->representante->spc_brasil->id_spc_brasil ?? null,
-            'id_confirme_online' => $proposta->representante->confirme_online->pessoal->id_confirme_online ?? null,
-            'restricao' => $proposta->representante->debito->valor_total_debitos ?? null,
-            'score' => $proposta->representante->scpc['score']->resultado ?? null,
-            'classificacao_score' => $proposta->representante->classificacao_score,
-        ]);
+        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
+        $this->registrarAnalisePessoaProposta($attributesAnalise);
+
 
         /*
         |--------------------------------------------------------------------------
-        | Consultas - Sócios
+        | Inquiries - Partners
         |--------------------------------------------------------------------------
         |
-        | Fazendo Consultas dos Sócios
+        | Making Partner Inquiries
         |   - Info Mais
         |   - SCPC
         |   - SPC Brasil
         |   - Confirme Online
         |   - Débito
         */
-        $analiseSociosProposta = [];
-        foreach ($proposta['socios'] as $key => $socio) {
-            $proposta['socios'][$key]['infomais'] = [
-                'endereco' => $this->infomais->endereco($socio['cpf']),
-                'telefone' => $this->infomais->telefone($socio['cpf']),
-                'situacao' => $this->infomais->situacao($socio['cpf'])
-            ];
-            $proposta['socios'][$key]['scpc'] = [
-                'debito' => $this->scpc->debito($socio['cpf']),
-                'score' => $this->scpc->score($socio['cpf']),
-            ];
-            $proposta['socios'][$key]['spc_brasil'] = $this->spcBrasil->consulta($socio['cpf']);
-            $proposta['socios'][$key]['confirme_online'] = $this->confirmeOnline->consulta($socio['cpf']);
-            $proposta['socios'][$key]['debito'] = $this->debito->consulta($socio['cpf']);
-            $proposta['socios'][$key]['valor_score'] = $proposta['socios'][$key]->scpc['score']->resultado ?? null;
-            $proposta['socios'][$key]['classificacao_score'] = $this->classificacaoScore(intval($proposta['socios'][$key]->scpc['score']->resultado ?? null));
+        $this->proposta->socios->map(function ($socio) {
+            $socio->consultarConfirmeOnline();
+            $socio->consultarDebito();
+            $socio->consultarInfomaisEndereco();
+            $socio->consultarInfomaisSituacao();
+            $socio->consultarInfomaisTelefone();
+            $socio->consultarScpcDebito();
+            $socio->consultarScpcScore();
+            $socio->consultarSpcBrasil();
 
             /*
             |--------------------------------------------------------------------------
-            | Análise Pessoa Proposta
+            | Proposed Person Analysis
             |--------------------------------------------------------------------------
             |
-            | Registering analysis of the legal representative related to the proposal
+            | Registering analysis of the partners linked to the proposal
             */
-            $analiseSocioProposta = $this->registrarAnalisePessoaProposta([
-                'id_proposta' => $proposta->id_proposta,
-                'id_analise_proposta' => $analiseProposta->getKey(),
-                'id_pessoa_assinatura' => $socio->id_pessoa_assinatura ?? null,
-                'id_infomais' =>  $proposta['socios'][$key]->infomais->endereco->id_infomais ?? null,
-                'id_scpc' =>  $proposta['socios'][$key]->scpc->debito->id_scpc ?? null,
-                'id_scpc' =>  $proposta['socios'][$key]->spc_brasil->id_spc_brasil ?? null,
-                'id_confirme_online' =>  $proposta['socios'][$key]->confirme_online->pessoal->id_confirme_online ?? null,
-                'restricao' => $proposta['socios'][$key]->debito->valor_total_debitos ?? null,
-                'score' => $proposta['socios'][$key]->scpc['score']->resultado ?? null,
-                'classificacao_score' => $proposta['socios'][$key]->classificacao_score,
-            ]);
-            array_push($analiseSociosProposta, $analiseSocioProposta);
-        }
+            $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($socio);
+            $this->registrarAnalisePessoaProposta($attributesAnalise);
+        });
 
-        $proposta['analise_caliban'] = [
-            'analise_proposta' => $analiseProposta,
-            'analise_cliente_proposta' => $analiseClienteProposta,
-            'analise_representante_proposta' => $analiseRepresentanteProposta,
-            'analise_socios_proposta' => $analiseSociosProposta,
-        ];
+        $this->proposta->analise->analisePessoaProposta;
 
 
         /*
         |--------------------------------------------------------------------------
-        | Analise Proposta
+        | Proposal Analysis
         |--------------------------------------------------------------------------
         |
         | Changing proposal review status
         */
-        if($proposta->id_status_analise_proposta == $this->statusAguardandoAnaliseManual){
-            $this->propostaRepository->alterarStatusAnalise($this->statusEmAnaliseManual, $proposta->id_proposta);
+        if($this->proposta->id_status_analise_proposta == $this->statusAguardandoAnaliseManual){
+            $this->propostaRepository->alterarStatusAnalise($this->statusEmAnaliseManual, $this->proposta->id_proposta);
             $proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
         }
 
 
-        return $proposta;
+        return $this->proposta;
     }
 
 

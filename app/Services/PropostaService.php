@@ -435,7 +435,6 @@ class PropostaService
         | creating a new proposal in Ágil's database.
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
-
         $proposta = $this->propostaRepository->create(_normalizeRequest($attributesProposta, ['valor_solicitado']));
 
 
