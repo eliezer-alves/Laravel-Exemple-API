@@ -447,6 +447,7 @@ class PropostaService
         */
         $attributesPessoaAssinatura = $this->parametrosFormularioPessoaAssinatura($attributesFormSocios, $attributesFormCliente, $proposta->id_proposta);
         $this->pessoaAssinaturaRepository->createMany($attributesPessoaAssinatura);
+        // dd($attributesPessoaAssinatura);
 
 
         /*
@@ -472,6 +473,7 @@ class PropostaService
         $proposta->refresh();
         $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
+        // return $proposta->clienteAssinatura;
         $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->cosif;
