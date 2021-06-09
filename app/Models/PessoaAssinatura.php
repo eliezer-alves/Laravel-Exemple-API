@@ -5,6 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Services\GacConsultas\{
+    ConfirmeOnlineService,
+    DebitoService,
+    InfoMaisEnderecoService,
+    InfoMaisSituacaoService,
+    InfoMaisTelefoneService,
+    ScpcDebitoService,
+    ScpcScoreService,
+    SpcBrasilService,
+    GacConsultaService
+};
+
 class PessoaAssinatura extends Model
 {
     use HasFactory;
@@ -104,7 +116,24 @@ class PessoaAssinatura extends Model
         'tipo_imovel' => null,
         'data_fundacao' => null,
         'id_cosif' => null,
+        'debito' => null,
+        'infomais_endereco' => null,
+        'infomais_situacao' => null,
+        'infomais_telefone' => null,
+        'scpc_debito' => null,
+        'scpc_score' => null,
+        'spc_brasil' => null,
+        'confirme_online' => null,
+        'valor_score' => null,
+        'classificacao_score' => null
     ];
+
+    private $gacConsulta;
+
+    public function __construct()
+    {
+        $this->gacConsulta = new GacConsultaService;
+    }
 
     public function proposta()
     {
@@ -134,5 +163,57 @@ class PessoaAssinatura extends Model
     public function tipoEmpresa()
     {
         return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
+    }
+
+    public function consultarConfirmeOnline()
+    {
+        $orgaoConsulta = new ConfirmeOnlineService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
+        return $this->attributes['confirme_online'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarDebito()
+    {
+        $orgaoConsulta = new DebitoService($this->attributes['cpf']);
+        return $this->attributes['debito'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarInfomaisEndereco()
+    {
+        $orgaoConsulta = new InfoMaisEnderecoService($this->attributes['cpf']);
+        return $this->attributes['infomais_endereco'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarInfomaisSituacao()
+    {
+        $orgaoConsulta = new InfoMaisSituacaoService($this->attributes['cpf']);
+        return $this->attributes['infomais_situacao'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarInfomaisTelefone()
+    {
+        $orgaoConsulta = new InfoMaisTelefoneService($this->attributes['cpf']);
+        return $this->attributes['infomais_telefone'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarScpcDebito()
+    {
+        $orgaoConsulta = new ScpcDebitoService($this->attributes['cpf']);
+        return $this->attributes['scpc_debito'] = $this->gacConsulta->consultar($orgaoConsulta);
+    }
+
+    public function consultarScpcScore()
+    {
+        $orgaoConsulta = new ScpcScoreService($this->attributes['cpf']);
+        $this->attributes['scpc_score'] = $this->gacConsulta->consultar($orgaoConsulta);
+        $this->attributes['valor_score'] = $this->attributes['scpc_score']->resultado;
+        $this->attributes['classificacao_score'] = _classificarScore(intval($this->attributes['scpc_score']->resultado ?? 0));
+
+        return;
+    }
+
+    public function consultarSpcBrasil()
+    {
+        $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
+        return $this->attributes['spc_brasil'] = $this->gacConsulta->consultar($orgaoConsulta);
     }
 }

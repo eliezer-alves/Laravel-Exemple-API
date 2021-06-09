@@ -18,6 +18,7 @@ class AnaliseProposta extends Model
     protected $fillable = [
         'id_status_analise_proposta',
         'valor_aprovado',
+        'id_proposta',
         // 'id_spc_brasil',
         // 'id_scpc',
         // 'id_confirme_online',

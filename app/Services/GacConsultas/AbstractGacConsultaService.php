@@ -2,6 +2,7 @@
 
 namespace App\Services\GacConsultas;
 
+use App\Services\Contracts\GacConsultaServiceInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Log;
 class AbstractGacConsultaService
 {
     private $baseUrl;
-    private $motivo;
     private $numeroMaximoTentativasRequest;
+    private $cpfCnpj;
+    private $motivo;
     protected $periodo;
 
-    public function __construct()
+    public function __construct($cpfCnpj)
     {
         $this->numeroMaximoTentativasRequest = 3;
         $this->baseUrl = 'https://api-consultas-prod.agil.com.br';
+        $this->cpfCnpj = $cpfCnpj;
         $this->motivo = 1;
         $this->periodo = 1;
     }
@@ -42,14 +45,19 @@ class AbstractGacConsultaService
         return $this->periodo = $periodo;
     }
 
-    protected function request($urlServico, $cpf_cnpj, $errorMessage = "Erro ao utilizar serviço GAC Consultas.")
+    public function setCpfCnpj($cpfCnpj)
+    {
+        return $this->setCpfCnpj = $cpfCnpj;
+    }
+
+    protected function request($urlServico, $errorMessage = "Erro ao utilizar serviço GAC Consultas.")
     {
         $numeroTentativasRequest = 0;
         $response = null;
         $url = "{$this->baseUrl}{$urlServico}";
         $attributes = [
-            'cpf' => $cpf_cnpj,
-            'cpf_cnpj' => $cpf_cnpj,
+            'cpf' => $this->cpfCnpj,
+            'cpf_cnpj' => $this->cpfCnpj,
             'motivo' => $this->motivo,
             'periodo' => $this->periodo
         ];
@@ -61,7 +69,6 @@ class AbstractGacConsultaService
 
         if ($response->status() != 200) {
             Log::channel('gacConsultas')->critical($errorMessage, $response->json());
-            // throw new FailedRequestGacConsultas($response, "{$errorMessage}.", ['url_servico' => $url, 'status' => $response->status()]);
         }
 
         return json_decode($response->body());

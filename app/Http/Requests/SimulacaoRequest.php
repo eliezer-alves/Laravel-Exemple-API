@@ -29,32 +29,7 @@ class SimulacaoRequest extends FormRequest
             'prazo' => ['required', 'numeric', 'max:36'],
             'valorSolicitado' => ['required', 'numeric', 'max:1000000'],
             'taxa' => ['numeric', 'max:100'],
-            'tac' => ['numeric', 'max:1000000']
-        ];
-    }
-
-    /**
-     * Get the error messages from the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'cpf.required' => 'O campo CPF é obrigatório.',
-            'cpf.regex' => 'O campo CPF aceita somente caracteres do tipo numérico.',
-            'cpf.between' => 'O campo CPF deve ter de 11 a 14 caracteres.',
-
-            'dataPrimeiroVencimento.required' => 'O campo Data Primeiro Vencimento é obrigatório',
-            'dataPrimeiroVencimento.date' => 'O campo Data Primeiro Vencimento tem que ser do tipo data.',
-
-            'prazo.required' => 'O campo Prazo é obrigatório.',
-            'prazo.numeric' => 'O campo Prazo tem que ser do tipo numérico.',
-            'prazo.max' => 'O campo Prazo tem que ser menor ou igual a 36.',
-
-            'valorSolicitado.required' => 'O campo Valor Solicitado é obrigatório.',
-            'valorSolicitado.numeric' => 'O campo Valor Solicitado tem que ser do tipo numérico.',
-            'valorSolicitado.max' => 'O campo Valor Solicitado tem que ser menor do que 1.000.000,00.',
+            'valorTAC' => ['numeric', 'between:100,5000', 'nullable']
         ];
     }
 }

@@ -9,6 +9,18 @@ use App\Repositories\Contracts\{
 use App\Repositories\Eloquent\PropostaRepository;
 use App\Services\KeysInterfaceService;
 
+use App\Services\GacConsultas\{
+    ConfirmeOnlineService,
+    DebitoService,
+    InfoMaisEnderecoService,
+    InfoMaisSituacaoService,
+    InfoMaisTelefoneService,
+    ScpcDebitoService,
+    ScpcScoreService,
+    SpcBrasilService,
+    GacConsultaService
+};
+
 /**
  * Service Layer - Class responsible for managing the proposal analysis process
  *
@@ -22,42 +34,23 @@ class AnalisePropostaService
     private $analisePropostaRepository;
     private $analisePessoaPropostaRepository;
     private $keysInterfaceService;
+    private $gacConsultas;
 
-    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService)
+    private $statusAguardandoAnaliseManual;
+    private $statusEmAnaliseManual;
+
+    private $proposta;
+
+    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService, GacConsultaService $gacConsultas)//, ConfirmeOnlineService $confirmeOnline, DebitoService $debito, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
     {
         $this->analisePropostaRepository = $analisePropostaRepository;
         $this->analisePessoaPropostaRepository = $analisePessoaPropostaRepository;
         $this->propostaRepository = $propostaRepository;
         $this->keysInterfaceService = $keysInterfaceService;
-    }
+        $this->gacConsultas = $gacConsultas;
 
-
-    /**
-     * Service Layer - Method responsible for classifying a score value
-     *
-     * @param  int $score
-     * @return string $classificacaoScore
-     */
-    public function classificacaoScore($score)
-    {
-        $classificacaoScore = 'SEM INFORMACAO';
-
-        if ($score == ''  || ($score >= 0 && $score <= 1))
-            $classificacaoScore = 'SEM INFORMACAO';
-        else if ($score >= 2 && $score <= 322)
-            $classificacaoScore = 'ALTISSIMO RISCO';
-        else if ($score > 322 && $score <= 365)
-            $classificacaoScore = 'ALTO RISCO';
-        else if ($score > 365 && $score <= 529)
-            $classificacaoScore = 'MEDIO RISCO';
-        else if ($score > 529 && $score <= 747)
-            $classificacaoScore = 'BAIXO RISCO';
-        else if ($score > 747 && $score <= 1000)
-            $classificacaoScore = 'BAIXISSIMO RISCO';
-        else
-            $classificacaoScore = 'SEM INFORMACAO';
-
-        return $classificacaoScore;
+        $this->statusAguardandoAnaliseManual = 1;
+        $this->statusEmAnaliseManual = 2;
     }
 
 
@@ -95,6 +88,7 @@ class AnalisePropostaService
     public function registrarAnaliseProposta($attributes, $idProposta)
     {
         $attributtesAnaliseProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnaliseProposta());
+        $attributtesAnaliseProposta['id_proposta'] = $idProposta;
         return $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
     }
 
@@ -105,11 +99,186 @@ class AnalisePropostaService
      * @param  int  $idProposta
      * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
      */
-    public function registrarAnalisePessoaProposta($attributes)
+    private function registrarAnalisePessoaProposta($attributes)
     {
         $attributesAnalisePessoaProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnalisePessoaProposta());
         return $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
     }
+
+    /**
+     * Service Layer - Method responsible for normalizing the attributes to insert an
+     * analysis of the person related to the proposal.
+     *
+     * @param  object  $pessoaProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    private function attributesRegistrarAnalisePessoaProposta($pessoaProposta)
+    {
+        return [
+            'id_proposta' => $this->proposta->id_proposta,
+            'id_analise_proposta' => $this->proposta->analise->id_analise_proposta,
+            'id_pessoa_assinatura' => $pessoaProposta->id_pessoa_assinatura ?? null,
+            'id_confirme_online' => $pessoaProposta->confirme_online->pessoal->id_confirme_online ?? null,
+            'id_info_mais' => $pessoaProposta->infomais_endereco->id_info_mais ?? null,
+            'id_score' => $pessoaProposta->scpc_score->id_score ?? null,
+            'id_scpc' => $pessoaProposta->scpc_debito->id_scpc ?? null,
+            'id_spc_brasil' => $pessoaProposta->spc_brasil->id_spc_brasil ?? null,
+            'restricao' => $pessoaProposta->debito->valor_total_debitos ?? null,
+            'score' => $pessoaProposta->scpc_score->resultado ?? null,
+            'classificacao_score' => $pessoaProposta->classificacao_score,
+        ];
+    }
+
+
+    /**
+     * Service Layer - Get proposal data for analysis process
+     *
+     * @since 31/05/2021
+     *
+     * @param  int  $idProposta
+     * @return array  $dataProposta
+     */
+    public function getDadosPropostaAnalise($idProposta)
+    {
+        ini_set('max_execution_time', 3000);
+        ini_set('memory_limit','4096M');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal Data
+        |--------------------------------------------------------------------------
+        |
+        | Redeeming all Proposal data for analysis
+        */
+        $this->proposta = $this->propostaRepository->findOrFail($idProposta);
+        $this->proposta->parcelas;
+        $this->proposta->clienteAssinatura->atividadeComercial;
+        $this->proposta->clienteAssinatura->tipoEmpresa;
+        $this->proposta->clienteAssinatura->porte;
+        $this->proposta->clienteAssinatura->cosif;
+        $this->proposta->clienteAssinatura->tipoLogradouro;
+        $this->proposta->representante->tipoLogradouro;
+        $this->proposta->socios->map(function ($socio) {
+            return $socio->tipoLogradouro;
+        });
+        $this->proposta->documentos;
+        $this->proposta->statusAnalise;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal Analysis
+        |--------------------------------------------------------------------------
+        |
+        | Registering Proposal Analysis
+        */
+        $this->registrarAnaliseProposta([], $this->proposta->id_proposta);
+        $this->proposta->analise;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Inquiries - Customer Subscription
+        |--------------------------------------------------------------------------
+        |
+        | Making Subscription Customer Inquiries
+        |   - Confirme Online
+        */
+        $this->proposta->clienteAssinatura->consultarConfirmeOnline();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposed Person Analysis
+        |--------------------------------------------------------------------------
+        |
+        | Registering customer review of the proposal
+        */
+        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->clienteAssinatura);
+        $this->registrarAnalisePessoaProposta($attributesAnalise);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Inquiries - Legal Representative
+        |--------------------------------------------------------------------------
+        |
+        | Making inquiries from the Legal Representative
+        |   - Info Mais
+        |   - SCPC
+        |   - SPC Brasil
+        |   - Confirme Online
+        |   - Débito
+        */
+        $this->proposta->representante->consultarConfirmeOnline();
+        $this->proposta->representante->consultarDebito();
+        $this->proposta->representante->consultarInfomaisEndereco();
+        $this->proposta->representante->consultarInfomaisSituacao();
+        $this->proposta->representante->consultarInfomaisTelefone();
+        $this->proposta->representante->consultarScpcDebito();
+        $this->proposta->representante->consultarScpcScore();
+        $this->proposta->representante->consultarSpcBrasil();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposed Person Analysis
+        |--------------------------------------------------------------------------
+        |
+        | Registering analysis of the legal representative related to the proposal
+        */
+        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
+        $this->registrarAnalisePessoaProposta($attributesAnalise);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Inquiries - Partners
+        |--------------------------------------------------------------------------
+        |
+        | Making Partner Inquiries
+        |   - Info Mais
+        |   - SCPC
+        |   - SPC Brasil
+        |   - Confirme Online
+        |   - Débito
+        */
+        $this->proposta->socios->map(function ($socio) {
+            $socio->consultarConfirmeOnline();
+            $socio->consultarDebito();
+            $socio->consultarInfomaisEndereco();
+            $socio->consultarInfomaisSituacao();
+            $socio->consultarInfomaisTelefone();
+            $socio->consultarScpcDebito();
+            $socio->consultarScpcScore();
+            $socio->consultarSpcBrasil();
+
+            /*
+            |--------------------------------------------------------------------------
+            | Proposed Person Analysis
+            |--------------------------------------------------------------------------
+            |
+            | Registering analysis of the partners linked to the proposal
+            */
+            $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($socio);
+            $this->registrarAnalisePessoaProposta($attributesAnalise);
+        });
+
+        // $this->proposta->analise->analisePessoaProposta;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal Analysis
+        |--------------------------------------------------------------------------
+        |
+        | Changing proposal review status
+        */
+        if($this->proposta->id_status_analise_proposta == $this->statusAguardandoAnaliseManual){
+            $this->propostaRepository->alterarStatusAnalise($this->statusEmAnaliseManual, $this->proposta->id_proposta);
+            $proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
+        }
+
+
+        return $this->proposta;
+    }
+
 
     /**
      * Service Layer - Method responsible for completing the analysis of the proposal.

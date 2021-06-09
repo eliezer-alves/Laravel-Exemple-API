@@ -2,6 +2,7 @@
 
 namespace App\Services\GacConsultas;
 
+use App\Services\Contracts\GacConsultaServiceInterface;
 use App\Services\GacConsultas\AbstractGacConsultaService;
 
 /**
@@ -11,15 +12,15 @@ use App\Services\GacConsultas\AbstractGacConsultaService;
  * @since 31/05/2021
  *
  */
-class ConfirmeOnlineService extends AbstractGacConsultaService
+class ConfirmeOnlineService extends AbstractGacConsultaService implements GacConsultaServiceInterface
 {
-    public function __construct()
+    public function __construct($cpfCnpj)
     {
-        parent::__construct();
+        parent::__construct($cpfCnpj);
     }
 
-    public function consulta($cpf_cnpj)
+    public function consultar()
     {
-        return $this->request('/confirme-online', $cpf_cnpj);
+        return $this->request('/confirme-online');
     }
 }

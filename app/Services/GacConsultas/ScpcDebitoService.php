@@ -12,7 +12,7 @@ use App\Services\GacConsultas\AbstractGacConsultaService;
  * @since 31/05/2021
  *
  */
-class SpcBrasilService extends AbstractGacConsultaService implements GacConsultaServiceInterface
+class ScpcDebitoService extends AbstractGacConsultaService implements GacConsultaServiceInterface
 {
     public function __construct($cpf)
     {
@@ -21,7 +21,6 @@ class SpcBrasilService extends AbstractGacConsultaService implements GacConsulta
 
     public function consultar()
     {
-        return $this->request('/spc-brasil');
+        return $this->request('/scpc-debito');
     }
-
 }
