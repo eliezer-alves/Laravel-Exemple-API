@@ -215,7 +215,6 @@ class AnalisePropostaService
         $this->proposta->representante->consultarScpcDebito();
         $this->proposta->representante->consultarScpcScore();
         $this->proposta->representante->consultarSpcBrasil();
-        return $this->proposta->representante;
 
         /*
         |--------------------------------------------------------------------------
@@ -261,7 +260,7 @@ class AnalisePropostaService
             $this->registrarAnalisePessoaProposta($attributesAnalise);
         });
 
-        $this->proposta->analise->analisePessoaProposta;
+        // $this->proposta->analise->analisePessoaProposta;
 
 
         /*
