@@ -264,7 +264,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 
         if ($response->status() != 200) {
-            throw new FailedResquestSicred($response, 'Proposta - Impossibilitado de finalizar proposta.', ['url_servico' => $url, 'status' => $response->status()]);
+            Log::channel('sicred')->error('Proposta - Impossibilitado de finalizar proposta.', $response->json());
         }
 
         return json_decode($response->body());
