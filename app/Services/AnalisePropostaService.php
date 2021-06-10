@@ -193,7 +193,7 @@ class AnalisePropostaService
         {
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
-        $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
+        // $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
         // $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
 
         /*
@@ -225,17 +225,18 @@ class AnalisePropostaService
             $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
         }
 
-        $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
-        $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
-        $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_infomais ?? null);
-        $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
-        $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_infomais ?? null);
-        $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
-        $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
-        $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
+        // $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
+        // $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
+        // $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_infomais ?? null);
+        // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
+        // $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_infomais ?? null);
+        // $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
+        // $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
+        // $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
         $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
 
-        return $this->proposta->representante;
+        return $this->proposta->representante->scr;
+
         /*
         |--------------------------------------------------------------------------
         | Proposed Person Analysis
