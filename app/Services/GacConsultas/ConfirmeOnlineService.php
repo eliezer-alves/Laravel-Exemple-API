@@ -23,4 +23,9 @@ class ConfirmeOnlineService extends AbstractGacConsultaService implements GacCon
     {
         return $this->request('/confirme-online');
     }
+
+    public function consultarById()
+    {
+        return $this->requestById('/confirme-online');
+    }
 }

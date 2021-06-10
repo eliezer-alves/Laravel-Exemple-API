@@ -9,10 +9,10 @@ use App\Services\GacConsultas\AbstractGacConsultaService;
  * Service Layer - Class responsible for managing InfoMais queries
  *
  * @author Eliezer Alves
- * @since 31/05/2021
+ * @since 10/06/2021
  *
  */
-class DebitoService extends AbstractGacConsultaService implements GacConsultaServiceInterface
+class ScrService extends AbstractGacConsultaService implements GacConsultaServiceInterface
 {
     public function __construct($cpf)
     {
@@ -21,12 +21,12 @@ class DebitoService extends AbstractGacConsultaService implements GacConsultaSer
 
     public function consultar()
     {
-        return $this->request('/debitos');
+        return $this->request('/scr');
     }
 
     public function consultarById()
     {
-        return [];
+        return $this->requestById('/scr');
     }
 
 }

@@ -23,4 +23,9 @@ class ScpcDebitoService extends AbstractGacConsultaService implements GacConsult
     {
         return $this->request('/scpc-debito');
     }
+
+    public function consultarById()
+    {
+        return $this->requestById('/scpc-debito');
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Services\GacConsultas;
 
-use App\Services\Contracts\GacConsultaServiceInterface;
+// use App\Services\Contracts\GacConsultaServiceInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -17,15 +17,15 @@ class AbstractGacConsultaService
 {
     private $baseUrl;
     private $numeroMaximoTentativasRequest;
-    private $cpfCnpj;
+    private $cpfCnpjId;
     private $motivo;
     protected $periodo;
 
-    public function __construct($cpfCnpj)
+    public function __construct($cpfCnpjId)
     {
         $this->numeroMaximoTentativasRequest = 3;
         $this->baseUrl = 'https://api-consultas-prod.agil.com.br';
-        $this->cpfCnpj = $cpfCnpj;
+        $this->cpfCnpjId = $cpfCnpjId;
         $this->motivo = 1;
         $this->periodo = 1;
     }
@@ -45,9 +45,9 @@ class AbstractGacConsultaService
         return $this->periodo = $periodo;
     }
 
-    public function setCpfCnpj($cpfCnpj)
+    public function setcpfCnpjId($cpfCnpjId)
     {
-        return $this->setCpfCnpj = $cpfCnpj;
+        return $this->cpfCnpjId = $cpfCnpjId;
     }
 
     protected function request($urlServico, $errorMessage = "Erro ao utilizar serviço GAC Consultas.")
@@ -56,14 +56,33 @@ class AbstractGacConsultaService
         $response = null;
         $url = "{$this->baseUrl}{$urlServico}";
         $attributes = [
-            'cpf' => $this->cpfCnpj,
-            'cpf_cnpj' => $this->cpfCnpj,
+            'cpf' => $this->cpfCnpjId,
+            'cpf_cnpj' => $this->cpfCnpjId,
+            'documento' => $this->cpfCnpjId,
             'motivo' => $this->motivo,
             'periodo' => $this->periodo
         ];
 
         do {
             $response = Http::get($url, $attributes);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() != 200) {
+            Log::channel('gacConsultas')->critical($errorMessage, $response->json());
+        }
+
+        return json_decode($response->body());
+    }
+
+    protected function requestById($urlServico, $errorMessage = "Erro ao utilizar serviço GAC Consultas.")
+    {
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = "{$this->baseUrl}{$urlServico}/{$this->cpfCnpjId}";
+
+        do {
+            $response = Http::get($url);
             $numeroTentativasRequest++;
         } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
 

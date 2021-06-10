@@ -45,6 +45,10 @@ class CreateCadAnalisePessoaProposta extends Migration
                 ->nullable()
                 ->unsigned();
 
+            $table->integer('id_scr')
+                ->nullable()
+                ->unsigned();
+
             $table->float('restricao', 8, 2)
                 ->nullable();
 

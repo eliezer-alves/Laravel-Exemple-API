@@ -24,4 +24,9 @@ class InfoMaisSituacaoService extends AbstractGacConsultaService implements GacC
         return $this->request('/info-mais/situacao');
     }
 
+    public function consultarById()
+    {
+        return $this->requestById('/info-mais/situacao');
+    }
+
 }

@@ -38,6 +38,8 @@ class AnalisePropostaService
 
     private $statusAguardandoAnaliseManual;
     private $statusEmAnaliseManual;
+    private $statusAprovadoAnalise;
+    private $statusNegadoAnalise;
 
     private $proposta;
 
@@ -51,6 +53,8 @@ class AnalisePropostaService
 
         $this->statusAguardandoAnaliseManual = 1;
         $this->statusEmAnaliseManual = 2;
+        $this->statusAprovadoAnalise = 8;
+        $this->statusNegadoAnalise = 9;
     }
 
 
@@ -123,6 +127,7 @@ class AnalisePropostaService
             'id_score' => $pessoaProposta->scpc_score->id_score ?? null,
             'id_scpc' => $pessoaProposta->scpc_debito->id_scpc ?? null,
             'id_spc_brasil' => $pessoaProposta->spc_brasil->id_spc_brasil ?? null,
+            'id_scr' => $pessoaProposta->scr->id_scr ?? null,
             'restricao' => $pessoaProposta->debito->valor_total_debitos ?? null,
             'score' => $pessoaProposta->scpc_score->resultado ?? null,
             'classificacao_score' => $pessoaProposta->classificacao_score,
@@ -183,7 +188,13 @@ class AnalisePropostaService
         | Making Subscription Customer Inquiries
         |   - Confirme Online
         */
-        $this->proposta->clienteAssinatura->consultarConfirmeOnline();
+        $analisClienteProposta = null;
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+        {
+            $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
+        }
+        $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
+        $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
 
         /*
         |--------------------------------------------------------------------------
@@ -207,15 +218,22 @@ class AnalisePropostaService
         |   - Confirme Online
         |   - Débito
         */
-        $this->proposta->representante->consultarConfirmeOnline();
-        $this->proposta->representante->consultarDebito();
-        $this->proposta->representante->consultarInfomaisEndereco();
-        $this->proposta->representante->consultarInfomaisSituacao();
-        $this->proposta->representante->consultarInfomaisTelefone();
-        $this->proposta->representante->consultarScpcDebito();
-        $this->proposta->representante->consultarScpcScore();
-        $this->proposta->representante->consultarSpcBrasil();
 
+        $analiseRepresentanteProposta = null;
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+        {
+            $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
+        }
+
+        $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
+        $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
+        $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_infomais ?? null);
+        $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
+        $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_infomais ?? null);
+        $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
+        $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
+        $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
+        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
         /*
         |--------------------------------------------------------------------------
         | Proposed Person Analysis
@@ -224,8 +242,6 @@ class AnalisePropostaService
         | Registering analysis of the legal representative related to the proposal
         */
         $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
-        $this->registrarAnalisePessoaProposta($attributesAnalise);
-
 
         /*
         |--------------------------------------------------------------------------
@@ -240,14 +256,21 @@ class AnalisePropostaService
         |   - Débito
         */
         $this->proposta->socios->map(function ($socio) {
-            $socio->consultarConfirmeOnline();
-            $socio->consultarDebito();
-            $socio->consultarInfomaisEndereco();
-            $socio->consultarInfomaisSituacao();
-            $socio->consultarInfomaisTelefone();
-            $socio->consultarScpcDebito();
-            $socio->consultarScpcScore();
-            $socio->consultarSpcBrasil();
+            $analiseRepresentanteProposta = null;
+            if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+            {
+                $analiseSocioProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $socio->id_pessoa_assinatura);
+            }
+
+            $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? null);
+            $socio->consultarDebito($analiseSocioProposta->id_scpc ?? null);
+            $socio->consultarInfomaisEndereco($analiseSocioProposta->id_info_mais ?? null);
+            $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? null);
+            $socio->consultarInfomaisTelefone($analiseSocioProposta->id_info_mais ?? null);
+            $socio->consultarScpcDebito($analiseSocioProposta->id_scpc ?? null);
+            $socio->consultarScpcScore($analiseSocioProposta->id_score ?? null);
+            $socio->consultarSpcBrasil($analiseSocioProposta->id_spc_brasil ?? null);
+            $socio->consultarScr($analiseSocioProposta->scr->id_scr ?? null);
 
             /*
             |--------------------------------------------------------------------------
@@ -259,8 +282,6 @@ class AnalisePropostaService
             $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($socio);
             $this->registrarAnalisePessoaProposta($attributesAnalise);
         });
-
-        // $this->proposta->analise->analisePessoaProposta;
 
 
         /*

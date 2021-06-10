@@ -23,4 +23,9 @@ class InfoMaisEnderecoService extends AbstractGacConsultaService implements GacC
     {
         return $this->request('/info-mais/endereco');
     }
+
+    public function consultarById()
+    {
+        return $this->requestById('/info-mais/endereco');
+    }
 }

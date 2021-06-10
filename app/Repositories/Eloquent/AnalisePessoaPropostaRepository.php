@@ -23,6 +23,7 @@ class AnalisePessoaPropostaRepository extends AbstractRepository implements Anal
     {
         try {
             $analisePessoa = $this->findByAnaliseAndPessoa($attributes['id_analise_proposta'], $attributes['id_pessoa_assinatura']) ?? $this->model->fill([]);
+            // dd($attributes['id_analise_proposta'], $attributes['id_pessoa_assinatura'],$analisePessoa);
             $analisePessoa->fill($attributes);
             $analisePessoa->save();
             return $analisePessoa;

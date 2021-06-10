@@ -24,4 +24,9 @@ class SpcBrasilService extends AbstractGacConsultaService implements GacConsulta
         return $this->request('/spc-brasil');
     }
 
+    public function consultarById()
+    {
+        return $this->requestById('/spc-brasil');
+    }
+
 }

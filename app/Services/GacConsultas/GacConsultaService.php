@@ -10,4 +10,9 @@ class GacConsultaService
     {
         return $orgaoConsulta->consultar();
     }
+
+    public function consultarById(GacConsultaServiceInterface $orgaoConsulta)
+    {
+        return $orgaoConsulta->consultarById();
+    }
 }

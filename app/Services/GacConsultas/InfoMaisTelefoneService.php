@@ -23,4 +23,9 @@ class InfoMaisTelefoneService extends AbstractGacConsultaService implements GacC
     {
         return $this->request('/info-mais/telefone');
     }
+
+    public function consultarById()
+    {
+        return $this->requestById('/info-mais/telefone');
+    }
 }

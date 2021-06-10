@@ -22,6 +22,7 @@ class AnalisePessoaProposta extends Model
         'id_score',
         'id_scpc',
         'id_spc_brasil',
+        'id_scr',
         'restricao',
         'score',
         'classificacao_score',

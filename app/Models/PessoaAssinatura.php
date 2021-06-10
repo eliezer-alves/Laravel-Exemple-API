@@ -13,6 +13,7 @@ use App\Services\GacConsultas\{
     InfoMaisTelefoneService,
     ScpcDebitoService,
     ScpcScoreService,
+    ScrService,
     SpcBrasilService,
     GacConsultaService
 };
@@ -116,16 +117,6 @@ class PessoaAssinatura extends Model
         'tipo_imovel' => null,
         'data_fundacao' => null,
         'id_cosif' => null,
-        // 'debito' => null,
-        // 'infomais_endereco' => null,
-        // 'infomais_situacao' => null,
-        // 'infomais_telefone' => null,
-        // 'scpc_debito' => null,
-        // 'scpc_score' => null,
-        // 'spc_brasil' => null,
-        // 'confirme_online' => null,
-        // 'valor_score' => null,
-        // 'classificacao_score' => null
     ];
 
     public function proposta()
@@ -158,11 +149,12 @@ class PessoaAssinatura extends Model
         return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
     }
 
-    public function consultarConfirmeOnline()
+    public function consultarConfirmeOnline($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new ConfirmeOnlineService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
-        return $this->attributes['confirme_online'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        // dump(($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']));
+        $orgaoConsulta = new ConfirmeOnlineService(($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']));
+        return $this->attributes['confirme_online'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
     public function consultarDebito()
@@ -172,11 +164,11 @@ class PessoaAssinatura extends Model
         return $this->attributes['debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
     }
 
-    public function consultarInfomaisEndereco()
+    public function consultarInfomaisEndereco($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new InfoMaisEnderecoService($this->attributes['cpf']);
-        return $this->attributes['infomais_endereco'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new InfoMaisEnderecoService($idConsulta ?? $this->attributes['cpf']);
+        return $this->attributes['infomais_endereco'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
     public function consultarInfomaisSituacao()
@@ -216,6 +208,13 @@ class PessoaAssinatura extends Model
         $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
         return $this->attributes['spc_brasil'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+    }
+
+    public function consultarScr()
+    {
+        $gacConsulta = new GacConsultaService;
+        $orgaoConsulta = new ScrService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
+        return $this->attributes['scr'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
     }
 }
 

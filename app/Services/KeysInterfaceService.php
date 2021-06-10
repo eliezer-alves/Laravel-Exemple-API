@@ -374,6 +374,10 @@ class KeysInterfaceService
                 'sourceKey' => 'id_score'
             ],
             [
+                'inputKey' => 'id_scr',
+                'sourceKey' => 'id_scr'
+            ],
+            [
                 'inputKey' => 'restricao',
                 'sourceKey' => 'restricao'
             ],

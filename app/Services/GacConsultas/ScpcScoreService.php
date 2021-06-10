@@ -24,4 +24,9 @@ class ScpcScoreService extends AbstractGacConsultaService implements GacConsulta
         return $this->request('/scpc-score');
     }
 
+    public function consultarById()
+    {
+        return $this->requestById('/scpc-score');
+    }
+
 }
