@@ -17,6 +17,7 @@ class ConfirmeOnlineService extends AbstractGacConsultaService implements GacCon
     public function __construct($cpfCnpj)
     {
         parent::__construct($cpfCnpj);
+        $this->periodo = 7;
     }
 
     public function consultar()

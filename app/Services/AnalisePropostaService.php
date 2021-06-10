@@ -233,7 +233,9 @@ class AnalisePropostaService
         $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
         $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
         $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
-        // $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
+        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
+
+        return $this->proposta->representante;
         /*
         |--------------------------------------------------------------------------
         | Proposed Person Analysis
