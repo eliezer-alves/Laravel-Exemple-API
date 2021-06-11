@@ -102,6 +102,10 @@ class KeysInterfaceService
                 'sourceKey' => 'cnpj'
             ],
             [
+                'inputKey' => 'inscricaoEstadual',
+                'sourceKey' => 'inscricao_estadual'
+            ],
+            [
                 'inputKey' => 'razaoSocial',
                 'sourceKey' => 'razao_social'
             ],
@@ -128,6 +132,14 @@ class KeysInterfaceService
             [
                 'inputKey' => 'cosif',
                 'sourceKey' => 'id_cosif'
+            ],
+            [
+                'inputKey' => 'anoFaturamento',
+                'sourceKey' => 'ano_faturamento'
+            ],
+            [
+                'inputKey' => 'valorFaturamentoAnual',
+                'sourceKey' => 'faturamento_anual'
             ],
             [
                 'inputKey' => 'email',
@@ -180,6 +192,10 @@ class KeysInterfaceService
                 'sourceKey' => 'cnpj_beneficiario'
             ],
             [
+                'inputKey' => 'nomeBeneficiario',
+                'sourceKey' => 'nome_beneficiario'
+            ],
+            [
                 'inputKey' => 'formaLiberacao',
                 'sourceKey' => 'forma_liberacao'
             ],
@@ -196,8 +212,16 @@ class KeysInterfaceService
                 'sourceKey' => 'agencia_liberacao'
             ],
             [
+                'inputKey' => 'digitoAgenciaLiberacao',
+                'sourceKey' => 'digito_agencia_liberacao'
+            ],
+            [
                 'inputKey' => 'contaLiberacao',
                 'sourceKey' => 'conta_liberacao'
+            ],
+            [
+                'inputKey' => 'digitoContaLiberacao',
+                'sourceKey' => 'digito_conta_liberacao'
             ],
             [
                 'inputKey' => 'tipoConta',

@@ -159,6 +159,7 @@ class PropostaService
     private function vincularClienteSicred($proposta, $numeroProposta)
     {
         $attributes = $this->keysInterfaceService->hydrator($proposta->cliente, $this->keysInterfaceService->clienteAgilSicred());
+        $attributes['enderecoResidencial'] = $proposta->cliente->tipoLogradouro->descricao . " " . $proposta->cliente->logradouro;
         return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
@@ -175,7 +176,6 @@ class PropostaService
     private function vincularLiberacoesSicred($proposta, $numeroProposta)
     {
         $attributes = $this->keysInterfaceService->hydrator($proposta, $this->keysInterfaceService->liberacoesAgilSicred());
-        $attributes['nomeBeneficiario'] = $proposta->cliente->nome_fantasia;
         $attributes['direcionamento'] = "N";
 
         return $this->apiSicred->vincularLiberacoesProposta($attributes, $numeroProposta);
@@ -473,7 +473,6 @@ class PropostaService
         $proposta->refresh();
         $proposta->parcelas;
         $proposta->clienteAssinatura->atividadeComercial;
-        // return $proposta->clienteAssinatura;
         $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->clienteAssinatura->porte;
         $proposta->clienteAssinatura->cosif;
