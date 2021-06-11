@@ -338,7 +338,7 @@ class PropostaService
         $attributes[] = $attributesFormCliente;
 
         foreach ($attributes as $key => $attribute) {
-            $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento']);
+            $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento', 'rendimento_mensal', 'faturamento_anual', 'capital_social', 'renda_mensal']);
             $attributes[$key]['id_proposta'] = $idProposta;
             $attributes[$key]['token'] = md5(date('Y-m-d H:i:s') . $idProposta . bcrypt($idProposta));
         }
