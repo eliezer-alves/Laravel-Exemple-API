@@ -195,7 +195,7 @@
             <td colspan="4" align="left" class="border grey" valign="center"><h2>QUADRO IV – ENCARGOS MORATÓRIOS:</h2></td>
         </tr>
         <tr>
-            <td colspan="8" align="left" valign="top"><h3>15. Banco: <?= $banco_liberacao ?>  Agência: <?= $agencia_liberacao ?> - <?= $digito_agencia_liberacao ?>  Conta: <?= $conta_liberacao ?> - <?= $digito_conta_liberacao ?>&emsp;<?= $valor_liquido_credito ?? 0 ?></h3>
+            <td colspan="8" align="left" valign="top"><h3>15. Banco: <?= $banco_liberacao ?>  Agência: <?= $agencia_liberacao ?> - <?= $digito_agencia_liberacao ?>  Conta: <?= $conta_liberacao ?> - <?= $digito_conta_liberacao ?></h3>
                 <h3>OU QUALQUER OUTRA DE TITULARIDADE DO EMITENTE</h3>
             </td>
             <td colspan="4" align="left" valign="top"><h3>16.Multa: 2% <br>17.Juros Moratórios: 1%
