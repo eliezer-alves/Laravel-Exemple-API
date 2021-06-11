@@ -17,6 +17,7 @@ class SpcBrasilService extends AbstractGacConsultaService implements GacConsulta
     public function __construct($cpf)
     {
         parent::__construct($cpf);
+        $this->periodo = 15;
     }
 
     public function consultar()

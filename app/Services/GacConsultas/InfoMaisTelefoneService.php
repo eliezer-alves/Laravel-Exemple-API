@@ -17,6 +17,7 @@ class InfoMaisTelefoneService extends AbstractGacConsultaService implements GacC
     public function __construct($cpf)
     {
         parent::__construct($cpf);
+        $this->periodo = 30;
     }
 
     public function consultar()

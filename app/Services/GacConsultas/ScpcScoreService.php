@@ -17,6 +17,7 @@ class ScpcScoreService extends AbstractGacConsultaService implements GacConsulta
     public function __construct($cpf)
     {
         parent::__construct($cpf);
+        $this->periodo = 7;
     }
 
     public function consultar()

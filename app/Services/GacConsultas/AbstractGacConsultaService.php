@@ -27,7 +27,7 @@ class AbstractGacConsultaService
         $this->baseUrl = 'https://api-consultas-prod.agil.com.br';
         $this->cpfCnpjId = $cpfCnpjId;
         $this->motivo = 1;
-        $this->periodo = 1;
+        $this->periodo = 30;
     }
 
     public function setNumeroMaximoTentativasRequest($numeroMaximoTentativasRequest)

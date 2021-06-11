@@ -194,7 +194,7 @@ class AnalisePropostaService
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
         $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
-        // $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
+        $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
 
         /*
         |--------------------------------------------------------------------------
@@ -228,12 +228,13 @@ class AnalisePropostaService
         $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
         $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
         $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_infomais ?? null);
-        $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
+        // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
         $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_infomais ?? null);
         $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
         $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
         $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
-        // $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
+        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
+
         /*
         |--------------------------------------------------------------------------
         | Proposed Person Analysis
@@ -265,12 +266,12 @@ class AnalisePropostaService
             $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? null);
             $socio->consultarDebito($analiseSocioProposta->id_scpc ?? null);
             $socio->consultarInfomaisEndereco($analiseSocioProposta->id_info_mais ?? null);
-            $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? null);
+            // $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? null);
             $socio->consultarInfomaisTelefone($analiseSocioProposta->id_info_mais ?? null);
             $socio->consultarScpcDebito($analiseSocioProposta->id_scpc ?? null);
             $socio->consultarScpcScore($analiseSocioProposta->id_score ?? null);
             $socio->consultarSpcBrasil($analiseSocioProposta->id_spc_brasil ?? null);
-            // $socio->consultarScr($analiseSocioProposta->scr->id_scr ?? null);
+            $socio->consultarScr($analiseSocioProposta->scr->id_scr ?? null);
 
             /*
             |--------------------------------------------------------------------------

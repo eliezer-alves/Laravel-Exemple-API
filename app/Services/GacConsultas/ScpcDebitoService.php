@@ -17,6 +17,7 @@ class ScpcDebitoService extends AbstractGacConsultaService implements GacConsult
     public function __construct($cpf)
     {
         parent::__construct($cpf);
+        $this->periodo = 15;
     }
 
     public function consultar()
