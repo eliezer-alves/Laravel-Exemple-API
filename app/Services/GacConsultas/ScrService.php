@@ -52,6 +52,7 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
 
     private function formatarConsulta($dadosConsulta)
     {
+        if(!isset($dadosConsulta->id_scr))return $dadosConsulta;
         $operacoes = collect($dadosConsulta->resumo_operacoes);
         $operacoesModalidades = $operacoes->groupBy('modalidade');
         foreach ($operacoesModalidades as $key => $modalidade) {

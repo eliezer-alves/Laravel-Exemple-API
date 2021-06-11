@@ -23,7 +23,7 @@ class AbstractGacConsultaService
 
     public function __construct($cpfCnpjId)
     {
-        $this->numeroMaximoTentativasRequest = 3;
+        $this->numeroMaximoTentativasRequest = 0;
         $this->baseUrl = 'https://api-consultas-prod.agil.com.br';
         $this->cpfCnpjId = $cpfCnpjId;
         $this->motivo = 1;
