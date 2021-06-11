@@ -422,7 +422,7 @@ class PropostaService
         | updated, otherwise a new record is created.
         */
         $this->cliente = $this->clienteRepository->findByCnpj($attributesFormCliente['cnpj']) ??  $this->clienteRepository->fill([]);
-        $this->cliente->fill(_normalizeRequest($attributesFormCliente, ['email']));
+        $this->cliente->fill(_normalizeRequest($attributesFormCliente, ['email', 'data_fundacao', 'capital_social', 'faturamento_anual', 'rendimento_mensal']));
         $this->cliente->save();
 
 

@@ -177,7 +177,7 @@
         </tr>
         <tr>
             <td colspan="8" align="left" valign="top"><h3>13. Forma de Pagamento:</h3>
-                <h4>(<?= $form_pg ?? 0 == 1 ? 'X' : ' ' ?>)Débito em Conta (<?= $form_pg ?? 0 == 2 ? 'X' : ' ' ?>)Boleto Bancário (<?= $form_pg ?? 0 == 3 ? 'X' : ' ' ?>)Cheque</h4>
+                <h4>( )Débito em Conta (X)Boleto Bancário ( )Cheque</h4>
             </td>
             <td colspan="4" align="left" valign="top"><h3>14. Valor do Seguro:</h3>
                 <h4>R$ <?= number_format($valor_seguro, 2, ',', '.') ?></h4>

@@ -5,11 +5,13 @@ namespace App\Services;
 use App\Models\Cliente;
 use App\Services\GacWebService;
 use App\Repositories\Contracts\{
+    AtividadeComercialRepositoryInterface,
     ClienteRepositoryInterface,
     PessoaAssinaturaRepositoryInterface,
+    TipoEmpresaRepositoryInterface,
     UserRepositoryInterface
 };
-
+use App\Repositories\Eloquent\TipoEmpresaRepository;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -24,13 +26,17 @@ class ClienteService
     protected $clienteRepository;
     protected $pessoaAssinaturaRepository;
     protected $userRepository;
+    protected $tipoEmpresaRepository;
+    protected $atividadeComercialRepository;
     protected $gacWebService;
 
-    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, UserRepositoryInterface $userRepository, GacWebService $gacWebService)
+    public function __construct(ClienteRepositoryInterface $clienteRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, UserRepositoryInterface $userRepository, GacWebService $gacWebService, TipoEmpresaRepositoryInterface $tipoEmpresaRepository, AtividadeComercialRepositoryInterface $atividadeComercialRepository)
     {
         $this->clienteRepository = $clienteRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
         $this->userRepository = $userRepository;
+        $this->tipoEmpresaRepository = $tipoEmpresaRepository;
+        $this->atividadeComercialRepository = $atividadeComercialRepository;
         $this->gacWebService = $gacWebService;
         $this->gacWebService->hydrator_bolt();
     }
@@ -146,9 +152,10 @@ class ClienteService
      */
     public function findByCnpjForAtendence($cnpj)
     {
-        $dadosLojista = (array)(!empty($this->clienteRepository->findByCnpj($cnpj))
-            ? $this->clienteRepository->findByCnpj($cnpj)->toArray()
-            : ($this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0] ?? NULL));
+        $dadosLojistaBolt = (array)($this->gacWebService->request(['acao' => 'GETLOJISTABYCNPJ', 'cnpj' => $cnpj])[0] ?? NULL);
+        $dadosLojistaAgil = $this->clienteRepository->findByCnpj($cnpj);
+
+        $dadosLojista = (array)(!empty($dadosLojistaAgil) ? $dadosLojistaAgil->toArray() : $dadosLojistaBolt);
 
         $dadosRepresentante = (array)(!empty($this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj))
             ? $this->pessoaAssinaturaRepository->findRepresentanteByCnpj($cnpj)->toArray()
@@ -156,6 +163,39 @@ class ClienteService
 
         $lojista = $this->clienteRepository->fill($dadosLojista);
         $representante = $this->pessoaAssinaturaRepository->fill($dadosRepresentante);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Dados Bancários
+        |--------------------------------------------------------------------------
+        */
+        $lojista['agencia_liberacao'] = explode('-', ($dadosLojistaBolt['agencia'] ?? ''))[0] ?? '';
+        $lojista['digito_agencia_liberacao'] = explode('-', ($dadosLojistaBolt['agencia'] ?? ''))[1] ?? '';
+        $lojista['conta_liberacao'] = explode('-', ($dadosLojistaBolt['conta'] ?? ''))[0] ?? '';
+        $lojista['digito_conta_liberacao'] = explode('-', ($dadosLojistaBolt['conta'] ?? ''))[1] ?? '';
+        $lojista['codigo_banco'] = intval($dadosLojistaBolt['banco'] ?? 1);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Tipo de Empresa
+        |--------------------------------------------------------------------------
+        */
+        if($lojista->id_tipo_empresa == null){
+            $tipoEmpresa = $this->tipoEmpresaRepository->where('descricao', _normalizeRequest([($dadosLojistaBolt['tipo_empresa'] ?? '')]))->first();
+            $lojista['id_tipo_empresa'] = $tipoEmpresa->getKey();
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Ramo Atividade
+        |--------------------------------------------------------------------------
+        */
+        if($lojista->id_atividade_comercial == null){
+            $atividadeComercial = $this->atividadeComercialRepository->where('descricao', _normalizeRequest([($dadosLojistaBolt['atividade_comercial'] ?? '')]))->first();
+            $lojista['id_atividade_comercial'] = $atividadeComercial->getKey();
+        }
 
         return [
             'lojista' => $lojista,
