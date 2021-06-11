@@ -57,10 +57,10 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
         foreach ($operacoesModalidades as $key => $modalidade) {
             $operacoesModalidades[$key] = [
                 'credito_disponivel' => $modalidade->whereIn('codigo_vencimento', $this->codigosCreditoDisponivel)->sum('valor_vencimento'),
-                'total_credito' => $modalidade->sum('valor_vencimento'),
                 'descricao_modalidade' => $modalidade->first()->descricao_modalidade,
                 'modalidade' => $key,
                 'prejuizo' => $modalidade->whereIn('codigo_vencimento', $this->codigosPrejuizo)->sum('valor_vencimento'),
+                'total_credito' => $modalidade->sum('valor_vencimento'),
                 'total_vencer' => $modalidade->whereIn('codigo_vencimento', $this->codigosTotalAVencer)->sum('valor_vencimento'),
                 'total_vencido' => $modalidade->whereIn('codigo_vencimento', $this->codigosTotalVencido)->sum('valor_vencimento'),
                 'total_vencer_trinta_dias' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencerAte30Dias)->sum('valor_vencimento'),
@@ -72,7 +72,13 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
             ];
         }
 
-        return $operacoesModalidades->all();
+        $scrFormatado['data_base_consulta'] = $dadosConsulta->data_base_consulta ?? null;
+        $scrFormatado['percentual_documentos_processados'] = $dadosConsulta->percentual_documentos_processados ?? null;
+        $scrFormatado['quantidade_instituicoes'] = $dadosConsulta->quantidade_instituicoes ?? null;
+        $scrFormatado['quantidade_operacoes'] = $dadosConsulta->quantidade_operacoes ?? null;
+        $scrFormatado['resumo_operacoes'] = $operacoesModalidades->all();
+
+        return $scrFormatado;
     }
 
 }
