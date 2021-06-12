@@ -28,12 +28,12 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
     public function __construct($cpf)
     {
         parent::__construct($cpf);
-        $this->codigosCreditoDisponivel = ['v20', 'v40'];
+        $this->codigosCreditoDisponivel = ['v20','v40'];
         $this->codigosTotalAVencer = ['v110','v120','v130','v140','v150','v160','v165','v170','v175','v180','v190','v199'];
-        $this->codigosTotalVencido = ['v205', 'v210','v220','v230','v240','v245','v250','v255','v260','v270','v280','v290'];
-        $this->codigosPrejuizo = ['v310','v320', '330'];
+        $this->codigosTotalVencido = ['v205','v210','v220','v230','v240','v245','v250','v255','v260','v270','v280','v290'];
+        $this->codigosPrejuizo = ['v310','v320','v330'];
         $this->codigosVencerAte30Dias = ['v110'];
-        $this->codigosVencerAcima30Ate60Dias = ['V120'];
+        $this->codigosVencerAcima30Ate60Dias = ['v120'];
         $this->codigosVencerAcima60Dias = ['v130','v140','v150','v160','v165','v170','v175','v180','v190','v199'];
         $this->codigosVencidoAte30Dias = ['v205', 'v210'];
         $this->codigosVencidoAcima30Ate60Dias = ['v220'];
@@ -69,7 +69,7 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
                 'total_vencer_acima_sessenta_dias' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencerAcima60Dias)->sum('valor_vencimento'),
                 'vencido_trinta_dias' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencidoAte30Dias)->sum('valor_vencimento'),
                 'vencido_sessenta_dias' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencidoAcima30Ate60Dias)->sum('valor_vencimento'),
-                'vencido_acima_sessenta_dias ' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencidoAcima60Dias)->sum('valor_vencimento'),
+                'vencido_acima_sessenta_dias' => $modalidade->whereIn('codigo_vencimento', $this->codigosVencidoAcima60Dias)->sum('valor_vencimento'),
             ];
         }
 

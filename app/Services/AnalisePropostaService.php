@@ -193,8 +193,8 @@ class AnalisePropostaService
         {
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
-        $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
-        $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
+        // $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
+        // $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
 
         /*
         |--------------------------------------------------------------------------
