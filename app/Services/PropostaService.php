@@ -548,6 +548,7 @@ class PropostaService
         $this->propostaRepository->alterarStatusAnalise($attributesFormProposta['id_status_analise_proposta'], $proposta->id_proposta);
         $analiseProposta = $this->analisePropostaService->registrarAnaliseProposta(['id_status_analise_proposta' => $attributesFormProposta['id_status_analise_proposta']], $proposta->id_proposta);
 
+
         /*
         |--------------------------------------------------------------------------
         | Legal Representative / Partners
@@ -609,12 +610,27 @@ class PropostaService
             $this->apiSicred->finalizarProposta($proposta->contrato);
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | Log Analise Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Changing proposal review status
+        */
+        $attributtesFinalizarAnaliseProposta = [
+            'id_status_atual' => $proposta->id_status_analise_proposta,
+            'valor_liberacao' => $proposta->valor_liberacao,
+            'data_hora_fim_analise_manual' => date('Y-m-d H:i:s'),
+        ];
+        $this->analisePropostaService->finalizarLogAnaliseProposta($attributtesFinalizarAnaliseProposta, $attributesFormProposta['id_log_analise']);
+
         $proposta->parcelas;
         $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;
         $proposta->documentos;
         $proposta->statusAnalise;
+        $proposta->analise->logAnalise;
 
         return $proposta;
     }

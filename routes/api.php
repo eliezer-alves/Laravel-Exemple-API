@@ -246,7 +246,7 @@ Route::group([
 ], function () {
 
     Route::post('/atualizar-proposta', [AnalisePropostaController::class, 'alterarDadosProposta']);
-    Route::get('/proposta/{id_proposta}', [AnalisePropostaController::class, 'dadosPropostaAnalise'])
+    Route::get('/proposta', [AnalisePropostaController::class, 'dadosPropostaAnalise'])
         ->where(['id_proposta' => '[0-9]+']);
 
     Route::post('/concluir/{id_proposta}', [AnalisePropostaController::class, 'concluirAnaliseProposta'])

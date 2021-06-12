@@ -129,6 +129,11 @@ class Proposta extends Model
         return $this->hasOne(AnaliseProposta::class, 'id_proposta', 'id_proposta');
     }
 
+    public function logAnalise()
+    {
+        return $this->hasMany(LogAnaliseProposta::class, 'id_proposta', 'id_proposta');
+    }
+
     public function analisePessoaProposta()
     {
         return $this->hasMany(AnalisePessoaProposta::class, 'id_proposta', 'id_proposta');

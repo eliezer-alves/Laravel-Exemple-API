@@ -5,21 +5,10 @@ namespace App\Services;
 use App\Repositories\Contracts\{
     AnalisePropostaRepositoryInterface,
     AnalisePessoaPropostaRepositoryInterface,
+    LogAnalisePropostaRepositoryInterface,
 };
 use App\Repositories\Eloquent\PropostaRepository;
 use App\Services\KeysInterfaceService;
-
-use App\Services\GacConsultas\{
-    ConfirmeOnlineService,
-    DebitoService,
-    InfoMaisEnderecoService,
-    InfoMaisSituacaoService,
-    InfoMaisTelefoneService,
-    ScpcDebitoService,
-    ScpcScoreService,
-    SpcBrasilService,
-    GacConsultaService
-};
 
 /**
  * Service Layer - Class responsible for managing the proposal analysis process
@@ -33,8 +22,8 @@ class AnalisePropostaService
     private $propostaRepository;
     private $analisePropostaRepository;
     private $analisePessoaPropostaRepository;
+    private $logAnalisePropostaRepository;
     private $keysInterfaceService;
-    private $gacConsultas;
 
     private $statusAguardandoAnaliseManual;
     private $statusEmAnaliseManual;
@@ -43,13 +32,13 @@ class AnalisePropostaService
 
     private $proposta;
 
-    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService, GacConsultaService $gacConsultas)//, ConfirmeOnlineService $confirmeOnline, DebitoService $debito, InfoMaisService $infomais, ScpcService $scpc, SpcBrasilService $spcBrasil)
+    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, LogAnalisePropostaRepositoryInterface $logAnalisePropostaRepository, PropostaRepository $propostaRepository, KeysInterfaceService $keysInterfaceService)
     {
         $this->analisePropostaRepository = $analisePropostaRepository;
         $this->analisePessoaPropostaRepository = $analisePessoaPropostaRepository;
+        $this->logAnalisePropostaRepository = $logAnalisePropostaRepository;
         $this->propostaRepository = $propostaRepository;
         $this->keysInterfaceService = $keysInterfaceService;
-        $this->gacConsultas = $gacConsultas;
 
         $this->statusAguardandoAnaliseManual = 1;
         $this->statusEmAnaliseManual = 2;
@@ -134,6 +123,38 @@ class AnalisePropostaService
         ];
     }
 
+        /**
+     * Service Layer - Method responsible for the proposal analysis log.
+     *
+     * @param  int  $idUsuario
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    public function registrarLogAnaliseProposta($idUsuario)
+    {
+        $attributtesLogAnaliseProposta = [
+            'id_proposta' => $this->proposta->id_proposta,
+            'id_analise_proposta' => $this->proposta->analise->id_analise_proposta,
+            'id_usuario_analise_manual' => $idUsuario,
+            'id_tipo_proposta' => 2,
+            'id_status_anterior' => $this->proposta->id_status_analise_proposta,
+            'id_status_atual' => $this->proposta->id_status_analise_proposta,
+            'valor_liberacao' => $this->proposta->valor_liberacao,
+            'data_hora_inicio_analise' => date('Y-m-d H:i:s'),
+        ];
+        return $this->logAnalisePropostaRepository->create($attributtesLogAnaliseProposta);
+    }
+
+    /**
+     * Service Layer - Method responsible for the proposal analysis log.
+     *
+     * @param  int  $idLogAnaliseProposta
+     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     */
+    public function finalizarLogAnaliseProposta($attributtesFinalizarAnaliseProposta, $idLogAnaliseProposta)
+    {
+        return $this->logAnalisePropostaRepository->update($attributtesFinalizarAnaliseProposta, $idLogAnaliseProposta);
+    }
+
 
     /**
      * Service Layer - Get proposal data for analysis process
@@ -143,7 +164,7 @@ class AnalisePropostaService
      * @param  int  $idProposta
      * @return array  $dataProposta
      */
-    public function getDadosPropostaAnalise($idProposta)
+    public function getDadosPropostaAnalise($idProposta, $idUsuario)
     {
         ini_set('max_execution_time', 3000);
         ini_set('memory_limit','4096M');
@@ -179,6 +200,15 @@ class AnalisePropostaService
         $this->registrarAnaliseProposta([], $this->proposta->id_proposta);
         $this->proposta->analise;
 
+        /*
+        |--------------------------------------------------------------------------
+        | Proposal Analysis Log
+        |--------------------------------------------------------------------------
+        |
+        | Registering the Proposal Analysis Log
+        */
+        $logAnalise = $this->registrarLogAnaliseProposta($idUsuario);
+        $this->proposta['id_log_analise'] = $logAnalise->getKey();
 
         /*
         |--------------------------------------------------------------------------
@@ -194,7 +224,6 @@ class AnalisePropostaService
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
         $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
-        // $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->scr->id_scr ?? null);
 
         /*
         |--------------------------------------------------------------------------
@@ -243,6 +272,7 @@ class AnalisePropostaService
         | Registering analysis of the legal representative related to the proposal
         */
         $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
+        $this->registrarAnalisePessoaProposta($attributesAnalise);
 
         /*
         |--------------------------------------------------------------------------

@@ -33,9 +33,13 @@ class AnalisePropostaController extends Controller
      * @param  App\Http\Requests\AlterarDadosPropostaAnaliseRequest;
      * @return \Illuminate\Http\Response
      */
-    public function dadosPropostaAnalise($idProposta)
+    public function dadosPropostaAnalise(Request $request)
     {
-        return $this->service->getDadosPropostaAnalise($idProposta);
+        $request->validate([
+            'id_proposta' => ['required', 'numeric', 'exists:cad_proposta,id_proposta'],
+            'id_usuario' => ['required', 'numeric', 'exists:cad_usuario,id_usuario'],
+        ]);
+        return $this->service->getDadosPropostaAnalise($request->id_proposta, $request->id_usuario);
     }
 
 

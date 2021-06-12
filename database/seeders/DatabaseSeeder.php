@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PorteEmpresaSeeder::class);
         $this->call(TipoEmpresaSeeder::class);
         $this->call(CosifSeeder::class);
+        $this->call(TipoPropostaSeeder::class);
     }
 }

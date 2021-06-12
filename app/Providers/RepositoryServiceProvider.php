@@ -7,11 +7,12 @@ use App\Repositories\Contracts\{
     AnalisePessoaPropostaRepositoryInterface,
     AnalisePropostaRepositoryInterface,
     AtividadeComercialRepositoryInterface,
-    DocumentoPropostaRepositoryInterface,
     CosifRepositoryInterface,
     ClienteRepositoryInterface,
     ClientSicredRepositoryInterface,
     ConfiguracaoRepositoryInterface,
+    DocumentoPropostaRepositoryInterface,
+    LogAnalisePropostaRepositoryInterface,
     ModeloSicredRepositoryInterface,
     ObservacaoPropostaRepositoryInterface,
     PessoaAssinaturaRepositoryInterface,
@@ -28,11 +29,12 @@ use App\Repositories\Eloquent\{
     AnalisePessoaPropostaRepository,
     AnalisePropostaRepository,
     AtividadeComercialRepository,
-    DocumentoPropostaRepository,
     ClienteRepository,
     ClientSicredRepository,
     CosifRepository,
     ConfiguracaoRepository,
+    DocumentoPropostaRepository,
+    LogAnalisePropostaRepository,
     ModeloSicredRepository,
     ObservacaoPropostaRepository,
     PessoaAssinaturaRepository,
@@ -94,6 +96,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             DocumentoPropostaRepositoryInterface::class,
             DocumentoPropostaRepository::class
+        );
+
+        $this->app->bind(
+            LogAnalisePropostaRepositoryInterface::class,
+            LogAnalisePropostaRepository::class
         );
 
         $this->app->bind(
