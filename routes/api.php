@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
+    AnalisePropostaConsultaController,
     AnalisePropostaController,
     AtividadeComercialController,
     AssinaturaPropostaController,
@@ -17,6 +18,7 @@ use App\Http\Controllers\{
     SimulacaoController,
     TipoEmpresaController,
 };
+use App\Services\AnalisePropostaConsultaService;
 
 /*
 |--------------------------------------------------------------------------
@@ -251,6 +253,28 @@ Route::group([
 
     Route::post('/concluir/{id_proposta}', [AnalisePropostaController::class, 'concluirAnaliseProposta'])
         ->where(['id_proposta' => '[0-9]+']);
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Análise Proposta Consultas
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    'middleware' => ['auth:api'],
+    'prefix' => 'analise-proposta/consultas',
+], function () {
+
+    Route::get('/confirme-online', [AnalisePropostaConsultaController::class, 'confirmeOnline']);
+    Route::get('/debito', [AnalisePropostaConsultaController::class, 'debito']);
+    Route::get('/infomais-endereco', [AnalisePropostaConsultaController::class, 'infomaisEndereco']);
+    Route::get('/infomais-situacao', [AnalisePropostaConsultaController::class, 'infomaisSituacao']);
+    Route::get('/infomais-telefone', [AnalisePropostaConsultaController::class, 'infomaisTelefone']);
+    Route::get('/scpc-debito', [AnalisePropostaConsultaController::class, 'scpcDebito']);
+    Route::get('/scpc-score', [AnalisePropostaConsultaController::class, 'scpcScore']);
+    Route::get('/scr', [AnalisePropostaConsultaController::class, 'scr']);
+    Route::get('/spc-brasil', [AnalisePropostaConsultaController::class, 'spcBrasil']);
 
 });
 

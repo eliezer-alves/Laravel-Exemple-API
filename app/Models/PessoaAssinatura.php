@@ -203,18 +203,18 @@ class PessoaAssinatura extends Model
         return;
     }
 
-    public function consultarSpcBrasil()
-    {
-        $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
-        return $this->attributes['spc_brasil'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
-    }
-
     public function consultarScr()
     {
         $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScrService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
         return $this->attributes['scr'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+    }
+
+    public function consultarSpcBrasil()
+    {
+        $gacConsulta = new GacConsultaService;
+        $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
+        return $this->attributes['spc_brasil'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
     }
 }
 

@@ -219,7 +219,7 @@ class AnalisePropostaService
         |   - Confirme Online
         */
         $analisClienteProposta = null;
-        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
         {
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
@@ -249,16 +249,16 @@ class AnalisePropostaService
         */
 
         $analiseRepresentanteProposta = null;
-        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
         {
             $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
         }
 
         $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
         $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
-        $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_infomais ?? null);
-        // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_infomais ?? null);
-        $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_infomais ?? null);
+        $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_info_mais ?? null);
+        // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_info_mais ?? null);
+        $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_info_mais ?? null);
         $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
         $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
         $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
@@ -288,7 +288,7 @@ class AnalisePropostaService
         */
         $this->proposta->socios->map(function ($socio) {
             $analiseRepresentanteProposta = null;
-            if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
+            if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
             {
                 $analiseSocioProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $socio->id_pessoa_assinatura);
             }
