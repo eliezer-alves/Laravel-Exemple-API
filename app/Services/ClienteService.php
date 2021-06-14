@@ -184,7 +184,7 @@ class ClienteService
         */
         if($lojista->id_tipo_empresa == null){
             $tipoEmpresa = $this->tipoEmpresaRepository->where('descricao', _normalizeRequest([($dadosLojistaBolt['tipo_empresa'] ?? '')]))->first();
-            $lojista['id_tipo_empresa'] = $tipoEmpresa->getKey();
+            $lojista['id_tipo_empresa'] = $tipoEmpresa != null ? $tipoEmpresa->getKey() : 1;
         }
 
         /*
@@ -194,7 +194,7 @@ class ClienteService
         */
         if($lojista->id_atividade_comercial == null){
             $atividadeComercial = $this->atividadeComercialRepository->where('descricao', _normalizeRequest([($dadosLojistaBolt['atividade_comercial'] ?? '')]))->first();
-            $lojista['id_atividade_comercial'] = $atividadeComercial->getKey();
+            $lojista['id_atividade_comercial'] = $atividadeComercial != null ? $atividadeComercial->getKey() : 1;
         }
 
         return [

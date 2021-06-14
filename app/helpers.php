@@ -12,7 +12,7 @@ if (! function_exists('_normalizeRequest')) {
     function _normalizeRequest($request, $hidden = []) {
         foreach ($request as $key => $value) {
         	if(gettype($value)=="string" && !in_array($key, $hidden)){
-        		$request[$key] = strtoupper(preg_replace('/[^A-Za-z0-9 \ ]/', '', Str::ascii($value)));
+        		$request[$key] = strtoupper(preg_replace('/[^A-Za-z0-9\/\/ ]/', '', Str::ascii($value)));
         	}
         }
         return $request;
