@@ -16,6 +16,8 @@ interface ApiSicredServiceInterface
 
     public function vincularClienteProposta(array $attributes, int $numeroProposta);
 
+    public function atualizarClienteProposta(array $attributes, int $numeroProposta);
+
     public function vincularLiberacoesProposta(array $attributes, int $numeroProposta);
 
     public function finalizarProposta(int $numeroProposta);

@@ -254,7 +254,7 @@ class AnalisePropostaService
             $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
         }
 
-        $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
+        // $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? null);
         // $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? null);
         // $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_info_mais ?? null);
         // // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_info_mais ?? null);
@@ -293,7 +293,7 @@ class AnalisePropostaService
                 $analiseSocioProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $socio->id_pessoa_assinatura);
             }
 
-            $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? null);
+            // $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? null);
             // $socio->consultarDebito($analiseSocioProposta->id_scpc ?? null);
             // $socio->consultarInfomaisEndereco($analiseSocioProposta->id_info_mais ?? null);
             // // $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? null);

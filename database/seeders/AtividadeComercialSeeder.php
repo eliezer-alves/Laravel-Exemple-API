@@ -15,9 +15,9 @@ class AtividadeComercialSeeder extends Seeder
 
     public function run()
     {
-        foreach ($this->listaAtividadeComercial as $atividade) {
+        foreach (_normalizeRequest($this->listaAtividadeComercial) as $atividade) {
         	$r = AtividadeComercial::create([
-        		'descricao' => _normalizeRequest($atividade)
+        		'descricao' => $atividade
         	]);
         }
     }

@@ -5,18 +5,6 @@ namespace App\Services;
 use App\Repositories\Contracts\AnalisePessoaPropostaRepositoryInterface;
 use App\Repositories\Contracts\AnalisePropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
-use App\Services\GacConsultas\{
-    ConfirmeOnlineService,
-    DebitoService,
-    InfoMaisEnderecoService,
-    InfoMaisSituacaoService,
-    InfoMaisTelefoneService,
-    ScpcDebitoService,
-    ScpcScoreService,
-    ScrService,
-    SpcBrasilService,
-    GacConsultaService
-};
 
 
 /**
@@ -31,19 +19,17 @@ class AnalisePropostaConsultaService
     protected $analisePropostaRepository;
     protected $analisePessoaPropostaRepository;
     protected $pessoaAssinaturaRepository;
-    protected $gacConsulta;
 
     private $statusAguardandoAnaliseManual;
     private $statusEmAnaliseManual;
     private $statusAprovadoAnalise;
     private $statusNegadoAnalise;
 
-    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, GacConsultaService $gacConsulta)
+    public function __construct(AnalisePropostaRepositoryInterface $analisePropostaRepository, AnalisePessoaPropostaRepositoryInterface $analisePessoaPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository)
     {
         $this->analisePropostaRepository = $analisePropostaRepository;
         $this->analisePessoaPropostaRepository = $analisePessoaPropostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
-        $this->gacConsulta = $gacConsulta;
         $this->statusAguardandoAnaliseManual = 1;
         $this->statusEmAnaliseManual = 2;
         $this->statusAprovadoAnalise = 8;

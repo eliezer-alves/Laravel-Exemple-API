@@ -221,6 +221,30 @@ class ApiSicredService implements ApiSicredServiceInterface
         return json_decode($response->body());
     }
 
+    /**
+     * Links a customer to the proposal at Sicred
+     *
+     * @param array $attributes
+     * @return int $numeroProposta
+     */
+    public function atualizarClienteProposta($attributes, $numeroProposta)
+    {
+        $numeroTentativasRequest = 0;
+        $response = null;
+        $url = $this->urlServico('base_url') . $this->urlServico('proposta_v2_url') . "/$this->empresa/$numeroProposta" . $this->urlServico('cliente');
+
+        do {
+            $response = Http::withToken(Session::get('accessToken'))->put($url, $attributes);
+            $numeroTentativasRequest++;
+        } while (($response->status() != 200) && $numeroTentativasRequest <= $this->numeroMaximoTentativasRequest);
+
+        if ($response->status() != 200) {
+            throw new FailedResquestSicred($response, 'Cliente Proposta - Impossibilitado de vincular clienta à proposta.', ['url_servico' => $url, 'status' => $response->status()]);
+        }
+
+        return json_decode($response->body());
+    }
+
 
     /**
      * Links bank details to a proposal at Sicred

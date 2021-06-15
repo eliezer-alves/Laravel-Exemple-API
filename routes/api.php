@@ -13,6 +13,7 @@ use App\Http\Controllers\{
     DominiosController,
     ObservacaoProposta,
     PdfController,
+    PessoaGacConsultaController,
     PorteEmpresaController,
     PropostaController,
     SimulacaoController,
@@ -275,6 +276,28 @@ Route::group([
     Route::get('/scpc-score', [AnalisePropostaConsultaController::class, 'scpcScore']);
     Route::get('/scr', [AnalisePropostaConsultaController::class, 'scr']);
     Route::get('/spc-brasil', [AnalisePropostaConsultaController::class, 'spcBrasil']);
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Análise Pessoa Consultas
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    // 'middleware' => ['auth:api'],
+    'prefix' => 'analise-proposta/consultas',
+], function () {
+
+    Route::get('/confirme-online', [PessoaGacConsultaController::class, 'confirmeOnline']);
+    Route::get('/debito', [PessoaGacConsultaController::class, 'debito']);
+    Route::get('/infomais-endereco', [PessoaGacConsultaController::class, 'infomaisEndereco']);
+    Route::get('/infomais-situacao', [PessoaGacConsultaController::class, 'infomaisSituacao']);
+    Route::get('/infomais-telefone', [PessoaGacConsultaController::class, 'infomaisTelefone']);
+    Route::get('/scpc-debito', [PessoaGacConsultaController::class, 'scpcDebito']);
+    Route::get('/scpc-score', [PessoaGacConsultaController::class, 'scpcScore']);
+    Route::get('/scr', [PessoaGacConsultaController::class, 'scr']);
+    Route::get('/spc-brasil', [PessoaGacConsultaController::class, 'spcBrasil']);
 
 });
 

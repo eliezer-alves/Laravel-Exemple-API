@@ -45,6 +45,7 @@ class PropostaService
     private $statusNaoAssinado;
     private $statusAguardandoAnaliseManual;
     private $statusEmAnaliseManual;
+    private $statusAprovadoManual;
 
     public function __construct(ClienteRepositoryInterface $clienteRepository, DocumentoPropostaRepositoryInterface $documentoPropostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, PropostaRepositoryInterface $propostaRepository, PropostaParcelaRepositoryInterface $propostaParcelaRepository, ApiSicredServiceInterface $apiSicred, AnalisePropostaService $analisePropostaService, KeysInterfaceService $keysInterfaceService)
     {
@@ -62,6 +63,7 @@ class PropostaService
         $this->statusNaoAssinado = 0;
         $this->statusAguardandoAnaliseManual = 1;
         $this->statusEmAnaliseManual = 2;
+        $this->statusAprovadoManual = 8;
     }
 
     /**
@@ -163,6 +165,22 @@ class PropostaService
         return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
+    /**
+     * Service Layer - Update customer data linked to the Sicred proposal
+     *
+     * @since 15/06/2021
+     *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $numeroProposta
+     * @return App\Services\Contracts\ApiSicredServiceInterface
+     */
+    private function atualizarClienteSicred($proposta, $numeroProposta)
+    {
+        $attributes = $this->keysInterfaceService->hydrator($proposta->cliente, $this->keysInterfaceService->clienteAgilSicred());
+        $attributes['enderecoResidencial'] = $proposta->cliente->tipoLogradouro->descricao . " " . $proposta->cliente->logradouro;
+        return $this->apiSicred->atualizarClienteProposta($attributes, $numeroProposta);
+    }
+
 
     /**
      * Service Layer - Links bank details to a proposal at Sicred
@@ -174,6 +192,23 @@ class PropostaService
      * @return App\Services\Contracts\ApiSicredServiceInterface
      */
     private function vincularLiberacoesSicred($proposta, $numeroProposta)
+    {
+        $attributes = $this->keysInterfaceService->hydrator($proposta, $this->keysInterfaceService->liberacoesAgilSicred());
+        $attributes['direcionamento'] = "N";
+
+        return $this->apiSicred->vincularLiberacoesProposta($attributes, $numeroProposta);
+    }
+
+    /**
+     * Service Layer - Inserting new bank details to the Sicred proposal in case of any change in the bank details of the Agile proposal
+     *
+     * @since 15/06/2021
+     *
+     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
+     * @param  int $numeroProposta
+     * @return App\Services\Contracts\ApiSicredServiceInterface
+     */
+    private function atualizarLiberacoesSicred($proposta, $numeroProposta)
     {
         $attributes = $this->keysInterfaceService->hydrator($proposta, $this->keysInterfaceService->liberacoesAgilSicred());
         $attributes['direcionamento'] = "N";
@@ -235,7 +270,7 @@ class PropostaService
      * @param  int $idProposta
      * @return array $parcelas
      */
-    private function excluirParcelsPropostaSicred($idProposta)
+    private function excluirParcelasPropostaSicred($idProposta)
     {
         $parcelas = $this->propostaParcelaRepository->where('id_proposta', $idProposta)->get();
         $parcelas->map(function ($parcela) {
@@ -536,6 +571,7 @@ class PropostaService
         | creating a new proposal in Ágil's database.
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
+        $proposta = $this->propostaRepository->find($attributesFormProposta['id_proposta']);
         $proposta = $this->propostaRepository->update(_normalizeRequest($attributesProposta, ['valor_solicitado']), $attributesFormProposta['id_proposta']);
 
         /*
@@ -589,7 +625,7 @@ class PropostaService
             | Exclude installments from the proposal as new installments for the new
             | simulation will be saved.
             */
-            $this->excluirParcelsPropostaSicred($proposta->id_proposta);
+            $this->excluirParcelasPropostaSicred($proposta->id_proposta);
 
 
             /*
@@ -601,11 +637,30 @@ class PropostaService
             */
             $this->alinharPropostaAgilComSicred($proposta->id_proposta, $numeroProposta);
 
+        }else{
+            /*
+            |--------------------------------------------------------------------------
+            | Sicred Proposal Client
+            |--------------------------------------------------------------------------
+            |
+            | Update customer data linked to the proposal
+            */
+            $this->atualizarClienteSicred($proposta, $proposta->contrato);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Bank Details Sicred Proposal
+            |--------------------------------------------------------------------------
+            |
+            | Inserting new bank releases
+            */
+            $this->vincularLiberacoesSicred($proposta, $proposta->contrato);
         }
 
         $proposta->refresh();
 
-        if($attributesFormProposta['id_status_analise_proposta'] == 5)
+        if($attributesFormProposta['id_status_analise_proposta'] == $this->statusAprovadoManual)
         {
             $this->apiSicred->finalizarProposta($proposta->contrato);
         }
