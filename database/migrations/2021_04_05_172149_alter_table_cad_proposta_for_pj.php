@@ -24,10 +24,12 @@ class AlterTableCadPropostaForPj extends Migration
                 ->nullable()
                 ->change();
 
-            $table->foreignId('id_status_analise_proposta')
+            if (!Schema::hasColumn('cad_proposta', 'id_status_analise_proposta')) {
+                $table->foreignId('id_status_analise_proposta')
                 ->nullable()
                 ->default(1)
                 ->constrained('cad_status_analise_proposta', 'id_status_analise_proposta');
+            }
 
             $table->string('motivo_pendente')
                 ->nullable();
@@ -42,10 +44,9 @@ class AlterTableCadPropostaForPj extends Migration
     public function down()
     {
         Schema::table('cad_proposta', function (Blueprint $table) {
-            // $table->string('estado_civil')->nullable(false)->change();
             $table->dropColumn('cnpj_beneficiario');
             $table->dropColumn('id_simulacao');
-            $table->dropColumn('id_status_analise_proposta');
+            //$table->dropColumn('id_status_analise_proposta');
             $table->dropColumn('motivo_pendente');
         });
     }
