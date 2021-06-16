@@ -32,8 +32,8 @@ class AlterLogAnaliseManualTable extends Migration
     public function down()
     {
         Schema::table('log_analise_manual', function (Blueprint $table){
-            // $table->dropColumn('id_proposta');
-            // $table->dropColumn('id_tipo_proposta');
+            $table->dropColumn('id_proposta');
+            $table->dropColumn('id_tipo_proposta');
         });
     }
 }
