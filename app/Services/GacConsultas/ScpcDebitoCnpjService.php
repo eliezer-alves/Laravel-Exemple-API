@@ -12,7 +12,7 @@ use App\Services\GacConsultas\AbstractGacConsultaService;
  * @since 31/05/2021
  *
  */
-class ScpcDebitoServiceCnpj extends AbstractGacConsultaService implements GacConsultaServiceInterface
+class ScpcDebitoCnpjService extends AbstractGacConsultaService implements GacConsultaServiceInterface
 {
     public function __construct($cnpj)
     {

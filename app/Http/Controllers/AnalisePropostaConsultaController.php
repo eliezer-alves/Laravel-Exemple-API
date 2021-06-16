@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  * @since 12/06/2021
  *
  */
-class PessoaGacConsultaController extends Controller
+class AnalisePropostaConsultaController extends Controller
 {
     public function __construct(AnalisePropostaConsultaService $service)
     {

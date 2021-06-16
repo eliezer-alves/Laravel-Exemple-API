@@ -13,13 +13,12 @@ use App\Http\Controllers\{
     DominiosController,
     ObservacaoProposta,
     PdfController,
-    PessoaGacConsultaController,
+    PessoaPropostaGacConsultaController,
     PorteEmpresaController,
     PropostaController,
     SimulacaoController,
     TipoEmpresaController,
 };
-use App\Services\AnalisePropostaConsultaService;
 
 /*
 |--------------------------------------------------------------------------
@@ -289,15 +288,38 @@ Route::group([
     'prefix' => 'analise-proposta/consultas',
 ], function () {
 
-    Route::get('/confirme-online', [PessoaGacConsultaController::class, 'confirmeOnline']);
-    Route::get('/debito', [PessoaGacConsultaController::class, 'debito']);
-    Route::get('/infomais-endereco', [PessoaGacConsultaController::class, 'infomaisEndereco']);
-    Route::get('/infomais-situacao', [PessoaGacConsultaController::class, 'infomaisSituacao']);
-    Route::get('/infomais-telefone', [PessoaGacConsultaController::class, 'infomaisTelefone']);
-    Route::get('/scpc-debito', [PessoaGacConsultaController::class, 'scpcDebito']);
-    Route::get('/scpc-score', [PessoaGacConsultaController::class, 'scpcScore']);
-    Route::get('/scr', [PessoaGacConsultaController::class, 'scr']);
-    Route::get('/spc-brasil', [PessoaGacConsultaController::class, 'spcBrasil']);
+    Route::get('/confirme-online', [AnalisePropostaConsultaController::class, 'confirmeOnline']);
+    Route::get('/debito', [AnalisePropostaConsultaController::class, 'debito']);
+    Route::get('/infomais-endereco', [AnalisePropostaConsultaController::class, 'infomaisEndereco']);
+    Route::get('/infomais-situacao', [AnalisePropostaConsultaController::class, 'infomaisSituacao']);
+    Route::get('/infomais-telefone', [AnalisePropostaConsultaController::class, 'infomaisTelefone']);
+    Route::get('/scpc-debito', [AnalisePropostaConsultaController::class, 'scpcDebito']);
+    Route::get('/scpc-score', [AnalisePropostaConsultaController::class, 'scpcScore']);
+    Route::get('/scr', [AnalisePropostaConsultaController::class, 'scr']);
+    Route::get('/spc-brasil', [AnalisePropostaConsultaController::class, 'spcBrasil']);
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Pessoa Consultas
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    // 'middleware' => ['auth:api'],
+    'prefix' => 'gac-consulta',
+], function () {
+
+    Route::get('/confirme-online', [PessoaPropostaGacConsultaController::class, 'confirmeOnline']);
+    Route::get('/debito', [PessoaPropostaGacConsultaController::class, 'debito']);
+    Route::get('/infomais-endereco', [PessoaPropostaGacConsultaController::class, 'infomaisEndereco']);
+    Route::get('/infomais-situacao', [PessoaPropostaGacConsultaController::class, 'infomaisSituacao']);
+    Route::get('/infomais-telefone', [PessoaPropostaGacConsultaController::class, 'infomaisTelefone']);
+    Route::get('/scpc-debito', [PessoaPropostaGacConsultaController::class, 'scpcDebito']);
+    Route::get('/scpc-debito-cnpj', [PessoaPropostaGacConsultaController::class, 'scpcDebitoCnpj']);
+    Route::get('/scpc-score', [PessoaPropostaGacConsultaController::class, 'scpcScore']);
+    Route::get('/scr', [PessoaPropostaGacConsultaController::class, 'scr']);
+    Route::get('/spc-brasil', [PessoaPropostaGacConsultaController::class, 'spcBrasil']);
 
 });
 

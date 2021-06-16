@@ -12,6 +12,7 @@ use App\Services\GacConsultas\{
     InfoMaisSituacaoService,
     InfoMaisTelefoneService,
     ScpcDebitoService,
+    ScpcDebitoCnpjService,
     ScpcScoreService,
     ScrService,
     SpcBrasilService,
@@ -189,6 +190,13 @@ class PessoaAssinatura extends Model
     {
         $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcDebitoService($this->attributes['cpf']);
+        return $this->attributes['scpc_debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+    }
+
+    public function consultarScpcDebitoCnpj()
+    {
+        $gacConsulta = new GacConsultaService;
+        $orgaoConsulta = new ScpcDebitoCnpjService($this->attributes['cnpj']);
         return $this->attributes['scpc_debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
     }
 

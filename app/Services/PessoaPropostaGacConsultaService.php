@@ -12,7 +12,7 @@ use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
  * @since 15/06/2021
  *
  */
-class PessoaAssinaturaGacConsultaService
+class PessoaPropostaGacConsultaService
 {
     protected $pessoaAssinaturaRepository;
 
@@ -31,10 +31,10 @@ class PessoaAssinaturaGacConsultaService
     public function confirmeOnline($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
-        $pessoa->consultarConfirmeOnline($analise->id_confirme_online ?? null);
+        $pessoa->consultarConfirmeOnline();
 
         return (array)$pessoa->confirme_online;
     }
@@ -49,8 +49,8 @@ class PessoaAssinaturaGacConsultaService
     public function debito($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarDebito();
 
@@ -67,8 +67,8 @@ class PessoaAssinaturaGacConsultaService
     public function infomaisEndereco($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarInfomaisEndereco();
 
@@ -86,8 +86,8 @@ class PessoaAssinaturaGacConsultaService
     public function infomaisSituacao($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarInfomaisSituacao();
 
@@ -104,8 +104,8 @@ class PessoaAssinaturaGacConsultaService
     public function infomaisTelefone($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarInfomaisTelefone();
 
@@ -122,10 +122,27 @@ class PessoaAssinaturaGacConsultaService
     public function scpcDebito($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarScpcDebito();
+
+        return (array)$pessoa->scpc_debito;
+    }
+
+    /**
+     * Service Layer - SCPC Débito.
+     *
+     * @param $idAnaliseProposta
+     * @param $idPessoaAssinatura
+     * @return App\Repositories\Contracts\AnalisePessoaPropostaRepositoryInterface
+     */
+    public function scpcDebitoCnpj($request)
+    {
+        $pessoa = $this->pessoaAssinaturaRepository->fill([
+            'cnpj' => $request['cnpj'] ?? NULL,
+        ]);
+        $pessoa->consultarScpcDebitoCnpj();
 
         return (array)$pessoa->scpc_debito;
     }
@@ -140,8 +157,8 @@ class PessoaAssinaturaGacConsultaService
     public function scpcScore($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarScpcScore();
 
@@ -162,10 +179,10 @@ class PessoaAssinaturaGacConsultaService
     public function scr($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
-        $pessoa->consultarScr($analise-);
+        $pessoa->consultarScr();
 
         return (array)$pessoa->scr;
     }
@@ -180,8 +197,8 @@ class PessoaAssinaturaGacConsultaService
     public function spcBrasil($request)
     {
         $pessoa = $this->pessoaAssinaturaRepository->fill([
-            'cpf' => $request->cpf,
-            'cnpj' => $request->cnpj,
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
         ]);
         $pessoa->consultarSpcBrasil();
 

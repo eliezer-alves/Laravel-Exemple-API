@@ -57,6 +57,7 @@ class AbstractGacConsultaService
         $url = "{$this->baseUrl}{$urlServico}";
         $attributes = [
             'cpf' => $this->cpfCnpjId,
+            'cnpj' => $this->cpfCnpjId,
             'cpf_cnpj' => $this->cpfCnpjId,
             'documento' => $this->cpfCnpjId,
             'motivo' => $this->motivo,
