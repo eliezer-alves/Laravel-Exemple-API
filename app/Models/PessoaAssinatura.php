@@ -16,7 +16,8 @@ use App\Services\GacConsultas\{
     ScpcScoreService,
     ScrService,
     SpcBrasilService,
-    GacConsultaService
+    GacConsultaService,
+    SpcBrasilPlusService
 };
 
 class PessoaAssinatura extends Model
@@ -158,11 +159,11 @@ class PessoaAssinatura extends Model
         return $this->attributes['confirme_online'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarDebito()
+    public function consultarDebito($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new DebitoService($this->attributes['cpf']);
-        return $this->attributes['debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        return $this->attributes['debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
     public function consultarInfomaisEndereco($idConsulta = null)
@@ -172,57 +173,64 @@ class PessoaAssinatura extends Model
         return $this->attributes['infomais_endereco'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarInfomaisSituacao()
+    public function consultarInfomaisSituacao($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new InfoMaisSituacaoService($this->attributes['cpf']);
-        return $this->attributes['infomais_situacao'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new InfoMaisSituacaoService($idConsulta ?? $this->attributes['cpf']);
+        return $this->attributes['infomais_situacao'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarInfomaisTelefone()
+    public function consultarInfomaisTelefone($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new InfoMaisTelefoneService($this->attributes['cpf']);
-        return $this->attributes['infomais_telefone'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new InfoMaisTelefoneService($idConsulta ?? $this->attributes['cpf']);
+        return $this->attributes['infomais_telefone'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarScpcDebito()
+    public function consultarScpcDebito($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new ScpcDebitoService($this->attributes['cpf']);
-        return $this->attributes['scpc_debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new ScpcDebitoService($idConsulta ?? $this->attributes['cpf']);
+        return $this->attributes['scpc_debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarScpcDebitoCnpj()
+    public function consultarScpcDebitoCnpj($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new ScpcDebitoCnpjService($this->attributes['cnpj']);
-        return $this->attributes['scpc_debito'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new ScpcDebitoCnpjService($idConsulta ?? $this->attributes['cnpj']);
+        return $this->attributes['scpc_debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarScpcScore()
+    public function consultarScpcScore($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new ScpcScoreService($this->attributes['cpf']);
-        $this->attributes['scpc_score'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new ScpcScoreService($idConsulta ?? $this->attributes['cpf']);
+        $this->attributes['scpc_score'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
         $this->attributes['valor_score'] = $this->attributes['scpc_score']->resultado ?? "";
         $this->attributes['classificacao_score'] = _classificarScore(intval($this->attributes['scpc_score']->resultado ?? 0)) ?? "";
 
         return;
     }
 
-    public function consultarScr()
+    public function consultarScr($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new ScrService(($this->attributes['cpf'] ?? $this->attributes['cnpj']));
-        return $this->attributes['scr'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new ScrService($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']);
+        return $this->attributes['scr'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 
-    public function consultarSpcBrasil()
+    public function consultarSpcBrasil($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        $orgaoConsulta = new SpcBrasilService($this->attributes['cpf']);
-        return $this->attributes['spc_brasil'] = $gacConsulta->consultar($orgaoConsulta) ?? [];
+        $orgaoConsulta = new SpcBrasilService($idConsulta ?? $this->attributes['cpf']);
+        return $this->attributes['spc_brasil'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+    }
+
+    public function consultarSpcBrasilPlus($idConsulta = null)
+    {
+        $gacConsulta = new GacConsultaService;
+        $orgaoConsulta = new SpcBrasilPlusService($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']);
+        return $this->attributes['spc_brasil_plus'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
 }
 

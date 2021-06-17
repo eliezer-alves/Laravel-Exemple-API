@@ -69,4 +69,9 @@ class PessoaPropostaGacConsultaController extends Controller
     {
         return $this->service->spcBrasil($request->all());
     }
+
+    public function spcBrasilPlus(PessoaPropostaGacConsultaRequest $request)
+    {
+        return $this->service->spcBrasilPlus($request->all());
+    }
 }

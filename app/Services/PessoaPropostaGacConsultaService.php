@@ -204,4 +204,22 @@ class PessoaPropostaGacConsultaService
 
         return (array)$pessoa->spc_brasil;
     }
+
+    /**
+     * Service Layer - SPC Brasil.
+     *
+     * @param $idAnaliseProposta
+     * @param $idPessoaAssinatura
+     * @return App\Repositories\Contracts\AnalisePessoaPropostaRepositoryInterface
+     */
+    public function spcBrasilPlus($request)
+    {
+        $pessoa = $this->pessoaAssinaturaRepository->fill([
+            'cpf' => $request['cpf'] ?? NULL,
+            'cnpj' => $request['cnpj'] ?? NULL,
+        ]);
+        $pessoa->consultarSpcBrasilPlus();
+
+        return (array)$pessoa->spc_brasil_plus;
+    }
 }

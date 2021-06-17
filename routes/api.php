@@ -320,6 +320,7 @@ Route::group([
     Route::get('/scpc-score', [PessoaPropostaGacConsultaController::class, 'scpcScore']);
     Route::get('/scr', [PessoaPropostaGacConsultaController::class, 'scr']);
     Route::get('/spc-brasil', [PessoaPropostaGacConsultaController::class, 'spcBrasil']);
+    Route::get('/spc-brasil-plus', [PessoaPropostaGacConsultaController::class, 'spcBrasilPlus']);
 
 });
 
