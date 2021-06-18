@@ -170,6 +170,28 @@ class AnalisePropostaConsultaService
     }
 
     /**
+     * Service Layer - SCPC Débito.
+     *
+     * @param $idAnaliseProposta
+     * @param $idPessoaAssinatura
+     * @return App\Repositories\Contracts\AnalisePessoaPropostaRepositoryInterface
+     */
+    public function scpcDebitoCnpj($idAnaliseProposta, $idPessoaAssinatura)
+    {
+        $analiseProposta = $this->analisePropostaRepository->find($idAnaliseProposta);
+
+        if(in_array($analiseProposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
+        {
+            $analise = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($idAnaliseProposta, $idPessoaAssinatura);
+        }
+
+        $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
+        $pessoa->consultarScpcDebitoCnpj($analise->id_scpc ?? null);
+
+        return (array)$pessoa->scpc_debito;
+    }
+
+    /**
      * Service Layer - SCPC Score.
      *
      * @param $idAnaliseProposta

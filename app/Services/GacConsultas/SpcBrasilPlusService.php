@@ -18,7 +18,7 @@ class SpcBrasilPlusService extends AbstractGacConsultaService implements GacCons
     {
         parent::__construct($cpfCnpj);
         $this->periodo = 15;
-        $this->motivo = 2;//BRASIL CARD - POIS PARA ESSA CONSULTA NÃO EXISTE USUÁRIO PARA A ÀGIL
+        $this->setMotivo(2);//BRASIL CARD - POIS PARA ESSA CONSULTA NÃO EXISTE USUÁRIO PARA A ÀGIL
     }
 
     public function consultar()

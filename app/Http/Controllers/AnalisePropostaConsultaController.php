@@ -51,6 +51,11 @@ class AnalisePropostaConsultaController extends Controller
         return $this->service->scpcDebito($request->id_analise_proposta, $request->id_pessoa_assinatura);
     }
 
+    public function scpcDebitoCnpj(AnalisePropostaConsultaRequest $request)
+    {
+        return $this->service->scpcDebitoCnpj($request->id_analise_proposta, $request->id_pessoa_assinatura);
+    }
+
     public function scpcScore(AnalisePropostaConsultaRequest $request)
     {
         return $this->service->scpcScore($request->id_analise_proposta, $request->id_pessoa_assinatura);

@@ -294,6 +294,7 @@ Route::group([
     Route::get('/infomais-situacao', [AnalisePropostaConsultaController::class, 'infomaisSituacao']);
     Route::get('/infomais-telefone', [AnalisePropostaConsultaController::class, 'infomaisTelefone']);
     Route::get('/scpc-debito', [AnalisePropostaConsultaController::class, 'scpcDebito']);
+    Route::get('/scpc-debito-cnpj', [AnalisePropostaConsultaController::class, 'scpcDebitoCnpj']);
     Route::get('/scpc-score', [AnalisePropostaConsultaController::class, 'scpcScore']);
     Route::get('/scr', [AnalisePropostaConsultaController::class, 'scr']);
     Route::get('/spc-brasil', [AnalisePropostaConsultaController::class, 'spcBrasil']);
