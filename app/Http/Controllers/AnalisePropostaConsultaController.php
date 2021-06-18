@@ -70,4 +70,9 @@ class AnalisePropostaConsultaController extends Controller
     {
         return $this->service->spcBrasil($request->id_analise_proposta, $request->id_pessoa_assinatura);
     }
+
+    public function spcBrasilPlus(AnalisePropostaConsultaRequest $request)
+    {
+        return $this->service->spcBrasilPlus($request->id_analise_proposta, $request->id_pessoa_assinatura);
+    }
 }

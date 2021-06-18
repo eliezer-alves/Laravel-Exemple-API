@@ -298,6 +298,7 @@ Route::group([
     Route::get('/scpc-score', [AnalisePropostaConsultaController::class, 'scpcScore']);
     Route::get('/scr', [AnalisePropostaConsultaController::class, 'scr']);
     Route::get('/spc-brasil', [AnalisePropostaConsultaController::class, 'spcBrasil']);
+    Route::get('/spc-brasil-plus', [AnalisePropostaConsultaController::class, 'spcBrasilPlus']);
 
 });
 

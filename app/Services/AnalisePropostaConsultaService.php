@@ -260,4 +260,26 @@ class AnalisePropostaConsultaService
 
         return (array)$pessoa->spc_brasil;
     }
+
+    /**
+     * Service Layer - SPC Brasil Plus.
+     *
+     * @param $idAnaliseProposta
+     * @param $idPessoaAssinatura
+     * @return App\Repositories\Contracts\AnalisePessoaPropostaRepositoryInterface
+     */
+    public function spcBrasilPlus($idAnaliseProposta, $idPessoaAssinatura)
+    {
+        $analiseProposta = $this->analisePropostaRepository->find($idAnaliseProposta);
+
+        if(in_array($analiseProposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
+        {
+            $analise = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($idAnaliseProposta, $idPessoaAssinatura);
+        }
+
+        $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
+        $pessoa->consultarSpcBrasilPlus($analise->id_spc_brasil_plus ?? null);
+
+        return (array)$pessoa->spc_brasil_plus;
+    }
 }
