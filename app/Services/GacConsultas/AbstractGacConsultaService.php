@@ -64,6 +64,8 @@ class AbstractGacConsultaService
             'periodo' => $this->periodo
         ];
 
+        return $attributes;
+
         do {
             $response = Http::get($url, $attributes);
             $numeroTentativasRequest++;
