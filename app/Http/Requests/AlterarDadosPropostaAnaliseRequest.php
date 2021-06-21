@@ -59,12 +59,13 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
             'cliente.numero' => ['required', 'numeric'],
             'cliente.id_tipo_logradouro' => ['required', 'numeric', 'exists:cad_tipo_logradouro,id_tipo_logradouro'],
 
-            'cliente.tipo_empresa' => ['required', 'string'],
+            'cliente.id_tipo_empresa' => ['required', 'numeric', 'exists:cad_tipo_empresa,id_tipo_empresa'],
             'cliente.id_porte_empresa' => ['required', 'numeric', 'exists:cad_porte_empresa,id_porte_empresa'],
             'cliente.rendimento_mensal' => ['required', 'numeric', 'max:100000000'],
             'cliente.faturamento_anual' => ['required', 'numeric', 'max:100000000'],
             'cliente.capital_social' => ['required', 'numeric', 'max:100000000'],
             'cliente.ano_faturamento' => ['required', 'regex:/^[0-9]+$/u',  'size:4'],
+            'cliente.id_cosif' => ['required', 'regex:/^[0-9]+$/u',  'exists:cad_cosif,id_cosif'],
 
             'socios.0.id_pessoa_assinatura' => ['required', 'regex:/^[0-9]+$/u', 'exists:cad_pessoa_assinatura,id_pessoa_assinatura'],
             'socios.0.nome' => ['required', 'string'],
