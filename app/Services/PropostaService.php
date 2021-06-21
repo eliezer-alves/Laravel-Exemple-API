@@ -199,23 +199,6 @@ class PropostaService
         return $this->apiSicred->vincularLiberacoesProposta($attributes, $numeroProposta);
     }
 
-    /**
-     * Service Layer - Inserting new bank details to the Sicred proposal in case of any change in the bank details of the Agile proposal
-     *
-     * @since 15/06/2021
-     *
-     * @param  App\Repositories\Contracts\PropostaRepositoryInterface
-     * @param  int $numeroProposta
-     * @return App\Services\Contracts\ApiSicredServiceInterface
-     */
-    private function atualizarLiberacoesSicred($proposta, $numeroProposta)
-    {
-        $attributes = $this->keysInterfaceService->hydrator($proposta, $this->keysInterfaceService->liberacoesAgilSicred());
-        $attributes['direcionamento'] = "N";
-
-        return $this->apiSicred->vincularLiberacoesProposta($attributes, $numeroProposta);
-    }
-
 
     /**
      * Service Layer - Method responsible for saving the parcels of the Sicred

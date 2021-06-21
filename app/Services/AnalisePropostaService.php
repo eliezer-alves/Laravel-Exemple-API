@@ -85,7 +85,7 @@ class AnalisePropostaService
         return $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
     }
 
-    /**
+    /** EXCLUIR
      * Service Layer - Method responsible for registering proposal analysis.
      *
      * @param  array  $attributes
@@ -105,7 +105,7 @@ class AnalisePropostaService
      * @param  object  $pessoaProposta
      * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
      */
-    private function attributesRegistrarAnalisePessoaProposta($pessoaProposta)
+    private function attributesRegistrarAnalisePessoaProposta($pessoaProposta): array
     {
         return [
             'id_proposta' => $this->proposta->id_proposta,
@@ -116,6 +116,7 @@ class AnalisePropostaService
             'id_score' => $pessoaProposta->scpc_score->id_score ?? null,
             'id_scpc' => $pessoaProposta->scpc_debito->id_scpc ?? null,
             'id_spc_brasil' => $pessoaProposta->spc_brasil->id_spc_brasil ?? $pessoaProposta->spc_brasil_plus->id_spc_brasil_plus ?? null,
+            'id_spc_brasil_plus' => $pessoaProposta->spc_brasil_plus->id_spc_brasil_plus ?? null,
             'id_scr' => $pessoaProposta->scr->id_scr ?? null,
             'restricao' => $pessoaProposta->debito->valor_total_debitos ?? null,
             'score' => $pessoaProposta->scpc_score->resultado ?? null,
@@ -219,14 +220,14 @@ class AnalisePropostaService
         |   - Confirme Online
         */
         $analisClienteProposta = null;
-        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) or true)
         {
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
         $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? null);
         $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->id_scr ?? null);
         $this->proposta->clienteAssinatura->consultarScpcDebitoCnpj($analisClienteProposta->id_scpc ?? null);
-        $this->proposta->clienteAssinatura->consultarSpcBrasilPlus($analisClienteProposta->id_scpc ?? null);
+        $this->proposta->clienteAssinatura->consultarSpcBrasilPlus($analisClienteProposta->id_spc_brasil_plus ?? null);
 
         /*
         |--------------------------------------------------------------------------
@@ -235,8 +236,8 @@ class AnalisePropostaService
         |
         | Registering customer review of the proposal
         */
-        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->clienteAssinatura);
-        $this->registrarAnalisePessoaProposta($attributesAnalise);
+        $attributesAnalisePessoaProposta = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->clienteAssinatura);
+        $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
 
         /*
         |--------------------------------------------------------------------------
@@ -252,7 +253,7 @@ class AnalisePropostaService
         */
 
         $analiseRepresentanteProposta = null;
-        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
+        if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]) || true)
         {
             $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
         }
@@ -265,7 +266,7 @@ class AnalisePropostaService
         $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? null);
         $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? null);
         $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? null);
-        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->scr->id_scr ?? null);
+        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->id_scr ?? null);
 
         /*
         |--------------------------------------------------------------------------
@@ -274,8 +275,8 @@ class AnalisePropostaService
         |
         | Registering analysis of the legal representative related to the proposal
         */
-        $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
-        $this->registrarAnalisePessoaProposta($attributesAnalise);
+        $attributesAnalisePessoaProposta = $this->attributesRegistrarAnalisePessoaProposta($this->proposta->representante);
+        $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
 
         /*
         |--------------------------------------------------------------------------
@@ -304,7 +305,7 @@ class AnalisePropostaService
             $socio->consultarScpcDebito($analiseSocioProposta->id_scpc ?? null);
             $socio->consultarScpcScore($analiseSocioProposta->id_score ?? null);
             $socio->consultarSpcBrasil($analiseSocioProposta->id_spc_brasil ?? null);
-            $socio->consultarScr($analiseSocioProposta->scr->id_scr ?? null);
+            $socio->consultarScr($analiseSocioProposta->id_scr ?? null);
 
             /*
             |--------------------------------------------------------------------------
@@ -313,8 +314,8 @@ class AnalisePropostaService
             |
             | Registering analysis of the partners linked to the proposal
             */
-            $attributesAnalise = $this->attributesRegistrarAnalisePessoaProposta($socio);
-            $this->registrarAnalisePessoaProposta($attributesAnalise);
+            $attributesAnalisePessoaProposta = $this->attributesRegistrarAnalisePessoaProposta($socio);
+            $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
         });
 
 

@@ -151,6 +151,11 @@ class PessoaAssinatura extends Model
         return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
     }
 
+    public function logAnalise()
+    {
+        return $this->hasOne(AnalisePessoaProposta::class, 'id_pessoa_assinatura');
+    }
+
     public function consultarConfirmeOnline($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;

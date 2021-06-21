@@ -50,7 +50,7 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
         return $this->formatarConsulta($this->requestById('/scr'));
     }
 
-    private function formatarConsulta($dadosConsulta)
+    private function formatarConsulta($dadosConsulta): object
     {
         if(!isset($dadosConsulta->id_scr))return $dadosConsulta;
         $operacoes = collect($dadosConsulta->resumo_operacoes);
@@ -73,13 +73,14 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
             ];
         }
 
+        $scrFormatado['id_scr'] = $dadosConsulta->id_scr ?? null;
         $scrFormatado['data_base_consulta'] = $dadosConsulta->data_base_consulta ?? null;
         $scrFormatado['percentual_documentos_processados'] = $dadosConsulta->percentual_documentos_processados ?? null;
         $scrFormatado['quantidade_instituicoes'] = $dadosConsulta->quantidade_instituicoes ?? null;
         $scrFormatado['quantidade_operacoes'] = $dadosConsulta->quantidade_operacoes ?? null;
         $scrFormatado['resumo_operacoes'] = $operacoesModalidades->all();
 
-        return $scrFormatado;
+        return  (object)$scrFormatado;
     }
 
 }

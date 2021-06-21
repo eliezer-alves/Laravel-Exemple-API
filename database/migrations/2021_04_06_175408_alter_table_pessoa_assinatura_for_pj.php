@@ -92,6 +92,9 @@ class AlterTablePessoaAssinaturaForPj extends Migration
                 ->nullable()
                 ->constrained('cad_tipo_empresa', 'id_tipo_empresa');
 
+            $table->boolean('assinante')
+                ->nullable();
+
         });
     }
 
@@ -127,6 +130,7 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('data_fundacao');
             $table->dropColumn('id_cosif');
             $table->dropColumn('id_tipo_empresa');
+            // $table->dropColumn('assinante');
         });
     }
 }
