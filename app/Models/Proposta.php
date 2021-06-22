@@ -106,6 +106,13 @@ class Proposta extends Model
         return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')->where('tipo_pessoa_assinatura', 2);
     }
 
+    public function assinantes()
+    {
+        return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')
+            ->whereIn('tipo_pessoa_assinatura', [1,2])
+            ->where('assinante', true);
+    }
+
     public function assinaturas()
     {
         return $this->hasMany(PessoaAssinatura::class, 'id_proposta', 'id_proposta')
