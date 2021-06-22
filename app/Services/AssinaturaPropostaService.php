@@ -89,12 +89,10 @@ class AssinaturaPropostaService
      */
     public function enviaTodosLinkAssinatura($idProposta)
     {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->enviaLinkAssinatura($idProposta, $proposta->clienteAssinatura->id_pessoa_assinatura, $proposta->clienteAssinatura->email);
-        $this->enviaLinkAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->email);
-        foreach ($proposta->socios as $socio) {
-            $this->enviaLinkAssinatura($idProposta, $socio->id_pessoa_assinatura, $socio->email);
-        }
+        $assinantes = $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+        return $assinantes->map(function ($assinante) {
+            $this->enviaLinkAssinatura($assinante->id_proposta, $assinante->id_pessoa_assinatura, $assinante->email);
+        });
     }
 
     /**
@@ -198,7 +196,7 @@ class AssinaturaPropostaService
      */
     public function assinaturasPendentes($idProposta)
     {
-        return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+        return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta)->toArray();
     }
 
     /**
