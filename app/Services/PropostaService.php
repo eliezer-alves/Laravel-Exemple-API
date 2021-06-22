@@ -349,14 +349,14 @@ class PropostaService
      * @param int $idProposta
      * @return array $dataProposta
      */
-    private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $attributesFormCliente, $idProposta)
+    private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $attributesFormCliente, $idProposta): array
     {
         $attributesFormCliente['tipo_pessoa_assinatura'] = 0;
         $attributes = $formAttributesSocios;
         $attributes[] = $attributesFormCliente;
 
         foreach ($attributes as $key => $attribute) {
-            $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento', 'rendimento_mensal', 'faturamento_anual', 'capital_social', 'renda_mensal']);
+            $attributes[$key] = _normalizeRequest($attribute, ['email', 'data_nascimento', 'rendimento_mensal', 'faturamento_anual', 'capital_social', 'renda_mensal', 'assinante']);
             $attributes[$key]['id_proposta'] = $idProposta;
             $attributes[$key]['token'] = md5(date('Y-m-d H:i:s') . $idProposta . bcrypt($idProposta));
         }
@@ -662,7 +662,7 @@ class PropostaService
         ];
         $this->analisePropostaService->finalizarLogAnaliseProposta($attributtesFinalizarAnaliseProposta, $attributesFormProposta['id_log_analise']);
 
-        $proposta->parcelas;
+        // $proposta->parcelas;
         $proposta->clienteAssinatura->porte;
         $proposta->representante;
         $proposta->socios;

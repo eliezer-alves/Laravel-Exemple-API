@@ -84,6 +84,7 @@ class PessoaAssinatura extends Model
         'tipo_imovel',
         'data_fundacao',
         'id_cosif',
+        'assinante'
     ];
 
     protected $attributes = [
@@ -119,6 +120,7 @@ class PessoaAssinatura extends Model
         'tipo_imovel' => null,
         'data_fundacao' => null,
         'id_cosif' => null,
+        'assinante' => true,
     ];
 
     public function proposta()
