@@ -41,7 +41,8 @@ class AssinaturaPropostaService
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
         $assinante = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
-        return route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token"));
+        // return route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token"));
+        return route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura"));
     }
 
     /**
@@ -167,7 +168,7 @@ class AssinaturaPropostaService
         $proposta = $this->propostaRepository->findOrFail($idProposta);
         $this->pessoaAssinaturaRepository
             ->where('id_proposta', $idProposta)
-            ->where('token', $tokenPessoaAssinatura)
+            // ->where('token', $tokenPessoaAssinatura)
             ->findOrFail($idPessoaAssinatura);
 
         $proposta->parcelas;
