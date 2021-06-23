@@ -62,7 +62,7 @@ Route::prefix('assinatura')->group(function () {
     Route::get('/contrato-pj/contrato/{hash}', [AssinaturaPropostaController::class, 'showContrato'])
         ->name('assinatura.contrato-pj.show');
 
-    Route::get('/contrato-pj/show-aceite-1/{hash}', [AssinaturaPropostaController::class, 'showAceite1'])
+    Route::get('/{hash}', [AssinaturaPropostaController::class, 'showAceite1'])
         ->where(['id_proposta' => '[0-9]+', 'id_pessoa_assinatura' => '[0-9]+'])
         ->name('assinatura.contrato-pj-1.show');
 

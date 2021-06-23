@@ -44,7 +44,7 @@ class AssinaturaPropostaService
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
         $assinante = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
-        dd(route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token")));
+        return route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token"));
     }
 
     /**
