@@ -120,6 +120,21 @@ class PropostaService
 
         return $proposta->toArray();
     }
+    /**
+     * Service Layer - Get people who sign the proposal
+     * by number of the proposal
+     *
+     * @since 22/06/2021
+     *
+     * @param  int  $numeroProposta
+     * @return array  $dataProposta
+     */
+    public function getAssinantesProposta($numeroProposta)
+    {
+        $proposta = $this->propostaRepository->findByNumero($numeroProposta);
+
+        return $proposta->assinantes;
+    }
 
 
     /**

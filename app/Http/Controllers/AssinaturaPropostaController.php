@@ -95,15 +95,16 @@ class AssinaturaPropostaController extends Controller
     public function showAceite1($hash, $warningAlerts = [])
     {
         try {
-            $arrayParams = explode('-', Crypt::decryptString($hash));
+            $arrayParams = explode('-', _base64url_decode($hash));
         } catch (DecryptException $e) {
             abort(404);
         }
 
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
+        $tokenPessoaAssinatura = $arrayParams[2];
 
-        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura);
         $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
         $data['warningAlerts'] = $warningAlerts;
 
@@ -125,15 +126,16 @@ class AssinaturaPropostaController extends Controller
     public function aceite1($hash)
     {
         try {
-            $arrayParams = explode('-', Crypt::decryptString($hash));
+            $arrayParams = explode('-', _base64url_decode($hash));
         } catch (DecryptException $e) {
             abort(404);
         }
 
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
+        $tokenPessoaAssinatura = $arrayParams[2];
         if($this->service->aceite1($idProposta, $idPessoaAssinatura, request()->ip())){
-            return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString($idProposta.'-'.$idPessoaAssinatura)));
+            return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString("$idProposta-$idPessoaAssinatura-$tokenPessoaAssinatura")));
         }
 
         return $this->showAceite1($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
@@ -159,8 +161,9 @@ class AssinaturaPropostaController extends Controller
 
         $idProposta = $arrayParams[0];
         $idPessoaAssinatura = $arrayParams[1];
+        $tokenPessoaAssinatura = $arrayParams[2];
 
-        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura);
+        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura);
         $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
         $data['warningAlerts'] = $warningAlerts;
 

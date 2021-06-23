@@ -60,6 +60,19 @@ class PropostaController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @author Eliezer Alves
+     *
+     * @param  int  $numeroProposta
+     * @return \Illuminate\Http\Response
+     */
+    public function assinantesProposta($numeroProposta)
+    {
+        return $this->service->getAssinantesProposta($numeroProposta);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @author Eliezer Alves

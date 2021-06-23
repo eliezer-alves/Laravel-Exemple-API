@@ -188,6 +188,9 @@ Route::group([
     Route::get('/numero/{numero_proposta}', [PropostaController::class, 'dadosPropostaPorNumero'])
         ->where(['numero_proposta' => '[0-9]+']);
 
+    Route::get('/assinantes/{numero_proposta}', [PropostaController::class, 'assinantesProposta'])
+        ->where(['numero_proposta' => '[0-9]+']);
+
 });
 
 

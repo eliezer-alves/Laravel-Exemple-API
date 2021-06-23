@@ -3,14 +3,13 @@
 namespace App\Services;
 
 use App\Exceptions\MailException;
-use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
 use App\Mail\LinkPropostaAssinaturaMail;
 use Exception;
 use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Support\Facades\Crypt;
+use Hashids\Hashids;
 
 /**
  * Service Layer - Class responsible for managing
@@ -24,11 +23,13 @@ class AssinaturaPropostaService
 {
     protected $propostaRepository;
     protected $pessoaAssinaturaRepository;
+    protected $hashids;
 
-    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, Hashids $hashids)
     {
         $this->propostaRepository = $propostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
+        $this->hashids = $hashids;
     }
 
     /**
@@ -42,7 +43,8 @@ class AssinaturaPropostaService
      */
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta . '-' . $idPessoaAssinatura));
+        $assinante = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        dd(route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token")));
     }
 
     /**
@@ -89,12 +91,10 @@ class AssinaturaPropostaService
      */
     public function enviaTodosLinkAssinatura($idProposta)
     {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->enviaLinkAssinatura($idProposta, $proposta->clienteAssinatura->id_pessoa_assinatura, $proposta->clienteAssinatura->email);
-        $this->enviaLinkAssinatura($idProposta, $proposta->representante->id_pessoa_assinatura, $proposta->representante->email);
-        foreach ($proposta->socios as $socio) {
-            $this->enviaLinkAssinatura($idProposta, $socio->id_pessoa_assinatura, $socio->email);
-        }
+        $assinantes = $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+        return $assinantes->map(function ($assinante) {
+            $this->enviaLinkAssinatura($assinante->id_proposta, $assinante->id_pessoa_assinatura, $assinante->email);
+        });
     }
 
     /**
@@ -165,10 +165,12 @@ class AssinaturaPropostaService
      * @param int $idPessoaAssinatura
      * @return array $proposta;
      */
-    public function dadosProposta($idProposta, $idPessoaAssinatura)
+    public function dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura)
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+        $this->pessoaAssinaturaRepository
+            ->where('id_proposta', $idProposta)
+            ->where('token', $tokenPessoaAssinatura)
             ->findOrFail($idPessoaAssinatura);
 
         $proposta->parcelas;
@@ -198,7 +200,7 @@ class AssinaturaPropostaService
      */
     public function assinaturasPendentes($idProposta)
     {
-        return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta);
+        return $this->pessoaAssinaturaRepository->assinaturasPendentes($idProposta)->toArray();
     }
 
     /**
