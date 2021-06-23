@@ -9,7 +9,6 @@ use App\Mail\LinkPropostaAssinaturaMail;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
-use Hashids\Hashids;
 
 /**
  * Service Layer - Class responsible for managing
