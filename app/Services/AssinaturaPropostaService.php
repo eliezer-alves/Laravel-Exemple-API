@@ -22,13 +22,11 @@ class AssinaturaPropostaService
 {
     protected $propostaRepository;
     protected $pessoaAssinaturaRepository;
-    protected $hashids;
 
-    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, Hashids $hashids)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository)
     {
         $this->propostaRepository = $propostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
-        $this->hashids = $hashids;
     }
 
     /**
