@@ -3,14 +3,13 @@
 namespace App\Services;
 
 use App\Exceptions\MailException;
-use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Repositories\Contracts\PessoaAssinaturaRepositoryInterface;
 use App\Mail\LinkPropostaAssinaturaMail;
 use Exception;
 use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Support\Facades\Crypt;
+use Hashids\Hashids;
 
 /**
  * Service Layer - Class responsible for managing
@@ -24,11 +23,13 @@ class AssinaturaPropostaService
 {
     protected $propostaRepository;
     protected $pessoaAssinaturaRepository;
+    protected $hashids;
 
-    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, PessoaAssinaturaRepositoryInterface $pessoaAssinaturaRepository, Hashids $hashids)
     {
         $this->propostaRepository = $propostaRepository;
         $this->pessoaAssinaturaRepository = $pessoaAssinaturaRepository;
+        $this->hashids = $hashids;
     }
 
     /**
@@ -42,7 +43,8 @@ class AssinaturaPropostaService
      */
     public function linkAssinatura($idProposta, $idPessoaAssinatura)
     {
-        return route('assinatura.contrato-pj-1.show', Crypt::encryptString($idProposta . '-' . $idPessoaAssinatura));
+        $assinante = $this->pessoaAssinaturaRepository->findOrFail($idPessoaAssinatura);
+        dd(route('assinatura.contrato-pj-1.show', _base64url_encode("$idProposta-$idPessoaAssinatura-$assinante->token")));
     }
 
     /**
@@ -163,10 +165,12 @@ class AssinaturaPropostaService
      * @param int $idPessoaAssinatura
      * @return array $proposta;
      */
-    public function dadosProposta($idProposta, $idPessoaAssinatura)
+    public function dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura)
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+        $this->pessoaAssinaturaRepository
+            ->where('id_proposta', $idProposta)
+            ->where('token', $tokenPessoaAssinatura)
             ->findOrFail($idPessoaAssinatura);
 
         $proposta->parcelas;

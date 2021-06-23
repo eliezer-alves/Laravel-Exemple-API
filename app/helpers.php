@@ -35,6 +35,34 @@ if (! function_exists('_hashAssinatura')) {
     }
 }
 
+if (! function_exists('_base64url_encode')) {
+    /**
+     * Helper Layer - Responsible method to encode a url param hash
+     * @author Eliezer Alves
+     * @since 23/06/2021
+     *
+     * @param int $data
+     * @return string
+     */
+    function _base64url_encode($data) {
+        return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+      }
+}
+
+if (! function_exists('_base64url_decode')) {
+    /**
+     * Helper Layer - Responsible method to decode a url param hash
+     * @author Eliezer Alves
+     * @since 23/06/2021
+     *
+     * @param int $data
+     * @return string
+     */
+    function _base64url_decode($data) {
+        return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
+    }
+}
+
 if (! function_exists('_classificarScore')) {
     /**
      * Helper Layer - Method responsible for classifying a score value
