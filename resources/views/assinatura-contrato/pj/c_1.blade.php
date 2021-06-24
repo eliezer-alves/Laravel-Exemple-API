@@ -203,6 +203,30 @@
                 </h3>
             </td>
         </tr>
+        <tr>
+            <td colspan="12" align="left" class="border grey" valign="center"><h2>QUADRO V – PESSOAS POLITICAMENTE EXPOSTAS:
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12" align="left" valign="top"><h3>17. O EMITENTE, algum de seus familiares (pai, mãe, filho(a), cônjuge, companheiro(a), enteado(a)), ou outra pessoa de seu relacionamento próximo, desempenha(ou) nos últimos 05 (cinco) anos, no Brasil ou em países, territórios e dependências estrangeiros, cargos, empregos ou funções públicas em empresas ou órgãos de serviços públicos (executivo, legislativo ou judiciário), nos âmbitos federal, estadual ou municipal, nos moldes da Resolução COAF nº 16/07, art. 1º, § 1º, no artigo 3º da Deliberação COERME nº2/06 e na Circular BACEN nº 3.461/09 e 3.978/2020, bem como as normas aplicáveis da CVM, Instrução CVM nº 463/08.
+                <br/>
+                Sou Pessoa Politicamente Exposta?  &emsp;(<?= $representante['politicamente_exposto'] ? 'X' : ' ' ?>) Sim &emsp;(<?= $representante['politicamente_exposto'] ? ' ' : 'X' ?> )Não  &emsp;Cargo/Função: <?= ($representante['cargo_politico'] != NULL) ? $representante['cargo_politico'] : ''; ?>
+                <br>
+                Possuo Parentes Politicamente Expostos?  &emsp;(<?= $representante['parente_politicamente_exposto'] ? 'X' : ' ' ?>) Sim  &emsp;(<?= $representante['parente_politicamente_exposto'] ? ' ' : 'X' ?>) Não  &emsp;Cargo/Função: <?= ($representante['cargo_parente_politico'] != NULL) ? $representante['cargo_parente_politico'] : ''; ?>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12" align="left" class="border grey" valign="center"><h2>QUADRO VI – AUTORIZAÇÃO:
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12" align="left" valign="top"><h3>18. O EMITENTE autoriza o CREDOR, respeitada a legislação em vigor, (i) a compartilhar com as empresas parceiras que compõem seu grupo econômico, seus dados pessoais aqui constantes, (ii) a utilizar-se destes dados para oferta por qualquer meio, inclusive telefônico, e-mail, SMS e correspondências promocionais, considerando que tal autorização poderá ser cancelada a qualquer momento, e (iii) enviar um cartão de crédito pré-aprovado em conjunto com abertura de conta digital &emsp;(<?= $compartilhar_dados_cliente ? 'X' : ' ' ?>) Sim &emsp;(<?= $compartilhar_dados_cliente ? ' ' : 'X' ?>) Não.
+                </h3>
+            </td>
+        </tr>
     </tbody>
 </table>
 
@@ -215,7 +239,7 @@
     </thead>
     <tbody>
         <tr align="left">
-            <td class="border grey" valign="center" colspan="12"><h2>QUALIFICAÇÃO DOS AVALISTAS:</h2></td>
+            <td class="border grey" valign="center" colspan="12"><h2>QUADRO VII QUALIFICAÇÃO DOS AVALISTAS:</h2></td>
         </tr>
         <?php
         $table = '';

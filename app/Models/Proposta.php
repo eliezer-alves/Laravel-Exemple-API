@@ -73,12 +73,14 @@ class Proposta extends Model
         'valor_limite_liberado_bcard',
         'atd_protocolo',
         'atd_celular',
-        'motivo_pendente'
+        'motivo_pendente',
+        'compartilhar_dados_cliente',
     ];
 
     protected $attributes = [
         'politicamente_exposto' => false,
         'parente_politicamente_exposto' => false,
+        'compartilhar_dados_cliente' => false,
     ];
 
     public function documentos()
