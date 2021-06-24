@@ -227,11 +227,17 @@ setlocale(LC_MONETARY, 'it_IT');
                 <td colspan="4" align="left" valign="top"><h3>1. Valor Empréstimo:</h3>
                     <h4>R$ <?= number_format($valor_liquido_credito, 2, ',', '.') ?></h4>
                 </td>
-                <td colspan="4" align="left" valign="top"><h3>2. Valor IOF:</h3>
+                <td colspan="2" align="left" valign="top"><h3>2. Valor IOF:</h3>
                     <h4>R$ <?= number_format($valor_iof, 2, ',', '.') ?></h4>
                 </td>
-                <td colspan="4" align="left" valign="top"><h3>3- Tarifa de Cadastro:</h3>
+                <td colspan="2" align="left" valign="top"><h3>2.1. Em % empréstimo:</h3>
+                    <h4><?= number_format((($valor_iof * 100)/$valor_liquido_credito), 2, ',', '') ?></h4>
+                </td>
+                <td colspan="2" align="left" valign="top"><h3>3. Tarifa de Cadastro:</h3>
                     <h4>R$ <?= number_format($tac, 2, ',', '.') ?></h4>
+                </td>
+                <td colspan="2" align="left" valign="top"><h3>3.1. Em % empréstimo:</h3>
+                    <h4><?= number_format((($tac * 100)/$valor_liquido_credito), 2, ',', '') ?></h4>
                 </td>
             </tr>
             <tr>
@@ -239,7 +245,7 @@ setlocale(LC_MONETARY, 'it_IT');
                     <h4>R$ <?= number_format($valor_financiado_total, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="6" align="left" valign="top"><h3>5. Saldo Devedor Refinanciamento:</h3>
-                    <h4><?= 0 ?></h4>
+                    <h4>R$ <?= number_format(0, 2, ',', '.') ?></h4>
                 </td>
             </tr>
             <tr>
@@ -270,11 +276,11 @@ setlocale(LC_MONETARY, 'it_IT');
                 </td>
             </tr>
             <tr>
-                <td colspan="8" align="left" valign="top"><h3>13. Forma de Pagamento:</h3>
+                <td colspan="6" align="left" valign="top"><h3>13. Forma de Pagamento:</h3>
                     <h4>( )Débito em Conta (X)Boleto Bancário ( )Cheque</h4>
                 </td>
-                <td colspan="4" align="left" valign="top"><h3>14. Valor do Seguro:</h3>
-                    <h4>R$ <?= number_format($valor_seguro, 2, ',', '.') ?></h4>
+                <td colspan="6" align="left" valign="top"><h3>12.1. Valor Total de Juros: </h3>
+                    <h3>12.2. Valor Total Devido: </h3>
                 </td>
             </tr>
             <tr>
