@@ -31,6 +31,12 @@ class AlterTableCadPropostaForPj extends Migration
                 ->constrained('cad_status_analise_proposta', 'id_status_analise_proposta');
             }
 
+            if (!Schema::hasColumn('cad_proposta', 'compartilhar_dados_cliente')) {
+                $table->boolean('compartilhar_dados_cliente')
+                ->nullable()
+                ->default(false);
+            }
+
             $table->string('motivo_pendente')
                 ->nullable();
         });
