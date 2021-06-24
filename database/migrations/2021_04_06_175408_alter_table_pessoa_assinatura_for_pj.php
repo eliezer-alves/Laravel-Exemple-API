@@ -36,13 +36,13 @@ class AlterTablePessoaAssinaturaForPj extends Migration
                 ->unsigned()
                 ->constrained('cad_porte_empresa', 'id_porte_empresa');
 
-            $table->float('rendimento_mensal')
+            $table->decimal('rendimento_mensal', 12, 2)
                 ->nullable();
 
-            $table->float('faturamento_anual')
+            $table->decimal('faturamento_anual', 12, 2)
                 ->nullable();
 
-            $table->float('capital_social')
+            $table->decimal('capital_social', 12, 2)
                 ->nullable();
 
             $table->integer('ano_faturamento')
