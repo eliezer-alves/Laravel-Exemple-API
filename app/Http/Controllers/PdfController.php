@@ -81,4 +81,22 @@ class PdfController extends Controller
         PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
         exit();
     }
+
+    /**
+     * Routine to generate PDF files from contracts
+     *
+     * @param int $request
+     * @return \Illuminate\View\View
+     */
+    public function rotinaGerarPdf($hash)
+    {
+        try {
+            $idProposta = base64_decode(str_replace('_', '=',$hash));
+        } catch (Exception $e) {
+            abort(404);
+        }
+
+        return $this->service->ccbPj($idProposta);
+    }
+
 }

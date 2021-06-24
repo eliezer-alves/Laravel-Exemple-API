@@ -3,10 +3,14 @@
 namespace App\Providers;
 
 use App\Services\Contracts\{
-    ApiSicredServiceInterface
+    ApiSicredServiceInterface,
+    CcbServiceInterface,
+    GacConsultaServiceInterface
 };
 use App\Services\{
-    ApiSicredService
+    ApiSicredService,
+    CCB\CcbService,
+    GacConsultas\GacConsultaService,
 };
 
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +27,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ApiSicredServiceInterface::class,
             ApiSicredService::class
+        );
+
+        $this->app->bind(
+            CcbServiceInterface::class,
+            CcbPfService::class
+        );
+
+        $this->app->bind(
+            CcbServiceInterface::class,
+            CcbService::class
         );
     }
 

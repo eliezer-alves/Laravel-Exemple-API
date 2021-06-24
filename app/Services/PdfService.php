@@ -2,15 +2,31 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquent\PropostaRepository;
+use App\Repositories\Contracts\PropostaRepositoryInterface;
+use App\Services\CCB\CcbService;
+use App\Services\CCB\CcbPjService;
 
 class PdfService
 {
     protected $propostaRepository;
+    protected $ccb;
 
-    public function __construct(PropostaRepository $propostaRepository)
+    public function __construct(PropostaRepositoryInterface $propostaRepository, CcbService $ccb)
     {
         $this->propostaRepository = $propostaRepository;
+        $this->ccb = $ccb;
+    }
+
+    /**
+     * Service Layer - Displays pdf of PJ client contracts
+     *
+     * @param int $idProposta
+     * @return array $proposta;
+     */
+    public function ccbPj($idProposta)
+    {
+        $tipoCcb = new CcbPjService($this->propostaRepository->findOrFail($idProposta));
+        return $this->ccb->pdf($tipoCcb);
     }
 
     /**
