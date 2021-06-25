@@ -7,6 +7,7 @@ use App\Exceptions\FailedAction;
 use App\Models\Proposta;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class PropostaRepository extends AbstractRepository implements PropostaRepositoryInterface
 {
@@ -15,11 +16,15 @@ class PropostaRepository extends AbstractRepository implements PropostaRepositor
         parent::__construct($model);
     }
 
-    public function findByNumero($numeroProposta)
+    public function findByNumero($numeroProposta, $reportException = true)
     {
         $proposta = $this->where('contrato', $numeroProposta)->orderBy('data_geracao_proposta', 'desc')->first();
         if($proposta)
             return $proposta;
+        else if(!$reportException){
+            Log::channel('dbExceptions')->error("Erro ao resgatar o registro proposta $numeroProposta: Registro não encontrado em cad_proposta.");
+            return NULL;
+        }
 
         throw new FailedAction('Proposta não encontrada.', 404);
     }

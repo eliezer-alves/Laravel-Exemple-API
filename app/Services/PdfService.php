@@ -5,16 +5,21 @@ namespace App\Services;
 use App\Repositories\Contracts\PropostaRepositoryInterface;
 use App\Services\CCB\CcbService;
 use App\Services\CCB\CcbPjService;
+use Illuminate\Support\Facades\Log;
 
 class PdfService
 {
-    protected $propostaRepository;
-    protected $ccb;
+    private $propostaRepository;
+    private $ccb;
+    private $numeroMaximoTentativas;
+
+
 
     public function __construct(PropostaRepositoryInterface $propostaRepository, CcbService $ccb)
     {
         $this->propostaRepository = $propostaRepository;
         $this->ccb = $ccb;
+        $this->numeroMaximoTentativas = 2;
     }
 
     /**
@@ -40,14 +45,29 @@ class PdfService
         $path = 'ccbs';
         rrmdir(public_files_path($path));
         mkdir(public_files_path($path));
-        foreach ($request['propostas'] as $numeroProposta) {
-            $tipoCcb = new CcbPjService($this->propostaRepository->findByNumero($numeroProposta));
-            if(!$this->ccb->pdf($tipoCcb, $path)){
-                if(!$this->ccb->pdf($tipoCcb, $path)){
-                    $this->ccb->pdf($tipoCcb, $path);
-                }
+
+        foreach ($request['propostas'] as $numeroProposta)
+        {
+            $gerouArquivo = false;
+            $numeroTentativas = 0;
+            $proposta = $this->propostaRepository->findByNumero($numeroProposta, false);
+
+            if(!$proposta){
+                file_put_contents(public_files_path($path) . '/propostas-nao-geradas.txt', "$numeroProposta - PROPOSTA NAO ENCONTRADA NA BASE DE DADOS\r\n", FILE_APPEND);
+                Log::channel('failedActions')->error("Rotina de gerar zip dos PDF's das CCB's - Proposta não encontrada: $numeroProposta", ['status' => 404]);
+                continue;
             }
+
+            $tipoCcb = new CcbPjService($proposta);
+
+            do {
+                $gerouArquivo = $this->ccb->pdf($tipoCcb, $path);
+                $numeroTentativas ++;
+            } while (!$gerouArquivo && $this->numeroMaximoTentativas <= $numeroTentativas);
+
+            if(!$gerouArquivo) file_put_contents(public_files_path($path) . '/propostas-nao-geradas.txt', "$numeroProposta\r\n", FILE_APPEND);
         }
+
         return zipPath(public_files_path($path), true);
     }
 }

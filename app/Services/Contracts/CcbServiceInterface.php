@@ -4,5 +4,5 @@ namespace App\Services\Contracts;
 
 interface CcbServiceInterface
 {
-    public function pdf();
+    public function pdf(): bool;
 }

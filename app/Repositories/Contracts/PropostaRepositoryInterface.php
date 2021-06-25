@@ -4,7 +4,7 @@ namespace App\Repositories\Contracts;
 
 interface PropostaRepositoryInterface extends AbstractRepositoryInterface
 {
-    public function findByNumero(int $numeroProposta);
+    public function findByNumero(int $numeroProposta, bool $reportException = true);
 
     /**
      * Repository Layer - Method responsible for changing the proposal review status
