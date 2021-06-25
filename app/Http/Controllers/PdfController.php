@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Services\PdfService;
 use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
-use PDF;
 
 
 /**
@@ -51,13 +51,7 @@ class PdfController extends Controller
             abort(404);
         }
 
-        $dadosProposta = $this->service->contratoPj($idProposta);
-
-        PDF::SetTitle($dadosProposta['contrato']);
-        PDF::AddPage();
-        PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
-        PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
-        exit();
+        return $this->service->contratoPj($idProposta);
     }
 
     /**
@@ -73,13 +67,7 @@ class PdfController extends Controller
         } catch (Exception $e) {
             abort(404);
         }
-        $dadosProposta = $this->service->contratoPj($idProposta);
-
-        PDF::SetTitle($dadosProposta['contrato']);
-        PDF::AddPage();
-        PDF::writeHTML(view('pdf.ccb-pj', $dadosProposta), true, false, true, false, '');
-        PDF::Output($dadosProposta['contrato'].'_'.date('Y-m-d').'.pdf');
-        exit();
+        return $this->service->contratoPj($idProposta);
     }
 
     /**
@@ -88,15 +76,9 @@ class PdfController extends Controller
      * @param int $request
      * @return \Illuminate\View\View
      */
-    public function rotinaGerarPdf($hash)
+    public function zipContratosPj(Request $request)
     {
-        try {
-            $idProposta = base64_decode(str_replace('_', '=',$hash));
-        } catch (Exception $e) {
-            abort(404);
-        }
-
-        return $this->service->ccbPj($idProposta);
+        return ['link' => $this->service->zipContratosPj($request->all())];
     }
 
 }

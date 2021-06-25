@@ -336,16 +336,23 @@ Route::group([
 | PDF Contrato
 |--------------------------------------------------------------------------
 */
-Route::prefix('pdf')->group(function () {
-    Route::get('/contrato-pj-interno/{hash}', [PdfController::class, 'contratoPjInterno'])
-        ->name('pdf.contrato-pj-interno.show');
-
-    Route::get('/contrato-pj/{hash}', [PdfController::class, 'contratoPj'])
-        ->name('pdf.contrato-pj.show');
+Route::group([
+    'prefix' => 'pdf'
+],function () {
 
     Route::get('link/contrato-pj/{id_proposta}', [PdfController::class, 'linkContratoPj'])
         ->where('id_proposta', '[0-9]+')
         ->name('link.pdf.contrato-pj');
+
+    Route::get('/contrato-pj/{hash}', [PdfController::class, 'contratoPj'])
+        ->name('pdf.contrato-pj.show');
+
+    Route::get('/contrato-pj-interno/{hash}', [PdfController::class, 'contratoPjInterno'])
+        ->name('pdf.contrato-pj-interno.show');
+
+    Route::post('/zip-contratos-pj', [PdfController::class, 'zipContratosPj'])
+        ->name('zip-contratos-pj');
+
 });
 
 
@@ -365,18 +372,6 @@ Route::prefix('assinatura/link')->group(function () {
         ->where(['id_proposta' => '[0-9]+'])
         ->name('assinatura.link.contrato-pj-assinado');
 });
-
-
-/*
-|--------------------------------------------------------------------------
-| PDF Contrato
-|--------------------------------------------------------------------------
-*/
-Route::prefix('ccb')->group(function () {
-    Route::get('/pj/{hash}', [PdfController::class, 'rotinaGerarPdf']);
-});
-
-
 
 /*
 |--------------------------------------------------------------------------

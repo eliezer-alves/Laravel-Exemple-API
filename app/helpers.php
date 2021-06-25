@@ -93,4 +93,65 @@ if (! function_exists('_classificarScore')) {
     }
 }
 
+if (! function_exists('zipPath')) {
+    /**
+     * Helper Layer - Method to compress an application file or folder (in app/public)
+     *
+     * @param  string $dir Path of the folder or file to be zipped
+     * @param  bool $clear Remove the zipped folder
+     * @return void
+     */
+    function zipPath($path, $clear = false)
+    {
+        $dir = basename($path);
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            exec('cd ' . $path . '&& cd .. && tar.exe -a -c -f ' . $dir . '.zip ' . $dir);
+            if($clear)
+                exec('cd ' . $path . ' && cd .. && rmdir /Q /S ' . $dir);
+        } else {
+            exec('cd ' . $path . ' && cd .. && zip ' . $dir . '.zip -r ' . $dir);
+            if($clear)
+                exec('cd ' . $path . ' && cd .. && rm -r ' . $dir);
+        }
+
+        return url(str_replace(public_path(''), '', $path). '.zip');
+     }
+}
+
+if (! function_exists('public_files_path')) {
+    /**
+     * Helper Layer - Get the path to the public files folder.
+     *
+     * @param  string $path
+     * @return string
+     */
+    function public_files_path($path): string
+    {
+        return public_path("files/$path");
+    }
+}
+
+if (! function_exists('rrmdir')) {
+    /**
+     * Helper Layer - Recursively delete a directory that is not empty
+     *
+     * @param  string $dir
+     * @return void
+     */
+    function rrmdir($dir): void
+    {
+        if (is_dir($dir)) {
+          $objects = scandir($dir);
+          foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+              if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
+            }
+          }
+          reset($objects);
+          rmdir($dir);
+        }
+     }
+}
+
 ?>

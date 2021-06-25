@@ -6,8 +6,8 @@ use App\Services\Contracts\CcbServiceInterface;
 
 class CcbService
 {
-    public function pdf(CcbServiceInterface $tipoCcb)
+    public function pdf(CcbServiceInterface $tipoCcb, $path = NULL)
     {
-        return $tipoCcb->pdf();
+        return $tipoCcb->pdf($path);
     }
 }

@@ -14,7 +14,7 @@ class CcbPjService implements CcbServiceInterface
         $this->proposta = $proposta;
     }
 
-    public function pdf()
+    public function pdf($path = NULL)
     {
         $this->proposta->parcelas;
         $this->proposta->clienteAssinatura->tipoLogradouro;
@@ -31,10 +31,19 @@ class CcbPjService implements CcbServiceInterface
 
         $proposta['mes_geracao_proposta'] = strftime('%B', strtotime($proposta['data_geracao_proposta']));
 
+        PDF::reset();
         PDF::SetTitle($proposta['contrato']);
         PDF::AddPage();
         PDF::writeHTML(view('pdf.ccb-pj', $proposta), true, false, true, false, '');
-        PDF::Output($proposta['contrato'].'_'.date('Y-m-d').'.pdf');
-        exit();
+
+        $file = $proposta['contrato'].'_'.date('Y-m-d').'.pdf';
+        if($path != NULL){
+            $file = public_files_path($path) .'/'. $file;
+            PDF::Output($file, 'F');
+            return file_exists($file);
+        }else{
+            PDF::Output($file);
+            exit;
+        }
     }
 }

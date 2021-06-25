@@ -21,9 +21,9 @@ class PdfService
      * Service Layer - Displays pdf of PJ client contracts
      *
      * @param int $idProposta
-     * @return array $proposta;
+     * @return CcbService;
      */
-    public function ccbPj($idProposta)
+    public function contratoPj($idProposta)
     {
         $tipoCcb = new CcbPjService($this->propostaRepository->findOrFail($idProposta));
         return $this->ccb->pdf($tipoCcb);
@@ -32,28 +32,22 @@ class PdfService
     /**
      * Service Layer - Displays pdf of PJ client contracts
      *
-     * @param int $idProposta
-     * @return array $proposta;
+     * @param array $request
+     * @return string;
      */
-    public function contratoPj($idProposta)
+    public function zipContratosPj($request)
     {
-        $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $proposta->parcelas;
-        $proposta->clienteAssinatura->tipoLogradouro;
-        $proposta->clienteAssinatura->tipoEmpresa;
-        $proposta->representante->tipoLogradouro;
-        $proposta->socios->map(function ($socio) {
-            $socio->tipoLogradouro;
-        });
-        $proposta->assinaturas;
-        $proposta = $proposta->toArray();
-        // dd($proposta);
-
-        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        date_default_timezone_set('America/Sao_Paulo');
-
-        $proposta['mes_geracao_proposta'] = strftime('%B', strtotime($proposta['data_geracao_proposta']));
-
-        return $proposta;
+        $path = 'ccbs';
+        rrmdir(public_files_path($path));
+        mkdir(public_files_path($path));
+        foreach ($request['propostas'] as $numeroProposta) {
+            $tipoCcb = new CcbPjService($this->propostaRepository->findByNumero($numeroProposta));
+            if(!$this->ccb->pdf($tipoCcb, $path)){
+                if(!$this->ccb->pdf($tipoCcb, $path)){
+                    $this->ccb->pdf($tipoCcb, $path);
+                }
+            }
+        }
+        return zipPath(public_files_path($path), true);
     }
 }
