@@ -42,7 +42,7 @@ class PdfService
      */
     public function zipContratosPj($request)
     {
-        $path = 'ccbs';
+        $path = _base64url_encode(date('Y-m-d H:i:s'))."_".$request['path'];
         rrmdir(public_files_path($path));
         mkdir(public_files_path($path));
 
