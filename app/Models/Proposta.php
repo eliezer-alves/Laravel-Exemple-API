@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposta extends Model
 {
     use HasFactory;
+    private $statusPropostaCancelada = 8;
 
     public $timestamps = false;
 
@@ -151,5 +152,10 @@ class Proposta extends Model
     public function observacoes()
     {
         return $this->hasMany(ObservacaoProposta::class, 'id_proposta', 'id_proposta');
+    }
+
+    public function cancelada()
+    {
+        return $this->attributes['id_status_administrativo'] == $this->statusPropostaCancelada;
     }
 }

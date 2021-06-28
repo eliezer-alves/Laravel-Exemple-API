@@ -106,12 +106,15 @@ class AssinaturaPropostaService
      */
     public function aceite1($idProposta, $idPessoaAssinatura, $ipCliente)
     {
-        $assinatura = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+        $assinante = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
             ->findOrFail($idPessoaAssinatura);
-        $assinatura->data_aceite_1 = date('Y-m-d H:i:s');
-        $assinatura->ip_cliente = $ipCliente;
 
-        return $assinatura->save();
+        if(!$assinante->possivelAssinar())return false;
+
+        $assinante->data_aceite_1 = date('Y-m-d H:i:s');
+        $assinante->ip_cliente = $ipCliente;
+
+        return $assinante->save();
     }
 
     /**
@@ -125,12 +128,15 @@ class AssinaturaPropostaService
      */
     public function aceite2($idProposta, $idPessoaAssinatura, $ipCliente)
     {
-        $assinatura = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
+        $assinante = $this->pessoaAssinaturaRepository->where('id_proposta', $idProposta)
             ->findOrFail($idPessoaAssinatura);
-        $assinatura->data_aceite_2 = date('Y-m-d H:i:s');
-        $assinatura->ip_cliente = $ipCliente;
-        $assinatura->hash_assinatura = _hashAssinatura($idProposta, $idPessoaAssinatura, $ipCliente);
-        return $assinatura->save();
+
+        if(!$assinante->possivelAssinar())return false;
+
+        $assinante->data_aceite_2 = date('Y-m-d H:i:s');
+        $assinante->ip_cliente = $ipCliente;
+        $assinante->hash_assinatura = _hashAssinatura($idProposta, $idPessoaAssinatura, $ipCliente);
+        return $assinante->save();
     }
 
     /**
@@ -166,10 +172,24 @@ class AssinaturaPropostaService
     public function dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura)
     {
         $proposta = $this->propostaRepository->findOrFail($idProposta);
-        $this->pessoaAssinaturaRepository
+        $assinante = $this->pessoaAssinaturaRepository
             ->where('id_proposta', $idProposta)
             // ->where('token', $tokenPessoaAssinatura)
             ->findOrFail($idPessoaAssinatura);
+
+        if($proposta->cancelada()){
+            return [
+                'warningAlerts' => [
+                    "Essa proposta foi cancelada!"
+                ]
+            ];
+        }else if($assinante->assinou()){
+            return [
+                'warningAlerts' => [
+                    $assinante->nome . " já concluiu a assinatura do contrato em " . date('d/m/Y', strtotime($assinante->data_aceite_2)) . " às " . date('H:i:s', strtotime($assinante->data_aceite_2)) . "!"
+                ]
+            ];
+        }
 
         $proposta->parcelas;
         $proposta->clienteAssinatura->tipoLogradouro;
@@ -178,6 +198,7 @@ class AssinaturaPropostaService
         $proposta->socios->map(function ($socio) {
             $socio->tipoLogradouro;
         });
+
         $proposta = $proposta->toArray();
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');

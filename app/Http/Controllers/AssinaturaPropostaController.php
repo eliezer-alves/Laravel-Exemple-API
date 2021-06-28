@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Services\AssinaturaPropostaService;
 use App\Http\Requests\EmailAssinaturaRequest;
+use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
 /**
@@ -27,9 +28,50 @@ class AssinaturaPropostaController extends Controller
     }
 
     /**
-     * sends the contract signature link to a partner / representative
+     * Redeem parameters from the hash passed in the signature url
      *
-     * @since 05/05/2021
+     * @param string $hash
+     * @return object params: idProposta | idPessoaAssinatura | tokenPessoaAssinatura ?? NULL
+     */
+    private function hashDecodeBase64($hash): object
+    {
+        try {
+            $arrayParams = explode('-', _base64url_decode($hash));
+        } catch (Exception $e) {
+            abort(404);
+        }
+
+        return (object)[
+            'idProposta' => $arrayParams[0],
+            'idPessoaAssinatura' => $arrayParams[1],
+            'tokenPessoaAssinatura' => $arrayParams[2] ?? NULL,
+        ];
+    }
+
+    /**
+     * Redeem parameters from the hash passed in the signature url
+     *
+     * @param string $hash
+     * @return object params: idProposta | idPessoaAssinatura | tokenPessoaAssinatura ?? NULL
+     */
+    private function hashDecodeCrypt($hash): object
+    {
+        try {
+            $arrayParams = explode('-', Crypt::decryptString($hash));
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
+        return (object)[
+            'idProposta' => $arrayParams[0],
+            'idPessoaAssinatura' => $arrayParams[1],
+            'tokenPessoaAssinatura' => $arrayParams[2] ?? NULL,
+        ];
+    }
+
+
+    /**
+     * Sends the contract signature link to a partner / representative
      *
      * @param App\Http\Requests\EmailAssinaturaRequest $request
      * @return \Illuminate\Http\Response
@@ -42,12 +84,10 @@ class AssinaturaPropostaController extends Controller
     /**
      * Sends the contract signature link to all partners / representatives
      *
-     * @since 11/05/2021
-     *
      * @param int $idProposta
      * @return \Illuminate\Http\Response
      */
-    public function enviaTodosLinkAssinatura(HttpRequest $request)
+    public function enviaTodosLinkAssinatura(Request $request)
     {
         $request->validate([
             'id_proposta' => ['required', 'regex:/^[0-9]+$/u']
@@ -57,8 +97,6 @@ class AssinaturaPropostaController extends Controller
 
     /**
      * Returns proposal signature link
-     *
-     * @since 05/05/2021
      *
      * @param int $idProposta
      * @param int $idPessoaAssinatura
@@ -72,8 +110,6 @@ class AssinaturaPropostaController extends Controller
     /**
      * Returns proposal signature link
      *
-     * @since 05/05/2021
-     *
      * @param int $idProposta
      * @return \Illuminate\Http\Response
      */
@@ -85,8 +121,6 @@ class AssinaturaPropostaController extends Controller
     /**
      * Show page to sign the first part of the contract.
      *
-     * @since 28/04/2021
-     *
      * @param int $hash
      * @param array $warningAlerts
      * @param array $successAlerts
@@ -94,21 +128,12 @@ class AssinaturaPropostaController extends Controller
      */
     public function showAceite1($hash, $warningAlerts = [])
     {
-        try {
-            $arrayParams = explode('-', _base64url_decode($hash));
-        } catch (DecryptException $e) {
-            abort(404);
-        }
+        $params = $this->hashDecodeBase64($hash);
+        $data = $this->service->dadosProposta($params->idProposta, $params->idPessoaAssinatura, $params->tokenPessoaAssinatura);
+        $data['warningAlerts'] = $data['warningAlerts'] ?? $warningAlerts;
+        $data['successAlerts'] = empty($data['warningAlerts']) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
 
-        $idProposta = $arrayParams[0];
-        $idPessoaAssinatura = $arrayParams[1];
-        $tokenPessoaAssinatura = $arrayParams[2] ?? NULL;
-
-        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura);
-        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
-        $data['warningAlerts'] = $warningAlerts;
-
-        $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
+        $data['id_pessoa_assinatura'] = $params->idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-1';
         $data['hash'] = $hash;
 
@@ -118,34 +143,21 @@ class AssinaturaPropostaController extends Controller
     /**
      * Make the first signature of the contract
      *
-     * @since 30/04/2021
-     *
      * @param string $hash
      * @return \Illuminate\View\View
      */
     public function aceite1($hash)
     {
-        try {
-            $arrayParams = explode('-', _base64url_decode($hash));
-        } catch (DecryptException $e) {
-            abort(404);
+        $params = $this->hashDecodeBase64($hash);
+        if($this->service->aceite1($params->idProposta, $params->idPessoaAssinatura, request()->ip())){
+            return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString("$params->idProposta-$params->idPessoaAssinatura")));
         }
 
-        $idProposta = $arrayParams[0];
-        $idPessoaAssinatura = $arrayParams[1];
-        $tokenPessoaAssinatura = $arrayParams[2] ?? NULL;
-        if($this->service->aceite1($idProposta, $idPessoaAssinatura, request()->ip())){
-            // return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString("$idProposta-$idPessoaAssinatura-$tokenPessoaAssinatura")));
-            return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString("$idProposta-$idPessoaAssinatura")));
-        }
-
-        return $this->showAceite1($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
+        return redirect($this->service->linkAssinatura($params->idProposta, $params->idPessoaAssinatura));
     }
 
     /**
      * Show page to sign the second part of the contract.
-     *
-     * @since 28/04/2021
      *
      * @param string $hash
      * @param array $warningAlerts
@@ -154,21 +166,12 @@ class AssinaturaPropostaController extends Controller
      */
     public function showAceite2($hash, $warningAlerts = [])
     {
-        try {
-            $arrayParams = explode('-', Crypt::decryptString($hash));
-        } catch (DecryptException $e) {
-            abort(404);
-        }
+        $params = $this->hashDecodeCrypt($hash);
+        $data = $this->service->dadosProposta($params->idProposta, $params->idPessoaAssinatura, $params->tokenPessoaAssinatura);
+        $data['warningAlerts'] = $data['warningAlerts'] ?? $warningAlerts;
+        $data['successAlerts'] = empty($data['warningAlerts']) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
 
-        $idProposta = $arrayParams[0];
-        $idPessoaAssinatura = $arrayParams[1];
-        $tokenPessoaAssinatura = $arrayParams[2] ?? NULL;
-
-        $data = $this->service->dadosProposta($idProposta, $idPessoaAssinatura, $tokenPessoaAssinatura);
-        $data['successAlerts'] = empty($warningAlerts) ? ['Parabéns, você está muito próximo do seu dinheiro!'] : [];
-        $data['warningAlerts'] = $warningAlerts;
-
-        $data['id_pessoa_assinatura'] = $idPessoaAssinatura;
+        $data['id_pessoa_assinatura'] = $params->idPessoaAssinatura;
         $data['linkAssinatura'] = 'assinatura.contrato-pj-2';
         $data['hash'] = $hash;
 
@@ -178,41 +181,29 @@ class AssinaturaPropostaController extends Controller
     /**
      * Make the second signature of the contract
      *
-     * @since 30/04/2021
-     *
      * @param string $hash
      * @param int $idPessoaAssinatura
      * @return \Illuminate\View\View
      */
     public function aceite2($hash)
     {
-        try {
-            $arrayParams = explode('-', Crypt::decryptString($hash));
-        } catch (DecryptException $e) {
-            abort(404);
-        }
+        $params = $this->hashDecodeCrypt($hash);
+        if(!$this->service->aceite2($params->idProposta, $params->idPessoaAssinatura, request()->ip()))
+            return redirect(route('assinatura.contrato-pj-2.show', Crypt::encryptString("$params->idProposta-$params->idPessoaAssinatura")));
 
-        $idProposta = $arrayParams[0];
-        $idPessoaAssinatura = $arrayParams[1];
-
-        if(!$this->service->aceite2($idProposta, $idPessoaAssinatura, request()->ip()))
-            return $this->showAceite2($idProposta, $idPessoaAssinatura, [$this->defaultWarningAlert]);
-
-        $assinaturasPendentes = $this->service->assinaturasPendentes($idProposta);
+        $assinaturasPendentes = $this->service->assinaturasPendentes($params->idProposta);
 
         if(empty($assinaturasPendentes))
         {
-            $this->service->registraAssinaturaPropostaPj($idProposta);
+            $this->service->registraAssinaturaPropostaPj($params->idProposta);
         }
 
-        return redirect(route('assinatura.contrato-pj.show', Crypt::encryptString($idProposta)));
+        return redirect(route('assinatura.contrato-pj.show', Crypt::encryptString($params->idProposta)));
     }
 
 
     /**
      * Displays the signed contract
-     *
-     * @since 04/05/2021
      *
      * @param string $hash
      * @return \Illuminate\View\View

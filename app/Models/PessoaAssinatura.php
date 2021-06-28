@@ -158,10 +158,20 @@ class PessoaAssinatura extends Model
         return $this->hasOne(AnalisePessoaProposta::class, 'id_pessoa_assinatura');
     }
 
+    public function assinou()
+    {
+        return $this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL;
+    }
+
+    public function possivelAssinar()
+    {
+        $proposta = $this->proposta()->first();
+        return !($this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL && (!$proposta->cancelada()));
+    }
+
     public function consultarConfirmeOnline($idConsulta = null)
     {
         $gacConsulta = new GacConsultaService;
-        // dump(($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']));
         $orgaoConsulta = new ConfirmeOnlineService(($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']));
         return $this->attributes['confirme_online'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
     }
