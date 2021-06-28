@@ -10,8 +10,8 @@ class CcbPfService implements CcbServiceInterface
     {
     }
 
-    public function pdf()
+    public function pdf(): bool
     {
-
+        return false;
     }
 }

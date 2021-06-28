@@ -38,7 +38,7 @@ class CcbPjService implements CcbServiceInterface
             PDF::AddPage();
             PDF::writeHTML(view('pdf.ccb-pj', $this->proposta), true, false, true, false, '');
 
-            $file = $this->proposta['contrato'].'_'.date('Y-m-d').'.pdf';
+            $file = "CCB".$this->proposta['contrato'].'.pdf';
             if($path != NULL){
                 $file = public_files_path($path) .'/'. $file;
                 PDF::Output($file, 'F');
