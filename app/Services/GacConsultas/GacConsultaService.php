@@ -6,12 +6,12 @@ use App\Services\Contracts\GacConsultaServiceInterface;
 
 class GacConsultaService
 {
-    public function consultar(GacConsultaServiceInterface $orgaoConsulta)
+    public static function consultar(GacConsultaServiceInterface $orgaoConsulta)
     {
         return $orgaoConsulta->consultar();
     }
 
-    public function consultarById(GacConsultaServiceInterface $orgaoConsulta)
+    public static function consultarById(GacConsultaServiceInterface $orgaoConsulta)
     {
         return $orgaoConsulta->consultarById();
     }

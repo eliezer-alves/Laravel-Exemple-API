@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
  * @since 31/05/2021
  *
  */
-class AbstractGacConsultaService
+abstract class AbstractGacConsultaService
 {
     private $baseUrl;
     private $numeroMaximoTentativasRequest;

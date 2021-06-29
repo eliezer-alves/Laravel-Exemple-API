@@ -6,7 +6,6 @@ use App\Exceptions\DbException;
 use App\Exceptions\FailedAction;
 use App\Repositories\Contracts\AbstractRepositoryInterface;
 use Exception;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 abstract class AbstractRepository implements AbstractRepositoryInterface

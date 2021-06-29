@@ -53,7 +53,8 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarConfirmeOnline($analise->id_confirme_online ?? null);
+        // $pessoa->consultarConfirmeOnline($analise->id_confirme_online ?? NULL);
+        $pessoa->consultarConfirmeOnline();
 
         return (array)$pessoa->confirme_online;
     }
@@ -75,7 +76,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarDebito($analise->id_scpc ?? null);
+        $pessoa->consultarDebito($analise->id_scpc ?? NULL);
 
         return (array)$pessoa->debito;
     }
@@ -97,7 +98,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarInfomaisEndereco($analise->id_info_mais ?? null);
+        $pessoa->consultarInfomaisEndereco($analise->id_info_mais ?? NULL);
 
         return (array)$pessoa->infomais_endereco;
     }
@@ -120,7 +121,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarInfomaisSituacao($analise->id_info_mais ?? null);
+        $pessoa->consultarInfomaisSituacao($analise->id_info_mais ?? NULL);
 
         return (array)$pessoa->infomais_situacao;
     }
@@ -142,7 +143,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarInfomaisTelefone($analise->id_info_mais ?? null);
+        $pessoa->consultarInfomaisTelefone($analise->id_info_mais ?? NULL);
 
         return (array)$pessoa->infomais_telefone;
     }
@@ -164,7 +165,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarScpcDebito($analise->id_scpc ?? null);
+        $pessoa->consultarScpcDebito($analise->id_scpc ?? NULL);
 
         return (array)$pessoa->scpc_debito;
     }
@@ -186,7 +187,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarScpcDebitoCnpj($analise->id_scpc ?? null);
+        $pessoa->consultarScpcDebitoCnpj($analise->id_scpc ?? NULL);
 
         return (array)$pessoa->scpc_debito;
     }
@@ -208,7 +209,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarScpcScore($analise->id_score ?? null);
+        $pessoa->consultarScpcScore($analise->id_score ?? NULL);
 
         return [
             'scpc_score' => (array)$pessoa->scpc_score,
@@ -234,7 +235,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarScr($analise->scr->id_scr ?? null);
+        $pessoa->consultarScr($analise->scr->id_scr ?? NULL);
 
         return (array)$pessoa->scr;
     }
@@ -256,7 +257,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarSpcBrasil($analise->id_spc_brasil ?? null);
+        $pessoa->consultarSpcBrasil($analise->id_spc_brasil ?? NULL);
 
         return (array)$pessoa->spc_brasil;
     }
@@ -278,7 +279,7 @@ class AnalisePropostaConsultaService
         }
 
         $pessoa = $this->pessoaAssinaturaRepository->find($idPessoaAssinatura);
-        $pessoa->consultarSpcBrasilPlus($analise->id_spc_brasil_plus ?? null);
+        $pessoa->consultarSpcBrasilPlus($analise->id_spc_brasil_plus ?? NULL);
 
         return (array)$pessoa->spc_brasil_plus;
     }

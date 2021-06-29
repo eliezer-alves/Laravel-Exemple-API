@@ -19,6 +19,7 @@ use App\Services\GacConsultas\{
     GacConsultaService,
     SpcBrasilPlusService
 };
+use Facade\Ignition\DumpRecorder\Dump;
 
 class PessoaAssinatura extends Model
 {
@@ -88,38 +89,38 @@ class PessoaAssinatura extends Model
     ];
 
     protected $attributes = [
-        'nome' => null,
-        'cpf' => null,
-        'cnpj' => null,
-        'celular' => null,
-        'telefone' => null,
-        'email' => null,
-        'sexo' => null,
-        'cep' => null,
-        'cidade' => null,
-        'uf' => null,
-        'logradouro' => null,
-        'numero' => null,
-        'complemento' => null,
-        'bairro' => null,
-        'tipo_pessoa_assinatura' => null,
-        'renda_mensal' => null,
-        'situacao_empregaticia' => null,
-        'empresa_trab' => null,
-        'data_nascimento' => null,
-        'id_tipo_logradouro' => null,
-        'estado_civil' => null,
-        'numero_documento_identidade' => null,
-        'uf_documento_identidade' => null,
-        'tipo_documento_identidade' => null,
+        'nome' => NULL,
+        'cpf' => NULL,
+        'cnpj' => NULL,
+        'celular' => NULL,
+        'telefone' => NULL,
+        'email' => NULL,
+        'sexo' => NULL,
+        'cep' => NULL,
+        'cidade' => NULL,
+        'uf' => NULL,
+        'logradouro' => NULL,
+        'numero' => NULL,
+        'complemento' => NULL,
+        'bairro' => NULL,
+        'tipo_pessoa_assinatura' => NULL,
+        'renda_mensal' => NULL,
+        'situacao_empregaticia' => NULL,
+        'empresa_trab' => NULL,
+        'data_nascimento' => NULL,
+        'id_tipo_logradouro' => NULL,
+        'estado_civil' => NULL,
+        'numero_documento_identidade' => NULL,
+        'uf_documento_identidade' => NULL,
+        'tipo_documento_identidade' => NULL,
         'politicamente_exposto' => false,
-        'cargo_politico' => null,
+        'cargo_politico' => NULL,
         'parente_politicamente_exposto' => false,
-        'cargo_parente_politico' => null,
-        'nome_mae' => null,
-        'tipo_imovel' => null,
-        'data_fundacao' => null,
-        'id_cosif' => null,
+        'cargo_parente_politico' => NULL,
+        'nome_mae' => NULL,
+        'tipo_imovel' => NULL,
+        'data_fundacao' => NULL,
+        'id_cosif' => NULL,
         'assinante' => true,
     ];
 
@@ -153,7 +154,7 @@ class PessoaAssinatura extends Model
         return $this->belongsTo(TipoEmpresa::class, 'id_tipo_empresa');
     }
 
-    public function logAnalise()
+    public function analisePessoaProposta()
     {
         return $this->hasOne(AnalisePessoaProposta::class, 'id_pessoa_assinatura');
     }
@@ -169,85 +170,103 @@ class PessoaAssinatura extends Model
         return !($this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL && (!$proposta->cancelada()));
     }
 
-    public function consultarConfirmeOnline($idConsulta = null)
+    public function consultarConfirmeOnline($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ConfirmeOnlineService(($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']));
-        return $this->attributes['confirme_online'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['confirme_online'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_confirme_online', $this->attributes['confirme_online']->pessoal->id_confirme_online ?? NULL);
     }
 
-    public function consultarDebito($idConsulta = null)
+    public function consultarDebito($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new DebitoService($this->attributes['cpf']);
-        return $this->attributes['debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['debito'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        // dd($this->attributes['debito']);
+        return $this->registrarAnalisePessoaProposta('id_scpc', $this->attributes['debito']->scpc->id_scpc ?? NULL, [
+            'restricao' => $this->attributes['debito']->valor_total_debitos ?? NULL
+        ]);
     }
 
-    public function consultarInfomaisEndereco($idConsulta = null)
+    public function consultarInfomaisEndereco($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisEnderecoService($idConsulta ?? $this->attributes['cpf']);
-        return $this->attributes['infomais_endereco'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['infomais_endereco'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_info_mais_endereco', $this->attributes['infomais_endereco']->id_info_mais ?? NULL);
     }
 
-    public function consultarInfomaisSituacao($idConsulta = null)
+    public function consultarInfomaisSituacao($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisSituacaoService($idConsulta ?? $this->attributes['cpf']);
-        return $this->attributes['infomais_situacao'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['infomais_situacao'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_info_mais_situacao', $this->attributes['infomais_situacao']->id_info_mais ?? NULL);
     }
 
-    public function consultarInfomaisTelefone($idConsulta = null)
+    public function consultarInfomaisTelefone($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new InfoMaisTelefoneService($idConsulta ?? $this->attributes['cpf']);
-        return $this->attributes['infomais_telefone'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['infomais_telefone'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_info_mais_telefone', $this->attributes['infomais_telefone']->id_info_mais ?? NULL);
     }
 
-    public function consultarScpcDebito($idConsulta = null)
+    public function consultarScpcDebito($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcDebitoService($idConsulta ?? $this->attributes['cpf']);
-        return $this->attributes['scpc_debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['scpc_debito'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_scpc', $this->attributes['scpc_debito']->id_scpc ?? NULL);
     }
 
-    public function consultarScpcDebitoCnpj($idConsulta = null)
+    public function consultarScpcDebitoCnpj($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcDebitoCnpjService($idConsulta ?? $this->attributes['cnpj']);
-        return $this->attributes['scpc_debito'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['scpc_debito'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_scpc', $this->attributes['scpc_debito']->id_scpc ?? NULL);
     }
 
-    public function consultarScpcScore($idConsulta = null)
+    public function consultarScpcScore($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScpcScoreService($idConsulta ?? $this->attributes['cpf']);
-        $this->attributes['scpc_score'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['scpc_score'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
         $this->attributes['valor_score'] = $this->attributes['scpc_score']->resultado ?? "";
         $this->attributes['classificacao_score'] = _classificarScore(intval($this->attributes['scpc_score']->resultado ?? 0)) ?? "";
-
-        return;
+        return $this->registrarAnalisePessoaProposta('id_score', $this->attributes['scpc_score']->id_score ?? NULL, [
+            'score' => $this->attributes['valor_score'],
+            'classificacao_score' => $this->attributes['classificacao_score']
+        ]);
     }
 
-    public function consultarScr($idConsulta = null)
+    public function consultarScr($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new ScrService($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']);
-        return $this->attributes['scr'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['scr'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_scr', $this->attributes['scr']->id_scr ?? NULL);
     }
 
-    public function consultarSpcBrasil($idConsulta = null)
+    public function consultarSpcBrasil($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new SpcBrasilService($idConsulta ?? $this->attributes['cpf']);
-        return $this->attributes['spc_brasil'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['spc_brasil'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_spc_brasil', $this->attributes['spc_brasil']->id_spc_brasil ?? NULL);
     }
 
-    public function consultarSpcBrasilPlus($idConsulta = null)
+    public function consultarSpcBrasilPlus($idConsulta = NULL)
     {
-        $gacConsulta = new GacConsultaService;
         $orgaoConsulta = new SpcBrasilPlusService($idConsulta ?? $this->attributes['cpf'] ?? $this->attributes['cnpj']);
-        return $this->attributes['spc_brasil_plus'] = ($idConsulta!=null ? $gacConsulta->consultarById($orgaoConsulta) : $gacConsulta->consultar($orgaoConsulta)) ?? [];
+        $this->attributes['spc_brasil_plus'] = ($idConsulta != NULL ? GacConsultaService::consultarById($orgaoConsulta) : GacConsultaService::consultar($orgaoConsulta)) ?? [];
+        return $this->registrarAnalisePessoaProposta('id_spc_brasil_plus', $this->attributes['spc_brasil_plus']->id_spc_brasil_plus ?? NULL);
+    }
+
+    private function registrarAnalisePessoaProposta($consulta, $idConsulta, $attributes = [])
+    {
+        if($idConsulta == NULL)return;
+
+        $proposta = $this->proposta()->first();
+        $analise = $this->analisePessoaProposta()->first() ?? AnalisePessoaProposta::create([
+            'id_proposta' => $proposta->id_proposta,
+            'id_analise_proposta' => $proposta->analise->id_analise_proposta,
+            'id_pessoa_assinatura' => $this->attributes['id_pessoa_assinatura'],
+        ]);
+        $analise->update($attributes);
+        $analise[$consulta] = $idConsulta;
+        return $analise->save();
     }
 }
-
