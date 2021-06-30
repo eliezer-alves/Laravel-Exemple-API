@@ -683,7 +683,7 @@ class PropostaService
         $proposta->socios;
         $proposta->documentos;
         $proposta->statusAnalise;
-        $proposta->analise->logAnalise;
+        $proposta->analise;
 
         return $proposta;
     }

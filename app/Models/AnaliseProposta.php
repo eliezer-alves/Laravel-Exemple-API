@@ -47,7 +47,7 @@ class AnaliseProposta extends Model
         return $this->hasMany(AnalisePessoaProposta::class, 'id_analise_proposta', 'id_analise_proposta');
     }
 
-    public function logAnalise()
+    public function logs()
     {
         return $this->hasMany(LogAnaliseProposta::class, 'id_analise_proposta', 'id_analise_proposta');
     }

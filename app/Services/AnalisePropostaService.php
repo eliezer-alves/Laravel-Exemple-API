@@ -198,10 +198,10 @@ class AnalisePropostaService
         {
             $analisClienteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->clienteAssinatura->id_pessoa_assinatura);
         }
-        $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? NULL);
-        $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->id_scr ?? NULL);
-        $this->proposta->clienteAssinatura->consultarScpcDebitoCnpj($analisClienteProposta->id_scpc ?? NULL);
-        $this->proposta->clienteAssinatura->consultarSpcBrasilPlus($analisClienteProposta->id_spc_brasil_plus ?? NULL);
+        // $this->proposta->clienteAssinatura->consultarConfirmeOnline($analisClienteProposta->id_confirme_online ?? NULL);
+        // $this->proposta->clienteAssinatura->consultarScr($analisClienteProposta->id_scr ?? NULL);
+        // $this->proposta->clienteAssinatura->consultarScpcDebitoCnpj($analisClienteProposta->id_scpc ?? NULL);
+        // $this->proposta->clienteAssinatura->consultarSpcBrasilPlus($analisClienteProposta->id_spc_brasil_plus ?? NULL);
 
         /*
         |--------------------------------------------------------------------------
@@ -222,15 +222,15 @@ class AnalisePropostaService
             $analiseRepresentanteProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $this->proposta->representante->id_pessoa_assinatura);
         }
 
-        $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? NULL);
-        $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? NULL);
-        $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_info_mais ?? NULL);
-        // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_info_mais ?? NULL);
-        $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_info_mais ?? NULL);
-        $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? NULL);
-        $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? NULL);
-        $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? NULL);
-        $this->proposta->representante->consultarScr($analiseRepresentanteProposta->id_scr ?? NULL);
+        // $this->proposta->representante->consultarConfirmeOnline($analiseRepresentanteProposta->id_confirme_online ?? NULL);
+        // $this->proposta->representante->consultarDebito($analiseRepresentanteProposta->id_scpc ?? NULL);
+        // $this->proposta->representante->consultarInfomaisEndereco($analiseRepresentanteProposta->id_info_mais ?? NULL);
+        // // $this->proposta->representante->consultarInfomaisSituacao($analiseRepresentanteProposta->id_info_mais ?? NULL);
+        // $this->proposta->representante->consultarInfomaisTelefone($analiseRepresentanteProposta->id_info_mais ?? NULL);
+        // $this->proposta->representante->consultarScpcDebito($analiseRepresentanteProposta->id_scpc ?? NULL);
+        // $this->proposta->representante->consultarScpcScore($analiseRepresentanteProposta->id_score ?? NULL);
+        // $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? NULL);
+        // $this->proposta->representante->consultarScr($analiseRepresentanteProposta->id_scr ?? NULL);
 
         /*
         |--------------------------------------------------------------------------
@@ -251,15 +251,15 @@ class AnalisePropostaService
                 $analiseSocioProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $socio->id_pessoa_assinatura);
             }
 
-            $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? NULL);
-            $socio->consultarDebito($analiseSocioProposta->id_scpc ?? NULL);
-            $socio->consultarInfomaisEndereco($analiseSocioProposta->id_info_mais ?? NULL);
-            // $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? NULL);
-            $socio->consultarInfomaisTelefone($analiseSocioProposta->id_info_mais ?? NULL);
-            $socio->consultarScpcDebito($analiseSocioProposta->id_scpc ?? NULL);
-            $socio->consultarScpcScore($analiseSocioProposta->id_score ?? NULL);
-            $socio->consultarSpcBrasil($analiseSocioProposta->id_spc_brasil ?? NULL);
-            $socio->consultarScr($analiseSocioProposta->id_scr ?? NULL);
+            // $socio->consultarConfirmeOnline($analiseSocioProposta->id_confirme_online ?? NULL);
+            // $socio->consultarDebito($analiseSocioProposta->id_scpc ?? NULL);
+            // $socio->consultarInfomaisEndereco($analiseSocioProposta->id_info_mais ?? NULL);
+            // // $socio->consultarInfomaisSituacao($analiseSocioProposta->id_info_mais ?? NULL);
+            // $socio->consultarInfomaisTelefone($analiseSocioProposta->id_info_mais ?? NULL);
+            // $socio->consultarScpcDebito($analiseSocioProposta->id_scpc ?? NULL);
+            // $socio->consultarScpcScore($analiseSocioProposta->id_score ?? NULL);
+            // $socio->consultarSpcBrasil($analiseSocioProposta->id_spc_brasil ?? NULL);
+            // $socio->consultarScr($analiseSocioProposta->id_scr ?? NULL);
         });
 
 
@@ -275,88 +275,30 @@ class AnalisePropostaService
             $this->proposta['id_status_analise_proposta'] = $this->statusEmAnaliseManual;
         }
 
-
         return $this->proposta;
     }
 
-
     /**
-     * Service Layer - Method responsible for completing the analysis of the proposal.
+     * Service Layer - Manual proposal review process logs
      *
-     * @param  array  $attributes
-     * @param  int  $idProposta
-     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
+     * @author Eliezer Alves
+     *
+     * @param  int $idProposta
+     * @return \Illuminate\Http\Response
      */
-    public function concluirAnaliseProposta($attributes, $idProposta)
+    public function logsAnaliseProposta($idProposta)
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Changing proposal review status
-        */
-        $this->propostaRepository->alterarStatusAnalise($attributes['id_status_analise_proposta'], $idProposta);
+        $analiseProposta = $this->analisePropostaRepository->where('id_proposta', $idProposta)->first();
 
+        $analiseProposta->logs->map(function ($log){
+            $log->analista = $log->analista->nome;
+            $log->status_anterior = $log->statusAnterior->descricao;
+            $log->status_atual = $log->statusAtual->descricao;
+            unset($log->analista);
+            unset($log->statusAnterior);
+            unset($log->statusAtual);
+        });
 
-        /*
-        |--------------------------------------------------------------------------
-        | Análise Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Registering proposal analysis
-        */
-        $analiseProposta = $this->registrarAnaliseProposta($attributes, $idProposta);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Attributes
-        |--------------------------------------------------------------------------
-        |
-        | Normalizing attributes to continue the process
-        */
-        $attributes = $this->normalizeAttributes($attributes, $idProposta, $analiseProposta->getKey());
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Análise Pessoa Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Registering customer review of the proposal
-        */
-        $analiseClienteProposta = $this->registrarAnalisePessoaProposta($attributes['cliente']);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Análise Pessoa Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Registering analysis of the legal representative related to the proposal
-        */
-        $analiseRepresentanteProposta = $this->registrarAnalisePessoaProposta($attributes['representante']);
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Análise Pessoa Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Registering analysis of the partners related to the proposal
-        */
-        $analiseSociosProposta = [];
-        foreach ($attributes['socios'] as $socio) {
-            $analiseSocioProposta = $this->registrarAnalisePessoaProposta($socio);
-            array_push($analiseSociosProposta, $analiseSocioProposta);
-        }
-
-        return [
-            'analise_proposta' => $analiseProposta,
-            'analise_cliente_proposta' => $analiseClienteProposta,
-            'analise_representante_proposta' => $analiseRepresentanteProposta,
-            'analise_socios_proposta' => $analiseSociosProposta,
-        ];
+        return $analiseProposta->logs;
     }
 }

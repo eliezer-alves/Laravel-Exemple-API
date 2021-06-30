@@ -26,8 +26,18 @@ class LogAnaliseProposta extends Model
 
     public $timestamps = false;
 
-    public function usuario()
+    public function analista()
     {
         return $this->belongsTo(UsuarioJota::class, 'id_usuario_analise_manual');
+    }
+
+    public function statusAnterior()
+    {
+        return $this->belongsTo(StatusAnaliseProposta::class, 'id_status_anterior');
+    }
+
+    public function statusAtual()
+    {
+        return $this->belongsTo(StatusAnaliseProposta::class, 'id_status_atual');
     }
 }

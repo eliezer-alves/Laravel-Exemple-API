@@ -42,7 +42,6 @@ class AnalisePropostaController extends Controller
         return $this->service->getDadosPropostaAnalise($request->id_proposta, $request->id_usuario);
     }
 
-
     /**
      * Updates all information related
      * to a proposal under review
@@ -58,16 +57,15 @@ class AnalisePropostaController extends Controller
     }
 
     /**
-     * Method responsible for completing the analysis of the proposal
+     * Manual proposal review process logs
      *
      * @author Eliezer Alves
      *
-     * @param int $idProposta
+     * @param  int $idProposta
      * @return \Illuminate\Http\Response
      */
-    public function concluirAnaliseProposta(Request $request, $idProposta)
+    public function logsAnaliseProposta($idProposta)
     {
-        return $this->service->concluirAnaliseProposta($request->all(), $idProposta);
+        return $this->service->logsAnaliseProposta($idProposta);
     }
-
 }
