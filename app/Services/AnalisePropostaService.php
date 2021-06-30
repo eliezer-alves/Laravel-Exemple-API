@@ -291,9 +291,13 @@ class AnalisePropostaService
         $analiseProposta = $this->analisePropostaRepository->where('id_proposta', $idProposta)->first();
 
         $analiseProposta->logs->map(function ($log){
-            $log->analista = $log->analista->nome;
+
+            $log->nome_analista = $log->analista->nome;
+            $log->data_hora_inicio_analise = date('d/m/Y H:i:s', strtotime($log->data_hora_inicio_analise));
+            $log->data_hora_fim_analise_manual = date('d/m/Y H:i:s', strtotime($log->data_hora_fim_analise_manual));
             $log->status_anterior = $log->statusAnterior->descricao;
             $log->status_atual = $log->statusAtual->descricao;
+
             unset($log->analista);
             unset($log->statusAnterior);
             unset($log->statusAtual);

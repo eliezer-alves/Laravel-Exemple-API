@@ -253,10 +253,13 @@ Route::group([
     Route::post('/atualizar-proposta', [AnalisePropostaController::class, 'alterarDadosProposta']);
     Route::get('/proposta', [AnalisePropostaController::class, 'dadosPropostaAnalise'])
         ->where(['id_proposta' => '[0-9]+']);
-    Route::get('/logs/{id_proposta}', [AnalisePropostaController::class, 'logsAnaliseProposta'])
-        ->where(['id_proposta' => '[0-9]+']);
+    // Route::get('/logs/{id_proposta}', [AnalisePropostaController::class, 'logsAnaliseProposta'])
+    //     ->where(['id_proposta' => '[0-9]+']);
 
 });
+
+Route::get('/analise-proposta/logs/{id_proposta}', [AnalisePropostaController::class, 'logsAnaliseProposta'])
+        ->where(['id_proposta' => '[0-9]+']);
 
 /*
 |--------------------------------------------------------------------------
