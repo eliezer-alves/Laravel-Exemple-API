@@ -232,6 +232,8 @@ class AnalisePropostaService
         // $this->proposta->representante->consultarSpcBrasil($analiseRepresentanteProposta->id_spc_brasil ?? NULL);
         // $this->proposta->representante->consultarScr($analiseRepresentanteProposta->id_scr ?? NULL);
 
+        $this->proposta->representante->assinou();
+
         /*
         |--------------------------------------------------------------------------
         | Inquiries - Partners
@@ -246,6 +248,7 @@ class AnalisePropostaService
         */
         $this->proposta->socios->map(function ($socio) {
             $analiseRepresentanteProposta = NULL;
+            $socio->assinou();
             if(in_array($this->proposta->id_status_analise_proposta, [$this->statusAprovadoAnalise, $this->statusNegadoAnalise]))
             {
                 $analiseSocioProposta = $this->analisePessoaPropostaRepository->findByAnaliseAndPessoa($this->proposta->analise->id_analise_proposta, $socio->id_pessoa_assinatura);

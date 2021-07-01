@@ -161,7 +161,8 @@ class PessoaAssinatura extends Model
 
     public function assinou()
     {
-        return $this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL;
+        $this->attributes['assinou'] = $this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL;
+        return $this->attributes['assinou'];
     }
 
     public function possivelAssinar()
