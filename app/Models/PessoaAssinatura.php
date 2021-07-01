@@ -258,9 +258,9 @@ class PessoaAssinatura extends Model
 
     private function registrarAnalisePessoaProposta($consulta, $idConsulta, $attributes = [])
     {
-        if($idConsulta == NULL)return;
-
         $proposta = $this->proposta()->first();
+        if($idConsulta == NULL || !isset($proposta->id_proposta))return;
+
         $analise = $this->analisePessoaProposta()->first() ?? AnalisePessoaProposta::create([
             'id_proposta' => $proposta->id_proposta,
             'id_analise_proposta' => $proposta->analise->id_analise_proposta,
