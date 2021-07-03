@@ -46,31 +46,6 @@ class AnalisePropostaService
         $this->statusNegadoAnalise = 9;
     }
 
-
-    /**
-     * Service Layer - Method responsible for standardizing related to the conclusion
-     * of the analysis of the proposal
-     *
-     * @param  array  $attributes
-     * @param  int  $idProposta
-     * @param  int  $idAnaliseProposta
-     * @return array $attributes
-     */
-    private function normalizeAttributes($attributes, $idProposta, $idAnaliseProposta)
-    {
-        $attributes['cliente']['id_proposta'] = $idProposta;
-        $attributes['cliente']['id_analise_proposta'] = $idAnaliseProposta;
-
-        $attributes['representante']['id_proposta'] = $idProposta;
-        $attributes['representante']['id_analise_proposta'] = $idAnaliseProposta;
-
-        foreach ($attributes['socios'] as $key => $socio) {
-            $attributes['socios'][$key]['id_proposta'] = $idProposta;
-            $attributes['socios'][$key]['id_analise_proposta'] = $idAnaliseProposta;
-        }
-        return $attributes;
-    }
-
     /**
      * Service Layer - Method responsible for registering proposal analysis.
      *
@@ -83,19 +58,6 @@ class AnalisePropostaService
         $attributtesAnaliseProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnaliseProposta());
         $attributtesAnaliseProposta['id_proposta'] = $idProposta;
         return $this->analisePropostaRepository->registrarAnaliseProposta($attributtesAnaliseProposta, $idProposta);
-    }
-
-    /** EXCLUIR
-     * Service Layer - Method responsible for registering proposal analysis.
-     *
-     * @param  array  $attributes
-     * @param  int  $idProposta
-     * @return App\Repositories\Contracts\AnalisePropostaRepositoryInterface
-     */
-    private function registrarAnalisePessoaProposta($attributes)
-    {
-        $attributesAnalisePessoaProposta = $this->keysInterfaceService->hydrator($attributes, $this->keysInterfaceService->registrarAnalisePessoaProposta());
-        return $this->analisePessoaPropostaRepository->registrarAnalisePessoaProposta($attributesAnalisePessoaProposta);
     }
 
     /**
