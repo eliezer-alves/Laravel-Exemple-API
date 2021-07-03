@@ -38,9 +38,6 @@ class AlterTableCadClienteForPj extends Migration
             $table->timestamp('data_fundacao', $precision = 0)
                 ->nullable();
 
-            $table->string('tipo_empresa')
-                ->nullable();
-
             $table->foreignId('id_porte_empresa')
                 ->nullable()
                 ->unsigned()
@@ -83,7 +80,6 @@ class AlterTableCadClienteForPj extends Migration
             $table->dropColumn('telefone');
             $table->dropColumn('id_atividade_comercial');
             $table->dropColumn('data_fundacao');
-            $table->dropColumn('tipo_empresa');
             $table->dropColumn('id_porte_empresa');
             $table->dropColumn('rendimento_mensal');
             $table->dropColumn('faturamento_anual');

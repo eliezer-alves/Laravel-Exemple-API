@@ -113,6 +113,7 @@ class AssinaturaPropostaService
 
         $assinante->data_aceite_1 = date('Y-m-d H:i:s');
         $assinante->ip_cliente = $ipCliente;
+        unset($assinante->assinou);
 
         return $assinante->save();
     }
@@ -136,6 +137,8 @@ class AssinaturaPropostaService
         $assinante->data_aceite_2 = date('Y-m-d H:i:s');
         $assinante->ip_cliente = $ipCliente;
         $assinante->hash_assinatura = _hashAssinatura($idProposta, $idPessoaAssinatura, $ipCliente);
+        unset($assinante->assinou);
+
         return $assinante->save();
     }
 

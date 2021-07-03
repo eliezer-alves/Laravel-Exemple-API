@@ -28,9 +28,6 @@ class AlterTablePessoaAssinaturaForPj extends Migration
                 ->unsigned()
                 ->constrained('cad_atividade_comercial', 'id_atividade_comercial');
 
-            $table->string('tipo_empresa')
-                ->nullable();
-
             $table->foreignId('id_porte_empresa')
                 ->nullable()
                 ->unsigned()
@@ -111,7 +108,6 @@ class AlterTablePessoaAssinaturaForPj extends Migration
             $table->dropColumn('nome_fantasia');
             $table->dropColumn('razao_social');
             $table->dropColumn('id_atividade_comercial');
-            $table->dropColumn('tipo_empresa');
             $table->dropColumn('id_porte_empresa');
             $table->dropColumn('rendimento_mensal');
             $table->dropColumn('faturamento_anual');
