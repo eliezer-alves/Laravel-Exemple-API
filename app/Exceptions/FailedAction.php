@@ -22,6 +22,6 @@ class FailedAction extends Exception
     public function render()
     {
         Log::channel('failedActions')->warning($this->message, ['status' => $this->statusCode]);
-        return response(['error' => $this->message], $this->statusCode);
+        return response(['message' => $this->message], $this->statusCode);
     }
 }

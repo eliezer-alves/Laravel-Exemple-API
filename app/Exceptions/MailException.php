@@ -25,11 +25,11 @@ class MailException extends Exception
     {
         $content = [
             'status' => $this->statusCode,
-            'error' => $this->exception->getMessage()
+            'message' => $this->exception->getMessage()
         ];
 
         Log::channel('mailExceptions')->warning($this->message, $content);
-        
-        return response(['error' => $this->message], $this->statusCode);
+
+        return response(['message' => $this->message], $this->statusCode);
     }
 }

@@ -29,13 +29,13 @@ class DbException extends Exception
         $content = [
             'status' => $this->statusCode,
             'table' => $this->model->getTable(),
-            'error' => $this->exception->getMessage()
+            'message' => $this->exception->getMessage()
         ];
 
         Log::channel('dbExceptions')->error($this->message, $content);
 
         if(request()->header('content-type') == "application/json")
-            return response(['error' => $this->message], $this->statusCode);
+            return response(['message' => $this->message], $this->statusCode);
 
         abort($this->statusCode, $this->message);
     }
