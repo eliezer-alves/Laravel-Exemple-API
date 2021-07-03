@@ -2,7 +2,6 @@
 
 namespace App\Services\CCB;
 
-use App\Exceptions\FailedAction;
 use App\Models\Proposta;
 use App\Services\Contracts\CcbServiceInterface;
 use Exception;

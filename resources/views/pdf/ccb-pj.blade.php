@@ -151,8 +151,8 @@ setlocale(LC_MONETARY, 'it_IT');
                 </td>
             </tr>
             <tr>
-                <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3>
-                    <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') ?></h4>
+                <td colspan="6" align="left" valign="top"><h3>Endereço:</h3>
+                    <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') . ', ' . ($cliente_assinatura['numero'] ?? '-') ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                     <h4><?= $cliente_assinatura['bairro'] ?? '-------' ?></h4>
@@ -197,7 +197,7 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3>
-                    <h4><?= $representante['tipo_logradouro']['descricao'] . ' ' . $representante['logradouro'] ?></h4>
+                    <h4><?= $representante['tipo_logradouro']['descricao'] . ' ' . $representante['logradouro'] . ', ' . $representante['numero'] ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                     <h4><?= $representante['bairro'] ?></h4>
@@ -220,7 +220,7 @@ setlocale(LC_MONETARY, 'it_IT');
 
             <tr align="left">
                 <td class="border grey" valign="center" colspan="12"><h2>QUADRO II ESPECIFICAÇÕES DO CRÉDITO:</h2>
-                    <h4>(<?= $espec_credito ?? 0 == 1 ? 'X' : ' ' ?>) Capital de Giro Parcelado ( ) Capital de Giro Fixo (<?= $espec_credito ?? 0 == 2 ? 'X' : ' ' ?>) Refinanciamento Contrato Nº <?= $ref_contrato_n ?? '' != '' ? $ref_contrato_n : '______' ?></h4>
+                    <h4>(X) Capital de Giro Parcelado ( ) Capital de Giro Fixo (<?= $espec_credito ?? 0 == 2 ? 'X' : ' ' ?>) Refinanciamento Contrato Nº <?= $ref_contrato_n ?? '' != '' ? $ref_contrato_n : '______' ?></h4>
                 </td>
             </tr>
             <tr>
@@ -295,10 +295,10 @@ setlocale(LC_MONETARY, 'it_IT');
                 <td colspan="4" align="left" class="border grey" valign="center"><h2>QUADRO IV – ENCARGOS MORATÓRIOS:</h2></td>
             </tr>
             <tr>
-                <td colspan="8" align="left" valign="top"><h3>15. Banco: <?= $banco_liberacao ?>  Agência: <?= $agencia_liberacao ?> - <?= $digito_agencia_liberacao ?>  Conta: <?= $conta_liberacao ?> - <?= $digito_conta_liberacao ?></h3>
+                <td colspan="8" align="left" valign="top"><h3>14. Banco: <?= $banco_liberacao ?>  Agência: <?= $agencia_liberacao ?> - <?= $digito_agencia_liberacao ?>  Conta: <?= $conta_liberacao ?> - <?= $digito_conta_liberacao ?></h3>
                     <h3>OU QUALQUER OUTRA DE TITULARIDADE DO EMITENTE</h3>
                 </td>
-                <td colspan="4" align="left" valign="top"><h3>16.Multa: 2% <br>17.Juros Moratórios: 1%
+                <td colspan="4" align="left" valign="top"><h3>15. Multa: 2% <br>16. Juros Moratórios: 1%
                         <?/*php$juros_remuneratorios*/ ?>
                     </h3>
                 </td>
@@ -366,7 +366,7 @@ setlocale(LC_MONETARY, 'it_IT');
                     <td colspan="2" align="left" valign="top"><h3>Estado Civil:</h3><h4>' . $socio['estado_civil'] . '</h4></td>
                 </tr>
                 <tr>
-                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['tipo_logradouro']['descricao'] . ' ' . $socio['logradouro'] . '</h4></td>
+                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['tipo_logradouro']['descricao'] . ' ' . $socio['logradouro'] . ', ' . $socio['numero'] . '</h4></td>
                     <td colspan="4" align="left" valign="top"><h3>Bairro:</h3><h4>' . $socio['bairro'] . '</h4></td>
                     <td colspan="2" align="left" valign="top"><h3>UF:</h3><h4>' . $socio['uf'] . '</h4></td>
                 </tr>

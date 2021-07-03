@@ -168,7 +168,7 @@ class PessoaAssinatura extends Model
     public function possivelAssinar()
     {
         $proposta = $this->proposta()->first();
-        return !($this->attributes['hash_assinatura'] != NULL && $this->attributes['data_aceite_1'] != NULL && $this->attributes['data_aceite_2'] != NULL && (!$proposta->cancelada()));
+        return (!$this->assinou() && !$proposta->cancelada());
     }
 
     public function consultarConfirmeOnline($idConsulta = NULL)
