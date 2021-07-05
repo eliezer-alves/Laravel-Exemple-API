@@ -114,10 +114,6 @@ class KeysInterfaceService
                 'sourceKey' => 'data_fundacao'
             ],
             [
-                'inputKey' => 'inscricaoEstadual',
-                'sourceKey' => 'inscricao_estadual'
-            ],
-            [
                 'inputKey' => 'capitalSocial',
                 'sourceKey' => 'capital_social'
             ],
@@ -132,14 +128,6 @@ class KeysInterfaceService
             [
                 'inputKey' => 'cosif',
                 'sourceKey' => 'id_cosif'
-            ],
-            [
-                'inputKey' => 'anoFaturamento',
-                'sourceKey' => 'ano_faturamento'
-            ],
-            [
-                'inputKey' => 'valorFaturamentoAnual',
-                'sourceKey' => 'faturamento_anual'
             ],
             [
                 'inputKey' => 'email',

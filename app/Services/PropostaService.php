@@ -180,6 +180,7 @@ class PropostaService
     {
         $attributes = $this->keysInterfaceService->hydrator($proposta->cliente, $this->keysInterfaceService->clienteAgilSicred());
         $attributes['enderecoResidencial'] = $proposta->cliente->tipoLogradouro->descricao . " " . $proposta->cliente->logradouro;
+
         return $this->apiSicred->vincularClienteProposta($attributes, $numeroProposta);
     }
 
@@ -674,8 +675,10 @@ class PropostaService
         | Changing proposal review status
         */
         $attributtesFinalizarAnaliseProposta = [
+            'id_proposta' => $proposta->id_proposta,
             'id_status_atual' => $proposta->id_status_analise_proposta,
             'valor_liberacao' => $proposta->valor_liberacao,
+            'observacao' => $proposta->motivo_pendente ?? '-',
             'data_hora_fim_analise_manual' => date('Y-m-d H:i:s'),
         ];
         $this->analisePropostaService->finalizarLogAnaliseProposta($attributtesFinalizarAnaliseProposta, $attributesFormProposta['id_log_analise']);

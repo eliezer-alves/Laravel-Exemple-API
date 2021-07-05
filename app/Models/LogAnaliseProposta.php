@@ -22,6 +22,7 @@ class LogAnaliseProposta extends Model
         'data_hora_fim_analise_manual',
         'id_proposta',
         'id_tipo_proposta',
+        'observacao',
     ];
 
     public $timestamps = false;

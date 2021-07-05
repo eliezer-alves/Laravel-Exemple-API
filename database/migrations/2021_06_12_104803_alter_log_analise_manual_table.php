@@ -21,6 +21,9 @@ class AlterLogAnaliseManualTable extends Migration
             $table->foreignId('id_tipo_proposta')
                 ->nullable()
                 ->constrained('cad_tipo_proposta', 'id_tipo_proposta');
+
+            $table->string('observacao')
+                ->nullable();
         });
     }
 
@@ -34,6 +37,7 @@ class AlterLogAnaliseManualTable extends Migration
         Schema::table('log_analise_manual', function (Blueprint $table){
             $table->dropColumn('id_proposta');
             $table->dropColumn('id_tipo_proposta');
+            // $table->dropColumn('observacao');
         });
     }
 }
