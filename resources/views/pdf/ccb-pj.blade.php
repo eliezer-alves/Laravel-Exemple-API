@@ -279,8 +279,8 @@ setlocale(LC_MONETARY, 'it_IT');
                 <td colspan="6" align="left" valign="top"><h3>13. Forma de Pagamento:</h3>
                     <h4>( )Débito em Conta (X)Boleto Bancário ( )Cheque</h4>
                 </td>
-                <td colspan="6" align="left" valign="top"><h3>12.1. Valor Total de Juros: </h3>
-                    <h3>12.2. Valor Total Devido: </h3>
+                <td colspan="6" align="left" valign="top"><h3>12.1. Valor Total de Juros: R$ <?= number_format($valor_total_juros, 2, ',', '.') ?></h3>
+                    <h3>12.2. Valor Total Devido: R$ <?= number_format($valor_total_a_pagar, 2, ',', '.') ?> </h3>
                 </td>
             </tr>
             <tr>
@@ -344,7 +344,7 @@ setlocale(LC_MONETARY, 'it_IT');
                 </td>
             </tr>
             <tr>
-                <td colspan="12" align="left" valign="top"><h3>18. O EMITENTE autoriza o CREDOR, respeitada a legislação em vigor, (i) a compartilhar com as empresas parceiras que compõem seu grupo econômico, seus dados pessoais aqui constantes, (ii) a utilizar-se destes dados para oferta por qualquer meio, inclusive telefônico, e-mail, SMS e correspondências promocionais, considerando que tal autorização poderá ser cancelada a qualquer momento, e (iii) enviar um cartão de crédito pré-aprovado em conjunto com abertura de conta digital (<?= $compartilhar_dados_cliente ? 'X' : ' ' ?>)Sim (<?= $compartilhar_dados_cliente ? ' ' : 'X' ?>)Não.
+                <td colspan="12" align="left" valign="top"><h3>18. O EMITENTE autoriza o CREDOR, respeitada a legislação em vigor, (i) a compartilhar com as empresas parceiras que compõem seu grupo econômico, seus dados pessoais aqui constantes, (ii) a utilizar-se destes dados para oferta por qualquer meio, inclusive telefônico, e-mail, SMS e correspondências promocionais, considerando que tal autorização poderá ser cancelada a qualquer momento, e (iii) enviar um cartão de crédito pré-aprovado em conjunto com abertura de conta digital (X)Sim ( )Não.
                     </h3>
                 </td>
             </tr>

@@ -158,4 +158,9 @@ class Proposta extends Model
     {
         return $this->attributes['id_status_administrativo'] == $this->statusPropostaCancelada;
     }
+
+    public function calcularValorTotalJuros()
+    {
+        return $this->attributes['valor_total_juros'] = ($this->attributes['valor_total_a_pagar'] ?? 0) - ($this->attributes['valor_financiado_total'] ?? 0);
+    }
 }

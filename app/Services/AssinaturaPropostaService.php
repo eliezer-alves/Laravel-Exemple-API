@@ -195,6 +195,7 @@ class AssinaturaPropostaService
         }
 
         $proposta->parcelas;
+        $proposta->calcularValorTotalJuros();
         $proposta->clienteAssinatura->tipoLogradouro;
         $proposta->clienteAssinatura->tipoEmpresa;
         $proposta->representante->tipoLogradouro;

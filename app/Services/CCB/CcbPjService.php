@@ -16,6 +16,7 @@ class CcbPjService implements CcbServiceInterface
     {
         $this->proposta = $proposta;
         $this->proposta->parcelas;
+        $this->proposta->calcularValorTotalJuros();
         $this->proposta->clienteAssinatura->tipoLogradouro;
         $this->proposta->clienteAssinatura->tipoEmpresa;
         $this->proposta->representante->tipoLogradouro;

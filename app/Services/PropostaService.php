@@ -133,8 +133,8 @@ class PropostaService
     public function getAssinantesProposta($numeroProposta)
     {
         $proposta = $this->propostaRepository->findByNumero($numeroProposta);
-        if($proposta->id_status_analise_proposta != $this->statusAprovadoManual)
-            throw new FailedAction('Essa proposta não está aprovada pela Análise Manual!');
+        // if($proposta->id_status_analise_proposta != $this->statusAprovadoManual)
+        //     throw new FailedAction('Essa proposta não está aprovada pela Análise Manual!');
 
         return $proposta->assinantes;
     }
