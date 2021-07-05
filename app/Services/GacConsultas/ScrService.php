@@ -75,6 +75,7 @@ class ScrService extends AbstractGacConsultaService implements GacConsultaServic
 
         $scrFormatado['id_scr'] = $dadosConsulta->id_scr ?? null;
         $scrFormatado['data_base_consulta'] = $dadosConsulta->data_base_consulta ?? null;
+        $scrFormatado['data_inicio_relacionamento'] = $dadosConsulta->data_inicio_relacionamento ?? null;
         $scrFormatado['percentual_documentos_processados'] = $dadosConsulta->percentual_documentos_processados ?? null;
         $scrFormatado['quantidade_instituicoes'] = $dadosConsulta->quantidade_instituicoes ?? null;
         $scrFormatado['quantidade_operacoes'] = $dadosConsulta->quantidade_operacoes ?? null;
