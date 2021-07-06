@@ -47,7 +47,7 @@ class AlterarDadosPropostaAnaliseRequest extends FormRequest
             'cliente.inscricao_estadual' => ['required', 'regex:/^[0-9]+$/u', 'max:14'],
             'cliente.data_fundacao' => ['required', 'date'],
             'cliente.id_atividade_comercial' => ['required', 'numeric', 'exists:cad_atividade_comercial,id_atividade_comercial'],
-            'cliente.celular' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
+            'cliente.celular_pj' => ['required', 'string', 'regex:/^[0-9]+$/u', 'between:10,11'],
             'cliente.telefone' => ['string', 'regex:/^[0-9]+$/u', 'between:10,11', 'nullable'],
             'cliente.email' => ['required', 'string', 'email', 'between:0,50'],
             'cliente.cep' => ['required', 'string', 'regex:/^[0-9]+$/u', 'size:8'],

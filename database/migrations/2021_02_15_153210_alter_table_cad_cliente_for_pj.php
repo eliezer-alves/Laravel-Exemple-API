@@ -27,6 +27,9 @@ class AlterTableCadClienteForPj extends Migration
             $table->string('razao_social')
                 ->nullable();
 
+            $table->string('celular_pj')
+                ->nullable();
+
             $table->string('telefone')
                 ->nullable();
 
@@ -77,6 +80,7 @@ class AlterTableCadClienteForPj extends Migration
             $table->dropColumn('inscricao_estadual');
             $table->dropColumn('nome_fantasia');
             $table->dropColumn('razao_social');
+            $table->dropColumn('celular_pj');
             $table->dropColumn('telefone');
             $table->dropColumn('id_atividade_comercial');
             $table->dropColumn('data_fundacao');

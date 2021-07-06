@@ -62,6 +62,18 @@ class SimulacaoService
     }
 
     /**
+     * Service Layer - Method responsible for defining the proposal
+     * plan based on interest rate and TAC value
+     *
+     * @param  array  $attributes
+     * @return string  $modeloProposta
+     */
+    private function definePlanoProposta():string
+    {
+        return "00078";
+    }
+
+    /**
      * Service Layer - Make a proposal simulation at Sicredi
      *
      * @param  array  $attributes

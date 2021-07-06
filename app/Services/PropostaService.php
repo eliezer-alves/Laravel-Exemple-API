@@ -371,6 +371,7 @@ class PropostaService
     private function parametrosFormularioPessoaAssinatura($formAttributesSocios, $attributesFormCliente, $idProposta): array
     {
         $attributesFormCliente['tipo_pessoa_assinatura'] = 0;
+        $attributesFormCliente['celular'] = $attributesFormCliente['celular_pj'];
         $attributes = $formAttributesSocios;
         $attributes[] = $attributesFormCliente;
 
