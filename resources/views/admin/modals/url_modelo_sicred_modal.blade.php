@@ -35,7 +35,7 @@
                         <div class="ml-3 text-gray-700 font-semibold">
                         {{ $url["servico"] }}
                         </div>
-                    </label>                    
+                    </label>
                     <span class="mt-3 text-gray-500 font-light">{{ $url["url"] }}</span>
                 </div>
                 @endforeach
@@ -45,7 +45,7 @@
             <!--Footer-->
             <div class="flex justify-end pt-2 ml-2">
                 <!-- <button type="button" class="modal-close px-4  bg-indigo-600 p-3 rounded-lg text-white hover:text-indigo-400" @click.prevent="close()">OK</button> -->
-                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit" x-ref="bnt_salvar">Salvar</button>
+                <button class="px-4 bg-indigo-600 p-3 rounded-lg text-white  hover:bg-indigo-700 mr-2" id="btn_modal_salvar" type="submit" x-ref="bnt_editar">Salvar</button>
                 <button class="modal-close px-4  bg-transparent p-3 rounded-lg  text-indigo-600 hover:text-indigo-400" @click.prevent="close()">Cancelar</button>
             </div>
         </div>
