@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\FailedAction;
 use App\Services\Contracts\ApiSicredServiceInterface;
 use DateTime;
 
@@ -68,9 +69,15 @@ class SimulacaoService
      * @param  array  $attributes
      * @return string  $modeloProposta
      */
-    private function definePlanoProposta():string
+    private function definePlanoProposta($valorTac)
     {
-        return "00078";
+        if($valorTac == 250){
+            return "0081";
+        }else if($valorTac == 350){
+            return "0082";
+        }
+
+        throw new FailedAction('Tac informada inválida.');
     }
 
     /**
@@ -82,6 +89,7 @@ class SimulacaoService
     public function novaSimulacao($attributes)
     {
         $modeloProposta = $this->defineModeloProposta($attributes);
+        $attributes['plano'] = $this->definePlanoProposta($attributes['valorTAC']);
         $this->apiSicred->setModeloProposta($modeloProposta);
         return $this->apiSicred->novaSimulacao($attributes);
     }

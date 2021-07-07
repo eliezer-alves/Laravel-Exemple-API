@@ -128,6 +128,7 @@ class ApiSicredService implements ApiSicredServiceInterface
         $response = null;
         $url = $this->urlServico('base_url') . $this->urlServico('simulacao_url') . '/simular';
         $form = array_merge($this->modeloSicred->toArray(), $request);
+        unset($form['taxa']);//PESSOAL DE NEGÓCIO É TÃO IGNORANTE QUE EU FICO TRISTE DE TRABALHAR NESSE LUGAR: BASICAMENTE A TAXA VARIÁVEL JÁ FUNCIONAVA MAS AÍ PORQUE ELES NÃO ENTENDEM COMO FUNCIONA - caso um dia quiser saber mais é só me perguntar
         do {
             $response = Http::withToken(Session::get('accessToken'))->post($url, $form);
             $numeroTentativasRequest++;
