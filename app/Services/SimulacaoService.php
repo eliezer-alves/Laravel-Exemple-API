@@ -56,7 +56,7 @@ class SimulacaoService
     {
         $intervaloDias = $this->calculaIntervaloUltimoVencimento($attributes);
 
-        if($intervaloDias > 365)
+        if($intervaloDias >= 365)
             return $this->modeloPropostaAcima;
 
         return $this->modeloPropostaAbaixo;
