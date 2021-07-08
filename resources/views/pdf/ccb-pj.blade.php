@@ -349,7 +349,7 @@ setlocale(LC_MONETARY, 'it_IT');
                 </td>
             </tr>
             <tr align="left">
-                <td class="border grey" valign="center" colspan="12"><h2>QUADRO VII QUALIFICAÇÃO DOS AVALISTAS:</h2></td>
+                <td class="border grey" valign="center" colspan="12"><h2>QUADRO VII QUALIFICAÇÃO DOS DEMAIS SÓCIOS:</h2></td>
             </tr>
             <?php
             $table = '';
