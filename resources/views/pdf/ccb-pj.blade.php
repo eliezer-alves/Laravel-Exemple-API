@@ -537,7 +537,7 @@ setlocale(LC_MONETARY, 'it_IT');
 
 
         <h2>ASSINATURAS</h2>
-        <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> – PROTOCOLO DE LIGAÇÃO NÚMERO - <?=strtoupper($id_proposta)?></p>
+        <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; INCLUSÃO PROPOSTA – PLATAFORMA DIGITAL ÁGIL – VIA <?= ($id_forma_inclusao == 1) ? 'APLICATIVO' : 'TELEFONE'; ?> – PROTOCOLO DE LIGAÇÃO NÚMERO - <?=strtoupper($atd_protocolo)?></p>
         <p style="font-size: 9px; line-height: 18px;"><img width="15px" height="15px" src="images/check.png">&nbsp; APROVAÇÃO DE PROPOSTA COBUCCIO SOCIEDADE DE CRÉDITO DIRETO S.A, NOME FANTASIA ÁGIL, CNPJ: 36.947.229/0001-85, assinou. E-mail: credito@agil.com.br  - IP : 172.31.40.92 Hash: <?=strtoupper('1be95baf66cc80c3f7317e3eeb41a1875eb4db69')?></p>
 
         @if(!empty($assinaturas))
