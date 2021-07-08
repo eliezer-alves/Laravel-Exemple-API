@@ -575,18 +575,9 @@ class PropostaService
         */
         $attributesProposta = $this->normalizaParametrosFormularioNovaProposta($attributesFormProposta);
         $proposta = $this->propostaRepository->find($attributesFormProposta['id_proposta']);
-        $proposta = $this->propostaRepository->update(_normalizeRequest($attributesProposta, ['valor_solicitado']), $attributesFormProposta['id_proposta']);
-
-        /*
-        |--------------------------------------------------------------------------
-        | Analise Proposta
-        |--------------------------------------------------------------------------
-        |
-        | Changing proposal review status
-        */
-        $this->propostaRepository->alterarStatusAnalise($attributesFormProposta['id_status_analise_proposta'], $proposta->id_proposta);
-        $analiseProposta = $this->analisePropostaService->registrarAnaliseProposta(['id_status_analise_proposta' => $attributesFormProposta['id_status_analise_proposta']], $proposta->id_proposta);
-
+        $attributes = _normalizeRequest($attributesProposta, ['valor_solicitado']);
+        $attributes['id_status_analise_proposta'] = $proposta->id_status_analise_proposta;
+        $proposta->update($attributes);
 
         /*
         |--------------------------------------------------------------------------
@@ -670,10 +661,21 @@ class PropostaService
 
         /*
         |--------------------------------------------------------------------------
+        | Analise Proposta
+        |--------------------------------------------------------------------------
+        |
+        | Registering proposal review and updating proposal review status
+        */
+        $this->propostaRepository->alterarStatusAnalise($attributesFormProposta['id_status_analise_proposta'], $proposta->id_proposta);
+        $this->analisePropostaService->registrarAnaliseProposta(['id_status_analise_proposta' => $attributesFormProposta['id_status_analise_proposta']], $proposta->id_proposta);
+        $proposta->update(['id_status_analise_proposta' => $attributesFormProposta['id_status_analise_proposta']]);
+
+        /*
+        |--------------------------------------------------------------------------
         | Log Analise Proposta
         |--------------------------------------------------------------------------
         |
-        | Changing proposal review status
+        | Logging the proposal analysis log
         */
         $attributtesFinalizarAnaliseProposta = [
             'id_proposta' => $proposta->id_proposta,
