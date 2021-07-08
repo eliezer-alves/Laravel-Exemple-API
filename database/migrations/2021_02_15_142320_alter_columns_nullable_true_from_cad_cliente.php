@@ -17,7 +17,7 @@ class AlterColumnsNullableTrueFromCadCliente extends Migration
             $table->string('cpf')->nullable()->change();
             $table->string('rg')->nullable()->change();
             $table->string('nome')->nullable()->change();
-            $table->dateTime('data_nascimento')->nullable()->change();
+            $table->date('data_nascimento')->nullable()->change();
             $table->string('sexo')->nullable()->change();
             $table->string('nome_mae')->nullable()->change();
             $table->string('celular')->nullable()->change();
