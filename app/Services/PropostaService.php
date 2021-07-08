@@ -577,6 +577,7 @@ class PropostaService
         $proposta = $this->propostaRepository->find($attributesFormProposta['id_proposta']);
         $attributes = _normalizeRequest($attributesProposta, ['valor_solicitado']);
         $attributes['id_status_analise_proposta'] = $proposta->id_status_analise_proposta;
+        $attributes['id_usuario'] = $proposta->id_usuario;
         $proposta->update($attributes);
 
         /*
