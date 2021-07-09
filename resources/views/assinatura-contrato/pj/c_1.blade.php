@@ -39,23 +39,16 @@
         </tr>
 
         <tr>
-            <td colspan="8" align="left" valign="top"><h3>Razão Social:</h3>
-                <h4><?= $cliente_assinatura['razao_social'] ?? '-------' ?></h4>
-            </td>
-            <td colspan="8" align="left" valign="top"><h3>CNPJ:</h3>
-                <h4><?= $cliente_assinatura['cnpj'] ?? '-------' ?></h4>
-            </td>
-        </tr>
+                <td colspan="6" align="left" valign="top"><h3>Razão Social:</h3>
+                    <h4><?= $cliente_assinatura['razao_social'] ?? '-------' ?></h4>
+                </td>
+                <td colspan="4" align="left" valign="top"><h3>CNPJ:</h3>
+                    <h4><?= $cliente_assinatura['cnpj'] ?? '-------' ?></h4>
+                </td>
+                <td colspan="2" align="left" valign="top"><h3>Tipo Empresa:</h3><h4><?= $cliente_assinatura['tipo_empresa']['descricao'] ?? '-------' ?></h4>
+                </td>
+            </tr>
         <tr>
-            <td colspan="4" align="left" valign="top"><h3>I. E. n°:</h3>
-                <h4><?= $cliente_assinatura['inscricao_estadual'] ?? '-------' ?></h4>
-            </td>
-            <td colspan="4" align="left" valign="top"><h3>Tipo Empresa:</h3><h4><?= $cliente_assinatura['tipo_empresa']['descricao'] ?? '-------' ?></h4>
-            </td>
-            <td colspan="8" align="left" valign="top"><h3>E-mail:</h3>
-                <h4><?= $cliente_assinatura['email'] ?? '-------' ?></h4>
-            </td>
-        </tr>
         <tr>
             <td colspan="6" align="left" valign="top"><h3>Endereço:</h3>
             <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') . ', ' . ($cliente_assinatura['numero'] ?? '-') ?></h4>
@@ -83,11 +76,8 @@
             <td colspan="6" align="left" valign="top"><h3>Representante Legal:</h3>
                 <h4><?= $representante['nome'] ?></h4>
             </td>
-            <td colspan="4" align="left" valign="top"><h3>CPF:</h3>
+            <td colspan="6" align="left" valign="top"><h3>CPF:</h3>
                 <h4><?= $representante['cpf'] ?></h4>
-            </td>
-            <td colspan="2" align="left" valign="top"><h3>Sexo:</h3>
-                <h4><?= $representante['sexo'] ?></h4>
             </td>
         </tr>
         <tr>
@@ -253,8 +243,7 @@
             $table = '' .
                 '<tr>
                 <td colspan="6" align="left" valign="top"><h3>Nome:</h3><h4>' . $socio['nome'] . '</h4></td>
-                <td colspan="4" align="left" valign="top"><h3>CPF:</h3><h4>' . $socio['cpf'] . '</h4></td>
-                <td colspan="2" align="left" valign="top"><h3>Sexo:</h3><h4>' . $socio['sexo'] . '</h4></td>
+                <td colspan="6" align="left" valign="top"><h3>CPF:</h3><h4>' . $socio['cpf'] . '</h4></td>
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>E-mail:</h3><h4>' . $socio['email'] . '</h4></td>
