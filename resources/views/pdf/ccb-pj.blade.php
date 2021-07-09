@@ -144,7 +144,7 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>Endereço:</h3>
-                    <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') . ', ' . ($cliente_assinatura['numero'] ?? '-') ?></h4>
+                    <h4><?= ($cliente_assinatura['tipo_logradouro']['descricao'] ?? '-------') . ' ' . ($cliente_assinatura['logradouro'] ?? '-------') . ', ' . ($cliente_assinatura['numero'] ?? '-') . "  " . ($cliente_assinatura['complemento'] ?? "-") ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                     <h4><?= $cliente_assinatura['bairro'] ?? '-------' ?></h4>
@@ -186,7 +186,7 @@ setlocale(LC_MONETARY, 'it_IT');
             </tr>
             <tr>
                 <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3>
-                    <h4><?= $representante['tipo_logradouro']['descricao'] . ' ' . $representante['logradouro'] . ', ' . $representante['numero'] ?></h4>
+                    <h4><?= $representante['tipo_logradouro']['descricao'] . ' ' . $representante['logradouro'] . ', ' . $representante['numero'] . ' ' . ($representante['complemento'] ?? '-') ?></h4>
                 </td>
                 <td colspan="4" align="left" valign="top"><h3>Bairro:</h3>
                     <h4><?= $representante['bairro'] ?></h4>
@@ -238,7 +238,7 @@ setlocale(LC_MONETARY, 'it_IT');
                 </td>
             </tr>
             <tr>
-                <td colspan="6" align="left" valign="top"><h3>6. (4-2-3-5-14) Valor Líquido do Crédito:</h3>
+                <td colspan="6" align="left" valign="top"><h3>6. (4-2-3-5) Valor Líquido do Crédito:</h3>
                     <h4>R$ <?= number_format($valor_liquido_credito, 2, ',', '.') ?></h4>
                 </td>
                 <td colspan="3" align="left" valign="top"><h3>7. Valor da Parcela:</h3>
@@ -354,7 +354,7 @@ setlocale(LC_MONETARY, 'it_IT');
                     <td colspan="2" align="left" valign="top"><h3>Estado Civil:</h3><h4>' . $socio['estado_civil'] . '</h4></td>
                 </tr>
                 <tr>
-                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['tipo_logradouro']['descricao'] . ' ' . $socio['logradouro'] . ', ' . $socio['numero'] . '</h4></td>
+                    <td colspan="6" align="left" valign="top"><h3>Endereço Res.:</h3><h4>' . $socio['tipo_logradouro']['descricao'] . ' ' . $socio['logradouro'] . ', ' . $socio['numero'] . ' ' . ($socio['complemento'] ?? '-') . '</h4></td>
                     <td colspan="4" align="left" valign="top"><h3>Bairro:</h3><h4>' . $socio['bairro'] . '</h4></td>
                     <td colspan="2" align="left" valign="top"><h3>UF:</h3><h4>' . $socio['uf'] . '</h4></td>
                 </tr>
