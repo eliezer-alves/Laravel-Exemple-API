@@ -578,6 +578,7 @@ class PropostaService
         $attributes = _normalizeRequest($attributesProposta, ['valor_solicitado']);
         $attributes['id_status_analise_proposta'] = $proposta->id_status_analise_proposta;
         $attributes['id_usuario'] = $proposta->id_usuario;
+        $attributes['atd_protocolo'] = $proposta->atd_protocolo;
         $proposta->update($attributes);
 
         /*
