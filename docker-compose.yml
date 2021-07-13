@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+
+  api:
+    image: daniloporfirio/apache2php7.4:1.5
+    volumes:
+      - '.:/var/www/html'
+    ports:
+      - "8085:80"
+    stdin_open: true
+    tty: true
+    restart: always
