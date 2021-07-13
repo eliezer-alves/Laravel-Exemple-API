@@ -28,6 +28,7 @@ class GacWebService
     {
         $this->configuracao = $configuracao->all();
         $this->proc = 'WS_P_Agil';
+        // $this->dbServer = '192.168.0.16';
     }
 
     public function hydrator_bolt()
