@@ -4,47 +4,21 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\{
     AbstractRepositoryInterface,
-    AnalisePessoaPropostaRepositoryInterface,
-    AnalisePropostaRepositoryInterface,
     AtividadeComercialRepositoryInterface,
     CosifRepositoryInterface,
     ClienteRepositoryInterface,
-    ClientSicredRepositoryInterface,
-    ConfiguracaoRepositoryInterface,
-    DocumentoPropostaRepositoryInterface,
-    LogAnalisePropostaRepositoryInterface,
-    ModeloSicredRepositoryInterface,
-    ObservacaoPropostaRepositoryInterface,
-    PessoaAssinaturaRepositoryInterface,
     PorteEmpresaRepositoryInterface,
-    PropostaRepositoryInterface,
-    PropostaParcelaRepositoryInterface,
     TipoEmpresaRepositoryInterface,
-    TipoLogradouroRepositoryInterface,
     UserRepositoryInterface,
-    UrlSicredRepositoryInterface
 };
 use App\Repositories\Eloquent\{
     AbstractRepository,
-    AnalisePessoaPropostaRepository,
-    AnalisePropostaRepository,
     AtividadeComercialRepository,
     ClienteRepository,
-    ClientSicredRepository,
     CosifRepository,
-    ConfiguracaoRepository,
-    DocumentoPropostaRepository,
-    LogAnalisePropostaRepository,
-    ModeloSicredRepository,
-    ObservacaoPropostaRepository,
-    PessoaAssinaturaRepository,
     PorteEmpresaRepository,
-    PropostaRepository,
-    PropostaParcelaRepository,
     TipoEmpresaRepository,
-    TipoLogradouroRepository,
     UserRepository,
-    UrlSicredRepository
 };
 
 use Illuminate\Support\ServiceProvider;
@@ -86,11 +60,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             TipoEmpresaRepositoryInterface::class,
             TipoEmpresaRepository::class
-        );
-
-        $this->app->bind(
-            TipoLogradouroRepositoryInterface::class,
-            TipoLogradouroRepository::class
         );
 
         $this->app->bind(

@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\DbException;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
-use App\Models\Cliente;
 use App\Services\ClienteService;
-use Exception;
 
-/**
- *
- * @author Eliezer Alves
- * @since 03/2021
- *
- */
+
 class ClienteController extends Controller
 {
     public function __construct(ClienteService $service)

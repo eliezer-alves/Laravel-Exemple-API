@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     CosifController,
     PorteEmpresaController,
     TipoEmpresaController,
+    UserController,
 };
 
 /*
@@ -23,12 +24,36 @@ use App\Http\Controllers\{
 
 /*
 |--------------------------------------------------------------------------
+| User
+|--------------------------------------------------------------------------
+*/
+Route::post('user/', [UserController::class, 'store']);
+
+Route::group([
+
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
+    'prefix' => 'user',
+
+], function () {
+
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/{id_atividade_comercial}', [UserController::class, 'show']);    
+    Route::put('/{id_atividade_comercial}', [UserController::class, 'update']);
+    Route::delete('/{id_atividade_comercial}', [UserController::class, 'destroy']);
+
+});
+
+
+/*
+|--------------------------------------------------------------------------
 | Atividade Comercial
 |--------------------------------------------------------------------------
 */
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
     'prefix' => 'atividade-comercial',
 
 ], function () {
@@ -50,7 +75,8 @@ Route::group([
 */
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
     'prefix' => 'cosif',
 
 ], function () {
@@ -68,7 +94,8 @@ Route::group([
 */
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
     'prefix' => 'tipo-empresa',
 
 ], function () {
@@ -85,7 +112,8 @@ Route::group([
 
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
     'prefix' => 'cliente',
 
 ], function () {
@@ -110,7 +138,8 @@ Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [ClienteController::
 */
 Route::group([
 
-    'middleware' => ['auth:api'],
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
     'prefix' => 'porte-empresa',
 
 ], function () {

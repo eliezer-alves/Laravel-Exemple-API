@@ -5,13 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\PorteEmpresaService;
 
-/**
- * Class responsible for managing Company Ports
- *
- * @author Eliezer Alves
- * @since 20/05/2021
- *
- */
+
 class PorteEmpresaController extends Controller
 {
     public function __construct(PorteEmpresaService $service)

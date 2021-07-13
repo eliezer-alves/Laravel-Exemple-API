@@ -26,7 +26,6 @@ class AtividadeComercialController extends Controller
     public function index()
     {
         return $this->service->all();
-        // return AtividadeComercial::orderBy('id_atividade_comercial', 'asc')->get();
     }
 
     /**

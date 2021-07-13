@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCadAtividadeComercial extends Migration
+class CreateCosif extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCadAtividadeComercial extends Migration
      */
     public function up()
     {
-        Schema::create('cad_atividade_comercial', function (Blueprint $table) {
-            $table->id('id_atividade_comercial');
+        Schema::create('cosif', function (Blueprint $table) {
+            $table->id('id_cosif');
+
             $table->string('descricao');
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateCadAtividadeComercial extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cad_atividade_comercial');
+        Schema::dropIfExists('cosif');
     }
 }

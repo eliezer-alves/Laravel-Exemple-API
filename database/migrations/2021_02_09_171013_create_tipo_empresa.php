@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCadCosif extends Migration
+class CreateTipoEmpresa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCadCosif extends Migration
      */
     public function up()
     {
-        Schema::create('cad_cosif', function (Blueprint $table) {
-            $table->integer('id_cosif')
-                ->unsigned()
-                ->unique();
-
+        Schema::create('tipo_empresa', function (Blueprint $table) {
+            $table->id();
             $table->string('descricao');
             $table->timestamps();
         });
@@ -30,6 +27,6 @@ class CreateCadCosif extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cad_cosif');
+        Schema::dropIfExists('tipo_empresa');
     }
 }

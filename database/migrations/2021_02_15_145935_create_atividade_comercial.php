@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrateTableCadPorteEmpresa extends Migration
+class CreateAtividadeComercial extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CrateTableCadPorteEmpresa extends Migration
      */
     public function up()
     {
-        Schema::create('cad_porte_empresa', function (Blueprint $table){
-            $table->id('id_porte_empresa');
+        Schema::create('atividade_comercial', function (Blueprint $table) {
+            $table->id();
             $table->string('descricao');
             $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -27,8 +28,6 @@ class CrateTableCadPorteEmpresa extends Migration
      */
     public function down()
     {
-        Schema::table('cad_porte_empresa', function (Blueprint $table) {
-            Schema::dropIfExists('cad_porte_empresa');
-        });
+        Schema::dropIfExists('atividade_comercial');
     }
 }

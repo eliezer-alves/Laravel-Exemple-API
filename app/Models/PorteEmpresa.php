@@ -9,8 +9,7 @@ class PorteEmpresa extends Model
 {
     use HasFactory;
 
-    protected $table = 'cad_porte_empresa';
-    protected $primaryKey = 'id_porte_empresa';
+    protected $table = 'porte_empresa';
 
     protected $fillable = [
         'descricao'

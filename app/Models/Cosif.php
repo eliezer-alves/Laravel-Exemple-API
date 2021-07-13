@@ -9,8 +9,7 @@ class Cosif extends Model
 {
     use HasFactory;
 
-    protected $table = 'cad_cosif';
-    protected $primaryKey = 'id_cosif';
+    protected $table = 'cosif';
 
     protected $fillable = [
         'descricao'
