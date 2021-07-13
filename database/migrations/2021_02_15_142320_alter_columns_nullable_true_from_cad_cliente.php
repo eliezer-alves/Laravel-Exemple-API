@@ -14,13 +14,13 @@ class AlterColumnsNullableTrueFromCadCliente extends Migration
     public function up()
     {
         Schema::table('cad_cliente', function (Blueprint $table) {
-            $table->string('cpf')->nullable()->change();
-            $table->string('rg')->nullable()->change();
-            $table->string('nome')->nullable()->change();
+            $table->string('cpf', 14)->nullable()->change();
+            $table->string('rg', 15)->nullable()->change();
+            $table->string('nome', 200)->nullable()->change();
             $table->date('data_nascimento')->nullable()->change();
-            $table->string('sexo')->nullable()->change();
-            $table->string('nome_mae')->nullable()->change();
-            $table->string('celular')->nullable()->change();
+            $table->string('sexo', 1)->nullable()->change();
+            $table->string('nome_mae', 200)->nullable()->change();
+            $table->string('celular', 20)->nullable()->change();
         });
     }
 
