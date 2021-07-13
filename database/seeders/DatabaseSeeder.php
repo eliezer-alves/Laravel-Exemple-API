@@ -12,30 +12,11 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
 
-    /*    public function run()
-    {
-        // \App\Models\User::factory(10)->create();
-        $this->call(StatusSolicitacaoSeeder::class);
-        $this->call(MotivoFinalizacaoSeeder::class);
-        $this->call(StatusDocumentoPropostaSeeder::class);
-        $this->call(ClienteSeeder::class);
-        // $this->call(SolicitacaoSeeder::class);
-
-        // $this->call(AtividadeComercialSeeder::class);
-    }
-*/
     public function run()
     {
-        $this->call(StatusSolicitacaoSeeder::class);
-        $this->call(MotivoFinalizacaoSeeder::class);
-        $this->call(StatusDocumentoPropostaSeeder::class);
         $this->call(AtividadeComercialSeeder::class);
-        $this->call(ClientSicredSeeder::class);
-        $this->call(UrlSicredSeeder::class);
-        $this->call(ModeloSicredSeeder::class);
         $this->call(PorteEmpresaSeeder::class);
         $this->call(TipoEmpresaSeeder::class);
         $this->call(CosifSeeder::class);
-        $this->call(TipoPropostaSeeder::class);
     }
 }

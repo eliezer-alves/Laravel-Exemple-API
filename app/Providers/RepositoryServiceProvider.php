@@ -64,16 +64,6 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            AnalisePessoaPropostaRepositoryInterface::class,
-            AnalisePessoaPropostaRepository::class
-        );
-
-        $this->app->bind(
-            AnalisePropostaRepositoryInterface::class,
-            AnalisePropostaRepository::class
-        );
-
-        $this->app->bind(
             AtividadeComercialRepositoryInterface::class,
             AtividadeComercialRepository::class
         );
@@ -84,58 +74,13 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            ClientSicredRepositoryInterface::class,
-            ClientSicredRepository::class
-        );
-
-        $this->app->bind(
             CosifRepositoryInterface::class,
             CosifRepository::class
         );
 
         $this->app->bind(
-            DocumentoPropostaRepositoryInterface::class,
-            DocumentoPropostaRepository::class
-        );
-
-        $this->app->bind(
-            LogAnalisePropostaRepositoryInterface::class,
-            LogAnalisePropostaRepository::class
-        );
-
-        $this->app->bind(
-            ConfiguracaoRepositoryInterface::class,
-            ConfiguracaoRepository::class
-        );
-
-        $this->app->bind(
-            ModeloSicredRepositoryInterface::class,
-            ModeloSicredRepository::class
-        );
-
-        $this->app->bind(
-            ObservacaoPropostaRepositoryInterface::class,
-            ObservacaoPropostaRepository::class
-        );
-
-        $this->app->bind(
-            PessoaAssinaturaRepositoryInterface::class,
-            PessoaAssinaturaRepository::class
-        );
-
-        $this->app->bind(
             PorteEmpresaRepositoryInterface::class,
             PorteEmpresaRepository::class
-        );
-
-        $this->app->bind(
-            PropostaRepositoryInterface::class,
-            PropostaRepository::class
-        );
-
-        $this->app->bind(
-            PropostaParcelaRepositoryInterface::class,
-            PropostaParcelaRepository::class
         );
 
         $this->app->bind(
@@ -151,11 +96,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             UserRepositoryInterface::class,
             UserRepository::class
-        );
-
-        $this->app->bind(
-            UrlSicredRepositoryInterface::class,
-            UrlSicredRepository::class
         );
     }
 
