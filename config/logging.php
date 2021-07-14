@@ -100,18 +100,6 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
-        'sicred' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/sicred.log'),
-            'level' => 'debug'
-        ],
-
-        'gacConsultas' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/gac_consultas.log'),
-            'level' => 'debug'
-        ],
-
         'failedActions' => [
             'driver' => 'single',
             'path' => storage_path('logs/filed_actions.log'),
@@ -121,12 +109,6 @@ return [
         'dbExceptions' => [
             'driver' => 'single',
             'path' => storage_path('logs/db_exceptions.log'),
-            'level' => 'debug'
-        ],
-
-        'mailExceptions' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/mail_exceptions.log'),
             'level' => 'debug'
         ],
 
