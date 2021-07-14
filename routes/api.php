@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
     AtividadeComercialController,
-    ClienteController,
     CosifController,
+    EmpresaController,
     PorteEmpresaController,
     TipoEmpresaController,
     UserController,
@@ -38,9 +38,14 @@ Route::group([
 ], function () {
 
     Route::get('/', [UserController::class, 'index']);
-    Route::get('/{id_atividade_comercial}', [UserController::class, 'show']);    
-    Route::put('/{id_atividade_comercial}', [UserController::class, 'update']);
-    Route::delete('/{id_atividade_comercial}', [UserController::class, 'destroy']);
+    Route::get('/{id_user}', [UserController::class, 'show'])
+        ->where(['id_user' => '[0-9]+']);
+
+    Route::put('/{id_user}', [UserController::class, 'update'])
+        ->where(['id_user' => '[0-9]+']);
+
+    Route::delete('/{id_user}', [UserController::class, 'destroy'])
+        ->where(['id_user' => '[0-9]+']);
 
 });
 
@@ -59,10 +64,15 @@ Route::group([
 ], function () {
 
     Route::get('/', [AtividadeComercialController::class, 'index']);
-    Route::get('/{id_atividade_comercial}', [AtividadeComercialController::class, 'show']);
     Route::post('/', [AtividadeComercialController::class, 'store']);
-    Route::put('/{id_atividade_comercial}', [AtividadeComercialController::class, 'update']);
-    Route::delete('/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy']);
+    Route::get('/{id_atividade_comercial}', [AtividadeComercialController::class, 'show'])
+        ->where(['id_atividade_comercial' => '[0-9]+']);
+        
+    Route::put('/{id_atividade_comercial}', [AtividadeComercialController::class, 'update'])
+        ->where(['id_atividade_comercial' => '[0-9]+']);
+
+    Route::delete('/{id_atividade_comercial}', [AtividadeComercialController::class, 'destroy'])
+        ->where(['id_atividade_comercial' => '[0-9]+']);
 
 });
 
@@ -82,6 +92,17 @@ Route::group([
 ], function () {
 
     Route::get('/', [CosifController::class, '__invoke']);
+        
+    Route::get('/', [CosifController::class, 'index']);
+    Route::post('/', [CosifController::class, 'store']);
+    Route::get('/{id_cosif}', [CosifController::class, 'show'])
+        ->where(['id_cosif' => '[0-9]+']);
+
+    Route::put('/{id_cosif}', [CosifController::class, 'update'])
+        ->where(['id_cosif' => '[0-9]+']);
+
+    Route::delete('/{id_cosif}', [CosifController::class, 'destroy'])
+        ->where(['id_cosif' => '[0-9]+']);
 
 });
 
@@ -100,35 +121,18 @@ Route::group([
 
 ], function () {
 
-    Route::get('/', [TipoEmpresaController::class, '__invoke']);
+    Route::get('/', [TipoEmpresaController::class, 'index']);
+    Route::post('/', [TipoEmpresaController::class, 'store']);
+    Route::get('/{id_tipo_empresa}', [TipoEmpresaController::class, 'show'])
+        ->where(['id_tipo_empresa' => '[0-9]+']);
+
+    Route::put('/{id_tipo_empresa}', [TipoEmpresaController::class, 'update'])
+        ->where(['id_tipo_empresa' => '[0-9]+']);
+
+    Route::delete('/{id_tipo_empresa}', [TipoEmpresaController::class, 'destroy'])
+        ->where(['id_tipo_empresa' => '[0-9]+']);
 
 });
-
-/*
-|--------------------------------------------------------------------------
-| Cliente
-|--------------------------------------------------------------------------
-*/
-
-Route::group([
-
-    // 'middleware' => ['auth:api'],
-    'middleware' => ['client'],
-    'prefix' => 'cliente',
-
-], function () {
-
-    Route::get('/', [ClienteController::class, 'index']);
-    Route::get('/{id_cliente}', [ClienteController::class, 'show']);
-    Route::put('/{id_cliente}', [ClienteController::class, 'update']);
-    Route::delete('/{id_cliente}', [ClienteController::class, 'destroy']);
-
-});
-
-Route::post('/cliente', [ClienteController::class, 'store']);
-
-Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [ClienteController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
-
 
 
 /*
@@ -145,13 +149,45 @@ Route::group([
 ], function () {
 
     Route::get('/', [PorteEmpresaController::class, 'index']);
+    Route::post('/', [PorteEmpresaController::class, 'store']);
     Route::get('/{id_porte_empresa}', [PorteEmpresaController::class, 'show'])
         ->where(['id_porte_empresa' => '[0-9]+']);
 
-    Route::post('/', [PorteEmpresaController::class, 'store']);
     Route::put('/{id_porte_empresa}', [PorteEmpresaController::class, 'update'])
         ->where(['id_porte_empresa' => '[0-9]+']);
 
-    Route::delete('/{id_porte_empresa}', [PorteEmpresaController::class, 'destroy']);
+    Route::delete('/{id_porte_empresa}', [PorteEmpresaController::class, 'destroy'])
+        ->where(['id_porte_empresa' => '[0-9]+']);
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Empresa
+|--------------------------------------------------------------------------
+*/
+
+Route::group([
+
+    // 'middleware' => ['auth:api'],
+    'middleware' => ['client'],
+    'prefix' => 'empresa',
+
+], function () {
+
+    Route::get('/', [EmpresaController::class, 'index']);
+    Route::post('/', [EmpresaController::class, 'store']);
+    Route::get('/{id_empresa}', [EmpresaController::class, 'show'])
+        ->where(['id_empresa' => '[0-9]+']);
+
+    Route::put('/{id_empresa}', [EmpresaController::class, 'update'])
+        ->where(['id_empresa' => '[0-9]+']);
+
+    Route::delete('/{id_empresa}', [EmpresaController::class, 'destroy'])
+        ->where(['id_empresa' => '[0-9]+']);
+
+});
+
+Route::middleware('auth:api')->get('/cliente-busca/{cnpj}', [EmpresaController::class, 'findByCnpj'])->where(['cnpj' => '[0-9]+']);
+
+

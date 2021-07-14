@@ -11,27 +11,27 @@ class CosifSeeder extends Seeder
 {
     private $listaCosifs = [
         [
-            'id_cosif' => 4100,
+            'id' => 4100,
             'descricao' => 'RURAL'
         ],
         [
-            'id_cosif' => 4200,
+            'id' => 4200,
             'descricao' => 'INDUSTRIA'
         ],
         [
-            'id_cosif' => 4300,
+            'id' => 4300,
             'descricao' => 'COMERCIO'
         ],
         [
-            'id_cosif' => 4500,
+            'id' => 4500,
             'descricao' => 'SERVICOS'
         ],
         [
-            'id_cosif' => 4600,
+            'id' => 4600,
             'descricao' => 'PESSOAS FISICAS'
         ],
         [
-            'id_cosif' => 4700,
+            'id' => 4700,
             'descricao' => 'HABITACAO'
         ]
     ];

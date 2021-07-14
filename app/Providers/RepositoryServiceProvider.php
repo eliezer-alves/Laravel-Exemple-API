@@ -6,7 +6,7 @@ use App\Repositories\Contracts\{
     AbstractRepositoryInterface,
     AtividadeComercialRepositoryInterface,
     CosifRepositoryInterface,
-    ClienteRepositoryInterface,
+    EmpresaRepositoryInterface,
     PorteEmpresaRepositoryInterface,
     TipoEmpresaRepositoryInterface,
     UserRepositoryInterface,
@@ -14,7 +14,7 @@ use App\Repositories\Contracts\{
 use App\Repositories\Eloquent\{
     AbstractRepository,
     AtividadeComercialRepository,
-    ClienteRepository,
+    EmpresaRepository,
     CosifRepository,
     PorteEmpresaRepository,
     TipoEmpresaRepository,
@@ -43,8 +43,8 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            ClienteRepositoryInterface::class,
-            ClienteRepository::class
+            EmpresaRepositoryInterface::class,
+            EmpresaRepository::class
         );
 
         $this->app->bind(

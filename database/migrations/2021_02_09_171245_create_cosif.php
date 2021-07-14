@@ -14,8 +14,7 @@ class CreateCosif extends Migration
     public function up()
     {
         Schema::create('cosif', function (Blueprint $table) {
-            $table->id('id_cosif');
-
+            $table->id();
             $table->string('descricao');
             $table->timestamps();
         });

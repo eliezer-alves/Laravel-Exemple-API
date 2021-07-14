@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreClienteRequest;
-use App\Http\Requests\UpdateClienteRequest;
-use App\Services\ClienteService;
+use App\Http\Requests\StoreEmpresaRequest;
+use App\Http\Requests\UpdateEmpresaRequest;
+use App\Services\EmpresaService;
+use Illuminate\Http\Request;
 
-
-class ClienteController extends Controller
+class EmpresaController extends Controller
 {
-    public function __construct(ClienteService $service)
+    public function __construct(EmpresaService $service)
     {
         parent::__construct($service);
     }
@@ -29,46 +29,46 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\StoreClienteRequest $request
+     * @param  \Illuminate\Http\StoreEmpresaRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreClienteRequest $request)
+    public function store(StoreEmpresaRequest $request)
     {
-        return $this->service->createWithUser($request->all());
+        return $this->service->create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $idCliente
+     * @param  int  $idEmpresa
      * @return \Illuminate\Http\Response
      */
-    public function show($idCliente)
+    public function show($idEmpresa)
     {
-        return $this->service->findOrFail($idCliente);
+        return $this->service->findOrFail($idEmpresa);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\UpdateClienteRequest $request
-     * @param  int  $idCliente
+     * @param  \Illuminate\Http\UpdateEmpresaRequest $request
+     * @param  int  $idEmpresa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClienteRequest $request, $idCliente)
+    public function update(UpdateEmpresaRequest $request, $idEmpresa)
     {
-        return $this->service->update($request->all(), $idCliente);
+        return $this->service->update($request->all(), $idEmpresa);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $idCliente
+     * @param  int  $idEmpresa
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idCliente)
+    public function destroy($idEmpresa)
     {
-        return $this->service->delete($idCliente);
+        return $this->service->delete($idEmpresa);
     }
 
     /**
